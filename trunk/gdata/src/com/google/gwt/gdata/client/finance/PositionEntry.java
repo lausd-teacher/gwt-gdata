@@ -80,7 +80,7 @@ public class PositionEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param feedLink
    */
-  public final native void setFeedLink(JavaScriptObject feedLink) /*-{
+  public final native void setFeedLink(PositionFeedLink feedLink) /*-{
     this.setFeedLink(
       feedLink
     );
@@ -96,22 +96,11 @@ public class PositionEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the transaction feed for the position.
-   * 
-   * @param feedLink
-   */
-  public final native void setFeedLink(PositionFeedLink feedLink) /*-{
-    this.setFeedLink(
-      feedLink
-    );
-  }-*/;
-
-  /**
    * Sets the data for the position.
    * 
    * @param positionData
    */
-  public final native void setPositionData(JavaScriptObject positionData) /*-{
+  public final native void setPositionData(PositionData positionData) /*-{
     this.setPositionData(
       positionData
     );
@@ -127,22 +116,11 @@ public class PositionEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the data for the position.
-   * 
-   * @param positionData
-   */
-  public final native void setPositionData(PositionData positionData) /*-{
-    this.setPositionData(
-      positionData
-    );
-  }-*/;
-
-  /**
    * Sets the stock symbol for the position.
    * 
    * @param symbol
    */
-  public final native void setSymbol(JavaScriptObject symbol) /*-{
+  public final native void setSymbol(Symbol symbol) /*-{
     this.setSymbol(
       symbol
     );
@@ -155,17 +133,6 @@ public class PositionEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setSymbol() /*-{
     this.setSymbol();
-  }-*/;
-
-  /**
-   * Sets the stock symbol for the position.
-   * 
-   * @param symbol
-   */
-  public final native void setSymbol(Symbol symbol) /*-{
-    this.setSymbol(
-      symbol
-    );
   }-*/;
 
 }

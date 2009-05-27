@@ -62,7 +62,7 @@ public class TransactionEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param transactionData
    */
-  public final native void setTransactionData(JavaScriptObject transactionData) /*-{
+  public final native void setTransactionData(TransactionData transactionData) /*-{
     this.setTransactionData(
       transactionData
     );
@@ -75,17 +75,6 @@ public class TransactionEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setTransactionData() /*-{
     this.setTransactionData();
-  }-*/;
-
-  /**
-   * Sets the data for the transaction.
-   * 
-   * @param transactionData
-   */
-  public final native void setTransactionData(TransactionData transactionData) /*-{
-    this.setTransactionData(
-      transactionData
-    );
   }-*/;
 
 }

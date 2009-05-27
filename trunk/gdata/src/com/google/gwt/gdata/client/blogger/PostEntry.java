@@ -127,7 +127,7 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param thumbnail
    */
-  public final native void setThumbnail(JavaScriptObject thumbnail) /*-{
+  public final native void setThumbnail(MediaThumbnail thumbnail) /*-{
     this.setThumbnail(
       thumbnail
     );
@@ -143,22 +143,11 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the media thumbnail.
-   * 
-   * @param thumbnail
-   */
-  public final native void setThumbnail(MediaThumbnail thumbnail) /*-{
-    this.setThumbnail(
-      thumbnail
-    );
-  }-*/;
-
-  /**
    * Sets the total.
    * 
    * @param total
    */
-  public final native void setTotal(JavaScriptObject total) /*-{
+  public final native void setTotal(Total total) /*-{
     this.setTotal(
       total
     );
@@ -171,17 +160,6 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setTotal() /*-{
     this.setTotal();
-  }-*/;
-
-  /**
-   * Sets the total.
-   * 
-   * @param total
-   */
-  public final native void setTotal(Total total) /*-{
-    this.setTotal(
-      total
-    );
   }-*/;
 
 }

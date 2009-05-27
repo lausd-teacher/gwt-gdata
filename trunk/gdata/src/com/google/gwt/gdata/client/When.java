@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 import java.util.Date;
 
@@ -55,17 +56,6 @@ public class When extends JavaScriptObject {
    * 
    * @param reminder
    */
-  public final native void addReminder(JavaScriptObject reminder) /*-{
-    this.addReminder(
-      reminder
-    );
-  }-*/;
-
-  /**
-   * Adds a new event reminder.
-   * 
-   * @param reminder
-   */
   public final native void addReminder(Reminder reminder) /*-{
     this.addReminder(
       reminder
@@ -86,7 +76,7 @@ public class When extends JavaScriptObject {
    * 
    * @return
    */
-  public final native Reminder[] getReminder() /*-{
+  public final native JsArray<Reminder> getReminder() /*-{
     return this.getReminder();
   }-*/;
 
@@ -144,7 +134,7 @@ public class When extends JavaScriptObject {
    * 
    * @param reminder
    */
-  public final native void setReminder(JavaScriptObject[] reminder) /*-{
+  public final native void setReminder(JsArray<Reminder> reminder) /*-{
     this.setReminder(
       reminder
     );
@@ -157,17 +147,6 @@ public class When extends JavaScriptObject {
    */
   public final native void setReminder() /*-{
     this.setReminder();
-  }-*/;
-
-  /**
-   * Sets the event reminders.
-   * 
-   * @param reminder
-   */
-  public final native void setReminder(Reminder[] reminder) /*-{
-    this.setReminder(
-      reminder
-    );
   }-*/;
 
   /**

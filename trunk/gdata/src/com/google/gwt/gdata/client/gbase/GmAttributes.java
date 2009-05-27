@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * Comment unavailable.
@@ -53,17 +54,6 @@ public class GmAttributes extends JavaScriptObject {
    * 
    * @param attribute
    */
-  public final native void addAttribute(JavaScriptObject attribute) /*-{
-    this.addAttribute(
-      attribute
-    );
-  }-*/;
-
-  /**
-   * Adds a new list of attribute for an item type.
-   * 
-   * @param attribute
-   */
   public final native void addAttribute(GmAttribute attribute) /*-{
     this.addAttribute(
       attribute
@@ -75,7 +65,7 @@ public class GmAttributes extends JavaScriptObject {
    * 
    * @return
    */
-  public final native GmAttribute[] getAttributes() /*-{
+  public final native JsArray<GmAttribute> getAttributes() /*-{
     return this.getAttributes();
   }-*/;
 
@@ -84,7 +74,7 @@ public class GmAttributes extends JavaScriptObject {
    * 
    * @param attributes
    */
-  public final native void setAttributes(JavaScriptObject[] attributes) /*-{
+  public final native void setAttributes(JsArray<GmAttribute> attributes) /*-{
     this.setAttributes(
       attributes
     );
@@ -97,17 +87,6 @@ public class GmAttributes extends JavaScriptObject {
    */
   public final native void setAttributes() /*-{
     this.setAttributes();
-  }-*/;
-
-  /**
-   * Sets the list of attribute for an item types.
-   * 
-   * @param attributes
-   */
-  public final native void setAttributes(GmAttribute[] attributes) /*-{
-    this.setAttributes(
-      attributes
-    );
   }-*/;
 
 }

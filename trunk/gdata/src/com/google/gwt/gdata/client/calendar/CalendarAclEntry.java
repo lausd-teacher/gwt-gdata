@@ -63,7 +63,7 @@ public class CalendarAclEntry extends AclEntry {
    * 
    * @param sendAclNotifications
    */
-  public final native void setSendAclNotifications(JavaScriptObject sendAclNotifications) /*-{
+  public final native void setSendAclNotifications(SendAclNotificationsProperty sendAclNotifications) /*-{
     this.setSendAclNotifications(
       sendAclNotifications
     );
@@ -76,17 +76,6 @@ public class CalendarAclEntry extends AclEntry {
    */
   public final native void setSendAclNotifications() /*-{
     this.setSendAclNotifications();
-  }-*/;
-
-  /**
-   * Sets the send acl notifications property.
-   * 
-   * @param sendAclNotifications
-   */
-  public final native void setSendAclNotifications(SendAclNotificationsProperty sendAclNotifications) /*-{
-    this.setSendAclNotifications(
-      sendAclNotifications
-    );
   }-*/;
 
 }

@@ -69,7 +69,7 @@ public class Comments extends JavaScriptObject {
    * 
    * @param feedLink
    */
-  public final native void setFeedLink(JavaScriptObject feedLink) /*-{
+  public final native void setFeedLink(FeedLink feedLink) /*-{
     this.setFeedLink(
       feedLink
     );
@@ -82,17 +82,6 @@ public class Comments extends JavaScriptObject {
    */
   public final native void setFeedLink() /*-{
     this.setFeedLink();
-  }-*/;
-
-  /**
-   * Sets the nested feed link.
-   * 
-   * @param feedLink
-   */
-  public final native void setFeedLink(FeedLink feedLink) /*-{
-    this.setFeedLink(
-      feedLink
-    );
   }-*/;
 
 }

@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.mediarss;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * Comment unavailable.
@@ -53,31 +54,9 @@ public class MediaGroup extends JavaScriptObject {
    * 
    * @param category
    */
-  public final native void addCategory(JavaScriptObject category) /*-{
-    this.addCategory(
-      category
-    );
-  }-*/;
-
-  /**
-   * Adds a new media category.
-   * 
-   * @param category
-   */
   public final native void addCategory(MediaCategory category) /*-{
     this.addCategory(
       category
-    );
-  }-*/;
-
-  /**
-   * Adds a new media content.
-   * 
-   * @param content
-   */
-  public final native void addContent(JavaScriptObject content) /*-{
-    this.addContent(
-      content
     );
   }-*/;
 
@@ -97,31 +76,9 @@ public class MediaGroup extends JavaScriptObject {
    * 
    * @param credit
    */
-  public final native void addCredit(JavaScriptObject credit) /*-{
-    this.addCredit(
-      credit
-    );
-  }-*/;
-
-  /**
-   * Adds a new media credit.
-   * 
-   * @param credit
-   */
   public final native void addCredit(MediaCredit credit) /*-{
     this.addCredit(
       credit
-    );
-  }-*/;
-
-  /**
-   * Adds a new media rating.
-   * 
-   * @param rating
-   */
-  public final native void addRating(JavaScriptObject rating) /*-{
-    this.addRating(
-      rating
     );
   }-*/;
 
@@ -141,31 +98,9 @@ public class MediaGroup extends JavaScriptObject {
    * 
    * @param restriction
    */
-  public final native void addRestriction(JavaScriptObject restriction) /*-{
-    this.addRestriction(
-      restriction
-    );
-  }-*/;
-
-  /**
-   * Adds a new media restriction.
-   * 
-   * @param restriction
-   */
   public final native void addRestriction(MediaRestriction restriction) /*-{
     this.addRestriction(
       restriction
-    );
-  }-*/;
-
-  /**
-   * Adds a new media text.
-   * 
-   * @param text
-   */
-  public final native void addText(JavaScriptObject text) /*-{
-    this.addText(
-      text
     );
   }-*/;
 
@@ -185,17 +120,6 @@ public class MediaGroup extends JavaScriptObject {
    * 
    * @param thumbnail
    */
-  public final native void addThumbnail(JavaScriptObject thumbnail) /*-{
-    this.addThumbnail(
-      thumbnail
-    );
-  }-*/;
-
-  /**
-   * Adds a new media thumbnail.
-   * 
-   * @param thumbnail
-   */
   public final native void addThumbnail(MediaThumbnail thumbnail) /*-{
     this.addThumbnail(
       thumbnail
@@ -207,7 +131,7 @@ public class MediaGroup extends JavaScriptObject {
    * 
    * @return
    */
-  public final native MediaCategory[] getCategories() /*-{
+  public final native JsArray<MediaCategory> getCategories() /*-{
     return this.getCategories();
   }-*/;
 
@@ -216,7 +140,7 @@ public class MediaGroup extends JavaScriptObject {
    * 
    * @return
    */
-  public final native MediaContent[] getContents() /*-{
+  public final native JsArray<MediaContent> getContents() /*-{
     return this.getContents();
   }-*/;
 
@@ -234,7 +158,7 @@ public class MediaGroup extends JavaScriptObject {
    * 
    * @return
    */
-  public final native MediaCredit[] getCredits() /*-{
+  public final native JsArray<MediaCredit> getCredits() /*-{
     return this.getCredits();
   }-*/;
 
@@ -279,7 +203,7 @@ public class MediaGroup extends JavaScriptObject {
    * 
    * @return
    */
-  public final native MediaRating[] getRatings() /*-{
+  public final native JsArray<MediaRating> getRatings() /*-{
     return this.getRatings();
   }-*/;
 
@@ -288,7 +212,7 @@ public class MediaGroup extends JavaScriptObject {
    * 
    * @return
    */
-  public final native MediaRestriction[] getRestrictions() /*-{
+  public final native JsArray<MediaRestriction> getRestrictions() /*-{
     return this.getRestrictions();
   }-*/;
 
@@ -297,7 +221,7 @@ public class MediaGroup extends JavaScriptObject {
    * 
    * @return
    */
-  public final native MediaText[] getTexts() /*-{
+  public final native JsArray<MediaText> getTexts() /*-{
     return this.getTexts();
   }-*/;
 
@@ -306,7 +230,7 @@ public class MediaGroup extends JavaScriptObject {
    * 
    * @return
    */
-  public final native MediaThumbnail[] getThumbnails() /*-{
+  public final native JsArray<MediaThumbnail> getThumbnails() /*-{
     return this.getThumbnails();
   }-*/;
 
@@ -324,7 +248,7 @@ public class MediaGroup extends JavaScriptObject {
    * 
    * @param categories
    */
-  public final native void setCategories(JavaScriptObject[] categories) /*-{
+  public final native void setCategories(JsArray<MediaCategory> categories) /*-{
     this.setCategories(
       categories
     );
@@ -340,22 +264,11 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media categories.
-   * 
-   * @param categories
-   */
-  public final native void setCategories(MediaCategory[] categories) /*-{
-    this.setCategories(
-      categories
-    );
-  }-*/;
-
-  /**
    * Sets the media contents.
    * 
    * @param contents
    */
-  public final native void setContents(JavaScriptObject[] contents) /*-{
+  public final native void setContents(JsArray<MediaContent> contents) /*-{
     this.setContents(
       contents
     );
@@ -371,22 +284,11 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media contents.
-   * 
-   * @param contents
-   */
-  public final native void setContents(MediaContent[] contents) /*-{
-    this.setContents(
-      contents
-    );
-  }-*/;
-
-  /**
    * Sets the media copyright.
    * 
    * @param copyright
    */
-  public final native void setCopyright(JavaScriptObject copyright) /*-{
+  public final native void setCopyright(MediaCopyright copyright) /*-{
     this.setCopyright(
       copyright
     );
@@ -402,22 +304,11 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media copyright.
-   * 
-   * @param copyright
-   */
-  public final native void setCopyright(MediaCopyright copyright) /*-{
-    this.setCopyright(
-      copyright
-    );
-  }-*/;
-
-  /**
    * Sets the media credits.
    * 
    * @param credits
    */
-  public final native void setCredits(JavaScriptObject[] credits) /*-{
+  public final native void setCredits(JsArray<MediaCredit> credits) /*-{
     this.setCredits(
       credits
     );
@@ -433,22 +324,11 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media credits.
-   * 
-   * @param credits
-   */
-  public final native void setCredits(MediaCredit[] credits) /*-{
-    this.setCredits(
-      credits
-    );
-  }-*/;
-
-  /**
    * Sets the media description.
    * 
    * @param description
    */
-  public final native void setDescription(JavaScriptObject description) /*-{
+  public final native void setDescription(MediaDescription description) /*-{
     this.setDescription(
       description
     );
@@ -464,22 +344,11 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media description.
-   * 
-   * @param description
-   */
-  public final native void setDescription(MediaDescription description) /*-{
-    this.setDescription(
-      description
-    );
-  }-*/;
-
-  /**
    * Sets the media hash.
    * 
    * @param hash
    */
-  public final native void setHash(JavaScriptObject hash) /*-{
+  public final native void setHash(MediaHash hash) /*-{
     this.setHash(
       hash
     );
@@ -495,22 +364,11 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media hash.
-   * 
-   * @param hash
-   */
-  public final native void setHash(MediaHash hash) /*-{
-    this.setHash(
-      hash
-    );
-  }-*/;
-
-  /**
    * Sets the media keywords.
    * 
    * @param keywords
    */
-  public final native void setKeywords(JavaScriptObject keywords) /*-{
+  public final native void setKeywords(MediaKeywords keywords) /*-{
     this.setKeywords(
       keywords
     );
@@ -526,22 +384,11 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media keywords.
-   * 
-   * @param keywords
-   */
-  public final native void setKeywords(MediaKeywords keywords) /*-{
-    this.setKeywords(
-      keywords
-    );
-  }-*/;
-
-  /**
    * Sets the media player.
    * 
    * @param player
    */
-  public final native void setPlayer(JavaScriptObject player) /*-{
+  public final native void setPlayer(MediaPlayer player) /*-{
     this.setPlayer(
       player
     );
@@ -557,22 +404,11 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media player.
-   * 
-   * @param player
-   */
-  public final native void setPlayer(MediaPlayer player) /*-{
-    this.setPlayer(
-      player
-    );
-  }-*/;
-
-  /**
    * Sets the media ratings.
    * 
    * @param ratings
    */
-  public final native void setRatings(JavaScriptObject[] ratings) /*-{
+  public final native void setRatings(JsArray<MediaRating> ratings) /*-{
     this.setRatings(
       ratings
     );
@@ -588,22 +424,11 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media ratings.
-   * 
-   * @param ratings
-   */
-  public final native void setRatings(MediaRating[] ratings) /*-{
-    this.setRatings(
-      ratings
-    );
-  }-*/;
-
-  /**
    * Sets the media restrictions.
    * 
    * @param restrictions
    */
-  public final native void setRestrictions(JavaScriptObject[] restrictions) /*-{
+  public final native void setRestrictions(JsArray<MediaRestriction> restrictions) /*-{
     this.setRestrictions(
       restrictions
     );
@@ -619,22 +444,11 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media restrictions.
-   * 
-   * @param restrictions
-   */
-  public final native void setRestrictions(MediaRestriction[] restrictions) /*-{
-    this.setRestrictions(
-      restrictions
-    );
-  }-*/;
-
-  /**
    * Sets the media texts.
    * 
    * @param texts
    */
-  public final native void setTexts(JavaScriptObject[] texts) /*-{
+  public final native void setTexts(JsArray<MediaText> texts) /*-{
     this.setTexts(
       texts
     );
@@ -650,22 +464,11 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media texts.
-   * 
-   * @param texts
-   */
-  public final native void setTexts(MediaText[] texts) /*-{
-    this.setTexts(
-      texts
-    );
-  }-*/;
-
-  /**
    * Sets the media thumbnails.
    * 
    * @param thumbnails
    */
-  public final native void setThumbnails(JavaScriptObject[] thumbnails) /*-{
+  public final native void setThumbnails(JsArray<MediaThumbnail> thumbnails) /*-{
     this.setThumbnails(
       thumbnails
     );
@@ -681,22 +484,11 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media thumbnails.
-   * 
-   * @param thumbnails
-   */
-  public final native void setThumbnails(MediaThumbnail[] thumbnails) /*-{
-    this.setThumbnails(
-      thumbnails
-    );
-  }-*/;
-
-  /**
    * Sets the media title.
    * 
    * @param title
    */
-  public final native void setTitle(JavaScriptObject title) /*-{
+  public final native void setTitle(MediaTitle title) /*-{
     this.setTitle(
       title
     );
@@ -709,17 +501,6 @@ public class MediaGroup extends JavaScriptObject {
    */
   public final native void setTitle() /*-{
     this.setTitle();
-  }-*/;
-
-  /**
-   * Sets the media title.
-   * 
-   * @param title
-   */
-  public final native void setTitle(MediaTitle title) /*-{
-    this.setTitle(
-      title
-    );
   }-*/;
 
 }

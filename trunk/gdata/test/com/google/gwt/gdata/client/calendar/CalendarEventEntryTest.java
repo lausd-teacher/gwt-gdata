@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.calendar;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.geo.GeoRssWhere;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -36,7 +38,6 @@ public class CalendarEventEntryTest extends GWTTestCase {
 
   public void testOther() {
     // CalendarEventEntry obj = CalendarEventEntry.newInstance(JavaScriptObject.createObject());
-    // obj.addExtendedProperty(extendedProperty);
     // obj.addExtendedProperty(extendedProperty);
     // obj.removeWebContent();
   }
@@ -58,7 +59,7 @@ public class CalendarEventEntryTest extends GWTTestCase {
     SequenceNumberProperty sequence = SequenceNumberProperty.newInstance(JavaScriptObject.createObject());
     obj.setSequence(sequence);
     assertSame("sequence", obj.getSequence(), sequence);
-    CalendarExtendedProperty[] extendedproperties = new CalendarExtendedProperty[]{ CalendarExtendedProperty.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.calendar.CalendarExtendedProperty> extendedproperties = ArrayHelper.toJsArray(CalendarExtendedProperty.newInstance(JavaScriptObject.createObject()));
     obj.setExtendedProperties(extendedproperties);
     assertSame("extendedproperties", obj.getExtendedProperties(), extendedproperties);
     CalendarLink webcontentlink = CalendarLink.newInstance(JavaScriptObject.createObject());

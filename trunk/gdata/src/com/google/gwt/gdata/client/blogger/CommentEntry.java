@@ -81,7 +81,7 @@ public class CommentEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param inReplyTo
    */
-  public final native void setInReplyTo(JavaScriptObject inReplyTo) /*-{
+  public final native void setInReplyTo(InReplyTo inReplyTo) /*-{
     this.setInReplyTo(
       inReplyTo
     );
@@ -94,17 +94,6 @@ public class CommentEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setInReplyTo() /*-{
     this.setInReplyTo();
-  }-*/;
-
-  /**
-   * Sets the in reply to.
-   * 
-   * @param inReplyTo
-   */
-  public final native void setInReplyTo(InReplyTo inReplyTo) /*-{
-    this.setInReplyTo(
-      inReplyTo
-    );
   }-*/;
 
 }

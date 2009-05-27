@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.calendar;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Where;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -36,7 +38,6 @@ public class CalendarEntryTest extends GWTTestCase {
 
   public void testOther() {
     // CalendarEntry obj = CalendarEntry.newInstance(JavaScriptObject.createObject());
-    // obj.addLocation(location);
     // obj.addLocation(location);
   }
 
@@ -60,7 +61,7 @@ public class CalendarEntryTest extends GWTTestCase {
     OverrideNameProperty overridename = OverrideNameProperty.newInstance(JavaScriptObject.createObject());
     obj.setOverrideName(overridename);
     assertSame("overridename", obj.getOverrideName(), overridename);
-    Where[] locations = new Where[]{ Where.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.Where> locations = ArrayHelper.toJsArray(Where.newInstance(JavaScriptObject.createObject()));
     obj.setLocations(locations);
     assertSame("locations", obj.getLocations(), locations);
     AccessLevelProperty accesslevel = AccessLevelProperty.newInstance(JavaScriptObject.createObject());

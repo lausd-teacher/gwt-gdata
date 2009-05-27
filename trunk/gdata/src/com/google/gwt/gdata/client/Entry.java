@@ -159,7 +159,7 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
    * 
    * @param control
    */
-  public final native void setControl(JavaScriptObject control) /*-{
+  public final native void setControl(Control control) /*-{
     this.setControl(
       control
     );
@@ -175,22 +175,11 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
   }-*/;
 
   /**
-   * Sets the Atom publication control status.
-   * 
-   * @param control
-   */
-  public final native void setControl(Control control) /*-{
-    this.setControl(
-      control
-    );
-  }-*/;
-
-  /**
    * Sets the Atom entry last edited timestamp.
    * 
    * @param edited
    */
-  public final native void setEdited(JavaScriptObject edited) /*-{
+  public final native void setEdited(Edited edited) /*-{
     this.setEdited(
       edited
     );
@@ -203,17 +192,6 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
    */
   public final native void setEdited() /*-{
     this.setEdited();
-  }-*/;
-
-  /**
-   * Sets the Atom entry last edited timestamp.
-   * 
-   * @param edited
-   */
-  public final native void setEdited(Edited edited) /*-{
-    this.setEdited(
-      edited
-    );
   }-*/;
 
   /**

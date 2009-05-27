@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.app;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -37,7 +39,6 @@ public class WorkspaceTest extends GWTTestCase {
   public void testOther() {
     // Workspace obj = Workspace.newInstance(JavaScriptObject.createObject());
     // obj.addCollection(collection);
-    // obj.addCollection(collection);
   }
 
   public void testProperties() {
@@ -45,7 +46,7 @@ public class WorkspaceTest extends GWTTestCase {
     Text title = Text.newInstance(JavaScriptObject.createObject());
     obj.setTitle(title);
     assertSame("title", obj.getTitle(), title);
-    Collection[] collections = new Collection[]{ Collection.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.app.Collection> collections = ArrayHelper.toJsArray(Collection.newInstance(JavaScriptObject.createObject()));
     obj.setCollections(collections);
     assertSame("collections", obj.getCollections(), collections);
   }

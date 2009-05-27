@@ -89,7 +89,7 @@ public class Person extends JavaScriptObject {
    * 
    * @param email
    */
-  public final native void setEmail(JavaScriptObject email) /*-{
+  public final native void setEmail(Email email) /*-{
     this.setEmail(
       email
     );
@@ -105,22 +105,11 @@ public class Person extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the authors email address.
-   * 
-   * @param email
-   */
-  public final native void setEmail(Email email) /*-{
-    this.setEmail(
-      email
-    );
-  }-*/;
-
-  /**
    * Sets the authors name.
    * 
    * @param name
    */
-  public final native void setName(JavaScriptObject name) /*-{
+  public final native void setName(Name name) /*-{
     this.setName(
       name
     );
@@ -133,17 +122,6 @@ public class Person extends JavaScriptObject {
    */
   public final native void setName() /*-{
     this.setName();
-  }-*/;
-
-  /**
-   * Sets the authors name.
-   * 
-   * @param name
-   */
-  public final native void setName(Name name) /*-{
-    this.setName(
-      name
-    );
   }-*/;
 
   /**
@@ -171,7 +149,7 @@ public class Person extends JavaScriptObject {
    * 
    * @param uri
    */
-  public final native void setUri(JavaScriptObject uri) /*-{
+  public final native void setUri(Uri uri) /*-{
     this.setUri(
       uri
     );
@@ -184,17 +162,6 @@ public class Person extends JavaScriptObject {
    */
   public final native void setUri() /*-{
     this.setUri();
-  }-*/;
-
-  /**
-   * Sets the authors URI.
-   * 
-   * @param uri
-   */
-  public final native void setUri(Uri uri) /*-{
-    this.setUri(
-      uri
-    );
   }-*/;
 
 }

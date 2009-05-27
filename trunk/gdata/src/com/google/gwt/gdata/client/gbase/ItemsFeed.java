@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * Comment unavailable.
@@ -66,7 +67,7 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed {
    * 
    * @return
    */
-  public final native Attribute[] getAttributes() /*-{
+  public final native JsArray<Attribute> getAttributes() /*-{
     return this.getAttributes();
   }-*/;
 
@@ -85,7 +86,7 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed {
    * @param name
    * @param attribute
    */
-  public final native void setAttribute(String name, JavaScriptObject attribute) /*-{
+  public final native void setAttribute(String name, Attribute attribute) /*-{
     this.setAttribute(
       name,
       attribute
@@ -102,19 +103,6 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed {
     this.setAttribute(
       name,
       undefined
-    );
-  }-*/;
-
-  /**
-   * Sets the attribute.
-   * 
-   * @param name
-   * @param attribute
-   */
-  public final native void setAttribute(String name, Attribute attribute) /*-{
-    this.setAttribute(
-      name,
-      attribute
     );
   }-*/;
 

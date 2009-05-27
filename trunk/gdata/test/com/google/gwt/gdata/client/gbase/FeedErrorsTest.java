@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.gbase;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -36,12 +38,11 @@ public class FeedErrorsTest extends GWTTestCase {
   public void testOther() {
     // FeedErrors obj = FeedErrors.newInstance(JavaScriptObject.createObject());
     // obj.addFeedError(feedError);
-    // obj.addFeedError(feedError);
   }
 
   public void testProperties() {
     FeedErrors obj = FeedErrors.newInstance(JavaScriptObject.createObject());
-    FeedError[] feederror = new FeedError[]{ FeedError.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.gbase.FeedError> feederror = ArrayHelper.toJsArray(FeedError.newInstance(JavaScriptObject.createObject()));
     obj.setFeedError(feederror);
     assertSame("feederror", obj.getFeedError(), feederror);
   }

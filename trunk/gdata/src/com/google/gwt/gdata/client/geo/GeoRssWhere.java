@@ -71,7 +71,7 @@ public class GeoRssWhere extends JavaScriptObject {
    * 
    * @param envelope
    */
-  public final native void setEnvelope(JavaScriptObject envelope) /*-{
+  public final native void setEnvelope(GmlEnvelope envelope) /*-{
     this.setEnvelope(
       envelope
     );
@@ -87,22 +87,11 @@ public class GeoRssWhere extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the Gml geographical region.
-   * 
-   * @param envelope
-   */
-  public final native void setEnvelope(GmlEnvelope envelope) /*-{
-    this.setEnvelope(
-      envelope
-    );
-  }-*/;
-
-  /**
    * Sets the particular geographical point.
    * 
    * @param point
    */
-  public final native void setPoint(JavaScriptObject point) /*-{
+  public final native void setPoint(GmlPoint point) /*-{
     this.setPoint(
       point
     );
@@ -115,17 +104,6 @@ public class GeoRssWhere extends JavaScriptObject {
    */
   public final native void setPoint() /*-{
     this.setPoint();
-  }-*/;
-
-  /**
-   * Sets the particular geographical point.
-   * 
-   * @param point
-   */
-  public final native void setPoint(GmlPoint point) /*-{
-    this.setPoint(
-      point
-    );
   }-*/;
 
 }

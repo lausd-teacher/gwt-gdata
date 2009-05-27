@@ -62,7 +62,7 @@ public class AttributesEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param attribute
    */
-  public final native void setAttribute(JavaScriptObject attribute) /*-{
+  public final native void setAttribute(GmAttribute attribute) /*-{
     this.setAttribute(
       attribute
     );
@@ -75,17 +75,6 @@ public class AttributesEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setAttribute() /*-{
     this.setAttribute();
-  }-*/;
-
-  /**
-   * Sets the list of attribute for an item type.
-   * 
-   * @param attribute
-   */
-  public final native void setAttribute(GmAttribute attribute) /*-{
-    this.setAttribute(
-      attribute
-    );
   }-*/;
 
 }

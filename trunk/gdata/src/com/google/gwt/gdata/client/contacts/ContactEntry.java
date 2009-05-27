@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.contacts;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Deleted;
 
 /**
@@ -54,17 +55,6 @@ public class ContactEntry extends PersonEntry {
    * 
    * @param groupMembershipInfo
    */
-  public final native void addGroupMembershipInfo(JavaScriptObject groupMembershipInfo) /*-{
-    this.addGroupMembershipInfo(
-      groupMembershipInfo
-    );
-  }-*/;
-
-  /**
-   * Adds a new group membership info.
-   * 
-   * @param groupMembershipInfo
-   */
   public final native void addGroupMembershipInfo(GroupMembershipInfo groupMembershipInfo) /*-{
     this.addGroupMembershipInfo(
       groupMembershipInfo
@@ -85,7 +75,7 @@ public class ContactEntry extends PersonEntry {
    * 
    * @return
    */
-  public final native GroupMembershipInfo[] getGroupMembershipInfos() /*-{
+  public final native JsArray<GroupMembershipInfo> getGroupMembershipInfos() /*-{
     return this.getGroupMembershipInfos();
   }-*/;
 
@@ -94,7 +84,7 @@ public class ContactEntry extends PersonEntry {
    * 
    * @param deleted
    */
-  public final native void setDeleted(JavaScriptObject deleted) /*-{
+  public final native void setDeleted(Deleted deleted) /*-{
     this.setDeleted(
       deleted
     );
@@ -110,22 +100,11 @@ public class ContactEntry extends PersonEntry {
   }-*/;
 
   /**
-   * Sets the marker for deleted entries.
-   * 
-   * @param deleted
-   */
-  public final native void setDeleted(Deleted deleted) /*-{
-    this.setDeleted(
-      deleted
-    );
-  }-*/;
-
-  /**
    * Sets the group membership infos.
    * 
    * @param groupMembershipInfos
    */
-  public final native void setGroupMembershipInfos(JavaScriptObject[] groupMembershipInfos) /*-{
+  public final native void setGroupMembershipInfos(JsArray<GroupMembershipInfo> groupMembershipInfos) /*-{
     this.setGroupMembershipInfos(
       groupMembershipInfos
     );
@@ -138,17 +117,6 @@ public class ContactEntry extends PersonEntry {
    */
   public final native void setGroupMembershipInfos() /*-{
     this.setGroupMembershipInfos();
-  }-*/;
-
-  /**
-   * Sets the group membership infos.
-   * 
-   * @param groupMembershipInfos
-   */
-  public final native void setGroupMembershipInfos(GroupMembershipInfo[] groupMembershipInfos) /*-{
-    this.setGroupMembershipInfos(
-      groupMembershipInfos
-    );
   }-*/;
 
 }

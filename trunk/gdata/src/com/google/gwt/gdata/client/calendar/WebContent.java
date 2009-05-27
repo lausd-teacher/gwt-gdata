@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.calendar;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * Comment unavailable.
@@ -53,17 +54,6 @@ public class WebContent extends JavaScriptObject {
    * 
    * @param gadgetPref
    */
-  public final native void addGadgetPref(JavaScriptObject gadgetPref) /*-{
-    this.addGadgetPref(
-      gadgetPref
-    );
-  }-*/;
-
-  /**
-   * Adds a new web content gadget preference.
-   * 
-   * @param gadgetPref
-   */
   public final native void addGadgetPref(WebContentGadgetPref gadgetPref) /*-{
     this.addGadgetPref(
       gadgetPref
@@ -88,7 +78,7 @@ public class WebContent extends JavaScriptObject {
    * 
    * @return
    */
-  public final native WebContentGadgetPref[] getGadgetPrefs() /*-{
+  public final native JsArray<WebContentGadgetPref> getGadgetPrefs() /*-{
     return this.getGadgetPrefs();
   }-*/;
 
@@ -124,7 +114,7 @@ public class WebContent extends JavaScriptObject {
    * 
    * @param gadgetPrefs
    */
-  public final native void setGadgetPrefs(JavaScriptObject[] gadgetPrefs) /*-{
+  public final native void setGadgetPrefs(JsArray<WebContentGadgetPref> gadgetPrefs) /*-{
     this.setGadgetPrefs(
       gadgetPrefs
     );
@@ -137,17 +127,6 @@ public class WebContent extends JavaScriptObject {
    */
   public final native void setGadgetPrefs() /*-{
     this.setGadgetPrefs();
-  }-*/;
-
-  /**
-   * Sets the web content gadget preferences.
-   * 
-   * @param gadgetPrefs
-   */
-  public final native void setGadgetPrefs(WebContentGadgetPref[] gadgetPrefs) /*-{
-    this.setGadgetPrefs(
-      gadgetPrefs
-    );
   }-*/;
 
   /**

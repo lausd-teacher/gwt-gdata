@@ -62,7 +62,7 @@ public class SettingsEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param settingsProperty
    */
-  public final native void setSettingsProperty(JavaScriptObject settingsProperty) /*-{
+  public final native void setSettingsProperty(SettingsProperty settingsProperty) /*-{
     this.setSettingsProperty(
       settingsProperty
     );
@@ -75,17 +75,6 @@ public class SettingsEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setSettingsProperty() /*-{
     this.setSettingsProperty();
-  }-*/;
-
-  /**
-   * Sets the settings property.
-   * 
-   * @param settingsProperty
-   */
-  public final native void setSettingsProperty(SettingsProperty settingsProperty) /*-{
-    this.setSettingsProperty(
-      settingsProperty
-    );
   }-*/;
 
 }

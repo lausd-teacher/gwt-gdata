@@ -123,7 +123,7 @@ public class ProcessingStatus extends JavaScriptObject {
    * 
    * @param feedErrors
    */
-  public final native void setFeedErrors(JavaScriptObject feedErrors) /*-{
+  public final native void setFeedErrors(FeedErrors feedErrors) /*-{
     this.setFeedErrors(
       feedErrors
     );
@@ -139,22 +139,11 @@ public class ProcessingStatus extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the feed errors.
-   * 
-   * @param feedErrors
-   */
-  public final native void setFeedErrors(FeedErrors feedErrors) /*-{
-    this.setFeedErrors(
-      feedErrors
-    );
-  }-*/;
-
-  /**
    * Sets the items inserted.
    * 
    * @param itemsInserted
    */
-  public final native void setItemsInserted(JavaScriptObject itemsInserted) /*-{
+  public final native void setItemsInserted(ItemsInserted itemsInserted) /*-{
     this.setItemsInserted(
       itemsInserted
     );
@@ -170,22 +159,11 @@ public class ProcessingStatus extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the items inserted.
-   * 
-   * @param itemsInserted
-   */
-  public final native void setItemsInserted(ItemsInserted itemsInserted) /*-{
-    this.setItemsInserted(
-      itemsInserted
-    );
-  }-*/;
-
-  /**
    * Sets the items processed.
    * 
    * @param itemsProcessed
    */
-  public final native void setItemsProcessed(JavaScriptObject itemsProcessed) /*-{
+  public final native void setItemsProcessed(ItemsProcessed itemsProcessed) /*-{
     this.setItemsProcessed(
       itemsProcessed
     );
@@ -198,17 +176,6 @@ public class ProcessingStatus extends JavaScriptObject {
    */
   public final native void setItemsProcessed() /*-{
     this.setItemsProcessed();
-  }-*/;
-
-  /**
-   * Sets the items processed.
-   * 
-   * @param itemsProcessed
-   */
-  public final native void setItemsProcessed(ItemsProcessed itemsProcessed) /*-{
-    this.setItemsProcessed(
-      itemsProcessed
-    );
   }-*/;
 
   /**

@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.contacts;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.ExtendedProperty;
 
@@ -55,17 +56,6 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param extendedProperty
    */
-  public final native void addExtendedProperty(JavaScriptObject extendedProperty) /*-{
-    this.addExtendedProperty(
-      extendedProperty
-    );
-  }-*/;
-
-  /**
-   * Adds a new extended property.
-   * 
-   * @param extendedProperty
-   */
   public final native void addExtendedProperty(ExtendedProperty extendedProperty) /*-{
     this.addExtendedProperty(
       extendedProperty
@@ -86,7 +76,7 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @return
    */
-  public final native ExtendedProperty[] getExtendedProperties() /*-{
+  public final native JsArray<ExtendedProperty> getExtendedProperties() /*-{
     return this.getExtendedProperties();
   }-*/;
 
@@ -104,7 +94,7 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param deleted
    */
-  public final native void setDeleted(JavaScriptObject deleted) /*-{
+  public final native void setDeleted(Deleted deleted) /*-{
     this.setDeleted(
       deleted
     );
@@ -120,22 +110,11 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the marker for deleted entries.
-   * 
-   * @param deleted
-   */
-  public final native void setDeleted(Deleted deleted) /*-{
-    this.setDeleted(
-      deleted
-    );
-  }-*/;
-
-  /**
    * Sets the extended properties.
    * 
    * @param extendedProperties
    */
-  public final native void setExtendedProperties(JavaScriptObject[] extendedProperties) /*-{
+  public final native void setExtendedProperties(JsArray<ExtendedProperty> extendedProperties) /*-{
     this.setExtendedProperties(
       extendedProperties
     );
@@ -151,22 +130,11 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the extended properties.
-   * 
-   * @param extendedProperties
-   */
-  public final native void setExtendedProperties(ExtendedProperty[] extendedProperties) /*-{
-    this.setExtendedProperties(
-      extendedProperties
-    );
-  }-*/;
-
-  /**
    * Sets the system group.
    * 
    * @param systemGroup
    */
-  public final native void setSystemGroup(JavaScriptObject systemGroup) /*-{
+  public final native void setSystemGroup(SystemGroup systemGroup) /*-{
     this.setSystemGroup(
       systemGroup
     );
@@ -179,17 +147,6 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setSystemGroup() /*-{
     this.setSystemGroup();
-  }-*/;
-
-  /**
-   * Sets the system group.
-   * 
-   * @param systemGroup
-   */
-  public final native void setSystemGroup(SystemGroup systemGroup) /*-{
-    this.setSystemGroup(
-      systemGroup
-    );
   }-*/;
 
 }

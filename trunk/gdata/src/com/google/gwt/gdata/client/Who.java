@@ -161,7 +161,7 @@ public class Who extends JavaScriptObject {
    * 
    * @param attendeeStatus
    */
-  public final native void setAttendeeStatus(JavaScriptObject attendeeStatus) /*-{
+  public final native void setAttendeeStatus(AttendeeStatus attendeeStatus) /*-{
     this.setAttendeeStatus(
       attendeeStatus
     );
@@ -177,22 +177,11 @@ public class Who extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the event attendee status.
-   * 
-   * @param attendeeStatus
-   */
-  public final native void setAttendeeStatus(AttendeeStatus attendeeStatus) /*-{
-    this.setAttendeeStatus(
-      attendeeStatus
-    );
-  }-*/;
-
-  /**
    * Sets the event attendee type.
    * 
    * @param attendeeType
    */
-  public final native void setAttendeeType(JavaScriptObject attendeeType) /*-{
+  public final native void setAttendeeType(AttendeeType attendeeType) /*-{
     this.setAttendeeType(
       attendeeType
     );
@@ -205,17 +194,6 @@ public class Who extends JavaScriptObject {
    */
   public final native void setAttendeeType() /*-{
     this.setAttendeeType();
-  }-*/;
-
-  /**
-   * Sets the event attendee type.
-   * 
-   * @param attendeeType
-   */
-  public final native void setAttendeeType(AttendeeType attendeeType) /*-{
-    this.setAttendeeType(
-      attendeeType
-    );
   }-*/;
 
   /**
@@ -243,7 +221,7 @@ public class Who extends JavaScriptObject {
    * 
    * @param entryLink
    */
-  public final native void setEntryLink(JavaScriptObject entryLink) /*-{
+  public final native void setEntryLink(EntryLink entryLink) /*-{
     this.setEntryLink(
       entryLink
     );
@@ -256,17 +234,6 @@ public class Who extends JavaScriptObject {
    */
   public final native void setEntryLink() /*-{
     this.setEntryLink();
-  }-*/;
-
-  /**
-   * Sets the nested person entry.
-   * 
-   * @param entryLink
-   */
-  public final native void setEntryLink(EntryLink entryLink) /*-{
-    this.setEntryLink(
-      entryLink
-    );
   }-*/;
 
   /**

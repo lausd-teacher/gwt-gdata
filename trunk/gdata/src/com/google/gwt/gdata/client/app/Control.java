@@ -62,7 +62,7 @@ public class Control extends JavaScriptObject {
    * 
    * @param draft
    */
-  public final native void setDraft(JavaScriptObject draft) /*-{
+  public final native void setDraft(Draft draft) /*-{
     this.setDraft(
       draft
     );
@@ -75,17 +75,6 @@ public class Control extends JavaScriptObject {
    */
   public final native void setDraft() /*-{
     this.setDraft();
-  }-*/;
-
-  /**
-   * Sets the draft tag.
-   * 
-   * @param draft
-   */
-  public final native void setDraft(Draft draft) /*-{
-    this.setDraft(
-      draft
-    );
   }-*/;
 
 }

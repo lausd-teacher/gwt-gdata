@@ -62,7 +62,7 @@ public class GmlPoint extends JavaScriptObject {
    * 
    * @param pos
    */
-  public final native void setPos(JavaScriptObject pos) /*-{
+  public final native void setPos(GmlPos pos) /*-{
     this.setPos(
       pos
     );
@@ -75,17 +75,6 @@ public class GmlPoint extends JavaScriptObject {
    */
   public final native void setPos() /*-{
     this.setPos();
-  }-*/;
-
-  /**
-   * Sets the latitude and longitude.
-   * 
-   * @param pos
-   */
-  public final native void setPos(GmlPos pos) /*-{
-    this.setPos(
-      pos
-    );
   }-*/;
 
 }

@@ -182,7 +182,7 @@ public class Feed extends com.google.gwt.gdata.client.atom.Feed {
    * 
    * @param itemsPerPage
    */
-  public final native void setItemsPerPage(JavaScriptObject itemsPerPage) /*-{
+  public final native void setItemsPerPage(ItemsPerPage itemsPerPage) /*-{
     this.setItemsPerPage(
       itemsPerPage
     );
@@ -198,22 +198,11 @@ public class Feed extends com.google.gwt.gdata.client.atom.Feed {
   }-*/;
 
   /**
-   * Sets the items-per-page count.
-   * 
-   * @param itemsPerPage
-   */
-  public final native void setItemsPerPage(ItemsPerPage itemsPerPage) /*-{
-    this.setItemsPerPage(
-      itemsPerPage
-    );
-  }-*/;
-
-  /**
    * Sets the start index.
    * 
    * @param startIndex
    */
-  public final native void setStartIndex(JavaScriptObject startIndex) /*-{
+  public final native void setStartIndex(StartIndex startIndex) /*-{
     this.setStartIndex(
       startIndex
     );
@@ -229,22 +218,11 @@ public class Feed extends com.google.gwt.gdata.client.atom.Feed {
   }-*/;
 
   /**
-   * Sets the start index.
-   * 
-   * @param startIndex
-   */
-  public final native void setStartIndex(StartIndex startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
-  }-*/;
-
-  /**
    * Sets the total results count.
    * 
    * @param totalResults
    */
-  public final native void setTotalResults(JavaScriptObject totalResults) /*-{
+  public final native void setTotalResults(TotalResults totalResults) /*-{
     this.setTotalResults(
       totalResults
     );
@@ -257,17 +235,6 @@ public class Feed extends com.google.gwt.gdata.client.atom.Feed {
    */
   public final native void setTotalResults() /*-{
     this.setTotalResults();
-  }-*/;
-
-  /**
-   * Sets the total results count.
-   * 
-   * @param totalResults
-   */
-  public final native void setTotalResults(TotalResults totalResults) /*-{
-    this.setTotalResults(
-      totalResults
-    );
   }-*/;
 
 }

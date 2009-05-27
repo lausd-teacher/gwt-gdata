@@ -108,7 +108,7 @@ public class FileFormat extends JavaScriptObject {
    * 
    * @param delimiter
    */
-  public final native void setDelimiter(JavaScriptObject delimiter) /*-{
+  public final native void setDelimiter(Delimiter delimiter) /*-{
     this.setDelimiter(
       delimiter
     );
@@ -124,22 +124,11 @@ public class FileFormat extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the delimiter.
-   * 
-   * @param delimiter
-   */
-  public final native void setDelimiter(Delimiter delimiter) /*-{
-    this.setDelimiter(
-      delimiter
-    );
-  }-*/;
-
-  /**
    * Sets the encoding.
    * 
    * @param encoding
    */
-  public final native void setEncoding(JavaScriptObject encoding) /*-{
+  public final native void setEncoding(Encoding encoding) /*-{
     this.setEncoding(
       encoding
     );
@@ -152,17 +141,6 @@ public class FileFormat extends JavaScriptObject {
    */
   public final native void setEncoding() /*-{
     this.setEncoding();
-  }-*/;
-
-  /**
-   * Sets the encoding.
-   * 
-   * @param encoding
-   */
-  public final native void setEncoding(Encoding encoding) /*-{
-    this.setEncoding(
-      encoding
-    );
   }-*/;
 
   /**
@@ -190,7 +168,7 @@ public class FileFormat extends JavaScriptObject {
    * 
    * @param useQuotedFields
    */
-  public final native void setUseQuotedFields(JavaScriptObject useQuotedFields) /*-{
+  public final native void setUseQuotedFields(UseQuotedFields useQuotedFields) /*-{
     this.setUseQuotedFields(
       useQuotedFields
     );
@@ -203,17 +181,6 @@ public class FileFormat extends JavaScriptObject {
    */
   public final native void setUseQuotedFields() /*-{
     this.setUseQuotedFields();
-  }-*/;
-
-  /**
-   * Sets the boolean to indicate whether to use quoted fields.
-   * 
-   * @param useQuotedFields
-   */
-  public final native void setUseQuotedFields(UseQuotedFields useQuotedFields) /*-{
-    this.setUseQuotedFields(
-      useQuotedFields
-    );
   }-*/;
 
 }

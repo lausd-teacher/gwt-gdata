@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.mediarss;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -36,18 +38,11 @@ public class MediaGroupTest extends GWTTestCase {
   public void testOther() {
     // MediaGroup obj = MediaGroup.newInstance(JavaScriptObject.createObject());
     // obj.addCategory(category);
-    // obj.addCategory(category);
-    // obj.addContent(content);
     // obj.addContent(content);
     // obj.addCredit(credit);
-    // obj.addCredit(credit);
-    // obj.addRating(rating);
     // obj.addRating(rating);
     // obj.addRestriction(restriction);
-    // obj.addRestriction(restriction);
     // obj.addText(text);
-    // obj.addText(text);
-    // obj.addThumbnail(thumbnail);
     // obj.addThumbnail(thumbnail);
   }
 
@@ -56,19 +51,19 @@ public class MediaGroupTest extends GWTTestCase {
     MediaDescription description = MediaDescription.newInstance(JavaScriptObject.createObject());
     obj.setDescription(description);
     assertSame("description", obj.getDescription(), description);
-    MediaText[] texts = new MediaText[]{ MediaText.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaText> texts = ArrayHelper.toJsArray(MediaText.newInstance(JavaScriptObject.createObject()));
     obj.setTexts(texts);
     assertSame("texts", obj.getTexts(), texts);
     MediaPlayer player = MediaPlayer.newInstance(JavaScriptObject.createObject());
     obj.setPlayer(player);
     assertSame("player", obj.getPlayer(), player);
-    MediaThumbnail[] thumbnails = new MediaThumbnail[]{ MediaThumbnail.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaThumbnail> thumbnails = ArrayHelper.toJsArray(MediaThumbnail.newInstance(JavaScriptObject.createObject()));
     obj.setThumbnails(thumbnails);
     assertSame("thumbnails", obj.getThumbnails(), thumbnails);
     MediaKeywords keywords = MediaKeywords.newInstance(JavaScriptObject.createObject());
     obj.setKeywords(keywords);
     assertSame("keywords", obj.getKeywords(), keywords);
-    MediaCategory[] categories = new MediaCategory[]{ MediaCategory.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaCategory> categories = ArrayHelper.toJsArray(MediaCategory.newInstance(JavaScriptObject.createObject()));
     obj.setCategories(categories);
     assertSame("categories", obj.getCategories(), categories);
     MediaTitle title = MediaTitle.newInstance(JavaScriptObject.createObject());
@@ -80,16 +75,16 @@ public class MediaGroupTest extends GWTTestCase {
     MediaCopyright copyright = MediaCopyright.newInstance(JavaScriptObject.createObject());
     obj.setCopyright(copyright);
     assertSame("copyright", obj.getCopyright(), copyright);
-    MediaRestriction[] restrictions = new MediaRestriction[]{ MediaRestriction.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaRestriction> restrictions = ArrayHelper.toJsArray(MediaRestriction.newInstance(JavaScriptObject.createObject()));
     obj.setRestrictions(restrictions);
     assertSame("restrictions", obj.getRestrictions(), restrictions);
-    MediaRating[] ratings = new MediaRating[]{ MediaRating.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaRating> ratings = ArrayHelper.toJsArray(MediaRating.newInstance(JavaScriptObject.createObject()));
     obj.setRatings(ratings);
     assertSame("ratings", obj.getRatings(), ratings);
-    MediaContent[] contents = new MediaContent[]{ MediaContent.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaContent> contents = ArrayHelper.toJsArray(MediaContent.newInstance(JavaScriptObject.createObject()));
     obj.setContents(contents);
     assertSame("contents", obj.getContents(), contents);
-    MediaCredit[] credits = new MediaCredit[]{ MediaCredit.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaCredit> credits = ArrayHelper.toJsArray(MediaCredit.newInstance(JavaScriptObject.createObject()));
     obj.setCredits(credits);
     assertSame("credits", obj.getCredits(), credits);
   }

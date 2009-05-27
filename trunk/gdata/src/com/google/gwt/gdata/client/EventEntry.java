@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * Comment unavailable.
@@ -53,31 +54,9 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param location
    */
-  public final native void addLocation(JavaScriptObject location) /*-{
-    this.addLocation(
-      location
-    );
-  }-*/;
-
-  /**
-   * Adds a new event location.
-   * 
-   * @param location
-   */
   public final native void addLocation(Where location) /*-{
     this.addLocation(
       location
-    );
-  }-*/;
-
-  /**
-   * Adds a new event participant.
-   * 
-   * @param participant
-   */
-  public final native void addParticipant(JavaScriptObject participant) /*-{
-    this.addParticipant(
-      participant
     );
   }-*/;
 
@@ -97,17 +76,6 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param recurrenceException
    */
-  public final native void addRecurrenceException(JavaScriptObject recurrenceException) /*-{
-    this.addRecurrenceException(
-      recurrenceException
-    );
-  }-*/;
-
-  /**
-   * Adds a new recurrence exception.
-   * 
-   * @param recurrenceException
-   */
   public final native void addRecurrenceException(RecurrenceException recurrenceException) /*-{
     this.addRecurrenceException(
       recurrenceException
@@ -119,31 +87,9 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param reminder
    */
-  public final native void addReminder(JavaScriptObject reminder) /*-{
-    this.addReminder(
-      reminder
-    );
-  }-*/;
-
-  /**
-   * Adds a new event reminder.
-   * 
-   * @param reminder
-   */
   public final native void addReminder(Reminder reminder) /*-{
     this.addReminder(
       reminder
-    );
-  }-*/;
-
-  /**
-   * Adds a new event time.
-   * 
-   * @param time
-   */
-  public final native void addTime(JavaScriptObject time) /*-{
-    this.addTime(
-      time
     );
   }-*/;
 
@@ -188,7 +134,7 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @return
    */
-  public final native Where[] getLocations() /*-{
+  public final native JsArray<Where> getLocations() /*-{
     return this.getLocations();
   }-*/;
 
@@ -206,7 +152,7 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @return
    */
-  public final native Who[] getParticipants() /*-{
+  public final native JsArray<Who> getParticipants() /*-{
     return this.getParticipants();
   }-*/;
 
@@ -224,7 +170,7 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @return
    */
-  public final native RecurrenceException[] getRecurrenceException() /*-{
+  public final native JsArray<RecurrenceException> getRecurrenceException() /*-{
     return this.getRecurrenceException();
   }-*/;
 
@@ -240,7 +186,7 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @return
    */
-  public final native Reminder[] getReminders() /*-{
+  public final native JsArray<Reminder> getReminders() /*-{
     return this.getReminders();
   }-*/;
 
@@ -249,7 +195,7 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @return
    */
-  public final native When[] getTimes() /*-{
+  public final native JsArray<When> getTimes() /*-{
     return this.getTimes();
   }-*/;
 
@@ -283,7 +229,7 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param comments
    */
-  public final native void setComments(JavaScriptObject comments) /*-{
+  public final native void setComments(Comments comments) /*-{
     this.setComments(
       comments
     );
@@ -299,22 +245,11 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the nested comments feed.
-   * 
-   * @param comments
-   */
-  public final native void setComments(Comments comments) /*-{
-    this.setComments(
-      comments
-    );
-  }-*/;
-
-  /**
    * Sets the event status.
    * 
    * @param eventStatus
    */
-  public final native void setEventStatus(JavaScriptObject eventStatus) /*-{
+  public final native void setEventStatus(EventStatus eventStatus) /*-{
     this.setEventStatus(
       eventStatus
     );
@@ -330,22 +265,11 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the event status.
-   * 
-   * @param eventStatus
-   */
-  public final native void setEventStatus(EventStatus eventStatus) /*-{
-    this.setEventStatus(
-      eventStatus
-    );
-  }-*/;
-
-  /**
    * Sets the event locations.
    * 
    * @param locations
    */
-  public final native void setLocations(JavaScriptObject[] locations) /*-{
+  public final native void setLocations(JsArray<Where> locations) /*-{
     this.setLocations(
       locations
     );
@@ -361,22 +285,11 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the event locations.
-   * 
-   * @param locations
-   */
-  public final native void setLocations(Where[] locations) /*-{
-    this.setLocations(
-      locations
-    );
-  }-*/;
-
-  /**
    * Sets the event original start time.
    * 
    * @param originalEvent
    */
-  public final native void setOriginalEvent(JavaScriptObject originalEvent) /*-{
+  public final native void setOriginalEvent(OriginalEvent originalEvent) /*-{
     this.setOriginalEvent(
       originalEvent
     );
@@ -392,22 +305,11 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the event original start time.
-   * 
-   * @param originalEvent
-   */
-  public final native void setOriginalEvent(OriginalEvent originalEvent) /*-{
-    this.setOriginalEvent(
-      originalEvent
-    );
-  }-*/;
-
-  /**
    * Sets the event participants.
    * 
    * @param participants
    */
-  public final native void setParticipants(JavaScriptObject[] participants) /*-{
+  public final native void setParticipants(JsArray<Who> participants) /*-{
     this.setParticipants(
       participants
     );
@@ -423,22 +325,11 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the event participants.
-   * 
-   * @param participants
-   */
-  public final native void setParticipants(Who[] participants) /*-{
-    this.setParticipants(
-      participants
-    );
-  }-*/;
-
-  /**
    * Sets the event recurrence.
    * 
    * @param recurrence
    */
-  public final native void setRecurrence(JavaScriptObject recurrence) /*-{
+  public final native void setRecurrence(Recurrence recurrence) /*-{
     this.setRecurrence(
       recurrence
     );
@@ -454,22 +345,11 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the event recurrence.
-   * 
-   * @param recurrence
-   */
-  public final native void setRecurrence(Recurrence recurrence) /*-{
-    this.setRecurrence(
-      recurrence
-    );
-  }-*/;
-
-  /**
    * Sets the recurrence exceptions.
    * 
    * @param recurrenceException
    */
-  public final native void setRecurrenceException(JavaScriptObject[] recurrenceException) /*-{
+  public final native void setRecurrenceException(JsArray<RecurrenceException> recurrenceException) /*-{
     this.setRecurrenceException(
       recurrenceException
     );
@@ -485,22 +365,11 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the recurrence exceptions.
-   * 
-   * @param recurrenceException
-   */
-  public final native void setRecurrenceException(RecurrenceException[] recurrenceException) /*-{
-    this.setRecurrenceException(
-      recurrenceException
-    );
-  }-*/;
-
-  /**
    * Sets the event reminders.
    * 
    * @param reminders
    */
-  public final native void setReminders(JavaScriptObject[] reminders) /*-{
+  public final native void setReminders(JsArray<Reminder> reminders) /*-{
     this.setReminders(
       reminders
     );
@@ -516,22 +385,11 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the event reminders.
-   * 
-   * @param reminders
-   */
-  public final native void setReminders(Reminder[] reminders) /*-{
-    this.setReminders(
-      reminders
-    );
-  }-*/;
-
-  /**
    * Sets the event times.
    * 
    * @param times
    */
-  public final native void setTimes(JavaScriptObject[] times) /*-{
+  public final native void setTimes(JsArray<When> times) /*-{
     this.setTimes(
       times
     );
@@ -547,22 +405,11 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the event times.
-   * 
-   * @param times
-   */
-  public final native void setTimes(When[] times) /*-{
-    this.setTimes(
-      times
-    );
-  }-*/;
-
-  /**
    * Sets the event transparency.
    * 
    * @param transparency
    */
-  public final native void setTransparency(JavaScriptObject transparency) /*-{
+  public final native void setTransparency(Transparency transparency) /*-{
     this.setTransparency(
       transparency
     );
@@ -578,22 +425,11 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the event transparency.
-   * 
-   * @param transparency
-   */
-  public final native void setTransparency(Transparency transparency) /*-{
-    this.setTransparency(
-      transparency
-    );
-  }-*/;
-
-  /**
    * Sets the event visibility.
    * 
    * @param visibility
    */
-  public final native void setVisibility(JavaScriptObject visibility) /*-{
+  public final native void setVisibility(Visibility visibility) /*-{
     this.setVisibility(
       visibility
     );
@@ -606,17 +442,6 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setVisibility() /*-{
     this.setVisibility();
-  }-*/;
-
-  /**
-   * Sets the event visibility.
-   * 
-   * @param visibility
-   */
-  public final native void setVisibility(Visibility visibility) /*-{
-    this.setVisibility(
-      visibility
-    );
   }-*/;
 
 }

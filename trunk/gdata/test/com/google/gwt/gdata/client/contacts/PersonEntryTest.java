@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.contacts;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Email;
 import com.google.gwt.gdata.client.ExtendedProperty;
 import com.google.gwt.gdata.client.Im;
@@ -42,37 +44,31 @@ public class PersonEntryTest extends GWTTestCase {
   public void testOther() {
     // PersonEntry obj = PersonEntry.newInstance(JavaScriptObject.createObject());
     // obj.addEmailAddress(emailAddress);
-    // obj.addEmailAddress(emailAddress);
-    // obj.addExtendedProperty(extendedProperty);
     // obj.addExtendedProperty(extendedProperty);
     // obj.addImAddress(imAddress);
-    // obj.addImAddress(imAddress);
-    // obj.addOrganization(organization);
     // obj.addOrganization(organization);
     // obj.addPhoneNumber(phoneNumber);
-    // obj.addPhoneNumber(phoneNumber);
-    // obj.addPostalAddress(postalAddress);
     // obj.addPostalAddress(postalAddress);
   }
 
   public void testProperties() {
     PersonEntry obj = PersonEntry.newInstance(JavaScriptObject.createObject());
-    PostalAddress[] postaladdresses = new PostalAddress[]{ PostalAddress.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.PostalAddress> postaladdresses = ArrayHelper.toJsArray(PostalAddress.newInstance(JavaScriptObject.createObject()));
     obj.setPostalAddresses(postaladdresses);
     assertSame("postaladdresses", obj.getPostalAddresses(), postaladdresses);
-    Im[] imaddresses = new Im[]{ Im.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.Im> imaddresses = ArrayHelper.toJsArray(Im.newInstance(JavaScriptObject.createObject()));
     obj.setImAddresses(imaddresses);
     assertSame("imaddresses", obj.getImAddresses(), imaddresses);
-    PhoneNumber[] phonenumbers = new PhoneNumber[]{ PhoneNumber.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.PhoneNumber> phonenumbers = ArrayHelper.toJsArray(PhoneNumber.newInstance(JavaScriptObject.createObject()));
     obj.setPhoneNumbers(phonenumbers);
     assertSame("phonenumbers", obj.getPhoneNumbers(), phonenumbers);
-    Organization[] organizations = new Organization[]{ Organization.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.Organization> organizations = ArrayHelper.toJsArray(Organization.newInstance(JavaScriptObject.createObject()));
     obj.setOrganizations(organizations);
     assertSame("organizations", obj.getOrganizations(), organizations);
-    Email[] emailaddresses = new Email[]{ Email.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.Email> emailaddresses = ArrayHelper.toJsArray(Email.newInstance(JavaScriptObject.createObject()));
     obj.setEmailAddresses(emailaddresses);
     assertSame("emailaddresses", obj.getEmailAddresses(), emailaddresses);
-    ExtendedProperty[] extendedproperties = new ExtendedProperty[]{ ExtendedProperty.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.ExtendedProperty> extendedproperties = ArrayHelper.toJsArray(ExtendedProperty.newInstance(JavaScriptObject.createObject()));
     obj.setExtendedProperties(extendedproperties);
     assertSame("extendedproperties", obj.getExtendedProperties(), extendedproperties);
   }

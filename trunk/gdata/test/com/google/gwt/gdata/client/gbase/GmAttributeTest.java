@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.gbase;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -42,7 +44,6 @@ public class GmAttributeTest extends GWTTestCase {
   public void testOther() {
     // GmAttribute obj = GmAttribute.newInstance(JavaScriptObject.createObject());
     // obj.addValue(value);
-    // obj.addValue(value);
   }
 
   public void testProperties() {
@@ -50,7 +51,7 @@ public class GmAttributeTest extends GWTTestCase {
     String name = "myValue";
     obj.setName(name);
     assertEquals("name", obj.getName(), name);
-    GmValue[] values = new GmValue[]{ GmValue.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.gbase.GmValue> values = ArrayHelper.toJsArray(GmValue.newInstance(JavaScriptObject.createObject()));
     obj.setValues(values);
     assertSame("values", obj.getValues(), values);
     double count = 600813;

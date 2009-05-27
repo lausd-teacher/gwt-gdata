@@ -69,17 +69,6 @@ public class Categories extends JavaScriptObject {
    * 
    * @param category
    */
-  public final native void addCategory(JavaScriptObject category) /*-{
-    this.addCategory(
-      category
-    );
-  }-*/;
-
-  /**
-   * Adds a new category.
-   * 
-   * @param category
-   */
   public final native void addCategory(Category category) /*-{
     this.addCategory(
       category
@@ -127,7 +116,7 @@ public class Categories extends JavaScriptObject {
    * 
    * @param categories
    */
-  public final native void setCategories(JavaScriptObject[] categories) /*-{
+  public final native void setCategories(JsArray<Category> categories) /*-{
     this.setCategories(
       categories
     );
@@ -140,17 +129,6 @@ public class Categories extends JavaScriptObject {
    */
   public final native void setCategories() /*-{
     this.setCategories();
-  }-*/;
-
-  /**
-   * Sets the categories.
-   * 
-   * @param categories
-   */
-  public final native void setCategories(Category[] categories) /*-{
-    this.setCategories(
-      categories
-    );
   }-*/;
 
   /**

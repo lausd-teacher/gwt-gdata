@@ -108,7 +108,7 @@ public class Where extends JavaScriptObject {
    * 
    * @param entryLink
    */
-  public final native void setEntryLink(JavaScriptObject entryLink) /*-{
+  public final native void setEntryLink(EntryLink entryLink) /*-{
     this.setEntryLink(
       entryLink
     );
@@ -121,17 +121,6 @@ public class Where extends JavaScriptObject {
    */
   public final native void setEntryLink() /*-{
     this.setEntryLink();
-  }-*/;
-
-  /**
-   * Sets the nested person or venue (Contact) entry.
-   * 
-   * @param entryLink
-   */
-  public final native void setEntryLink(EntryLink entryLink) /*-{
-    this.setEntryLink(
-      entryLink
-    );
   }-*/;
 
   /**

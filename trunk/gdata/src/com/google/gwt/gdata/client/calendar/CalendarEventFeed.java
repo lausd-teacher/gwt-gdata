@@ -99,7 +99,7 @@ public class CalendarEventFeed extends EventFeed {
    * 
    * @param timesCleaned
    */
-  public final native void setTimesCleaned(JavaScriptObject timesCleaned) /*-{
+  public final native void setTimesCleaned(TimesCleanedProperty timesCleaned) /*-{
     this.setTimesCleaned(
       timesCleaned
     );
@@ -115,22 +115,11 @@ public class CalendarEventFeed extends EventFeed {
   }-*/;
 
   /**
-   * Sets the times cleaned property.
-   * 
-   * @param timesCleaned
-   */
-  public final native void setTimesCleaned(TimesCleanedProperty timesCleaned) /*-{
-    this.setTimesCleaned(
-      timesCleaned
-    );
-  }-*/;
-
-  /**
    * Sets the time zone.
    * 
    * @param timeZone
    */
-  public final native void setTimeZone(JavaScriptObject timeZone) /*-{
+  public final native void setTimeZone(TimeZoneProperty timeZone) /*-{
     this.setTimeZone(
       timeZone
     );
@@ -143,17 +132,6 @@ public class CalendarEventFeed extends EventFeed {
    */
   public final native void setTimeZone() /*-{
     this.setTimeZone();
-  }-*/;
-
-  /**
-   * Sets the time zone.
-   * 
-   * @param timeZone
-   */
-  public final native void setTimeZone(TimeZoneProperty timeZone) /*-{
-    this.setTimeZone(
-      timeZone
-    );
   }-*/;
 
 }

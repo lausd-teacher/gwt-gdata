@@ -67,25 +67,6 @@ public class CalendarLink extends com.google.gwt.gdata.client.acl.Link {
    * 
    * @return
    */
-  public final native com.google.gwt.gdata.client.Link create(JavaScriptObject webContent, String iconHref, String title, String mimeType) /*-{
-    return this.create(
-      webContent,
-      iconHref,
-      title,
-      mimeType
-    );
-  }-*/;
-
-  /**
-   * Create a new Calendar link using the typical parameters.
-   * 
-   * @param webContent
-   * @param iconHref
-   * @param title
-   * @param mimeType
-   * 
-   * @return
-   */
   public final native com.google.gwt.gdata.client.Link create(WebContent webContent, String iconHref, String title, String mimeType) /*-{
     return this.create(
       webContent,
@@ -109,7 +90,7 @@ public class CalendarLink extends com.google.gwt.gdata.client.acl.Link {
    * 
    * @param webContent
    */
-  public final native void setWebContent(JavaScriptObject webContent) /*-{
+  public final native void setWebContent(WebContent webContent) /*-{
     this.setWebContent(
       webContent
     );
@@ -122,17 +103,6 @@ public class CalendarLink extends com.google.gwt.gdata.client.acl.Link {
    */
   public final native void setWebContent() /*-{
     this.setWebContent();
-  }-*/;
-
-  /**
-   * Sets the web content.
-   * 
-   * @param webContent
-   */
-  public final native void setWebContent(WebContent webContent) /*-{
-    this.setWebContent(
-      webContent
-    );
   }-*/;
 
 }

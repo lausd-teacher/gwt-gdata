@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.contacts;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -37,12 +39,11 @@ public class ContactEntryTest extends GWTTestCase {
   public void testOther() {
     // ContactEntry obj = ContactEntry.newInstance(JavaScriptObject.createObject());
     // obj.addGroupMembershipInfo(groupMembershipInfo);
-    // obj.addGroupMembershipInfo(groupMembershipInfo);
   }
 
   public void testProperties() {
     ContactEntry obj = ContactEntry.newInstance(JavaScriptObject.createObject());
-    GroupMembershipInfo[] groupmembershipinfos = new GroupMembershipInfo[]{ GroupMembershipInfo.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.contacts.GroupMembershipInfo> groupmembershipinfos = ArrayHelper.toJsArray(GroupMembershipInfo.newInstance(JavaScriptObject.createObject()));
     obj.setGroupMembershipInfos(groupmembershipinfos);
     assertSame("groupmembershipinfos", obj.getGroupMembershipInfos(), groupmembershipinfos);
     Deleted deleted = Deleted.newInstance(JavaScriptObject.createObject());

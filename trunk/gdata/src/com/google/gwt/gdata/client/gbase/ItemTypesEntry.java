@@ -80,7 +80,7 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param attributes
    */
-  public final native void setAttributes(JavaScriptObject attributes) /*-{
+  public final native void setAttributes(GmAttributes attributes) /*-{
     this.setAttributes(
       attributes
     );
@@ -96,22 +96,11 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the gm attributes.
-   * 
-   * @param attributes
-   */
-  public final native void setAttributes(GmAttributes attributes) /*-{
-    this.setAttributes(
-      attributes
-    );
-  }-*/;
-
-  /**
    * Sets the item type as defined in /itemtypes feed.
    * 
    * @param itemType
    */
-  public final native void setItemType(JavaScriptObject itemType) /*-{
+  public final native void setItemType(GmItemType itemType) /*-{
     this.setItemType(
       itemType
     );
@@ -124,17 +113,6 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setItemType() /*-{
     this.setItemType();
-  }-*/;
-
-  /**
-   * Sets the item type as defined in /itemtypes feed.
-   * 
-   * @param itemType
-   */
-  public final native void setItemType(GmItemType itemType) /*-{
-    this.setItemType(
-      itemType
-    );
   }-*/;
 
 }
