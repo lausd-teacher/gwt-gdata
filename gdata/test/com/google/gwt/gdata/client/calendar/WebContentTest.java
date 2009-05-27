@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.calendar;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -36,7 +38,6 @@ public class WebContentTest extends GWTTestCase {
   public void testOther() {
     // WebContent obj = WebContent.newInstance(JavaScriptObject.createObject());
     // obj.addGadgetPref(gadgetPref);
-    // obj.addGadgetPref(gadgetPref);
   }
 
   public void testProperties() {
@@ -44,7 +45,7 @@ public class WebContentTest extends GWTTestCase {
     double width = 600813;
     obj.setWidth(width);
     assertSame("width", obj.getWidth(), width);
-    WebContentGadgetPref[] gadgetprefs = new WebContentGadgetPref[]{ WebContentGadgetPref.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.calendar.WebContentGadgetPref> gadgetprefs = ArrayHelper.toJsArray(WebContentGadgetPref.newInstance(JavaScriptObject.createObject()));
     obj.setGadgetPrefs(gadgetprefs);
     assertSame("gadgetprefs", obj.getGadgetPrefs(), gadgetprefs);
     String url = "myValue";

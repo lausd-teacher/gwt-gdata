@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.finance;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Money;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -37,12 +39,11 @@ public class PriceTest extends GWTTestCase {
   public void testOther() {
     // Price obj = Price.newInstance(JavaScriptObject.createObject());
     // obj.addMoney(money);
-    // obj.addMoney(money);
   }
 
   public void testProperties() {
     Price obj = Price.newInstance(JavaScriptObject.createObject());
-    Money[] money = new Money[]{ Money.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.Money> money = ArrayHelper.toJsArray(Money.newInstance(JavaScriptObject.createObject()));
     obj.setMoney(money);
     assertSame("money", obj.getMoney(), money);
   }

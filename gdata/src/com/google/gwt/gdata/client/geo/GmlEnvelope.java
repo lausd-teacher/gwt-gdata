@@ -71,7 +71,7 @@ public class GmlEnvelope extends JavaScriptObject {
    * 
    * @param lowerCorner
    */
-  public final native void setLowerCorner(JavaScriptObject lowerCorner) /*-{
+  public final native void setLowerCorner(GmlLowerCorner lowerCorner) /*-{
     this.setLowerCorner(
       lowerCorner
     );
@@ -87,22 +87,11 @@ public class GmlEnvelope extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the lower corner of a region.
-   * 
-   * @param lowerCorner
-   */
-  public final native void setLowerCorner(GmlLowerCorner lowerCorner) /*-{
-    this.setLowerCorner(
-      lowerCorner
-    );
-  }-*/;
-
-  /**
    * Sets the upper corner of a region.
    * 
    * @param upperCorner
    */
-  public final native void setUpperCorner(JavaScriptObject upperCorner) /*-{
+  public final native void setUpperCorner(GmlUpperCorner upperCorner) /*-{
     this.setUpperCorner(
       upperCorner
     );
@@ -115,17 +104,6 @@ public class GmlEnvelope extends JavaScriptObject {
    */
   public final native void setUpperCorner() /*-{
     this.setUpperCorner();
-  }-*/;
-
-  /**
-   * Sets the upper corner of a region.
-   * 
-   * @param upperCorner
-   */
-  public final native void setUpperCorner(GmlUpperCorner upperCorner) /*-{
-    this.setUpperCorner(
-      upperCorner
-    );
   }-*/;
 
 }

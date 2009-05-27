@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * Comment unavailable.
@@ -53,17 +54,6 @@ public class FeedErrors extends JavaScriptObject {
    * 
    * @param feedError
    */
-  public final native void addFeedError(JavaScriptObject feedError) /*-{
-    this.addFeedError(
-      feedError
-    );
-  }-*/;
-
-  /**
-   * Adds a new feed error.
-   * 
-   * @param feedError
-   */
   public final native void addFeedError(FeedError feedError) /*-{
     this.addFeedError(
       feedError
@@ -75,7 +65,7 @@ public class FeedErrors extends JavaScriptObject {
    * 
    * @return
    */
-  public final native FeedError[] getFeedError() /*-{
+  public final native JsArray<FeedError> getFeedError() /*-{
     return this.getFeedError();
   }-*/;
 
@@ -84,7 +74,7 @@ public class FeedErrors extends JavaScriptObject {
    * 
    * @param feedError
    */
-  public final native void setFeedError(JavaScriptObject[] feedError) /*-{
+  public final native void setFeedError(JsArray<FeedError> feedError) /*-{
     this.setFeedError(
       feedError
     );
@@ -97,17 +87,6 @@ public class FeedErrors extends JavaScriptObject {
    */
   public final native void setFeedError() /*-{
     this.setFeedError();
-  }-*/;
-
-  /**
-   * Sets the feed errors.
-   * 
-   * @param feedError
-   */
-  public final native void setFeedError(FeedError[] feedError) /*-{
-    this.setFeedError(
-      feedError
-    );
   }-*/;
 
 }

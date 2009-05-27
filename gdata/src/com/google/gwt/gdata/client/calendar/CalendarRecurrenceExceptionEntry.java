@@ -72,7 +72,7 @@ public class CalendarRecurrenceExceptionEntry extends RecurrenceExceptionEntry {
    * 
    * @param sequence
    */
-  public final native void setSequence(JavaScriptObject sequence) /*-{
+  public final native void setSequence(SequenceNumberProperty sequence) /*-{
     this.setSequence(
       sequence
     );
@@ -88,22 +88,11 @@ public class CalendarRecurrenceExceptionEntry extends RecurrenceExceptionEntry {
   }-*/;
 
   /**
-   * Sets the sequence number property.
-   * 
-   * @param sequence
-   */
-  public final native void setSequence(SequenceNumberProperty sequence) /*-{
-    this.setSequence(
-      sequence
-    );
-  }-*/;
-
-  /**
    * Sets the ical export UID property.
    * 
    * @param uid
    */
-  public final native void setUid(JavaScriptObject uid) /*-{
+  public final native void setUid(IcalUIDProperty uid) /*-{
     this.setUid(
       uid
     );
@@ -116,17 +105,6 @@ public class CalendarRecurrenceExceptionEntry extends RecurrenceExceptionEntry {
    */
   public final native void setUid() /*-{
     this.setUid();
-  }-*/;
-
-  /**
-   * Sets the ical export UID property.
-   * 
-   * @param uid
-   */
-  public final native void setUid(IcalUIDProperty uid) /*-{
-    this.setUid(
-      uid
-    );
   }-*/;
 
 }

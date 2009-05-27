@@ -132,7 +132,7 @@ public class Organization extends JavaScriptObject {
    * 
    * @param orgName
    */
-  public final native void setOrgName(JavaScriptObject orgName) /*-{
+  public final native void setOrgName(OrgName orgName) /*-{
     this.setOrgName(
       orgName
     );
@@ -148,22 +148,11 @@ public class Organization extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the name of organization.
-   * 
-   * @param orgName
-   */
-  public final native void setOrgName(OrgName orgName) /*-{
-    this.setOrgName(
-      orgName
-    );
-  }-*/;
-
-  /**
    * Sets the position in organization.
    * 
    * @param orgTitle
    */
-  public final native void setOrgTitle(JavaScriptObject orgTitle) /*-{
+  public final native void setOrgTitle(OrgTitle orgTitle) /*-{
     this.setOrgTitle(
       orgTitle
     );
@@ -176,17 +165,6 @@ public class Organization extends JavaScriptObject {
    */
   public final native void setOrgTitle() /*-{
     this.setOrgTitle();
-  }-*/;
-
-  /**
-   * Sets the position in organization.
-   * 
-   * @param orgTitle
-   */
-  public final native void setOrgTitle(OrgTitle orgTitle) /*-{
-    this.setOrgTitle(
-      orgTitle
-    );
   }-*/;
 
   /**

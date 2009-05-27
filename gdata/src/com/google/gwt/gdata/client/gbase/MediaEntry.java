@@ -63,7 +63,7 @@ public class MediaEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param mediaContent
    */
-  public final native void setMediaContent(JavaScriptObject mediaContent) /*-{
+  public final native void setMediaContent(MediaContent mediaContent) /*-{
     this.setMediaContent(
       mediaContent
     );
@@ -76,17 +76,6 @@ public class MediaEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setMediaContent() /*-{
     this.setMediaContent();
-  }-*/;
-
-  /**
-   * Sets the media content.
-   * 
-   * @param mediaContent
-   */
-  public final native void setMediaContent(MediaContent mediaContent) /*-{
-    this.setMediaContent(
-      mediaContent
-    );
   }-*/;
 
 }

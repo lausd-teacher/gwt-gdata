@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * Comment unavailable.
@@ -72,17 +73,6 @@ public class GmAttribute extends JavaScriptObject {
    * 
    * @param value
    */
-  public final native void addValue(JavaScriptObject value) /*-{
-    this.addValue(
-      value
-    );
-  }-*/;
-
-  /**
-   * Adds a new gm value.
-   * 
-   * @param value
-   */
   public final native void addValue(GmValue value) /*-{
     this.addValue(
       value
@@ -130,7 +120,7 @@ public class GmAttribute extends JavaScriptObject {
    * 
    * @return
    */
-  public final native GmValue[] getValues() /*-{
+  public final native JsArray<GmValue> getValues() /*-{
     return this.getValues();
   }-*/;
 
@@ -219,7 +209,7 @@ public class GmAttribute extends JavaScriptObject {
    * 
    * @param values
    */
-  public final native void setValues(JavaScriptObject[] values) /*-{
+  public final native void setValues(JsArray<GmValue> values) /*-{
     this.setValues(
       values
     );
@@ -232,17 +222,6 @@ public class GmAttribute extends JavaScriptObject {
    */
   public final native void setValues() /*-{
     this.setValues();
-  }-*/;
-
-  /**
-   * Sets the gm values.
-   * 
-   * @param values
-   */
-  public final native void setValues(GmValue[] values) /*-{
-    this.setValues(
-      values
-    );
   }-*/;
 
 }

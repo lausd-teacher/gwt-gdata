@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.finance;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Money;
 
 /**
@@ -54,17 +55,6 @@ public class Price extends JavaScriptObject {
    * 
    * @param money
    */
-  public final native void addMoney(JavaScriptObject money) /*-{
-    this.addMoney(
-      money
-    );
-  }-*/;
-
-  /**
-   * Adds a new monetary value of the transaction price.
-   * 
-   * @param money
-   */
   public final native void addMoney(Money money) /*-{
     this.addMoney(
       money
@@ -76,7 +66,7 @@ public class Price extends JavaScriptObject {
    * 
    * @return
    */
-  public final native Money[] getMoney() /*-{
+  public final native JsArray<Money> getMoney() /*-{
     return this.getMoney();
   }-*/;
 
@@ -85,7 +75,7 @@ public class Price extends JavaScriptObject {
    * 
    * @param money
    */
-  public final native void setMoney(JavaScriptObject[] money) /*-{
+  public final native void setMoney(JsArray<Money> money) /*-{
     this.setMoney(
       money
     );
@@ -98,17 +88,6 @@ public class Price extends JavaScriptObject {
    */
   public final native void setMoney() /*-{
     this.setMoney();
-  }-*/;
-
-  /**
-   * Sets the monetary value of the transaction price.
-   * 
-   * @param money
-   */
-  public final native void setMoney(Money[] money) /*-{
-    this.setMoney(
-      money
-    );
   }-*/;
 
 }

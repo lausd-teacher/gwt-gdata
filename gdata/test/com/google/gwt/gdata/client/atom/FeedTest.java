@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.atom;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -36,14 +38,9 @@ public class FeedTest extends GWTTestCase {
   public void testOther() {
     // Feed obj = Feed.newInstance(JavaScriptObject.createObject());
     // obj.addAuthor(author);
-    // obj.addAuthor(author);
-    // obj.addCategory(category);
     // obj.addCategory(category);
     // obj.addContributor(contributor);
-    // obj.addContributor(contributor);
     // obj.addEntry(entry);
-    // obj.addEntry(entry);
-    // obj.addLink(link);
     // obj.addLink(link);
   }
 
@@ -52,19 +49,19 @@ public class FeedTest extends GWTTestCase {
     Updated updated = Updated.newInstance(JavaScriptObject.createObject());
     obj.setUpdated(updated);
     assertSame("updated", obj.getUpdated(), updated);
-    Person[] contributors = new Person[]{ Person.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.atom.Person> contributors = ArrayHelper.toJsArray(Person.newInstance(JavaScriptObject.createObject()));
     obj.setContributors(contributors);
     assertSame("contributors", obj.getContributors(), contributors);
-    Entry[] entries = new Entry[]{ Entry.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.atom.Entry> entries = ArrayHelper.toJsArray(Entry.newInstance(JavaScriptObject.createObject()));
     obj.setEntries(entries);
     assertSame("entries", obj.getEntries(), entries);
     Id id = Id.newInstance(JavaScriptObject.createObject());
     obj.setId(id);
     assertSame("id", obj.getId(), id);
-    Category[] categories = new Category[]{ Category.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.atom.Category> categories = ArrayHelper.toJsArray(Category.newInstance(JavaScriptObject.createObject()));
     obj.setCategories(categories);
     assertSame("categories", obj.getCategories(), categories);
-    Person[] authors = new Person[]{ Person.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.atom.Person> authors = ArrayHelper.toJsArray(Person.newInstance(JavaScriptObject.createObject()));
     obj.setAuthors(authors);
     assertSame("authors", obj.getAuthors(), authors);
     Text rights = Text.newInstance(JavaScriptObject.createObject());
@@ -82,7 +79,7 @@ public class FeedTest extends GWTTestCase {
     Logo logo = Logo.newInstance(JavaScriptObject.createObject());
     obj.setLogo(logo);
     assertSame("logo", obj.getLogo(), logo);
-    Link[] links = new Link[]{ Link.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.atom.Link> links = ArrayHelper.toJsArray(Link.newInstance(JavaScriptObject.createObject()));
     obj.setLinks(links);
     assertSame("links", obj.getLinks(), links);
     Generator generator = Generator.newInstance(JavaScriptObject.createObject());

@@ -72,7 +72,7 @@ public class ItemAppControl extends Control {
    * 
    * @param disapproved
    */
-  public final native void setDisapproved(JavaScriptObject disapproved) /*-{
+  public final native void setDisapproved(ItemDisapproved disapproved) /*-{
     this.setDisapproved(
       disapproved
     );
@@ -88,22 +88,11 @@ public class ItemAppControl extends Control {
   }-*/;
 
   /**
-   * Sets the item disapproved.
-   * 
-   * @param disapproved
-   */
-  public final native void setDisapproved(ItemDisapproved disapproved) /*-{
-    this.setDisapproved(
-      disapproved
-    );
-  }-*/;
-
-  /**
    * Sets the item publishing priority.
    * 
    * @param publishingPriority
    */
-  public final native void setPublishingPriority(JavaScriptObject publishingPriority) /*-{
+  public final native void setPublishingPriority(ItemPublishingPriority publishingPriority) /*-{
     this.setPublishingPriority(
       publishingPriority
     );
@@ -116,17 +105,6 @@ public class ItemAppControl extends Control {
    */
   public final native void setPublishingPriority() /*-{
     this.setPublishingPriority();
-  }-*/;
-
-  /**
-   * Sets the item publishing priority.
-   * 
-   * @param publishingPriority
-   */
-  public final native void setPublishingPriority(ItemPublishingPriority publishingPriority) /*-{
-    this.setPublishingPriority(
-      publishingPriority
-    );
   }-*/;
 
 }

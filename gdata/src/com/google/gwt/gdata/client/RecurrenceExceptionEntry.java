@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * Comment unavailable.
@@ -53,17 +54,6 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
    * 
    * @param when
    */
-  public final native void addWhen(JavaScriptObject when) /*-{
-    this.addWhen(
-      when
-    );
-  }-*/;
-
-  /**
-   * Adds a new time period description.
-   * 
-   * @param when
-   */
   public final native void addWhen(When when) /*-{
     this.addWhen(
       when
@@ -75,31 +65,9 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
    * 
    * @param where
    */
-  public final native void addWhere(JavaScriptObject where) /*-{
-    this.addWhere(
-      where
-    );
-  }-*/;
-
-  /**
-   * Adds a new place description.
-   * 
-   * @param where
-   */
   public final native void addWhere(Where where) /*-{
     this.addWhere(
       where
-    );
-  }-*/;
-
-  /**
-   * Adds a new person description.
-   * 
-   * @param who
-   */
-  public final native void addWho(JavaScriptObject who) /*-{
-    this.addWho(
-      who
     );
   }-*/;
 
@@ -171,7 +139,7 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
    * 
    * @return
    */
-  public final native When[] getWhen() /*-{
+  public final native JsArray<When> getWhen() /*-{
     return this.getWhen();
   }-*/;
 
@@ -180,7 +148,7 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
    * 
    * @return
    */
-  public final native Where[] getWhere() /*-{
+  public final native JsArray<Where> getWhere() /*-{
     return this.getWhere();
   }-*/;
 
@@ -189,7 +157,7 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
    * 
    * @return
    */
-  public final native Who[] getWho() /*-{
+  public final native JsArray<Who> getWho() /*-{
     return this.getWho();
   }-*/;
 
@@ -205,7 +173,7 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
    * 
    * @param comments
    */
-  public final native void setComments(JavaScriptObject comments) /*-{
+  public final native void setComments(Comments comments) /*-{
     this.setComments(
       comments
     );
@@ -221,22 +189,11 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
   }-*/;
 
   /**
-   * Sets the Comments class.
-   * 
-   * @param comments
-   */
-  public final native void setComments(Comments comments) /*-{
-    this.setComments(
-      comments
-    );
-  }-*/;
-
-  /**
    * Sets the event status.
    * 
    * @param eventStatus
    */
-  public final native void setEventStatus(JavaScriptObject eventStatus) /*-{
+  public final native void setEventStatus(EventStatus eventStatus) /*-{
     this.setEventStatus(
       eventStatus
     );
@@ -252,22 +209,11 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
   }-*/;
 
   /**
-   * Sets the event status.
-   * 
-   * @param eventStatus
-   */
-  public final native void setEventStatus(EventStatus eventStatus) /*-{
-    this.setEventStatus(
-      eventStatus
-    );
-  }-*/;
-
-  /**
    * Sets the original event.
    * 
    * @param originalEvent
    */
-  public final native void setOriginalEvent(JavaScriptObject originalEvent) /*-{
+  public final native void setOriginalEvent(OriginalEvent originalEvent) /*-{
     this.setOriginalEvent(
       originalEvent
     );
@@ -283,22 +229,11 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
   }-*/;
 
   /**
-   * Sets the original event.
-   * 
-   * @param originalEvent
-   */
-  public final native void setOriginalEvent(OriginalEvent originalEvent) /*-{
-    this.setOriginalEvent(
-      originalEvent
-    );
-  }-*/;
-
-  /**
    * Sets the event transparency.
    * 
    * @param transparency
    */
-  public final native void setTransparency(JavaScriptObject transparency) /*-{
+  public final native void setTransparency(Transparency transparency) /*-{
     this.setTransparency(
       transparency
     );
@@ -314,22 +249,11 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
   }-*/;
 
   /**
-   * Sets the event transparency.
-   * 
-   * @param transparency
-   */
-  public final native void setTransparency(Transparency transparency) /*-{
-    this.setTransparency(
-      transparency
-    );
-  }-*/;
-
-  /**
    * Sets the event visibility.
    * 
    * @param visibility
    */
-  public final native void setVisibility(JavaScriptObject visibility) /*-{
+  public final native void setVisibility(Visibility visibility) /*-{
     this.setVisibility(
       visibility
     );
@@ -345,22 +269,11 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
   }-*/;
 
   /**
-   * Sets the event visibility.
-   * 
-   * @param visibility
-   */
-  public final native void setVisibility(Visibility visibility) /*-{
-    this.setVisibility(
-      visibility
-    );
-  }-*/;
-
-  /**
    * Sets the time period descriptions.
    * 
    * @param when
    */
-  public final native void setWhen(JavaScriptObject[] when) /*-{
+  public final native void setWhen(JsArray<When> when) /*-{
     this.setWhen(
       when
     );
@@ -376,22 +289,11 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
   }-*/;
 
   /**
-   * Sets the time period descriptions.
-   * 
-   * @param when
-   */
-  public final native void setWhen(When[] when) /*-{
-    this.setWhen(
-      when
-    );
-  }-*/;
-
-  /**
    * Sets the place descriptions.
    * 
    * @param where
    */
-  public final native void setWhere(JavaScriptObject[] where) /*-{
+  public final native void setWhere(JsArray<Where> where) /*-{
     this.setWhere(
       where
     );
@@ -407,22 +309,11 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
   }-*/;
 
   /**
-   * Sets the place descriptions.
-   * 
-   * @param where
-   */
-  public final native void setWhere(Where[] where) /*-{
-    this.setWhere(
-      where
-    );
-  }-*/;
-
-  /**
    * Sets the person descriptions.
    * 
    * @param who
    */
-  public final native void setWho(JavaScriptObject[] who) /*-{
+  public final native void setWho(JsArray<Who> who) /*-{
     this.setWho(
       who
     );
@@ -435,17 +326,6 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
    */
   public final native void setWho() /*-{
     this.setWho();
-  }-*/;
-
-  /**
-   * Sets the person descriptions.
-   * 
-   * @param who
-   */
-  public final native void setWho(Who[] who) /*-{
-    this.setWho(
-      who
-    );
   }-*/;
 
 }

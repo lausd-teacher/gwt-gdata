@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -36,14 +38,9 @@ public class EventEntryTest extends GWTTestCase {
   public void testOther() {
     // EventEntry obj = EventEntry.newInstance(JavaScriptObject.createObject());
     // obj.addLocation(location);
-    // obj.addLocation(location);
-    // obj.addParticipant(participant);
     // obj.addParticipant(participant);
     // obj.addRecurrenceException(recurrenceException);
-    // obj.addRecurrenceException(recurrenceException);
     // obj.addReminder(reminder);
-    // obj.addReminder(reminder);
-    // obj.addTime(time);
     // obj.addTime(time);
   }
 
@@ -52,13 +49,13 @@ public class EventEntryTest extends GWTTestCase {
     OriginalEvent originalevent = OriginalEvent.newInstance(JavaScriptObject.createObject());
     obj.setOriginalEvent(originalevent);
     assertSame("originalevent", obj.getOriginalEvent(), originalevent);
-    Who[] participants = new Who[]{ Who.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.Who> participants = ArrayHelper.toJsArray(Who.newInstance(JavaScriptObject.createObject()));
     obj.setParticipants(participants);
     assertSame("participants", obj.getParticipants(), participants);
     Comments comments = Comments.newInstance(JavaScriptObject.createObject());
     obj.setComments(comments);
     assertSame("comments", obj.getComments(), comments);
-    Reminder[] reminders = new Reminder[]{ Reminder.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.Reminder> reminders = ArrayHelper.toJsArray(Reminder.newInstance(JavaScriptObject.createObject()));
     obj.setReminders(reminders);
     assertSame("reminders", obj.getReminders(), reminders);
     EventStatus eventstatus = EventStatus.newInstance(JavaScriptObject.createObject());
@@ -67,19 +64,19 @@ public class EventEntryTest extends GWTTestCase {
     Recurrence recurrence = Recurrence.newInstance(JavaScriptObject.createObject());
     obj.setRecurrence(recurrence);
     assertSame("recurrence", obj.getRecurrence(), recurrence);
-    Where[] locations = new Where[]{ Where.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.Where> locations = ArrayHelper.toJsArray(Where.newInstance(JavaScriptObject.createObject()));
     obj.setLocations(locations);
     assertSame("locations", obj.getLocations(), locations);
     Transparency transparency = Transparency.newInstance(JavaScriptObject.createObject());
     obj.setTransparency(transparency);
     assertSame("transparency", obj.getTransparency(), transparency);
-    When[] times = new When[]{ When.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.When> times = ArrayHelper.toJsArray(When.newInstance(JavaScriptObject.createObject()));
     obj.setTimes(times);
     assertSame("times", obj.getTimes(), times);
     Visibility visibility = Visibility.newInstance(JavaScriptObject.createObject());
     obj.setVisibility(visibility);
     assertSame("visibility", obj.getVisibility(), visibility);
-    RecurrenceException[] recurrenceexception = new RecurrenceException[]{ RecurrenceException.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.RecurrenceException> recurrenceexception = ArrayHelper.toJsArray(RecurrenceException.newInstance(JavaScriptObject.createObject()));
     obj.setRecurrenceException(recurrenceexception);
     assertSame("recurrenceexception", obj.getRecurrenceException(), recurrenceexception);
   }

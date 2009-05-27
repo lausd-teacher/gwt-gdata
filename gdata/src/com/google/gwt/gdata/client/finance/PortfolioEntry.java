@@ -71,7 +71,7 @@ public class PortfolioEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param feedLink
    */
-  public final native void setFeedLink(JavaScriptObject feedLink) /*-{
+  public final native void setFeedLink(PortfolioFeedLink feedLink) /*-{
     this.setFeedLink(
       feedLink
     );
@@ -87,22 +87,11 @@ public class PortfolioEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the position feed for the portfolio.
-   * 
-   * @param feedLink
-   */
-  public final native void setFeedLink(PortfolioFeedLink feedLink) /*-{
-    this.setFeedLink(
-      feedLink
-    );
-  }-*/;
-
-  /**
    * Sets the data for the portfolio.
    * 
    * @param portfolioData
    */
-  public final native void setPortfolioData(JavaScriptObject portfolioData) /*-{
+  public final native void setPortfolioData(PortfolioData portfolioData) /*-{
     this.setPortfolioData(
       portfolioData
     );
@@ -115,17 +104,6 @@ public class PortfolioEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setPortfolioData() /*-{
     this.setPortfolioData();
-  }-*/;
-
-  /**
-   * Sets the data for the portfolio.
-   * 
-   * @param portfolioData
-   */
-  public final native void setPortfolioData(PortfolioData portfolioData) /*-{
-    this.setPortfolioData(
-      portfolioData
-    );
   }-*/;
 
 }

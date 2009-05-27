@@ -63,7 +63,7 @@ public class CalendarWho extends Who {
    * 
    * @param resource
    */
-  public final native void setResource(JavaScriptObject resource) /*-{
+  public final native void setResource(ResourceProperty resource) /*-{
     this.setResource(
       resource
     );
@@ -76,17 +76,6 @@ public class CalendarWho extends Who {
    */
   public final native void setResource() /*-{
     this.setResource();
-  }-*/;
-
-  /**
-   * Sets the resource property.
-   * 
-   * @param resource
-   */
-  public final native void setResource(ResourceProperty resource) /*-{
-    this.setResource(
-      resource
-    );
   }-*/;
 
 }

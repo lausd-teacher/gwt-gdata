@@ -71,7 +71,7 @@ public class W3CPoint extends JavaScriptObject {
    * 
    * @param geoLatitude
    */
-  public final native void setGeoLatitude(JavaScriptObject geoLatitude) /*-{
+  public final native void setGeoLatitude(GeoLat geoLatitude) /*-{
     this.setGeoLatitude(
       geoLatitude
     );
@@ -87,22 +87,11 @@ public class W3CPoint extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the W3C latitude.
-   * 
-   * @param geoLatitude
-   */
-  public final native void setGeoLatitude(GeoLat geoLatitude) /*-{
-    this.setGeoLatitude(
-      geoLatitude
-    );
-  }-*/;
-
-  /**
    * Sets the W3C longitude.
    * 
    * @param geoLongitude
    */
-  public final native void setGeoLongitude(JavaScriptObject geoLongitude) /*-{
+  public final native void setGeoLongitude(GeoLong geoLongitude) /*-{
     this.setGeoLongitude(
       geoLongitude
     );
@@ -115,17 +104,6 @@ public class W3CPoint extends JavaScriptObject {
    */
   public final native void setGeoLongitude() /*-{
     this.setGeoLongitude();
-  }-*/;
-
-  /**
-   * Sets the W3C longitude.
-   * 
-   * @param geoLongitude
-   */
-  public final native void setGeoLongitude(GeoLong geoLongitude) /*-{
-    this.setGeoLongitude(
-      geoLongitude
-    );
   }-*/;
 
 }

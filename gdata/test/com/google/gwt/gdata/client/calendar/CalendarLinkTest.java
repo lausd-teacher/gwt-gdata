@@ -40,7 +40,6 @@ public class CalendarLinkTest extends GWTTestCase {
   public void testOther() {
     // CalendarLink obj = CalendarLink.newInstance(JavaScriptObject.createObject());
     // obj.create(webContent, iconHref, title, mimeType);
-    // obj.create(webContent, iconHref, title, mimeType);
   }
 
   public void testProperties() {

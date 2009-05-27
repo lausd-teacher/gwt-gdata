@@ -118,7 +118,7 @@ public class FeedLink extends JavaScriptObject {
    * 
    * @param feed
    */
-  public final native void setFeed(JavaScriptObject feed) /*-{
+  public final native void setFeed(Feed feed) /*-{
     this.setFeed(
       feed
     );
@@ -131,17 +131,6 @@ public class FeedLink extends JavaScriptObject {
    */
   public final native void setFeed() /*-{
     this.setFeed();
-  }-*/;
-
-  /**
-   * Sets the nested feed.
-   * 
-   * @param feed
-   */
-  public final native void setFeed(Feed feed) /*-{
-    this.setFeed(
-      feed
-    );
   }-*/;
 
   /**

@@ -89,7 +89,7 @@ public class EntryLink extends JavaScriptObject {
    * 
    * @param entry
    */
-  public final native void setEntry(JavaScriptObject entry) /*-{
+  public final native void setEntry(Entry entry) /*-{
     this.setEntry(
       entry
     );
@@ -102,17 +102,6 @@ public class EntryLink extends JavaScriptObject {
    */
   public final native void setEntry() /*-{
     this.setEntry();
-  }-*/;
-
-  /**
-   * Sets the nested entry.
-   * 
-   * @param entry
-   */
-  public final native void setEntry(Entry entry) /*-{
-    this.setEntry(
-      entry
-    );
   }-*/;
 
   /**

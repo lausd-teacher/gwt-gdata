@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.calendar;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.EventEntry;
 import com.google.gwt.gdata.client.geo.GeoRssWhere;
 
@@ -55,17 +56,6 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @param extendedProperty
    */
-  public final native void addExtendedProperty(JavaScriptObject extendedProperty) /*-{
-    this.addExtendedProperty(
-      extendedProperty
-    );
-  }-*/;
-
-  /**
-   * Adds a new calendar extended property.
-   * 
-   * @param extendedProperty
-   */
   public final native void addExtendedProperty(CalendarExtendedProperty extendedProperty) /*-{
     this.addExtendedProperty(
       extendedProperty
@@ -86,7 +76,7 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @return
    */
-  public final native CalendarExtendedProperty[] getExtendedProperties() /*-{
+  public final native JsArray<CalendarExtendedProperty> getExtendedProperties() /*-{
     return this.getExtendedProperties();
   }-*/;
 
@@ -219,7 +209,7 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @param anyoneCanAddSelf
    */
-  public final native void setAnyoneCanAddSelf(JavaScriptObject anyoneCanAddSelf) /*-{
+  public final native void setAnyoneCanAddSelf(AnyoneCanAddSelfProperty anyoneCanAddSelf) /*-{
     this.setAnyoneCanAddSelf(
       anyoneCanAddSelf
     );
@@ -235,22 +225,11 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Sets the anyone can add self property.
-   * 
-   * @param anyoneCanAddSelf
-   */
-  public final native void setAnyoneCanAddSelf(AnyoneCanAddSelfProperty anyoneCanAddSelf) /*-{
-    this.setAnyoneCanAddSelf(
-      anyoneCanAddSelf
-    );
-  }-*/;
-
-  /**
    * Sets the calendar extended properties.
    * 
    * @param extendedProperties
    */
-  public final native void setExtendedProperties(JavaScriptObject[] extendedProperties) /*-{
+  public final native void setExtendedProperties(JsArray<CalendarExtendedProperty> extendedProperties) /*-{
     this.setExtendedProperties(
       extendedProperties
     );
@@ -266,22 +245,11 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Sets the calendar extended properties.
-   * 
-   * @param extendedProperties
-   */
-  public final native void setExtendedProperties(CalendarExtendedProperty[] extendedProperties) /*-{
-    this.setExtendedProperties(
-      extendedProperties
-    );
-  }-*/;
-
-  /**
    * Sets the geolocation as a georss:where.
    * 
    * @param geoLocation
    */
-  public final native void setGeoLocation(JavaScriptObject geoLocation) /*-{
+  public final native void setGeoLocation(GeoRssWhere geoLocation) /*-{
     this.setGeoLocation(
       geoLocation
     );
@@ -297,22 +265,11 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Sets the geolocation as a georss:where.
-   * 
-   * @param geoLocation
-   */
-  public final native void setGeoLocation(GeoRssWhere geoLocation) /*-{
-    this.setGeoLocation(
-      geoLocation
-    );
-  }-*/;
-
-  /**
    * Sets the guests can invite others property.
    * 
    * @param guestsCanInviteOthers
    */
-  public final native void setGuestsCanInviteOthers(JavaScriptObject guestsCanInviteOthers) /*-{
+  public final native void setGuestsCanInviteOthers(GuestsCanInviteOthersProperty guestsCanInviteOthers) /*-{
     this.setGuestsCanInviteOthers(
       guestsCanInviteOthers
     );
@@ -328,22 +285,11 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Sets the guests can invite others property.
-   * 
-   * @param guestsCanInviteOthers
-   */
-  public final native void setGuestsCanInviteOthers(GuestsCanInviteOthersProperty guestsCanInviteOthers) /*-{
-    this.setGuestsCanInviteOthers(
-      guestsCanInviteOthers
-    );
-  }-*/;
-
-  /**
    * Sets the guests can modify property.
    * 
    * @param guestsCanModify
    */
-  public final native void setGuestsCanModify(JavaScriptObject guestsCanModify) /*-{
+  public final native void setGuestsCanModify(GuestsCanModifyProperty guestsCanModify) /*-{
     this.setGuestsCanModify(
       guestsCanModify
     );
@@ -359,22 +305,11 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Sets the guests can modify property.
-   * 
-   * @param guestsCanModify
-   */
-  public final native void setGuestsCanModify(GuestsCanModifyProperty guestsCanModify) /*-{
-    this.setGuestsCanModify(
-      guestsCanModify
-    );
-  }-*/;
-
-  /**
    * Sets the guests can see guests property.
    * 
    * @param guestsCanSeeGuests
    */
-  public final native void setGuestsCanSeeGuests(JavaScriptObject guestsCanSeeGuests) /*-{
+  public final native void setGuestsCanSeeGuests(GuestsCanSeeGuestsProperty guestsCanSeeGuests) /*-{
     this.setGuestsCanSeeGuests(
       guestsCanSeeGuests
     );
@@ -390,22 +325,11 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Sets the guests can see guests property.
-   * 
-   * @param guestsCanSeeGuests
-   */
-  public final native void setGuestsCanSeeGuests(GuestsCanSeeGuestsProperty guestsCanSeeGuests) /*-{
-    this.setGuestsCanSeeGuests(
-      guestsCanSeeGuests
-    );
-  }-*/;
-
-  /**
    * Sets the private copy property.
    * 
    * @param privateCopy
    */
-  public final native void setPrivateCopy(JavaScriptObject privateCopy) /*-{
+  public final native void setPrivateCopy(PrivateCopyProperty privateCopy) /*-{
     this.setPrivateCopy(
       privateCopy
     );
@@ -421,22 +345,11 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Sets the private copy property.
-   * 
-   * @param privateCopy
-   */
-  public final native void setPrivateCopy(PrivateCopyProperty privateCopy) /*-{
-    this.setPrivateCopy(
-      privateCopy
-    );
-  }-*/;
-
-  /**
    * Sets the quick-add property.
    * 
    * @param quickAdd
    */
-  public final native void setQuickAdd(JavaScriptObject quickAdd) /*-{
+  public final native void setQuickAdd(QuickAddProperty quickAdd) /*-{
     this.setQuickAdd(
       quickAdd
     );
@@ -452,22 +365,11 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Sets the quick-add property.
-   * 
-   * @param quickAdd
-   */
-  public final native void setQuickAdd(QuickAddProperty quickAdd) /*-{
-    this.setQuickAdd(
-      quickAdd
-    );
-  }-*/;
-
-  /**
    * Sets the send event notifications property.
    * 
    * @param sendEventNotifications
    */
-  public final native void setSendEventNotifications(JavaScriptObject sendEventNotifications) /*-{
+  public final native void setSendEventNotifications(SendEventNotificationsProperty sendEventNotifications) /*-{
     this.setSendEventNotifications(
       sendEventNotifications
     );
@@ -483,22 +385,11 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Sets the send event notifications property.
-   * 
-   * @param sendEventNotifications
-   */
-  public final native void setSendEventNotifications(SendEventNotificationsProperty sendEventNotifications) /*-{
-    this.setSendEventNotifications(
-      sendEventNotifications
-    );
-  }-*/;
-
-  /**
    * Sets the sequence number property.
    * 
    * @param sequence
    */
-  public final native void setSequence(JavaScriptObject sequence) /*-{
+  public final native void setSequence(SequenceNumberProperty sequence) /*-{
     this.setSequence(
       sequence
     );
@@ -514,22 +405,11 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Sets the sequence number property.
-   * 
-   * @param sequence
-   */
-  public final native void setSequence(SequenceNumberProperty sequence) /*-{
-    this.setSequence(
-      sequence
-    );
-  }-*/;
-
-  /**
    * Sets the sync event property.
    * 
    * @param syncEvent
    */
-  public final native void setSyncEvent(JavaScriptObject syncEvent) /*-{
+  public final native void setSyncEvent(SyncEventProperty syncEvent) /*-{
     this.setSyncEvent(
       syncEvent
     );
@@ -545,22 +425,11 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Sets the sync event property.
-   * 
-   * @param syncEvent
-   */
-  public final native void setSyncEvent(SyncEventProperty syncEvent) /*-{
-    this.setSyncEvent(
-      syncEvent
-    );
-  }-*/;
-
-  /**
    * Sets the ical export UID property.
    * 
    * @param uid
    */
-  public final native void setUid(JavaScriptObject uid) /*-{
+  public final native void setUid(IcalUIDProperty uid) /*-{
     this.setUid(
       uid
     );
@@ -573,17 +442,6 @@ public class CalendarEventEntry extends EventEntry {
    */
   public final native void setUid() /*-{
     this.setUid();
-  }-*/;
-
-  /**
-   * Sets the ical export UID property.
-   * 
-   * @param uid
-   */
-  public final native void setUid(IcalUIDProperty uid) /*-{
-    this.setUid(
-      uid
-    );
   }-*/;
 
   /**

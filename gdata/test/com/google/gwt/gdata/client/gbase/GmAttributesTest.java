@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.gbase;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -36,12 +38,11 @@ public class GmAttributesTest extends GWTTestCase {
   public void testOther() {
     // GmAttributes obj = GmAttributes.newInstance(JavaScriptObject.createObject());
     // obj.addAttribute(attribute);
-    // obj.addAttribute(attribute);
   }
 
   public void testProperties() {
     GmAttributes obj = GmAttributes.newInstance(JavaScriptObject.createObject());
-    GmAttribute[] attributes = new GmAttribute[]{ GmAttribute.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.gbase.GmAttribute> attributes = ArrayHelper.toJsArray(GmAttribute.newInstance(JavaScriptObject.createObject()));
     obj.setAttributes(attributes);
     assertSame("attributes", obj.getAttributes(), attributes);
   }

@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.app;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * Comment unavailable.
@@ -53,17 +54,6 @@ public class ServiceDocument extends JavaScriptObject {
    * 
    * @param workspace
    */
-  public final native void addWorkspace(JavaScriptObject workspace) /*-{
-    this.addWorkspace(
-      workspace
-    );
-  }-*/;
-
-  /**
-   * Adds a new workspace.
-   * 
-   * @param workspace
-   */
   public final native void addWorkspace(Workspace workspace) /*-{
     this.addWorkspace(
       workspace
@@ -75,7 +65,7 @@ public class ServiceDocument extends JavaScriptObject {
    * 
    * @return
    */
-  public final native Workspace[] getWorkspaces() /*-{
+  public final native JsArray<Workspace> getWorkspaces() /*-{
     return this.getWorkspaces();
   }-*/;
 
@@ -84,7 +74,7 @@ public class ServiceDocument extends JavaScriptObject {
    * 
    * @param workspaces
    */
-  public final native void setWorkspaces(JavaScriptObject[] workspaces) /*-{
+  public final native void setWorkspaces(JsArray<Workspace> workspaces) /*-{
     this.setWorkspaces(
       workspaces
     );
@@ -97,17 +87,6 @@ public class ServiceDocument extends JavaScriptObject {
    */
   public final native void setWorkspaces() /*-{
     this.setWorkspaces();
-  }-*/;
-
-  /**
-   * Sets the workspaces.
-   * 
-   * @param workspaces
-   */
-  public final native void setWorkspaces(Workspace[] workspaces) /*-{
-    this.setWorkspaces(
-      workspaces
-    );
   }-*/;
 
 }

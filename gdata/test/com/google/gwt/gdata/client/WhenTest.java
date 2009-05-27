@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 import java.util.Date;
@@ -38,7 +40,6 @@ public class WhenTest extends GWTTestCase {
   public void testOther() {
     // When obj = When.newInstance(JavaScriptObject.createObject());
     // obj.addReminder(reminder);
-    // obj.addReminder(reminder);
   }
 
   public void testProperties() {
@@ -46,7 +47,7 @@ public class WhenTest extends GWTTestCase {
     DateTime endtime = DateTime.newInstance(new Date(), true);
     obj.setEndTime(endtime);
     assertSame("endtime", obj.getEndTime(), endtime);
-    Reminder[] reminder = new Reminder[]{ Reminder.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.Reminder> reminder = ArrayHelper.toJsArray(Reminder.newInstance(JavaScriptObject.createObject()));
     obj.setReminder(reminder);
     assertSame("reminder", obj.getReminder(), reminder);
     DateTime starttime = DateTime.newInstance(new Date(), true);

@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -36,10 +38,7 @@ public class RecurrenceExceptionEntryTest extends GWTTestCase {
   public void testOther() {
     // RecurrenceExceptionEntry obj = RecurrenceExceptionEntry.newInstance(JavaScriptObject.createObject());
     // obj.addWhen(when);
-    // obj.addWhen(when);
     // obj.addWhere(where);
-    // obj.addWhere(where);
-    // obj.addWho(who);
     // obj.addWho(who);
   }
 
@@ -48,7 +47,7 @@ public class RecurrenceExceptionEntryTest extends GWTTestCase {
     OriginalEvent originalevent = OriginalEvent.newInstance(JavaScriptObject.createObject());
     obj.setOriginalEvent(originalevent);
     assertSame("originalevent", obj.getOriginalEvent(), originalevent);
-    Where[] where = new Where[]{ Where.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.Where> where = ArrayHelper.toJsArray(Where.newInstance(JavaScriptObject.createObject()));
     obj.setWhere(where);
     assertSame("where", obj.getWhere(), where);
     Comments comments = Comments.newInstance(JavaScriptObject.createObject());
@@ -60,13 +59,13 @@ public class RecurrenceExceptionEntryTest extends GWTTestCase {
     Transparency transparency = Transparency.newInstance(JavaScriptObject.createObject());
     obj.setTransparency(transparency);
     assertSame("transparency", obj.getTransparency(), transparency);
-    Who[] who = new Who[]{ Who.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.Who> who = ArrayHelper.toJsArray(Who.newInstance(JavaScriptObject.createObject()));
     obj.setWho(who);
     assertSame("who", obj.getWho(), who);
     Visibility visibility = Visibility.newInstance(JavaScriptObject.createObject());
     obj.setVisibility(visibility);
     assertSame("visibility", obj.getVisibility(), visibility);
-    When[] when = new When[]{ When.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.When> when = ArrayHelper.toJsArray(When.newInstance(JavaScriptObject.createObject()));
     obj.setWhen(when);
     assertSame("when", obj.getWhen(), when);
   }

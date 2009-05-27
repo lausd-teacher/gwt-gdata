@@ -110,7 +110,7 @@ public class TransactionData extends JavaScriptObject {
    * 
    * @param commission
    */
-  public final native void setCommission(JavaScriptObject commission) /*-{
+  public final native void setCommission(Commission commission) /*-{
     this.setCommission(
       commission
     );
@@ -123,17 +123,6 @@ public class TransactionData extends JavaScriptObject {
    */
   public final native void setCommission() /*-{
     this.setCommission();
-  }-*/;
-
-  /**
-   * Sets the commission for the transaction.
-   * 
-   * @param commission
-   */
-  public final native void setCommission(Commission commission) /*-{
-    this.setCommission(
-      commission
-    );
   }-*/;
 
   /**
@@ -192,7 +181,7 @@ public class TransactionData extends JavaScriptObject {
    * 
    * @param price
    */
-  public final native void setPrice(JavaScriptObject price) /*-{
+  public final native void setPrice(Price price) /*-{
     this.setPrice(
       price
     );
@@ -205,17 +194,6 @@ public class TransactionData extends JavaScriptObject {
    */
   public final native void setPrice() /*-{
     this.setPrice();
-  }-*/;
-
-  /**
-   * Sets the price of the transaction.
-   * 
-   * @param price
-   */
-  public final native void setPrice(Price price) /*-{
-    this.setPrice(
-      price
-    );
   }-*/;
 
   /**

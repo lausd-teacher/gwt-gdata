@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.contacts;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.ExtendedProperty;
 import com.google.gwt.junit.client.GWTTestCase;
@@ -38,7 +40,6 @@ public class ContactGroupEntryTest extends GWTTestCase {
   public void testOther() {
     // ContactGroupEntry obj = ContactGroupEntry.newInstance(JavaScriptObject.createObject());
     // obj.addExtendedProperty(extendedProperty);
-    // obj.addExtendedProperty(extendedProperty);
   }
 
   public void testProperties() {
@@ -46,7 +47,7 @@ public class ContactGroupEntryTest extends GWTTestCase {
     SystemGroup systemgroup = SystemGroup.newInstance(JavaScriptObject.createObject());
     obj.setSystemGroup(systemgroup);
     assertSame("systemgroup", obj.getSystemGroup(), systemgroup);
-    ExtendedProperty[] extendedproperties = new ExtendedProperty[]{ ExtendedProperty.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.ExtendedProperty> extendedproperties = ArrayHelper.toJsArray(ExtendedProperty.newInstance(JavaScriptObject.createObject()));
     obj.setExtendedProperties(extendedproperties);
     assertSame("extendedproperties", obj.getExtendedProperties(), extendedproperties);
     Deleted deleted = Deleted.newInstance(JavaScriptObject.createObject());

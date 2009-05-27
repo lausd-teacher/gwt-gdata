@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.atom;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * Comment unavailable.
@@ -53,31 +54,9 @@ public class Entry extends JavaScriptObject {
    * 
    * @param author
    */
-  public final native void addAuthor(JavaScriptObject author) /*-{
-    this.addAuthor(
-      author
-    );
-  }-*/;
-
-  /**
-   * Adds a new author.
-   * 
-   * @param author
-   */
   public final native void addAuthor(Person author) /*-{
     this.addAuthor(
       author
-    );
-  }-*/;
-
-  /**
-   * Adds a new category.
-   * 
-   * @param category
-   */
-  public final native void addCategory(JavaScriptObject category) /*-{
-    this.addCategory(
-      category
     );
   }-*/;
 
@@ -97,31 +76,9 @@ public class Entry extends JavaScriptObject {
    * 
    * @param contributor
    */
-  public final native void addContributor(JavaScriptObject contributor) /*-{
-    this.addContributor(
-      contributor
-    );
-  }-*/;
-
-  /**
-   * Adds a new contributor.
-   * 
-   * @param contributor
-   */
   public final native void addContributor(Person contributor) /*-{
     this.addContributor(
       contributor
-    );
-  }-*/;
-
-  /**
-   * Adds a new link.
-   * 
-   * @param link
-   */
-  public final native void addLink(JavaScriptObject link) /*-{
-    this.addLink(
-      link
     );
   }-*/;
 
@@ -141,7 +98,7 @@ public class Entry extends JavaScriptObject {
    * 
    * @return
    */
-  public final native Person[] getAuthors() /*-{
+  public final native JsArray<Person> getAuthors() /*-{
     return this.getAuthors();
   }-*/;
 
@@ -150,7 +107,7 @@ public class Entry extends JavaScriptObject {
    * 
    * @return
    */
-  public final native Category[] getCategories() /*-{
+  public final native JsArray<Category> getCategories() /*-{
     return this.getCategories();
   }-*/;
 
@@ -175,7 +132,7 @@ public class Entry extends JavaScriptObject {
    * 
    * @return
    */
-  public final native Person[] getContributors() /*-{
+  public final native JsArray<Person> getContributors() /*-{
     return this.getContributors();
   }-*/;
 
@@ -200,7 +157,7 @@ public class Entry extends JavaScriptObject {
    * 
    * @return
    */
-  public final native com.google.gwt.gdata.client.atom.Link[] getLinks() /*-{
+  public final native JsArray<com.google.gwt.gdata.client.atom.Link> getLinks() /*-{
     return this.getLinks();
   }-*/;
 
@@ -254,7 +211,7 @@ public class Entry extends JavaScriptObject {
    * 
    * @param authors
    */
-  public final native void setAuthors(JavaScriptObject[] authors) /*-{
+  public final native void setAuthors(JsArray<Person> authors) /*-{
     this.setAuthors(
       authors
     );
@@ -270,22 +227,11 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the authors.
-   * 
-   * @param authors
-   */
-  public final native void setAuthors(Person[] authors) /*-{
-    this.setAuthors(
-      authors
-    );
-  }-*/;
-
-  /**
    * Sets the categories.
    * 
    * @param categories
    */
-  public final native void setCategories(JavaScriptObject[] categories) /*-{
+  public final native void setCategories(JsArray<Category> categories) /*-{
     this.setCategories(
       categories
     );
@@ -301,22 +247,11 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the categories.
-   * 
-   * @param categories
-   */
-  public final native void setCategories(Category[] categories) /*-{
-    this.setCategories(
-      categories
-    );
-  }-*/;
-
-  /**
    * Sets the content.
    * 
    * @param content
    */
-  public final native void setContent(JavaScriptObject content) /*-{
+  public final native void setContent(Text content) /*-{
     this.setContent(
       content
     );
@@ -332,22 +267,11 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the content.
-   * 
-   * @param content
-   */
-  public final native void setContent(Text content) /*-{
-    this.setContent(
-      content
-    );
-  }-*/;
-
-  /**
    * Sets the contributors.
    * 
    * @param contributors
    */
-  public final native void setContributors(JavaScriptObject[] contributors) /*-{
+  public final native void setContributors(JsArray<Person> contributors) /*-{
     this.setContributors(
       contributors
     );
@@ -363,22 +287,11 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the contributors.
-   * 
-   * @param contributors
-   */
-  public final native void setContributors(Person[] contributors) /*-{
-    this.setContributors(
-      contributors
-    );
-  }-*/;
-
-  /**
    * Sets the entry identifier.
    * 
    * @param id
    */
-  public final native void setId(JavaScriptObject id) /*-{
+  public final native void setId(Id id) /*-{
     this.setId(
       id
     );
@@ -394,22 +307,11 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the entry identifier.
-   * 
-   * @param id
-   */
-  public final native void setId(Id id) /*-{
-    this.setId(
-      id
-    );
-  }-*/;
-
-  /**
    * Sets the links.
    * 
    * @param links
    */
-  public final native void setLinks(JavaScriptObject[] links) /*-{
+  public final native void setLinks(JsArray<Link> links) /*-{
     this.setLinks(
       links
     );
@@ -425,22 +327,11 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the links.
-   * 
-   * @param links
-   */
-  public final native void setLinks(com.google.gwt.gdata.client.atom.Link[] links) /*-{
-    this.setLinks(
-      links
-    );
-  }-*/;
-
-  /**
    * Sets the creation timestamp.
    * 
    * @param published
    */
-  public final native void setPublished(JavaScriptObject published) /*-{
+  public final native void setPublished(Published published) /*-{
     this.setPublished(
       published
     );
@@ -456,22 +347,11 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the creation timestamp.
-   * 
-   * @param published
-   */
-  public final native void setPublished(Published published) /*-{
-    this.setPublished(
-      published
-    );
-  }-*/;
-
-  /**
    * Sets the rights.
    * 
    * @param rights
    */
-  public final native void setRights(JavaScriptObject rights) /*-{
+  public final native void setRights(Text rights) /*-{
     this.setRights(
       rights
     );
@@ -487,22 +367,11 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the rights.
-   * 
-   * @param rights
-   */
-  public final native void setRights(Text rights) /*-{
-    this.setRights(
-      rights
-    );
-  }-*/;
-
-  /**
    * Sets the summary.
    * 
    * @param summary
    */
-  public final native void setSummary(JavaScriptObject summary) /*-{
+  public final native void setSummary(Text summary) /*-{
     this.setSummary(
       summary
     );
@@ -518,22 +387,11 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the summary.
-   * 
-   * @param summary
-   */
-  public final native void setSummary(Text summary) /*-{
-    this.setSummary(
-      summary
-    );
-  }-*/;
-
-  /**
    * Sets the title.
    * 
    * @param title
    */
-  public final native void setTitle(JavaScriptObject title) /*-{
+  public final native void setTitle(Text title) /*-{
     this.setTitle(
       title
     );
@@ -549,22 +407,11 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the title.
-   * 
-   * @param title
-   */
-  public final native void setTitle(Text title) /*-{
-    this.setTitle(
-      title
-    );
-  }-*/;
-
-  /**
    * Sets the updated timestamp.
    * 
    * @param updated
    */
-  public final native void setUpdated(JavaScriptObject updated) /*-{
+  public final native void setUpdated(Updated updated) /*-{
     this.setUpdated(
       updated
     );
@@ -577,17 +424,6 @@ public class Entry extends JavaScriptObject {
    */
   public final native void setUpdated() /*-{
     this.setUpdated();
-  }-*/;
-
-  /**
-   * Sets the updated timestamp.
-   * 
-   * @param updated
-   */
-  public final native void setUpdated(Updated updated) /*-{
-    this.setUpdated(
-      updated
-    );
   }-*/;
 
 }

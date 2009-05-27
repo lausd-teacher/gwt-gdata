@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.mediarss;
 
+import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -42,16 +44,10 @@ public class MediaContentTest extends GWTTestCase {
   public void testOther() {
     // MediaContent obj = MediaContent.newInstance(JavaScriptObject.createObject());
     // obj.addCategory(category);
-    // obj.addCategory(category);
-    // obj.addCredit(credit);
     // obj.addCredit(credit);
     // obj.addRating(rating);
-    // obj.addRating(rating);
-    // obj.addRestriction(restriction);
     // obj.addRestriction(restriction);
     // obj.addText(text);
-    // obj.addText(text);
-    // obj.addThumbnail(thumbnail);
     // obj.addThumbnail(thumbnail);
   }
 
@@ -63,7 +59,7 @@ public class MediaContentTest extends GWTTestCase {
     double duration = 600813;
     obj.setDuration(duration);
     assertSame("duration", obj.getDuration(), duration);
-    MediaCategory[] categories = new MediaCategory[]{ MediaCategory.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaCategory> categories = ArrayHelper.toJsArray(MediaCategory.newInstance(JavaScriptObject.createObject()));
     obj.setCategories(categories);
     assertSame("categories", obj.getCategories(), categories);
     String medium = "myValue";
@@ -72,7 +68,7 @@ public class MediaContentTest extends GWTTestCase {
     double samplingrate = 600813;
     obj.setSamplingrate(samplingrate);
     assertSame("samplingrate", obj.getSamplingrate(), samplingrate);
-    MediaRating[] ratings = new MediaRating[]{ MediaRating.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaRating> ratings = ArrayHelper.toJsArray(MediaRating.newInstance(JavaScriptObject.createObject()));
     obj.setRatings(ratings);
     assertSame("ratings", obj.getRatings(), ratings);
     MediaCopyright copyright = MediaCopyright.newInstance(JavaScriptObject.createObject());
@@ -81,13 +77,13 @@ public class MediaContentTest extends GWTTestCase {
     MediaTitle title = MediaTitle.newInstance(JavaScriptObject.createObject());
     obj.setTitle(title);
     assertSame("title", obj.getTitle(), title);
-    MediaText[] texts = new MediaText[]{ MediaText.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaText> texts = ArrayHelper.toJsArray(MediaText.newInstance(JavaScriptObject.createObject()));
     obj.setTexts(texts);
     assertSame("texts", obj.getTexts(), texts);
     MediaHash hash = MediaHash.newInstance(JavaScriptObject.createObject());
     obj.setHash(hash);
     assertSame("hash", obj.getHash(), hash);
-    MediaRestriction[] restrictions = new MediaRestriction[]{ MediaRestriction.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaRestriction> restrictions = ArrayHelper.toJsArray(MediaRestriction.newInstance(JavaScriptObject.createObject()));
     obj.setRestrictions(restrictions);
     assertSame("restrictions", obj.getRestrictions(), restrictions);
     String type = "myValue";
@@ -96,7 +92,7 @@ public class MediaContentTest extends GWTTestCase {
     MediaKeywords keywords = MediaKeywords.newInstance(JavaScriptObject.createObject());
     obj.setKeywords(keywords);
     assertSame("keywords", obj.getKeywords(), keywords);
-    MediaThumbnail[] thumbnails = new MediaThumbnail[]{ MediaThumbnail.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaThumbnail> thumbnails = ArrayHelper.toJsArray(MediaThumbnail.newInstance(JavaScriptObject.createObject()));
     obj.setThumbnails(thumbnails);
     assertSame("thumbnails", obj.getThumbnails(), thumbnails);
     double height = 600813;
@@ -132,7 +128,7 @@ public class MediaContentTest extends GWTTestCase {
     double framerate = 600813;
     obj.setFramerate(framerate);
     assertSame("framerate", obj.getFramerate(), framerate);
-    MediaCredit[] credits = new MediaCredit[]{ MediaCredit.newInstance(JavaScriptObject.createObject()) };
+    JsArray<com.google.gwt.gdata.client.mediarss.MediaCredit> credits = ArrayHelper.toJsArray(MediaCredit.newInstance(JavaScriptObject.createObject()));
     obj.setCredits(credits);
     assertSame("credits", obj.getCredits(), credits);
   }

@@ -120,7 +120,7 @@ public class OriginalEvent extends JavaScriptObject {
    * 
    * @param originalStartTime
    */
-  public final native void setOriginalStartTime(JavaScriptObject originalStartTime) /*-{
+  public final native void setOriginalStartTime(When originalStartTime) /*-{
     this.setOriginalStartTime(
       originalStartTime
     );
@@ -133,17 +133,6 @@ public class OriginalEvent extends JavaScriptObject {
    */
   public final native void setOriginalStartTime() /*-{
     this.setOriginalStartTime();
-  }-*/;
-
-  /**
-   * Sets the original start time.
-   * 
-   * @param originalStartTime
-   */
-  public final native void setOriginalStartTime(When originalStartTime) /*-{
-    this.setOriginalStartTime(
-      originalStartTime
-    );
   }-*/;
 
 }

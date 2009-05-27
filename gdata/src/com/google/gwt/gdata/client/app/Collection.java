@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.app;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.atom.Text;
 
 /**
@@ -54,31 +55,9 @@ public class Collection extends JavaScriptObject {
    * 
    * @param accept
    */
-  public final native void addAccept(JavaScriptObject accept) /*-{
-    this.addAccept(
-      accept
-    );
-  }-*/;
-
-  /**
-   * Adds a new accept element.
-   * 
-   * @param accept
-   */
   public final native void addAccept(Accept accept) /*-{
     this.addAccept(
       accept
-    );
-  }-*/;
-
-  /**
-   * Adds a new app categories document.
-   * 
-   * @param categories
-   */
-  public final native void addCategories(JavaScriptObject categories) /*-{
-    this.addCategories(
-      categories
     );
   }-*/;
 
@@ -98,7 +77,7 @@ public class Collection extends JavaScriptObject {
    * 
    * @return
    */
-  public final native Accept[] getAccepts() /*-{
+  public final native JsArray<Accept> getAccepts() /*-{
     return this.getAccepts();
   }-*/;
 
@@ -107,7 +86,7 @@ public class Collection extends JavaScriptObject {
    * 
    * @return
    */
-  public final native Categories[] getCategorieses() /*-{
+  public final native JsArray<Categories> getCategorieses() /*-{
     return this.getCategorieses();
   }-*/;
 
@@ -134,7 +113,7 @@ public class Collection extends JavaScriptObject {
    * 
    * @param accepts
    */
-  public final native void setAccepts(JavaScriptObject[] accepts) /*-{
+  public final native void setAccepts(JsArray<Accept> accepts) /*-{
     this.setAccepts(
       accepts
     );
@@ -150,22 +129,11 @@ public class Collection extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the accept elements.
-   * 
-   * @param accepts
-   */
-  public final native void setAccepts(Accept[] accepts) /*-{
-    this.setAccepts(
-      accepts
-    );
-  }-*/;
-
-  /**
    * Sets the app categories documents.
    * 
    * @param categorieses
    */
-  public final native void setCategorieses(JavaScriptObject[] categorieses) /*-{
+  public final native void setCategorieses(JsArray<Categories> categorieses) /*-{
     this.setCategorieses(
       categorieses
     );
@@ -178,17 +146,6 @@ public class Collection extends JavaScriptObject {
    */
   public final native void setCategorieses() /*-{
     this.setCategorieses();
-  }-*/;
-
-  /**
-   * Sets the app categories documents.
-   * 
-   * @param categorieses
-   */
-  public final native void setCategorieses(Categories[] categorieses) /*-{
-    this.setCategorieses(
-      categorieses
-    );
   }-*/;
 
   /**
@@ -216,7 +173,7 @@ public class Collection extends JavaScriptObject {
    * 
    * @param title
    */
-  public final native void setTitle(JavaScriptObject title) /*-{
+  public final native void setTitle(Text title) /*-{
     this.setTitle(
       title
     );
@@ -229,17 +186,6 @@ public class Collection extends JavaScriptObject {
    */
   public final native void setTitle() /*-{
     this.setTitle();
-  }-*/;
-
-  /**
-   * Sets the title.
-   * 
-   * @param title
-   */
-  public final native void setTitle(Text title) /*-{
-    this.setTitle(
-      title
-    );
   }-*/;
 
 }

@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.calendar;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Where;
 
 /**
@@ -48,17 +49,6 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   protected CalendarEntry() { }
-
-  /**
-   * Adds a new calendar location.
-   * 
-   * @param location
-   */
-  public final native void addLocation(JavaScriptObject location) /*-{
-    this.addLocation(
-      location
-    );
-  }-*/;
 
   /**
    * Adds a new calendar location.
@@ -121,7 +111,7 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @return
    */
-  public final native Where[] getLocations() /*-{
+  public final native JsArray<Where> getLocations() /*-{
     return this.getLocations();
   }-*/;
 
@@ -175,7 +165,7 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param accessLevel
    */
-  public final native void setAccessLevel(JavaScriptObject accessLevel) /*-{
+  public final native void setAccessLevel(AccessLevelProperty accessLevel) /*-{
     this.setAccessLevel(
       accessLevel
     );
@@ -191,22 +181,11 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the access level property.
-   * 
-   * @param accessLevel
-   */
-  public final native void setAccessLevel(AccessLevelProperty accessLevel) /*-{
-    this.setAccessLevel(
-      accessLevel
-    );
-  }-*/;
-
-  /**
    * Sets the color property.
    * 
    * @param color
    */
-  public final native void setColor(JavaScriptObject color) /*-{
+  public final native void setColor(ColorProperty color) /*-{
     this.setColor(
       color
     );
@@ -222,22 +201,11 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the color property.
-   * 
-   * @param color
-   */
-  public final native void setColor(ColorProperty color) /*-{
-    this.setColor(
-      color
-    );
-  }-*/;
-
-  /**
    * Sets the hidden property.
    * 
    * @param hidden
    */
-  public final native void setHidden(JavaScriptObject hidden) /*-{
+  public final native void setHidden(HiddenProperty hidden) /*-{
     this.setHidden(
       hidden
     );
@@ -253,22 +221,11 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the hidden property.
-   * 
-   * @param hidden
-   */
-  public final native void setHidden(HiddenProperty hidden) /*-{
-    this.setHidden(
-      hidden
-    );
-  }-*/;
-
-  /**
    * Sets the calendar locations.
    * 
    * @param locations
    */
-  public final native void setLocations(JavaScriptObject[] locations) /*-{
+  public final native void setLocations(JsArray<Where> locations) /*-{
     this.setLocations(
       locations
     );
@@ -284,22 +241,11 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the calendar locations.
-   * 
-   * @param locations
-   */
-  public final native void setLocations(Where[] locations) /*-{
-    this.setLocations(
-      locations
-    );
-  }-*/;
-
-  /**
    * Sets the override name property.
    * 
    * @param overrideName
    */
-  public final native void setOverrideName(JavaScriptObject overrideName) /*-{
+  public final native void setOverrideName(OverrideNameProperty overrideName) /*-{
     this.setOverrideName(
       overrideName
     );
@@ -315,22 +261,11 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the override name property.
-   * 
-   * @param overrideName
-   */
-  public final native void setOverrideName(OverrideNameProperty overrideName) /*-{
-    this.setOverrideName(
-      overrideName
-    );
-  }-*/;
-
-  /**
    * Sets the selected property.
    * 
    * @param selected
    */
-  public final native void setSelected(JavaScriptObject selected) /*-{
+  public final native void setSelected(SelectedProperty selected) /*-{
     this.setSelected(
       selected
     );
@@ -346,22 +281,11 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the selected property.
-   * 
-   * @param selected
-   */
-  public final native void setSelected(SelectedProperty selected) /*-{
-    this.setSelected(
-      selected
-    );
-  }-*/;
-
-  /**
    * Sets the times cleaned property.
    * 
    * @param timesCleaned
    */
-  public final native void setTimesCleaned(JavaScriptObject timesCleaned) /*-{
+  public final native void setTimesCleaned(TimesCleanedProperty timesCleaned) /*-{
     this.setTimesCleaned(
       timesCleaned
     );
@@ -377,22 +301,11 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the times cleaned property.
-   * 
-   * @param timesCleaned
-   */
-  public final native void setTimesCleaned(TimesCleanedProperty timesCleaned) /*-{
-    this.setTimesCleaned(
-      timesCleaned
-    );
-  }-*/;
-
-  /**
    * Sets the time zone property.
    * 
    * @param timeZone
    */
-  public final native void setTimeZone(JavaScriptObject timeZone) /*-{
+  public final native void setTimeZone(TimeZoneProperty timeZone) /*-{
     this.setTimeZone(
       timeZone
     );
@@ -405,17 +318,6 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setTimeZone() /*-{
     this.setTimeZone();
-  }-*/;
-
-  /**
-   * Sets the time zone property.
-   * 
-   * @param timeZone
-   */
-  public final native void setTimeZone(TimeZoneProperty timeZone) /*-{
-    this.setTimeZone(
-      timeZone
-    );
   }-*/;
 
 }

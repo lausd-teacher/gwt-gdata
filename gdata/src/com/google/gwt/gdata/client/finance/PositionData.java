@@ -179,7 +179,7 @@ public class PositionData extends JavaScriptObject {
    * 
    * @param costBasis
    */
-  public final native void setCostBasis(JavaScriptObject costBasis) /*-{
+  public final native void setCostBasis(CostBasis costBasis) /*-{
     this.setCostBasis(
       costBasis
     );
@@ -195,22 +195,11 @@ public class PositionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the cost basis of the position in the portfolio default currency (and exchange currency if it differs).
-   * 
-   * @param costBasis
-   */
-  public final native void setCostBasis(CostBasis costBasis) /*-{
-    this.setCostBasis(
-      costBasis
-    );
-  }-*/;
-
-  /**
    * Sets the todays gain for the position in the portfolio default currency (and exchange currency if it differs).
    * 
    * @param daysGain
    */
-  public final native void setDaysGain(JavaScriptObject daysGain) /*-{
+  public final native void setDaysGain(DaysGain daysGain) /*-{
     this.setDaysGain(
       daysGain
     );
@@ -226,22 +215,11 @@ public class PositionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the todays gain for the position in the portfolio default currency (and exchange currency if it differs).
-   * 
-   * @param daysGain
-   */
-  public final native void setDaysGain(DaysGain daysGain) /*-{
-    this.setDaysGain(
-      daysGain
-    );
-  }-*/;
-
-  /**
    * Sets the gain for the position in the portfolio default currency (and exchange currency if it differs).
    * 
    * @param gain
    */
-  public final native void setGain(JavaScriptObject gain) /*-{
+  public final native void setGain(Gain gain) /*-{
     this.setGain(
       gain
     );
@@ -254,17 +232,6 @@ public class PositionData extends JavaScriptObject {
    */
   public final native void setGain() /*-{
     this.setGain();
-  }-*/;
-
-  /**
-   * Sets the gain for the position in the portfolio default currency (and exchange currency if it differs).
-   * 
-   * @param gain
-   */
-  public final native void setGain(Gain gain) /*-{
-    this.setGain(
-      gain
-    );
   }-*/;
 
   /**
@@ -292,7 +259,7 @@ public class PositionData extends JavaScriptObject {
    * 
    * @param marketValue
    */
-  public final native void setMarketValue(JavaScriptObject marketValue) /*-{
+  public final native void setMarketValue(MarketValue marketValue) /*-{
     this.setMarketValue(
       marketValue
     );
@@ -305,17 +272,6 @@ public class PositionData extends JavaScriptObject {
    */
   public final native void setMarketValue() /*-{
     this.setMarketValue();
-  }-*/;
-
-  /**
-   * Sets the market value of the position in the portfolio default currency (and exchange currency if it differs).
-   * 
-   * @param marketValue
-   */
-  public final native void setMarketValue(MarketValue marketValue) /*-{
-    this.setMarketValue(
-      marketValue
-    );
   }-*/;
 
   /**

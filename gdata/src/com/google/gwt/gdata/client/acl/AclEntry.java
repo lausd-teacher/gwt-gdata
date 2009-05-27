@@ -78,7 +78,7 @@ public class AclEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param role
    */
-  public final native void setRole(JavaScriptObject role) /*-{
+  public final native void setRole(AclRole role) /*-{
     this.setRole(
       role
     );
@@ -94,22 +94,11 @@ public class AclEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Sets the role.
-   * 
-   * @param role
-   */
-  public final native void setRole(AclRole role) /*-{
-    this.setRole(
-      role
-    );
-  }-*/;
-
-  /**
    * Sets the scope.
    * 
    * @param scope
    */
-  public final native void setScope(JavaScriptObject scope) /*-{
+  public final native void setScope(AclScope scope) /*-{
     this.setScope(
       scope
     );
@@ -122,17 +111,6 @@ public class AclEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setScope() /*-{
     this.setScope();
-  }-*/;
-
-  /**
-   * Sets the scope.
-   * 
-   * @param scope
-   */
-  public final native void setScope(AclScope scope) /*-{
-    this.setScope(
-      scope
-    );
   }-*/;
 
 }

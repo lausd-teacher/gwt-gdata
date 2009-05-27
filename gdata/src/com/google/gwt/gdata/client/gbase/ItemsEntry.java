@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.FeedLink;
 
 /**
@@ -67,7 +68,7 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @return
    */
-  public final native Attribute[] getAttributes() /*-{
+  public final native JsArray<Attribute> getAttributes() /*-{
     return this.getAttributes();
   }-*/;
 
@@ -95,7 +96,7 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
    * @param name
    * @param attribute
    */
-  public final native void setAttribute(String name, JavaScriptObject attribute) /*-{
+  public final native void setAttribute(String name, Attribute attribute) /*-{
     this.setAttribute(
       name,
       attribute
@@ -112,19 +113,6 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
     this.setAttribute(
       name,
       undefined
-    );
-  }-*/;
-
-  /**
-   * Sets the attribute.
-   * 
-   * @param name
-   * @param attribute
-   */
-  public final native void setAttribute(String name, Attribute attribute) /*-{
-    this.setAttribute(
-      name,
-      attribute
     );
   }-*/;
 
@@ -153,7 +141,7 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param feedLink
    */
-  public final native void setFeedLink(JavaScriptObject feedLink) /*-{
+  public final native void setFeedLink(FeedLink feedLink) /*-{
     this.setFeedLink(
       feedLink
     );
@@ -166,17 +154,6 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setFeedLink() /*-{
     this.setFeedLink();
-  }-*/;
-
-  /**
-   * Sets the nested feed link.
-   * 
-   * @param feedLink
-   */
-  public final native void setFeedLink(FeedLink feedLink) /*-{
-    this.setFeedLink(
-      feedLink
-    );
   }-*/;
 
 }

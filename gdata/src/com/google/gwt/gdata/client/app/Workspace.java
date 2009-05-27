@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.app;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.atom.Text;
 
 /**
@@ -54,17 +55,6 @@ public class Workspace extends JavaScriptObject {
    * 
    * @param collection
    */
-  public final native void addCollection(JavaScriptObject collection) /*-{
-    this.addCollection(
-      collection
-    );
-  }-*/;
-
-  /**
-   * Adds a new collection.
-   * 
-   * @param collection
-   */
   public final native void addCollection(Collection collection) /*-{
     this.addCollection(
       collection
@@ -76,7 +66,7 @@ public class Workspace extends JavaScriptObject {
    * 
    * @return
    */
-  public final native Collection[] getCollections() /*-{
+  public final native JsArray<Collection> getCollections() /*-{
     return this.getCollections();
   }-*/;
 
@@ -94,7 +84,7 @@ public class Workspace extends JavaScriptObject {
    * 
    * @param collections
    */
-  public final native void setCollections(JavaScriptObject[] collections) /*-{
+  public final native void setCollections(JsArray<Collection> collections) /*-{
     this.setCollections(
       collections
     );
@@ -110,22 +100,11 @@ public class Workspace extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the collections.
-   * 
-   * @param collections
-   */
-  public final native void setCollections(Collection[] collections) /*-{
-    this.setCollections(
-      collections
-    );
-  }-*/;
-
-  /**
    * Sets the title.
    * 
    * @param title
    */
-  public final native void setTitle(JavaScriptObject title) /*-{
+  public final native void setTitle(Text title) /*-{
     this.setTitle(
       title
     );
@@ -138,17 +117,6 @@ public class Workspace extends JavaScriptObject {
    */
   public final native void setTitle() /*-{
     this.setTitle();
-  }-*/;
-
-  /**
-   * Sets the title.
-   * 
-   * @param title
-   */
-  public final native void setTitle(Text title) /*-{
-    this.setTitle(
-      title
-    );
   }-*/;
 
 }
