@@ -49,7 +49,7 @@ public class ContactGroupEntryTest extends GWTTestCase {
     assertSame("systemgroup", obj.getSystemGroup(), systemgroup);
     JsArray<com.google.gwt.gdata.client.ExtendedProperty> extendedproperties = ArrayHelper.toJsArray(ExtendedProperty.newInstance(JavaScriptObject.createObject()));
     obj.setExtendedProperties(extendedproperties);
-    assertSame("extendedproperties", obj.getExtendedProperties(), extendedproperties);
+    assertEquals("extendedproperties", obj.getExtendedProperties().length(), extendedproperties.length());
     Deleted deleted = Deleted.newInstance(JavaScriptObject.createObject());
     obj.setDeleted(deleted);
     assertSame("deleted", obj.getDeleted(), deleted);

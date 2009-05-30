@@ -40,7 +40,7 @@ public class FeedLinkTest extends GWTTestCase {
     assertSame("readonly", obj.getReadOnly(), readonly);
     double counthint = 600813;
     obj.setCountHint(counthint);
-    assertSame("counthint", obj.getCountHint(), counthint);
+    assertEquals("counthint", obj.getCountHint(), counthint);
     Feed feed = Feed.newInstance(JavaScriptObject.createObject());
     obj.setFeed(feed);
     assertSame("feed", obj.getFeed(), feed);

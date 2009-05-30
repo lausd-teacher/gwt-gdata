@@ -74,7 +74,7 @@ public class Service extends JavaScriptObject {
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result); },
       function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      entryClass.@com.google.gwt.gdata.client.Entry::getConstructor()(),
+      @com.google.gwt.gdata.client.Entry::getConstructor()(),
       authenticationRequired
     );
   }-*/;
@@ -116,7 +116,7 @@ public class Service extends JavaScriptObject {
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
       function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      entryClass.@com.google.gwt.gdata.client.Entry::getConstructor()(),
+      @com.google.gwt.gdata.client.Entry::getConstructor()(),
       undefined
     );
   }-*/;
@@ -158,7 +158,7 @@ public class Service extends JavaScriptObject {
       query,
       function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result); },
       function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      feedClass.@com.google.gwt.gdata.client.Feed::getConstructor()(),
+      @com.google.gwt.gdata.client.Feed::getConstructor()(),
       authenticationRequired
     );
   }-*/;
@@ -200,7 +200,7 @@ public class Service extends JavaScriptObject {
       query,
       function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
       function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      feedClass.@com.google.gwt.gdata.client.Feed::getConstructor()(),
+      @com.google.gwt.gdata.client.Feed::getConstructor()(),
       undefined
     );
   }-*/;
@@ -240,7 +240,7 @@ public class Service extends JavaScriptObject {
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
       function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      feedClass.@com.google.gwt.gdata.client.Feed::getConstructor()(),
+      @com.google.gwt.gdata.client.Feed::getConstructor()(),
       authenticationRequired
     );
   }-*/;
@@ -278,7 +278,7 @@ public class Service extends JavaScriptObject {
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
       function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      feedClass.@com.google.gwt.gdata.client.Feed::getConstructor()(),
+      @com.google.gwt.gdata.client.Feed::getConstructor()(),
       undefined
     );
   }-*/;
@@ -317,7 +317,7 @@ public class Service extends JavaScriptObject {
       entry,
       function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
       function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      entryClass.@com.google.gwt.gdata.client.Entry::getConstructor()()
+      @com.google.gwt.gdata.client.Entry::getConstructor()()
     );
   }-*/;
 
@@ -423,7 +423,7 @@ public class Service extends JavaScriptObject {
       entry,
       function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
       function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      entryClass.@com.google.gwt.gdata.client.Entry::getConstructor()()
+      @com.google.gwt.gdata.client.Entry::getConstructor()()
     );
   }-*/;
 

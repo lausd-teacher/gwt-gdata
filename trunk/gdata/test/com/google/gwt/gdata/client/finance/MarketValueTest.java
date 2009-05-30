@@ -45,6 +45,6 @@ public class MarketValueTest extends GWTTestCase {
     MarketValue obj = MarketValue.newInstance(JavaScriptObject.createObject());
     JsArray<com.google.gwt.gdata.client.Money> money = ArrayHelper.toJsArray(Money.newInstance(JavaScriptObject.createObject()));
     obj.setMoney(money);
-    assertSame("money", obj.getMoney(), money);
+    assertEquals("money", obj.getMoney().length(), money.length());
   }
 }

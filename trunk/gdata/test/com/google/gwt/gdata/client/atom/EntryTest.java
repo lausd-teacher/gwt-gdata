@@ -53,7 +53,7 @@ public class EntryTest extends GWTTestCase {
     assertSame("updated", obj.getUpdated(), updated);
     JsArray<com.google.gwt.gdata.client.atom.Person> contributors = ArrayHelper.toJsArray(Person.newInstance(JavaScriptObject.createObject()));
     obj.setContributors(contributors);
-    assertSame("contributors", obj.getContributors(), contributors);
+    assertEquals("contributors", obj.getContributors().length(), contributors.length());
     Id id = Id.newInstance(JavaScriptObject.createObject());
     obj.setId(id);
     assertSame("id", obj.getId(), id);
@@ -62,10 +62,10 @@ public class EntryTest extends GWTTestCase {
     assertSame("content", obj.getContent(), content);
     JsArray<com.google.gwt.gdata.client.atom.Category> categories = ArrayHelper.toJsArray(Category.newInstance(JavaScriptObject.createObject()));
     obj.setCategories(categories);
-    assertSame("categories", obj.getCategories(), categories);
+    assertEquals("categories", obj.getCategories().length(), categories.length());
     JsArray<com.google.gwt.gdata.client.atom.Person> authors = ArrayHelper.toJsArray(Person.newInstance(JavaScriptObject.createObject()));
     obj.setAuthors(authors);
-    assertSame("authors", obj.getAuthors(), authors);
+    assertEquals("authors", obj.getAuthors().length(), authors.length());
     Text rights = Text.newInstance(JavaScriptObject.createObject());
     obj.setRights(rights);
     assertSame("rights", obj.getRights(), rights);
@@ -74,7 +74,7 @@ public class EntryTest extends GWTTestCase {
     assertSame("title", obj.getTitle(), title);
     JsArray<com.google.gwt.gdata.client.atom.Link> links = ArrayHelper.toJsArray(Link.newInstance(JavaScriptObject.createObject()));
     obj.setLinks(links);
-    assertSame("links", obj.getLinks(), links);
+    assertEquals("links", obj.getLinks().length(), links.length());
     Published published = Published.newInstance(JavaScriptObject.createObject());
     obj.setPublished(published);
     assertSame("published", obj.getPublished(), published);

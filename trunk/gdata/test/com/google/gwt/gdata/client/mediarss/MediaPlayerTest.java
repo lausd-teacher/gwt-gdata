@@ -37,12 +37,12 @@ public class MediaPlayerTest extends GWTTestCase {
     MediaPlayer obj = MediaPlayer.newInstance(JavaScriptObject.createObject());
     double width = 600813;
     obj.setWidth(width);
-    assertSame("width", obj.getWidth(), width);
+    assertEquals("width", obj.getWidth(), width);
     String url = "myValue";
     obj.setUrl(url);
     assertEquals("url", obj.getUrl(), url);
     double height = 600813;
     obj.setHeight(height);
-    assertSame("height", obj.getHeight(), height);
+    assertEquals("height", obj.getHeight(), height);
   }
 }

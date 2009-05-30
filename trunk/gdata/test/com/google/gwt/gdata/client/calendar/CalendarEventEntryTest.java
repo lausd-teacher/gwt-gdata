@@ -61,7 +61,7 @@ public class CalendarEventEntryTest extends GWTTestCase {
     assertSame("sequence", obj.getSequence(), sequence);
     JsArray<com.google.gwt.gdata.client.calendar.CalendarExtendedProperty> extendedproperties = ArrayHelper.toJsArray(CalendarExtendedProperty.newInstance(JavaScriptObject.createObject()));
     obj.setExtendedProperties(extendedproperties);
-    assertSame("extendedproperties", obj.getExtendedProperties(), extendedproperties);
+    assertEquals("extendedproperties", obj.getExtendedProperties().length(), extendedproperties.length());
     CalendarLink webcontentlink = CalendarLink.newInstance(JavaScriptObject.createObject());
     obj.setWebContentLink(webcontentlink);
     assertSame("webcontentlink", obj.getWebContentLink(), webcontentlink);

@@ -53,19 +53,19 @@ public class MediaGroupTest extends GWTTestCase {
     assertSame("description", obj.getDescription(), description);
     JsArray<com.google.gwt.gdata.client.mediarss.MediaText> texts = ArrayHelper.toJsArray(MediaText.newInstance(JavaScriptObject.createObject()));
     obj.setTexts(texts);
-    assertSame("texts", obj.getTexts(), texts);
+    assertEquals("texts", obj.getTexts().length(), texts.length());
     MediaPlayer player = MediaPlayer.newInstance(JavaScriptObject.createObject());
     obj.setPlayer(player);
     assertSame("player", obj.getPlayer(), player);
     JsArray<com.google.gwt.gdata.client.mediarss.MediaThumbnail> thumbnails = ArrayHelper.toJsArray(MediaThumbnail.newInstance(JavaScriptObject.createObject()));
     obj.setThumbnails(thumbnails);
-    assertSame("thumbnails", obj.getThumbnails(), thumbnails);
+    assertEquals("thumbnails", obj.getThumbnails().length(), thumbnails.length());
     MediaKeywords keywords = MediaKeywords.newInstance(JavaScriptObject.createObject());
     obj.setKeywords(keywords);
     assertSame("keywords", obj.getKeywords(), keywords);
     JsArray<com.google.gwt.gdata.client.mediarss.MediaCategory> categories = ArrayHelper.toJsArray(MediaCategory.newInstance(JavaScriptObject.createObject()));
     obj.setCategories(categories);
-    assertSame("categories", obj.getCategories(), categories);
+    assertEquals("categories", obj.getCategories().length(), categories.length());
     MediaTitle title = MediaTitle.newInstance(JavaScriptObject.createObject());
     obj.setTitle(title);
     assertSame("title", obj.getTitle(), title);
@@ -77,15 +77,15 @@ public class MediaGroupTest extends GWTTestCase {
     assertSame("copyright", obj.getCopyright(), copyright);
     JsArray<com.google.gwt.gdata.client.mediarss.MediaRestriction> restrictions = ArrayHelper.toJsArray(MediaRestriction.newInstance(JavaScriptObject.createObject()));
     obj.setRestrictions(restrictions);
-    assertSame("restrictions", obj.getRestrictions(), restrictions);
+    assertEquals("restrictions", obj.getRestrictions().length(), restrictions.length());
     JsArray<com.google.gwt.gdata.client.mediarss.MediaRating> ratings = ArrayHelper.toJsArray(MediaRating.newInstance(JavaScriptObject.createObject()));
     obj.setRatings(ratings);
-    assertSame("ratings", obj.getRatings(), ratings);
+    assertEquals("ratings", obj.getRatings().length(), ratings.length());
     JsArray<com.google.gwt.gdata.client.mediarss.MediaContent> contents = ArrayHelper.toJsArray(MediaContent.newInstance(JavaScriptObject.createObject()));
     obj.setContents(contents);
-    assertSame("contents", obj.getContents(), contents);
+    assertEquals("contents", obj.getContents().length(), contents.length());
     JsArray<com.google.gwt.gdata.client.mediarss.MediaCredit> credits = ArrayHelper.toJsArray(MediaCredit.newInstance(JavaScriptObject.createObject()));
     obj.setCredits(credits);
-    assertSame("credits", obj.getCredits(), credits);
+    assertEquals("credits", obj.getCredits().length(), credits.length());
   }
 }

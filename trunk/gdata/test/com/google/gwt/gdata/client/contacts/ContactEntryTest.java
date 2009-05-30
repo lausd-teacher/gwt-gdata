@@ -45,7 +45,7 @@ public class ContactEntryTest extends GWTTestCase {
     ContactEntry obj = ContactEntry.newInstance(JavaScriptObject.createObject());
     JsArray<com.google.gwt.gdata.client.contacts.GroupMembershipInfo> groupmembershipinfos = ArrayHelper.toJsArray(GroupMembershipInfo.newInstance(JavaScriptObject.createObject()));
     obj.setGroupMembershipInfos(groupmembershipinfos);
-    assertSame("groupmembershipinfos", obj.getGroupMembershipInfos(), groupmembershipinfos);
+    assertEquals("groupmembershipinfos", obj.getGroupMembershipInfos().length(), groupmembershipinfos.length());
     Deleted deleted = Deleted.newInstance(JavaScriptObject.createObject());
     obj.setDeleted(deleted);
     assertSame("deleted", obj.getDeleted(), deleted);

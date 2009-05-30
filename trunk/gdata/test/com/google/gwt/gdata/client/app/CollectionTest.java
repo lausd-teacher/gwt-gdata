@@ -46,13 +46,13 @@ public class CollectionTest extends GWTTestCase {
     Collection obj = Collection.newInstance(JavaScriptObject.createObject());
     JsArray<com.google.gwt.gdata.client.app.Accept> accepts = ArrayHelper.toJsArray(Accept.newInstance(JavaScriptObject.createObject()));
     obj.setAccepts(accepts);
-    assertSame("accepts", obj.getAccepts(), accepts);
+    assertEquals("accepts", obj.getAccepts().length(), accepts.length());
     Text title = Text.newInstance(JavaScriptObject.createObject());
     obj.setTitle(title);
     assertSame("title", obj.getTitle(), title);
     JsArray<com.google.gwt.gdata.client.app.Categories> categorieses = ArrayHelper.toJsArray(Categories.newInstance(JavaScriptObject.createObject()));
     obj.setCategorieses(categorieses);
-    assertSame("categorieses", obj.getCategorieses(), categorieses);
+    assertEquals("categorieses", obj.getCategorieses().length(), categorieses.length());
     String href = "myValue";
     obj.setHref(href);
     assertEquals("href", obj.getHref(), href);

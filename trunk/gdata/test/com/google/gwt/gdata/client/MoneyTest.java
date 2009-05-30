@@ -40,6 +40,6 @@ public class MoneyTest extends GWTTestCase {
     assertEquals("currencycode", obj.getCurrencyCode(), currencycode);
     double amount = 600813;
     obj.setAmount(amount);
-    assertSame("amount", obj.getAmount(), amount);
+    assertEquals("amount", obj.getAmount(), amount);
   }
 }

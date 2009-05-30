@@ -53,10 +53,10 @@ public class GmAttributeTest extends GWTTestCase {
     assertEquals("name", obj.getName(), name);
     JsArray<com.google.gwt.gdata.client.gbase.GmValue> values = ArrayHelper.toJsArray(GmValue.newInstance(JavaScriptObject.createObject()));
     obj.setValues(values);
-    assertSame("values", obj.getValues(), values);
+    assertEquals("values", obj.getValues().length(), values.length());
     double count = 600813;
     obj.setCount(count);
-    assertSame("count", obj.getCount(), count);
+    assertEquals("count", obj.getCount(), count);
     String type = "myValue";
     obj.setType(type);
     assertEquals("type", obj.getType(), type);

@@ -43,21 +43,21 @@ public class RatingTest extends GWTTestCase {
     Rating obj = Rating.newInstance(JavaScriptObject.createObject());
     double min = 600813;
     obj.setMin(min);
-    assertSame("min", obj.getMin(), min);
+    assertEquals("min", obj.getMin(), min);
     double value = 600813;
     obj.setValue(value);
-    assertSame("value", obj.getValue(), value);
+    assertEquals("value", obj.getValue(), value);
     double average = 600813;
     obj.setAverage(average);
-    assertSame("average", obj.getAverage(), average);
+    assertEquals("average", obj.getAverage(), average);
     double numraters = 600813;
     obj.setNumRaters(numraters);
-    assertSame("numraters", obj.getNumRaters(), numraters);
+    assertEquals("numraters", obj.getNumRaters(), numraters);
     String rel = "myValue";
     obj.setRel(rel);
     assertEquals("rel", obj.getRel(), rel);
     double max = 600813;
     obj.setMax(max);
-    assertSame("max", obj.getMax(), max);
+    assertEquals("max", obj.getMax(), max);
   }
 }

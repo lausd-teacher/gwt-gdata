@@ -49,7 +49,7 @@ public class RecurrenceExceptionEntryTest extends GWTTestCase {
     assertSame("originalevent", obj.getOriginalEvent(), originalevent);
     JsArray<com.google.gwt.gdata.client.Where> where = ArrayHelper.toJsArray(Where.newInstance(JavaScriptObject.createObject()));
     obj.setWhere(where);
-    assertSame("where", obj.getWhere(), where);
+    assertEquals("where", obj.getWhere().length(), where.length());
     Comments comments = Comments.newInstance(JavaScriptObject.createObject());
     obj.setComments(comments);
     assertSame("comments", obj.getComments(), comments);
@@ -61,12 +61,12 @@ public class RecurrenceExceptionEntryTest extends GWTTestCase {
     assertSame("transparency", obj.getTransparency(), transparency);
     JsArray<com.google.gwt.gdata.client.Who> who = ArrayHelper.toJsArray(Who.newInstance(JavaScriptObject.createObject()));
     obj.setWho(who);
-    assertSame("who", obj.getWho(), who);
+    assertEquals("who", obj.getWho().length(), who.length());
     Visibility visibility = Visibility.newInstance(JavaScriptObject.createObject());
     obj.setVisibility(visibility);
     assertSame("visibility", obj.getVisibility(), visibility);
     JsArray<com.google.gwt.gdata.client.When> when = ArrayHelper.toJsArray(When.newInstance(JavaScriptObject.createObject()));
     obj.setWhen(when);
-    assertSame("when", obj.getWhen(), when);
+    assertEquals("when", obj.getWhen().length(), when.length());
   }
 }

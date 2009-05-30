@@ -57,7 +57,7 @@ public class LinkTest extends GWTTestCase {
     assertEquals("title", obj.getTitle(), title);
     double length = 600813;
     obj.setLength(length);
-    assertSame("length", obj.getLength(), length);
+    assertEquals("length", obj.getLength(), length);
     String rel = "myValue";
     obj.setRel(rel);
     assertEquals("rel", obj.getRel(), rel);

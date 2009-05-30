@@ -44,6 +44,6 @@ public class GmAttributesTest extends GWTTestCase {
     GmAttributes obj = GmAttributes.newInstance(JavaScriptObject.createObject());
     JsArray<com.google.gwt.gdata.client.gbase.GmAttribute> attributes = ArrayHelper.toJsArray(GmAttribute.newInstance(JavaScriptObject.createObject()));
     obj.setAttributes(attributes);
-    assertSame("attributes", obj.getAttributes(), attributes);
+    assertEquals("attributes", obj.getAttributes().length(), attributes.length());
   }
 }
