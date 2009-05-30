@@ -40,7 +40,7 @@ public class TransactionDataTest extends GWTTestCase {
     TransactionData obj = TransactionData.newInstance(JavaScriptObject.createObject());
     DateTime date = DateTime.newInstance(new Date(), true);
     obj.setDate(date);
-    assertSame("date", obj.getDate(), date);
+    assertEquals("date", obj.getDate().getDate(), date.getDate());
     Price price = Price.newInstance(JavaScriptObject.createObject());
     obj.setPrice(price);
     assertSame("price", obj.getPrice(), price);
@@ -49,7 +49,7 @@ public class TransactionDataTest extends GWTTestCase {
     assertEquals("type", obj.getType(), type);
     double shares = 600813;
     obj.setShares(shares);
-    assertSame("shares", obj.getShares(), shares);
+    assertEquals("shares", obj.getShares(), shares);
     Commission commission = Commission.newInstance(JavaScriptObject.createObject());
     obj.setCommission(commission);
     assertSame("commission", obj.getCommission(), commission);

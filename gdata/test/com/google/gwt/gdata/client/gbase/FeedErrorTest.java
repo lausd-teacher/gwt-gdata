@@ -43,6 +43,6 @@ public class FeedErrorTest extends GWTTestCase {
     assertEquals("value", obj.getValue(), value);
     double line = 600813;
     obj.setLine(line);
-    assertSame("line", obj.getLine(), line);
+    assertEquals("line", obj.getLine(), line);
   }
 }

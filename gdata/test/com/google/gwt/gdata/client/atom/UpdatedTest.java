@@ -40,6 +40,6 @@ public class UpdatedTest extends GWTTestCase {
     Updated obj = Updated.newInstance(JavaScriptObject.createObject());
     DateTime value = DateTime.newInstance(new Date(), true);
     obj.setValue(value);
-    assertSame("value", obj.getValue(), value);
+    assertEquals("value", obj.getValue().getDate(), value.getDate());
   }
 }

@@ -16,7 +16,9 @@
 
 package com.google.gwt.gdata.client.impl;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptException;
+import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
@@ -26,11 +28,29 @@ public class Utils {
   
   @SuppressWarnings("unchecked")
   public static void handleFailureCallback(AsyncCallback cb, String error) {
-    cb.onFailure(new JavaScriptException(error));
+    UncaughtExceptionHandler handler = GWT.getUncaughtExceptionHandler();
+    if (handler != null) {
+      try {
+        cb.onFailure(new JavaScriptException(error));
+      } catch (Throwable e) {
+        handler.onUncaughtException(e);
+      }
+    } else {
+      cb.onFailure(new JavaScriptException(error));
+    }
   }
 
   @SuppressWarnings("unchecked")
   public static void handleSuccessCallback(AsyncCallback cb, Object arg) {
-    cb.onSuccess(arg);
+    UncaughtExceptionHandler handler = GWT.getUncaughtExceptionHandler();
+    if (handler != null) {
+      try {
+        cb.onSuccess(arg);
+      } catch (Throwable e) {
+        handler.onUncaughtException(e);
+      }
+    } else {
+      cb.onSuccess(arg);
+    }
   }
 }

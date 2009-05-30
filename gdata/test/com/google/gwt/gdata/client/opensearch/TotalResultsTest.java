@@ -37,6 +37,6 @@ public class TotalResultsTest extends GWTTestCase {
     TotalResults obj = TotalResults.newInstance(JavaScriptObject.createObject());
     double value = 600813;
     obj.setValue(value);
-    assertSame("value", obj.getValue(), value);
+    assertEquals("value", obj.getValue(), value);
   }
 }

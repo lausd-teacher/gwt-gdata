@@ -37,7 +37,7 @@ public class GmValueTest extends GWTTestCase {
     GmValue obj = GmValue.newInstance(JavaScriptObject.createObject());
     double count = 600813;
     obj.setCount(count);
-    assertSame("count", obj.getCount(), count);
+    assertEquals("count", obj.getCount(), count);
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

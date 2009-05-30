@@ -44,6 +44,6 @@ public class ServiceDocumentTest extends GWTTestCase {
     ServiceDocument obj = ServiceDocument.newInstance(JavaScriptObject.createObject());
     JsArray<com.google.gwt.gdata.client.app.Workspace> workspaces = ArrayHelper.toJsArray(Workspace.newInstance(JavaScriptObject.createObject()));
     obj.setWorkspaces(workspaces);
-    assertSame("workspaces", obj.getWorkspaces(), workspaces);
+    assertEquals("workspaces", obj.getWorkspaces().length(), workspaces.length());
   }
 }

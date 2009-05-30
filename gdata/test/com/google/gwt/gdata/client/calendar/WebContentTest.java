@@ -44,15 +44,15 @@ public class WebContentTest extends GWTTestCase {
     WebContent obj = WebContent.newInstance(JavaScriptObject.createObject());
     double width = 600813;
     obj.setWidth(width);
-    assertSame("width", obj.getWidth(), width);
+    assertEquals("width", obj.getWidth(), width);
     JsArray<com.google.gwt.gdata.client.calendar.WebContentGadgetPref> gadgetprefs = ArrayHelper.toJsArray(WebContentGadgetPref.newInstance(JavaScriptObject.createObject()));
     obj.setGadgetPrefs(gadgetprefs);
-    assertSame("gadgetprefs", obj.getGadgetPrefs(), gadgetprefs);
+    assertEquals("gadgetprefs", obj.getGadgetPrefs().length(), gadgetprefs.length());
     String url = "myValue";
     obj.setUrl(url);
     assertEquals("url", obj.getUrl(), url);
     double height = 600813;
     obj.setHeight(height);
-    assertSame("height", obj.getHeight(), height);
+    assertEquals("height", obj.getHeight(), height);
   }
 }

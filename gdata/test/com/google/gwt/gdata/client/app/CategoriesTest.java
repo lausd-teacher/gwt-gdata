@@ -56,7 +56,7 @@ public class CategoriesTest extends GWTTestCase {
     assertEquals("fixed", obj.getFixed(), fixed);
     JsArray<com.google.gwt.gdata.client.atom.Category> categories = ArrayHelper.toJsArray(Category.newInstance(JavaScriptObject.createObject()));
     obj.setCategories(categories);
-    assertSame("categories", obj.getCategories(), categories);
+    assertEquals("categories", obj.getCategories().length(), categories.length());
     String href = "myValue";
     obj.setHref(href);
     assertEquals("href", obj.getHref(), href);

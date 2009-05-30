@@ -55,21 +55,21 @@ public class PersonEntryTest extends GWTTestCase {
     PersonEntry obj = PersonEntry.newInstance(JavaScriptObject.createObject());
     JsArray<com.google.gwt.gdata.client.PostalAddress> postaladdresses = ArrayHelper.toJsArray(PostalAddress.newInstance(JavaScriptObject.createObject()));
     obj.setPostalAddresses(postaladdresses);
-    assertSame("postaladdresses", obj.getPostalAddresses(), postaladdresses);
+    assertEquals("postaladdresses", obj.getPostalAddresses().length(), postaladdresses.length());
     JsArray<com.google.gwt.gdata.client.Im> imaddresses = ArrayHelper.toJsArray(Im.newInstance(JavaScriptObject.createObject()));
     obj.setImAddresses(imaddresses);
-    assertSame("imaddresses", obj.getImAddresses(), imaddresses);
+    assertEquals("imaddresses", obj.getImAddresses().length(), imaddresses.length());
     JsArray<com.google.gwt.gdata.client.PhoneNumber> phonenumbers = ArrayHelper.toJsArray(PhoneNumber.newInstance(JavaScriptObject.createObject()));
     obj.setPhoneNumbers(phonenumbers);
-    assertSame("phonenumbers", obj.getPhoneNumbers(), phonenumbers);
+    assertEquals("phonenumbers", obj.getPhoneNumbers().length(), phonenumbers.length());
     JsArray<com.google.gwt.gdata.client.Organization> organizations = ArrayHelper.toJsArray(Organization.newInstance(JavaScriptObject.createObject()));
     obj.setOrganizations(organizations);
-    assertSame("organizations", obj.getOrganizations(), organizations);
+    assertEquals("organizations", obj.getOrganizations().length(), organizations.length());
     JsArray<com.google.gwt.gdata.client.Email> emailaddresses = ArrayHelper.toJsArray(Email.newInstance(JavaScriptObject.createObject()));
     obj.setEmailAddresses(emailaddresses);
-    assertSame("emailaddresses", obj.getEmailAddresses(), emailaddresses);
+    assertEquals("emailaddresses", obj.getEmailAddresses().length(), emailaddresses.length());
     JsArray<com.google.gwt.gdata.client.ExtendedProperty> extendedproperties = ArrayHelper.toJsArray(ExtendedProperty.newInstance(JavaScriptObject.createObject()));
     obj.setExtendedProperties(extendedproperties);
-    assertSame("extendedproperties", obj.getExtendedProperties(), extendedproperties);
+    assertEquals("extendedproperties", obj.getExtendedProperties().length(), extendedproperties.length());
   }
 }

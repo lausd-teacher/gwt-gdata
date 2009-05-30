@@ -44,9 +44,9 @@ public class ThreadingLinkTest extends GWTTestCase {
     ThreadingLink obj = ThreadingLink.newInstance(JavaScriptObject.createObject());
     double count = 600813;
     obj.setCount(count);
-    assertSame("count", obj.getCount(), count);
+    assertEquals("count", obj.getCount(), count);
     DateTime updated = DateTime.newInstance(new Date(), true);
     obj.setUpdated(updated);
-    assertSame("updated", obj.getUpdated(), updated);
+    assertEquals("updated", obj.getUpdated().getDate(), updated.getDate());
   }
 }

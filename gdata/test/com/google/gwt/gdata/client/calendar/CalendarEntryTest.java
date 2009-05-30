@@ -63,7 +63,7 @@ public class CalendarEntryTest extends GWTTestCase {
     assertSame("overridename", obj.getOverrideName(), overridename);
     JsArray<com.google.gwt.gdata.client.Where> locations = ArrayHelper.toJsArray(Where.newInstance(JavaScriptObject.createObject()));
     obj.setLocations(locations);
-    assertSame("locations", obj.getLocations(), locations);
+    assertEquals("locations", obj.getLocations().length(), locations.length());
     AccessLevelProperty accesslevel = AccessLevelProperty.newInstance(JavaScriptObject.createObject());
     obj.setAccessLevel(accesslevel);
     assertSame("accesslevel", obj.getAccessLevel(), accesslevel);

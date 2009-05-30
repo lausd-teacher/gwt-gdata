@@ -48,6 +48,6 @@ public class WorkspaceTest extends GWTTestCase {
     assertSame("title", obj.getTitle(), title);
     JsArray<com.google.gwt.gdata.client.app.Collection> collections = ArrayHelper.toJsArray(Collection.newInstance(JavaScriptObject.createObject()));
     obj.setCollections(collections);
-    assertSame("collections", obj.getCollections(), collections);
+    assertEquals("collections", obj.getCollections().length(), collections.length());
   }
 }

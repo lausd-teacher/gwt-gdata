@@ -46,13 +46,13 @@ public class WhenTest extends GWTTestCase {
     When obj = When.newInstance(JavaScriptObject.createObject());
     DateTime endtime = DateTime.newInstance(new Date(), true);
     obj.setEndTime(endtime);
-    assertSame("endtime", obj.getEndTime(), endtime);
+    assertEquals("endtime", obj.getEndTime().getDate(), endtime.getDate());
     JsArray<com.google.gwt.gdata.client.Reminder> reminder = ArrayHelper.toJsArray(Reminder.newInstance(JavaScriptObject.createObject()));
     obj.setReminder(reminder);
-    assertSame("reminder", obj.getReminder(), reminder);
+    assertEquals("reminder", obj.getReminder().length(), reminder.length());
     DateTime starttime = DateTime.newInstance(new Date(), true);
     obj.setStartTime(starttime);
-    assertSame("starttime", obj.getStartTime(), starttime);
+    assertEquals("starttime", obj.getStartTime().getDate(), starttime.getDate());
     String valuestring = "myValue";
     obj.setValueString(valuestring);
     assertEquals("valuestring", obj.getValueString(), valuestring);
