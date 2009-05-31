@@ -27,7 +27,7 @@ public class DateHelper {
     return value.getTime();
   }
   
-  public static Date milisecondsToDate(double value) {
-    return new Date((long) value);
+  public static Date milisecondsToDate(int value) {
+    return new Date(value);
   }
 }
