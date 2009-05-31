@@ -24,7 +24,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 /**
  * Comment unavailable.
  */
-public class Utils {
+public class CallbackHelper {
   
   @SuppressWarnings("unchecked")
   public static void handleFailureCallback(AsyncCallback cb, String error) {
