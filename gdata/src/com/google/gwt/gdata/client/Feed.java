@@ -128,8 +128,8 @@ public class Feed extends com.google.gwt.gdata.client.atom.Feed {
    */
   public final native com.google.gwt.gdata.client.Feed getSelf(AsyncCallback<Feed> callback) /*-{
     return this.getSelf(
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 
@@ -172,8 +172,8 @@ public class Feed extends com.google.gwt.gdata.client.atom.Feed {
   public final native com.google.gwt.gdata.client.Entry insertEntry(Entry entry, AsyncCallback<Entry> callback) /*-{
     return this.insertEntry(
       entry,
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 

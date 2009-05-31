@@ -38,7 +38,7 @@ public class EditedTest extends GWTTestCase {
 
   public void testProperties() {
     Edited obj = Edited.newInstance(JavaScriptObject.createObject());
-    DateTime value = DateTime.newInstance(new Date(), true);
+    DateTime value = DateTime.newInstance(new Date(), false);
     obj.setValue(value);
     assertEquals("value", obj.getValue().getDate(), value.getDate());
   }

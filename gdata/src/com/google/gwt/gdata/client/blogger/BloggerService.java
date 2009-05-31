@@ -64,8 +64,8 @@ public class BloggerService extends GoogleService {
   public final native BlogCommentFeed getBlogCommentFeed(BlogCommentQuery query, AsyncCallback<BlogCommentFeed> callback) /*-{
     return this.getBlogCommentFeed(
       query,
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 
@@ -81,8 +81,8 @@ public class BloggerService extends GoogleService {
   public final native BlogCommentFeed getBlogCommentFeed(String uri, AsyncCallback<BlogCommentFeed> callback) /*-{
     return this.getBlogCommentFeed(
       uri,
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 
@@ -98,8 +98,8 @@ public class BloggerService extends GoogleService {
   public final native BlogEntry getBlogEntry(String uri, AsyncCallback<BlogEntry> callback) /*-{
     return this.getBlogEntry(
       uri,
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 
@@ -115,8 +115,8 @@ public class BloggerService extends GoogleService {
   public final native BlogFeed getBlogFeed(BlogQuery query, AsyncCallback<BlogFeed> callback) /*-{
     return this.getBlogFeed(
       query,
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 
@@ -132,8 +132,8 @@ public class BloggerService extends GoogleService {
   public final native BlogFeed getBlogFeed(String uri, AsyncCallback<BlogFeed> callback) /*-{
     return this.getBlogFeed(
       uri,
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 
@@ -149,8 +149,8 @@ public class BloggerService extends GoogleService {
   public final native BlogPostFeed getBlogPostFeed(BlogPostQuery query, AsyncCallback<BlogPostFeed> callback) /*-{
     return this.getBlogPostFeed(
       query,
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 
@@ -166,8 +166,8 @@ public class BloggerService extends GoogleService {
   public final native BlogPostFeed getBlogPostFeed(String uri, AsyncCallback<BlogPostFeed> callback) /*-{
     return this.getBlogPostFeed(
       uri,
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 
@@ -183,8 +183,8 @@ public class BloggerService extends GoogleService {
   public final native CommentEntry getCommentEntry(String uri, AsyncCallback<CommentEntry> callback) /*-{
     return this.getCommentEntry(
       uri,
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 
@@ -200,8 +200,8 @@ public class BloggerService extends GoogleService {
   public final native PostCommentFeed getPostCommentFeed(PostCommentQuery query, AsyncCallback<PostCommentFeed> callback) /*-{
     return this.getPostCommentFeed(
       query,
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 
@@ -217,8 +217,8 @@ public class BloggerService extends GoogleService {
   public final native PostCommentFeed getPostCommentFeed(String uri, AsyncCallback<PostCommentFeed> callback) /*-{
     return this.getPostCommentFeed(
       uri,
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 
@@ -234,8 +234,8 @@ public class BloggerService extends GoogleService {
   public final native PostEntry getPostEntry(String uri, AsyncCallback<PostEntry> callback) /*-{
     return this.getPostEntry(
       uri,
-      function(result) { @com.google.gwt.gdata.client.impl.Utils::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.Utils::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
     );
   }-*/;
 

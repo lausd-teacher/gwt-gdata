@@ -38,7 +38,7 @@ public class TransactionDataTest extends GWTTestCase {
 
   public void testProperties() {
     TransactionData obj = TransactionData.newInstance(JavaScriptObject.createObject());
-    DateTime date = DateTime.newInstance(new Date(), true);
+    DateTime date = DateTime.newInstance(new Date(), false);
     obj.setDate(date);
     assertEquals("date", obj.getDate().getDate(), date.getDate());
     Price price = Price.newInstance(JavaScriptObject.createObject());
