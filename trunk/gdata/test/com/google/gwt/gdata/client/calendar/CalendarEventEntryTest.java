@@ -38,7 +38,6 @@ public class CalendarEventEntryTest extends GWTTestCase {
 
   public void testOther() {
     // CalendarEventEntry obj = CalendarEventEntry.newInstance(JavaScriptObject.createObject());
-    // obj.addExtendedProperty(extendedProperty);
     // obj.removeWebContent();
   }
 
@@ -59,9 +58,12 @@ public class CalendarEventEntryTest extends GWTTestCase {
     SequenceNumberProperty sequence = SequenceNumberProperty.newInstance(JavaScriptObject.createObject());
     obj.setSequence(sequence);
     assertSame("sequence", obj.getSequence(), sequence);
-    JsArray<com.google.gwt.gdata.client.calendar.CalendarExtendedProperty> extendedproperties = ArrayHelper.toJsArray(CalendarExtendedProperty.newInstance(JavaScriptObject.createObject()));
+    JsArray<CalendarExtendedProperty> extendedproperties = ArrayHelper.toJsArray(CalendarExtendedProperty.newInstance(JavaScriptObject.createObject()));
     obj.setExtendedProperties(extendedproperties);
     assertEquals("extendedproperties", obj.getExtendedProperties().length(), extendedproperties.length());
+    int lenExtendedProperties = obj.getExtendedProperties().length();
+    obj.addExtendedProperty(CalendarExtendedProperty.newInstance(JavaScriptObject.createObject()));
+    assertEquals("extendedproperties", obj.getExtendedProperties().length(), lenExtendedProperties + 1);
     CalendarLink webcontentlink = CalendarLink.newInstance(JavaScriptObject.createObject());
     obj.setWebContentLink(webcontentlink);
     assertSame("webcontentlink", obj.getWebContentLink(), webcontentlink);

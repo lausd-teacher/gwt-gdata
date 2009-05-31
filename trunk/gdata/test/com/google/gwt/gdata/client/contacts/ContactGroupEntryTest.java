@@ -37,19 +37,17 @@ public class ContactGroupEntryTest extends GWTTestCase {
     assertNotNull("newInstance()", ContactGroupEntry.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // ContactGroupEntry obj = ContactGroupEntry.newInstance(JavaScriptObject.createObject());
-    // obj.addExtendedProperty(extendedProperty);
-  }
-
   public void testProperties() {
     ContactGroupEntry obj = ContactGroupEntry.newInstance(JavaScriptObject.createObject());
     SystemGroup systemgroup = SystemGroup.newInstance(JavaScriptObject.createObject());
     obj.setSystemGroup(systemgroup);
     assertSame("systemgroup", obj.getSystemGroup(), systemgroup);
-    JsArray<com.google.gwt.gdata.client.ExtendedProperty> extendedproperties = ArrayHelper.toJsArray(ExtendedProperty.newInstance(JavaScriptObject.createObject()));
+    JsArray<ExtendedProperty> extendedproperties = ArrayHelper.toJsArray(ExtendedProperty.newInstance(JavaScriptObject.createObject()));
     obj.setExtendedProperties(extendedproperties);
     assertEquals("extendedproperties", obj.getExtendedProperties().length(), extendedproperties.length());
+    int lenExtendedProperties = obj.getExtendedProperties().length();
+    obj.addExtendedProperty(ExtendedProperty.newInstance(JavaScriptObject.createObject()));
+    assertEquals("extendedproperties", obj.getExtendedProperties().length(), lenExtendedProperties + 1);
     Deleted deleted = Deleted.newInstance(JavaScriptObject.createObject());
     obj.setDeleted(deleted);
     assertSame("deleted", obj.getDeleted(), deleted);

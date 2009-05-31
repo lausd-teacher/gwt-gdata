@@ -36,11 +36,6 @@ public class CalendarEntryTest extends GWTTestCase {
     assertNotNull("newInstance()", CalendarEntry.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // CalendarEntry obj = CalendarEntry.newInstance(JavaScriptObject.createObject());
-    // obj.addLocation(location);
-  }
-
   public void testProperties() {
     CalendarEntry obj = CalendarEntry.newInstance(JavaScriptObject.createObject());
     SelectedProperty selected = SelectedProperty.newInstance(JavaScriptObject.createObject());
@@ -61,9 +56,12 @@ public class CalendarEntryTest extends GWTTestCase {
     OverrideNameProperty overridename = OverrideNameProperty.newInstance(JavaScriptObject.createObject());
     obj.setOverrideName(overridename);
     assertSame("overridename", obj.getOverrideName(), overridename);
-    JsArray<com.google.gwt.gdata.client.Where> locations = ArrayHelper.toJsArray(Where.newInstance(JavaScriptObject.createObject()));
+    JsArray<Where> locations = ArrayHelper.toJsArray(Where.newInstance(JavaScriptObject.createObject()));
     obj.setLocations(locations);
     assertEquals("locations", obj.getLocations().length(), locations.length());
+    int lenLocations = obj.getLocations().length();
+    obj.addLocation(Where.newInstance(JavaScriptObject.createObject()));
+    assertEquals("locations", obj.getLocations().length(), lenLocations + 1);
     AccessLevelProperty accesslevel = AccessLevelProperty.newInstance(JavaScriptObject.createObject());
     obj.setAccessLevel(accesslevel);
     assertSame("accesslevel", obj.getAccessLevel(), accesslevel);

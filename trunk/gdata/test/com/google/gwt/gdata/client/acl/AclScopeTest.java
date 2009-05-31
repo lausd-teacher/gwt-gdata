@@ -40,11 +40,6 @@ public class AclScopeTest extends GWTTestCase {
     assertNotNull("newInstance()", AclScope.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // AclScope obj = AclScope.newInstance(JavaScriptObject.createObject());
-    // obj.create(value);
-  }
-
   public void testProperties() {
     AclScope obj = AclScope.newInstance(JavaScriptObject.createObject());
     String value = "myValue";
