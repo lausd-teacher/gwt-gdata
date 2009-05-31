@@ -35,35 +35,38 @@ public class FeedTest extends GWTTestCase {
     assertNotNull("newInstance()", Feed.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // Feed obj = Feed.newInstance(JavaScriptObject.createObject());
-    // obj.addAuthor(author);
-    // obj.addCategory(category);
-    // obj.addContributor(contributor);
-    // obj.addEntry(entry);
-    // obj.addLink(link);
-  }
-
   public void testProperties() {
     Feed obj = Feed.newInstance(JavaScriptObject.createObject());
     Updated updated = Updated.newInstance(JavaScriptObject.createObject());
     obj.setUpdated(updated);
     assertSame("updated", obj.getUpdated(), updated);
-    JsArray<com.google.gwt.gdata.client.atom.Person> contributors = ArrayHelper.toJsArray(Person.newInstance(JavaScriptObject.createObject()));
+    JsArray<Person> contributors = ArrayHelper.toJsArray(Person.newInstance(JavaScriptObject.createObject()));
     obj.setContributors(contributors);
     assertEquals("contributors", obj.getContributors().length(), contributors.length());
-    JsArray<com.google.gwt.gdata.client.atom.Entry> entries = ArrayHelper.toJsArray(Entry.newInstance(JavaScriptObject.createObject()));
+    int lenContributors = obj.getContributors().length();
+    obj.addContributor(Person.newInstance(JavaScriptObject.createObject()));
+    assertEquals("contributors", obj.getContributors().length(), lenContributors + 1);
+    JsArray<Entry> entries = ArrayHelper.toJsArray(Entry.newInstance(JavaScriptObject.createObject()));
     obj.setEntries(entries);
     assertEquals("entries", obj.getEntries().length(), entries.length());
+    int lenEntries = obj.getEntries().length();
+    obj.addEntry(Entry.newInstance(JavaScriptObject.createObject()));
+    assertEquals("entries", obj.getEntries().length(), lenEntries + 1);
     Id id = Id.newInstance(JavaScriptObject.createObject());
     obj.setId(id);
     assertSame("id", obj.getId(), id);
-    JsArray<com.google.gwt.gdata.client.atom.Category> categories = ArrayHelper.toJsArray(Category.newInstance(JavaScriptObject.createObject()));
+    JsArray<Category> categories = ArrayHelper.toJsArray(Category.newInstance(JavaScriptObject.createObject()));
     obj.setCategories(categories);
     assertEquals("categories", obj.getCategories().length(), categories.length());
-    JsArray<com.google.gwt.gdata.client.atom.Person> authors = ArrayHelper.toJsArray(Person.newInstance(JavaScriptObject.createObject()));
+    int lenCategories = obj.getCategories().length();
+    obj.addCategory(Category.newInstance(JavaScriptObject.createObject()));
+    assertEquals("categories", obj.getCategories().length(), lenCategories + 1);
+    JsArray<Person> authors = ArrayHelper.toJsArray(Person.newInstance(JavaScriptObject.createObject()));
     obj.setAuthors(authors);
     assertEquals("authors", obj.getAuthors().length(), authors.length());
+    int lenAuthors = obj.getAuthors().length();
+    obj.addAuthor(Person.newInstance(JavaScriptObject.createObject()));
+    assertEquals("authors", obj.getAuthors().length(), lenAuthors + 1);
     Text rights = Text.newInstance(JavaScriptObject.createObject());
     obj.setRights(rights);
     assertSame("rights", obj.getRights(), rights);
@@ -79,9 +82,12 @@ public class FeedTest extends GWTTestCase {
     Logo logo = Logo.newInstance(JavaScriptObject.createObject());
     obj.setLogo(logo);
     assertSame("logo", obj.getLogo(), logo);
-    JsArray<com.google.gwt.gdata.client.atom.Link> links = ArrayHelper.toJsArray(Link.newInstance(JavaScriptObject.createObject()));
+    JsArray<Link> links = ArrayHelper.toJsArray(Link.newInstance(JavaScriptObject.createObject()));
     obj.setLinks(links);
     assertEquals("links", obj.getLinks().length(), links.length());
+    int lenLinks = obj.getLinks().length();
+    obj.addLink(Link.newInstance(JavaScriptObject.createObject()));
+    assertEquals("links", obj.getLinks().length(), lenLinks + 1);
     Generator generator = Generator.newInstance(JavaScriptObject.createObject());
     obj.setGenerator(generator);
     assertSame("generator", obj.getGenerator(), generator);

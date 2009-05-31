@@ -36,15 +36,13 @@ public class CostBasisTest extends GWTTestCase {
     assertNotNull("newInstance()", CostBasis.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // CostBasis obj = CostBasis.newInstance(JavaScriptObject.createObject());
-    // obj.addMoney(money);
-  }
-
   public void testProperties() {
     CostBasis obj = CostBasis.newInstance(JavaScriptObject.createObject());
-    JsArray<com.google.gwt.gdata.client.Money> money = ArrayHelper.toJsArray(Money.newInstance(JavaScriptObject.createObject()));
+    JsArray<Money> money = ArrayHelper.toJsArray(Money.newInstance(JavaScriptObject.createObject()));
     obj.setMoney(money);
     assertEquals("money", obj.getMoney().length(), money.length());
+    int lenMoney = obj.getMoney().length();
+    obj.addMoney(Money.newInstance(JavaScriptObject.createObject()));
+    assertEquals("money", obj.getMoney().length(), lenMoney + 1);
   }
 }

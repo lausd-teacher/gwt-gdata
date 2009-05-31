@@ -35,15 +35,13 @@ public class GmAttributesTest extends GWTTestCase {
     assertNotNull("newInstance()", GmAttributes.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // GmAttributes obj = GmAttributes.newInstance(JavaScriptObject.createObject());
-    // obj.addAttribute(attribute);
-  }
-
   public void testProperties() {
     GmAttributes obj = GmAttributes.newInstance(JavaScriptObject.createObject());
-    JsArray<com.google.gwt.gdata.client.gbase.GmAttribute> attributes = ArrayHelper.toJsArray(GmAttribute.newInstance(JavaScriptObject.createObject()));
+    JsArray<GmAttribute> attributes = ArrayHelper.toJsArray(GmAttribute.newInstance(JavaScriptObject.createObject()));
     obj.setAttributes(attributes);
     assertEquals("attributes", obj.getAttributes().length(), attributes.length());
+    int lenAttributes = obj.getAttributes().length();
+    obj.addAttribute(GmAttribute.newInstance(JavaScriptObject.createObject()));
+    assertEquals("attributes", obj.getAttributes().length(), lenAttributes + 1);
   }
 }

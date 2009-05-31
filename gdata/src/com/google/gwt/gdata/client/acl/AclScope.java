@@ -73,19 +73,6 @@ public class AclScope extends JavaScriptObject {
   protected AclScope() { }
 
   /**
-   * Create a new scope using the typical parameters.
-   * 
-   * @param value
-   * 
-   * @return
-   */
-  public final native AclScope create(String value) /*-{
-    return this.create(
-      value
-    );
-  }-*/;
-
-  /**
    * Returns the type.
    * 
    * @return

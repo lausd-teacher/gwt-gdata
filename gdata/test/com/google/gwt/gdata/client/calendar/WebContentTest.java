@@ -35,19 +35,17 @@ public class WebContentTest extends GWTTestCase {
     assertNotNull("newInstance()", WebContent.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // WebContent obj = WebContent.newInstance(JavaScriptObject.createObject());
-    // obj.addGadgetPref(gadgetPref);
-  }
-
   public void testProperties() {
     WebContent obj = WebContent.newInstance(JavaScriptObject.createObject());
     double width = 600813;
     obj.setWidth(width);
     assertEquals("width", obj.getWidth(), width);
-    JsArray<com.google.gwt.gdata.client.calendar.WebContentGadgetPref> gadgetprefs = ArrayHelper.toJsArray(WebContentGadgetPref.newInstance(JavaScriptObject.createObject()));
+    JsArray<WebContentGadgetPref> gadgetprefs = ArrayHelper.toJsArray(WebContentGadgetPref.newInstance(JavaScriptObject.createObject()));
     obj.setGadgetPrefs(gadgetprefs);
     assertEquals("gadgetprefs", obj.getGadgetPrefs().length(), gadgetprefs.length());
+    int lenGadgetPrefs = obj.getGadgetPrefs().length();
+    obj.addGadgetPref(WebContentGadgetPref.newInstance(JavaScriptObject.createObject()));
+    assertEquals("gadgetprefs", obj.getGadgetPrefs().length(), lenGadgetPrefs + 1);
     String url = "myValue";
     obj.setUrl(url);
     assertEquals("url", obj.getUrl(), url);

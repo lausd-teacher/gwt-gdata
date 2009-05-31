@@ -35,15 +35,13 @@ public class FeedErrorsTest extends GWTTestCase {
     assertNotNull("newInstance()", FeedErrors.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // FeedErrors obj = FeedErrors.newInstance(JavaScriptObject.createObject());
-    // obj.addFeedError(feedError);
-  }
-
   public void testProperties() {
     FeedErrors obj = FeedErrors.newInstance(JavaScriptObject.createObject());
-    JsArray<com.google.gwt.gdata.client.gbase.FeedError> feederror = ArrayHelper.toJsArray(FeedError.newInstance(JavaScriptObject.createObject()));
+    JsArray<FeedError> feederror = ArrayHelper.toJsArray(FeedError.newInstance(JavaScriptObject.createObject()));
     obj.setFeedError(feederror);
     assertEquals("feederror", obj.getFeedError().length(), feederror.length());
+    int lenFeedError = obj.getFeedError().length();
+    obj.addFeedError(FeedError.newInstance(JavaScriptObject.createObject()));
+    assertEquals("feederror", obj.getFeedError().length(), lenFeedError + 1);
   }
 }

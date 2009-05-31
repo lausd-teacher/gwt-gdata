@@ -36,15 +36,13 @@ public class GainTest extends GWTTestCase {
     assertNotNull("newInstance()", Gain.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // Gain obj = Gain.newInstance(JavaScriptObject.createObject());
-    // obj.addMoney(money);
-  }
-
   public void testProperties() {
     Gain obj = Gain.newInstance(JavaScriptObject.createObject());
-    JsArray<com.google.gwt.gdata.client.Money> money = ArrayHelper.toJsArray(Money.newInstance(JavaScriptObject.createObject()));
+    JsArray<Money> money = ArrayHelper.toJsArray(Money.newInstance(JavaScriptObject.createObject()));
     obj.setMoney(money);
     assertEquals("money", obj.getMoney().length(), money.length());
+    int lenMoney = obj.getMoney().length();
+    obj.addMoney(Money.newInstance(JavaScriptObject.createObject()));
+    assertEquals("money", obj.getMoney().length(), lenMoney + 1);
   }
 }

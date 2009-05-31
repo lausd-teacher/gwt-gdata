@@ -36,18 +36,16 @@ public class WorkspaceTest extends GWTTestCase {
     assertNotNull("newInstance()", Workspace.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // Workspace obj = Workspace.newInstance(JavaScriptObject.createObject());
-    // obj.addCollection(collection);
-  }
-
   public void testProperties() {
     Workspace obj = Workspace.newInstance(JavaScriptObject.createObject());
     Text title = Text.newInstance(JavaScriptObject.createObject());
     obj.setTitle(title);
     assertSame("title", obj.getTitle(), title);
-    JsArray<com.google.gwt.gdata.client.app.Collection> collections = ArrayHelper.toJsArray(Collection.newInstance(JavaScriptObject.createObject()));
+    JsArray<Collection> collections = ArrayHelper.toJsArray(Collection.newInstance(JavaScriptObject.createObject()));
     obj.setCollections(collections);
     assertEquals("collections", obj.getCollections().length(), collections.length());
+    int lenCollections = obj.getCollections().length();
+    obj.addCollection(Collection.newInstance(JavaScriptObject.createObject()));
+    assertEquals("collections", obj.getCollections().length(), lenCollections + 1);
   }
 }

@@ -35,15 +35,13 @@ public class ServiceDocumentTest extends GWTTestCase {
     assertNotNull("newInstance()", ServiceDocument.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // ServiceDocument obj = ServiceDocument.newInstance(JavaScriptObject.createObject());
-    // obj.addWorkspace(workspace);
-  }
-
   public void testProperties() {
     ServiceDocument obj = ServiceDocument.newInstance(JavaScriptObject.createObject());
-    JsArray<com.google.gwt.gdata.client.app.Workspace> workspaces = ArrayHelper.toJsArray(Workspace.newInstance(JavaScriptObject.createObject()));
+    JsArray<Workspace> workspaces = ArrayHelper.toJsArray(Workspace.newInstance(JavaScriptObject.createObject()));
     obj.setWorkspaces(workspaces);
     assertEquals("workspaces", obj.getWorkspaces().length(), workspaces.length());
+    int lenWorkspaces = obj.getWorkspaces().length();
+    obj.addWorkspace(Workspace.newInstance(JavaScriptObject.createObject()));
+    assertEquals("workspaces", obj.getWorkspaces().length(), lenWorkspaces + 1);
   }
 }

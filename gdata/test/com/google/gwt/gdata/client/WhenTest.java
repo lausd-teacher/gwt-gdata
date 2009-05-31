@@ -37,19 +37,17 @@ public class WhenTest extends GWTTestCase {
     assertNotNull("newInstance()", When.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // When obj = When.newInstance(JavaScriptObject.createObject());
-    // obj.addReminder(reminder);
-  }
-
   public void testProperties() {
     When obj = When.newInstance(JavaScriptObject.createObject());
     DateTime endtime = DateTime.newInstance(new Date(), false);
     obj.setEndTime(endtime);
     assertEquals("endtime", obj.getEndTime().getDate(), endtime.getDate());
-    JsArray<com.google.gwt.gdata.client.Reminder> reminder = ArrayHelper.toJsArray(Reminder.newInstance(JavaScriptObject.createObject()));
+    JsArray<Reminder> reminder = ArrayHelper.toJsArray(Reminder.newInstance(JavaScriptObject.createObject()));
     obj.setReminder(reminder);
     assertEquals("reminder", obj.getReminder().length(), reminder.length());
+    int lenReminder = obj.getReminder().length();
+    obj.addReminder(Reminder.newInstance(JavaScriptObject.createObject()));
+    assertEquals("reminder", obj.getReminder().length(), lenReminder + 1);
     DateTime starttime = DateTime.newInstance(new Date(), false);
     obj.setStartTime(starttime);
     assertEquals("starttime", obj.getStartTime().getDate(), starttime.getDate());

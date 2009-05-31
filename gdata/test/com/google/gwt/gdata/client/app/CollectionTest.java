@@ -36,23 +36,23 @@ public class CollectionTest extends GWTTestCase {
     assertNotNull("newInstance()", Collection.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testOther() {
-    // Collection obj = Collection.newInstance(JavaScriptObject.createObject());
-    // obj.addAccept(accept);
-    // obj.addCategories(categories);
-  }
-
   public void testProperties() {
     Collection obj = Collection.newInstance(JavaScriptObject.createObject());
-    JsArray<com.google.gwt.gdata.client.app.Accept> accepts = ArrayHelper.toJsArray(Accept.newInstance(JavaScriptObject.createObject()));
+    JsArray<Accept> accepts = ArrayHelper.toJsArray(Accept.newInstance(JavaScriptObject.createObject()));
     obj.setAccepts(accepts);
     assertEquals("accepts", obj.getAccepts().length(), accepts.length());
+    int lenAccepts = obj.getAccepts().length();
+    obj.addAccept(Accept.newInstance(JavaScriptObject.createObject()));
+    assertEquals("accepts", obj.getAccepts().length(), lenAccepts + 1);
     Text title = Text.newInstance(JavaScriptObject.createObject());
     obj.setTitle(title);
     assertSame("title", obj.getTitle(), title);
-    JsArray<com.google.gwt.gdata.client.app.Categories> categorieses = ArrayHelper.toJsArray(Categories.newInstance(JavaScriptObject.createObject()));
+    JsArray<Categories> categorieses = ArrayHelper.toJsArray(Categories.newInstance(JavaScriptObject.createObject()));
     obj.setCategorieses(categorieses);
     assertEquals("categorieses", obj.getCategorieses().length(), categorieses.length());
+    int lenCategorieses = obj.getCategorieses().length();
+    obj.addCategories(Categories.newInstance(JavaScriptObject.createObject()));
+    assertEquals("categorieses", obj.getCategorieses().length(), lenCategorieses + 1);
     String href = "myValue";
     obj.setHref(href);
     assertEquals("href", obj.getHref(), href);
