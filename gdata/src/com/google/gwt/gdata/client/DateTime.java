@@ -86,7 +86,7 @@ public class DateTime extends JavaScriptObject {
    * @return
    */
   public final native Date getDate() /*-{
-    return @com.google.gwt.gdata.client.impl.DateHelper::millisecondsToDate(I)(this.getDate().getTime());
+    return @com.google.gwt.gdata.client.impl.DateHelper::millisecondsToDate(D)(this.getDate().getTime());
   }-*/;
 
   /**
