@@ -48,7 +48,7 @@ public class ReminderTest extends GWTTestCase {
     double minutes = 600813;
     obj.setMinutes(minutes);
     assertEquals("minutes", obj.getMinutes(), minutes);
-    DateTime absolutetime = DateTime.newInstance(new Date(), true);
+    DateTime absolutetime = DateTime.newInstance(new Date(), false);
     obj.setAbsoluteTime(absolutetime);
     assertEquals("absolutetime", obj.getAbsoluteTime().getDate(), absolutetime.getDate());
     double hours = 600813;

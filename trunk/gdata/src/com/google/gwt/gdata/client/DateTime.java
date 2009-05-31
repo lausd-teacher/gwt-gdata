@@ -37,7 +37,7 @@ public class DateTime extends JavaScriptObject {
    */
   public static native DateTime newInstance(Date date, boolean dateOnly) /*-{
     return new $wnd.google.gdata.DateTime(
-      date,
+      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMiliseconds(Ljava/util/Date;)(date)),
       dateOnly
     );
   }-*/;
@@ -47,7 +47,7 @@ public class DateTime extends JavaScriptObject {
    */
   public static native DateTime newInstance(Date date) /*-{
     return new $wnd.google.gdata.DateTime(
-      date,
+      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMiliseconds(Ljava/util/Date;)(date)),
       undefined
     );
   }-*/;
@@ -86,7 +86,7 @@ public class DateTime extends JavaScriptObject {
    * @return
    */
   public final native Date getDate() /*-{
-    return this.getDate();
+    return @com.google.gwt.gdata.client.impl.DateHelper::milisecondsToDate(D)(this.getDate().getTime());
   }-*/;
 
   /**
@@ -105,7 +105,7 @@ public class DateTime extends JavaScriptObject {
    */
   public final native void setDate(Date date) /*-{
     this.setDate(
-      date
+      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMiliseconds(Ljava/util/Date;)(date))
     );
   }-*/;
 
@@ -129,7 +129,7 @@ public class DateTime extends JavaScriptObject {
    */
   public final native String toIso8601(Date dateTime) /*-{
     return this.toIso8601(
-      dateTime
+      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMiliseconds(Ljava/util/Date;)(dateTime))
     );
   }-*/;
 
