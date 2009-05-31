@@ -23,11 +23,11 @@ import java.util.Date;
  */
 public class DateHelper {
   
-  public static double dateToMiliseconds(Date value) {
+  public static double dateToMilliseconds(Date value) {
     return value.getTime();
   }
   
-  public static Date milisecondsToDate(int value) {
+  public static Date millisecondsToDate(int value) {
     return new Date(value);
   }
 }
