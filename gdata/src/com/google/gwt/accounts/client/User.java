@@ -16,20 +16,20 @@
 
 package com.google.gwt.accounts.client;
 
-import com.google.gwt.user.client.Command;
+import com.google.gwt.core.client.JsArrayString;
 
 /**
  * Comment unavailable.
  */
 public class User {
   public static final native String checkLogin(String scope) /*-{ return $wnd.google.accounts.user.checkLogin(scope); }-*/;
-  public static final native boolean getInfo(Runnable callback, String scope) /*-{ return $wnd.google.accounts.user.getInfo(function() { callback.@java.lang.Runnable::run()(); }, scope); }-*/;
-  public static final native boolean getInfo(Runnable callback) /*-{ return $wnd.google.accounts.user.getInfo(function() { callback.@java.lang.Runnable::run()(); }); }-*/;
-  public static final native String getScopes() /*-{ return $wnd.google.accounts.user.getScopes(); }-*/;
+  public static final native boolean getInfo(Runnable callback, String scope) /*-{ return $wnd.google.accounts.user.getInfo(function() { @com.google.gwt.ajaxloader.client.ExceptionHelper::runProtected(Ljava/lang/Runnable;)(callback); }, scope); }-*/;
+  public static final native boolean getInfo(Runnable callback) /*-{ return $wnd.google.accounts.user.getInfo(function() { @com.google.gwt.ajaxloader.client.ExceptionHelper::runProtected(Ljava/lang/Runnable;)(callback); }); }-*/;
+  public static final native JsArrayString getScopes() /*-{ return $wnd.google.accounts.user.getScopes(); }-*/;
   public static final native AuthSubStatus getStatus(String scope) /*-{ return @com.google.gwt.accounts.client.AuthSubStatus::valueOf(I)($wnd.google.accounts.user.getStatus(scope)); }-*/;
   public static final native AuthSubStatus getStatus() /*-{ return @com.google.gwt.accounts.client.AuthSubStatus::valueOf(I)($wnd.google.accounts.user.getStatus()); }-*/;
   public static final native String login(String scope, String hd) /*-{ return $wnd.google.accounts.user.login(scope, hd); }-*/;
   public static final native String login(String scope) /*-{ return $wnd.google.accounts.user.login(scope); }-*/;
-  public static final native boolean logout(Command callback, String scope) /*-{ return $wnd.google.accounts.user.logout(function() { callback.@java.lang.Runnable::run()(); }, scope); }-*/;
-  public static final native boolean logout(Command callback) /*-{ return $wnd.google.accounts.user.logout(function() { callback.@java.lang.Runnable::run()(); }, scope); }-*/;
+  public static final native boolean logout(Runnable callback, String scope) /*-{ return $wnd.google.accounts.user.logout(function() { @com.google.gwt.ajaxloader.client.ExceptionHelper::runProtected(Ljava/lang/Runnable;)(callback); }, scope); }-*/;
+  public static final native boolean logout(Runnable callback) /*-{ return $wnd.google.accounts.user.logout(function() { @com.google.gwt.ajaxloader.client.ExceptionHelper::runProtected(Ljava/lang/Runnable;)(callback); }); }-*/;
 }
