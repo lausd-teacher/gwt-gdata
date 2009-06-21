@@ -60,6 +60,7 @@ public class GDataTestSuite extends GWTTestSuite {
     suite.addTestSuite(com.google.gwt.gdata.client.app.WorkspaceTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.atom.CategoryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.atom.EmailTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.atom.EntryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.atom.GeneratorTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.atom.IdTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.atom.LinkTest.class);
