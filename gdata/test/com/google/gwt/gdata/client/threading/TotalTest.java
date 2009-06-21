@@ -29,7 +29,6 @@ public class TotalTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Total.getConstructor());
     assertNotNull("newInstance()", Total.newInstance(JavaScriptObject.createObject()));
   }
 

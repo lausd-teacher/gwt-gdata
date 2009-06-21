@@ -34,13 +34,6 @@ public class Link extends com.google.gwt.gdata.client.Link {
   public static final String REL_CONTROLLED_OBJECT = getConstant("REL_CONTROLLED_OBJECT");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.acl.Link;
-  }-*/;
-
-  /**
    * Constructs an ACL Link class using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Link newInstance(JavaScriptObject params) /*-{

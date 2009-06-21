@@ -26,13 +26,6 @@ import com.google.gwt.gdata.client.atom.Text;
 public class Collection extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.app.Collection;
-  }-*/;
-
-  /**
    * Constructs a collection using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Collection newInstance(JavaScriptObject params) /*-{

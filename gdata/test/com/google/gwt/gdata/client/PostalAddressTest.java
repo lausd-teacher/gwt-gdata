@@ -35,7 +35,6 @@ public class PostalAddressTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", PostalAddress.getConstructor());
     assertNotNull("newInstance()", PostalAddress.newInstance(JavaScriptObject.createObject()));
   }
 

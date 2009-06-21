@@ -34,7 +34,6 @@ public class AccountStatusTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", AccountStatus.getConstructor());
     assertNotNull("newInstance()", AccountStatus.newInstance(JavaScriptObject.createObject()));
   }
 

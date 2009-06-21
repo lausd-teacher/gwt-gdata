@@ -64,13 +64,6 @@ public class PhoneNumber extends JavaScriptObject {
   public static final String REL_WORK_FAX = getConstant("REL_WORK_FAX");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.PhoneNumber;
-  }-*/;
-
-  /**
    * Constructs a phone number using an object parameter whose property names match the setter method to use for each property.
    */
   public static native PhoneNumber newInstance(JavaScriptObject params) /*-{

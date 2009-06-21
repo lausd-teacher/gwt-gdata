@@ -39,13 +39,6 @@ public class Rating extends JavaScriptObject {
   public static final String REL_QUALITY = getConstant("REL_QUALITY");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.Rating;
-  }-*/;
-
-  /**
    * Constructs a rating using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Rating newInstance(JavaScriptObject params) /*-{

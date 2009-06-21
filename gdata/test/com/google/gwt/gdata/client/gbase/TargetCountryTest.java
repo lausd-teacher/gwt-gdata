@@ -29,7 +29,6 @@ public class TargetCountryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", TargetCountry.getConstructor());
     assertNotNull("newInstance()", TargetCountry.newInstance(JavaScriptObject.createObject()));
   }
 

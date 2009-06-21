@@ -33,7 +33,6 @@ public class TransactionKindTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", TransactionKind.getConstructor());
     assertNotNull("newInstance()", TransactionKind.newInstance(JavaScriptObject.createObject()));
   }
 }

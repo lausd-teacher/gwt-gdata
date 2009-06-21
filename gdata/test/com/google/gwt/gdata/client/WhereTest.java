@@ -35,7 +35,6 @@ public class WhereTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Where.getConstructor());
     assertNotNull("newInstance()", Where.newInstance(JavaScriptObject.createObject()));
   }
 

@@ -30,8 +30,15 @@ public class CommentEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CommentEntry.getConstructor());
     assertNotNull("newInstance()", CommentEntry.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    CommentEntry obj = CommentEntry.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getHtmlLink()
+    assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+    // Unit Test for getRepliesLink()
+    assertEquals("getRepliesLink", obj.getRepliesLink(), null);
   }
 
   public void testProperties() {

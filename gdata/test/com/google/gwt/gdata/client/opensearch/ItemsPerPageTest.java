@@ -29,7 +29,6 @@ public class ItemsPerPageTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ItemsPerPage.getConstructor());
     assertNotNull("newInstance()", ItemsPerPage.newInstance(JavaScriptObject.createObject()));
   }
 

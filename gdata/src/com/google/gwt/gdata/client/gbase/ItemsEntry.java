@@ -23,14 +23,7 @@ import com.google.gwt.gdata.client.FeedLink;
 /**
  * Comment unavailable.
  */
-public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.ItemsEntry;
-  }-*/;
+public class ItemsEntry extends com.google.gwt.gdata.client.Entry<ItemsEntry> {
 
   /**
    * Constructs a Google Base item entry using an object parameter whose property names match the setter method to use for each property.
@@ -49,19 +42,6 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   protected ItemsEntry() { }
-
-  /**
-   * Returns the attribute.
-   * 
-   * @param name
-   * 
-   * @return
-   */
-  public final native JavaScriptObject getAttribute(String name) /*-{
-    return this.getAttribute(
-      name
-    );
-  }-*/;
 
   /**
    * Returns the attributes.

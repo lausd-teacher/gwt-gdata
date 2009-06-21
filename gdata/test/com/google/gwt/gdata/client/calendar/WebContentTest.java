@@ -16,9 +16,7 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -31,8 +29,16 @@ public class WebContentTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", WebContent.getConstructor());
     assertNotNull("newInstance()", WebContent.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    WebContent obj = WebContent.newInstance(JavaScriptObject.createObject());
+    // Unit Test for addGadgetPref(WebContentGadgetPref gadgetPref)
+    // Unit Test for getGadgetPref(String name)
+    // Unit Test for getGadgetPrefs()
+    assertEquals("getGadgetPrefs", obj.getGadgetPrefs(), null);
+    // Unit Test for setGadgetPrefs(JsArray gadgetPrefs)
   }
 
   public void testProperties() {
@@ -40,12 +46,6 @@ public class WebContentTest extends GWTTestCase {
     double width = 600813;
     obj.setWidth(width);
     assertEquals("width", obj.getWidth(), width);
-    JsArray<WebContentGadgetPref> gadgetprefs = ArrayHelper.toJsArray(WebContentGadgetPref.newInstance(JavaScriptObject.createObject()));
-    obj.setGadgetPrefs(gadgetprefs);
-    assertEquals("gadgetprefs", obj.getGadgetPrefs().length(), gadgetprefs.length());
-    int lenGadgetPrefs = obj.getGadgetPrefs().length();
-    obj.addGadgetPref(WebContentGadgetPref.newInstance(JavaScriptObject.createObject()));
-    assertEquals("gadgetprefs", obj.getGadgetPrefs().length(), lenGadgetPrefs + 1);
     String url = "myValue";
     obj.setUrl(url);
     assertEquals("url", obj.getUrl(), url);

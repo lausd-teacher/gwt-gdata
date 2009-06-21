@@ -25,13 +25,6 @@ import com.google.gwt.gdata.client.FeedLink;
 public class PortfolioFeedLink extends FeedLink {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.finance.PortfolioFeedLink;
-  }-*/;
-
-  /**
    * Constructs a portfolio feed link using an object parameter whose property names match the setter method to use for each property.
    */
   public static native PortfolioFeedLink newInstance(JavaScriptObject params) /*-{

@@ -28,7 +28,16 @@ public class QueryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Query.getConstructor());
     assertNotNull("newInstance()", Query.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    Query obj = Query.newInstance("myValue");
+    // Unit Test for getPath()
+    assertEquals("getPath", obj.getPath(), "");
+    // Unit Test for getUri()
+    assertEquals("getUri", obj.getUri(), "");
+    // Unit Test for setParam(String name, JavaScriptObject value)
+    // Unit Test for setParamDef(String name, JavaScriptObject paramDef)
   }
 }

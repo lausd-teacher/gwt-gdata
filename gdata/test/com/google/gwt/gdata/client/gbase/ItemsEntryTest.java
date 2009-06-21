@@ -30,8 +30,17 @@ public class ItemsEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ItemsEntry.getConstructor());
     assertNotNull("newInstance()", ItemsEntry.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    ItemsEntry obj = ItemsEntry.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getAttributes()
+    assertEquals("getAttributes", obj.getAttributes(), null);
+    // Unit Test for getHtmlLink()
+    assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+    // Unit Test for setAttribute(String name, Attribute attribute)
+    // Unit Test for setAttributes(JavaScriptObject attributes)
   }
 
   public void testProperties() {

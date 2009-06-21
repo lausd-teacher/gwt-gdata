@@ -31,8 +31,15 @@ public class LastViewedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", LastViewed.getConstructor());
     assertNotNull("newInstance()", LastViewed.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    LastViewed obj = LastViewed.newInstance(JavaScriptObject.createObject());
+    // Unit Test for setValue(Date value)
+    Date value = new Date();
+    obj.setValue(value);
+    assertEquals("value", obj.getValue().getDate(), value);
   }
 
   public void testProperties() {

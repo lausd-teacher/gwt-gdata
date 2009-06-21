@@ -30,13 +30,6 @@ public class PositionKind extends Kind {
   public static final String TERM_POSITION = getConstant("TERM_POSITION");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.finance.PositionKind;
-  }-*/;
-
-  /**
    * Constructs a position kind using an object parameter whose property names match the setter method to use for each property.
    */
   public static native PositionKind newInstance(JavaScriptObject params) /*-{

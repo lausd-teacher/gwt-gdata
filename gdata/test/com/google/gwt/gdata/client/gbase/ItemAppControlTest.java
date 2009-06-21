@@ -29,7 +29,6 @@ public class ItemAppControlTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ItemAppControl.getConstructor());
     assertNotNull("newInstance()", ItemAppControl.newInstance(JavaScriptObject.createObject()));
   }
 

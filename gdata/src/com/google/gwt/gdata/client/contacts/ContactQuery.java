@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.Query;
 
@@ -54,13 +53,6 @@ public class ContactQuery extends Query {
    * None.
    */
   public static final String SORTORDER_NONE = getConstant("SORTORDER_NONE");
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.contacts.ContactQuery;
-  }-*/;
 
   /**
    * Constructor.
@@ -109,7 +101,7 @@ public class ContactQuery extends Query {
    * 
    * @return
    */
-  public final native Boolean getShowDeleted() /*-{
+  public final native boolean getShowDeleted() /*-{
     return this.getShowDeleted();
   }-*/;
 
@@ -198,7 +190,7 @@ public class ContactQuery extends Query {
    * 
    * @param showDeleted
    */
-  public final native void setShowDeleted(Boolean showDeleted) /*-{
+  public final native void setShowDeleted(boolean showDeleted) /*-{
     this.setShowDeleted(
       showDeleted
     );

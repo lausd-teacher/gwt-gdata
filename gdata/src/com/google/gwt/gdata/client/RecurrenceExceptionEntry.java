@@ -22,14 +22,7 @@ import com.google.gwt.core.client.JsArray;
 /**
  * Comment unavailable.
  */
-public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.RecurrenceExceptionEntry;
-  }-*/;
+public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry<RecurrenceExceptionEntry> {
 
   /**
    * Constructs a recurrence exception entry using an object parameter whose property names match the setter method to use for each property.
@@ -89,13 +82,6 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
    */
   public final native Comments getComments() /*-{
     return this.getComments();
-  }-*/;
-
-  /**
-   * @return
-   */
-  public final native JavaScriptObject getCommentsClass() /*-{
-    return this.getCommentsClass();
   }-*/;
 
   /**
@@ -159,13 +145,6 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
    */
   public final native JsArray<Who> getWho() /*-{
     return this.getWho();
-  }-*/;
-
-  /**
-   * @return
-   */
-  public final native JavaScriptObject getWhoClass() /*-{
-    return this.getWhoClass();
   }-*/;
 
   /**

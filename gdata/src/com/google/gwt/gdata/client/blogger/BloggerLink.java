@@ -39,13 +39,6 @@ public class BloggerLink extends com.google.gwt.gdata.client.Link {
   public static final String REL_TEMPLATE = getConstant("REL_TEMPLATE");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.blogger.BloggerLink;
-  }-*/;
-
-  /**
    * Constructs a Blogger Link class using an object parameter whose property names match the setter method to use for each property.
    */
   public static native BloggerLink newInstance(JavaScriptObject params) /*-{

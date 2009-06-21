@@ -29,7 +29,6 @@ public class CalendarCommentsFeedLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarCommentsFeedLink.getConstructor());
     assertNotNull("newInstance()", CalendarCommentsFeedLink.newInstance(JavaScriptObject.createObject()));
   }
 }

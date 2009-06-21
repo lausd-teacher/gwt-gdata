@@ -29,7 +29,12 @@ public class LocalesEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", LocalesEntry.getConstructor());
     assertNotNull("newInstance()", LocalesEntry.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    LocalesEntry obj = LocalesEntry.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getRelatedLink()
+    assertEquals("getRelatedLink", obj.getRelatedLink(), null);
   }
 }

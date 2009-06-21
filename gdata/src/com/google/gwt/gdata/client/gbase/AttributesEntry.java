@@ -21,14 +21,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * Comment unavailable.
  */
-public class AttributesEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.AttributesEntry;
-  }-*/;
+public class AttributesEntry extends com.google.gwt.gdata.client.Entry<AttributesEntry> {
 
   /**
    * Constructs a Google Base attribute entry using an object parameter whose property names match the setter method to use for each property.

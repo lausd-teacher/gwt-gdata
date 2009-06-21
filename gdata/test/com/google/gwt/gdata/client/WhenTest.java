@@ -16,9 +16,7 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 import java.util.Date;
@@ -33,8 +31,17 @@ public class WhenTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", When.getConstructor());
     assertNotNull("newInstance()", When.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    When obj = When.newInstance(JavaScriptObject.createObject());
+    // Unit Test for addReminder(Reminder reminder)
+    // Unit Test for getReminder()
+    assertEquals("getReminder", obj.getReminder(), null);
+    // Unit Test for setEndTime(Date endTime)
+    // Unit Test for setReminder(JsArray reminder)
+    // Unit Test for setStartTime(Date startTime)
   }
 
   public void testProperties() {
@@ -42,12 +49,6 @@ public class WhenTest extends GWTTestCase {
     DateTime endtime = DateTime.newInstance(new Date(), false);
     obj.setEndTime(endtime);
     assertEquals("endtime", obj.getEndTime().getDate(), endtime.getDate());
-    JsArray<Reminder> reminder = ArrayHelper.toJsArray(Reminder.newInstance(JavaScriptObject.createObject()));
-    obj.setReminder(reminder);
-    assertEquals("reminder", obj.getReminder().length(), reminder.length());
-    int lenReminder = obj.getReminder().length();
-    obj.addReminder(Reminder.newInstance(JavaScriptObject.createObject()));
-    assertEquals("reminder", obj.getReminder().length(), lenReminder + 1);
     DateTime starttime = DateTime.newInstance(new Date(), false);
     obj.setStartTime(starttime);
     assertEquals("starttime", obj.getStartTime().getDate(), starttime.getDate());

@@ -16,10 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.gdata.client.opensearch.ItemsPerPage;
-import com.google.gwt.gdata.client.opensearch.StartIndex;
-import com.google.gwt.gdata.client.opensearch.TotalResults;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,28 +25,5 @@ public class FeedTest extends GWTTestCase {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
-  }
-
-  public void testConstructors() {
-    assertNotNull("getConstructor()", Feed.getConstructor());
-    assertNotNull("newInstance()", Feed.newInstance(JavaScriptObject.createObject()));
-  }
-
-  public void testOther() {
-    // Feed obj = Feed.newInstance(JavaScriptObject.createObject());
-    // obj.insertEntry(entry, continuation, opt_errorHandler);
-  }
-
-  public void testProperties() {
-    Feed obj = Feed.newInstance(JavaScriptObject.createObject());
-    TotalResults totalresults = TotalResults.newInstance(JavaScriptObject.createObject());
-    obj.setTotalResults(totalresults);
-    assertSame("totalresults", obj.getTotalResults(), totalresults);
-    StartIndex startindex = StartIndex.newInstance(JavaScriptObject.createObject());
-    obj.setStartIndex(startindex);
-    assertSame("startindex", obj.getStartIndex(), startindex);
-    ItemsPerPage itemsperpage = ItemsPerPage.newInstance(JavaScriptObject.createObject());
-    obj.setItemsPerPage(itemsperpage);
-    assertSame("itemsperpage", obj.getItemsPerPage(), itemsperpage);
   }
 }

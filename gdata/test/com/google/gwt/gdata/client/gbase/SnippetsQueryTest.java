@@ -16,7 +16,10 @@
 
 package com.google.gwt.gdata.client.gbase;
 
+import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.junit.client.GWTTestCase;
+
+import java.util.Date;
 
 /**
  * Tests for the SnippetsQuery class.
@@ -42,8 +45,18 @@ public class SnippetsQueryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", SnippetsQuery.getConstructor());
     assertNotNull("newInstance()", SnippetsQuery.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    // Unit Test for setAdjust(String adjust)
+    // Unit Test for setMaxResults(String maxResults)
+    // Unit Test for setPublishedMax(String publishedMax)
+    // Unit Test for setPublishedMin(String publishedMin)
+    // Unit Test for setRefine(String refine)
+    // Unit Test for setStartIndex(String startIndex)
+    // Unit Test for setUpdatedMax(String updatedMax)
+    // Unit Test for setUpdatedMin(String updatedMin)
   }
 
   public void testProperties() {
@@ -51,9 +64,15 @@ public class SnippetsQueryTest extends GWTTestCase {
     String crowdby = "myValue";
     obj.setCrowdby(crowdby);
     assertEquals("crowdby", obj.getCrowdby(), crowdby);
+    DateTime updatedmin = DateTime.newInstance(new Date(), false);
+    obj.setUpdatedMin(updatedmin);
+    assertEquals("updatedmin", obj.getUpdatedMin().getDate(), updatedmin.getDate());
     String bq = "myValue";
     obj.setBq(bq);
     assertEquals("bq", obj.getBq(), bq);
+    DateTime publishedmin = DateTime.newInstance(new Date(), false);
+    obj.setPublishedMin(publishedmin);
+    assertEquals("publishedmin", obj.getPublishedMin().getDate(), publishedmin.getDate());
     String orderby = "myValue";
     obj.setOrderby(orderby);
     assertEquals("orderby", obj.getOrderby(), orderby);
@@ -63,9 +82,27 @@ public class SnippetsQueryTest extends GWTTestCase {
     String author = "myValue";
     obj.setAuthor(author);
     assertEquals("author", obj.getAuthor(), author);
+    DateTime updatedmax = DateTime.newInstance(new Date(), false);
+    obj.setUpdatedMax(updatedmax);
+    assertEquals("updatedmax", obj.getUpdatedMax().getDate(), updatedmax.getDate());
     String sortorder = "myValue";
     obj.setSortorder(sortorder);
     assertEquals("sortorder", obj.getSortorder(), sortorder);
+    DateTime publishedmax = DateTime.newInstance(new Date(), false);
+    obj.setPublishedMax(publishedmax);
+    assertEquals("publishedmax", obj.getPublishedMax().getDate(), publishedmax.getDate());
+    double startindex = 600813;
+    obj.setStartIndex(startindex);
+    assertEquals("startindex", obj.getStartIndex(), startindex);
+    boolean adjust = true;
+    obj.setAdjust(adjust);
+    assertSame("adjust", obj.getAdjust(), adjust);
+    boolean refine = true;
+    obj.setRefine(refine);
+    assertSame("refine", obj.getRefine(), refine);
+    double maxresults = 600813;
+    obj.setMaxResults(maxresults);
+    assertEquals("maxresults", obj.getMaxResults(), maxresults);
     String fulltextquery = "myValue";
     obj.setFullTextQuery(fulltextquery);
     assertEquals("fulltextquery", obj.getFullTextQuery(), fulltextquery);

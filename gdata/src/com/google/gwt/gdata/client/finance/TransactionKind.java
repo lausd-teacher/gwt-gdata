@@ -30,13 +30,6 @@ public class TransactionKind extends Kind {
   public static final String TERM_TRANSACTION = getConstant("TERM_TRANSACTION");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.finance.TransactionKind;
-  }-*/;
-
-  /**
    * Constructs a transaction kind using an object parameter whose property names match the setter method to use for each property.
    */
   public static native TransactionKind newInstance(JavaScriptObject params) /*-{

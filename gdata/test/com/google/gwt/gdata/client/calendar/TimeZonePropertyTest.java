@@ -29,7 +29,6 @@ public class TimeZonePropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", TimeZoneProperty.getConstructor());
     assertNotNull("newInstance()", TimeZoneProperty.newInstance(JavaScriptObject.createObject()));
   }
 

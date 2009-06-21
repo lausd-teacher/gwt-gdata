@@ -30,13 +30,6 @@ public class CalendarExtendedProperty extends ExtendedProperty {
   public static final String REALM_CALENDAR = getConstant("REALM_CALENDAR");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarExtendedProperty;
-  }-*/;
-
-  /**
    * Constructs a calendar extended property using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CalendarExtendedProperty newInstance(JavaScriptObject params) /*-{

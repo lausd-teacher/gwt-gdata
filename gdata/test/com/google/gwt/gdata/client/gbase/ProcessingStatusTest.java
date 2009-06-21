@@ -38,7 +38,6 @@ public class ProcessingStatusTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ProcessingStatus.getConstructor());
     assertNotNull("newInstance()", ProcessingStatus.newInstance(JavaScriptObject.createObject()));
   }
 

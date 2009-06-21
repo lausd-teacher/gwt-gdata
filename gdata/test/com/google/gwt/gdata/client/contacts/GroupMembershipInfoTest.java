@@ -29,7 +29,6 @@ public class GroupMembershipInfoTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GroupMembershipInfo.getConstructor());
     assertNotNull("newInstance()", GroupMembershipInfo.newInstance(JavaScriptObject.createObject()));
   }
 

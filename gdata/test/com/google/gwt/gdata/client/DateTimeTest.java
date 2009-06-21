@@ -31,7 +31,7 @@ public class DateTimeTest extends GWTTestCase {
 
   public void testConstructors() {
     assertNotNull("getConstructor()", DateTime.getConstructor());
-    assertNotNull("newInstance()", DateTime.newInstance(new Date(), true));
+    assertNotNull("newInstance()", DateTime.newInstance(new Date(), false));
   }
 
   public void testOther() {
@@ -43,10 +43,10 @@ public class DateTimeTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    DateTime obj = DateTime.newInstance(new Date(), true);
+    DateTime obj = DateTime.newInstance(new Date(), false);
     Date date = new Date();
     obj.setDate(date);
-    assertSame("date", obj.getDate(), date);
+    assertEquals("date", obj.getDate(), date);
     boolean dateonly = true;
     obj.setDateOnly(dateonly);
     assertSame("dateonly", obj.isDateOnly(), dateonly);

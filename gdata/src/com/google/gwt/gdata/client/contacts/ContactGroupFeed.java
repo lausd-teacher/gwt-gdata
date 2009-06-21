@@ -21,14 +21,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * Comment unavailable.
  */
-public class ContactGroupFeed extends com.google.gwt.gdata.client.Feed {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.contacts.ContactGroupFeed;
-  }-*/;
+public class ContactGroupFeed extends com.google.gwt.gdata.client.Feed<ContactGroupEntry> {
 
   /**
    * Constructs a contact group feed using an object parameter whose property names match the setter method to use for each property.

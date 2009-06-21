@@ -30,13 +30,6 @@ public class PortfolioKind extends Kind {
   public static final String TERM_PORTFOLIO = getConstant("TERM_PORTFOLIO");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.finance.PortfolioKind;
-  }-*/;
-
-  /**
    * Constructs a portfolio kind using an object parameter whose property names match the setter method to use for each property.
    */
   public static native PortfolioKind newInstance(JavaScriptObject params) /*-{

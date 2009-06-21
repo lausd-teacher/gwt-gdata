@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.Query;
 
@@ -39,13 +38,6 @@ public class BlogPostQuery extends Query {
    * Order the returned feeds entries by their <updated> values.
    */
   public static final String ORDERBY_UPDATED = getConstant("ORDERBY_UPDATED");
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.blogger.BlogPostQuery;
-  }-*/;
 
   /**
    * Constructor.

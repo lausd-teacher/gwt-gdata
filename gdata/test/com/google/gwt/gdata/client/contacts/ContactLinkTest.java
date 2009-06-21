@@ -35,7 +35,6 @@ public class ContactLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ContactLink.getConstructor());
     assertNotNull("newInstance()", ContactLink.newInstance(JavaScriptObject.createObject()));
   }
 }

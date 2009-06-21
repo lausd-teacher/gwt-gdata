@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class GmItemType extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.GmItemType;
-  }-*/;
-
-  /**
    * Constructs an item type as defined in /itemtypes feed using an object parameter whose property names match the setter method to use for each property.
    */
   public static native GmItemType newInstance(JavaScriptObject params) /*-{

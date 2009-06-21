@@ -29,7 +29,6 @@ public class EmailTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Email.getConstructor());
     assertNotNull("newInstance()", Email.newInstance(JavaScriptObject.createObject()));
   }
 

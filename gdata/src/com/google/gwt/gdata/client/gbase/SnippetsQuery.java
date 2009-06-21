@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.Query;
 
@@ -81,13 +80,6 @@ public class SnippetsQuery extends Query {
   public static final String SORTORDER_DESCENDING = getConstant("SORTORDER_DESCENDING");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.SnippetsQuery;
-  }-*/;
-
-  /**
    * Constructor.
    */
   public static native SnippetsQuery newInstance(String feedUri) /*-{
@@ -107,7 +99,7 @@ public class SnippetsQuery extends Query {
    * 
    * @return
    */
-  public final native Boolean getAdjust() /*-{
+  public final native boolean getAdjust() /*-{
     return this.getAdjust();
   }-*/;
 
@@ -197,7 +189,7 @@ public class SnippetsQuery extends Query {
    * 
    * @return
    */
-  public final native Boolean getRefine() /*-{
+  public final native boolean getRefine() /*-{
     return this.getRefine();
   }-*/;
 
@@ -242,7 +234,7 @@ public class SnippetsQuery extends Query {
    * 
    * @param adjust
    */
-  public final native void setAdjust(Boolean adjust) /*-{
+  public final native void setAdjust(boolean adjust) /*-{
     this.setAdjust(
       adjust
     );
@@ -396,7 +388,7 @@ public class SnippetsQuery extends Query {
    * 
    * @param refine
    */
-  public final native void setRefine(Boolean refine) /*-{
+  public final native void setRefine(boolean refine) /*-{
     this.setRefine(
       refine
     );

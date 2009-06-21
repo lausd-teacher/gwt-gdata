@@ -29,7 +29,6 @@ public class GeoLatTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GeoLat.getConstructor());
     assertNotNull("newInstance()", GeoLat.newInstance(JavaScriptObject.createObject()));
   }
 

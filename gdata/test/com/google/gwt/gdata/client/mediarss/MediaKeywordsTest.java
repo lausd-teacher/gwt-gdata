@@ -29,7 +29,6 @@ public class MediaKeywordsTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MediaKeywords.getConstructor());
     assertNotNull("newInstance()", MediaKeywords.newInstance(JavaScriptObject.createObject()));
   }
 

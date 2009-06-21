@@ -34,7 +34,6 @@ public class DraftTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Draft.getConstructor());
     assertNotNull("newInstance()", Draft.newInstance(JavaScriptObject.createObject()));
   }
 

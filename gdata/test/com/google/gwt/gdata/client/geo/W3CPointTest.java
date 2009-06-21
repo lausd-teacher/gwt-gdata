@@ -29,7 +29,6 @@ public class W3CPointTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", W3CPoint.getConstructor());
     assertNotNull("newInstance()", W3CPoint.newInstance(JavaScriptObject.createObject()));
   }
 

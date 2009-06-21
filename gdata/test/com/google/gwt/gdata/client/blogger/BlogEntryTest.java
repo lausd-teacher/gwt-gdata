@@ -29,7 +29,22 @@ public class BlogEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", BlogEntry.getConstructor());
     assertNotNull("newInstance()", BlogEntry.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    BlogEntry obj = BlogEntry.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getEntryPostLink()
+    assertEquals("getEntryPostLink", obj.getEntryPostLink(), null);
+    // Unit Test for getFeedLink()
+    assertEquals("getFeedLink", obj.getFeedLink(), null);
+    // Unit Test for getHtmlLink()
+    assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+    // Unit Test for getRepliesLink()
+    assertEquals("getRepliesLink", obj.getRepliesLink(), null);
+    // Unit Test for getSettingsLink()
+    assertEquals("getSettingsLink", obj.getSettingsLink(), null);
+    // Unit Test for getTemplateLink()
+    assertEquals("getTemplateLink", obj.getTemplateLink(), null);
   }
 }

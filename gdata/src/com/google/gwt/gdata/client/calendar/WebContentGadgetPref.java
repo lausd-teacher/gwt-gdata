@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class WebContentGadgetPref extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.WebContentGadgetPref;
-  }-*/;
-
-  /**
    * Constructs a web content gadget preference using an object parameter whose property names match the setter method to use for each property.
    */
   public static native WebContentGadgetPref newInstance(JavaScriptObject params) /*-{

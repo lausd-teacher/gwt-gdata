@@ -54,13 +54,6 @@ public class ProcessingStatus extends JavaScriptObject {
   public static final String STATUS_UNPROCESSED = getConstant("STATUS_UNPROCESSED");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.ProcessingStatus;
-  }-*/;
-
-  /**
    * Constructs a processing status using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ProcessingStatus newInstance(JavaScriptObject params) /*-{

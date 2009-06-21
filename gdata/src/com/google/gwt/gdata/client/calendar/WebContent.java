@@ -25,13 +25,6 @@ import com.google.gwt.core.client.JsArray;
 public class WebContent extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.WebContent;
-  }-*/;
-
-  /**
    * Constructs a web content using an object parameter whose property names match the setter method to use for each property.
    */
   public static native WebContent newInstance(JavaScriptObject params) /*-{

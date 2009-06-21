@@ -21,14 +21,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * Comment unavailable.
  */
-public class BlogFeed extends com.google.gwt.gdata.client.Feed {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.blogger.BlogFeed;
-  }-*/;
+public class BlogFeed extends com.google.gwt.gdata.client.Feed<BlogEntry> {
 
   /**
    * Constructs a blog feed using an object parameter whose property names match the setter method to use for each property.

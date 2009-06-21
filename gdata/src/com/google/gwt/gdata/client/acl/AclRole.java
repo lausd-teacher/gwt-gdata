@@ -49,13 +49,6 @@ public class AclRole extends JavaScriptObject {
   public static final String VALUE_WRITER = getConstant("VALUE_WRITER");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.acl.AclRole;
-  }-*/;
-
-  /**
    * Constructs a role using an object parameter whose property names match the setter method to use for each property.
    */
   public static native AclRole newInstance(JavaScriptObject params) /*-{

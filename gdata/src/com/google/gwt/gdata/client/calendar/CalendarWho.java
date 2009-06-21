@@ -25,13 +25,6 @@ import com.google.gwt.gdata.client.Who;
 public class CalendarWho extends Who {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarWho;
-  }-*/;
-
-  /**
    * Constructs a Calendar Who class using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CalendarWho newInstance(JavaScriptObject params) /*-{

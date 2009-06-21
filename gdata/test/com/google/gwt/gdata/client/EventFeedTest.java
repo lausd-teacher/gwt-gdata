@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -26,10 +25,5 @@ public class EventFeedTest extends GWTTestCase {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
-  }
-
-  public void testConstructors() {
-    assertNotNull("getConstructor()", EventFeed.getConstructor());
-    assertNotNull("newInstance()", EventFeed.newInstance(JavaScriptObject.createObject()));
   }
 }

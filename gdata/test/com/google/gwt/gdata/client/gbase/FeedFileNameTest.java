@@ -29,7 +29,6 @@ public class FeedFileNameTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", FeedFileName.getConstructor());
     assertNotNull("newInstance()", FeedFileName.newInstance(JavaScriptObject.createObject()));
   }
 

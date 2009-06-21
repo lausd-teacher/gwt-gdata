@@ -29,7 +29,6 @@ public class GeoLongTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GeoLong.getConstructor());
     assertNotNull("newInstance()", GeoLong.newInstance(JavaScriptObject.createObject()));
   }
 

@@ -28,7 +28,21 @@ public class PortfolioQueryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", PortfolioQuery.getConstructor());
     assertNotNull("newInstance()", PortfolioQuery.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    // Unit Test for setIncludeReturns(String includeReturns)
+    // Unit Test for setInlinePositions(String inlinePositions)
+  }
+
+  public void testProperties() {
+    PortfolioQuery obj = PortfolioQuery.newInstance("myValue");
+    boolean includereturns = true;
+    obj.setIncludeReturns(includereturns);
+    assertSame("includereturns", obj.getIncludeReturns(), includereturns);
+    boolean inlinepositions = true;
+    obj.setInlinePositions(inlinepositions);
+    assertSame("inlinepositions", obj.getInlinePositions(), inlinepositions);
   }
 }

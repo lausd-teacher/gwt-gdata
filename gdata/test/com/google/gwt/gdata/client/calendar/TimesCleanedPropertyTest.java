@@ -29,7 +29,6 @@ public class TimesCleanedPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", TimesCleanedProperty.getConstructor());
     assertNotNull("newInstance()", TimesCleanedProperty.newInstance(JavaScriptObject.createObject()));
   }
 

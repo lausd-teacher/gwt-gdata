@@ -28,7 +28,21 @@ public class BlogQueryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", BlogQuery.getConstructor());
     assertNotNull("newInstance()", BlogQuery.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    // Unit Test for setMaxResults(String maxResults)
+    // Unit Test for setStartIndex(String startIndex)
+  }
+
+  public void testProperties() {
+    BlogQuery obj = BlogQuery.newInstance("myValue");
+    double startindex = 600813;
+    obj.setStartIndex(startindex);
+    assertEquals("startindex", obj.getStartIndex(), startindex);
+    double maxresults = 600813;
+    obj.setMaxResults(maxresults);
+    assertEquals("maxresults", obj.getMaxResults(), maxresults);
   }
 }

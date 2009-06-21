@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class SelectedProperty extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.SelectedProperty;
-  }-*/;
-
-  /**
    * Constructs a selected property using an object parameter whose property names match the setter method to use for each property.
    */
   public static native SelectedProperty newInstance(JavaScriptObject params) /*-{

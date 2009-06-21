@@ -29,13 +29,6 @@ public class ExtendedProperty extends JavaScriptObject {
   public static final String REALM_SHARED = getConstant("REALM_SHARED");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.ExtendedProperty;
-  }-*/;
-
-  /**
    * Constructs an extended property using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ExtendedProperty newInstance(JavaScriptObject params) /*-{

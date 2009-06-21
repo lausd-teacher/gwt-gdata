@@ -29,7 +29,6 @@ public class OverrideNamePropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", OverrideNameProperty.getConstructor());
     assertNotNull("newInstance()", OverrideNameProperty.newInstance(JavaScriptObject.createObject()));
   }
 

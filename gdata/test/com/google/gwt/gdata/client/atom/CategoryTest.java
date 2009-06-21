@@ -29,7 +29,6 @@ public class CategoryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Category.getConstructor());
     assertNotNull("newInstance()", Category.newInstance(JavaScriptObject.createObject()));
   }
 

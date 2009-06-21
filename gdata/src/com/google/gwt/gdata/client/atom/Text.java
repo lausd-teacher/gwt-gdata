@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Text extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.atom.Text;
-  }-*/;
-
-  /**
    * Constructs a text construct using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Text newInstance(JavaScriptObject params) /*-{
@@ -47,36 +40,6 @@ public class Text extends JavaScriptObject {
   }-*/;
 
   protected Text() { }
-
-  /**
-   * Create a new text construct using the typical parameters.
-   * 
-   * @param text
-   * @param opt_type
-   * 
-   * @return
-   */
-  public final native Text create(String text, String type) /*-{
-    return this.create(
-      text,
-      type
-    );
-  }-*/;
-
-  /**
-   * Create a new text construct using the typical parameters.
-   * 
-   * @param text
-   * @param opt_type
-   * 
-   * @return
-   */
-  public final native Text create(String text) /*-{
-    return this.create(
-      text,
-      undefined
-    );
-  }-*/;
 
   /**
    * Returns the language of link title.

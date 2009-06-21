@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class RecurrenceExceptionEntryLink extends EntryLink {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.RecurrenceExceptionEntryLink;
-  }-*/;
-
-  /**
    * Constructs a recurrence exception entry link using an object parameter whose property names match the setter method to use for each property.
    */
   public static native RecurrenceExceptionEntryLink newInstance(JavaScriptObject params) /*-{
@@ -47,12 +40,5 @@ public class RecurrenceExceptionEntryLink extends EntryLink {
   }-*/;
 
   protected RecurrenceExceptionEntryLink() { }
-
-  /**
-   * @return
-   */
-  public final native JavaScriptObject getEntryClass() /*-{
-    return this.getEntryClass();
-  }-*/;
 
 }

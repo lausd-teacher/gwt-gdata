@@ -34,13 +34,6 @@ public class Draft extends JavaScriptObject {
   public static final String VALUE_YES = getConstant("VALUE_YES");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.app.Draft;
-  }-*/;
-
-  /**
    * Constructs a draft tag using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Draft newInstance(JavaScriptObject params) /*-{

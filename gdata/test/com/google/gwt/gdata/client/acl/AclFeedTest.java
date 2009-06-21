@@ -29,7 +29,6 @@ public class AclFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", AclFeed.getConstructor());
     assertNotNull("newInstance()", AclFeed.newInstance(JavaScriptObject.createObject()));
   }
 }

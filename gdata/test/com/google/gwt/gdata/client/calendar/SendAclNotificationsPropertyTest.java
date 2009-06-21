@@ -29,7 +29,6 @@ public class SendAclNotificationsPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", SendAclNotificationsProperty.getConstructor());
     assertNotNull("newInstance()", SendAclNotificationsProperty.newInstance(JavaScriptObject.createObject()));
   }
 

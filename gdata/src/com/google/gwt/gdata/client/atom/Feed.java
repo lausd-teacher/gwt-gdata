@@ -21,20 +21,14 @@ import com.google.gwt.core.client.JsArray;
 
 /**
  * Comment unavailable.
+ * @param <E> The entry type for this feed.
  */
-public class Feed extends JavaScriptObject {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.atom.Feed;
-  }-*/;
+public class Feed<E extends Entry> extends JavaScriptObject {
 
   /**
    * Constructs a feed using an object parameter whose property names match the setter method to use for each property.
    */
-  public static native Feed newInstance(JavaScriptObject params) /*-{
+  public static native <E extends Entry> Feed<E> newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.atom.Feed(
       params
     );
@@ -43,7 +37,7 @@ public class Feed extends JavaScriptObject {
   /**
    * Constructs a feed using an object parameter whose property names match the setter method to use for each property.
    */
-  public static native Feed newInstance() /*-{
+  public static native <E extends Entry> Feed<E> newInstance() /*-{
     return new $wnd.google.gdata.atom.Feed();
   }-*/;
 
@@ -87,7 +81,7 @@ public class Feed extends JavaScriptObject {
    * 
    * @param entry
    */
-  public final native void addEntry(Entry entry) /*-{
+  public final native void addEntry(E entry) /*-{
     this.addEntry(
       entry
     );
@@ -132,13 +126,6 @@ public class Feed extends JavaScriptObject {
   }-*/;
 
   /**
-   * @return
-   */
-  public final native JavaScriptObject getCategoryClass() /*-{
-    return this.getCategoryClass();
-  }-*/;
-
-  /**
    * Returns the contributors.
    * 
    * @return
@@ -152,15 +139,8 @@ public class Feed extends JavaScriptObject {
    * 
    * @return
    */
-  public final native JsArray<com.google.gwt.gdata.client.atom.Entry> getEntries() /*-{
+  public final native JsArray<E> getEntries() /*-{
     return this.getEntries();
-  }-*/;
-
-  /**
-   * @return
-   */
-  public final native JavaScriptObject getEntryClass() /*-{
-    return this.getEntryClass();
   }-*/;
 
   /**
@@ -179,13 +159,6 @@ public class Feed extends JavaScriptObject {
    */
   public final native Id getId() /*-{
     return this.getId();
-  }-*/;
-
-  /**
-   * @return
-   */
-  public final native JavaScriptObject getLinkClass() /*-{
-    return this.getLinkClass();
   }-*/;
 
   /**
@@ -213,15 +186,6 @@ public class Feed extends JavaScriptObject {
    */
   public final native Text getRights() /*-{
     return this.getRights();
-  }-*/;
-
-  /**
-   * Maps deprecated getSubTitle to getSubtitle.
-   * 
-   * @return
-   */
-  public final native JavaScriptObject getSubTitle() /*-{
-    return this.getSubTitle();
   }-*/;
 
   /**
@@ -336,7 +300,7 @@ public class Feed extends JavaScriptObject {
    * 
    * @param entries
    */
-  public final native void setEntries(JsArray<Entry> entries) /*-{
+  public final native void setEntries(JsArray<E> entries) /*-{
     this.setEntries(
       entries
     );
@@ -449,15 +413,6 @@ public class Feed extends JavaScriptObject {
    */
   public final native void setRights() /*-{
     this.setRights();
-  }-*/;
-
-  /**
-   * Maps deprecated setSubTitle to setSubtitle.
-   * 
-   * @return
-   */
-  public final native JavaScriptObject setSubTitle() /*-{
-    return this.setSubTitle();
   }-*/;
 
   /**

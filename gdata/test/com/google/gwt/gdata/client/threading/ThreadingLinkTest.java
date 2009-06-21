@@ -36,8 +36,11 @@ public class ThreadingLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ThreadingLink.getConstructor());
     assertNotNull("newInstance()", ThreadingLink.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    // Unit Test for setUpdated(Date updated)
   }
 
   public void testProperties() {

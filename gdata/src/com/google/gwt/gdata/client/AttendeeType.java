@@ -34,13 +34,6 @@ public class AttendeeType extends JavaScriptObject {
   public static final String VALUE_REQUIRED = getConstant("VALUE_REQUIRED");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.AttendeeType;
-  }-*/;
-
-  /**
    * Constructs an attendee type using an object parameter whose property names match the setter method to use for each property.
    */
   public static native AttendeeType newInstance(JavaScriptObject params) /*-{

@@ -16,7 +16,10 @@
 
 package com.google.gwt.gdata.client.calendar;
 
+import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.junit.client.GWTTestCase;
+
+import java.util.Date;
 
 /**
  * Tests for the CalendarCommentQuery class.
@@ -28,8 +31,14 @@ public class CalendarCommentQueryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarCommentQuery.getConstructor());
     assertNotNull("newInstance()", CalendarCommentQuery.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    // Unit Test for setMaxResults(String maxResults)
+    // Unit Test for setStartIndex(String startIndex)
+    // Unit Test for setUpdatedMax(String updatedMax)
+    // Unit Test for setUpdatedMin(String updatedMin)
   }
 
   public void testProperties() {
@@ -37,8 +46,20 @@ public class CalendarCommentQueryTest extends GWTTestCase {
     String author = "myValue";
     obj.setAuthor(author);
     assertEquals("author", obj.getAuthor(), author);
+    DateTime updatedmin = DateTime.newInstance(new Date(), false);
+    obj.setUpdatedMin(updatedmin);
+    assertEquals("updatedmin", obj.getUpdatedMin().getDate(), updatedmin.getDate());
     String fulltextquery = "myValue";
     obj.setFullTextQuery(fulltextquery);
     assertEquals("fulltextquery", obj.getFullTextQuery(), fulltextquery);
+    double startindex = 600813;
+    obj.setStartIndex(startindex);
+    assertEquals("startindex", obj.getStartIndex(), startindex);
+    double maxresults = 600813;
+    obj.setMaxResults(maxresults);
+    assertEquals("maxresults", obj.getMaxResults(), maxresults);
+    DateTime updatedmax = DateTime.newInstance(new Date(), false);
+    obj.setUpdatedMax(updatedmax);
+    assertEquals("updatedmax", obj.getUpdatedMax().getDate(), updatedmax.getDate());
   }
 }

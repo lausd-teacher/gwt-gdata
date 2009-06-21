@@ -29,7 +29,6 @@ public class CalendarWhoTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarWho.getConstructor());
     assertNotNull("newInstance()", CalendarWho.newInstance(JavaScriptObject.createObject()));
   }
 

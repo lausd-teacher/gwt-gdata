@@ -29,7 +29,6 @@ public class QuickAddPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", QuickAddProperty.getConstructor());
     assertNotNull("newInstance()", QuickAddProperty.newInstance(JavaScriptObject.createObject()));
   }
 

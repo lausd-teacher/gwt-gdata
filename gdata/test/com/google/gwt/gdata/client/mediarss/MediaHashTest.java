@@ -34,7 +34,6 @@ public class MediaHashTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MediaHash.getConstructor());
     assertNotNull("newInstance()", MediaHash.newInstance(JavaScriptObject.createObject()));
   }
 

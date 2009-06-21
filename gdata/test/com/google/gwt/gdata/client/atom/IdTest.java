@@ -29,7 +29,6 @@ public class IdTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Id.getConstructor());
     assertNotNull("newInstance()", Id.newInstance(JavaScriptObject.createObject()));
   }
 

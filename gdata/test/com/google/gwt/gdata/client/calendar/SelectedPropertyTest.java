@@ -29,7 +29,6 @@ public class SelectedPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", SelectedProperty.getConstructor());
     assertNotNull("newInstance()", SelectedProperty.newInstance(JavaScriptObject.createObject()));
   }
 

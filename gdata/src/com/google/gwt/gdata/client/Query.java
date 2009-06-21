@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Query extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.client.Query;
-  }-*/;
-
-  /**
    * Creates a Query instance.
    */
   public static native Query newInstance(String feedUri) /*-{
@@ -40,19 +33,6 @@ public class Query extends JavaScriptObject {
   }-*/;
 
   protected Query() { }
-
-  /**
-   * Returns the value of a parameter.
-   * 
-   * @param name
-   * 
-   * @return
-   */
-  public final native JavaScriptObject getParam(String name) /*-{
-    return this.getParam(
-      name
-    );
-  }-*/;
 
   /**
    * Gets path of URI

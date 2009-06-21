@@ -34,7 +34,6 @@ public class EncodingTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Encoding.getConstructor());
     assertNotNull("newInstance()", Encoding.newInstance(JavaScriptObject.createObject()));
   }
 

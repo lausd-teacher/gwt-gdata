@@ -29,7 +29,6 @@ public class LogoTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Logo.getConstructor());
     assertNotNull("newInstance()", Logo.newInstance(JavaScriptObject.createObject()));
   }
 

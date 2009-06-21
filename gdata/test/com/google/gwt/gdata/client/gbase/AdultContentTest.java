@@ -34,7 +34,6 @@ public class AdultContentTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", AdultContent.getConstructor());
     assertNotNull("newInstance()", AdultContent.newInstance(JavaScriptObject.createObject()));
   }
 

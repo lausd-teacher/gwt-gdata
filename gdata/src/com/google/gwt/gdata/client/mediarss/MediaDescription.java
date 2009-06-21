@@ -34,13 +34,6 @@ public class MediaDescription extends JavaScriptObject {
   public static final String TYPE_PLAIN = getConstant("TYPE_PLAIN");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.mediarss.MediaDescription;
-  }-*/;
-
-  /**
    * Constructs a media description using an object parameter whose property names match the setter method to use for each property.
    */
   public static native MediaDescription newInstance(JavaScriptObject params) /*-{

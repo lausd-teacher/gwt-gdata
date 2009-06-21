@@ -29,7 +29,6 @@ public class GmlUpperCornerTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GmlUpperCorner.getConstructor());
     assertNotNull("newInstance()", GmlUpperCorner.newInstance(JavaScriptObject.createObject()));
   }
 

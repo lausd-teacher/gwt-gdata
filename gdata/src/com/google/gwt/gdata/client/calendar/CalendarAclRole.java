@@ -50,13 +50,6 @@ public class CalendarAclRole extends AclRole {
   public static final String VALUE_ROOT = getConstant("VALUE_ROOT");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarAclRole;
-  }-*/;
-
-  /**
    * Constructs a Calendar role using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CalendarAclRole newInstance(JavaScriptObject params) /*-{

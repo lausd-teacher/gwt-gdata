@@ -34,13 +34,6 @@ public class UseQuotedFields extends JavaScriptObject {
   public static final String VALUE_YES = getConstant("VALUE_YES");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.UseQuotedFields;
-  }-*/;
-
-  /**
    * Constructs a boolean to indicate whether to use quoted fields using an object parameter whose property names match the setter method to use for each property.
    */
   public static native UseQuotedFields newInstance(JavaScriptObject params) /*-{

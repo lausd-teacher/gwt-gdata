@@ -16,9 +16,7 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -37,8 +35,15 @@ public class GmAttributeTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GmAttribute.getConstructor());
     assertNotNull("newInstance()", GmAttribute.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    GmAttribute obj = GmAttribute.newInstance(JavaScriptObject.createObject());
+    // Unit Test for addValue(GmValue value)
+    // Unit Test for getValues()
+    assertEquals("getValues", obj.getValues(), null);
+    // Unit Test for setValues(JsArray values)
   }
 
   public void testProperties() {
@@ -46,12 +51,6 @@ public class GmAttributeTest extends GWTTestCase {
     String name = "myValue";
     obj.setName(name);
     assertEquals("name", obj.getName(), name);
-    JsArray<GmValue> values = ArrayHelper.toJsArray(GmValue.newInstance(JavaScriptObject.createObject()));
-    obj.setValues(values);
-    assertEquals("values", obj.getValues().length(), values.length());
-    int lenValues = obj.getValues().length();
-    obj.addValue(GmValue.newInstance(JavaScriptObject.createObject()));
-    assertEquals("values", obj.getValues().length(), lenValues + 1);
     double count = 600813;
     obj.setCount(count);
     assertEquals("count", obj.getCount(), count);

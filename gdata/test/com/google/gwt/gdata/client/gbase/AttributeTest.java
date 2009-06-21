@@ -29,7 +29,6 @@ public class AttributeTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Attribute.getConstructor());
     assertNotNull("newInstance()", Attribute.newInstance(JavaScriptObject.createObject()));
   }
 

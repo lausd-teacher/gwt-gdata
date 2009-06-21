@@ -34,13 +34,6 @@ public class MediaHash extends JavaScriptObject {
   public static final String ALGO_SHA_1 = getConstant("ALGO_SHA_1");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.mediarss.MediaHash;
-  }-*/;
-
-  /**
    * Constructs a media hash using an object parameter whose property names match the setter method to use for each property.
    */
   public static native MediaHash newInstance(JavaScriptObject params) /*-{

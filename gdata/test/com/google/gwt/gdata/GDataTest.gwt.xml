@@ -16,12 +16,5 @@
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.google.gwt.gdata.GData" />
   <inherits name="com.google.gwt.json.JSON" />
-    
-  <!--
-    If you want to deploy this application outside of localhost,
-    you must obtain a Google Maps API key at:
-    http://www.google.com/apis/maps/signup.html
-    Replace the src attribute below with a URL that contains your key.
-  -->
   <script src="http://www.google.com/jsapi?autoload=%7Bmodules%3A%5B%7Bname%3Agdata%2Cversion%3A1.x%7D%5D%7D" />
 </module>

@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class GroupMembershipInfo extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.contacts.GroupMembershipInfo;
-  }-*/;
-
-  /**
    * Constructs a group membership info using an object parameter whose property names match the setter method to use for each property.
    */
   public static native GroupMembershipInfo newInstance(JavaScriptObject params) /*-{

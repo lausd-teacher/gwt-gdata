@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class GmlLowerCorner extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.geo.GmlLowerCorner;
-  }-*/;
-
-  /**
    * Constructs a lower corner of a region using an object parameter whose property names match the setter method to use for each property.
    */
   public static native GmlLowerCorner newInstance(JavaScriptObject params) /*-{

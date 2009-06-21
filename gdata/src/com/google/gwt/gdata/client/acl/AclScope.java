@@ -44,13 +44,6 @@ public class AclScope extends JavaScriptObject {
   public static final String TYPE_USER = getConstant("TYPE_USER");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.acl.AclScope;
-  }-*/;
-
-  /**
    * Constructs a scope using an object parameter whose property names match the setter method to use for each property.
    */
   public static native AclScope newInstance(JavaScriptObject params) /*-{

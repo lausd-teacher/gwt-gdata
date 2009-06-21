@@ -20,20 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * Comment unavailable.
+ * @param <E>
  */
-public class EventFeed extends com.google.gwt.gdata.client.Feed {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.EventFeed;
-  }-*/;
+public class EventFeed<E extends EventEntry> extends com.google.gwt.gdata.client.Feed<E> {
 
   /**
    * Constructs an event feed using an object parameter whose property names match the setter method to use for each property.
    */
-  public static native EventFeed newInstance(JavaScriptObject params) /*-{
+  public static native <E extends EventEntry> EventFeed<E> newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.EventFeed(
       params
     );
@@ -42,7 +36,7 @@ public class EventFeed extends com.google.gwt.gdata.client.Feed {
   /**
    * Constructs an event feed using an object parameter whose property names match the setter method to use for each property.
    */
-  public static native EventFeed newInstance() /*-{
+  public static native <E extends EventEntry> EventFeed<E> newInstance() /*-{
     return new $wnd.google.gdata.EventFeed();
   }-*/;
 

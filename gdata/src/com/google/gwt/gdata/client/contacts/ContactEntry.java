@@ -26,13 +26,6 @@ import com.google.gwt.gdata.client.Deleted;
 public class ContactEntry extends PersonEntry {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.contacts.ContactEntry;
-  }-*/;
-
-  /**
    * Constructs a contact entry using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ContactEntry newInstance(JavaScriptObject params) /*-{

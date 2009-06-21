@@ -28,16 +28,17 @@ public class ServiceTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Service.getConstructor());
     assertNotNull("newInstance()", Service.newInstance("myValue", "myValue"));
   }
 
   public void testOther() {
-    // Service obj = Service.newInstance("myValue", "myValue");
-    // obj.deleteEntry(uri, continuation, opt_errorHandler);
-    // obj.insertEntry(uri, entry, continuation, opt_errorHandler, opt_entryClass);
-    // obj.supportsAlt(alt);
-    // obj.updateEntry(uri, entry, continuation, opt_errorHandler, opt_entryClass);
+    // Unit Test for deleteEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for insertEntry(String uri, JavaScriptObject entry, function(Object) continuation, function(Error) opt_errorHandler, Function entryClass)
+    // Unit Test for setAltSupport(String alt, boolean supported)
+    // Unit Test for setDeveloperKey(String developerKey)
+    // Unit Test for setHeaders(JavaScriptObject headers)
+    // Unit Test for supportsAlt(String alt)
+    // Unit Test for updateEntry(String uri, JavaScriptObject entry, function(Object) continuation, function(Error) opt_errorHandler, Function entryClass)
   }
 
   public void testProperties() {

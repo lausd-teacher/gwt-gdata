@@ -39,13 +39,6 @@ public class ContactLink extends com.google.gwt.gdata.client.Link {
   public static final String TYPE_IMAGE = getConstant("TYPE_IMAGE");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.contacts.ContactLink;
-  }-*/;
-
-  /**
    * Constructs a Contact Link class using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ContactLink newInstance(JavaScriptObject params) /*-{

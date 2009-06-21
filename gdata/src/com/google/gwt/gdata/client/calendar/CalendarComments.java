@@ -25,13 +25,6 @@ import com.google.gwt.gdata.client.Comments;
 public class CalendarComments extends Comments {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarComments;
-  }-*/;
-
-  /**
    * Constructs a Calendar comments class using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CalendarComments newInstance(JavaScriptObject params) /*-{

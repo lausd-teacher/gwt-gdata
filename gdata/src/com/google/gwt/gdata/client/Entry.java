@@ -23,20 +23,14 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Comment unavailable.
+ * @param <E>
  */
-public class Entry extends com.google.gwt.gdata.client.atom.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.Entry;
-  }-*/;
+public class Entry<E extends com.google.gwt.gdata.client.atom.Entry> extends com.google.gwt.gdata.client.atom.Entry {
 
   /**
    * Constructs a GData entry using an object parameter whose property names match the setter method to use for each property.
    */
-  public static native Entry newInstance(JavaScriptObject params) /*-{
+  public static native <E extends com.google.gwt.gdata.client.atom.Entry> Entry<E> newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.Entry(
       params
     );
@@ -45,11 +39,12 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
   /**
    * Constructs a GData entry using an object parameter whose property names match the setter method to use for each property.
    */
-  public static native Entry newInstance() /*-{
+  public static native <E extends com.google.gwt.gdata.client.atom.Entry> Entry<E> newInstance() /*-{
     return new $wnd.google.gdata.Entry();
   }-*/;
 
   protected Entry() { }
+
 
   /**
    * Deletes the entry from the feed.
@@ -59,10 +54,10 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
    * 
    * @return
    */
-  public final native JavaScriptObject deleteEntry(AsyncCallback<JavaScriptObject> callback) /*-{
+  public final native void deleteEntry(AsyncCallback<E> callback) /*-{
     return this.deleteEntry(
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
     );
   }-*/;
 
@@ -73,13 +68,6 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
    */
   public final native Control getControl() /*-{
     return this.getControl();
-  }-*/;
-
-  /**
-   * @return
-   */
-  public final native JavaScriptObject getControlClass() /*-{
-    return this.getControlClass();
   }-*/;
 
   /**
@@ -138,10 +126,10 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
    * 
    * @return
    */
-  public final native com.google.gwt.gdata.client.Entry getSelf(AsyncCallback<Entry> callback) /*-{
+  public final native E getSelf(AsyncCallback<E> callback) /*-{
     return this.getSelf(
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
     );
   }-*/;
 
@@ -202,11 +190,10 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
    * 
    * @return
    */
-  public final native com.google.gwt.gdata.client.Entry updateEntry(AsyncCallback<Entry> callback) /*-{
+  public final native E updateEntry(AsyncCallback<E> callback) /*-{
     return this.updateEntry(
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
     );
   }-*/;
-
 }

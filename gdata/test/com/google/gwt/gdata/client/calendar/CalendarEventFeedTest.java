@@ -29,8 +29,17 @@ public class CalendarEventFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarEventFeed.getConstructor());
     assertNotNull("newInstance()", CalendarEventFeed.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    CalendarEventFeed obj = CalendarEventFeed.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getFeedBatchLink()
+    assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+    // Unit Test for getNextLink()
+    assertEquals("getNextLink", obj.getNextLink(), null);
+    // Unit Test for getPreviousLink()
+    assertEquals("getPreviousLink", obj.getPreviousLink(), null);
   }
 
   public void testProperties() {
@@ -38,6 +47,9 @@ public class CalendarEventFeedTest extends GWTTestCase {
     TimeZoneProperty timezone = TimeZoneProperty.newInstance(JavaScriptObject.createObject());
     obj.setTimeZone(timezone);
     assertSame("timezone", obj.getTimeZone(), timezone);
+    AllowGSyncProperty allowgsync = AllowGSyncProperty.newInstance();
+    obj.setAllowGSync(allowgsync);
+    assertSame("allowgsync", obj.getAllowGSync(), allowgsync);
     TimesCleanedProperty timescleaned = TimesCleanedProperty.newInstance(JavaScriptObject.createObject());
     obj.setTimesCleaned(timescleaned);
     assertSame("timescleaned", obj.getTimesCleaned(), timescleaned);

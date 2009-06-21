@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class GoogleService extends Service {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.client.GoogleService;
-  }-*/;
-
-  /**
    * Creates a service that supports all alt formats: atom, atom-in-script, json, json-in-script, rss and rss-in-script.
    */
   public static native GoogleService newInstance(String serviceName, String applicationName) /*-{
@@ -41,15 +34,6 @@ public class GoogleService extends Service {
   }-*/;
 
   protected GoogleService() { }
-
-  /**
-   * Gets user credentials.
-   * 
-   * @return
-   */
-  public final native JavaScriptObject getUserCredentials() /*-{
-    return this.getUserCredentials();
-  }-*/;
 
   /**
    * Sets the authentication to be used when running inside a Shindig (OpenSocial) container.

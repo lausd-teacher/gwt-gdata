@@ -25,13 +25,6 @@ import com.google.gwt.gdata.client.EventFeed;
 public class CalendarEventFeed extends EventFeed {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarEventFeed;
-  }-*/;
-
-  /**
    * Constructs a Calendar event feed using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CalendarEventFeed newInstance(JavaScriptObject params) /*-{
@@ -48,6 +41,15 @@ public class CalendarEventFeed extends EventFeed {
   }-*/;
 
   protected CalendarEventFeed() { }
+
+  /**
+   * Returns the whether the user is permitted to use Google Apps Sync.
+   * 
+   * @return
+   */
+  public final native AllowGSyncProperty getAllowGSync() /*-{
+    return this.getAllowGSync();
+  }-*/;
 
   /**
    * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
@@ -92,6 +94,26 @@ public class CalendarEventFeed extends EventFeed {
    */
   public final native TimeZoneProperty getTimeZone() /*-{
     return this.getTimeZone();
+  }-*/;
+
+  /**
+   * Sets the whether the user is permitted to use Google Apps Sync.
+   * 
+   * @param allowGSync
+   */
+  public final native void setAllowGSync(AllowGSyncProperty allowGSync) /*-{
+    this.setAllowGSync(
+      allowGSync
+    );
+  }-*/;
+
+  /**
+   * Sets the whether the user is permitted to use Google Apps Sync.
+   * 
+   * @param allowGSync
+   */
+  public final native void setAllowGSync() /*-{
+    this.setAllowGSync();
   }-*/;
 
   /**

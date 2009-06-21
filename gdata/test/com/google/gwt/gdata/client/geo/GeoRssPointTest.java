@@ -29,7 +29,6 @@ public class GeoRssPointTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GeoRssPoint.getConstructor());
     assertNotNull("newInstance()", GeoRssPoint.newInstance(JavaScriptObject.createObject()));
   }
 

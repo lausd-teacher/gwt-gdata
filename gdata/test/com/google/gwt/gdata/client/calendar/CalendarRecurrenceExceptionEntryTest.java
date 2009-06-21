@@ -29,7 +29,6 @@ public class CalendarRecurrenceExceptionEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarRecurrenceExceptionEntry.getConstructor());
     assertNotNull("newInstance()", CalendarRecurrenceExceptionEntry.newInstance(JavaScriptObject.createObject()));
   }
 

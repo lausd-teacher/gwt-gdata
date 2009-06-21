@@ -39,13 +39,6 @@ public class FileFormat extends JavaScriptObject {
   public static final String FORMAT_XML = getConstant("FORMAT_XML");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.FileFormat;
-  }-*/;
-
-  /**
    * Constructs a file format using an object parameter whose property names match the setter method to use for each property.
    */
   public static native FileFormat newInstance(JavaScriptObject params) /*-{

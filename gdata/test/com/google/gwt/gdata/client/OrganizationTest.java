@@ -34,7 +34,6 @@ public class OrganizationTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Organization.getConstructor());
     assertNotNull("newInstance()", Organization.newInstance(JavaScriptObject.createObject()));
   }
 

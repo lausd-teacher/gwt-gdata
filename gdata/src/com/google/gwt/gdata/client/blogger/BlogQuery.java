@@ -16,20 +16,12 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Query;
 
 /**
  * Comment unavailable.
  */
 public class BlogQuery extends Query {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.blogger.BlogQuery;
-  }-*/;
 
   /**
    * Constructor.

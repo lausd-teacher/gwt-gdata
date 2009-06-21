@@ -32,7 +32,26 @@ public class GoogleBaseServiceTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GoogleBaseService.getConstructor());
     assertNotNull("newInstance()", GoogleBaseService.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    // Unit Test for getAttributesEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getAttributesFeed(AttributesQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getAttributesFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getItemsEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getItemsFeed(ItemsQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getItemsFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getItemTypesEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getItemTypesFeed(ItemTypesQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getItemTypesFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getLocalesEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getLocalesFeed(LocalesQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getLocalesFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getMediaEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getMediaFeed(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getSnippetsEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getSnippetsFeed(SnippetsQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getSnippetsFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
   }
 }

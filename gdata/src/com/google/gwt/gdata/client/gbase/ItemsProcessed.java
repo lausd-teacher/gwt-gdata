@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class ItemsProcessed extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.ItemsProcessed;
-  }-*/;
-
-  /**
    * Constructs an items processed using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ItemsProcessed newInstance(JavaScriptObject params) /*-{

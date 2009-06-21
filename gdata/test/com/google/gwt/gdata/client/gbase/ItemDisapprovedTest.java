@@ -29,7 +29,6 @@ public class ItemDisapprovedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ItemDisapproved.getConstructor());
     assertNotNull("newInstance()", ItemDisapproved.newInstance(JavaScriptObject.createObject()));
   }
 }

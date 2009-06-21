@@ -16,9 +16,7 @@
 
 package com.google.gwt.gdata.client.app;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -32,27 +30,26 @@ public class CollectionTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Collection.getConstructor());
     assertNotNull("newInstance()", Collection.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    Collection obj = Collection.newInstance(JavaScriptObject.createObject());
+    // Unit Test for addAccept(Accept accept)
+    // Unit Test for addCategories(Categories categories)
+    // Unit Test for getAccepts()
+    assertEquals("getAccepts", obj.getAccepts(), null);
+    // Unit Test for getCategorieses()
+    assertEquals("getCategorieses", obj.getCategorieses(), null);
+    // Unit Test for setAccepts(JsArray accepts)
+    // Unit Test for setCategorieses(JsArray categorieses)
   }
 
   public void testProperties() {
     Collection obj = Collection.newInstance(JavaScriptObject.createObject());
-    JsArray<Accept> accepts = ArrayHelper.toJsArray(Accept.newInstance(JavaScriptObject.createObject()));
-    obj.setAccepts(accepts);
-    assertEquals("accepts", obj.getAccepts().length(), accepts.length());
-    int lenAccepts = obj.getAccepts().length();
-    obj.addAccept(Accept.newInstance(JavaScriptObject.createObject()));
-    assertEquals("accepts", obj.getAccepts().length(), lenAccepts + 1);
     Text title = Text.newInstance(JavaScriptObject.createObject());
     obj.setTitle(title);
     assertSame("title", obj.getTitle(), title);
-    JsArray<Categories> categorieses = ArrayHelper.toJsArray(Categories.newInstance(JavaScriptObject.createObject()));
-    obj.setCategorieses(categorieses);
-    assertEquals("categorieses", obj.getCategorieses().length(), categorieses.length());
-    int lenCategorieses = obj.getCategorieses().length();
-    obj.addCategories(Categories.newInstance(JavaScriptObject.createObject()));
-    assertEquals("categorieses", obj.getCategorieses().length(), lenCategorieses + 1);
     String href = "myValue";
     obj.setHref(href);
     assertEquals("href", obj.getHref(), href);

@@ -26,13 +26,6 @@ import com.google.gwt.gdata.client.Money;
 public class CostBasis extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.finance.CostBasis;
-  }-*/;
-
-  /**
    * Constructs a cost basis using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CostBasis newInstance(JavaScriptObject params) /*-{

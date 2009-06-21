@@ -29,7 +29,6 @@ public class ItemTypeTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ItemType.getConstructor());
     assertNotNull("newInstance()", ItemType.newInstance(JavaScriptObject.createObject()));
   }
 

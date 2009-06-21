@@ -26,13 +26,6 @@ import com.google.gwt.gdata.client.Money;
 public class Price extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.finance.Price;
-  }-*/;
-
-  /**
    * Constructs a price using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Price newInstance(JavaScriptObject params) /*-{

@@ -51,13 +51,6 @@ public class Reminder extends JavaScriptObject {
   public static final String METHOD_SMS = getConstant("METHOD_SMS");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.Reminder;
-  }-*/;
-
-  /**
    * Constructs a reminder using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Reminder newInstance(JavaScriptObject params) /*-{
@@ -131,7 +124,7 @@ public class Reminder extends JavaScriptObject {
    */
   public final native void setAbsoluteTime(Date absoluteTime) /*-{
     this.setAbsoluteTime(
-      absoluteTime
+      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(absoluteTime))
     );
   }-*/;
 

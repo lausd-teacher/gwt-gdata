@@ -29,7 +29,6 @@ public class MediaThumbnailTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MediaThumbnail.getConstructor());
     assertNotNull("newInstance()", MediaThumbnail.newInstance(JavaScriptObject.createObject()));
   }
 

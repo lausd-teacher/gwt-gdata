@@ -25,13 +25,6 @@ import com.google.gwt.core.client.JsArray;
 public class ServiceDocument extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.app.ServiceDocument;
-  }-*/;
-
-  /**
    * Constructs a service document using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ServiceDocument newInstance(JavaScriptObject params) /*-{

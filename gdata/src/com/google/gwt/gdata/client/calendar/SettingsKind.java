@@ -30,13 +30,6 @@ public class SettingsKind extends Kind {
   public static final String TERM_SETTINGS = getConstant("TERM_SETTINGS");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.SettingsKind;
-  }-*/;
-
-  /**
    * Constructs a settings kind using an object parameter whose property names match the setter method to use for each property.
    */
   public static native SettingsKind newInstance(JavaScriptObject params) /*-{

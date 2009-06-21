@@ -28,14 +28,7 @@ import com.google.gwt.gdata.client.PostalAddress;
 /**
  * Comment unavailable.
  */
-public class PersonEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.contacts.PersonEntry;
-  }-*/;
+public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> {
 
   /**
    * Constructs a person entry using an object parameter whose property names match the setter method to use for each property.

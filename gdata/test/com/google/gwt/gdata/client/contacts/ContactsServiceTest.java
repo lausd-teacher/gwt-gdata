@@ -32,7 +32,15 @@ public class ContactsServiceTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ContactsService.getConstructor());
     assertNotNull("newInstance()", ContactsService.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    // Unit Test for getContactEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getContactFeed(ContactQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getContactFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getContactGroupEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getContactGroupFeed(ContactQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getContactGroupFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
   }
 }

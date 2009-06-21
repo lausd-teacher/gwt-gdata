@@ -25,13 +25,6 @@ import com.google.gwt.gdata.client.RecurrenceException;
 public class CalendarRecurrenceException extends RecurrenceException {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarRecurrenceException;
-  }-*/;
-
-  /**
    * Constructs a Calendar recurrence exception using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CalendarRecurrenceException newInstance(JavaScriptObject params) /*-{

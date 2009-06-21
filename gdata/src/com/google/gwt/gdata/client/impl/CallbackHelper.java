@@ -18,6 +18,7 @@ package com.google.gwt.gdata.client.impl;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptException;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -25,14 +26,15 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  * Comment unavailable.
  */
 public class CallbackHelper {
-  
-  @SuppressWarnings("unchecked")
-  public static void handleFailureCallback(AsyncCallback cb, String error) {
+
+  public static <T extends JavaScriptObject> void handleFailureCallback(AsyncCallback<T> cb, com.google.gwt.gdata.client.Error error) {
     UncaughtExceptionHandler handler = GWT.getUncaughtExceptionHandler();
     if (handler != null) {
       try {
-        cb.onFailure(new JavaScriptException(error));
+        JavaScriptException exc = new JavaScriptException(error.getMessage());
+        cb.onFailure(exc);
       } catch (Throwable e) {
+        e.printStackTrace();
         handler.onUncaughtException(e);
       }
     } else {
@@ -40,13 +42,13 @@ public class CallbackHelper {
     }
   }
 
-  @SuppressWarnings("unchecked")
-  public static void handleSuccessCallback(AsyncCallback cb, Object arg) {
+  public static <T extends JavaScriptObject> void handleSuccessCallback(AsyncCallback<T> cb, T arg) {
     UncaughtExceptionHandler handler = GWT.getUncaughtExceptionHandler();
     if (handler != null) {
       try {
         cb.onSuccess(arg);
       } catch (Throwable e) {
+        e.printStackTrace();
         handler.onUncaughtException(e);
       }
     } else {

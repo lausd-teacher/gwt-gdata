@@ -29,7 +29,6 @@ public class CommentsTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Comments.getConstructor());
     assertNotNull("newInstance()", Comments.newInstance(JavaScriptObject.createObject()));
   }
 

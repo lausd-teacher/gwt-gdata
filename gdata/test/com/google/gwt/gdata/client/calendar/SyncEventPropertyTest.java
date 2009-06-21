@@ -29,7 +29,6 @@ public class SyncEventPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", SyncEventProperty.getConstructor());
     assertNotNull("newInstance()", SyncEventProperty.newInstance(JavaScriptObject.createObject()));
   }
 

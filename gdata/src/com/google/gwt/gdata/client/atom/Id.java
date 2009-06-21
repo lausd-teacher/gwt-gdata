@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Id extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.atom.Id;
-  }-*/;
-
-  /**
    * Constructs an identifier using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Id newInstance(JavaScriptObject params) /*-{

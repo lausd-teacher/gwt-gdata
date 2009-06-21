@@ -32,7 +32,20 @@ public class BloggerServiceTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", BloggerService.getConstructor());
     assertNotNull("newInstance()", BloggerService.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    // Unit Test for getBlogCommentFeed(BlogCommentQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getBlogCommentFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getBlogEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getBlogFeed(BlogQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getBlogFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getBlogPostFeed(BlogPostQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getBlogPostFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getCommentEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getPostCommentFeed(PostCommentQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getPostCommentFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getPostEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
   }
 }

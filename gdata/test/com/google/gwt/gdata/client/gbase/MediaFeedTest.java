@@ -29,7 +29,6 @@ public class MediaFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MediaFeed.getConstructor());
     assertNotNull("newInstance()", MediaFeed.newInstance(JavaScriptObject.createObject()));
   }
 }

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.Query;
 
@@ -24,13 +23,6 @@ import com.google.gwt.gdata.client.Query;
  * Comment unavailable.
  */
 public class LocalesQuery extends Query {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.LocalesQuery;
-  }-*/;
 
   /**
    * Constructor.

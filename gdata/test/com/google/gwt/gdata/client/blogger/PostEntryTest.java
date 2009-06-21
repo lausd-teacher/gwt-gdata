@@ -31,17 +31,32 @@ public class PostEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", PostEntry.getConstructor());
     assertNotNull("newInstance()", PostEntry.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    PostEntry obj = PostEntry.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getEnclosureLink()
+    assertEquals("getEnclosureLink", obj.getEnclosureLink(), null);
+    // Unit Test for getEntryPostLink()
+    assertEquals("getEntryPostLink", obj.getEntryPostLink(), null);
+    // Unit Test for getFeedLink()
+    assertEquals("getFeedLink", obj.getFeedLink(), null);
+    // Unit Test for getHtmlLink()
+    assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+    // Unit Test for getRepliesHtmlLink()
+    assertEquals("getRepliesHtmlLink", obj.getRepliesHtmlLink(), null);
+    // Unit Test for getRepliesLink()
+    assertEquals("getRepliesLink", obj.getRepliesLink(), null);
   }
 
   public void testProperties() {
     PostEntry obj = PostEntry.newInstance(JavaScriptObject.createObject());
-    MediaThumbnail thumbnail = MediaThumbnail.newInstance(JavaScriptObject.createObject());
-    obj.setThumbnail(thumbnail);
-    assertSame("thumbnail", obj.getThumbnail(), thumbnail);
     Total total = Total.newInstance(JavaScriptObject.createObject());
     obj.setTotal(total);
     assertSame("total", obj.getTotal(), total);
+    MediaThumbnail thumbnail = MediaThumbnail.newInstance(JavaScriptObject.createObject());
+    obj.setThumbnail(thumbnail);
+    assertSame("thumbnail", obj.getThumbnail(), thumbnail);
   }
 }

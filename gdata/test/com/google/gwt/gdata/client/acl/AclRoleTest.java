@@ -37,7 +37,6 @@ public class AclRoleTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", AclRole.getConstructor());
     assertNotNull("newInstance()", AclRole.newInstance(JavaScriptObject.createObject()));
   }
 

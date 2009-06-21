@@ -40,7 +40,6 @@ public class PhoneNumberTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", PhoneNumber.getConstructor());
     assertNotNull("newInstance()", PhoneNumber.newInstance(JavaScriptObject.createObject()));
   }
 
