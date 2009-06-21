@@ -24,7 +24,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class UserTest extends GWTTestCase {
   public static final String TEST_SCOPE = "http://www.google.com/calendar/feeds/";
   public static final String AUTH_COOKIE_NAME = "g314-scope-0";
-  public static final String AUTH_COOKIE_VALUE = "";
+  public static final String AUTH_COOKIE_VALUE = "scope=http://www.google.com/calendar/feeds/&token=2/POEfcUwqkbSIiyj4CaiQ6A";
   
   /**
    * Bypasses authentication by directly setting the GData session cookie.
