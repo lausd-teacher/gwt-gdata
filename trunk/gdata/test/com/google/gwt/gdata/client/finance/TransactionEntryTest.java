@@ -29,7 +29,6 @@ public class TransactionEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", TransactionEntry.getConstructor());
     assertNotNull("newInstance()", TransactionEntry.newInstance(JavaScriptObject.createObject()));
   }
 

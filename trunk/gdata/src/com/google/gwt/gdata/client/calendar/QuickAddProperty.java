@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class QuickAddProperty extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.QuickAddProperty;
-  }-*/;
-
-  /**
    * Constructs a quick-add property using an object parameter whose property names match the setter method to use for each property.
    */
   public static native QuickAddProperty newInstance(JavaScriptObject params) /*-{

@@ -16,9 +16,7 @@
 
 package com.google.gwt.gdata.client.mediarss;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -37,8 +35,35 @@ public class MediaContentTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MediaContent.getConstructor());
     assertNotNull("newInstance()", MediaContent.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    MediaContent obj = MediaContent.newInstance(JavaScriptObject.createObject());
+    // Unit Test for addCategory(MediaCategory category)
+    // Unit Test for addCredit(MediaCredit credit)
+    // Unit Test for addRating(MediaRating rating)
+    // Unit Test for addRestriction(MediaRestriction restriction)
+    // Unit Test for addText(MediaText text)
+    // Unit Test for addThumbnail(MediaThumbnail thumbnail)
+    // Unit Test for getCategories()
+    assertEquals("getCategories", obj.getCategories(), null);
+    // Unit Test for getCredits()
+    assertEquals("getCredits", obj.getCredits(), null);
+    // Unit Test for getRatings()
+    assertEquals("getRatings", obj.getRatings(), null);
+    // Unit Test for getRestrictions()
+    assertEquals("getRestrictions", obj.getRestrictions(), null);
+    // Unit Test for getTexts()
+    assertEquals("getTexts", obj.getTexts(), null);
+    // Unit Test for getThumbnails()
+    assertEquals("getThumbnails", obj.getThumbnails(), null);
+    // Unit Test for setCategories(JsArray categories)
+    // Unit Test for setCredits(JsArray credits)
+    // Unit Test for setRatings(JsArray ratings)
+    // Unit Test for setRestrictions(JsArray restrictions)
+    // Unit Test for setTexts(JsArray texts)
+    // Unit Test for setThumbnails(JsArray thumbnails)
   }
 
   public void testProperties() {
@@ -49,57 +74,27 @@ public class MediaContentTest extends GWTTestCase {
     double duration = 600813;
     obj.setDuration(duration);
     assertEquals("duration", obj.getDuration(), duration);
-    JsArray<MediaCategory> categories = ArrayHelper.toJsArray(MediaCategory.newInstance(JavaScriptObject.createObject()));
-    obj.setCategories(categories);
-    assertEquals("categories", obj.getCategories().length(), categories.length());
-    int lenCategories = obj.getCategories().length();
-    obj.addCategory(MediaCategory.newInstance(JavaScriptObject.createObject()));
-    assertEquals("categories", obj.getCategories().length(), lenCategories + 1);
     String medium = "myValue";
     obj.setMedium(medium);
     assertEquals("medium", obj.getMedium(), medium);
     double samplingrate = 600813;
     obj.setSamplingrate(samplingrate);
     assertEquals("samplingrate", obj.getSamplingrate(), samplingrate);
-    JsArray<MediaRating> ratings = ArrayHelper.toJsArray(MediaRating.newInstance(JavaScriptObject.createObject()));
-    obj.setRatings(ratings);
-    assertEquals("ratings", obj.getRatings().length(), ratings.length());
-    int lenRatings = obj.getRatings().length();
-    obj.addRating(MediaRating.newInstance(JavaScriptObject.createObject()));
-    assertEquals("ratings", obj.getRatings().length(), lenRatings + 1);
     MediaCopyright copyright = MediaCopyright.newInstance(JavaScriptObject.createObject());
     obj.setCopyright(copyright);
     assertSame("copyright", obj.getCopyright(), copyright);
     MediaTitle title = MediaTitle.newInstance(JavaScriptObject.createObject());
     obj.setTitle(title);
     assertSame("title", obj.getTitle(), title);
-    JsArray<MediaText> texts = ArrayHelper.toJsArray(MediaText.newInstance(JavaScriptObject.createObject()));
-    obj.setTexts(texts);
-    assertEquals("texts", obj.getTexts().length(), texts.length());
-    int lenTexts = obj.getTexts().length();
-    obj.addText(MediaText.newInstance(JavaScriptObject.createObject()));
-    assertEquals("texts", obj.getTexts().length(), lenTexts + 1);
     MediaHash hash = MediaHash.newInstance(JavaScriptObject.createObject());
     obj.setHash(hash);
     assertSame("hash", obj.getHash(), hash);
-    JsArray<MediaRestriction> restrictions = ArrayHelper.toJsArray(MediaRestriction.newInstance(JavaScriptObject.createObject()));
-    obj.setRestrictions(restrictions);
-    assertEquals("restrictions", obj.getRestrictions().length(), restrictions.length());
-    int lenRestrictions = obj.getRestrictions().length();
-    obj.addRestriction(MediaRestriction.newInstance(JavaScriptObject.createObject()));
-    assertEquals("restrictions", obj.getRestrictions().length(), lenRestrictions + 1);
     String type = "myValue";
     obj.setType(type);
     assertEquals("type", obj.getType(), type);
     MediaKeywords keywords = MediaKeywords.newInstance(JavaScriptObject.createObject());
     obj.setKeywords(keywords);
     assertSame("keywords", obj.getKeywords(), keywords);
-    JsArray<MediaThumbnail> thumbnails = ArrayHelper.toJsArray(MediaThumbnail.newInstance(JavaScriptObject.createObject()));
-    obj.setThumbnails(thumbnails);
-    assertEquals("thumbnails", obj.getThumbnails().length(), thumbnails.length());
-    int lenThumbnails = obj.getThumbnails().length();
-    obj.addThumbnail(MediaThumbnail.newInstance(JavaScriptObject.createObject()));
-    assertEquals("thumbnails", obj.getThumbnails().length(), lenThumbnails + 1);
     double height = 600813;
     obj.setHeight(height);
     assertEquals("height", obj.getHeight(), height);
@@ -133,11 +128,5 @@ public class MediaContentTest extends GWTTestCase {
     double framerate = 600813;
     obj.setFramerate(framerate);
     assertEquals("framerate", obj.getFramerate(), framerate);
-    JsArray<MediaCredit> credits = ArrayHelper.toJsArray(MediaCredit.newInstance(JavaScriptObject.createObject()));
-    obj.setCredits(credits);
-    assertEquals("credits", obj.getCredits().length(), credits.length());
-    int lenCredits = obj.getCredits().length();
-    obj.addCredit(MediaCredit.newInstance(JavaScriptObject.createObject()));
-    assertEquals("credits", obj.getCredits().length(), lenCredits + 1);
   }
 }

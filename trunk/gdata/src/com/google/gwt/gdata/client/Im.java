@@ -79,13 +79,6 @@ public class Im extends JavaScriptObject {
   public static final String REL_WORK = getConstant("REL_WORK");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.Im;
-  }-*/;
-
-  /**
    * Constructs an instant messaging address using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Im newInstance(JavaScriptObject params) /*-{

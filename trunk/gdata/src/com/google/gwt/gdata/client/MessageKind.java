@@ -29,13 +29,6 @@ public class MessageKind extends Kind {
   public static final String TERM_MESSAGE = getConstant("TERM_MESSAGE");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.MessageKind;
-  }-*/;
-
-  /**
    * Constructs a message kind using an object parameter whose property names match the setter method to use for each property.
    */
   public static native MessageKind newInstance(JavaScriptObject params) /*-{

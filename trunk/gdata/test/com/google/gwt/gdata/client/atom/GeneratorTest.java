@@ -29,7 +29,6 @@ public class GeneratorTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Generator.getConstructor());
     assertNotNull("newInstance()", Generator.newInstance(JavaScriptObject.createObject()));
   }
 

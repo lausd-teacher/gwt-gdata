@@ -27,13 +27,6 @@ import java.util.Date;
 public class TransactionData extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.finance.TransactionData;
-  }-*/;
-
-  /**
    * Constructs a transaction data using an object parameter whose property names match the setter method to use for each property.
    */
   public static native TransactionData newInstance(JavaScriptObject params) /*-{
@@ -132,7 +125,7 @@ public class TransactionData extends JavaScriptObject {
    */
   public final native void setDate(Date date) /*-{
     this.setDate(
-      date
+      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(date))
     );
   }-*/;
 

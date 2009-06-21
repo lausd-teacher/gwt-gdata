@@ -29,7 +29,6 @@ public class OrgTitleTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", OrgTitle.getConstructor());
     assertNotNull("newInstance()", OrgTitle.newInstance(JavaScriptObject.createObject()));
   }
 

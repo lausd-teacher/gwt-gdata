@@ -43,7 +43,6 @@ public class ImTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Im.getConstructor());
     assertNotNull("newInstance()", Im.newInstance(JavaScriptObject.createObject()));
   }
 

@@ -53,7 +53,6 @@ public class ColorPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ColorProperty.getConstructor());
     assertNotNull("newInstance()", ColorProperty.newInstance(JavaScriptObject.createObject()));
   }
 

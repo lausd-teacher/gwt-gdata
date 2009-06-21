@@ -32,7 +32,23 @@ public class CalendarServiceTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarService.getConstructor());
     assertNotNull("newInstance()", CalendarService.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    // Unit Test for getAclFeed(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getAllCalendarsFeed(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getCalendarAclEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getCalendarCommentEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getCalendarEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getCalendarEventEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getCalendarsFeed(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getCommentsFeed(CalendarCommentQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getCommentsFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getEventsFeed(CalendarEventQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getEventsFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getOwnCalendarsFeed(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getSettingsEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getSettingsFeed(String uri, function(Object) continuation, function(Error) opt_errorHandler)
   }
 }

@@ -29,7 +29,6 @@ public class GmlPosTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GmlPos.getConstructor());
     assertNotNull("newInstance()", GmlPos.newInstance(JavaScriptObject.createObject()));
   }
 

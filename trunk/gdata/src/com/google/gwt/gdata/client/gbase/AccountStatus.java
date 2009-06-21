@@ -34,13 +34,6 @@ public class AccountStatus extends JavaScriptObject {
   public static final String VALUE_DISAPPROVED = getConstant("VALUE_DISAPPROVED");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.AccountStatus;
-  }-*/;
-
-  /**
    * Constructs an Account Status using an object parameter whose property names match the setter method to use for each property.
    */
   public static native AccountStatus newInstance(JavaScriptObject params) /*-{

@@ -33,7 +33,6 @@ public class PortfolioKindTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", PortfolioKind.getConstructor());
     assertNotNull("newInstance()", PortfolioKind.newInstance(JavaScriptObject.createObject()));
   }
 }

@@ -39,13 +39,6 @@ public class Email extends JavaScriptObject {
   public static final String REL_WORK = getConstant("REL_WORK");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.Email;
-  }-*/;
-
-  /**
    * Constructs an email address using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Email newInstance(JavaScriptObject params) /*-{

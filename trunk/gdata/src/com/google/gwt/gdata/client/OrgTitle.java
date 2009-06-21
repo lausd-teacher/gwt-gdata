@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class OrgTitle extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.OrgTitle;
-  }-*/;
-
-  /**
    * Constructs an org title using an object parameter whose property names match the setter method to use for each property.
    */
   public static native OrgTitle newInstance(JavaScriptObject params) /*-{

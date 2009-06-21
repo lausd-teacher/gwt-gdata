@@ -25,13 +25,6 @@ import com.google.gwt.gdata.client.acl.AclFeed;
 public class CalendarAclFeed extends AclFeed {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarAclFeed;
-  }-*/;
-
-  /**
    * Constructs a Calendar ACL feed using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CalendarAclFeed newInstance(JavaScriptObject params) /*-{

@@ -24,14 +24,7 @@ import com.google.gwt.gdata.client.ExtendedProperty;
 /**
  * Comment unavailable.
  */
-public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.contacts.ContactGroupEntry;
-  }-*/;
+public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry<ContactGroupEntry> {
 
   /**
    * Constructs a contact group entry using an object parameter whose property names match the setter method to use for each property.

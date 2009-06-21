@@ -21,14 +21,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * Comment unavailable.
  */
-public class TransactionEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.finance.TransactionEntry;
-  }-*/;
+public class TransactionEntry extends com.google.gwt.gdata.client.Entry<TransactionEntry> {
 
   /**
    * Constructs a Finance transaction entry using an object parameter whose property names match the setter method to use for each property.

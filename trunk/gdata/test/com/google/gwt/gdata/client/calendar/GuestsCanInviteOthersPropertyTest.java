@@ -29,7 +29,6 @@ public class GuestsCanInviteOthersPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GuestsCanInviteOthersProperty.getConstructor());
     assertNotNull("newInstance()", GuestsCanInviteOthersProperty.newInstance(JavaScriptObject.createObject()));
   }
 

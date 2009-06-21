@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class MediaCopyright extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.mediarss.MediaCopyright;
-  }-*/;
-
-  /**
    * Constructs a media copyright using an object parameter whose property names match the setter method to use for each property.
    */
   public static native MediaCopyright newInstance(JavaScriptObject params) /*-{

@@ -23,14 +23,7 @@ import com.google.gwt.gdata.client.Where;
 /**
  * Comment unavailable.
  */
-public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarEntry;
-  }-*/;
+public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEntry> {
 
   /**
    * Constructs a Calendar entry using an object parameter whose property names match the setter method to use for each property.
@@ -95,6 +88,15 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native ColorProperty getColor() /*-{
     return this.getColor();
+  }-*/;
+
+  /**
+   * Returns the eventFeed event feed link.
+   * 
+   * @return
+   */
+  public final native EventFeedLink getEventFeedLink() /*-{
+    return this.getEventFeedLink();
   }-*/;
 
   /**

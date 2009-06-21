@@ -25,13 +25,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public class Service extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.client.Service;
-  }-*/;
-
-  /**
    * Creates a service that supports Atom only.
    */
   public static native Service newInstance(String serviceName, String applicationName) /*-{
@@ -50,255 +43,11 @@ public class Service extends JavaScriptObject {
    * @param continuation
    * @param opt_errorHandler
    */
-  public final native void deleteEntry(String uri, AsyncCallback<Entry> callback) /*-{
+  public final native <E extends com.google.gwt.gdata.client.atom.Entry> void deleteEntry(String uri, AsyncCallback<E> callback) /*-{
     this.deleteEntry(
       uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); }
-    );
-  }-*/;
-
-  /**
-   * Retrieves data of an entry.
-   * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
-   * @param opt_entryClass
-   * @param opt_authenticationRequired
-   * 
-   * @return
-   */
-  public final native void getEntry(String uri, AsyncCallback<JavaScriptObject> callback, Entry entryClass, boolean authenticationRequired) /*-{
-    this.getEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      @com.google.gwt.gdata.client.Entry::getConstructor()(),
-      authenticationRequired
-    );
-  }-*/;
-
-  /**
-   * Retrieves data of an entry.
-   * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
-   * @param opt_entryClass
-   * @param opt_authenticationRequired
-   * 
-   * @return
-   */
-  public final native void getEntry(String uri, AsyncCallback<Entry> callback, boolean authenticationRequired) /*-{
-    this.getEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      undefined,
-      authenticationRequired
-    );
-  }-*/;
-
-  /**
-   * Retrieves data of an entry.
-   * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
-   * @param opt_entryClass
-   * @param opt_authenticationRequired
-   * 
-   * @return
-   */
-  public final native void getEntry(String uri, AsyncCallback<Entry> callback, Entry entryClass) /*-{
-    this.getEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      @com.google.gwt.gdata.client.Entry::getConstructor()(),
-      undefined
-    );
-  }-*/;
-
-  /**
-   * Retrieves data of an entry.
-   * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
-   * @param opt_entryClass
-   * @param opt_authenticationRequired
-   * 
-   * @return
-   */
-  public final native void getEntry(String uri, AsyncCallback<Entry> callback) /*-{
-    this.getEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      undefined,
-      undefined
-    );
-  }-*/;
-
-  /**
-   * Retrieves data of a feed.
-   * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
-   * @param opt_feedClass
-   * @param opt_authenticationRequired
-   * 
-   * @return
-   */
-  public final native void getFeed(Query query, AsyncCallback<JavaScriptObject> callback, Feed feedClass, boolean authenticationRequired) /*-{
-    this.getFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      @com.google.gwt.gdata.client.Feed::getConstructor()(),
-      authenticationRequired
-    );
-  }-*/;
-
-  /**
-   * Retrieves data of a feed.
-   * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
-   * @param opt_feedClass
-   * @param opt_authenticationRequired
-   * 
-   * @return
-   */
-  public final native void getFeed(Query query, AsyncCallback<Feed> callback, boolean authenticationRequired) /*-{
-    this.getFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      undefined,
-      authenticationRequired
-    );
-  }-*/;
-
-  /**
-   * Retrieves data of a feed.
-   * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
-   * @param opt_feedClass
-   * @param opt_authenticationRequired
-   * 
-   * @return
-   */
-  public final native void getFeed(Query query, AsyncCallback<Feed> callback, Feed feedClass) /*-{
-    this.getFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      @com.google.gwt.gdata.client.Feed::getConstructor()(),
-      undefined
-    );
-  }-*/;
-
-  /**
-   * Retrieves data of a feed.
-   * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
-   * @param opt_feedClass
-   * @param opt_authenticationRequired
-   * 
-   * @return
-   */
-  public final native void getFeed(Query query, AsyncCallback<Feed> callback) /*-{
-    this.getFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      undefined,
-      undefined
-    );
-  }-*/;
-
-  /**
-   * Retrieves data of a feed.
-   * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
-   * @param feedClass
-   * @param authenticationRequired
-   */
-  public final native void getFeed(String uri, AsyncCallback<Feed> callback, Feed feedClass, boolean authenticationRequired) /*-{
-    this.getFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      @com.google.gwt.gdata.client.Feed::getConstructor()(),
-      authenticationRequired
-    );
-  }-*/;
-
-  /**
-   * Retrieves data of a feed.
-   * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
-   * @param feedClass
-   * @param authenticationRequired
-   */
-  public final native void getFeed(String uri, AsyncCallback<Feed> callback, boolean authenticationRequired) /*-{
-    this.getFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      undefined,
-      authenticationRequired
-    );
-  }-*/;
-
-  /**
-   * Retrieves data of a feed.
-   * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
-   * @param feedClass
-   * @param authenticationRequired
-   */
-  public final native void getFeed(String uri, AsyncCallback<Feed> callback, Feed feedClass) /*-{
-    this.getFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      @com.google.gwt.gdata.client.Feed::getConstructor()(),
-      undefined
-    );
-  }-*/;
-
-  /**
-   * Retrieves data of a feed.
-   * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
-   * @param feedClass
-   * @param authenticationRequired
-   */
-  public final native void getFeed(String uri, AsyncCallback<Feed> callback) /*-{
-    this.getFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      undefined,
-      undefined
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
     );
   }-*/;
 
@@ -311,31 +60,12 @@ public class Service extends JavaScriptObject {
    * @param opt_errorHandler
    * @param opt_entryClass
    */
-  public final native void insertEntry(String uri, JavaScriptObject entry, AsyncCallback<Entry> callback, Entry entryClass) /*-{
+  public final native <E extends com.google.gwt.gdata.client.atom.Entry> void insertEntry(String uri, E entry, AsyncCallback<E> callback) /*-{
     this.insertEntry(
       uri,
       entry,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      @com.google.gwt.gdata.client.Entry::getConstructor()()
-    );
-  }-*/;
-
-  /**
-   * Inserts a new entry.
-   * 
-   * @param uri
-   * @param entry
-   * @param continuation
-   * @param opt_errorHandler
-   * @param opt_entryClass
-   */
-  public final native void insertEntry(String uri, JavaScriptObject entry, AsyncCallback<Entry> callback) /*-{
-    this.insertEntry(
-      uri,
-      entry,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
       undefined
     );
   }-*/;
@@ -408,24 +138,6 @@ public class Service extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Updates an entry.
-   * 
-   * @param uri
-   * @param entry
-   * @param continuation
-   * @param opt_errorHandler
-   * @param opt_entryClass
-   */
-  public final native void updateEntry(String uri, JavaScriptObject entry, AsyncCallback<Entry> callback, Entry entryClass) /*-{
-    this.updateEntry(
-      uri,
-      entry,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
-      @com.google.gwt.gdata.client.Entry::getConstructor()()
-    );
-  }-*/;
 
   /**
    * Updates an entry.
@@ -436,12 +148,12 @@ public class Service extends JavaScriptObject {
    * @param opt_errorHandler
    * @param opt_entryClass
    */
-  public final native void updateEntry(String uri, JavaScriptObject entry, AsyncCallback<Entry> callback) /*-{
+  public final native <E extends com.google.gwt.gdata.client.atom.Entry> void updateEntry(String uri, E entry, AsyncCallback<E> callback) /*-{
     this.updateEntry(
       uri,
       entry,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/Object;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Ljava/lang/String;)(callback, error); },
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
       undefined
     );
   }-*/;

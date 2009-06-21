@@ -34,13 +34,6 @@ public class Encoding extends JavaScriptObject {
   public static final String VALUE_UTF8 = getConstant("VALUE_UTF8");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.Encoding;
-  }-*/;
-
-  /**
    * Constructs an encoding using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Encoding newInstance(JavaScriptObject params) /*-{

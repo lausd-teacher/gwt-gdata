@@ -35,12 +35,6 @@ public class LinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Link.getConstructor());
     assertNotNull("newInstance()", Link.newInstance(JavaScriptObject.createObject()));
-  }
-
-  public void testOther() {
-    // Link obj = Link.newInstance(JavaScriptObject.createObject());
-    // obj.create(rel, type, href, opt_title);
   }
 }

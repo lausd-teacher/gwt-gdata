@@ -29,8 +29,14 @@ public class FeedLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", FeedLink.getConstructor());
     assertNotNull("newInstance()", FeedLink.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    FeedLink obj = FeedLink.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getFeed()
+    assertEquals("getFeed", obj.getFeed(), null);
+    // Unit Test for setFeed(Feed feed)
   }
 
   public void testProperties() {
@@ -41,9 +47,6 @@ public class FeedLinkTest extends GWTTestCase {
     double counthint = 600813;
     obj.setCountHint(counthint);
     assertEquals("counthint", obj.getCountHint(), counthint);
-    Feed feed = Feed.newInstance(JavaScriptObject.createObject());
-    obj.setFeed(feed);
-    assertSame("feed", obj.getFeed(), feed);
     String rel = "myValue";
     obj.setRel(rel);
     assertEquals("rel", obj.getRel(), rel);

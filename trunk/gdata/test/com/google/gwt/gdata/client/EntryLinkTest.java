@@ -29,8 +29,14 @@ public class EntryLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", EntryLink.getConstructor());
     assertNotNull("newInstance()", EntryLink.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    EntryLink obj = EntryLink.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getEntry()
+    assertEquals("getEntry", obj.getEntry(), null);
+    // Unit Test for setEntry(Entry entry)
   }
 
   public void testProperties() {
@@ -38,9 +44,6 @@ public class EntryLinkTest extends GWTTestCase {
     boolean readonly = true;
     obj.setReadOnly(readonly);
     assertSame("readonly", obj.getReadOnly(), readonly);
-    Entry entry = Entry.newInstance(JavaScriptObject.createObject());
-    obj.setEntry(entry);
-    assertSame("entry", obj.getEntry(), entry);
     String rel = "myValue";
     obj.setRel(rel);
     assertEquals("rel", obj.getRel(), rel);

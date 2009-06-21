@@ -34,13 +34,6 @@ public class MediaTitle extends JavaScriptObject {
   public static final String TYPE_PLAIN = getConstant("TYPE_PLAIN");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.mediarss.MediaTitle;
-  }-*/;
-
-  /**
    * Constructs a media title using an object parameter whose property names match the setter method to use for each property.
    */
   public static native MediaTitle newInstance(JavaScriptObject params) /*-{

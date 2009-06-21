@@ -44,13 +44,6 @@ public class MediaRestriction extends JavaScriptObject {
   public static final String TYPE_URI = getConstant("TYPE_URI");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.mediarss.MediaRestriction;
-  }-*/;
-
-  /**
    * Constructs a media restriction using an object parameter whose property names match the setter method to use for each property.
    */
   public static native MediaRestriction newInstance(JavaScriptObject params) /*-{

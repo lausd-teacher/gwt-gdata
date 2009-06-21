@@ -35,7 +35,6 @@ public class EventStatusTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", EventStatus.getConstructor());
     assertNotNull("newInstance()", EventStatus.newInstance(JavaScriptObject.createObject()));
   }
 

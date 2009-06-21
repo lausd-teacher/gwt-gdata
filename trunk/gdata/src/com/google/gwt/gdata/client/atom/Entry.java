@@ -25,13 +25,6 @@ import com.google.gwt.core.client.JsArray;
 public class Entry extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.atom.Entry;
-  }-*/;
-
-  /**
    * Constructs an entry using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Entry newInstance(JavaScriptObject params) /*-{
@@ -112,13 +105,6 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * @return
-   */
-  public final native JavaScriptObject getCategoryClass() /*-{
-    return this.getCategoryClass();
-  }-*/;
-
-  /**
    * Returns the content.
    * 
    * @return
@@ -143,13 +129,6 @@ public class Entry extends JavaScriptObject {
    */
   public final native Id getId() /*-{
     return this.getId();
-  }-*/;
-
-  /**
-   * @return
-   */
-  public final native JavaScriptObject getLinkClass() /*-{
-    return this.getLinkClass();
   }-*/;
 
   /**

@@ -16,10 +16,7 @@
 
 package com.google.gwt.gdata.client.app;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.gdata.client.atom.Category;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -37,8 +34,15 @@ public class CategoriesTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Categories.getConstructor());
     assertNotNull("newInstance()", Categories.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    Categories obj = Categories.newInstance(JavaScriptObject.createObject());
+    // Unit Test for addCategory(Category category)
+    // Unit Test for getCategories()
+    assertEquals("getCategories", obj.getCategories(), null);
+    // Unit Test for setCategories(JsArray categories)
   }
 
   public void testProperties() {
@@ -49,12 +53,6 @@ public class CategoriesTest extends GWTTestCase {
     String fixed = "myValue";
     obj.setFixed(fixed);
     assertEquals("fixed", obj.getFixed(), fixed);
-    JsArray<Category> categories = ArrayHelper.toJsArray(Category.newInstance(JavaScriptObject.createObject()));
-    obj.setCategories(categories);
-    assertEquals("categories", obj.getCategories().length(), categories.length());
-    int lenCategories = obj.getCategories().length();
-    obj.addCategory(Category.newInstance(JavaScriptObject.createObject()));
-    assertEquals("categories", obj.getCategories().length(), lenCategories + 1);
     String href = "myValue";
     obj.setHref(href);
     assertEquals("href", obj.getHref(), href);

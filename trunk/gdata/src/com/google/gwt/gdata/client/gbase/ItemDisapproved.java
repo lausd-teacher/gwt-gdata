@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class ItemDisapproved extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.ItemDisapproved;
-  }-*/;
-
-  /**
    * Constructs an item disapproved using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ItemDisapproved newInstance(JavaScriptObject params) /*-{

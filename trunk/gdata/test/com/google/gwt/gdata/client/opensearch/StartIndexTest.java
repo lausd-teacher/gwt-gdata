@@ -29,7 +29,6 @@ public class StartIndexTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", StartIndex.getConstructor());
     assertNotNull("newInstance()", StartIndex.newInstance(JavaScriptObject.createObject()));
   }
 

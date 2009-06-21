@@ -32,8 +32,15 @@ public class UpdatedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Updated.getConstructor());
     assertNotNull("newInstance()", Updated.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    Updated obj = Updated.newInstance(JavaScriptObject.createObject());
+    // Unit Test for setValue(Date value)
+    Date value = new Date();
+    obj.setValue(value);
+    assertEquals("value", obj.getValue().getDate(), value);
   }
 
   public void testProperties() {

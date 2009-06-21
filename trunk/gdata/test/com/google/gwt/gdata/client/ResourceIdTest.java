@@ -29,7 +29,6 @@ public class ResourceIdTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ResourceId.getConstructor());
     assertNotNull("newInstance()", ResourceId.newInstance(JavaScriptObject.createObject()));
   }
 

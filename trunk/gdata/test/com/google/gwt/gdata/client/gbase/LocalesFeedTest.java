@@ -29,7 +29,12 @@ public class LocalesFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", LocalesFeed.getConstructor());
     assertNotNull("newInstance()", LocalesFeed.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    LocalesFeed obj = LocalesFeed.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getFeedBatchLink()
+    assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
   }
 }

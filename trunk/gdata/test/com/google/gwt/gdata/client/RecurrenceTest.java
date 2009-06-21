@@ -29,7 +29,6 @@ public class RecurrenceTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Recurrence.getConstructor());
     assertNotNull("newInstance()", Recurrence.newInstance(JavaScriptObject.createObject()));
   }
 

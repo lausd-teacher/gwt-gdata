@@ -28,12 +28,12 @@ public class GoogleServiceTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GoogleService.getConstructor());
     assertNotNull("newInstance()", GoogleService.newInstance("myValue", "myValue"));
   }
 
   public void testOther() {
-    // GoogleService obj = GoogleService.newInstance("myValue", "myValue");
-    // obj.useOAuth(opt_serviceName, opt_params);
+    // Unit Test for setGadgetsAuthentication(String authType, JavaScriptObject params)
+    // Unit Test for setUserCredentials(String username, String password, ClientLoginAccountType accountType)
+    // Unit Test for useOAuth(String serviceName, JavaScriptObject params)
   }
 }

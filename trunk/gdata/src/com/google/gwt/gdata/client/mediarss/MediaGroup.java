@@ -25,13 +25,6 @@ import com.google.gwt.core.client.JsArray;
 public class MediaGroup extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.mediarss.MediaGroup;
-  }-*/;
-
-  /**
    * Constructs a media group using an object parameter whose property names match the setter method to use for each property.
    */
   public static native MediaGroup newInstance(JavaScriptObject params) /*-{

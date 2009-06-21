@@ -29,7 +29,6 @@ public class AclEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", AclEntry.getConstructor());
     assertNotNull("newInstance()", AclEntry.newInstance(JavaScriptObject.createObject()));
   }
 

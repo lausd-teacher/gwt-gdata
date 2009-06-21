@@ -34,7 +34,6 @@ public class ItemPublishingPriorityTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ItemPublishingPriority.getConstructor());
     assertNotNull("newInstance()", ItemPublishingPriority.newInstance(JavaScriptObject.createObject()));
   }
 

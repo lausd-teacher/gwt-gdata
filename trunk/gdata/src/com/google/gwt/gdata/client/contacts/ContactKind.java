@@ -30,13 +30,6 @@ public class ContactKind extends Kind {
   public static final String TERM_CONTACT = getConstant("TERM_CONTACT");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.contacts.ContactKind;
-  }-*/;
-
-  /**
    * Constructs a contact kind using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ContactKind newInstance(JavaScriptObject params) /*-{

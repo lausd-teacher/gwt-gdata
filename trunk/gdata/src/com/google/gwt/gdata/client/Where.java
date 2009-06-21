@@ -39,13 +39,6 @@ public class Where extends JavaScriptObject {
   public static final String REL_EVENT_PARKING = getConstant("REL_EVENT_PARKING");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.Where;
-  }-*/;
-
-  /**
    * Constructs a place description using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Where newInstance(JavaScriptObject params) /*-{

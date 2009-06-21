@@ -29,7 +29,6 @@ public class AnyoneCanAddSelfPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", AnyoneCanAddSelfProperty.getConstructor());
     assertNotNull("newInstance()", AnyoneCanAddSelfProperty.newInstance(JavaScriptObject.createObject()));
   }
 

@@ -48,7 +48,6 @@ public class SettingsPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", SettingsProperty.getConstructor());
     assertNotNull("newInstance()", SettingsProperty.newInstance(JavaScriptObject.createObject()));
   }
 

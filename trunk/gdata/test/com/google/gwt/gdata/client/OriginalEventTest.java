@@ -29,7 +29,6 @@ public class OriginalEventTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", OriginalEvent.getConstructor());
     assertNotNull("newInstance()", OriginalEvent.newInstance(JavaScriptObject.createObject()));
   }
 

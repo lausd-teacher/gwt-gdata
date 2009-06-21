@@ -33,7 +33,6 @@ public class CalendarExtendedPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarExtendedProperty.getConstructor());
     assertNotNull("newInstance()", CalendarExtendedProperty.newInstance(JavaScriptObject.createObject()));
   }
 }

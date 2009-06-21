@@ -16,11 +16,8 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Deleted;
-import com.google.gwt.gdata.client.ExtendedProperty;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -33,8 +30,15 @@ public class ContactGroupEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ContactGroupEntry.getConstructor());
     assertNotNull("newInstance()", ContactGroupEntry.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    ContactGroupEntry obj = ContactGroupEntry.newInstance(JavaScriptObject.createObject());
+    // Unit Test for addExtendedProperty(ExtendedProperty extendedProperty)
+    // Unit Test for getExtendedProperties()
+    assertEquals("getExtendedProperties", obj.getExtendedProperties(), null);
+    // Unit Test for setExtendedProperties(JsArray extendedProperties)
   }
 
   public void testProperties() {
@@ -42,12 +46,6 @@ public class ContactGroupEntryTest extends GWTTestCase {
     SystemGroup systemgroup = SystemGroup.newInstance(JavaScriptObject.createObject());
     obj.setSystemGroup(systemgroup);
     assertSame("systemgroup", obj.getSystemGroup(), systemgroup);
-    JsArray<ExtendedProperty> extendedproperties = ArrayHelper.toJsArray(ExtendedProperty.newInstance(JavaScriptObject.createObject()));
-    obj.setExtendedProperties(extendedproperties);
-    assertEquals("extendedproperties", obj.getExtendedProperties().length(), extendedproperties.length());
-    int lenExtendedProperties = obj.getExtendedProperties().length();
-    obj.addExtendedProperty(ExtendedProperty.newInstance(JavaScriptObject.createObject()));
-    assertEquals("extendedproperties", obj.getExtendedProperties().length(), lenExtendedProperties + 1);
     Deleted deleted = Deleted.newInstance(JavaScriptObject.createObject());
     obj.setDeleted(deleted);
     assertSame("deleted", obj.getDeleted(), deleted);

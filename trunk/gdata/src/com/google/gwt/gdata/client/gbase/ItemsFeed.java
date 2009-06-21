@@ -22,14 +22,7 @@ import com.google.gwt.core.client.JsArray;
 /**
  * Comment unavailable.
  */
-public class ItemsFeed extends com.google.gwt.gdata.client.Feed {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.ItemsFeed;
-  }-*/;
+public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
 
   /**
    * Constructs a Google Base item feed using an object parameter whose property names match the setter method to use for each property.
@@ -48,19 +41,6 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed {
   }-*/;
 
   protected ItemsFeed() { }
-
-  /**
-   * Returns the attribute.
-   * 
-   * @param name
-   * 
-   * @return
-   */
-  public final native JavaScriptObject getAttribute(String name) /*-{
-    return this.getAttribute(
-      name
-    );
-  }-*/;
 
   /**
    * Returns the attributes.

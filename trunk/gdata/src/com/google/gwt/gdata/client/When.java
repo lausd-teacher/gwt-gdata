@@ -27,13 +27,6 @@ import java.util.Date;
 public class When extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.When;
-  }-*/;
-
-  /**
    * Constructs a time period description using an object parameter whose property names match the setter method to use for each property.
    */
   public static native When newInstance(JavaScriptObject params) /*-{
@@ -105,7 +98,7 @@ public class When extends JavaScriptObject {
    */
   public final native void setEndTime(Date endTime) /*-{
     this.setEndTime(
-      endTime
+      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(endTime))
     );
   }-*/;
 
@@ -156,7 +149,7 @@ public class When extends JavaScriptObject {
    */
   public final native void setStartTime(Date startTime) /*-{
     this.setStartTime(
-      startTime
+      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(startTime))
     );
   }-*/;
 

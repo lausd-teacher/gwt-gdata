@@ -29,7 +29,6 @@ public class CalendarCommentsTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarComments.getConstructor());
     assertNotNull("newInstance()", CalendarComments.newInstance(JavaScriptObject.createObject()));
   }
 }

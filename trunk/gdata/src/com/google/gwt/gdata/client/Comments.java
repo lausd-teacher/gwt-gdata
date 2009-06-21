@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Comments extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.Comments;
-  }-*/;
-
-  /**
    * Constructs a Comments class using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Comments newInstance(JavaScriptObject params) /*-{
@@ -55,13 +48,6 @@ public class Comments extends JavaScriptObject {
    */
   public final native FeedLink getFeedLink() /*-{
     return this.getFeedLink();
-  }-*/;
-
-  /**
-   * @return
-   */
-  public final native JavaScriptObject getFeedLinkClass() /*-{
-    return this.getFeedLinkClass();
   }-*/;
 
   /**

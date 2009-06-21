@@ -34,13 +34,6 @@ public class Organization extends JavaScriptObject {
   public static final String REL_WORK = getConstant("REL_WORK");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.Organization;
-  }-*/;
-
-  /**
    * Constructs an organization using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Organization newInstance(JavaScriptObject params) /*-{

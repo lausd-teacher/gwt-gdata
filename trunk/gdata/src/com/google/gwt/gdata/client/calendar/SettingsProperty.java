@@ -104,13 +104,6 @@ public class SettingsProperty extends JavaScriptObject {
   public static final String NAME_WEEK_START = getConstant("NAME_WEEK_START");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.SettingsProperty;
-  }-*/;
-
-  /**
    * Constructs a settings property using an object parameter whose property names match the setter method to use for each property.
    */
   public static native SettingsProperty newInstance(JavaScriptObject params) /*-{

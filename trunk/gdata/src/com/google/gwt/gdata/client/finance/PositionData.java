@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class PositionData extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.finance.PositionData;
-  }-*/;
-
-  /**
    * Constructs a position data using an object parameter whose property names match the setter method to use for each property.
    */
   public static native PositionData newInstance(JavaScriptObject params) /*-{

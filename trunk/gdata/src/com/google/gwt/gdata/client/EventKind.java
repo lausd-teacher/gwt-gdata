@@ -29,13 +29,6 @@ public class EventKind extends Kind {
   public static final String TERM_EVENT = getConstant("TERM_EVENT");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.EventKind;
-  }-*/;
-
-  /**
    * Constructs an event kind using an object parameter whose property names match the setter method to use for each property.
    */
   public static native EventKind newInstance(JavaScriptObject params) /*-{

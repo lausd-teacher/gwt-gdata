@@ -29,7 +29,6 @@ public class HiddenPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", HiddenProperty.getConstructor());
     assertNotNull("newInstance()", HiddenProperty.newInstance(JavaScriptObject.createObject()));
   }
 

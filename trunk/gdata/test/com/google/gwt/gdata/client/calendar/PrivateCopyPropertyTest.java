@@ -29,7 +29,6 @@ public class PrivateCopyPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", PrivateCopyProperty.getConstructor());
     assertNotNull("newInstance()", PrivateCopyProperty.newInstance(JavaScriptObject.createObject()));
   }
 

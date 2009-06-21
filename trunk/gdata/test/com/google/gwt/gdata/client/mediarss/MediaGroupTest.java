@@ -16,9 +16,7 @@
 
 package com.google.gwt.gdata.client.mediarss;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -31,8 +29,39 @@ public class MediaGroupTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MediaGroup.getConstructor());
     assertNotNull("newInstance()", MediaGroup.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    MediaGroup obj = MediaGroup.newInstance(JavaScriptObject.createObject());
+    // Unit Test for addCategory(MediaCategory category)
+    // Unit Test for addContent(MediaContent content)
+    // Unit Test for addCredit(MediaCredit credit)
+    // Unit Test for addRating(MediaRating rating)
+    // Unit Test for addRestriction(MediaRestriction restriction)
+    // Unit Test for addText(MediaText text)
+    // Unit Test for addThumbnail(MediaThumbnail thumbnail)
+    // Unit Test for getCategories()
+    assertEquals("getCategories", obj.getCategories(), null);
+    // Unit Test for getContents()
+    assertEquals("getContents", obj.getContents(), null);
+    // Unit Test for getCredits()
+    assertEquals("getCredits", obj.getCredits(), null);
+    // Unit Test for getRatings()
+    assertEquals("getRatings", obj.getRatings(), null);
+    // Unit Test for getRestrictions()
+    assertEquals("getRestrictions", obj.getRestrictions(), null);
+    // Unit Test for getTexts()
+    assertEquals("getTexts", obj.getTexts(), null);
+    // Unit Test for getThumbnails()
+    assertEquals("getThumbnails", obj.getThumbnails(), null);
+    // Unit Test for setCategories(JsArray categories)
+    // Unit Test for setContents(JsArray contents)
+    // Unit Test for setCredits(JsArray credits)
+    // Unit Test for setRatings(JsArray ratings)
+    // Unit Test for setRestrictions(JsArray restrictions)
+    // Unit Test for setTexts(JsArray texts)
+    // Unit Test for setThumbnails(JsArray thumbnails)
   }
 
   public void testProperties() {
@@ -40,30 +69,12 @@ public class MediaGroupTest extends GWTTestCase {
     MediaDescription description = MediaDescription.newInstance(JavaScriptObject.createObject());
     obj.setDescription(description);
     assertSame("description", obj.getDescription(), description);
-    JsArray<MediaText> texts = ArrayHelper.toJsArray(MediaText.newInstance(JavaScriptObject.createObject()));
-    obj.setTexts(texts);
-    assertEquals("texts", obj.getTexts().length(), texts.length());
-    int lenTexts = obj.getTexts().length();
-    obj.addText(MediaText.newInstance(JavaScriptObject.createObject()));
-    assertEquals("texts", obj.getTexts().length(), lenTexts + 1);
     MediaPlayer player = MediaPlayer.newInstance(JavaScriptObject.createObject());
     obj.setPlayer(player);
     assertSame("player", obj.getPlayer(), player);
-    JsArray<MediaThumbnail> thumbnails = ArrayHelper.toJsArray(MediaThumbnail.newInstance(JavaScriptObject.createObject()));
-    obj.setThumbnails(thumbnails);
-    assertEquals("thumbnails", obj.getThumbnails().length(), thumbnails.length());
-    int lenThumbnails = obj.getThumbnails().length();
-    obj.addThumbnail(MediaThumbnail.newInstance(JavaScriptObject.createObject()));
-    assertEquals("thumbnails", obj.getThumbnails().length(), lenThumbnails + 1);
     MediaKeywords keywords = MediaKeywords.newInstance(JavaScriptObject.createObject());
     obj.setKeywords(keywords);
     assertSame("keywords", obj.getKeywords(), keywords);
-    JsArray<MediaCategory> categories = ArrayHelper.toJsArray(MediaCategory.newInstance(JavaScriptObject.createObject()));
-    obj.setCategories(categories);
-    assertEquals("categories", obj.getCategories().length(), categories.length());
-    int lenCategories = obj.getCategories().length();
-    obj.addCategory(MediaCategory.newInstance(JavaScriptObject.createObject()));
-    assertEquals("categories", obj.getCategories().length(), lenCategories + 1);
     MediaTitle title = MediaTitle.newInstance(JavaScriptObject.createObject());
     obj.setTitle(title);
     assertSame("title", obj.getTitle(), title);
@@ -73,29 +84,5 @@ public class MediaGroupTest extends GWTTestCase {
     MediaCopyright copyright = MediaCopyright.newInstance(JavaScriptObject.createObject());
     obj.setCopyright(copyright);
     assertSame("copyright", obj.getCopyright(), copyright);
-    JsArray<MediaRestriction> restrictions = ArrayHelper.toJsArray(MediaRestriction.newInstance(JavaScriptObject.createObject()));
-    obj.setRestrictions(restrictions);
-    assertEquals("restrictions", obj.getRestrictions().length(), restrictions.length());
-    int lenRestrictions = obj.getRestrictions().length();
-    obj.addRestriction(MediaRestriction.newInstance(JavaScriptObject.createObject()));
-    assertEquals("restrictions", obj.getRestrictions().length(), lenRestrictions + 1);
-    JsArray<MediaRating> ratings = ArrayHelper.toJsArray(MediaRating.newInstance(JavaScriptObject.createObject()));
-    obj.setRatings(ratings);
-    assertEquals("ratings", obj.getRatings().length(), ratings.length());
-    int lenRatings = obj.getRatings().length();
-    obj.addRating(MediaRating.newInstance(JavaScriptObject.createObject()));
-    assertEquals("ratings", obj.getRatings().length(), lenRatings + 1);
-    JsArray<MediaContent> contents = ArrayHelper.toJsArray(MediaContent.newInstance(JavaScriptObject.createObject()));
-    obj.setContents(contents);
-    assertEquals("contents", obj.getContents().length(), contents.length());
-    int lenContents = obj.getContents().length();
-    obj.addContent(MediaContent.newInstance(JavaScriptObject.createObject()));
-    assertEquals("contents", obj.getContents().length(), lenContents + 1);
-    JsArray<MediaCredit> credits = ArrayHelper.toJsArray(MediaCredit.newInstance(JavaScriptObject.createObject()));
-    obj.setCredits(credits);
-    assertEquals("credits", obj.getCredits().length(), credits.length());
-    int lenCredits = obj.getCredits().length();
-    obj.addCredit(MediaCredit.newInstance(JavaScriptObject.createObject()));
-    assertEquals("credits", obj.getCredits().length(), lenCredits + 1);
   }
 }

@@ -21,14 +21,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * Comment unavailable.
  */
-public class SnippetsFeed extends com.google.gwt.gdata.client.Feed {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.SnippetsFeed;
-  }-*/;
+public class SnippetsFeed extends com.google.gwt.gdata.client.Feed<SnippetsEntry> {
 
   /**
    * Constructs a Google Base snippet feed using an object parameter whose property names match the setter method to use for each property.

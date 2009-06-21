@@ -16,20 +16,12 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Query;
 
 /**
  * Comment unavailable.
  */
 public class PositionQuery extends Query {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.finance.PositionQuery;
-  }-*/;
 
   /**
    * Constructor.
@@ -47,7 +39,7 @@ public class PositionQuery extends Query {
    * 
    * @return
    */
-  public final native Boolean getIncludeReturns() /*-{
+  public final native boolean getIncludeReturns() /*-{
     return this.getIncludeReturns();
   }-*/;
 
@@ -56,7 +48,7 @@ public class PositionQuery extends Query {
    * 
    * @return
    */
-  public final native Boolean getInlineTransactions() /*-{
+  public final native boolean getInlineTransactions() /*-{
     return this.getInlineTransactions();
   }-*/;
 
@@ -65,7 +57,7 @@ public class PositionQuery extends Query {
    * 
    * @param includeReturns
    */
-  public final native void setIncludeReturns(Boolean includeReturns) /*-{
+  public final native void setIncludeReturns(boolean includeReturns) /*-{
     this.setIncludeReturns(
       includeReturns
     );
@@ -87,7 +79,7 @@ public class PositionQuery extends Query {
    * 
    * @param inlineTransactions
    */
-  public final native void setInlineTransactions(Boolean inlineTransactions) /*-{
+  public final native void setInlineTransactions(boolean inlineTransactions) /*-{
     this.setInlineTransactions(
       inlineTransactions
     );

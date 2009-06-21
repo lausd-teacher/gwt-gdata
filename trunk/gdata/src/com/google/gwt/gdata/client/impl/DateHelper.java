@@ -28,6 +28,6 @@ public class DateHelper {
   }
   
   public static Date millisecondsToDate(double value) {
-    return new Date((long)value);
+    return new Date((long) value);
   }
 }

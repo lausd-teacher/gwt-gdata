@@ -16,7 +16,10 @@
 
 package com.google.gwt.gdata.client.contacts;
 
+import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.junit.client.GWTTestCase;
+
+import java.util.Date;
 
 /**
  * Tests for the ContactQuery class.
@@ -37,20 +40,42 @@ public class ContactQueryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ContactQuery.getConstructor());
     assertNotNull("newInstance()", ContactQuery.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    // Unit Test for setMaxResults(String maxResults)
+    // Unit Test for setShowDeleted(String showDeleted)
+    // Unit Test for setStartIndex(String startIndex)
+    // Unit Test for setUpdatedMax(String updatedMax)
+    // Unit Test for setUpdatedMin(String updatedMin)
   }
 
   public void testProperties() {
     ContactQuery obj = ContactQuery.newInstance("myValue");
+    DateTime updatedmin = DateTime.newInstance(new Date(), false);
+    obj.setUpdatedMin(updatedmin);
+    assertEquals("updatedmin", obj.getUpdatedMin().getDate(), updatedmin.getDate());
     String group = "myValue";
     obj.setGroup(group);
     assertEquals("group", obj.getGroup(), group);
+    double startindex = 600813;
+    obj.setStartIndex(startindex);
+    assertEquals("startindex", obj.getStartIndex(), startindex);
     String sortorder = "myValue";
     obj.setSortOrder(sortorder);
     assertEquals("sortorder", obj.getSortOrder(), sortorder);
+    boolean showdeleted = true;
+    obj.setShowDeleted(showdeleted);
+    assertSame("showdeleted", obj.getShowDeleted(), showdeleted);
     String orderby = "myValue";
     obj.setOrderBy(orderby);
     assertEquals("orderby", obj.getOrderBy(), orderby);
+    double maxresults = 600813;
+    obj.setMaxResults(maxresults);
+    assertEquals("maxresults", obj.getMaxResults(), maxresults);
+    DateTime updatedmax = DateTime.newInstance(new Date(), false);
+    obj.setUpdatedMax(updatedmax);
+    assertEquals("updatedmax", obj.getUpdatedMax().getDate(), updatedmax.getDate());
   }
 }

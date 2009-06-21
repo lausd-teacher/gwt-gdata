@@ -33,7 +33,6 @@ public class AclKindTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", AclKind.getConstructor());
     assertNotNull("newInstance()", AclKind.newInstance(JavaScriptObject.createObject()));
   }
 }

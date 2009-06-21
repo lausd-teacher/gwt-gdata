@@ -29,7 +29,6 @@ public class ControlTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Control.getConstructor());
     assertNotNull("newInstance()", Control.newInstance(JavaScriptObject.createObject()));
   }
 

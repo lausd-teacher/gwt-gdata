@@ -34,7 +34,6 @@ public class TransparencyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Transparency.getConstructor());
     assertNotNull("newInstance()", Transparency.newInstance(JavaScriptObject.createObject()));
   }
 

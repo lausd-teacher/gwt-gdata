@@ -32,7 +32,17 @@ public class FinanceServiceTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", FinanceService.getConstructor());
     assertNotNull("newInstance()", FinanceService.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    // Unit Test for getPortfolioEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getPortfolioFeed(PortfolioQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getPortfolioFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getPositionEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getPositionFeed(PositionQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getPositionFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getTransactionEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
+    // Unit Test for getTransactionFeed(String uri, function(Object) continuation, function(Error) opt_errorHandler)
   }
 }

@@ -24,13 +24,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class SendEventNotificationsProperty extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.SendEventNotificationsProperty;
-  }-*/;
-
-  /**
    * Constructs a send event notifications property using an object parameter whose property names match the setter method to use for each property.
    */
   public static native SendEventNotificationsProperty newInstance(JavaScriptObject params) /*-{

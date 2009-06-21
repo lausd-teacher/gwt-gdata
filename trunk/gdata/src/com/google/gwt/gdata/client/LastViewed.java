@@ -26,13 +26,6 @@ import java.util.Date;
 public class LastViewed extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.LastViewed;
-  }-*/;
-
-  /**
    * Constructs a last viewed using an object parameter whose property names match the setter method to use for each property.
    */
   public static native LastViewed newInstance(JavaScriptObject params) /*-{
@@ -66,7 +59,7 @@ public class LastViewed extends JavaScriptObject {
    */
   public final native void setValue(Date value) /*-{
     this.setValue(
-      value
+      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(value))
     );
   }-*/;
 

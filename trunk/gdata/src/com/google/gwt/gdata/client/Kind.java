@@ -30,13 +30,6 @@ public class Kind extends Category {
   public static final String SCHEME_KIND = getConstant("SCHEME_KIND");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.Kind;
-  }-*/;
-
-  /**
    * Constructs a kind using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Kind newInstance(JavaScriptObject params) /*-{

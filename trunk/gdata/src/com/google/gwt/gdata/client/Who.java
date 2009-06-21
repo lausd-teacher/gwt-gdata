@@ -74,13 +74,6 @@ public class Who extends JavaScriptObject {
   public static final String REL_TASK_ASSIGNED_TO = getConstant("REL_TASK_ASSIGNED_TO");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.Who;
-  }-*/;
-
-  /**
    * Constructs a person description using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Who newInstance(JavaScriptObject params) /*-{

@@ -30,13 +30,6 @@ public class CalendarMetaKind extends Kind {
   public static final String TERM_CALENDARMETA = getConstant("TERM_CALENDARMETA");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarMetaKind;
-  }-*/;
-
-  /**
    * Constructs a calendar meta kind using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CalendarMetaKind newInstance(JavaScriptObject params) /*-{

@@ -25,13 +25,6 @@ import com.google.gwt.gdata.client.app.Control;
 public class ItemAppControl extends Control {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.ItemAppControl;
-  }-*/;
-
-  /**
    * Constructs an item app control using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ItemAppControl newInstance(JavaScriptObject params) /*-{

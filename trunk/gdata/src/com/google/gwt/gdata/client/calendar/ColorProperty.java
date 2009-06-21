@@ -129,13 +129,6 @@ public class ColorProperty extends JavaScriptObject {
   public static final String VALUE_RGB_BE6D00 = getConstant("VALUE_RGB_BE6D00");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.ColorProperty;
-  }-*/;
-
-  /**
    * Constructs a color property using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ColorProperty newInstance(JavaScriptObject params) /*-{

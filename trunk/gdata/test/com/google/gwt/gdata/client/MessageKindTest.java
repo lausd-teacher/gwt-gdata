@@ -33,7 +33,6 @@ public class MessageKindTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MessageKind.getConstructor());
     assertNotNull("newInstance()", MessageKind.newInstance(JavaScriptObject.createObject()));
   }
 }

@@ -28,7 +28,21 @@ public class PositionQueryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", PositionQuery.getConstructor());
     assertNotNull("newInstance()", PositionQuery.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    // Unit Test for setIncludeReturns(String includeReturns)
+    // Unit Test for setInlineTransactions(String inlineTransactions)
+  }
+
+  public void testProperties() {
+    PositionQuery obj = PositionQuery.newInstance("myValue");
+    boolean inlinetransactions = true;
+    obj.setInlineTransactions(inlinetransactions);
+    assertSame("inlinetransactions", obj.getInlineTransactions(), inlinetransactions);
+    boolean includereturns = true;
+    obj.setIncludeReturns(includereturns);
+    assertSame("includereturns", obj.getIncludeReturns(), includereturns);
   }
 }

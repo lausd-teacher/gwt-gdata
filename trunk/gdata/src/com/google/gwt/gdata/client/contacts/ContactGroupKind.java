@@ -30,13 +30,6 @@ public class ContactGroupKind extends Kind {
   public static final String TERM_GROUP = getConstant("TERM_GROUP");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.contacts.ContactGroupKind;
-  }-*/;
-
-  /**
    * Constructs a contact group kind using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ContactGroupKind newInstance(JavaScriptObject params) /*-{

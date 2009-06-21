@@ -39,13 +39,6 @@ public class Link extends com.google.gwt.gdata.client.atom.Link {
   public static final String REL_FEED_BATCH = getConstant("REL_FEED_BATCH");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.Link;
-  }-*/;
-
-  /**
    * Constructs a GData Link class using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Link newInstance(JavaScriptObject params) /*-{
@@ -66,43 +59,5 @@ public class Link extends com.google.gwt.gdata.client.atom.Link {
   }-*/;
 
   protected Link() { }
-
-  /**
-   * Create a new link using the typical parameters.
-   * 
-   * @param rel
-   * @param type
-   * @param href
-   * @param opt_title
-   * 
-   * @return
-   */
-  public final native com.google.gwt.gdata.client.Link create(String rel, String type, String href, String title) /*-{
-    return this.create(
-      rel,
-      type,
-      href,
-      title
-    );
-  }-*/;
-
-  /**
-   * Create a new link using the typical parameters.
-   * 
-   * @param rel
-   * @param type
-   * @param href
-   * @param opt_title
-   * 
-   * @return
-   */
-  public final native com.google.gwt.gdata.client.Link create(String rel, String type, String href) /*-{
-    return this.create(
-      rel,
-      type,
-      href,
-      undefined
-    );
-  }-*/;
 
 }

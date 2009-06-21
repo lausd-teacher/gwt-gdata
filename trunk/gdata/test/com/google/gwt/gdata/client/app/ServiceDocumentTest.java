@@ -16,9 +16,7 @@
 
 package com.google.gwt.gdata.client.app;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -31,17 +29,14 @@ public class ServiceDocumentTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ServiceDocument.getConstructor());
     assertNotNull("newInstance()", ServiceDocument.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testProperties() {
+  public void testOther() {
     ServiceDocument obj = ServiceDocument.newInstance(JavaScriptObject.createObject());
-    JsArray<Workspace> workspaces = ArrayHelper.toJsArray(Workspace.newInstance(JavaScriptObject.createObject()));
-    obj.setWorkspaces(workspaces);
-    assertEquals("workspaces", obj.getWorkspaces().length(), workspaces.length());
-    int lenWorkspaces = obj.getWorkspaces().length();
-    obj.addWorkspace(Workspace.newInstance(JavaScriptObject.createObject()));
-    assertEquals("workspaces", obj.getWorkspaces().length(), lenWorkspaces + 1);
+    // Unit Test for addWorkspace(Workspace workspace)
+    // Unit Test for getWorkspaces()
+    assertEquals("getWorkspaces", obj.getWorkspaces(), null);
+    // Unit Test for setWorkspaces(JsArray workspaces)
   }
 }

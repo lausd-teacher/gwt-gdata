@@ -33,7 +33,6 @@ public class ContactKindTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ContactKind.getConstructor());
     assertNotNull("newInstance()", ContactKind.newInstance(JavaScriptObject.createObject()));
   }
 }

@@ -36,7 +36,6 @@ public class AttendeeStatusTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", AttendeeStatus.getConstructor());
     assertNotNull("newInstance()", AttendeeStatus.newInstance(JavaScriptObject.createObject()));
   }
 

@@ -33,7 +33,6 @@ public class PositionKindTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", PositionKind.getConstructor());
     assertNotNull("newInstance()", PositionKind.newInstance(JavaScriptObject.createObject()));
   }
 }

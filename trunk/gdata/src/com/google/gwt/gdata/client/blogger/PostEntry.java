@@ -23,14 +23,7 @@ import com.google.gwt.gdata.client.threading.Total;
 /**
  * Comment unavailable.
  */
-public class PostEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.blogger.PostEntry;
-  }-*/;
+public class PostEntry extends com.google.gwt.gdata.client.Entry<PostEntry> {
 
   /**
    * Constructs a post entry using an object parameter whose property names match the setter method to use for each property.

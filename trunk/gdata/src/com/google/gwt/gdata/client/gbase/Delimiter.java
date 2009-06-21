@@ -39,13 +39,6 @@ public class Delimiter extends JavaScriptObject {
   public static final String VALUE_TILDE = getConstant("VALUE_TILDE");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.Delimiter;
-  }-*/;
-
-  /**
    * Constructs a delimiter using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Delimiter newInstance(JavaScriptObject params) /*-{

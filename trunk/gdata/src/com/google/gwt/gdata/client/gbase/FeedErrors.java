@@ -25,13 +25,6 @@ import com.google.gwt.core.client.JsArray;
 public class FeedErrors extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.FeedErrors;
-  }-*/;
-
-  /**
    * Constructs a feed errors using an object parameter whose property names match the setter method to use for each property.
    */
   public static native FeedErrors newInstance(JavaScriptObject params) /*-{

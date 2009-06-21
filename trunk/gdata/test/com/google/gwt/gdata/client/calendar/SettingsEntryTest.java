@@ -29,7 +29,6 @@ public class SettingsEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", SettingsEntry.getConstructor());
     assertNotNull("newInstance()", SettingsEntry.newInstance(JavaScriptObject.createObject()));
   }
 

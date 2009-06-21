@@ -29,7 +29,6 @@ public class InReplyToTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", InReplyTo.getConstructor());
     assertNotNull("newInstance()", InReplyTo.newInstance(JavaScriptObject.createObject()));
   }
 

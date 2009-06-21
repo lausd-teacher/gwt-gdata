@@ -34,13 +34,6 @@ public class Transparency extends JavaScriptObject {
   public static final String VALUE_TRANSPARENT = getConstant("VALUE_TRANSPARENT");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.Transparency;
-  }-*/;
-
-  /**
    * Constructs an event transparency using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Transparency newInstance(JavaScriptObject params) /*-{

@@ -29,7 +29,6 @@ public class CalendarSettingsFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarSettingsFeed.getConstructor());
     assertNotNull("newInstance()", CalendarSettingsFeed.newInstance(JavaScriptObject.createObject()));
   }
 }

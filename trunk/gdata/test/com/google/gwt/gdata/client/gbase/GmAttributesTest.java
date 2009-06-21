@@ -16,9 +16,7 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -31,17 +29,14 @@ public class GmAttributesTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GmAttributes.getConstructor());
     assertNotNull("newInstance()", GmAttributes.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testProperties() {
+  public void testOther() {
     GmAttributes obj = GmAttributes.newInstance(JavaScriptObject.createObject());
-    JsArray<GmAttribute> attributes = ArrayHelper.toJsArray(GmAttribute.newInstance(JavaScriptObject.createObject()));
-    obj.setAttributes(attributes);
-    assertEquals("attributes", obj.getAttributes().length(), attributes.length());
-    int lenAttributes = obj.getAttributes().length();
-    obj.addAttribute(GmAttribute.newInstance(JavaScriptObject.createObject()));
-    assertEquals("attributes", obj.getAttributes().length(), lenAttributes + 1);
+    // Unit Test for addAttribute(GmAttribute attribute)
+    // Unit Test for getAttributes()
+    assertEquals("getAttributes", obj.getAttributes(), null);
+    // Unit Test for setAttributes(JsArray attributes)
   }
 }

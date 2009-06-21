@@ -40,13 +40,6 @@ public class GmAttribute extends JavaScriptObject {
   public static final String IMPORTANCE_REQUIRED = getConstant("IMPORTANCE_REQUIRED");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.GmAttribute;
-  }-*/;
-
-  /**
    * Constructs a list of attribute for an item type using an object parameter whose property names match the setter method to use for each property.
    */
   public static native GmAttribute newInstance(JavaScriptObject params) /*-{

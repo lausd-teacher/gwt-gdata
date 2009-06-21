@@ -36,7 +36,6 @@ public class AclScopeTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", AclScope.getConstructor());
     assertNotNull("newInstance()", AclScope.newInstance(JavaScriptObject.createObject()));
   }
 

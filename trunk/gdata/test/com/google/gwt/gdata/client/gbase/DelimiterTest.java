@@ -35,7 +35,6 @@ public class DelimiterTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Delimiter.getConstructor());
     assertNotNull("newInstance()", Delimiter.newInstance(JavaScriptObject.createObject()));
   }
 

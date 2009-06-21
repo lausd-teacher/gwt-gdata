@@ -29,7 +29,16 @@ public class ContactFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ContactFeed.getConstructor());
     assertNotNull("newInstance()", ContactFeed.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    ContactFeed obj = ContactFeed.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getFeedBatchLink()
+    assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+    // Unit Test for getNextLink()
+    assertEquals("getNextLink", obj.getNextLink(), null);
+    // Unit Test for getPreviousLink()
+    assertEquals("getPreviousLink", obj.getPreviousLink(), null);
   }
 }

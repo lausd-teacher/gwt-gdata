@@ -32,13 +32,6 @@ public class ThreadingLink extends com.google.gwt.gdata.client.atom.Link {
   public static final String REL_REPLIES = getConstant("REL_REPLIES");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.threading.ThreadingLink;
-  }-*/;
-
-  /**
    * Constructs a threading link using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ThreadingLink newInstance(JavaScriptObject params) /*-{
@@ -105,7 +98,7 @@ public class ThreadingLink extends com.google.gwt.gdata.client.atom.Link {
    */
   public final native void setUpdated(Date updated) /*-{
     this.setUpdated(
-      updated
+      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(updated))
     );
   }-*/;
 

@@ -29,7 +29,6 @@ public class MoneyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Money.getConstructor());
     assertNotNull("newInstance()", Money.newInstance(JavaScriptObject.createObject()));
   }
 

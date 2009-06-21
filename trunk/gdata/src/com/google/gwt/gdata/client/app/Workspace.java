@@ -26,13 +26,6 @@ import com.google.gwt.gdata.client.atom.Text;
 public class Workspace extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.app.Workspace;
-  }-*/;
-
-  /**
    * Constructs a workspace using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Workspace newInstance(JavaScriptObject params) /*-{

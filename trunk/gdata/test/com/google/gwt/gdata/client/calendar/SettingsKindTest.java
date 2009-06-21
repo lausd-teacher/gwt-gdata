@@ -33,7 +33,6 @@ public class SettingsKindTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", SettingsKind.getConstructor());
     assertNotNull("newInstance()", SettingsKind.newInstance(JavaScriptObject.createObject()));
   }
 }

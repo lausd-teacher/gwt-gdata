@@ -29,7 +29,6 @@ public class MediaPlayerTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MediaPlayer.getConstructor());
     assertNotNull("newInstance()", MediaPlayer.newInstance(JavaScriptObject.createObject()));
   }
 

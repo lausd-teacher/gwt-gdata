@@ -34,7 +34,6 @@ public class UseQuotedFieldsTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", UseQuotedFields.getConstructor());
     assertNotNull("newInstance()", UseQuotedFields.newInstance(JavaScriptObject.createObject()));
   }
 

@@ -29,7 +29,6 @@ public class WebContentGadgetPrefTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", WebContentGadgetPref.getConstructor());
     assertNotNull("newInstance()", WebContentGadgetPref.newInstance(JavaScriptObject.createObject()));
   }
 

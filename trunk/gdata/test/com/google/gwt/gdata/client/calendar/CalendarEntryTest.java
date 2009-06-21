@@ -16,10 +16,7 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.gdata.client.Where;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -32,8 +29,23 @@ public class CalendarEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarEntry.getConstructor());
     assertNotNull("newInstance()", CalendarEntry.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    CalendarEntry obj = CalendarEntry.newInstance(JavaScriptObject.createObject());
+    // Unit Test for addLocation(Where location)
+    // Unit Test for getAccessControlListLink()
+    assertEquals("getAccessControlListLink", obj.getAccessControlListLink(), null);
+    // Unit Test for getAtomAlternateLink()
+    assertEquals("getAtomAlternateLink", obj.getAtomAlternateLink(), null);
+    // Unit Test for getEventFeedLink()
+    assertEquals("getEventFeedLink", obj.getEventFeedLink(), null);
+    // Unit Test for getLocations()
+    assertEquals("getLocations", obj.getLocations(), null);
+    // Unit Test for getRelatedLink()
+    assertEquals("getRelatedLink", obj.getRelatedLink(), null);
+    // Unit Test for setLocations(JsArray locations)
   }
 
   public void testProperties() {
@@ -56,12 +68,6 @@ public class CalendarEntryTest extends GWTTestCase {
     OverrideNameProperty overridename = OverrideNameProperty.newInstance(JavaScriptObject.createObject());
     obj.setOverrideName(overridename);
     assertSame("overridename", obj.getOverrideName(), overridename);
-    JsArray<Where> locations = ArrayHelper.toJsArray(Where.newInstance(JavaScriptObject.createObject()));
-    obj.setLocations(locations);
-    assertEquals("locations", obj.getLocations().length(), locations.length());
-    int lenLocations = obj.getLocations().length();
-    obj.addLocation(Where.newInstance(JavaScriptObject.createObject()));
-    assertEquals("locations", obj.getLocations().length(), lenLocations + 1);
     AccessLevelProperty accesslevel = AccessLevelProperty.newInstance(JavaScriptObject.createObject());
     obj.setAccessLevel(accesslevel);
     assertSame("accesslevel", obj.getAccessLevel(), accesslevel);

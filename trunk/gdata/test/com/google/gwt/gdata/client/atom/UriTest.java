@@ -29,7 +29,6 @@ public class UriTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Uri.getConstructor());
     assertNotNull("newInstance()", Uri.newInstance(JavaScriptObject.createObject()));
   }
 

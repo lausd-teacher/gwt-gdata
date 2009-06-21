@@ -36,7 +36,6 @@ public class VisibilityTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Visibility.getConstructor());
     assertNotNull("newInstance()", Visibility.newInstance(JavaScriptObject.createObject()));
   }
 

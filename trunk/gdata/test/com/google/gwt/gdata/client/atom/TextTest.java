@@ -29,13 +29,7 @@ public class TextTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Text.getConstructor());
     assertNotNull("newInstance()", Text.newInstance(JavaScriptObject.createObject()));
-  }
-
-  public void testOther() {
-    // Text obj = Text.newInstance(JavaScriptObject.createObject());
-    // obj.create(text, opt_type);
   }
 
   public void testProperties() {

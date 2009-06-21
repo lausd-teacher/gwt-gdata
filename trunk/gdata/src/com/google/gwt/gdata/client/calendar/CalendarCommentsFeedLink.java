@@ -25,13 +25,6 @@ import com.google.gwt.gdata.client.FeedLink;
 public class CalendarCommentsFeedLink extends FeedLink {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarCommentsFeedLink;
-  }-*/;
-
-  /**
    * Constructs a nested Calendar comments feed link using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CalendarCommentsFeedLink newInstance(JavaScriptObject params) /*-{
@@ -48,12 +41,5 @@ public class CalendarCommentsFeedLink extends FeedLink {
   }-*/;
 
   protected CalendarCommentsFeedLink() { }
-
-  /**
-   * @return
-   */
-  public final native JavaScriptObject getFeedClass() /*-{
-    return this.getFeedClass();
-  }-*/;
 
 }

@@ -16,7 +16,10 @@
 
 package com.google.gwt.gdata.client.blogger;
 
+import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.junit.client.GWTTestCase;
+
+import java.util.Date;
 
 /**
  * Tests for the PostCommentQuery class.
@@ -28,7 +31,37 @@ public class PostCommentQueryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", PostCommentQuery.getConstructor());
     assertNotNull("newInstance()", PostCommentQuery.newInstance("myValue"));
+  }
+
+  public void testOther() {
+    // Unit Test for setMaxResults(String maxResults)
+    // Unit Test for setPublishedMax(String publishedMax)
+    // Unit Test for setPublishedMin(String publishedMin)
+    // Unit Test for setStartIndex(String startIndex)
+    // Unit Test for setUpdatedMax(String updatedMax)
+    // Unit Test for setUpdatedMin(String updatedMin)
+  }
+
+  public void testProperties() {
+    PostCommentQuery obj = PostCommentQuery.newInstance("myValue");
+    DateTime publishedmax = DateTime.newInstance(new Date(), false);
+    obj.setPublishedMax(publishedmax);
+    assertEquals("publishedmax", obj.getPublishedMax().getDate(), publishedmax.getDate());
+    DateTime updatedmin = DateTime.newInstance(new Date(), false);
+    obj.setUpdatedMin(updatedmin);
+    assertEquals("updatedmin", obj.getUpdatedMin().getDate(), updatedmin.getDate());
+    double startindex = 600813;
+    obj.setStartIndex(startindex);
+    assertEquals("startindex", obj.getStartIndex(), startindex);
+    DateTime publishedmin = DateTime.newInstance(new Date(), false);
+    obj.setPublishedMin(publishedmin);
+    assertEquals("publishedmin", obj.getPublishedMin().getDate(), publishedmin.getDate());
+    double maxresults = 600813;
+    obj.setMaxResults(maxresults);
+    assertEquals("maxresults", obj.getMaxResults(), maxresults);
+    DateTime updatedmax = DateTime.newInstance(new Date(), false);
+    obj.setUpdatedMax(updatedmax);
+    assertEquals("updatedmax", obj.getUpdatedMax().getDate(), updatedmax.getDate());
   }
 }

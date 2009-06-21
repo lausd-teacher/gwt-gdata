@@ -29,7 +29,16 @@ public class ContactGroupFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ContactGroupFeed.getConstructor());
     assertNotNull("newInstance()", ContactGroupFeed.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    ContactGroupFeed obj = ContactGroupFeed.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getFeedBatchLink()
+    assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+    // Unit Test for getNextLink()
+    assertEquals("getNextLink", obj.getNextLink(), null);
+    // Unit Test for getPreviousLink()
+    assertEquals("getPreviousLink", obj.getPreviousLink(), null);
   }
 }

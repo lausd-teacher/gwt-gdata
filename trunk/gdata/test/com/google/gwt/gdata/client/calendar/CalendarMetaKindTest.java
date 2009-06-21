@@ -33,7 +33,6 @@ public class CalendarMetaKindTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarMetaKind.getConstructor());
     assertNotNull("newInstance()", CalendarMetaKind.newInstance(JavaScriptObject.createObject()));
   }
 }

@@ -29,7 +29,6 @@ public class DeletedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Deleted.getConstructor());
     assertNotNull("newInstance()", Deleted.newInstance(JavaScriptObject.createObject()));
   }
 }

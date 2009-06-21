@@ -35,7 +35,6 @@ public class BloggerLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", BloggerLink.getConstructor());
     assertNotNull("newInstance()", BloggerLink.newInstance(JavaScriptObject.createObject()));
   }
 }

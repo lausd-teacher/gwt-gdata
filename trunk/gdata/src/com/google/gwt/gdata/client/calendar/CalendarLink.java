@@ -29,13 +29,6 @@ public class CalendarLink extends com.google.gwt.gdata.client.acl.Link {
   public static final String REL_WEB_CONTENT = getConstant("REL_WEB_CONTENT");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarLink;
-  }-*/;
-
-  /**
    * Constructs a Calendar Link class using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CalendarLink newInstance(JavaScriptObject params) /*-{
@@ -56,25 +49,6 @@ public class CalendarLink extends com.google.gwt.gdata.client.acl.Link {
   }-*/;
 
   protected CalendarLink() { }
-
-  /**
-   * Create a new Calendar link using the typical parameters.
-   * 
-   * @param webContent
-   * @param iconHref
-   * @param title
-   * @param mimeType
-   * 
-   * @return
-   */
-  public final native com.google.gwt.gdata.client.Link create(WebContent webContent, String iconHref, String title, String mimeType) /*-{
-    return this.create(
-      webContent,
-      iconHref,
-      title,
-      mimeType
-    );
-  }-*/;
 
   /**
    * Returns the web content.

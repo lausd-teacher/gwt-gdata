@@ -29,7 +29,6 @@ public class RecurrenceExceptionEntryLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", RecurrenceExceptionEntryLink.getConstructor());
     assertNotNull("newInstance()", RecurrenceExceptionEntryLink.newInstance(JavaScriptObject.createObject()));
   }
 }

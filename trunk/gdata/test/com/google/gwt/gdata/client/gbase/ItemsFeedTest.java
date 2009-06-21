@@ -29,7 +29,16 @@ public class ItemsFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ItemsFeed.getConstructor());
     assertNotNull("newInstance()", ItemsFeed.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    ItemsFeed obj = ItemsFeed.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getAttributes()
+    assertEquals("getAttributes", obj.getAttributes(), null);
+    // Unit Test for getFeedBatchLink()
+    assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+    // Unit Test for setAttribute(String name, Attribute attribute)
+    // Unit Test for setAttributes(JavaScriptObject attributes)
   }
 }

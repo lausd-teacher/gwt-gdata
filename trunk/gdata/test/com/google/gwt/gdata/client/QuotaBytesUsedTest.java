@@ -29,7 +29,6 @@ public class QuotaBytesUsedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", QuotaBytesUsed.getConstructor());
     assertNotNull("newInstance()", QuotaBytesUsed.newInstance(JavaScriptObject.createObject()));
   }
 

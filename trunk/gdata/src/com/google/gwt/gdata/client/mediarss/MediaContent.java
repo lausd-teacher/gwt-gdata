@@ -40,13 +40,6 @@ public class MediaContent extends JavaScriptObject {
   public static final String EXPRESSION_SAMPLE = getConstant("EXPRESSION_SAMPLE");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.mediarss.MediaContent;
-  }-*/;
-
-  /**
    * Constructs a media content using an object parameter whose property names match the setter method to use for each property.
    */
   public static native MediaContent newInstance(JavaScriptObject params) /*-{

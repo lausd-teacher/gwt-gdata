@@ -32,8 +32,11 @@ public class TransactionDataTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", TransactionData.getConstructor());
     assertNotNull("newInstance()", TransactionData.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    // Unit Test for setDate(Date date)
   }
 
   public void testProperties() {

@@ -27,13 +27,6 @@ import java.util.Date;
 public class Edited extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.app.Edited;
-  }-*/;
-
-  /**
    * Constructs an edited timestamp using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Edited newInstance(JavaScriptObject params) /*-{
@@ -67,7 +60,7 @@ public class Edited extends JavaScriptObject {
    */
   public final native void setValue(Date value) /*-{
     this.setValue(
-      value
+      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(value))
     );
   }-*/;
 

@@ -29,7 +29,6 @@ public class TransactionFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", TransactionFeed.getConstructor());
     assertNotNull("newInstance()", TransactionFeed.newInstance(JavaScriptObject.createObject()));
   }
 }

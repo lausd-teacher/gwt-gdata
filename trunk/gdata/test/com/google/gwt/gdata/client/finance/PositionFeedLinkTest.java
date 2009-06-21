@@ -29,7 +29,6 @@ public class PositionFeedLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", PositionFeedLink.getConstructor());
     assertNotNull("newInstance()", PositionFeedLink.newInstance(JavaScriptObject.createObject()));
   }
 }

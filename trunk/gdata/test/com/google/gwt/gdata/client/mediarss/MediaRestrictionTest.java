@@ -36,7 +36,6 @@ public class MediaRestrictionTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MediaRestriction.getConstructor());
     assertNotNull("newInstance()", MediaRestriction.newInstance(JavaScriptObject.createObject()));
   }
 

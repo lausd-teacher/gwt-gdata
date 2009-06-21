@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.Query;
 
@@ -44,13 +43,6 @@ public class CalendarEventQuery extends Query {
    * Descending.
    */
   public static final String SORTORDER_DESCENDING = getConstant("SORTORDER_DESCENDING");
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarEventQuery;
-  }-*/;
 
   /**
    * Constructor.
@@ -90,7 +82,7 @@ public class CalendarEventQuery extends Query {
    * 
    * @return
    */
-  public final native Boolean getFutureEvents() /*-{
+  public final native boolean getFutureEvents() /*-{
     return this.getFutureEvents();
   }-*/;
 
@@ -149,11 +141,20 @@ public class CalendarEventQuery extends Query {
   }-*/;
 
   /**
+   * Returns the whether to include the allowGSync flag in the output.
+   * 
+   * @return
+   */
+  public final native boolean getShowAllowGSync() /*-{
+    return this.getShowAllowGSync();
+  }-*/;
+
+  /**
    * Returns the whether recurring events should be expanded or represented as a single event.
    * 
    * @return
    */
-  public final native Boolean getSingleEvents() /*-{
+  public final native boolean getSingleEvents() /*-{
     return this.getSingleEvents();
   }-*/;
 
@@ -220,7 +221,7 @@ public class CalendarEventQuery extends Query {
    * 
    * @param futureEvents
    */
-  public final native void setFutureEvents(Boolean futureEvents) /*-{
+  public final native void setFutureEvents(boolean futureEvents) /*-{
     this.setFutureEvents(
       futureEvents
     );
@@ -359,11 +360,33 @@ public class CalendarEventQuery extends Query {
   }-*/;
 
   /**
+   * Sets the whether to include the allowGSync flag in the output.
+   * 
+   * @param showAllowGSync
+   */
+  public final native void setShowAllowGSync(boolean showAllowGSync) /*-{
+    this.setShowAllowGSync(
+      showAllowGSync
+    );
+  }-*/;
+
+  /**
+   * Sets the whether to include the allowGSync flag in the output.
+   * 
+   * @param showAllowGSync
+   */
+  public final native void setShowAllowGSync(String showAllowGSync) /*-{
+    this.setShowAllowGSync(
+      showAllowGSync
+    );
+  }-*/;
+
+  /**
    * Sets the whether recurring events should be expanded or represented as a single event.
    * 
    * @param singleEvents
    */
-  public final native void setSingleEvents(Boolean singleEvents) /*-{
+  public final native void setSingleEvents(boolean singleEvents) /*-{
     this.setSingleEvents(
       singleEvents
     );

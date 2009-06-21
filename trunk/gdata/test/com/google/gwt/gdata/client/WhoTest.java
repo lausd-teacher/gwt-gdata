@@ -42,7 +42,6 @@ public class WhoTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Who.getConstructor());
     assertNotNull("newInstance()", Who.newInstance(JavaScriptObject.createObject()));
   }
 

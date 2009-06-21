@@ -16,9 +16,7 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -31,8 +29,31 @@ public class EventEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", EventEntry.getConstructor());
     assertNotNull("newInstance()", EventEntry.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    EventEntry obj = EventEntry.newInstance(JavaScriptObject.createObject());
+    // Unit Test for addLocation(Where location)
+    // Unit Test for addParticipant(Who participant)
+    // Unit Test for addRecurrenceException(RecurrenceException recurrenceException)
+    // Unit Test for addReminder(Reminder reminder)
+    // Unit Test for addTime(When time)
+    // Unit Test for getLocations()
+    assertEquals("getLocations", obj.getLocations(), null);
+    // Unit Test for getParticipants()
+    assertEquals("getParticipants", obj.getParticipants(), null);
+    // Unit Test for getRecurrenceException()
+    assertEquals("getRecurrenceException", obj.getRecurrenceException(), null);
+    // Unit Test for getReminders()
+    assertEquals("getReminders", obj.getReminders(), null);
+    // Unit Test for getTimes()
+    assertEquals("getTimes", obj.getTimes(), null);
+    // Unit Test for setLocations(JsArray locations)
+    // Unit Test for setParticipants(JsArray participants)
+    // Unit Test for setRecurrenceException(JsArray recurrenceException)
+    // Unit Test for setReminders(JsArray reminders)
+    // Unit Test for setTimes(JsArray times)
   }
 
   public void testProperties() {
@@ -40,50 +61,20 @@ public class EventEntryTest extends GWTTestCase {
     OriginalEvent originalevent = OriginalEvent.newInstance(JavaScriptObject.createObject());
     obj.setOriginalEvent(originalevent);
     assertSame("originalevent", obj.getOriginalEvent(), originalevent);
-    JsArray<Who> participants = ArrayHelper.toJsArray(Who.newInstance(JavaScriptObject.createObject()));
-    obj.setParticipants(participants);
-    assertEquals("participants", obj.getParticipants().length(), participants.length());
-    int lenParticipants = obj.getParticipants().length();
-    obj.addParticipant(Who.newInstance(JavaScriptObject.createObject()));
-    assertEquals("participants", obj.getParticipants().length(), lenParticipants + 1);
     Comments comments = Comments.newInstance(JavaScriptObject.createObject());
     obj.setComments(comments);
     assertSame("comments", obj.getComments(), comments);
-    JsArray<Reminder> reminders = ArrayHelper.toJsArray(Reminder.newInstance(JavaScriptObject.createObject()));
-    obj.setReminders(reminders);
-    assertEquals("reminders", obj.getReminders().length(), reminders.length());
-    int lenReminders = obj.getReminders().length();
-    obj.addReminder(Reminder.newInstance(JavaScriptObject.createObject()));
-    assertEquals("reminders", obj.getReminders().length(), lenReminders + 1);
     EventStatus eventstatus = EventStatus.newInstance(JavaScriptObject.createObject());
     obj.setEventStatus(eventstatus);
     assertSame("eventstatus", obj.getEventStatus(), eventstatus);
     Recurrence recurrence = Recurrence.newInstance(JavaScriptObject.createObject());
     obj.setRecurrence(recurrence);
     assertSame("recurrence", obj.getRecurrence(), recurrence);
-    JsArray<Where> locations = ArrayHelper.toJsArray(Where.newInstance(JavaScriptObject.createObject()));
-    obj.setLocations(locations);
-    assertEquals("locations", obj.getLocations().length(), locations.length());
-    int lenLocations = obj.getLocations().length();
-    obj.addLocation(Where.newInstance(JavaScriptObject.createObject()));
-    assertEquals("locations", obj.getLocations().length(), lenLocations + 1);
     Transparency transparency = Transparency.newInstance(JavaScriptObject.createObject());
     obj.setTransparency(transparency);
     assertSame("transparency", obj.getTransparency(), transparency);
-    JsArray<When> times = ArrayHelper.toJsArray(When.newInstance(JavaScriptObject.createObject()));
-    obj.setTimes(times);
-    assertEquals("times", obj.getTimes().length(), times.length());
-    int lenTimes = obj.getTimes().length();
-    obj.addTime(When.newInstance(JavaScriptObject.createObject()));
-    assertEquals("times", obj.getTimes().length(), lenTimes + 1);
     Visibility visibility = Visibility.newInstance(JavaScriptObject.createObject());
     obj.setVisibility(visibility);
     assertSame("visibility", obj.getVisibility(), visibility);
-    JsArray<RecurrenceException> recurrenceexception = ArrayHelper.toJsArray(RecurrenceException.newInstance(JavaScriptObject.createObject()));
-    obj.setRecurrenceException(recurrenceexception);
-    assertEquals("recurrenceexception", obj.getRecurrenceException().length(), recurrenceexception.length());
-    int lenRecurrenceException = obj.getRecurrenceException().length();
-    obj.addRecurrenceException(RecurrenceException.newInstance(JavaScriptObject.createObject()));
-    assertEquals("recurrenceexception", obj.getRecurrenceException().length(), lenRecurrenceException + 1);
   }
 }

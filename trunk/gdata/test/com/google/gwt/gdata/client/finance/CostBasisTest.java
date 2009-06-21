@@ -16,10 +16,7 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.gdata.client.Money;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -32,17 +29,14 @@ public class CostBasisTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CostBasis.getConstructor());
     assertNotNull("newInstance()", CostBasis.newInstance(JavaScriptObject.createObject()));
   }
 
-  public void testProperties() {
+  public void testOther() {
     CostBasis obj = CostBasis.newInstance(JavaScriptObject.createObject());
-    JsArray<Money> money = ArrayHelper.toJsArray(Money.newInstance(JavaScriptObject.createObject()));
-    obj.setMoney(money);
-    assertEquals("money", obj.getMoney().length(), money.length());
-    int lenMoney = obj.getMoney().length();
-    obj.addMoney(Money.newInstance(JavaScriptObject.createObject()));
-    assertEquals("money", obj.getMoney().length(), lenMoney + 1);
+    // Unit Test for addMoney(Money money)
+    // Unit Test for getMoney()
+    assertEquals("getMoney", obj.getMoney(), null);
+    // Unit Test for setMoney(JsArray money)
   }
 }

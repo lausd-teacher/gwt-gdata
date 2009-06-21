@@ -29,7 +29,6 @@ public class SymbolTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Symbol.getConstructor());
     assertNotNull("newInstance()", Symbol.newInstance(JavaScriptObject.createObject()));
   }
 

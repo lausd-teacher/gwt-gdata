@@ -33,7 +33,6 @@ public class EventKindTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", EventKind.getConstructor());
     assertNotNull("newInstance()", EventKind.newInstance(JavaScriptObject.createObject()));
   }
 }

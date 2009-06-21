@@ -21,14 +21,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * Comment unavailable.
  */
-public class AclEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.acl.AclEntry;
-  }-*/;
+public class AclEntry extends com.google.gwt.gdata.client.Entry<AclEntry> {
 
   /**
    * Constructs an ACL entry using an object parameter whose property names match the setter method to use for each property.
@@ -47,13 +40,6 @@ public class AclEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   protected AclEntry() { }
-
-  /**
-   * @return
-   */
-  public final native JavaScriptObject getAclRoleClass() /*-{
-    return this.getAclRoleClass();
-  }-*/;
 
   /**
    * Returns the role.

@@ -29,7 +29,6 @@ public class GmlEnvelopeTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GmlEnvelope.getConstructor());
     assertNotNull("newInstance()", GmlEnvelope.newInstance(JavaScriptObject.createObject()));
   }
 

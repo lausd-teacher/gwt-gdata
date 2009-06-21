@@ -40,7 +40,6 @@ public class AccessLevelPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", AccessLevelProperty.getConstructor());
     assertNotNull("newInstance()", AccessLevelProperty.newInstance(JavaScriptObject.createObject()));
   }
 

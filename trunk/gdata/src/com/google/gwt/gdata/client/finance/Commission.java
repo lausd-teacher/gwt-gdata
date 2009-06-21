@@ -26,13 +26,6 @@ import com.google.gwt.gdata.client.Money;
 public class Commission extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.finance.Commission;
-  }-*/;
-
-  /**
    * Constructs a commission using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Commission newInstance(JavaScriptObject params) /*-{

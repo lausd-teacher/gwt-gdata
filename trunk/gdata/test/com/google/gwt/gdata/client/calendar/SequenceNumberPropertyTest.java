@@ -29,7 +29,6 @@ public class SequenceNumberPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", SequenceNumberProperty.getConstructor());
     assertNotNull("newInstance()", SequenceNumberProperty.newInstance(JavaScriptObject.createObject()));
   }
 

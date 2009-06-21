@@ -16,9 +16,7 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -31,41 +29,41 @@ public class RecurrenceExceptionEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", RecurrenceExceptionEntry.getConstructor());
     assertNotNull("newInstance()", RecurrenceExceptionEntry.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    RecurrenceExceptionEntry obj = RecurrenceExceptionEntry.newInstance(JavaScriptObject.createObject());
+    // Unit Test for addWhen(When when)
+    // Unit Test for addWhere(Where where)
+    // Unit Test for addWho(Who who)
+    // Unit Test for getWhen()
+    assertEquals("getWhen", obj.getWhen(), null);
+    // Unit Test for getWhere()
+    assertEquals("getWhere", obj.getWhere(), null);
+    // Unit Test for getWho()
+    assertEquals("getWho", obj.getWho(), null);
+    // Unit Test for setWhen(JsArray when)
+    // Unit Test for setWhere(JsArray where)
+    // Unit Test for setWho(JsArray who)
   }
 
   public void testProperties() {
     RecurrenceExceptionEntry obj = RecurrenceExceptionEntry.newInstance(JavaScriptObject.createObject());
-    OriginalEvent originalevent = OriginalEvent.newInstance(JavaScriptObject.createObject());
-    obj.setOriginalEvent(originalevent);
-    assertSame("originalevent", obj.getOriginalEvent(), originalevent);
-    JsArray<Where> where = ArrayHelper.toJsArray(Where.newInstance(JavaScriptObject.createObject()));
-    obj.setWhere(where);
-    assertEquals("where", obj.getWhere().length(), where.length());
-    int lenWhere = obj.getWhere().length();
-    obj.addWhere(Where.newInstance(JavaScriptObject.createObject()));
-    assertEquals("where", obj.getWhere().length(), lenWhere + 1);
-    Comments comments = Comments.newInstance(JavaScriptObject.createObject());
-    obj.setComments(comments);
-    assertSame("comments", obj.getComments(), comments);
-    EventStatus eventstatus = EventStatus.newInstance(JavaScriptObject.createObject());
-    obj.setEventStatus(eventstatus);
-    assertSame("eventstatus", obj.getEventStatus(), eventstatus);
     Transparency transparency = Transparency.newInstance(JavaScriptObject.createObject());
     obj.setTransparency(transparency);
     assertSame("transparency", obj.getTransparency(), transparency);
-    JsArray<Who> who = ArrayHelper.toJsArray(Who.newInstance(JavaScriptObject.createObject()));
-    obj.setWho(who);
-    assertEquals("who", obj.getWho().length(), who.length());
+    EventStatus eventstatus = EventStatus.newInstance(JavaScriptObject.createObject());
+    obj.setEventStatus(eventstatus);
+    assertSame("eventstatus", obj.getEventStatus(), eventstatus);
+    OriginalEvent originalevent = OriginalEvent.newInstance(JavaScriptObject.createObject());
+    obj.setOriginalEvent(originalevent);
+    assertSame("originalevent", obj.getOriginalEvent(), originalevent);
     Visibility visibility = Visibility.newInstance(JavaScriptObject.createObject());
     obj.setVisibility(visibility);
     assertSame("visibility", obj.getVisibility(), visibility);
-    JsArray<When> when = ArrayHelper.toJsArray(When.newInstance(JavaScriptObject.createObject()));
-    obj.setWhen(when);
-    assertEquals("when", obj.getWhen().length(), when.length());
-    int lenWhen = obj.getWhen().length();
-    obj.addWhen(When.newInstance(JavaScriptObject.createObject()));
-    assertEquals("when", obj.getWhen().length(), lenWhen + 1);
+    Comments comments = Comments.newInstance(JavaScriptObject.createObject());
+    obj.setComments(comments);
+    assertSame("comments", obj.getComments(), comments);
   }
 }

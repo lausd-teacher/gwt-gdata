@@ -22,14 +22,7 @@ import com.google.gwt.core.client.JsArray;
 /**
  * Comment unavailable.
  */
-public class EventEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.EventEntry;
-  }-*/;
+public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
 
   /**
    * Constructs an event entry using an object parameter whose property names match the setter method to use for each property.
@@ -114,13 +107,6 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * @return
-   */
-  public final native JavaScriptObject getCommentsClass() /*-{
-    return this.getCommentsClass();
-  }-*/;
-
-  /**
    * Returns the event status.
    * 
    * @return
@@ -175,13 +161,6 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * @return
-   */
-  public final native JavaScriptObject getRecurrenceExceptionClass() /*-{
-    return this.getRecurrenceExceptionClass();
-  }-*/;
-
-  /**
    * Returns the event reminders.
    * 
    * @return
@@ -215,13 +194,6 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native Visibility getVisibility() /*-{
     return this.getVisibility();
-  }-*/;
-
-  /**
-   * @return
-   */
-  public final native JavaScriptObject getWhoClass() /*-{
-    return this.getWhoClass();
   }-*/;
 
   /**

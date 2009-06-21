@@ -22,14 +22,7 @@ import com.google.gwt.gdata.client.threading.InReplyTo;
 /**
  * Comment unavailable.
  */
-public class CommentEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.blogger.CommentEntry;
-  }-*/;
+public class CommentEntry extends com.google.gwt.gdata.client.Entry<CommentEntry> {
 
   /**
    * Constructs a comment entry using an object parameter whose property names match the setter method to use for each property.

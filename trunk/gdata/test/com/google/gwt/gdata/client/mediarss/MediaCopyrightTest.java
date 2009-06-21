@@ -29,7 +29,6 @@ public class MediaCopyrightTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MediaCopyright.getConstructor());
     assertNotNull("newInstance()", MediaCopyright.newInstance(JavaScriptObject.createObject()));
   }
 

@@ -34,13 +34,6 @@ public class ItemPublishingPriority extends JavaScriptObject {
   public static final String VALUE_LOW = getConstant("VALUE_LOW");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.ItemPublishingPriority;
-  }-*/;
-
-  /**
    * Constructs an item publishing priority using an object parameter whose property names match the setter method to use for each property.
    */
   public static native ItemPublishingPriority newInstance(JavaScriptObject params) /*-{

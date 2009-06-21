@@ -21,14 +21,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * Comment unavailable.
  */
-public class PositionEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.finance.PositionEntry;
-  }-*/;
+public class PositionEntry extends com.google.gwt.gdata.client.Entry<PositionEntry> {
 
   /**
    * Constructs a Finance position entry using an object parameter whose property names match the setter method to use for each property.

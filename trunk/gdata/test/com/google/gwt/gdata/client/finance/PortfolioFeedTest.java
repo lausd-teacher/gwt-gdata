@@ -29,7 +29,6 @@ public class PortfolioFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", PortfolioFeed.getConstructor());
     assertNotNull("newInstance()", PortfolioFeed.newInstance(JavaScriptObject.createObject()));
   }
 }

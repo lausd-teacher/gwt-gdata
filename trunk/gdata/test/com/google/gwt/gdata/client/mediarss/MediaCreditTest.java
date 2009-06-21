@@ -29,7 +29,6 @@ public class MediaCreditTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MediaCredit.getConstructor());
     assertNotNull("newInstance()", MediaCredit.newInstance(JavaScriptObject.createObject()));
   }
 

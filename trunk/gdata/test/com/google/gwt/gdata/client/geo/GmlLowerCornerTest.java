@@ -29,7 +29,6 @@ public class GmlLowerCornerTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", GmlLowerCorner.getConstructor());
     assertNotNull("newInstance()", GmlLowerCorner.newInstance(JavaScriptObject.createObject()));
   }
 

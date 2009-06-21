@@ -29,7 +29,12 @@ public class CalendarAclFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarAclFeed.getConstructor());
     assertNotNull("newInstance()", CalendarAclFeed.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    CalendarAclFeed obj = CalendarAclFeed.newInstance(JavaScriptObject.createObject());
+    // Unit Test for getControlledObjectLink()
+    assertEquals("getControlledObjectLink", obj.getControlledObjectLink(), null);
   }
 }

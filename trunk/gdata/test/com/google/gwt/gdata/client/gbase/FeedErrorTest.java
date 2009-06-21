@@ -29,7 +29,6 @@ public class FeedErrorTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", FeedError.getConstructor());
     assertNotNull("newInstance()", FeedError.newInstance(JavaScriptObject.createObject()));
   }
 

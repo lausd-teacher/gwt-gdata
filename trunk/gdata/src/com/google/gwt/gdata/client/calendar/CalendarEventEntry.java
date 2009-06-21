@@ -27,13 +27,6 @@ import com.google.gwt.gdata.client.geo.GeoRssWhere;
 public class CalendarEventEntry extends EventEntry {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarEventEntry;
-  }-*/;
-
-  /**
    * Constructs a Calendar event entry using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CalendarEventEntry newInstance(JavaScriptObject params) /*-{
@@ -159,6 +152,15 @@ public class CalendarEventEntry extends EventEntry {
    */
   public final native SequenceNumberProperty getSequence() /*-{
     return this.getSequence();
+  }-*/;
+
+  /**
+   * Returns the suppress reply notifications property.
+   * 
+   * @return
+   */
+  public final native SuppressReplyNotificationsProperty getSuppressReplyNotifications() /*-{
+    return this.getSuppressReplyNotifications();
   }-*/;
 
   /**
@@ -402,6 +404,26 @@ public class CalendarEventEntry extends EventEntry {
    */
   public final native void setSequence() /*-{
     this.setSequence();
+  }-*/;
+
+  /**
+   * Sets the suppress reply notifications property.
+   * 
+   * @param suppressReplyNotifications
+   */
+  public final native void setSuppressReplyNotifications(SuppressReplyNotificationsProperty suppressReplyNotifications) /*-{
+    this.setSuppressReplyNotifications(
+      suppressReplyNotifications
+    );
+  }-*/;
+
+  /**
+   * Sets the suppress reply notifications property.
+   * 
+   * @param suppressReplyNotifications
+   */
+  public final native void setSuppressReplyNotifications() /*-{
+    this.setSuppressReplyNotifications();
   }-*/;
 
   /**

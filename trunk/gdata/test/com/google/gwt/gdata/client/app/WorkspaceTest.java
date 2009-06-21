@@ -16,9 +16,7 @@
 
 package com.google.gwt.gdata.client.app;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -32,8 +30,15 @@ public class WorkspaceTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Workspace.getConstructor());
     assertNotNull("newInstance()", Workspace.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    Workspace obj = Workspace.newInstance(JavaScriptObject.createObject());
+    // Unit Test for addCollection(Collection collection)
+    // Unit Test for getCollections()
+    assertEquals("getCollections", obj.getCollections(), null);
+    // Unit Test for setCollections(JsArray collections)
   }
 
   public void testProperties() {
@@ -41,11 +46,5 @@ public class WorkspaceTest extends GWTTestCase {
     Text title = Text.newInstance(JavaScriptObject.createObject());
     obj.setTitle(title);
     assertSame("title", obj.getTitle(), title);
-    JsArray<Collection> collections = ArrayHelper.toJsArray(Collection.newInstance(JavaScriptObject.createObject()));
-    obj.setCollections(collections);
-    assertEquals("collections", obj.getCollections().length(), collections.length());
-    int lenCollections = obj.getCollections().length();
-    obj.addCollection(Collection.newInstance(JavaScriptObject.createObject()));
-    assertEquals("collections", obj.getCollections().length(), lenCollections + 1);
   }
 }

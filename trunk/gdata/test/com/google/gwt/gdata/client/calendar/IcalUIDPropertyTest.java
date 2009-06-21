@@ -29,7 +29,6 @@ public class IcalUIDPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", IcalUIDProperty.getConstructor());
     assertNotNull("newInstance()", IcalUIDProperty.newInstance(JavaScriptObject.createObject()));
   }
 

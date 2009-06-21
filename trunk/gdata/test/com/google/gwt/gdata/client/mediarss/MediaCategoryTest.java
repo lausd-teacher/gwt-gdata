@@ -29,7 +29,6 @@ public class MediaCategoryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MediaCategory.getConstructor());
     assertNotNull("newInstance()", MediaCategory.newInstance(JavaScriptObject.createObject()));
   }
 

@@ -36,13 +36,6 @@ public class Categories extends JavaScriptObject {
   public static final String FIXED_YES = getConstant("FIXED_YES");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.app.Categories;
-  }-*/;
-
-  /**
    * Constructs an app categories document using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Categories newInstance(JavaScriptObject params) /*-{

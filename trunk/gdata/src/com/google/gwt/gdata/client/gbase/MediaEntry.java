@@ -22,14 +22,7 @@ import com.google.gwt.gdata.client.mediarss.MediaContent;
 /**
  * Comment unavailable.
  */
-public class MediaEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.MediaEntry;
-  }-*/;
+public class MediaEntry extends com.google.gwt.gdata.client.Entry<MediaEntry> {
 
   /**
    * Constructs a Google Base media entry using an object parameter whose property names match the setter method to use for each property.

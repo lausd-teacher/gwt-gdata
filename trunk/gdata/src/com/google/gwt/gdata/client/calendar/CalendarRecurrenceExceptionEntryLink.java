@@ -25,13 +25,6 @@ import com.google.gwt.gdata.client.RecurrenceExceptionEntryLink;
 public class CalendarRecurrenceExceptionEntryLink extends RecurrenceExceptionEntryLink {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.CalendarRecurrenceExceptionEntryLink;
-  }-*/;
-
-  /**
    * Constructs a Calendar recurrence exception entry link using an object parameter whose property names match the setter method to use for each property.
    */
   public static native CalendarRecurrenceExceptionEntryLink newInstance(JavaScriptObject params) /*-{

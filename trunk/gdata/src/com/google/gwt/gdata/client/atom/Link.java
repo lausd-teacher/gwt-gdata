@@ -79,13 +79,6 @@ public class Link extends JavaScriptObject {
   public static final String TYPE_HTML = getConstant("TYPE_HTML");
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.atom.Link;
-  }-*/;
-
-  /**
    * Constructs an external link using an object parameter whose property names match the setter method to use for each property.
    */
   public static native Link newInstance(JavaScriptObject params) /*-{

@@ -25,13 +25,6 @@ import com.google.gwt.core.client.JsArray;
 public class GmAttributes extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.GmAttributes;
-  }-*/;
-
-  /**
    * Constructs a gm attributes using an object parameter whose property names match the setter method to use for each property.
    */
   public static native GmAttributes newInstance(JavaScriptObject params) /*-{

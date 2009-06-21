@@ -21,14 +21,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * Comment unavailable.
  */
-public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
-
-  /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.gbase.ItemTypesEntry;
-  }-*/;
+public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry<ItemTypesEntry> {
 
   /**
    * Constructs a Google Base item type entry using an object parameter whose property names match the setter method to use for each property.

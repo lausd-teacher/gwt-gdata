@@ -35,7 +35,6 @@ public class FileFormatTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", FileFormat.getConstructor());
     assertNotNull("newInstance()", FileFormat.newInstance(JavaScriptObject.createObject()));
   }
 

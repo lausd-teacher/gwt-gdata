@@ -37,7 +37,6 @@ public class CalendarAclRoleTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", CalendarAclRole.getConstructor());
     assertNotNull("newInstance()", CalendarAclRole.newInstance(JavaScriptObject.createObject()));
   }
 }

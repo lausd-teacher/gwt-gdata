@@ -33,7 +33,6 @@ public class MediaRatingTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", MediaRating.getConstructor());
     assertNotNull("newInstance()", MediaRating.newInstance(JavaScriptObject.createObject()));
   }
 

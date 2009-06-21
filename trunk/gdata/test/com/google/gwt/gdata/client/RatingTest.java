@@ -35,7 +35,6 @@ public class RatingTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Rating.getConstructor());
     assertNotNull("newInstance()", Rating.newInstance(JavaScriptObject.createObject()));
   }
 

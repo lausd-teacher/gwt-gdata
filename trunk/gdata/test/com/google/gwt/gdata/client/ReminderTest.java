@@ -39,8 +39,15 @@ public class ReminderTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", Reminder.getConstructor());
     assertNotNull("newInstance()", Reminder.newInstance(JavaScriptObject.createObject()));
+  }
+
+  public void testOther() {
+    Reminder obj = Reminder.newInstance(JavaScriptObject.createObject());
+    // Unit Test for setAbsoluteTime(Date absoluteTime)
+    Date value = new Date();
+    obj.setAbsoluteTime(value);
+    assertEquals("value", obj.getAbsoluteTime().getDate(), value);
   }
 
   public void testProperties() {

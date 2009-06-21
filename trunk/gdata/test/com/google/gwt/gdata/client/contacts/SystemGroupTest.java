@@ -29,7 +29,6 @@ public class SystemGroupTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", SystemGroup.getConstructor());
     assertNotNull("newInstance()", SystemGroup.newInstance(JavaScriptObject.createObject()));
   }
 

@@ -33,7 +33,6 @@ public class ExtendedPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", ExtendedProperty.getConstructor());
     assertNotNull("newInstance()", ExtendedProperty.newInstance(JavaScriptObject.createObject()));
   }
 
