@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.analytics;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a table name.
  */
 public class TableName extends JavaScriptObject {
 
   /**
    * Constructs a table name using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native TableName newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.analytics.TableName(
@@ -32,42 +34,33 @@ public class TableName extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a table name using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native TableName newInstance() /*-{
-    return new $wnd.google.gdata.analytics.TableName();
-  }-*/;
-
   protected TableName() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is optional.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is optional.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is optional.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

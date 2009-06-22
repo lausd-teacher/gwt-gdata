@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.acl.AclFeed;
 
 /**
- * Comment unavailable.
+ * Describes a Calendar access contorl list (ACL) feed.
  */
 public class CalendarAclFeed extends AclFeed {
 
   /**
    * Constructs a Calendar ACL feed using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, contributors, entries, generator, id, links, startIndex, title, totalResults, and updated.
    */
   public static native CalendarAclFeed newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.CalendarAclFeed(
@@ -33,19 +35,12 @@ public class CalendarAclFeed extends AclFeed {
     );
   }-*/;
 
-  /**
-   * Constructs a Calendar ACL feed using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native CalendarAclFeed newInstance() /*-{
-    return new $wnd.google.gdata.calendar.CalendarAclFeed();
-  }-*/;
-
   protected CalendarAclFeed() { }
 
   /**
    * Returns the link that provides the URI of the entry that is controlled by the access control list feed.
    * 
-   * @return
+   * @return Link that provides the URI of the entry that is controlled by the access control list feed or undefined for none.
    */
   public final native CalendarLink getControlledObjectLink() /*-{
     return this.getControlledObjectLink();

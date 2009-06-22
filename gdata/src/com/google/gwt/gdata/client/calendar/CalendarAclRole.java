@@ -20,12 +20,12 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.acl.AclRole;
 
 /**
- * Comment unavailable.
+ * Describes the Calendar roles of an entry in the Calendar access control list.
  */
 public class CalendarAclRole extends AclRole {
 
   /**
-   * The specified users have full edit access to the calendar, except that they cant change the calendars access control settings.
+   * The specified users have full edit access to the calendar, except that they can't change the calendar's access control settings.
    */
   public static final String VALUE_EDITOR = getConstant("VALUE_EDITOR");
 
@@ -50,19 +50,14 @@ public class CalendarAclRole extends AclRole {
   public static final String VALUE_ROOT = getConstant("VALUE_ROOT");
 
   /**
-   * Constructs a Calendar role using an object parameter whose property names match the setter method to use for each property.
+   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native CalendarAclRole newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.CalendarAclRole(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a Calendar role using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native CalendarAclRole newInstance() /*-{
-    return new $wnd.google.gdata.calendar.CalendarAclRole();
   }-*/;
 
   private static native String getConstant(String name) /*-{

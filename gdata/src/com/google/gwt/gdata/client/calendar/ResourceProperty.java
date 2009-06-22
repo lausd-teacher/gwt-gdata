@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes whether gd:who is a resource such as a conference room.
  */
 public class ResourceProperty extends JavaScriptObject {
 
   /**
    * Constructs a resource property using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: id and value.
    */
   public static native ResourceProperty newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.ResourceProperty(
@@ -32,37 +34,37 @@ public class ResourceProperty extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a resource property using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native ResourceProperty newInstance() /*-{
-    return new $wnd.google.gdata.calendar.ResourceProperty();
-  }-*/;
-
   protected ResourceProperty() { }
 
   /**
-   * Returns the resource ID.
+   * Returns the resource ID. This attribute is optional.
    * 
-   * @return
+   * @return Resource ID or undefined for none.
    */
   public final native String getId() /*-{
     return this.getId();
   }-*/;
 
   /**
-   * Returns whether gd:who describes a resource.
+   * Returns whether gd:who describes a resource. This attribute is optional.
    * 
-   * @return
+   * @return Whether gd:who describes a resource or undefined for none.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the resource ID.
+   * Sets the resource ID. This attribute is optional.
+   */
+  public final native void setId() /*-{
+    this.setId();
+  }-*/;
+
+  /**
+   * Sets the resource ID. This attribute is optional.
    * 
-   * @param id
+   * @param id Resource ID or undefined for none.
    */
   public final native void setId(String id) /*-{
     this.setId(
@@ -71,32 +73,21 @@ public class ResourceProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the resource ID.
-   * 
-   * @param id
+   * Sets whether gd:who describes a resource. This attribute is optional.
    */
-  public final native void setId() /*-{
-    this.setId();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets whether gd:who describes a resource.
+   * Sets whether gd:who describes a resource. This attribute is optional.
    * 
-   * @param value
+   * @param value Whether gd:who describes a resource or undefined for none.
    */
   public final native void setValue(boolean value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets whether gd:who describes a resource.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

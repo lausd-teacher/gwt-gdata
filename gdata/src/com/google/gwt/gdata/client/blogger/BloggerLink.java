@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.blogger;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Extends the base Link class with Blogger extensions.
  */
 public class BloggerLink extends com.google.gwt.gdata.client.Link {
 
@@ -39,19 +39,14 @@ public class BloggerLink extends com.google.gwt.gdata.client.Link {
   public static final String REL_TEMPLATE = getConstant("REL_TEMPLATE");
 
   /**
-   * Constructs a Blogger Link class using an object parameter whose property names match the setter method to use for each property.
+   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: href, length, rel, title, and type.
    */
   public static native BloggerLink newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.blogger.BloggerLink(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a Blogger Link class using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native BloggerLink newInstance() /*-{
-    return new $wnd.google.gdata.blogger.BloggerLink();
   }-*/;
 
   private static native String getConstant(String name) /*-{

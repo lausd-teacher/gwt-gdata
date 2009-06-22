@@ -19,49 +19,44 @@ package com.google.gwt.gdata.client.acl;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes the role of an entry in an access control list.
  */
 public class AclRole extends JavaScriptObject {
 
   /**
-   * Predefined value none to indicate that a user has no rights.
+   * Predefined value 'none' to indicate that a user has no rights.
    */
   public static final String VALUE_NONE = getConstant("VALUE_NONE");
 
   /**
-   * Predefined value owner to indicate that a user has the right to read, modify and delete the controlled object.
+   * Predefined value 'owner' to indicate that a user has the right to read, modify and delete the controlled object.
    */
   public static final String VALUE_OWNER = getConstant("VALUE_OWNER");
 
   /**
-   * Predefined value peeker to indicate that a user has the right to know of the existance of the controlled object.
+   * Predefined value 'peeker' to indicate that a user has the right to know of the existance of the controlled object.
    */
   public static final String VALUE_PEEKER = getConstant("VALUE_PEEKER");
 
   /**
-   * Predefined value reader to indicate that a user has the right to read the controlled object.
+   * Predefined value 'reader' to indicate that a user has the right to read the controlled object.
    */
   public static final String VALUE_READER = getConstant("VALUE_READER");
 
   /**
-   * Predefined value writer to indicate that a user has the right to read and modify the controlled object.
+   * Predefined value 'writer' to indicate that a user has the right to read and modify the controlled object.
    */
   public static final String VALUE_WRITER = getConstant("VALUE_WRITER");
 
   /**
    * Constructs a role using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native AclRole newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.acl.AclRole(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a role using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native AclRole newInstance() /*-{
-    return new $wnd.google.gdata.acl.AclRole();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -71,32 +66,30 @@ public class AclRole extends JavaScriptObject {
   protected AclRole() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is required.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is required.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is required.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

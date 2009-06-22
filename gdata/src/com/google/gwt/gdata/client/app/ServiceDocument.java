@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
 /**
- * Comment unavailable.
+ * Container for service information.
  */
 public class ServiceDocument extends JavaScriptObject {
 
   /**
    * Constructs a service document using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: workspaces.
    */
   public static native ServiceDocument newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.app.ServiceDocument(
@@ -33,19 +35,12 @@ public class ServiceDocument extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a service document using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native ServiceDocument newInstance() /*-{
-    return new $wnd.google.gdata.app.ServiceDocument();
-  }-*/;
-
   protected ServiceDocument() { }
 
   /**
    * Adds a new workspace.
    * 
-   * @param workspace
+   * @param workspace Workspace to add, or object to use as a parameter to the google.gdata.app.Workspace constructor.
    */
   public final native void addWorkspace(Workspace workspace) /*-{
     this.addWorkspace(
@@ -56,7 +51,7 @@ public class ServiceDocument extends JavaScriptObject {
   /**
    * Returns the workspaces.
    * 
-   * @return
+   * @return Workspaces.
    */
   public final native JsArray<Workspace> getWorkspaces() /*-{
     return this.getWorkspaces();
@@ -64,22 +59,20 @@ public class ServiceDocument extends JavaScriptObject {
 
   /**
    * Sets the workspaces.
-   * 
-   * @param workspaces
    */
-  public final native void setWorkspaces(JsArray<Workspace> workspaces) /*-{
-    this.setWorkspaces(
-      workspaces
-    );
+  public final native void setWorkspaces() /*-{
+    this.setWorkspaces();
   }-*/;
 
   /**
    * Sets the workspaces.
    * 
-   * @param workspaces
+   * @param workspaces Workspaces, where each workspace is added using the addWorkspace() function, or undefined to clear the workspaces.
    */
-  public final native void setWorkspaces() /*-{
-    this.setWorkspaces();
+  public final native void setWorkspaces(JsArray<Workspace> workspaces) /*-{
+    this.setWorkspaces(
+      workspaces
+    );
   }-*/;
 
 }

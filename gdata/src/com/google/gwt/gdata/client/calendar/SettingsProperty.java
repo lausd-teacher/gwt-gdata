@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * User preference name-value pair.
  */
 public class SettingsProperty extends JavaScriptObject {
 
@@ -105,18 +105,13 @@ public class SettingsProperty extends JavaScriptObject {
 
   /**
    * Constructs a settings property using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: name and value.
    */
   public static native SettingsProperty newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.SettingsProperty(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a settings property using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native SettingsProperty newInstance() /*-{
-    return new $wnd.google.gdata.calendar.SettingsProperty();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -126,27 +121,34 @@ public class SettingsProperty extends JavaScriptObject {
   protected SettingsProperty() { }
 
   /**
-   * Returns the Property name.
+   * Returns the Property name. This attribute is required.
    * 
-   * @return
+   * @return Property name or undefined for none.
    */
   public final native String getName() /*-{
     return this.getName();
   }-*/;
 
   /**
-   * Returns the Property value.
+   * Returns the Property value. This attribute is required.
    * 
-   * @return
+   * @return Property value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the Property name.
+   * Sets the Property name. This attribute is required.
+   */
+  public final native void setName() /*-{
+    this.setName();
+  }-*/;
+
+  /**
+   * Sets the Property name. This attribute is required.
    * 
-   * @param name
+   * @param name Property name or undefined for none.
    */
   public final native void setName(String name) /*-{
     this.setName(
@@ -155,32 +157,21 @@ public class SettingsProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the Property name.
-   * 
-   * @param name
+   * Sets the Property value. This attribute is required.
    */
-  public final native void setName() /*-{
-    this.setName();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets the Property value.
+   * Sets the Property value. This attribute is required.
    * 
-   * @param value
+   * @param value Property value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the Property value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

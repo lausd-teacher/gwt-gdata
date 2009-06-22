@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.contacts;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Denotes contact's group membership.
  */
 public class GroupMembershipInfo extends JavaScriptObject {
 
   /**
    * Constructs a group membership info using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: deleted and href.
    */
   public static native GroupMembershipInfo newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.contacts.GroupMembershipInfo(
@@ -32,37 +34,37 @@ public class GroupMembershipInfo extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a group membership info using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native GroupMembershipInfo newInstance() /*-{
-    return new $wnd.google.gdata.contacts.GroupMembershipInfo();
-  }-*/;
-
   protected GroupMembershipInfo() { }
 
   /**
-   * Returns whether the contact was removed from the group.
+   * Returns whether the contact was removed from the group. This attribute is optional.
    * 
-   * @return
+   * @return Whether the contact was removed from the group or undefined for none.
    */
   public final native boolean getDeleted() /*-{
     return this.getDeleted();
   }-*/;
 
   /**
-   * Returns the URI of the group.
+   * Returns the URI of the group. This attribute is required.
    * 
-   * @return
+   * @return URI of the group or undefined for none.
    */
   public final native String getHref() /*-{
     return this.getHref();
   }-*/;
 
   /**
-   * Sets whether the contact was removed from the group.
+   * Sets whether the contact was removed from the group. This attribute is optional.
+   */
+  public final native void setDeleted() /*-{
+    this.setDeleted();
+  }-*/;
+
+  /**
+   * Sets whether the contact was removed from the group. This attribute is optional.
    * 
-   * @param deleted
+   * @param deleted Whether the contact was removed from the group or undefined for none.
    */
   public final native void setDeleted(boolean deleted) /*-{
     this.setDeleted(
@@ -71,32 +73,21 @@ public class GroupMembershipInfo extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether the contact was removed from the group.
-   * 
-   * @param deleted
+   * Sets the URI of the group. This attribute is required.
    */
-  public final native void setDeleted() /*-{
-    this.setDeleted();
+  public final native void setHref() /*-{
+    this.setHref();
   }-*/;
 
   /**
-   * Sets the URI of the group.
+   * Sets the URI of the group. This attribute is required.
    * 
-   * @param href
+   * @param href URI of the group or undefined for none.
    */
   public final native void setHref(String href) /*-{
     this.setHref(
       href
     );
-  }-*/;
-
-  /**
-   * Sets the URI of the group.
-   * 
-   * @param href
-   */
-  public final native void setHref() /*-{
-    this.setHref();
   }-*/;
 
 }

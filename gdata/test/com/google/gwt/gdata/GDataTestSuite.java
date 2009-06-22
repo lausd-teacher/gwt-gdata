@@ -60,7 +60,6 @@ public class GDataTestSuite extends GWTTestSuite {
     suite.addTestSuite(com.google.gwt.gdata.client.app.WorkspaceTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.atom.CategoryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.atom.EmailTest.class);
-    suite.addTestSuite(com.google.gwt.gdata.client.atom.EntryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.atom.GeneratorTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.atom.IdTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.atom.LinkTest.class);
@@ -154,7 +153,6 @@ public class GDataTestSuite extends GWTTestSuite {
     suite.addTestSuite(com.google.gwt.gdata.client.DeletedTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.EmailTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.EntryLinkTest.class);
-    suite.addTestSuite(com.google.gwt.gdata.client.EventEntryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.EventKindTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.EventStatusTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.ExtendedPropertyTest.class);

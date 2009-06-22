@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.geo;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes an upper corner of a region.
  */
 public class GmlUpperCorner extends JavaScriptObject {
 
   /**
    * Constructs an upper corner of a region using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native GmlUpperCorner newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.geo.GmlUpperCorner(
@@ -32,42 +34,33 @@ public class GmlUpperCorner extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs an upper corner of a region using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native GmlUpperCorner newInstance() /*-{
-    return new $wnd.google.gdata.geo.GmlUpperCorner();
-  }-*/;
-
   protected GmlUpperCorner() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is optional.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is optional.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is optional.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

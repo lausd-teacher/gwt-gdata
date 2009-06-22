@@ -22,12 +22,14 @@ import com.google.gwt.core.client.JsArray;
 import java.util.Date;
 
 /**
- * Comment unavailable.
+ * Describes a period of time.
  */
 public class When extends JavaScriptObject {
 
   /**
    * Constructs a time period description using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: endTime, reminder, startTime, and valueString.
    */
   public static native When newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.When(
@@ -35,19 +37,12 @@ public class When extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a time period description using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native When newInstance() /*-{
-    return new $wnd.google.gdata.When();
-  }-*/;
-
   protected When() { }
 
   /**
    * Adds a new event reminder.
    * 
-   * @param reminder
+   * @param reminder Event reminder to add, or object to use as a parameter to the google.gdata.Reminder constructor.
    */
   public final native void addReminder(Reminder reminder) /*-{
     this.addReminder(
@@ -56,9 +51,9 @@ public class When extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the event end time.
+   * Returns the event end time. This attribute is optional.
    * 
-   * @return
+   * @return Event end time or undefined for none.
    */
   public final native DateTime getEndTime() /*-{
     return this.getEndTime();
@@ -67,34 +62,41 @@ public class When extends JavaScriptObject {
   /**
    * Returns the event reminders.
    * 
-   * @return
+   * @return Event reminders.
    */
   public final native JsArray<Reminder> getReminder() /*-{
     return this.getReminder();
   }-*/;
 
   /**
-   * Returns the event start time.
+   * Returns the event start time. This attribute is required.
    * 
-   * @return
+   * @return Event start time or undefined for none.
    */
   public final native DateTime getStartTime() /*-{
     return this.getStartTime();
   }-*/;
 
   /**
-   * Returns the string description of the event times.
+   * Returns the string description of the event times. This attribute is optional.
    * 
-   * @return
+   * @return String description of the event times or undefined for none.
    */
   public final native String getValueString() /*-{
     return this.getValueString();
   }-*/;
 
   /**
-   * Sets the event end time.
+   * Sets the event end time. This attribute is optional.
+   */
+  public final native void setEndTime() /*-{
+    this.setEndTime();
+  }-*/;
+
+  /**
+   * Sets the event end time. This attribute is optional.
    * 
-   * @param endTime
+   * @param endTime Event end time or undefined for none.
    */
   public final native void setEndTime(Date endTime) /*-{
     this.setEndTime(
@@ -103,18 +105,9 @@ public class When extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the event end time.
+   * Sets the event end time. This attribute is optional.
    * 
-   * @param endTime
-   */
-  public final native void setEndTime() /*-{
-    this.setEndTime();
-  }-*/;
-
-  /**
-   * Sets the event end time.
-   * 
-   * @param endTime
+   * @param endTime Event end time or undefined for none.
    */
   public final native void setEndTime(DateTime endTime) /*-{
     this.setEndTime(
@@ -124,8 +117,15 @@ public class When extends JavaScriptObject {
 
   /**
    * Sets the event reminders.
+   */
+  public final native void setReminder() /*-{
+    this.setReminder();
+  }-*/;
+
+  /**
+   * Sets the event reminders.
    * 
-   * @param reminder
+   * @param reminder Event reminders, where each event reminder is added using the addReminder() function, or undefined to clear the event reminders.
    */
   public final native void setReminder(JsArray<Reminder> reminder) /*-{
     this.setReminder(
@@ -134,18 +134,16 @@ public class When extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the event reminders.
-   * 
-   * @param reminder
+   * Sets the event start time. This attribute is required.
    */
-  public final native void setReminder() /*-{
-    this.setReminder();
+  public final native void setStartTime() /*-{
+    this.setStartTime();
   }-*/;
 
   /**
-   * Sets the event start time.
+   * Sets the event start time. This attribute is required.
    * 
-   * @param startTime
+   * @param startTime Event start time or undefined for none.
    */
   public final native void setStartTime(Date startTime) /*-{
     this.setStartTime(
@@ -154,18 +152,9 @@ public class When extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the event start time.
+   * Sets the event start time. This attribute is required.
    * 
-   * @param startTime
-   */
-  public final native void setStartTime() /*-{
-    this.setStartTime();
-  }-*/;
-
-  /**
-   * Sets the event start time.
-   * 
-   * @param startTime
+   * @param startTime Event start time or undefined for none.
    */
   public final native void setStartTime(DateTime startTime) /*-{
     this.setStartTime(
@@ -174,23 +163,21 @@ public class When extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the string description of the event times.
+   * Sets the string description of the event times. This attribute is optional.
+   */
+  public final native void setValueString() /*-{
+    this.setValueString();
+  }-*/;
+
+  /**
+   * Sets the string description of the event times. This attribute is optional.
    * 
-   * @param valueString
+   * @param valueString String description of the event times or undefined for none.
    */
   public final native void setValueString(String valueString) /*-{
     this.setValueString(
       valueString
     );
-  }-*/;
-
-  /**
-   * Sets the string description of the event times.
-   * 
-   * @param valueString
-   */
-  public final native void setValueString() /*-{
-    this.setValueString();
   }-*/;
 
 }

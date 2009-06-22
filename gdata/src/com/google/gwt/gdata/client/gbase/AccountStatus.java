@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.gbase;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Status of the client account.
  */
 public class AccountStatus extends JavaScriptObject {
 
@@ -35,18 +35,13 @@ public class AccountStatus extends JavaScriptObject {
 
   /**
    * Constructs an Account Status using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native AccountStatus newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.AccountStatus(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs an Account Status using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native AccountStatus newInstance() /*-{
-    return new $wnd.google.gdata.gbase.AccountStatus();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -56,32 +51,30 @@ public class AccountStatus extends JavaScriptObject {
   protected AccountStatus() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is required.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is required.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is required.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

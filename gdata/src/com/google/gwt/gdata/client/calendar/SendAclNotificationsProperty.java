@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes whether to send ACL notifications to grantees.
  */
 public class SendAclNotificationsProperty extends JavaScriptObject {
 
   /**
    * Constructs a send acl notifications property using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native SendAclNotificationsProperty newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.SendAclNotificationsProperty(
@@ -32,42 +34,33 @@ public class SendAclNotificationsProperty extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a send acl notifications property using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native SendAclNotificationsProperty newInstance() /*-{
-    return new $wnd.google.gdata.calendar.SendAclNotificationsProperty();
-  }-*/;
-
   protected SendAclNotificationsProperty() { }
 
   /**
-   * Returns whether to send ACL notifications to grantees.
+   * Returns whether to send ACL notifications to grantees. This attribute is optional.
    * 
-   * @return
+   * @return Whether to send ACL notifications to grantees or undefined for none.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets whether to send ACL notifications to grantees.
+   * Sets whether to send ACL notifications to grantees. This attribute is optional.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets whether to send ACL notifications to grantees. This attribute is optional.
    * 
-   * @param value
+   * @param value Whether to send ACL notifications to grantees or undefined for none.
    */
   public final native void setValue(boolean value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets whether to send ACL notifications to grantees.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

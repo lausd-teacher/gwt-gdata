@@ -20,7 +20,7 @@ import com.google.gwt.gdata.client.GoogleService;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
- * Comment unavailable.
+ * Google Calendar service.
  */
 public class CalendarService extends GoogleService {
 
@@ -31,6 +31,8 @@ public class CalendarService extends GoogleService {
 
   /**
    * Constructor.
+   * 
+   * @param applicationName Name of application (used for tracking).
    */
   public static native CalendarService newInstance(String applicationName) /*-{
     return new $wnd.google.gdata.calendar.CalendarService(
@@ -45,13 +47,12 @@ public class CalendarService extends GoogleService {
   protected CalendarService() { }
 
   /**
-   * Retrieves the feed of a calendars Access Control List (ACL).
+   * Retrieves the feed of a calendar's Access Control List (ACL).
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of feed.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native CalendarAclFeed getAclFeed(String uri, AsyncCallback<CalendarAclFeed> callback) /*-{
     return this.getAclFeed(
@@ -64,11 +65,10 @@ public class CalendarService extends GoogleService {
   /**
    * Retrieves the feed of all of the calendars a user is subscribed to.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of feed.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native CalendarFeed getAllCalendarsFeed(String uri, AsyncCallback<CalendarFeed> callback) /*-{
     return this.getAllCalendarsFeed(
@@ -81,11 +81,10 @@ public class CalendarService extends GoogleService {
   /**
    * Retrieves a Calendar ACL entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native CalendarAclEntry getCalendarAclEntry(String uri, AsyncCallback<CalendarAclEntry> callback) /*-{
     return this.getCalendarAclEntry(
@@ -96,13 +95,12 @@ public class CalendarService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves a Calendar events comment entry.
+   * Retrieves a Calendar event's comment entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native CalendarCommentEntry getCalendarCommentEntry(String uri, AsyncCallback<CalendarCommentEntry> callback) /*-{
     return this.getCalendarCommentEntry(
@@ -115,11 +113,10 @@ public class CalendarService extends GoogleService {
   /**
    * Retrieves a Calendar entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native CalendarEntry getCalendarEntry(String uri, AsyncCallback<CalendarEntry> callback) /*-{
     return this.getCalendarEntry(
@@ -132,11 +129,10 @@ public class CalendarService extends GoogleService {
   /**
    * Retrieves a Calendar event entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native CalendarEventEntry getCalendarEventEntry(String uri, AsyncCallback<CalendarEventEntry> callback) /*-{
     return this.getCalendarEventEntry(
@@ -147,13 +143,12 @@ public class CalendarService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the read-only feed of a users calendars.
+   * Retrieves the read-only feed of a user's calendars.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of feed.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native CalendarFeed getCalendarsFeed(String uri, AsyncCallback<CalendarFeed> callback) /*-{
     return this.getCalendarsFeed(
@@ -164,13 +159,12 @@ public class CalendarService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a calendar events comments.
+   * Retrieves the feed of a calendar event's comments.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native CalendarCommentFeed getCommentsFeed(CalendarCommentQuery query, AsyncCallback<CalendarCommentFeed> callback) /*-{
     return this.getCommentsFeed(
@@ -181,13 +175,12 @@ public class CalendarService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a calendar events comments.
+   * Retrieves the feed of a calendar event's comments.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native CalendarCommentFeed getCommentsFeed(String uri, AsyncCallback<CalendarCommentFeed> callback) /*-{
     return this.getCommentsFeed(
@@ -198,13 +191,12 @@ public class CalendarService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a calendars events.
+   * Retrieves the feed of a calendar's events.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native CalendarEventFeed getEventsFeed(CalendarEventQuery query, AsyncCallback<CalendarEventFeed> callback) /*-{
     return this.getEventsFeed(
@@ -215,13 +207,12 @@ public class CalendarService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a calendars events.
+   * Retrieves the feed of a calendar's events.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native CalendarEventFeed getEventsFeed(String uri, AsyncCallback<CalendarEventFeed> callback) /*-{
     return this.getEventsFeed(
@@ -234,11 +225,10 @@ public class CalendarService extends GoogleService {
   /**
    * Retrieves the feed of the calendars a user owns.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of feed.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native CalendarFeed getOwnCalendarsFeed(String uri, AsyncCallback<CalendarFeed> callback) /*-{
     return this.getOwnCalendarsFeed(
@@ -251,11 +241,10 @@ public class CalendarService extends GoogleService {
   /**
    * Retrieves a Calendar Settings property entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native SettingsEntry getSettingsEntry(String uri, AsyncCallback<SettingsEntry> callback) /*-{
     return this.getSettingsEntry(
@@ -268,11 +257,10 @@ public class CalendarService extends GoogleService {
   /**
    * Retrieves the feed of user personal settings.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of feed.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native CalendarSettingsFeed getSettingsFeed(String uri, AsyncCallback<CalendarSettingsFeed> callback) /*-{
     return this.getSettingsFeed(

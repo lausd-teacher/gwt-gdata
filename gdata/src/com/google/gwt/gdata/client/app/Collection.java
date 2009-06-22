@@ -21,12 +21,14 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.atom.Text;
 
 /**
- * Comment unavailable.
+ * Describes a Collection.
  */
 public class Collection extends JavaScriptObject {
 
   /**
    * Constructs a collection using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: accepts, categorieses, href, and title.
    */
   public static native Collection newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.app.Collection(
@@ -34,19 +36,12 @@ public class Collection extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a collection using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Collection newInstance() /*-{
-    return new $wnd.google.gdata.app.Collection();
-  }-*/;
-
   protected Collection() { }
 
   /**
    * Adds a new accept element.
    * 
-   * @param accept
+   * @param accept Accept element to add, or object to use as a parameter to the google.gdata.app.Accept constructor.
    */
   public final native void addAccept(Accept accept) /*-{
     this.addAccept(
@@ -57,7 +52,7 @@ public class Collection extends JavaScriptObject {
   /**
    * Adds a new app categories document.
    * 
-   * @param categories
+   * @param categories App categories document to add, or object to use as a parameter to the google.gdata.app.Categories constructor.
    */
   public final native void addCategories(Categories categories) /*-{
     this.addCategories(
@@ -68,7 +63,7 @@ public class Collection extends JavaScriptObject {
   /**
    * Returns the accept elements.
    * 
-   * @return
+   * @return Accept elements.
    */
   public final native JsArray<Accept> getAccepts() /*-{
     return this.getAccepts();
@@ -77,25 +72,25 @@ public class Collection extends JavaScriptObject {
   /**
    * Returns the app categories documents.
    * 
-   * @return
+   * @return App categories documents.
    */
   public final native JsArray<Categories> getCategorieses() /*-{
     return this.getCategorieses();
   }-*/;
 
   /**
-   * Returns the href.
+   * Returns the href. This attribute is required.
    * 
-   * @return
+   * @return Href or undefined for none.
    */
   public final native String getHref() /*-{
     return this.getHref();
   }-*/;
 
   /**
-   * Returns the title.
+   * Returns the title. This element is required.
    * 
-   * @return
+   * @return Title or undefined for none.
    */
   public final native Text getTitle() /*-{
     return this.getTitle();
@@ -103,8 +98,15 @@ public class Collection extends JavaScriptObject {
 
   /**
    * Sets the accept elements.
+   */
+  public final native void setAccepts() /*-{
+    this.setAccepts();
+  }-*/;
+
+  /**
+   * Sets the accept elements.
    * 
-   * @param accepts
+   * @param accepts Accept elements, where each accept element is added using the addAccept() function, or undefined to clear the accept elements.
    */
   public final native void setAccepts(JsArray<Accept> accepts) /*-{
     this.setAccepts(
@@ -113,18 +115,16 @@ public class Collection extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the accept elements.
-   * 
-   * @param accepts
+   * Sets the app categories documents.
    */
-  public final native void setAccepts() /*-{
-    this.setAccepts();
+  public final native void setCategorieses() /*-{
+    this.setCategorieses();
   }-*/;
 
   /**
    * Sets the app categories documents.
    * 
-   * @param categorieses
+   * @param categorieses App categories documents, where each app categories document is added using the addCategories() function, or undefined to clear the app categories documents.
    */
   public final native void setCategorieses(JsArray<Categories> categorieses) /*-{
     this.setCategorieses(
@@ -133,18 +133,16 @@ public class Collection extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the app categories documents.
-   * 
-   * @param categorieses
+   * Sets the href. This attribute is required.
    */
-  public final native void setCategorieses() /*-{
-    this.setCategorieses();
+  public final native void setHref() /*-{
+    this.setHref();
   }-*/;
 
   /**
-   * Sets the href.
+   * Sets the href. This attribute is required.
    * 
-   * @param href
+   * @param href Href or undefined for none.
    */
   public final native void setHref(String href) /*-{
     this.setHref(
@@ -153,32 +151,21 @@ public class Collection extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the href.
-   * 
-   * @param href
+   * Sets the title. This element is required.
    */
-  public final native void setHref() /*-{
-    this.setHref();
+  public final native void setTitle() /*-{
+    this.setTitle();
   }-*/;
 
   /**
-   * Sets the title.
+   * Sets the title. This element is required.
    * 
-   * @param title
+   * @param title Title, or object to use as a parameter to the google.gdata.atom.Text constructor, or undefined for none.
    */
   public final native void setTitle(Text title) /*-{
     this.setTitle(
       title
     );
-  }-*/;
-
-  /**
-   * Sets the title.
-   * 
-   * @param title
-   */
-  public final native void setTitle() /*-{
-    this.setTitle();
   }-*/;
 
 }

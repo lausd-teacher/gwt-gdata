@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes the base set of values for event visibility. Similar to CLASS in RFC 2445.
  */
 public class Visibility extends JavaScriptObject {
 
@@ -45,18 +45,13 @@ public class Visibility extends JavaScriptObject {
 
   /**
    * Constructs an event visibility using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native Visibility newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.Visibility(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs an event visibility using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Visibility newInstance() /*-{
-    return new $wnd.google.gdata.Visibility();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -66,32 +61,30 @@ public class Visibility extends JavaScriptObject {
   protected Visibility() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is required.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is required.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is required.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

@@ -20,7 +20,7 @@ import com.google.gwt.gdata.client.GoogleService;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
- * Comment unavailable.
+ * Google Base service.
  */
 public class GoogleBaseService extends GoogleService {
 
@@ -31,6 +31,8 @@ public class GoogleBaseService extends GoogleService {
 
   /**
    * Constructor.
+   * 
+   * @param applicationName Name of application (used for tracking).
    */
   public static native GoogleBaseService newInstance(String applicationName) /*-{
     return new $wnd.google.gdata.gbase.GoogleBaseService(
@@ -47,11 +49,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves a Google Base attribute entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native AttributesEntry getAttributesEntry(String uri, AsyncCallback<AttributesEntry> callback) /*-{
     return this.getAttributesEntry(
@@ -64,11 +65,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves the feed of public attributes.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native AttributesFeed getAttributesFeed(AttributesQuery query, AsyncCallback<AttributesFeed> callback) /*-{
     return this.getAttributesFeed(
@@ -81,11 +81,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves the feed of public attributes.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native AttributesFeed getAttributesFeed(String uri, AsyncCallback<AttributesFeed> callback) /*-{
     return this.getAttributesFeed(
@@ -98,11 +97,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves a Google Base item entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native ItemsEntry getItemsEntry(String uri, AsyncCallback<ItemsEntry> callback) /*-{
     return this.getItemsEntry(
@@ -113,13 +111,12 @@ public class GoogleBaseService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a users private items.
+   * Retrieves the feed of a user's private items.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native ItemsFeed getItemsFeed(ItemsQuery query, AsyncCallback<ItemsFeed> callback) /*-{
     return this.getItemsFeed(
@@ -130,13 +127,12 @@ public class GoogleBaseService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a users private items.
+   * Retrieves the feed of a user's private items.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native ItemsFeed getItemsFeed(String uri, AsyncCallback<ItemsFeed> callback) /*-{
     return this.getItemsFeed(
@@ -149,11 +145,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves a Google Base item type entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native ItemTypesEntry getItemTypesEntry(String uri, AsyncCallback<ItemTypesEntry> callback) /*-{
     return this.getItemTypesEntry(
@@ -166,11 +161,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves the feed of public item types.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native ItemTypesFeed getItemTypesFeed(ItemTypesQuery query, AsyncCallback<ItemTypesFeed> callback) /*-{
     return this.getItemTypesFeed(
@@ -183,11 +177,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves the feed of public item types.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native ItemTypesFeed getItemTypesFeed(String uri, AsyncCallback<ItemTypesFeed> callback) /*-{
     return this.getItemTypesFeed(
@@ -200,11 +193,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves a Google Base locale entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native LocalesEntry getLocalesEntry(String uri, AsyncCallback<LocalesEntry> callback) /*-{
     return this.getLocalesEntry(
@@ -217,11 +209,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves the feed of locales.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native LocalesFeed getLocalesFeed(LocalesQuery query, AsyncCallback<LocalesFeed> callback) /*-{
     return this.getLocalesFeed(
@@ -234,11 +225,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves the feed of locales.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native LocalesFeed getLocalesFeed(String uri, AsyncCallback<LocalesFeed> callback) /*-{
     return this.getLocalesFeed(
@@ -251,11 +241,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves a Google Base media entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native MediaEntry getMediaEntry(String uri, AsyncCallback<MediaEntry> callback) /*-{
     return this.getMediaEntry(
@@ -268,11 +257,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves the media feed used for managing the media attachments for one Google Base Item.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of feed.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native MediaFeed getMediaFeed(String uri, AsyncCallback<MediaFeed> callback) /*-{
     return this.getMediaFeed(
@@ -285,11 +273,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves a Google Base snippet entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native SnippetsEntry getSnippetsEntry(String uri, AsyncCallback<SnippetsEntry> callback) /*-{
     return this.getSnippetsEntry(
@@ -302,11 +289,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves the feed of snippets of public items.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native SnippetsFeed getSnippetsFeed(SnippetsQuery query, AsyncCallback<SnippetsFeed> callback) /*-{
     return this.getSnippetsFeed(
@@ -319,11 +305,10 @@ public class GoogleBaseService extends GoogleService {
   /**
    * Retrieves the feed of snippets of public items.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native SnippetsFeed getSnippetsFeed(String uri, AsyncCallback<SnippetsFeed> callback) /*-{
     return this.getSnippetsFeed(

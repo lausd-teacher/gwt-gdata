@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.app.Control;
 
 /**
- * Comment unavailable.
+ * Describes an item app control.
  */
 public class ItemAppControl extends Control {
 
   /**
    * Constructs an item app control using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: disapproved, draft, and publishingPriority.
    */
   public static native ItemAppControl newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.ItemAppControl(
@@ -33,37 +35,37 @@ public class ItemAppControl extends Control {
     );
   }-*/;
 
-  /**
-   * Constructs an item app control using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native ItemAppControl newInstance() /*-{
-    return new $wnd.google.gdata.gbase.ItemAppControl();
-  }-*/;
-
   protected ItemAppControl() { }
 
   /**
-   * Returns the item disapproved.
+   * Returns the item disapproved. This element is optional.
    * 
-   * @return
+   * @return Item disapproved or undefined for none.
    */
   public final native ItemDisapproved getDisapproved() /*-{
     return this.getDisapproved();
   }-*/;
 
   /**
-   * Returns the item publishing priority.
+   * Returns the item publishing priority. This element is optional.
    * 
-   * @return
+   * @return Item publishing priority or undefined for none.
    */
   public final native ItemPublishingPriority getPublishingPriority() /*-{
     return this.getPublishingPriority();
   }-*/;
 
   /**
-   * Sets the item disapproved.
+   * Sets the item disapproved. This element is optional.
+   */
+  public final native void setDisapproved() /*-{
+    this.setDisapproved();
+  }-*/;
+
+  /**
+   * Sets the item disapproved. This element is optional.
    * 
-   * @param disapproved
+   * @param disapproved Item disapproved, or object to use as a parameter to the google.gdata.gbase.ItemDisapproved constructor, or undefined for none.
    */
   public final native void setDisapproved(ItemDisapproved disapproved) /*-{
     this.setDisapproved(
@@ -72,32 +74,21 @@ public class ItemAppControl extends Control {
   }-*/;
 
   /**
-   * Sets the item disapproved.
-   * 
-   * @param disapproved
+   * Sets the item publishing priority. This element is optional.
    */
-  public final native void setDisapproved() /*-{
-    this.setDisapproved();
+  public final native void setPublishingPriority() /*-{
+    this.setPublishingPriority();
   }-*/;
 
   /**
-   * Sets the item publishing priority.
+   * Sets the item publishing priority. This element is optional.
    * 
-   * @param publishingPriority
+   * @param publishingPriority Item publishing priority, or object to use as a parameter to the google.gdata.gbase.ItemPublishingPriority constructor, or undefined for none.
    */
   public final native void setPublishingPriority(ItemPublishingPriority publishingPriority) /*-{
     this.setPublishingPriority(
       publishingPriority
     );
-  }-*/;
-
-  /**
-   * Sets the item publishing priority.
-   * 
-   * @param publishingPriority
-   */
-  public final native void setPublishingPriority() /*-{
-    this.setPublishingPriority();
   }-*/;
 
 }

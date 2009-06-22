@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
 /**
- * Comment unavailable.
+ * Describes a media group.
  */
 public class MediaGroup extends JavaScriptObject {
 
   /**
    * Constructs a media group using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, contents, copyright, credits, description, hash, keywords, player, ratings, restrictions, texts, thumbnails, and title.
    */
   public static native MediaGroup newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.mediarss.MediaGroup(
@@ -33,19 +35,12 @@ public class MediaGroup extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a media group using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaGroup newInstance() /*-{
-    return new $wnd.google.gdata.mediarss.MediaGroup();
-  }-*/;
-
   protected MediaGroup() { }
 
   /**
    * Adds a new media category.
    * 
-   * @param category
+   * @param category Media category to add, or object to use as a parameter to the google.gdata.mediarss.MediaCategory constructor.
    */
   public final native void addCategory(MediaCategory category) /*-{
     this.addCategory(
@@ -56,7 +51,7 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Adds a new media content.
    * 
-   * @param content
+   * @param content Media content to add, or object to use as a parameter to the google.gdata.mediarss.MediaContent constructor.
    */
   public final native void addContent(MediaContent content) /*-{
     this.addContent(
@@ -67,7 +62,7 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Adds a new media credit.
    * 
-   * @param credit
+   * @param credit Media credit to add, or object to use as a parameter to the google.gdata.mediarss.MediaCredit constructor.
    */
   public final native void addCredit(MediaCredit credit) /*-{
     this.addCredit(
@@ -78,7 +73,7 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Adds a new media rating.
    * 
-   * @param rating
+   * @param rating Media rating to add, or object to use as a parameter to the google.gdata.mediarss.MediaRating constructor.
    */
   public final native void addRating(MediaRating rating) /*-{
     this.addRating(
@@ -89,7 +84,7 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Adds a new media restriction.
    * 
-   * @param restriction
+   * @param restriction Media restriction to add, or object to use as a parameter to the google.gdata.mediarss.MediaRestriction constructor.
    */
   public final native void addRestriction(MediaRestriction restriction) /*-{
     this.addRestriction(
@@ -100,7 +95,7 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Adds a new media text.
    * 
-   * @param text
+   * @param text Media text to add, or object to use as a parameter to the google.gdata.mediarss.MediaText constructor.
    */
   public final native void addText(MediaText text) /*-{
     this.addText(
@@ -111,7 +106,7 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Adds a new media thumbnail.
    * 
-   * @param thumbnail
+   * @param thumbnail Media thumbnail to add, or object to use as a parameter to the google.gdata.mediarss.MediaThumbnail constructor.
    */
   public final native void addThumbnail(MediaThumbnail thumbnail) /*-{
     this.addThumbnail(
@@ -122,7 +117,7 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Returns the media categories.
    * 
-   * @return
+   * @return Media categories.
    */
   public final native JsArray<MediaCategory> getCategories() /*-{
     return this.getCategories();
@@ -131,16 +126,16 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Returns the media contents.
    * 
-   * @return
+   * @return Media contents.
    */
   public final native JsArray<MediaContent> getContents() /*-{
     return this.getContents();
   }-*/;
 
   /**
-   * Returns the media copyright.
+   * Returns the media copyright. This element is optional.
    * 
-   * @return
+   * @return Media copyright or undefined for none.
    */
   public final native MediaCopyright getCopyright() /*-{
     return this.getCopyright();
@@ -149,43 +144,43 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Returns the media credits.
    * 
-   * @return
+   * @return Media credits.
    */
   public final native JsArray<MediaCredit> getCredits() /*-{
     return this.getCredits();
   }-*/;
 
   /**
-   * Returns the media description.
+   * Returns the media description. This element is optional.
    * 
-   * @return
+   * @return Media description or undefined for none.
    */
   public final native MediaDescription getDescription() /*-{
     return this.getDescription();
   }-*/;
 
   /**
-   * Returns the media hash.
+   * Returns the media hash. This element is optional.
    * 
-   * @return
+   * @return Media hash or undefined for none.
    */
   public final native MediaHash getHash() /*-{
     return this.getHash();
   }-*/;
 
   /**
-   * Returns the media keywords.
+   * Returns the media keywords. This element is optional.
    * 
-   * @return
+   * @return Media keywords or undefined for none.
    */
   public final native MediaKeywords getKeywords() /*-{
     return this.getKeywords();
   }-*/;
 
   /**
-   * Returns the media player.
+   * Returns the media player. This element is optional.
    * 
-   * @return
+   * @return Media player or undefined for none.
    */
   public final native MediaPlayer getPlayer() /*-{
     return this.getPlayer();
@@ -194,7 +189,7 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Returns the media ratings.
    * 
-   * @return
+   * @return Media ratings.
    */
   public final native JsArray<MediaRating> getRatings() /*-{
     return this.getRatings();
@@ -203,7 +198,7 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Returns the media restrictions.
    * 
-   * @return
+   * @return Media restrictions.
    */
   public final native JsArray<MediaRestriction> getRestrictions() /*-{
     return this.getRestrictions();
@@ -212,7 +207,7 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Returns the media texts.
    * 
-   * @return
+   * @return Media texts.
    */
   public final native JsArray<MediaText> getTexts() /*-{
     return this.getTexts();
@@ -221,16 +216,16 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Returns the media thumbnails.
    * 
-   * @return
+   * @return Media thumbnails.
    */
   public final native JsArray<MediaThumbnail> getThumbnails() /*-{
     return this.getThumbnails();
   }-*/;
 
   /**
-   * Returns the media title.
+   * Returns the media title. This element is optional.
    * 
-   * @return
+   * @return Media title or undefined for none.
    */
   public final native MediaTitle getTitle() /*-{
     return this.getTitle();
@@ -238,8 +233,15 @@ public class MediaGroup extends JavaScriptObject {
 
   /**
    * Sets the media categories.
+   */
+  public final native void setCategories() /*-{
+    this.setCategories();
+  }-*/;
+
+  /**
+   * Sets the media categories.
    * 
-   * @param categories
+   * @param categories Media categories, where each media category is added using the addCategory() function, or undefined to clear the media categories.
    */
   public final native void setCategories(JsArray<MediaCategory> categories) /*-{
     this.setCategories(
@@ -248,18 +250,16 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media categories.
-   * 
-   * @param categories
+   * Sets the media contents.
    */
-  public final native void setCategories() /*-{
-    this.setCategories();
+  public final native void setContents() /*-{
+    this.setContents();
   }-*/;
 
   /**
    * Sets the media contents.
    * 
-   * @param contents
+   * @param contents Media contents, where each media content is added using the addContent() function, or undefined to clear the media contents.
    */
   public final native void setContents(JsArray<MediaContent> contents) /*-{
     this.setContents(
@@ -268,18 +268,16 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media contents.
-   * 
-   * @param contents
+   * Sets the media copyright. This element is optional.
    */
-  public final native void setContents() /*-{
-    this.setContents();
+  public final native void setCopyright() /*-{
+    this.setCopyright();
   }-*/;
 
   /**
-   * Sets the media copyright.
+   * Sets the media copyright. This element is optional.
    * 
-   * @param copyright
+   * @param copyright Media copyright, or object to use as a parameter to the google.gdata.mediarss.MediaCopyright constructor, or undefined for none.
    */
   public final native void setCopyright(MediaCopyright copyright) /*-{
     this.setCopyright(
@@ -288,18 +286,16 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media copyright.
-   * 
-   * @param copyright
+   * Sets the media credits.
    */
-  public final native void setCopyright() /*-{
-    this.setCopyright();
+  public final native void setCredits() /*-{
+    this.setCredits();
   }-*/;
 
   /**
    * Sets the media credits.
    * 
-   * @param credits
+   * @param credits Media credits, where each media credit is added using the addCredit() function, or undefined to clear the media credits.
    */
   public final native void setCredits(JsArray<MediaCredit> credits) /*-{
     this.setCredits(
@@ -308,18 +304,16 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media credits.
-   * 
-   * @param credits
+   * Sets the media description. This element is optional.
    */
-  public final native void setCredits() /*-{
-    this.setCredits();
+  public final native void setDescription() /*-{
+    this.setDescription();
   }-*/;
 
   /**
-   * Sets the media description.
+   * Sets the media description. This element is optional.
    * 
-   * @param description
+   * @param description Media description, or object to use as a parameter to the google.gdata.mediarss.MediaDescription constructor, or undefined for none.
    */
   public final native void setDescription(MediaDescription description) /*-{
     this.setDescription(
@@ -328,18 +322,16 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media description.
-   * 
-   * @param description
+   * Sets the media hash. This element is optional.
    */
-  public final native void setDescription() /*-{
-    this.setDescription();
+  public final native void setHash() /*-{
+    this.setHash();
   }-*/;
 
   /**
-   * Sets the media hash.
+   * Sets the media hash. This element is optional.
    * 
-   * @param hash
+   * @param hash Media hash, or object to use as a parameter to the google.gdata.mediarss.MediaHash constructor, or undefined for none.
    */
   public final native void setHash(MediaHash hash) /*-{
     this.setHash(
@@ -348,18 +340,16 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media hash.
-   * 
-   * @param hash
+   * Sets the media keywords. This element is optional.
    */
-  public final native void setHash() /*-{
-    this.setHash();
+  public final native void setKeywords() /*-{
+    this.setKeywords();
   }-*/;
 
   /**
-   * Sets the media keywords.
+   * Sets the media keywords. This element is optional.
    * 
-   * @param keywords
+   * @param keywords Media keywords, or object to use as a parameter to the google.gdata.mediarss.MediaKeywords constructor, or undefined for none.
    */
   public final native void setKeywords(MediaKeywords keywords) /*-{
     this.setKeywords(
@@ -368,18 +358,16 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media keywords.
-   * 
-   * @param keywords
+   * Sets the media player. This element is optional.
    */
-  public final native void setKeywords() /*-{
-    this.setKeywords();
+  public final native void setPlayer() /*-{
+    this.setPlayer();
   }-*/;
 
   /**
-   * Sets the media player.
+   * Sets the media player. This element is optional.
    * 
-   * @param player
+   * @param player Media player, or object to use as a parameter to the google.gdata.mediarss.MediaPlayer constructor, or undefined for none.
    */
   public final native void setPlayer(MediaPlayer player) /*-{
     this.setPlayer(
@@ -388,18 +376,16 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media player.
-   * 
-   * @param player
+   * Sets the media ratings.
    */
-  public final native void setPlayer() /*-{
-    this.setPlayer();
+  public final native void setRatings() /*-{
+    this.setRatings();
   }-*/;
 
   /**
    * Sets the media ratings.
    * 
-   * @param ratings
+   * @param ratings Media ratings, where each media rating is added using the addRating() function, or undefined to clear the media ratings.
    */
   public final native void setRatings(JsArray<MediaRating> ratings) /*-{
     this.setRatings(
@@ -408,18 +394,16 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media ratings.
-   * 
-   * @param ratings
+   * Sets the media restrictions.
    */
-  public final native void setRatings() /*-{
-    this.setRatings();
+  public final native void setRestrictions() /*-{
+    this.setRestrictions();
   }-*/;
 
   /**
    * Sets the media restrictions.
    * 
-   * @param restrictions
+   * @param restrictions Media restrictions, where each media restriction is added using the addRestriction() function, or undefined to clear the media restrictions.
    */
   public final native void setRestrictions(JsArray<MediaRestriction> restrictions) /*-{
     this.setRestrictions(
@@ -428,18 +412,16 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media restrictions.
-   * 
-   * @param restrictions
+   * Sets the media texts.
    */
-  public final native void setRestrictions() /*-{
-    this.setRestrictions();
+  public final native void setTexts() /*-{
+    this.setTexts();
   }-*/;
 
   /**
    * Sets the media texts.
    * 
-   * @param texts
+   * @param texts Media texts, where each media text is added using the addText() function, or undefined to clear the media texts.
    */
   public final native void setTexts(JsArray<MediaText> texts) /*-{
     this.setTexts(
@@ -448,18 +430,16 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media texts.
-   * 
-   * @param texts
+   * Sets the media thumbnails.
    */
-  public final native void setTexts() /*-{
-    this.setTexts();
+  public final native void setThumbnails() /*-{
+    this.setThumbnails();
   }-*/;
 
   /**
    * Sets the media thumbnails.
    * 
-   * @param thumbnails
+   * @param thumbnails Media thumbnails, where each media thumbnail is added using the addThumbnail() function, or undefined to clear the media thumbnails.
    */
   public final native void setThumbnails(JsArray<MediaThumbnail> thumbnails) /*-{
     this.setThumbnails(
@@ -468,32 +448,21 @@ public class MediaGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the media thumbnails.
-   * 
-   * @param thumbnails
+   * Sets the media title. This element is optional.
    */
-  public final native void setThumbnails() /*-{
-    this.setThumbnails();
+  public final native void setTitle() /*-{
+    this.setTitle();
   }-*/;
 
   /**
-   * Sets the media title.
+   * Sets the media title. This element is optional.
    * 
-   * @param title
+   * @param title Media title, or object to use as a parameter to the google.gdata.mediarss.MediaTitle constructor, or undefined for none.
    */
   public final native void setTitle(MediaTitle title) /*-{
     this.setTitle(
       title
     );
-  }-*/;
-
-  /**
-   * Sets the media title.
-   * 
-   * @param title
-   */
-  public final native void setTitle() /*-{
-    this.setTitle();
   }-*/;
 
 }

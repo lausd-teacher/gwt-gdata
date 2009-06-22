@@ -26,12 +26,14 @@ import com.google.gwt.gdata.client.PhoneNumber;
 import com.google.gwt.gdata.client.PostalAddress;
 
 /**
- * Comment unavailable.
+ * Describes a person entry.
  */
 public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> {
 
   /**
    * Constructs a person entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, content, edited, emailAddresses, extendedProperties, id, imAddresses, links, organizations, phoneNumbers, postalAddresses, title, and updated.
    */
   public static native PersonEntry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.contacts.PersonEntry(
@@ -39,19 +41,12 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
     );
   }-*/;
 
-  /**
-   * Constructs a person entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native PersonEntry newInstance() /*-{
-    return new $wnd.google.gdata.contacts.PersonEntry();
-  }-*/;
-
   protected PersonEntry() { }
 
   /**
    * Adds a new email address.
    * 
-   * @param emailAddress
+   * @param emailAddress Email address to add, or object to use as a parameter to the google.gdata.Email constructor.
    */
   public final native void addEmailAddress(Email emailAddress) /*-{
     this.addEmailAddress(
@@ -62,7 +57,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Adds a new extended property.
    * 
-   * @param extendedProperty
+   * @param extendedProperty Extended property to add, or object to use as a parameter to the google.gdata.ExtendedProperty constructor.
    */
   public final native void addExtendedProperty(ExtendedProperty extendedProperty) /*-{
     this.addExtendedProperty(
@@ -73,7 +68,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Adds a new instant messaging address.
    * 
-   * @param imAddress
+   * @param imAddress Instant messaging address to add, or object to use as a parameter to the google.gdata.Im constructor.
    */
   public final native void addImAddress(Im imAddress) /*-{
     this.addImAddress(
@@ -84,7 +79,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Adds a new organization.
    * 
-   * @param organization
+   * @param organization Organization to add, or object to use as a parameter to the google.gdata.Organization constructor.
    */
   public final native void addOrganization(Organization organization) /*-{
     this.addOrganization(
@@ -95,7 +90,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Adds a new phone number.
    * 
-   * @param phoneNumber
+   * @param phoneNumber Phone number to add, or object to use as a parameter to the google.gdata.PhoneNumber constructor.
    */
   public final native void addPhoneNumber(PhoneNumber phoneNumber) /*-{
     this.addPhoneNumber(
@@ -106,7 +101,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Adds a new postal address.
    * 
-   * @param postalAddress
+   * @param postalAddress Postal address to add, or object to use as a parameter to the google.gdata.PostalAddress constructor.
    */
   public final native void addPostalAddress(PostalAddress postalAddress) /*-{
     this.addPostalAddress(
@@ -117,7 +112,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Returns the link to edit contact photo.
    * 
-   * @return
+   * @return Link to edit contact photo or undefined for none.
    */
   public final native ContactLink getContactEditPhotoLink() /*-{
     return this.getContactEditPhotoLink();
@@ -126,7 +121,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Returns the link that provides the contact photo.
    * 
-   * @return
+   * @return Link that provides the contact photo or undefined for none.
    */
   public final native ContactLink getContactPhotoLink() /*-{
     return this.getContactPhotoLink();
@@ -135,7 +130,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Returns the email addresses.
    * 
-   * @return
+   * @return Email addresses.
    */
   public final native JsArray<com.google.gwt.gdata.client.Email> getEmailAddresses() /*-{
     return this.getEmailAddresses();
@@ -144,7 +139,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Returns the extended properties.
    * 
-   * @return
+   * @return Extended properties.
    */
   public final native JsArray<ExtendedProperty> getExtendedProperties() /*-{
     return this.getExtendedProperties();
@@ -153,7 +148,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Returns the instant messaging addresses.
    * 
-   * @return
+   * @return Instant messaging addresses.
    */
   public final native JsArray<Im> getImAddresses() /*-{
     return this.getImAddresses();
@@ -162,7 +157,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Returns the organizations.
    * 
-   * @return
+   * @return Organizations.
    */
   public final native JsArray<Organization> getOrganizations() /*-{
     return this.getOrganizations();
@@ -171,7 +166,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Returns the phone numbers.
    * 
-   * @return
+   * @return Phone numbers.
    */
   public final native JsArray<PhoneNumber> getPhoneNumbers() /*-{
     return this.getPhoneNumbers();
@@ -180,7 +175,7 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   /**
    * Returns the postal addresses.
    * 
-   * @return
+   * @return Postal addresses.
    */
   public final native JsArray<PostalAddress> getPostalAddresses() /*-{
     return this.getPostalAddresses();
@@ -188,8 +183,15 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
 
   /**
    * Sets the email addresses.
+   */
+  public final native void setEmailAddresses() /*-{
+    this.setEmailAddresses();
+  }-*/;
+
+  /**
+   * Sets the email addresses.
    * 
-   * @param emailAddresses
+   * @param emailAddresses Email addresses, where each email address is added using the addEmailAddress() function, or undefined to clear the email addresses.
    */
   public final native void setEmailAddresses(JsArray<Email> emailAddresses) /*-{
     this.setEmailAddresses(
@@ -198,18 +200,16 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   }-*/;
 
   /**
-   * Sets the email addresses.
-   * 
-   * @param emailAddresses
+   * Sets the extended properties.
    */
-  public final native void setEmailAddresses() /*-{
-    this.setEmailAddresses();
+  public final native void setExtendedProperties() /*-{
+    this.setExtendedProperties();
   }-*/;
 
   /**
    * Sets the extended properties.
    * 
-   * @param extendedProperties
+   * @param extendedProperties Extended properties, where each extended property is added using the addExtendedProperty() function, or undefined to clear the extended properties.
    */
   public final native void setExtendedProperties(JsArray<ExtendedProperty> extendedProperties) /*-{
     this.setExtendedProperties(
@@ -218,18 +218,16 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   }-*/;
 
   /**
-   * Sets the extended properties.
-   * 
-   * @param extendedProperties
+   * Sets the instant messaging addresses.
    */
-  public final native void setExtendedProperties() /*-{
-    this.setExtendedProperties();
+  public final native void setImAddresses() /*-{
+    this.setImAddresses();
   }-*/;
 
   /**
    * Sets the instant messaging addresses.
    * 
-   * @param imAddresses
+   * @param imAddresses Instant messaging addresses, where each instant messaging address is added using the addImAddress() function, or undefined to clear the instant messaging addresses.
    */
   public final native void setImAddresses(JsArray<Im> imAddresses) /*-{
     this.setImAddresses(
@@ -238,18 +236,16 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   }-*/;
 
   /**
-   * Sets the instant messaging addresses.
-   * 
-   * @param imAddresses
+   * Sets the organizations.
    */
-  public final native void setImAddresses() /*-{
-    this.setImAddresses();
+  public final native void setOrganizations() /*-{
+    this.setOrganizations();
   }-*/;
 
   /**
    * Sets the organizations.
    * 
-   * @param organizations
+   * @param organizations Organizations, where each organization is added using the addOrganization() function, or undefined to clear the organizations.
    */
   public final native void setOrganizations(JsArray<Organization> organizations) /*-{
     this.setOrganizations(
@@ -258,18 +254,16 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   }-*/;
 
   /**
-   * Sets the organizations.
-   * 
-   * @param organizations
+   * Sets the phone numbers.
    */
-  public final native void setOrganizations() /*-{
-    this.setOrganizations();
+  public final native void setPhoneNumbers() /*-{
+    this.setPhoneNumbers();
   }-*/;
 
   /**
    * Sets the phone numbers.
    * 
-   * @param phoneNumbers
+   * @param phoneNumbers Phone numbers, where each phone number is added using the addPhoneNumber() function, or undefined to clear the phone numbers.
    */
   public final native void setPhoneNumbers(JsArray<PhoneNumber> phoneNumbers) /*-{
     this.setPhoneNumbers(
@@ -278,32 +272,21 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry<PersonEntry> 
   }-*/;
 
   /**
-   * Sets the phone numbers.
-   * 
-   * @param phoneNumbers
+   * Sets the postal addresses.
    */
-  public final native void setPhoneNumbers() /*-{
-    this.setPhoneNumbers();
+  public final native void setPostalAddresses() /*-{
+    this.setPostalAddresses();
   }-*/;
 
   /**
    * Sets the postal addresses.
    * 
-   * @param postalAddresses
+   * @param postalAddresses Postal addresses, where each postal address is added using the addPostalAddress() function, or undefined to clear the postal addresses.
    */
   public final native void setPostalAddresses(JsArray<PostalAddress> postalAddresses) /*-{
     this.setPostalAddresses(
       postalAddresses
     );
-  }-*/;
-
-  /**
-   * Sets the postal addresses.
-   * 
-   * @param postalAddresses
-   */
-  public final native void setPostalAddresses() /*-{
-    this.setPostalAddresses();
   }-*/;
 
 }

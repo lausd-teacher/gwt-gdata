@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
 /**
- * Comment unavailable.
+ * Describes the base class for a GData entry.
  */
 public class Entry extends JavaScriptObject {
 
   /**
    * Constructs an entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, content, contributors, id, links, published, rights, summary, title, and updated.
    */
   public static native Entry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.atom.Entry(
@@ -33,19 +35,12 @@ public class Entry extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs an entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Entry newInstance() /*-{
-    return new $wnd.google.gdata.atom.Entry();
-  }-*/;
-
   protected Entry() { }
 
   /**
    * Adds a new author.
    * 
-   * @param author
+   * @param author Author to add, or object to use as a parameter to the google.gdata.atom.Person constructor.
    */
   public final native void addAuthor(Person author) /*-{
     this.addAuthor(
@@ -56,7 +51,7 @@ public class Entry extends JavaScriptObject {
   /**
    * Adds a new category.
    * 
-   * @param category
+   * @param category Category to add, or object to use as a parameter to the google.gdata.atom.Category constructor.
    */
   public final native void addCategory(Category category) /*-{
     this.addCategory(
@@ -67,7 +62,7 @@ public class Entry extends JavaScriptObject {
   /**
    * Adds a new contributor.
    * 
-   * @param contributor
+   * @param contributor Contributor to add, or object to use as a parameter to the google.gdata.atom.Person constructor.
    */
   public final native void addContributor(Person contributor) /*-{
     this.addContributor(
@@ -78,7 +73,7 @@ public class Entry extends JavaScriptObject {
   /**
    * Adds a new link.
    * 
-   * @param link
+   * @param link Link to add, or object to use as a parameter to the google.gdata.atom.Link constructor.
    */
   public final native void addLink(Link link) /*-{
     this.addLink(
@@ -89,7 +84,7 @@ public class Entry extends JavaScriptObject {
   /**
    * Returns the authors.
    * 
-   * @return
+   * @return Authors.
    */
   public final native JsArray<Person> getAuthors() /*-{
     return this.getAuthors();
@@ -98,16 +93,16 @@ public class Entry extends JavaScriptObject {
   /**
    * Returns the categories.
    * 
-   * @return
+   * @return Categories.
    */
   public final native JsArray<Category> getCategories() /*-{
     return this.getCategories();
   }-*/;
 
   /**
-   * Returns the content.
+   * Returns the content. This element is optional.
    * 
-   * @return
+   * @return Content or undefined for none.
    */
   public final native Text getContent() /*-{
     return this.getContent();
@@ -116,16 +111,16 @@ public class Entry extends JavaScriptObject {
   /**
    * Returns the contributors.
    * 
-   * @return
+   * @return Contributors.
    */
   public final native JsArray<Person> getContributors() /*-{
     return this.getContributors();
   }-*/;
 
   /**
-   * Returns the entry identifier.
+   * Returns the entry identifier. This element is required.
    * 
-   * @return
+   * @return Entry identifier or undefined for none.
    */
   public final native Id getId() /*-{
     return this.getId();
@@ -134,52 +129,52 @@ public class Entry extends JavaScriptObject {
   /**
    * Returns the links.
    * 
-   * @return
+   * @return Links.
    */
   public final native JsArray<com.google.gwt.gdata.client.atom.Link> getLinks() /*-{
     return this.getLinks();
   }-*/;
 
   /**
-   * Returns the creation timestamp.
+   * Returns the creation timestamp. This element is optional.
    * 
-   * @return
+   * @return Creation timestamp or undefined for none.
    */
   public final native Published getPublished() /*-{
     return this.getPublished();
   }-*/;
 
   /**
-   * Returns the rights.
+   * Returns the rights. This element is optional.
    * 
-   * @return
+   * @return Rights or undefined for none.
    */
   public final native Text getRights() /*-{
     return this.getRights();
   }-*/;
 
   /**
-   * Returns the summary.
+   * Returns the summary. This element is optional.
    * 
-   * @return
+   * @return Summary or undefined for none.
    */
   public final native Text getSummary() /*-{
     return this.getSummary();
   }-*/;
 
   /**
-   * Returns the title.
+   * Returns the title. This element is required.
    * 
-   * @return
+   * @return Title or undefined for none.
    */
   public final native Text getTitle() /*-{
     return this.getTitle();
   }-*/;
 
   /**
-   * Returns the updated timestamp.
+   * Returns the updated timestamp. This element is required.
    * 
-   * @return
+   * @return Updated timestamp or undefined for none.
    */
   public final native Updated getUpdated() /*-{
     return this.getUpdated();
@@ -187,8 +182,15 @@ public class Entry extends JavaScriptObject {
 
   /**
    * Sets the authors.
+   */
+  public final native void setAuthors() /*-{
+    this.setAuthors();
+  }-*/;
+
+  /**
+   * Sets the authors.
    * 
-   * @param authors
+   * @param authors Authors, where each author is added using the addAuthor() function, or undefined to clear the authors.
    */
   public final native void setAuthors(JsArray<Person> authors) /*-{
     this.setAuthors(
@@ -197,18 +199,16 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the authors.
-   * 
-   * @param authors
+   * Sets the categories.
    */
-  public final native void setAuthors() /*-{
-    this.setAuthors();
+  public final native void setCategories() /*-{
+    this.setCategories();
   }-*/;
 
   /**
    * Sets the categories.
    * 
-   * @param categories
+   * @param categories Categories, where each category is added using the addCategory() function, or undefined to clear the categories.
    */
   public final native void setCategories(JsArray<Category> categories) /*-{
     this.setCategories(
@@ -217,18 +217,16 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the categories.
-   * 
-   * @param categories
+   * Sets the content. This element is optional.
    */
-  public final native void setCategories() /*-{
-    this.setCategories();
+  public final native void setContent() /*-{
+    this.setContent();
   }-*/;
 
   /**
-   * Sets the content.
+   * Sets the content. This element is optional.
    * 
-   * @param content
+   * @param content Content, or object to use as a parameter to the google.gdata.atom.Text constructor, or undefined for none.
    */
   public final native void setContent(Text content) /*-{
     this.setContent(
@@ -237,18 +235,16 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the content.
-   * 
-   * @param content
+   * Sets the contributors.
    */
-  public final native void setContent() /*-{
-    this.setContent();
+  public final native void setContributors() /*-{
+    this.setContributors();
   }-*/;
 
   /**
    * Sets the contributors.
    * 
-   * @param contributors
+   * @param contributors Contributors, where each contributor is added using the addContributor() function, or undefined to clear the contributors.
    */
   public final native void setContributors(JsArray<Person> contributors) /*-{
     this.setContributors(
@@ -257,18 +253,16 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the contributors.
-   * 
-   * @param contributors
+   * Sets the entry identifier. This element is required.
    */
-  public final native void setContributors() /*-{
-    this.setContributors();
+  public final native void setId() /*-{
+    this.setId();
   }-*/;
 
   /**
-   * Sets the entry identifier.
+   * Sets the entry identifier. This element is required.
    * 
-   * @param id
+   * @param id Entry identifier, or object to use as a parameter to the google.gdata.atom.Id constructor, or undefined for none.
    */
   public final native void setId(Id id) /*-{
     this.setId(
@@ -277,18 +271,16 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the entry identifier.
-   * 
-   * @param id
+   * Sets the links.
    */
-  public final native void setId() /*-{
-    this.setId();
+  public final native void setLinks() /*-{
+    this.setLinks();
   }-*/;
 
   /**
    * Sets the links.
    * 
-   * @param links
+   * @param links Links, where each link is added using the addLink() function, or undefined to clear the links.
    */
   public final native void setLinks(JsArray<Link> links) /*-{
     this.setLinks(
@@ -297,18 +289,16 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the links.
-   * 
-   * @param links
+   * Sets the creation timestamp. This element is optional.
    */
-  public final native void setLinks() /*-{
-    this.setLinks();
+  public final native void setPublished() /*-{
+    this.setPublished();
   }-*/;
 
   /**
-   * Sets the creation timestamp.
+   * Sets the creation timestamp. This element is optional.
    * 
-   * @param published
+   * @param published Creation timestamp, or object to use as a parameter to the google.gdata.atom.Published constructor, or undefined for none.
    */
   public final native void setPublished(Published published) /*-{
     this.setPublished(
@@ -317,18 +307,16 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the creation timestamp.
-   * 
-   * @param published
+   * Sets the rights. This element is optional.
    */
-  public final native void setPublished() /*-{
-    this.setPublished();
+  public final native void setRights() /*-{
+    this.setRights();
   }-*/;
 
   /**
-   * Sets the rights.
+   * Sets the rights. This element is optional.
    * 
-   * @param rights
+   * @param rights Rights, or object to use as a parameter to the google.gdata.atom.Text constructor, or undefined for none.
    */
   public final native void setRights(Text rights) /*-{
     this.setRights(
@@ -337,18 +325,16 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the rights.
-   * 
-   * @param rights
+   * Sets the summary. This element is optional.
    */
-  public final native void setRights() /*-{
-    this.setRights();
+  public final native void setSummary() /*-{
+    this.setSummary();
   }-*/;
 
   /**
-   * Sets the summary.
+   * Sets the summary. This element is optional.
    * 
-   * @param summary
+   * @param summary Summary, or object to use as a parameter to the google.gdata.atom.Text constructor, or undefined for none.
    */
   public final native void setSummary(Text summary) /*-{
     this.setSummary(
@@ -357,18 +343,16 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the summary.
-   * 
-   * @param summary
+   * Sets the title. This element is required.
    */
-  public final native void setSummary() /*-{
-    this.setSummary();
+  public final native void setTitle() /*-{
+    this.setTitle();
   }-*/;
 
   /**
-   * Sets the title.
+   * Sets the title. This element is required.
    * 
-   * @param title
+   * @param title Title, or object to use as a parameter to the google.gdata.atom.Text constructor, or undefined for none.
    */
   public final native void setTitle(Text title) /*-{
     this.setTitle(
@@ -377,32 +361,21 @@ public class Entry extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the title.
-   * 
-   * @param title
+   * Sets the updated timestamp. This element is required.
    */
-  public final native void setTitle() /*-{
-    this.setTitle();
+  public final native void setUpdated() /*-{
+    this.setUpdated();
   }-*/;
 
   /**
-   * Sets the updated timestamp.
+   * Sets the updated timestamp. This element is required.
    * 
-   * @param updated
+   * @param updated Updated timestamp, or object to use as a parameter to the google.gdata.atom.Updated constructor, or undefined for none.
    */
   public final native void setUpdated(Updated updated) /*-{
     this.setUpdated(
       updated
     );
-  }-*/;
-
-  /**
-   * Sets the updated timestamp.
-   * 
-   * @param updated
-   */
-  public final native void setUpdated() /*-{
-    this.setUpdated();
   }-*/;
 
 }

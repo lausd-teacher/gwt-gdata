@@ -20,7 +20,7 @@ import com.google.gwt.gdata.client.GoogleService;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
- * Comment unavailable.
+ * Blogger service.
  */
 public class BloggerService extends GoogleService {
 
@@ -31,6 +31,8 @@ public class BloggerService extends GoogleService {
 
   /**
    * Constructor.
+   * 
+   * @param applicationName Name of application (used for tracking).
    */
   public static native BloggerService newInstance(String applicationName) /*-{
     return new $wnd.google.gdata.blogger.BloggerService(
@@ -45,13 +47,12 @@ public class BloggerService extends GoogleService {
   protected BloggerService() { }
 
   /**
-   * Retrieves the feed of a blogs comments.
+   * Retrieves the feed of a blog's comments.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native BlogCommentFeed getBlogCommentFeed(BlogCommentQuery query, AsyncCallback<BlogCommentFeed> callback) /*-{
     return this.getBlogCommentFeed(
@@ -62,13 +63,12 @@ public class BloggerService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a blogs comments.
+   * Retrieves the feed of a blog's comments.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native BlogCommentFeed getBlogCommentFeed(String uri, AsyncCallback<BlogCommentFeed> callback) /*-{
     return this.getBlogCommentFeed(
@@ -81,11 +81,10 @@ public class BloggerService extends GoogleService {
   /**
    * Retrieves a blog entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native BlogEntry getBlogEntry(String uri, AsyncCallback<BlogEntry> callback) /*-{
     return this.getBlogEntry(
@@ -96,13 +95,12 @@ public class BloggerService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a users blogs.
+   * Retrieves the feed of a user's blogs.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native BlogFeed getBlogFeed(BlogQuery query, AsyncCallback<BlogFeed> callback) /*-{
     return this.getBlogFeed(
@@ -113,13 +111,12 @@ public class BloggerService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a users blogs.
+   * Retrieves the feed of a user's blogs.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native BlogFeed getBlogFeed(String uri, AsyncCallback<BlogFeed> callback) /*-{
     return this.getBlogFeed(
@@ -130,13 +127,12 @@ public class BloggerService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a blogs posts.
+   * Retrieves the feed of a blog's posts.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native BlogPostFeed getBlogPostFeed(BlogPostQuery query, AsyncCallback<BlogPostFeed> callback) /*-{
     return this.getBlogPostFeed(
@@ -147,13 +143,12 @@ public class BloggerService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a blogs posts.
+   * Retrieves the feed of a blog's posts.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native BlogPostFeed getBlogPostFeed(String uri, AsyncCallback<BlogPostFeed> callback) /*-{
     return this.getBlogPostFeed(
@@ -166,11 +161,10 @@ public class BloggerService extends GoogleService {
   /**
    * Retrieves a comment entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native CommentEntry getCommentEntry(String uri, AsyncCallback<CommentEntry> callback) /*-{
     return this.getCommentEntry(
@@ -181,13 +175,12 @@ public class BloggerService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a blog posts comments.
+   * Retrieves the feed of a blog post's comments.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native PostCommentFeed getPostCommentFeed(PostCommentQuery query, AsyncCallback<PostCommentFeed> callback) /*-{
     return this.getPostCommentFeed(
@@ -198,13 +191,12 @@ public class BloggerService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of a blog posts comments.
+   * Retrieves the feed of a blog post's comments.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native PostCommentFeed getPostCommentFeed(String uri, AsyncCallback<PostCommentFeed> callback) /*-{
     return this.getPostCommentFeed(
@@ -217,11 +209,10 @@ public class BloggerService extends GoogleService {
   /**
    * Retrieves a post entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native PostEntry getPostEntry(String uri, AsyncCallback<PostEntry> callback) /*-{
     return this.getPostEntry(

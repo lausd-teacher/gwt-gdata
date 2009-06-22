@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes how many times calendar was cleaned via Manage Calendars.
  */
 public class TimesCleanedProperty extends JavaScriptObject {
 
   /**
    * Constructs a times cleaned property using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native TimesCleanedProperty newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.TimesCleanedProperty(
@@ -32,42 +34,33 @@ public class TimesCleanedProperty extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a times cleaned property using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native TimesCleanedProperty newInstance() /*-{
-    return new $wnd.google.gdata.calendar.TimesCleanedProperty();
-  }-*/;
-
   protected TimesCleanedProperty() { }
 
   /**
-   * Returns the number of times calendar was cleaned.
+   * Returns the number of times calendar was cleaned. This attribute is required.
    * 
-   * @return
+   * @return Number of times calendar was cleaned or undefined for none.
    */
   public final native double getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the number of times calendar was cleaned.
+   * Sets the number of times calendar was cleaned. This attribute is required.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the number of times calendar was cleaned. This attribute is required.
    * 
-   * @param value
+   * @param value Number of times calendar was cleaned or undefined for none.
    */
   public final native void setValue(double value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the number of times calendar was cleaned.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

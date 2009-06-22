@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.mediarss;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a media credit.
  */
 public class MediaCredit extends JavaScriptObject {
 
   /**
    * Constructs a media credit using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content, role, and scheme.
    */
   public static native MediaCredit newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.mediarss.MediaCredit(
@@ -32,46 +34,46 @@ public class MediaCredit extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a media credit using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaCredit newInstance() /*-{
-    return new $wnd.google.gdata.mediarss.MediaCredit();
-  }-*/;
-
   protected MediaCredit() { }
 
   /**
-   * Returns the name of the entity.
+   * Returns the name of the entity. This attribute is optional.
    * 
-   * @return
+   * @return Name of the entity or undefined for none.
    */
   public final native String getContent() /*-{
     return this.getContent();
   }-*/;
 
   /**
-   * Returns the role the entity played.
+   * Returns the role the entity played. This attribute is optional.
    * 
-   * @return
+   * @return Role the entity played or undefined for none.
    */
   public final native String getRole() /*-{
     return this.getRole();
   }-*/;
 
   /**
-   * Returns the URI that identifies the role scheme.
+   * Returns the URI that identifies the role scheme. This attribute is optional.
    * 
-   * @return
+   * @return URI that identifies the role scheme or undefined for none.
    */
   public final native String getScheme() /*-{
     return this.getScheme();
   }-*/;
 
   /**
-   * Sets the name of the entity.
+   * Sets the name of the entity. This attribute is optional.
+   */
+  public final native void setContent() /*-{
+    this.setContent();
+  }-*/;
+
+  /**
+   * Sets the name of the entity. This attribute is optional.
    * 
-   * @param content
+   * @param content Name of the entity or undefined for none.
    */
   public final native void setContent(String content) /*-{
     this.setContent(
@@ -80,18 +82,16 @@ public class MediaCredit extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the name of the entity.
-   * 
-   * @param content
+   * Sets the role the entity played. This attribute is optional.
    */
-  public final native void setContent() /*-{
-    this.setContent();
+  public final native void setRole() /*-{
+    this.setRole();
   }-*/;
 
   /**
-   * Sets the role the entity played.
+   * Sets the role the entity played. This attribute is optional.
    * 
-   * @param role
+   * @param role Role the entity played or undefined for none.
    */
   public final native void setRole(String role) /*-{
     this.setRole(
@@ -100,32 +100,21 @@ public class MediaCredit extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the role the entity played.
-   * 
-   * @param role
+   * Sets the URI that identifies the role scheme. This attribute is optional.
    */
-  public final native void setRole() /*-{
-    this.setRole();
+  public final native void setScheme() /*-{
+    this.setScheme();
   }-*/;
 
   /**
-   * Sets the URI that identifies the role scheme.
+   * Sets the URI that identifies the role scheme. This attribute is optional.
    * 
-   * @param scheme
+   * @param scheme URI that identifies the role scheme or undefined for none.
    */
   public final native void setScheme(String scheme) /*-{
     this.setScheme(
       scheme
     );
-  }-*/;
-
-  /**
-   * Sets the URI that identifies the role scheme.
-   * 
-   * @param scheme
-   */
-  public final native void setScheme() /*-{
-    this.setScheme();
   }-*/;
 
 }

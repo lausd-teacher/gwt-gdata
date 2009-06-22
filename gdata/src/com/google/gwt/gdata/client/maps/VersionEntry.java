@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.maps;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a version entry.
  */
 public class VersionEntry extends com.google.gwt.gdata.client.Entry<VersionEntry> {
 
   /**
    * Constructs a version entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, content, id, links, title, and updated.
    */
   public static native VersionEntry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.maps.VersionEntry(
@@ -32,19 +34,12 @@ public class VersionEntry extends com.google.gwt.gdata.client.Entry<VersionEntry
     );
   }-*/;
 
-  /**
-   * Constructs a version entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native VersionEntry newInstance() /*-{
-    return new $wnd.google.gdata.maps.VersionEntry();
-  }-*/;
-
   protected VersionEntry() { }
 
   /**
    * Returns the link that provides the URI of the full feed (without any query parameters).
    * 
-   * @return
+   * @return Link that provides the URI of the full feed (without any query parameters) or undefined for none.
    */
   public final native com.google.gwt.gdata.client.Link getAtomFeedLink() /*-{
     return this.getAtomFeedLink();

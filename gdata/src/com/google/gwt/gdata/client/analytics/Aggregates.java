@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
 /**
- * Comment unavailable.
+ * Describes an aggregates.
  */
 public class Aggregates extends JavaScriptObject {
 
   /**
    * Constructs an aggregates using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: metrics.
    */
   public static native Aggregates newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.analytics.Aggregates(
@@ -33,19 +35,12 @@ public class Aggregates extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs an aggregates using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Aggregates newInstance() /*-{
-    return new $wnd.google.gdata.analytics.Aggregates();
-  }-*/;
-
   protected Aggregates() { }
 
   /**
    * Adds a new metric.
    * 
-   * @param metric
+   * @param metric Metric to add, or object to use as a parameter to the google.gdata.analytics.Metric constructor.
    */
   public final native void addMetric(Metric metric) /*-{
     this.addMetric(
@@ -56,7 +51,7 @@ public class Aggregates extends JavaScriptObject {
   /**
    * Returns the metrics.
    * 
-   * @return
+   * @return Metrics.
    */
   public final native JsArray<Metric> getMetrics() /*-{
     return this.getMetrics();
@@ -64,22 +59,20 @@ public class Aggregates extends JavaScriptObject {
 
   /**
    * Sets the metrics.
-   * 
-   * @param metrics
    */
-  public final native void setMetrics(JsArray<Metric> metrics) /*-{
-    this.setMetrics(
-      metrics
-    );
+  public final native void setMetrics() /*-{
+    this.setMetrics();
   }-*/;
 
   /**
    * Sets the metrics.
    * 
-   * @param metrics
+   * @param metrics Metrics, where each metric is added using the addMetric() function, or undefined to clear the metrics.
    */
-  public final native void setMetrics() /*-{
-    this.setMetrics();
+  public final native void setMetrics(JsArray<Metric> metrics) /*-{
+    this.setMetrics(
+      metrics
+    );
   }-*/;
 
 }

@@ -19,24 +19,19 @@ package com.google.gwt.gdata.client.finance;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a Finance transaction feed.
  */
 public class TransactionFeed extends com.google.gwt.gdata.client.Feed<TransactionEntry> {
 
   /**
-   * Constructs a Finance transaction feed using an object parameter whose property names match the setter method to use for each property.
+   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, entries, id, itemsPerPage, links, startIndex, title, totalResults, and updated.
    */
   public static native TransactionFeed newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.finance.TransactionFeed(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a Finance transaction feed using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native TransactionFeed newInstance() /*-{
-    return new $wnd.google.gdata.finance.TransactionFeed();
   }-*/;
 
   protected TransactionFeed() { }

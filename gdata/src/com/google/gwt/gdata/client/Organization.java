@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes an organization (like Company).
  */
 public class Organization extends JavaScriptObject {
 
@@ -35,18 +35,13 @@ public class Organization extends JavaScriptObject {
 
   /**
    * Constructs an organization using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: label, orgName, orgTitle, primary, and rel.
    */
   public static native Organization newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.Organization(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs an organization using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Organization newInstance() /*-{
-    return new $wnd.google.gdata.Organization();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -56,54 +51,61 @@ public class Organization extends JavaScriptObject {
   protected Organization() { }
 
   /**
-   * Returns the label.
+   * Returns the label. This attribute is optional.
    * 
-   * @return
+   * @return Label or undefined for none.
    */
   public final native String getLabel() /*-{
     return this.getLabel();
   }-*/;
 
   /**
-   * Returns the name of organization.
+   * Returns the name of organization. This element is optional.
    * 
-   * @return
+   * @return Name of organization or undefined for none.
    */
   public final native OrgName getOrgName() /*-{
     return this.getOrgName();
   }-*/;
 
   /**
-   * Returns the position in organization.
+   * Returns the position in organization. This element is optional.
    * 
-   * @return
+   * @return Position in organization or undefined for none.
    */
   public final native OrgTitle getOrgTitle() /*-{
     return this.getOrgTitle();
   }-*/;
 
   /**
-   * Returns whether this is the primary organization.
+   * Returns whether this is the primary organization. This attribute is optional.
    * 
-   * @return
+   * @return Whether this is the primary organization or undefined for none.
    */
   public final native boolean getPrimary() /*-{
     return this.getPrimary();
   }-*/;
 
   /**
-   * Returns the organization type.
+   * Returns the organization type. This attribute is optional.
    * 
-   * @return
+   * @return Organization type or undefined for none.
    */
   public final native String getRel() /*-{
     return this.getRel();
   }-*/;
 
   /**
-   * Sets the label.
+   * Sets the label. This attribute is optional.
+   */
+  public final native void setLabel() /*-{
+    this.setLabel();
+  }-*/;
+
+  /**
+   * Sets the label. This attribute is optional.
    * 
-   * @param label
+   * @param label Label or undefined for none.
    */
   public final native void setLabel(String label) /*-{
     this.setLabel(
@@ -112,18 +114,16 @@ public class Organization extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the label.
-   * 
-   * @param label
+   * Sets the name of organization. This element is optional.
    */
-  public final native void setLabel() /*-{
-    this.setLabel();
+  public final native void setOrgName() /*-{
+    this.setOrgName();
   }-*/;
 
   /**
-   * Sets the name of organization.
+   * Sets the name of organization. This element is optional.
    * 
-   * @param orgName
+   * @param orgName Name of organization, or object to use as a parameter to the google.gdata.OrgName constructor, or undefined for none.
    */
   public final native void setOrgName(OrgName orgName) /*-{
     this.setOrgName(
@@ -132,18 +132,16 @@ public class Organization extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the name of organization.
-   * 
-   * @param orgName
+   * Sets the position in organization. This element is optional.
    */
-  public final native void setOrgName() /*-{
-    this.setOrgName();
+  public final native void setOrgTitle() /*-{
+    this.setOrgTitle();
   }-*/;
 
   /**
-   * Sets the position in organization.
+   * Sets the position in organization. This element is optional.
    * 
-   * @param orgTitle
+   * @param orgTitle Position in organization, or object to use as a parameter to the google.gdata.OrgTitle constructor, or undefined for none.
    */
   public final native void setOrgTitle(OrgTitle orgTitle) /*-{
     this.setOrgTitle(
@@ -152,18 +150,16 @@ public class Organization extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the position in organization.
-   * 
-   * @param orgTitle
+   * Sets whether this is the primary organization. This attribute is optional.
    */
-  public final native void setOrgTitle() /*-{
-    this.setOrgTitle();
+  public final native void setPrimary() /*-{
+    this.setPrimary();
   }-*/;
 
   /**
-   * Sets whether this is the primary organization.
+   * Sets whether this is the primary organization. This attribute is optional.
    * 
-   * @param primary
+   * @param primary Whether this is the primary organization or undefined for none.
    */
   public final native void setPrimary(boolean primary) /*-{
     this.setPrimary(
@@ -172,32 +168,21 @@ public class Organization extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether this is the primary organization.
-   * 
-   * @param primary
+   * Sets the organization type. This attribute is optional.
    */
-  public final native void setPrimary() /*-{
-    this.setPrimary();
+  public final native void setRel() /*-{
+    this.setRel();
   }-*/;
 
   /**
-   * Sets the organization type.
+   * Sets the organization type. This attribute is optional.
    * 
-   * @param rel
+   * @param rel Organization type or undefined for none.
    */
   public final native void setRel(String rel) /*-{
     this.setRel(
       rel
     );
-  }-*/;
-
-  /**
-   * Sets the organization type.
-   * 
-   * @param rel
-   */
-  public final native void setRel() /*-{
-    this.setRel();
   }-*/;
 
 }

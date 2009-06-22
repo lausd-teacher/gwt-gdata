@@ -21,12 +21,14 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Money;
 
 /**
- * Comment unavailable.
+ * Cost basis for the portfolio or position.
  */
 public class CostBasis extends JavaScriptObject {
 
   /**
    * Constructs a cost basis using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: money.
    */
   public static native CostBasis newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.finance.CostBasis(
@@ -34,19 +36,12 @@ public class CostBasis extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a cost basis using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native CostBasis newInstance() /*-{
-    return new $wnd.google.gdata.finance.CostBasis();
-  }-*/;
-
   protected CostBasis() { }
 
   /**
    * Adds a new monetary value of the cost basi.
    * 
-   * @param money
+   * @param money Monetary value of the cost basi to add, or object to use as a parameter to the google.gdata.Money constructor.
    */
   public final native void addMoney(Money money) /*-{
     this.addMoney(
@@ -57,7 +52,7 @@ public class CostBasis extends JavaScriptObject {
   /**
    * Returns the monetary value of the cost basis.
    * 
-   * @return
+   * @return Monetary value of the cost basis.
    */
   public final native JsArray<Money> getMoney() /*-{
     return this.getMoney();
@@ -65,22 +60,20 @@ public class CostBasis extends JavaScriptObject {
 
   /**
    * Sets the monetary value of the cost basis.
-   * 
-   * @param money
    */
-  public final native void setMoney(JsArray<Money> money) /*-{
-    this.setMoney(
-      money
-    );
+  public final native void setMoney() /*-{
+    this.setMoney();
   }-*/;
 
   /**
    * Sets the monetary value of the cost basis.
    * 
-   * @param money
+   * @param money Monetary value of the cost basis, where each monetary value of the cost basi is added using the addMoney() function, or undefined to clear the monetary value of the cost basis.
    */
-  public final native void setMoney() /*-{
-    this.setMoney();
+  public final native void setMoney(JsArray<Money> money) /*-{
+    this.setMoney(
+      money
+    );
   }-*/;
 
 }

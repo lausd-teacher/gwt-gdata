@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * The country name.
  */
 public class Country extends JavaScriptObject {
 
   /**
    * Constructs a country using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: code and value.
    */
   public static native Country newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.Country(
@@ -32,37 +34,37 @@ public class Country extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a country using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Country newInstance() /*-{
-    return new $wnd.google.gdata.Country();
-  }-*/;
-
   protected Country() { }
 
   /**
-   * Returns the The 3166-1 alpha-2 country code.
+   * Returns the The 3166-1 alpha-2 country code. This attribute is optional.
    * 
-   * @return
+   * @return The 3166-1 alpha-2 country code or undefined for none.
    */
   public final native String getCode() /*-{
     return this.getCode();
   }-*/;
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is optional.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the The 3166-1 alpha-2 country code.
+   * Sets the The 3166-1 alpha-2 country code. This attribute is optional.
+   */
+  public final native void setCode() /*-{
+    this.setCode();
+  }-*/;
+
+  /**
+   * Sets the The 3166-1 alpha-2 country code. This attribute is optional.
    * 
-   * @param code
+   * @param code The 3166-1 alpha-2 country code or undefined for none.
    */
   public final native void setCode(String code) /*-{
     this.setCode(
@@ -71,32 +73,21 @@ public class Country extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the The 3166-1 alpha-2 country code.
-   * 
-   * @param code
+   * Sets the value. This attribute is optional.
    */
-  public final native void setCode() /*-{
-    this.setCode();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is optional.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

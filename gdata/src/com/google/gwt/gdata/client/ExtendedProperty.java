@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Stores a limited amount of custom data as an auxiliary property of the enclosing entity.
  */
 public class ExtendedProperty extends JavaScriptObject {
 
@@ -30,18 +30,13 @@ public class ExtendedProperty extends JavaScriptObject {
 
   /**
    * Constructs an extended property using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: name, realm, and value.
    */
   public static native ExtendedProperty newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.ExtendedProperty(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs an extended property using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native ExtendedProperty newInstance() /*-{
-    return new $wnd.google.gdata.ExtendedProperty();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -51,36 +46,43 @@ public class ExtendedProperty extends JavaScriptObject {
   protected ExtendedProperty() { }
 
   /**
-   * Returns the name of the property expressed as a URI.
+   * Returns the name of the property expressed as a URI. This attribute is required.
    * 
-   * @return
+   * @return Name of the property expressed as a URI or undefined for none.
    */
   public final native String getName() /*-{
     return this.getName();
   }-*/;
 
   /**
-   * Returns the limit on who may see and modify this extended property.
+   * Returns the limit on who may see and modify this extended property. This attribute is optional.
    * 
-   * @return
+   * @return Limit on who may see and modify this extended property or undefined for none.
    */
   public final native String getRealm() /*-{
     return this.getRealm();
   }-*/;
 
   /**
-   * Returns the property value.
+   * Returns the property value. This attribute is optional.
    * 
-   * @return
+   * @return Property value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the name of the property expressed as a URI.
+   * Sets the name of the property expressed as a URI. This attribute is required.
+   */
+  public final native void setName() /*-{
+    this.setName();
+  }-*/;
+
+  /**
+   * Sets the name of the property expressed as a URI. This attribute is required.
    * 
-   * @param name
+   * @param name Name of the property expressed as a URI or undefined for none.
    */
   public final native void setName(String name) /*-{
     this.setName(
@@ -89,18 +91,16 @@ public class ExtendedProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the name of the property expressed as a URI.
-   * 
-   * @param name
+   * Sets the limit on who may see and modify this extended property. This attribute is optional.
    */
-  public final native void setName() /*-{
-    this.setName();
+  public final native void setRealm() /*-{
+    this.setRealm();
   }-*/;
 
   /**
-   * Sets the limit on who may see and modify this extended property.
+   * Sets the limit on who may see and modify this extended property. This attribute is optional.
    * 
-   * @param realm
+   * @param realm Limit on who may see and modify this extended property or undefined for none.
    */
   public final native void setRealm(String realm) /*-{
     this.setRealm(
@@ -109,32 +109,21 @@ public class ExtendedProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the limit on who may see and modify this extended property.
-   * 
-   * @param realm
+   * Sets the property value. This attribute is optional.
    */
-  public final native void setRealm() /*-{
-    this.setRealm();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets the property value.
+   * Sets the property value. This attribute is optional.
    * 
-   * @param value
+   * @param value Property value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the property value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

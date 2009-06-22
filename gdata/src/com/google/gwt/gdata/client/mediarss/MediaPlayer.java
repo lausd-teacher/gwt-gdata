@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.mediarss;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a media player.
  */
 public class MediaPlayer extends JavaScriptObject {
 
   /**
    * Constructs a media player using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: height, url, and width.
    */
   public static native MediaPlayer newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.mediarss.MediaPlayer(
@@ -32,46 +34,46 @@ public class MediaPlayer extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a media player using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaPlayer newInstance() /*-{
-    return new $wnd.google.gdata.mediarss.MediaPlayer();
-  }-*/;
-
   protected MediaPlayer() { }
 
   /**
-   * Returns the height of the browser window.
+   * Returns the height of the browser window. This attribute is optional.
    * 
-   * @return
+   * @return Height of the browser window or undefined for none.
    */
   public final native double getHeight() /*-{
     return this.getHeight();
   }-*/;
 
   /**
-   * Returns the url of the player console that plays the media.
+   * Returns the url of the player console that plays the media. This attribute is required.
    * 
-   * @return
+   * @return Url of the player console that plays the media or undefined for none.
    */
   public final native String getUrl() /*-{
     return this.getUrl();
   }-*/;
 
   /**
-   * Returns the width of the browser window.
+   * Returns the width of the browser window. This attribute is optional.
    * 
-   * @return
+   * @return Width of the browser window or undefined for none.
    */
   public final native double getWidth() /*-{
     return this.getWidth();
   }-*/;
 
   /**
-   * Sets the height of the browser window.
+   * Sets the height of the browser window. This attribute is optional.
+   */
+  public final native void setHeight() /*-{
+    this.setHeight();
+  }-*/;
+
+  /**
+   * Sets the height of the browser window. This attribute is optional.
    * 
-   * @param height
+   * @param height Height of the browser window or undefined for none.
    */
   public final native void setHeight(double height) /*-{
     this.setHeight(
@@ -80,18 +82,16 @@ public class MediaPlayer extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the height of the browser window.
-   * 
-   * @param height
+   * Sets the url of the player console that plays the media. This attribute is required.
    */
-  public final native void setHeight() /*-{
-    this.setHeight();
+  public final native void setUrl() /*-{
+    this.setUrl();
   }-*/;
 
   /**
-   * Sets the url of the player console that plays the media.
+   * Sets the url of the player console that plays the media. This attribute is required.
    * 
-   * @param url
+   * @param url Url of the player console that plays the media or undefined for none.
    */
   public final native void setUrl(String url) /*-{
     this.setUrl(
@@ -100,32 +100,21 @@ public class MediaPlayer extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the url of the player console that plays the media.
-   * 
-   * @param url
+   * Sets the width of the browser window. This attribute is optional.
    */
-  public final native void setUrl() /*-{
-    this.setUrl();
+  public final native void setWidth() /*-{
+    this.setWidth();
   }-*/;
 
   /**
-   * Sets the width of the browser window.
+   * Sets the width of the browser window. This attribute is optional.
    * 
-   * @param width
+   * @param width Width of the browser window or undefined for none.
    */
   public final native void setWidth(double width) /*-{
     this.setWidth(
       width
     );
-  }-*/;
-
-  /**
-   * Sets the width of the browser window.
-   * 
-   * @param width
-   */
-  public final native void setWidth() /*-{
-    this.setWidth();
   }-*/;
 
 }

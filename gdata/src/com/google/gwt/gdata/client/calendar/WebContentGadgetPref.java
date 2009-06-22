@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a single web content gadget preference.
  */
 public class WebContentGadgetPref extends JavaScriptObject {
 
   /**
    * Constructs a web content gadget preference using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: name and value.
    */
   public static native WebContentGadgetPref newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.WebContentGadgetPref(
@@ -32,37 +34,37 @@ public class WebContentGadgetPref extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a web content gadget preference using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native WebContentGadgetPref newInstance() /*-{
-    return new $wnd.google.gdata.calendar.WebContentGadgetPref();
-  }-*/;
-
   protected WebContentGadgetPref() { }
 
   /**
-   * Returns the name.
+   * Returns the name. This attribute is required.
    * 
-   * @return
+   * @return Name or undefined for none.
    */
   public final native String getName() /*-{
     return this.getName();
   }-*/;
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is required.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the name.
+   * Sets the name. This attribute is required.
+   */
+  public final native void setName() /*-{
+    this.setName();
+  }-*/;
+
+  /**
+   * Sets the name. This attribute is required.
    * 
-   * @param name
+   * @param name Name or undefined for none.
    */
   public final native void setName(String name) /*-{
     this.setName(
@@ -71,32 +73,21 @@ public class WebContentGadgetPref extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the name.
-   * 
-   * @param name
+   * Sets the value. This attribute is required.
    */
-  public final native void setName() /*-{
-    this.setName();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is required.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

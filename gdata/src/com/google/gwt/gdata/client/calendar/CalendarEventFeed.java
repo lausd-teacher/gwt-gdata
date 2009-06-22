@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.EventFeed;
 
 /**
- * Comment unavailable.
+ * Describes a Calendar event feed.
  */
 public class CalendarEventFeed extends EventFeed {
 
   /**
    * Constructs a Calendar event feed using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: allowGSync, authors, categories, contributors, entries, generator, id, itemsPerPage, links, startIndex, subtitle, timeZone, timesCleaned, title, totalResults, and updated.
    */
   public static native CalendarEventFeed newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.CalendarEventFeed(
@@ -33,19 +35,12 @@ public class CalendarEventFeed extends EventFeed {
     );
   }-*/;
 
-  /**
-   * Constructs a Calendar event feed using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native CalendarEventFeed newInstance() /*-{
-    return new $wnd.google.gdata.calendar.CalendarEventFeed();
-  }-*/;
-
   protected CalendarEventFeed() { }
 
   /**
-   * Returns the whether the user is permitted to use Google Apps Sync.
+   * Returns the whether the user is permitted to use Google Apps Sync. This element is optional.
    * 
-   * @return
+   * @return Whether the user is permitted to use Google Apps Sync or undefined for none.
    */
   public final native AllowGSyncProperty getAllowGSync() /*-{
     return this.getAllowGSync();
@@ -54,7 +49,7 @@ public class CalendarEventFeed extends EventFeed {
   /**
    * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
    * 
-   * @return
+   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed or undefined for none.
    */
   public final native CalendarLink getFeedBatchLink() /*-{
     return this.getFeedBatchLink();
@@ -63,7 +58,7 @@ public class CalendarEventFeed extends EventFeed {
   /**
    * Returns the link that provides the URI of next page in a paged feed.
    * 
-   * @return
+   * @return Link that provides the URI of next page in a paged feed or undefined for none.
    */
   public final native CalendarLink getNextLink() /*-{
     return this.getNextLink();
@@ -72,34 +67,41 @@ public class CalendarEventFeed extends EventFeed {
   /**
    * Returns the link that provides the URI of previous page in a paged feed.
    * 
-   * @return
+   * @return Link that provides the URI of previous page in a paged feed or undefined for none.
    */
   public final native CalendarLink getPreviousLink() /*-{
     return this.getPreviousLink();
   }-*/;
 
   /**
-   * Returns the times cleaned property.
+   * Returns the times cleaned property. This element is optional.
    * 
-   * @return
+   * @return Times cleaned property or undefined for none.
    */
   public final native TimesCleanedProperty getTimesCleaned() /*-{
     return this.getTimesCleaned();
   }-*/;
 
   /**
-   * Returns the time zone.
+   * Returns the time zone. This element is required.
    * 
-   * @return
+   * @return Time zone or undefined for none.
    */
   public final native TimeZoneProperty getTimeZone() /*-{
     return this.getTimeZone();
   }-*/;
 
   /**
-   * Sets the whether the user is permitted to use Google Apps Sync.
+   * Sets the whether the user is permitted to use Google Apps Sync. This element is optional.
+   */
+  public final native void setAllowGSync() /*-{
+    this.setAllowGSync();
+  }-*/;
+
+  /**
+   * Sets the whether the user is permitted to use Google Apps Sync. This element is optional.
    * 
-   * @param allowGSync
+   * @param allowGSync Whether the user is permitted to use Google Apps Sync, or object to use as a parameter to the google.gdata.calendar.AllowGSyncProperty constructor, or undefined for none.
    */
   public final native void setAllowGSync(AllowGSyncProperty allowGSync) /*-{
     this.setAllowGSync(
@@ -108,18 +110,16 @@ public class CalendarEventFeed extends EventFeed {
   }-*/;
 
   /**
-   * Sets the whether the user is permitted to use Google Apps Sync.
-   * 
-   * @param allowGSync
+   * Sets the times cleaned property. This element is optional.
    */
-  public final native void setAllowGSync() /*-{
-    this.setAllowGSync();
+  public final native void setTimesCleaned() /*-{
+    this.setTimesCleaned();
   }-*/;
 
   /**
-   * Sets the times cleaned property.
+   * Sets the times cleaned property. This element is optional.
    * 
-   * @param timesCleaned
+   * @param timesCleaned Times cleaned property, or object to use as a parameter to the google.gdata.calendar.TimesCleanedProperty constructor, or undefined for none.
    */
   public final native void setTimesCleaned(TimesCleanedProperty timesCleaned) /*-{
     this.setTimesCleaned(
@@ -128,32 +128,21 @@ public class CalendarEventFeed extends EventFeed {
   }-*/;
 
   /**
-   * Sets the times cleaned property.
-   * 
-   * @param timesCleaned
+   * Sets the time zone. This element is required.
    */
-  public final native void setTimesCleaned() /*-{
-    this.setTimesCleaned();
+  public final native void setTimeZone() /*-{
+    this.setTimeZone();
   }-*/;
 
   /**
-   * Sets the time zone.
+   * Sets the time zone. This element is required.
    * 
-   * @param timeZone
+   * @param timeZone Time zone, or object to use as a parameter to the google.gdata.calendar.TimeZoneProperty constructor, or undefined for none.
    */
   public final native void setTimeZone(TimeZoneProperty timeZone) /*-{
     this.setTimeZone(
       timeZone
     );
-  }-*/;
-
-  /**
-   * Sets the time zone.
-   * 
-   * @param timeZone
-   */
-  public final native void setTimeZone() /*-{
-    this.setTimeZone();
   }-*/;
 
 }

@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Extends the base Link class with GData extensions.
  */
 public class Link extends com.google.gwt.gdata.client.atom.Link {
 
@@ -40,18 +40,13 @@ public class Link extends com.google.gwt.gdata.client.atom.Link {
 
   /**
    * Constructs a GData Link class using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: href, hrefLang, length, rel, title, titleLang, and type.
    */
   public static native Link newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.Link(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a GData Link class using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Link newInstance() /*-{
-    return new $wnd.google.gdata.Link();
   }-*/;
 
   private static native String getConstant(String name) /*-{

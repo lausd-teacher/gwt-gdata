@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.acl;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Extends the base Link class with ACL extensions.
  */
 public class Link extends com.google.gwt.gdata.client.Link {
 
@@ -34,19 +34,14 @@ public class Link extends com.google.gwt.gdata.client.Link {
   public static final String REL_CONTROLLED_OBJECT = getConstant("REL_CONTROLLED_OBJECT");
 
   /**
-   * Constructs an ACL Link class using an object parameter whose property names match the setter method to use for each property.
+   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: href, hrefLang, length, rel, title, titleLang, and type.
    */
   public static native Link newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.acl.Link(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs an ACL Link class using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Link newInstance() /*-{
-    return new $wnd.google.gdata.acl.Link();
   }-*/;
 
   private static native String getConstant(String name) /*-{

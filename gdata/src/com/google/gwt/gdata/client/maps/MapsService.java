@@ -20,7 +20,7 @@ import com.google.gwt.gdata.client.GoogleService;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
- * Comment unavailable.
+ * Maps service.
  */
 public class MapsService extends GoogleService {
 
@@ -31,6 +31,8 @@ public class MapsService extends GoogleService {
 
   /**
    * Constructor.
+   * 
+   * @param applicationName Name of application (used for tracking).
    */
   public static native MapsService newInstance(String applicationName) /*-{
     return new $wnd.google.gdata.maps.MapsService(
@@ -47,11 +49,10 @@ public class MapsService extends GoogleService {
   /**
    * Retrieves a feature entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native FeatureEntry getFeatureEntry(String uri, AsyncCallback<FeatureEntry> callback) /*-{
     return this.getFeatureEntry(
@@ -64,11 +65,10 @@ public class MapsService extends GoogleService {
   /**
    * Retrieves the feed of map features.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native FeatureFeed getFeatureFeed(FeatureQuery query, AsyncCallback<FeatureFeed> callback) /*-{
     return this.getFeatureFeed(
@@ -81,11 +81,10 @@ public class MapsService extends GoogleService {
   /**
    * Retrieves the feed of map features.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native FeatureFeed getFeatureFeed(String uri, AsyncCallback<FeatureFeed> callback) /*-{
     return this.getFeatureFeed(
@@ -98,11 +97,10 @@ public class MapsService extends GoogleService {
   /**
    * Retrieves a map entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native MapEntry getMapEntry(String uri, AsyncCallback<MapEntry> callback) /*-{
     return this.getMapEntry(
@@ -115,11 +113,10 @@ public class MapsService extends GoogleService {
   /**
    * Retrieves the feed of user-created maps.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native MapFeed getMapFeed(MapQuery query, AsyncCallback<MapFeed> callback) /*-{
     return this.getMapFeed(
@@ -132,11 +129,10 @@ public class MapsService extends GoogleService {
   /**
    * Retrieves the feed of user-created maps.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native MapFeed getMapFeed(String uri, AsyncCallback<MapFeed> callback) /*-{
     return this.getMapFeed(

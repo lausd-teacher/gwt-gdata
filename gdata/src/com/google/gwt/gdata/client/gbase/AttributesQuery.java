@@ -20,12 +20,14 @@ import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.Query;
 
 /**
- * Comment unavailable.
+ * Describes a query for the feed of public attributes.
  */
 public class AttributesQuery extends Query {
 
   /**
    * Constructor.
+   * 
+   * @param feedUri URI of feed.
    */
   public static native AttributesQuery newInstance(String feedUri) /*-{
     return new $wnd.google.gdata.gbase.AttributesQuery(
@@ -38,7 +40,7 @@ public class AttributesQuery extends Query {
   /**
    * Returns the author name or email address.
    * 
-   * @return
+   * @return Author name or email address or null to indicate that the parameter is disabled.
    */
   public final native String getAuthor() /*-{
     return this.getAuthor();
@@ -47,7 +49,7 @@ public class AttributesQuery extends Query {
   /**
    * Returns the query string that conforms to the Query Language Specification.
    * 
-   * @return
+   * @return Query string that conforms to the Query Language Specification or null to indicate that the parameter is disabled.
    */
   public final native String getBq() /*-{
     return this.getBq();
@@ -56,7 +58,7 @@ public class AttributesQuery extends Query {
   /**
    * Returns the full-text query string.
    * 
-   * @return
+   * @return Full-text query string or null to indicate that the parameter is disabled.
    */
   public final native String getFullTextQuery() /*-{
     return this.getFullTextQuery();
@@ -65,16 +67,16 @@ public class AttributesQuery extends Query {
   /**
    * Returns the maximum number of results to be retrieved.
    * 
-   * @return
+   * @return Maximum number of results to be retrieved or null to indicate that the parameter is disabled.
    */
   public final native double getMaxResults() /*-{
     return this.getMaxResults();
   }-*/;
 
   /**
-   * Returns the number of distinct values returned in each entry.
+   * Returns the number of distinct values returned in each entry. Most frequent N values along with their counts are returned.
    * 
-   * @return
+   * @return Number of distinct values returned in each entry or null to indicate that the parameter is disabled.
    */
   public final native double getMaxValues() /*-{
     return this.getMaxValues();
@@ -83,7 +85,7 @@ public class AttributesQuery extends Query {
   /**
    * Returns the maximum published date.
    * 
-   * @return
+   * @return Maximum published date or null to indicate that the parameter is disabled.
    */
   public final native DateTime getPublishedMax() /*-{
     return this.getPublishedMax();
@@ -92,7 +94,7 @@ public class AttributesQuery extends Query {
   /**
    * Returns the minimum published date.
    * 
-   * @return
+   * @return Minimum published date or null to indicate that the parameter is disabled.
    */
   public final native DateTime getPublishedMin() /*-{
     return this.getPublishedMin();
@@ -101,7 +103,7 @@ public class AttributesQuery extends Query {
   /**
    * Returns the 1-based index of the first result to be retrieved.
    * 
-   * @return
+   * @return 1-based index of the first result to be retrieved or null to indicate that the parameter is disabled.
    */
   public final native double getStartIndex() /*-{
     return this.getStartIndex();
@@ -110,7 +112,7 @@ public class AttributesQuery extends Query {
   /**
    * Returns the maximum updated date.
    * 
-   * @return
+   * @return Maximum updated date or null to indicate that the parameter is disabled.
    */
   public final native DateTime getUpdatedMax() /*-{
     return this.getUpdatedMax();
@@ -119,7 +121,7 @@ public class AttributesQuery extends Query {
   /**
    * Returns the minimum updated date.
    * 
-   * @return
+   * @return Minimum updated date or null to indicate that the parameter is disabled.
    */
   public final native DateTime getUpdatedMin() /*-{
     return this.getUpdatedMin();
@@ -128,7 +130,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the author name or email address.
    * 
-   * @param author
+   * @param author Author name or email address or null to disable this parameter.
    */
   public final native void setAuthor(String author) /*-{
     this.setAuthor(
@@ -139,7 +141,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the query string that conforms to the Query Language Specification.
    * 
-   * @param bq
+   * @param bq Query string that conforms to the Query Language Specification or null to disable this parameter.
    */
   public final native void setBq(String bq) /*-{
     this.setBq(
@@ -150,7 +152,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the full-text query string.
    * 
-   * @param fullTextQuery
+   * @param fullTextQuery Full-text query string or null to disable this parameter.
    */
   public final native void setFullTextQuery(String fullTextQuery) /*-{
     this.setFullTextQuery(
@@ -161,7 +163,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults
+   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
    */
   public final native void setMaxResults(double maxResults) /*-{
     this.setMaxResults(
@@ -172,7 +174,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults
+   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
    */
   public final native void setMaxResults(String maxResults) /*-{
     this.setMaxResults(
@@ -181,9 +183,9 @@ public class AttributesQuery extends Query {
   }-*/;
 
   /**
-   * Sets the number of distinct values returned in each entry.
+   * Sets the number of distinct values returned in each entry. Most frequent N values along with their counts are returned.. The default value is 0.
    * 
-   * @param maxValues
+   * @param maxValues Number of distinct values returned in each entry or an equivalent string value or null to disable this parameter.
    */
   public final native void setMaxValues(double maxValues) /*-{
     this.setMaxValues(
@@ -192,9 +194,9 @@ public class AttributesQuery extends Query {
   }-*/;
 
   /**
-   * Sets the number of distinct values returned in each entry.
+   * Sets the number of distinct values returned in each entry. Most frequent N values along with their counts are returned.. The default value is 0.
    * 
-   * @param maxValues
+   * @param maxValues Number of distinct values returned in each entry or an equivalent string value or null to disable this parameter.
    */
   public final native void setMaxValues(String maxValues) /*-{
     this.setMaxValues(
@@ -205,7 +207,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the maximum published date.
    * 
-   * @param publishedMax
+   * @param publishedMax Maximum published date or an equivalent string value or null to disable this parameter.
    */
   public final native void setPublishedMax(DateTime publishedMax) /*-{
     this.setPublishedMax(
@@ -216,7 +218,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the maximum published date.
    * 
-   * @param publishedMax
+   * @param publishedMax Maximum published date or an equivalent string value or null to disable this parameter.
    */
   public final native void setPublishedMax(String publishedMax) /*-{
     this.setPublishedMax(
@@ -227,7 +229,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the minimum published date.
    * 
-   * @param publishedMin
+   * @param publishedMin Minimum published date or an equivalent string value or null to disable this parameter.
    */
   public final native void setPublishedMin(DateTime publishedMin) /*-{
     this.setPublishedMin(
@@ -238,7 +240,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the minimum published date.
    * 
-   * @param publishedMin
+   * @param publishedMin Minimum published date or an equivalent string value or null to disable this parameter.
    */
   public final native void setPublishedMin(String publishedMin) /*-{
     this.setPublishedMin(
@@ -247,9 +249,9 @@ public class AttributesQuery extends Query {
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved.
+   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex
+   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
    */
   public final native void setStartIndex(double startIndex) /*-{
     this.setStartIndex(
@@ -258,9 +260,9 @@ public class AttributesQuery extends Query {
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved.
+   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex
+   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
    */
   public final native void setStartIndex(String startIndex) /*-{
     this.setStartIndex(
@@ -271,7 +273,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the maximum updated date.
    * 
-   * @param updatedMax
+   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
    */
   public final native void setUpdatedMax(DateTime updatedMax) /*-{
     this.setUpdatedMax(
@@ -282,7 +284,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the maximum updated date.
    * 
-   * @param updatedMax
+   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
    */
   public final native void setUpdatedMax(String updatedMax) /*-{
     this.setUpdatedMax(
@@ -293,7 +295,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the minimum updated date.
    * 
-   * @param updatedMin
+   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
    */
   public final native void setUpdatedMin(DateTime updatedMin) /*-{
     this.setUpdatedMin(
@@ -304,7 +306,7 @@ public class AttributesQuery extends Query {
   /**
    * Sets the minimum updated date.
    * 
-   * @param updatedMin
+   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
    */
   public final native void setUpdatedMin(String updatedMin) /*-{
     this.setUpdatedMin(

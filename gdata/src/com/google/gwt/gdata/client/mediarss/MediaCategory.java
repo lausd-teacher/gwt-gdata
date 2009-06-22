@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.mediarss;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a media category.
  */
 public class MediaCategory extends JavaScriptObject {
 
   /**
    * Constructs a media category using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content, label, and scheme.
    */
   public static native MediaCategory newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.mediarss.MediaCategory(
@@ -32,46 +34,46 @@ public class MediaCategory extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a media category using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaCategory newInstance() /*-{
-    return new $wnd.google.gdata.mediarss.MediaCategory();
-  }-*/;
-
   protected MediaCategory() { }
 
   /**
-   * Returns the text of the category.
+   * Returns the text of the category. This attribute is optional.
    * 
-   * @return
+   * @return Text of the category or undefined for none.
    */
   public final native String getContent() /*-{
     return this.getContent();
   }-*/;
 
   /**
-   * Returns the human readable label.
+   * Returns the human readable label. This attribute is optional.
    * 
-   * @return
+   * @return Human readable label or undefined for none.
    */
   public final native String getLabel() /*-{
     return this.getLabel();
   }-*/;
 
   /**
-   * Returns the URI that identifies the categorization scheme.
+   * Returns the URI that identifies the categorization scheme. This attribute is optional.
    * 
-   * @return
+   * @return URI that identifies the categorization scheme or undefined for none.
    */
   public final native String getScheme() /*-{
     return this.getScheme();
   }-*/;
 
   /**
-   * Sets the text of the category.
+   * Sets the text of the category. This attribute is optional.
+   */
+  public final native void setContent() /*-{
+    this.setContent();
+  }-*/;
+
+  /**
+   * Sets the text of the category. This attribute is optional.
    * 
-   * @param content
+   * @param content Text of the category or undefined for none.
    */
   public final native void setContent(String content) /*-{
     this.setContent(
@@ -80,18 +82,16 @@ public class MediaCategory extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the text of the category.
-   * 
-   * @param content
+   * Sets the human readable label. This attribute is optional.
    */
-  public final native void setContent() /*-{
-    this.setContent();
+  public final native void setLabel() /*-{
+    this.setLabel();
   }-*/;
 
   /**
-   * Sets the human readable label.
+   * Sets the human readable label. This attribute is optional.
    * 
-   * @param label
+   * @param label Human readable label or undefined for none.
    */
   public final native void setLabel(String label) /*-{
     this.setLabel(
@@ -100,32 +100,21 @@ public class MediaCategory extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the human readable label.
-   * 
-   * @param label
+   * Sets the URI that identifies the categorization scheme. This attribute is optional.
    */
-  public final native void setLabel() /*-{
-    this.setLabel();
+  public final native void setScheme() /*-{
+    this.setScheme();
   }-*/;
 
   /**
-   * Sets the URI that identifies the categorization scheme.
+   * Sets the URI that identifies the categorization scheme. This attribute is optional.
    * 
-   * @param scheme
+   * @param scheme URI that identifies the categorization scheme or undefined for none.
    */
   public final native void setScheme(String scheme) /*-{
     this.setScheme(
       scheme
     );
-  }-*/;
-
-  /**
-   * Sets the URI that identifies the categorization scheme.
-   * 
-   * @param scheme
-   */
-  public final native void setScheme() /*-{
-    this.setScheme();
   }-*/;
 
 }

@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.acl;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes an entry in a feed of an access control list (ACL).
  */
 public class AclEntry extends com.google.gwt.gdata.client.Entry<AclEntry> {
 
   /**
    * Constructs an ACL entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, content, contributors, id, links, role, scope, title, and updated.
    */
   public static native AclEntry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.acl.AclEntry(
@@ -32,37 +34,37 @@ public class AclEntry extends com.google.gwt.gdata.client.Entry<AclEntry> {
     );
   }-*/;
 
-  /**
-   * Constructs an ACL entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native AclEntry newInstance() /*-{
-    return new $wnd.google.gdata.acl.AclEntry();
-  }-*/;
-
   protected AclEntry() { }
 
   /**
-   * Returns the role.
+   * Returns the role. This element is required.
    * 
-   * @return
+   * @return Role or undefined for none.
    */
   public final native AclRole getRole() /*-{
     return this.getRole();
   }-*/;
 
   /**
-   * Returns the scope.
+   * Returns the scope. This element is required.
    * 
-   * @return
+   * @return Scope or undefined for none.
    */
   public final native AclScope getScope() /*-{
     return this.getScope();
   }-*/;
 
   /**
-   * Sets the role.
+   * Sets the role. This element is required.
+   */
+  public final native void setRole() /*-{
+    this.setRole();
+  }-*/;
+
+  /**
+   * Sets the role. This element is required.
    * 
-   * @param role
+   * @param role Role, or object to use as a parameter to the google.gdata.acl.AclRole constructor, or undefined for none.
    */
   public final native void setRole(AclRole role) /*-{
     this.setRole(
@@ -71,32 +73,21 @@ public class AclEntry extends com.google.gwt.gdata.client.Entry<AclEntry> {
   }-*/;
 
   /**
-   * Sets the role.
-   * 
-   * @param role
+   * Sets the scope. This element is required.
    */
-  public final native void setRole() /*-{
-    this.setRole();
+  public final native void setScope() /*-{
+    this.setScope();
   }-*/;
 
   /**
-   * Sets the scope.
+   * Sets the scope. This element is required.
    * 
-   * @param scope
+   * @param scope Scope, or object to use as a parameter to the google.gdata.acl.AclScope constructor, or undefined for none.
    */
   public final native void setScope(AclScope scope) /*-{
     this.setScope(
       scope
     );
-  }-*/;
-
-  /**
-   * Sets the scope.
-   * 
-   * @param scope
-   */
-  public final native void setScope() /*-{
-    this.setScope();
   }-*/;
 
 }

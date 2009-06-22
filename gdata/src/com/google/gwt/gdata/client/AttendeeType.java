@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes the type of an event attendee.
  */
 public class AttendeeType extends JavaScriptObject {
 
@@ -35,18 +35,13 @@ public class AttendeeType extends JavaScriptObject {
 
   /**
    * Constructs an attendee type using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native AttendeeType newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.AttendeeType(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs an attendee type using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native AttendeeType newInstance() /*-{
-    return new $wnd.google.gdata.AttendeeType();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -56,32 +51,30 @@ public class AttendeeType extends JavaScriptObject {
   protected AttendeeType() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is required.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is required.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is required.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

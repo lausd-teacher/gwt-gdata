@@ -22,12 +22,14 @@ import com.google.gwt.gdata.client.DateTime;
 import java.util.Date;
 
 /**
- * Comment unavailable.
+ * Value of the app:edited tag.
  */
 public class Edited extends JavaScriptObject {
 
   /**
    * Constructs an edited timestamp using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native Edited newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.app.Edited(
@@ -35,28 +37,28 @@ public class Edited extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs an edited timestamp using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Edited newInstance() /*-{
-    return new $wnd.google.gdata.app.Edited();
-  }-*/;
-
   protected Edited() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is required.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native DateTime getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is required.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is required.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(Date value) /*-{
     this.setValue(
@@ -65,18 +67,9 @@ public class Edited extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is required.
    * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(DateTime value) /*-{
     this.setValue(

@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
 /**
- * Comment unavailable.
+ * Describes an event entry.
  */
 public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
 
   /**
    * Constructs an event entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, comments, content, contributors, eventStatus, id, links, locations, originalEvent, participants, published, recurrence, recurrenceException, reminders, summary, times, title, transparency, updated, and visibility.
    */
   public static native EventEntry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.EventEntry(
@@ -33,19 +35,12 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
     );
   }-*/;
 
-  /**
-   * Constructs an event entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native EventEntry newInstance() /*-{
-    return new $wnd.google.gdata.EventEntry();
-  }-*/;
-
   protected EventEntry() { }
 
   /**
    * Adds a new event location.
    * 
-   * @param location
+   * @param location Event location to add, or object to use as a parameter to the google.gdata.Where constructor.
    */
   public final native void addLocation(Where location) /*-{
     this.addLocation(
@@ -56,7 +51,7 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   /**
    * Adds a new event participant.
    * 
-   * @param participant
+   * @param participant Event participant to add, or object to use as a parameter to the google.gdata.Who constructor.
    */
   public final native void addParticipant(Who participant) /*-{
     this.addParticipant(
@@ -67,7 +62,7 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   /**
    * Adds a new recurrence exception.
    * 
-   * @param recurrenceException
+   * @param recurrenceException Recurrence exception to add, or object to use as a parameter to the google.gdata.RecurrenceException constructor.
    */
   public final native void addRecurrenceException(RecurrenceException recurrenceException) /*-{
     this.addRecurrenceException(
@@ -78,7 +73,7 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   /**
    * Adds a new event reminder.
    * 
-   * @param reminder
+   * @param reminder Event reminder to add, or object to use as a parameter to the google.gdata.Reminder constructor.
    */
   public final native void addReminder(Reminder reminder) /*-{
     this.addReminder(
@@ -89,7 +84,7 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   /**
    * Adds a new event time.
    * 
-   * @param time
+   * @param time Event time to add, or object to use as a parameter to the google.gdata.When constructor.
    */
   public final native void addTime(When time) /*-{
     this.addTime(
@@ -98,18 +93,18 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   }-*/;
 
   /**
-   * Returns the nested comments feed.
+   * Returns the nested comments feed. This element is optional.
    * 
-   * @return
+   * @return Nested comments feed or undefined for none.
    */
   public final native Comments getComments() /*-{
     return this.getComments();
   }-*/;
 
   /**
-   * Returns the event status.
+   * Returns the event status. This element is optional.
    * 
-   * @return
+   * @return Event status or undefined for none.
    */
   public final native EventStatus getEventStatus() /*-{
     return this.getEventStatus();
@@ -118,16 +113,16 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   /**
    * Returns the event locations.
    * 
-   * @return
+   * @return Event locations.
    */
   public final native JsArray<Where> getLocations() /*-{
     return this.getLocations();
   }-*/;
 
   /**
-   * Returns the event original start time.
+   * Returns the event original start time. This element is optional.
    * 
-   * @return
+   * @return Event original start time or undefined for none.
    */
   public final native OriginalEvent getOriginalEvent() /*-{
     return this.getOriginalEvent();
@@ -136,16 +131,16 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   /**
    * Returns the event participants.
    * 
-   * @return
+   * @return Event participants.
    */
   public final native JsArray<Who> getParticipants() /*-{
     return this.getParticipants();
   }-*/;
 
   /**
-   * Returns the event recurrence.
+   * Returns the event recurrence. This element is optional.
    * 
-   * @return
+   * @return Event recurrence or undefined for none.
    */
   public final native Recurrence getRecurrence() /*-{
     return this.getRecurrence();
@@ -154,7 +149,7 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   /**
    * Returns the recurrence exceptions.
    * 
-   * @return
+   * @return Recurrence exceptions.
    */
   public final native JsArray<RecurrenceException> getRecurrenceException() /*-{
     return this.getRecurrenceException();
@@ -163,7 +158,7 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   /**
    * Returns the event reminders.
    * 
-   * @return
+   * @return Event reminders.
    */
   public final native JsArray<Reminder> getReminders() /*-{
     return this.getReminders();
@@ -172,34 +167,41 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   /**
    * Returns the event times.
    * 
-   * @return
+   * @return Event times.
    */
   public final native JsArray<When> getTimes() /*-{
     return this.getTimes();
   }-*/;
 
   /**
-   * Returns the event transparency.
+   * Returns the event transparency. This element is optional.
    * 
-   * @return
+   * @return Event transparency or undefined for none.
    */
   public final native Transparency getTransparency() /*-{
     return this.getTransparency();
   }-*/;
 
   /**
-   * Returns the event visibility.
+   * Returns the event visibility. This element is optional.
    * 
-   * @return
+   * @return Event visibility or undefined for none.
    */
   public final native Visibility getVisibility() /*-{
     return this.getVisibility();
   }-*/;
 
   /**
-   * Sets the nested comments feed.
+   * Sets the nested comments feed. This element is optional.
+   */
+  public final native void setComments() /*-{
+    this.setComments();
+  }-*/;
+
+  /**
+   * Sets the nested comments feed. This element is optional.
    * 
-   * @param comments
+   * @param comments Nested comments feed, or object to use as a parameter to the google.gdata.Comments constructor, or undefined for none.
    */
   public final native void setComments(Comments comments) /*-{
     this.setComments(
@@ -208,18 +210,16 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   }-*/;
 
   /**
-   * Sets the nested comments feed.
-   * 
-   * @param comments
+   * Sets the event status. This element is optional.
    */
-  public final native void setComments() /*-{
-    this.setComments();
+  public final native void setEventStatus() /*-{
+    this.setEventStatus();
   }-*/;
 
   /**
-   * Sets the event status.
+   * Sets the event status. This element is optional.
    * 
-   * @param eventStatus
+   * @param eventStatus Event status, or object to use as a parameter to the google.gdata.EventStatus constructor, or undefined for none.
    */
   public final native void setEventStatus(EventStatus eventStatus) /*-{
     this.setEventStatus(
@@ -228,18 +228,16 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   }-*/;
 
   /**
-   * Sets the event status.
-   * 
-   * @param eventStatus
+   * Sets the event locations.
    */
-  public final native void setEventStatus() /*-{
-    this.setEventStatus();
+  public final native void setLocations() /*-{
+    this.setLocations();
   }-*/;
 
   /**
    * Sets the event locations.
    * 
-   * @param locations
+   * @param locations Event locations, where each event location is added using the addLocation() function, or undefined to clear the event locations.
    */
   public final native void setLocations(JsArray<Where> locations) /*-{
     this.setLocations(
@@ -248,18 +246,16 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   }-*/;
 
   /**
-   * Sets the event locations.
-   * 
-   * @param locations
+   * Sets the event original start time. This element is optional.
    */
-  public final native void setLocations() /*-{
-    this.setLocations();
+  public final native void setOriginalEvent() /*-{
+    this.setOriginalEvent();
   }-*/;
 
   /**
-   * Sets the event original start time.
+   * Sets the event original start time. This element is optional.
    * 
-   * @param originalEvent
+   * @param originalEvent Event original start time, or object to use as a parameter to the google.gdata.OriginalEvent constructor, or undefined for none.
    */
   public final native void setOriginalEvent(OriginalEvent originalEvent) /*-{
     this.setOriginalEvent(
@@ -268,18 +264,16 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   }-*/;
 
   /**
-   * Sets the event original start time.
-   * 
-   * @param originalEvent
+   * Sets the event participants.
    */
-  public final native void setOriginalEvent() /*-{
-    this.setOriginalEvent();
+  public final native void setParticipants() /*-{
+    this.setParticipants();
   }-*/;
 
   /**
    * Sets the event participants.
    * 
-   * @param participants
+   * @param participants Event participants, where each event participant is added using the addParticipant() function, or undefined to clear the event participants.
    */
   public final native void setParticipants(JsArray<Who> participants) /*-{
     this.setParticipants(
@@ -288,18 +282,16 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   }-*/;
 
   /**
-   * Sets the event participants.
-   * 
-   * @param participants
+   * Sets the event recurrence. This element is optional.
    */
-  public final native void setParticipants() /*-{
-    this.setParticipants();
+  public final native void setRecurrence() /*-{
+    this.setRecurrence();
   }-*/;
 
   /**
-   * Sets the event recurrence.
+   * Sets the event recurrence. This element is optional.
    * 
-   * @param recurrence
+   * @param recurrence Event recurrence, or object to use as a parameter to the google.gdata.Recurrence constructor, or undefined for none.
    */
   public final native void setRecurrence(Recurrence recurrence) /*-{
     this.setRecurrence(
@@ -308,18 +300,16 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   }-*/;
 
   /**
-   * Sets the event recurrence.
-   * 
-   * @param recurrence
+   * Sets the recurrence exceptions.
    */
-  public final native void setRecurrence() /*-{
-    this.setRecurrence();
+  public final native void setRecurrenceException() /*-{
+    this.setRecurrenceException();
   }-*/;
 
   /**
    * Sets the recurrence exceptions.
    * 
-   * @param recurrenceException
+   * @param recurrenceException Recurrence exceptions, where each recurrence exception is added using the addRecurrenceException() function, or undefined to clear the recurrence exceptions.
    */
   public final native void setRecurrenceException(JsArray<RecurrenceException> recurrenceException) /*-{
     this.setRecurrenceException(
@@ -328,18 +318,16 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   }-*/;
 
   /**
-   * Sets the recurrence exceptions.
-   * 
-   * @param recurrenceException
+   * Sets the event reminders.
    */
-  public final native void setRecurrenceException() /*-{
-    this.setRecurrenceException();
+  public final native void setReminders() /*-{
+    this.setReminders();
   }-*/;
 
   /**
    * Sets the event reminders.
    * 
-   * @param reminders
+   * @param reminders Event reminders, where each event reminder is added using the addReminder() function, or undefined to clear the event reminders.
    */
   public final native void setReminders(JsArray<Reminder> reminders) /*-{
     this.setReminders(
@@ -348,18 +336,16 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   }-*/;
 
   /**
-   * Sets the event reminders.
-   * 
-   * @param reminders
+   * Sets the event times.
    */
-  public final native void setReminders() /*-{
-    this.setReminders();
+  public final native void setTimes() /*-{
+    this.setTimes();
   }-*/;
 
   /**
    * Sets the event times.
    * 
-   * @param times
+   * @param times Event times, where each event time is added using the addTime() function, or undefined to clear the event times.
    */
   public final native void setTimes(JsArray<When> times) /*-{
     this.setTimes(
@@ -368,18 +354,16 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   }-*/;
 
   /**
-   * Sets the event times.
-   * 
-   * @param times
+   * Sets the event transparency. This element is optional.
    */
-  public final native void setTimes() /*-{
-    this.setTimes();
+  public final native void setTransparency() /*-{
+    this.setTransparency();
   }-*/;
 
   /**
-   * Sets the event transparency.
+   * Sets the event transparency. This element is optional.
    * 
-   * @param transparency
+   * @param transparency Event transparency, or object to use as a parameter to the google.gdata.Transparency constructor, or undefined for none.
    */
   public final native void setTransparency(Transparency transparency) /*-{
     this.setTransparency(
@@ -388,32 +372,21 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry<EventEntry> {
   }-*/;
 
   /**
-   * Sets the event transparency.
-   * 
-   * @param transparency
+   * Sets the event visibility. This element is optional.
    */
-  public final native void setTransparency() /*-{
-    this.setTransparency();
+  public final native void setVisibility() /*-{
+    this.setVisibility();
   }-*/;
 
   /**
-   * Sets the event visibility.
+   * Sets the event visibility. This element is optional.
    * 
-   * @param visibility
+   * @param visibility Event visibility, or object to use as a parameter to the google.gdata.Visibility constructor, or undefined for none.
    */
   public final native void setVisibility(Visibility visibility) /*-{
     this.setVisibility(
       visibility
     );
-  }-*/;
-
-  /**
-   * Sets the event visibility.
-   * 
-   * @param visibility
-   */
-  public final native void setVisibility() /*-{
-    this.setVisibility();
   }-*/;
 
 }

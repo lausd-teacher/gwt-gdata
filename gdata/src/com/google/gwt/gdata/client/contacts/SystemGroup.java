@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.contacts;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Element that if present marks that a group is a system one.
  */
 public class SystemGroup extends JavaScriptObject {
 
   /**
    * Constructs a system group using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: id.
    */
   public static native SystemGroup newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.contacts.SystemGroup(
@@ -32,42 +34,33 @@ public class SystemGroup extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a system group using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native SystemGroup newInstance() /*-{
-    return new $wnd.google.gdata.contacts.SystemGroup();
-  }-*/;
-
   protected SystemGroup() { }
 
   /**
-   * Returns the identifier for distinguishing various system groups.
+   * Returns the identifier for distinguishing various system groups. This attribute is required.
    * 
-   * @return
+   * @return Identifier for distinguishing various system groups or undefined for none.
    */
   public final native String getId() /*-{
     return this.getId();
   }-*/;
 
   /**
-   * Sets the identifier for distinguishing various system groups.
+   * Sets the identifier for distinguishing various system groups. This attribute is required.
+   */
+  public final native void setId() /*-{
+    this.setId();
+  }-*/;
+
+  /**
+   * Sets the identifier for distinguishing various system groups. This attribute is required.
    * 
-   * @param id
+   * @param id Identifier for distinguishing various system groups or undefined for none.
    */
   public final native void setId(String id) /*-{
     this.setId(
       id
     );
-  }-*/;
-
-  /**
-   * Sets the identifier for distinguishing various system groups.
-   * 
-   * @param id
-   */
-  public final native void setId() /*-{
-    this.setId();
   }-*/;
 
 }

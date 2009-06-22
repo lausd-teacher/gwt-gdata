@@ -19,24 +19,19 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes an entry in a feed of a Calendar event's comments.
  */
 public class CalendarCommentEntry extends com.google.gwt.gdata.client.Entry<CalendarCommentEntry> {
 
   /**
-   * Constructs a Calendar events comment entry using an object parameter whose property names match the setter method to use for each property.
+   * Constructs a Calendar event's comment entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, content, contributors, id, links, published, title, and updated.
    */
   public static native CalendarCommentEntry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.CalendarCommentEntry(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a Calendar events comment entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native CalendarCommentEntry newInstance() /*-{
-    return new $wnd.google.gdata.calendar.CalendarCommentEntry();
   }-*/;
 
   protected CalendarCommentEntry() { }

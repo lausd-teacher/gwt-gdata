@@ -20,17 +20,17 @@ import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.Query;
 
 /**
- * Comment unavailable.
+ * Describes a query for the following feeds:
  */
 public class ContactQuery extends Query {
 
   /**
-   * Order the returned feeds entries by their <app:edited> values.
+   * Order the returned feed's entries by their <app:edited> values.
    */
   public static final String ORDERBY_EDITED = getConstant("ORDERBY_EDITED");
 
   /**
-   * Order the returned feeds entries by their <updated> values.
+   * Order the returned feed's entries by their <updated> values.
    */
   public static final String ORDERBY_LAST_MODIFIED = getConstant("ORDERBY_LAST_MODIFIED");
 
@@ -56,6 +56,8 @@ public class ContactQuery extends Query {
 
   /**
    * Constructor.
+   * 
+   * @param feedUri URI of feed.
    */
   public static native ContactQuery newInstance(String feedUri) /*-{
     return new $wnd.google.gdata.contacts.ContactQuery(
@@ -70,9 +72,9 @@ public class ContactQuery extends Query {
   protected ContactQuery() { }
 
   /**
-   * Returns the group id.
+   * Returns the group id. Results are limited to contacts belonging to this group.
    * 
-   * @return
+   * @return Group id or null to indicate that the parameter is disabled.
    */
   public final native String getGroup() /*-{
     return this.getGroup();
@@ -81,7 +83,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the maximum number of results to be retrieved.
    * 
-   * @return
+   * @return Maximum number of results to be retrieved or null to indicate that the parameter is disabled.
    */
   public final native double getMaxResults() /*-{
     return this.getMaxResults();
@@ -90,7 +92,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the order of entries in a feed.
    * 
-   * @return
+   * @return Order of entries in a feed or null to indicate that the parameter is disabled.
    */
   public final native String getOrderBy() /*-{
     return this.getOrderBy();
@@ -99,7 +101,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the should tombstones be returned.
    * 
-   * @return
+   * @return Should tombstones be returned or null to indicate that the parameter is disabled.
    */
   public final native boolean getShowDeleted() /*-{
     return this.getShowDeleted();
@@ -108,7 +110,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the direction of sorting.
    * 
-   * @return
+   * @return Direction of sorting or null to indicate that the parameter is disabled.
    */
   public final native String getSortOrder() /*-{
     return this.getSortOrder();
@@ -117,7 +119,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the 1-based index of the first result to be retrieved.
    * 
-   * @return
+   * @return 1-based index of the first result to be retrieved or null to indicate that the parameter is disabled.
    */
   public final native double getStartIndex() /*-{
     return this.getStartIndex();
@@ -126,7 +128,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the maximum updated date.
    * 
-   * @return
+   * @return Maximum updated date or null to indicate that the parameter is disabled.
    */
   public final native DateTime getUpdatedMax() /*-{
     return this.getUpdatedMax();
@@ -135,16 +137,16 @@ public class ContactQuery extends Query {
   /**
    * Returns the minimum updated date.
    * 
-   * @return
+   * @return Minimum updated date or null to indicate that the parameter is disabled.
    */
   public final native DateTime getUpdatedMin() /*-{
     return this.getUpdatedMin();
   }-*/;
 
   /**
-   * Sets the group id.
+   * Sets the group id. Results are limited to contacts belonging to this group..
    * 
-   * @param group
+   * @param group Group id or null to disable this parameter.
    */
   public final native void setGroup(String group) /*-{
     this.setGroup(
@@ -155,7 +157,7 @@ public class ContactQuery extends Query {
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults
+   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
    */
   public final native void setMaxResults(double maxResults) /*-{
     this.setMaxResults(
@@ -166,7 +168,7 @@ public class ContactQuery extends Query {
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults
+   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
    */
   public final native void setMaxResults(String maxResults) /*-{
     this.setMaxResults(
@@ -175,9 +177,9 @@ public class ContactQuery extends Query {
   }-*/;
 
   /**
-   * Sets the order of entries in a feed.
+   * Sets the order of entries in a feed. The default value is 'none'.
    * 
-   * @param orderBy
+   * @param orderBy Order of entries in a feed or null to disable this parameter.
    */
   public final native void setOrderBy(String orderBy) /*-{
     this.setOrderBy(
@@ -186,9 +188,9 @@ public class ContactQuery extends Query {
   }-*/;
 
   /**
-   * Sets the should tombstones be returned.
+   * Sets the should tombstones be returned. The default value is false.
    * 
-   * @param showDeleted
+   * @param showDeleted Should tombstones be returned or an equivalent string value or null to disable this parameter.
    */
   public final native void setShowDeleted(boolean showDeleted) /*-{
     this.setShowDeleted(
@@ -197,9 +199,9 @@ public class ContactQuery extends Query {
   }-*/;
 
   /**
-   * Sets the should tombstones be returned.
+   * Sets the should tombstones be returned. The default value is false.
    * 
-   * @param showDeleted
+   * @param showDeleted Should tombstones be returned or an equivalent string value or null to disable this parameter.
    */
   public final native void setShowDeleted(String showDeleted) /*-{
     this.setShowDeleted(
@@ -208,9 +210,9 @@ public class ContactQuery extends Query {
   }-*/;
 
   /**
-   * Sets the direction of sorting.
+   * Sets the direction of sorting. The default value is 'none'.
    * 
-   * @param sortOrder
+   * @param sortOrder Direction of sorting or null to disable this parameter.
    */
   public final native void setSortOrder(String sortOrder) /*-{
     this.setSortOrder(
@@ -219,9 +221,9 @@ public class ContactQuery extends Query {
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved.
+   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex
+   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
    */
   public final native void setStartIndex(double startIndex) /*-{
     this.setStartIndex(
@@ -230,9 +232,9 @@ public class ContactQuery extends Query {
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved.
+   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex
+   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
    */
   public final native void setStartIndex(String startIndex) /*-{
     this.setStartIndex(
@@ -243,7 +245,7 @@ public class ContactQuery extends Query {
   /**
    * Sets the maximum updated date.
    * 
-   * @param updatedMax
+   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
    */
   public final native void setUpdatedMax(DateTime updatedMax) /*-{
     this.setUpdatedMax(
@@ -254,7 +256,7 @@ public class ContactQuery extends Query {
   /**
    * Sets the maximum updated date.
    * 
-   * @param updatedMax
+   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
    */
   public final native void setUpdatedMax(String updatedMax) /*-{
     this.setUpdatedMax(
@@ -265,7 +267,7 @@ public class ContactQuery extends Query {
   /**
    * Sets the minimum updated date.
    * 
-   * @param updatedMin
+   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
    */
   public final native void setUpdatedMin(DateTime updatedMin) /*-{
     this.setUpdatedMin(
@@ -276,7 +278,7 @@ public class ContactQuery extends Query {
   /**
    * Sets the minimum updated date.
    * 
-   * @param updatedMin
+   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
    */
   public final native void setUpdatedMin(String updatedMin) /*-{
     this.setUpdatedMin(

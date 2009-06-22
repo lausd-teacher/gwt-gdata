@@ -20,7 +20,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Kind;
 
 /**
- * Comment unavailable.
+ * Describes a transaction kind.
  */
 public class TransactionKind extends Kind {
 
@@ -30,19 +30,14 @@ public class TransactionKind extends Kind {
   public static final String TERM_TRANSACTION = getConstant("TERM_TRANSACTION");
 
   /**
-   * Constructs a transaction kind using an object parameter whose property names match the setter method to use for each property.
+   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: scheme and term.
    */
   public static native TransactionKind newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.finance.TransactionKind(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a transaction kind using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native TransactionKind newInstance() /*-{
-    return new $wnd.google.gdata.finance.TransactionKind();
   }-*/;
 
   private static native String getConstant(String name) /*-{

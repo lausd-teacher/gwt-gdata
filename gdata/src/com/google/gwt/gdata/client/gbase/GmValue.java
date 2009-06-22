@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.gbase;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a gm value.
  */
 public class GmValue extends JavaScriptObject {
 
   /**
    * Constructs a gm value using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: count and value.
    */
   public static native GmValue newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.GmValue(
@@ -32,37 +34,37 @@ public class GmValue extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a gm value using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native GmValue newInstance() /*-{
-    return new $wnd.google.gdata.gbase.GmValue();
-  }-*/;
-
   protected GmValue() { }
 
   /**
-   * Returns the count.
+   * Returns the count. This attribute is optional.
    * 
-   * @return
+   * @return Count or undefined for none.
    */
   public final native double getCount() /*-{
     return this.getCount();
   }-*/;
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is required.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the count.
+   * Sets the count. This attribute is optional.
+   */
+  public final native void setCount() /*-{
+    this.setCount();
+  }-*/;
+
+  /**
+   * Sets the count. This attribute is optional.
    * 
-   * @param count
+   * @param count Count or undefined for none.
    */
   public final native void setCount(double count) /*-{
     this.setCount(
@@ -71,32 +73,21 @@ public class GmValue extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the count.
-   * 
-   * @param count
+   * Sets the value. This attribute is required.
    */
-  public final native void setCount() /*-{
-    this.setCount();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is required.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.acl.AclEntry;
 
 /**
- * Comment unavailable.
+ * Describes an entry in a feed of a Calendar access control list (ACL).
  */
 public class CalendarAclEntry extends AclEntry {
 
   /**
    * Constructs a Calendar ACL entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, content, contributors, id, links, role, scope, sendAclNotifications, title, and updated.
    */
   public static native CalendarAclEntry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.CalendarAclEntry(
@@ -33,42 +35,33 @@ public class CalendarAclEntry extends AclEntry {
     );
   }-*/;
 
-  /**
-   * Constructs a Calendar ACL entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native CalendarAclEntry newInstance() /*-{
-    return new $wnd.google.gdata.calendar.CalendarAclEntry();
-  }-*/;
-
   protected CalendarAclEntry() { }
 
   /**
-   * Returns the send acl notifications property.
+   * Returns the send acl notifications property. This element is optional.
    * 
-   * @return
+   * @return Send acl notifications property or undefined for none.
    */
   public final native SendAclNotificationsProperty getSendAclNotifications() /*-{
     return this.getSendAclNotifications();
   }-*/;
 
   /**
-   * Sets the send acl notifications property.
+   * Sets the send acl notifications property. This element is optional.
+   */
+  public final native void setSendAclNotifications() /*-{
+    this.setSendAclNotifications();
+  }-*/;
+
+  /**
+   * Sets the send acl notifications property. This element is optional.
    * 
-   * @param sendAclNotifications
+   * @param sendAclNotifications Send acl notifications property, or object to use as a parameter to the google.gdata.calendar.SendAclNotificationsProperty constructor, or undefined for none.
    */
   public final native void setSendAclNotifications(SendAclNotificationsProperty sendAclNotifications) /*-{
     this.setSendAclNotifications(
       sendAclNotifications
     );
-  }-*/;
-
-  /**
-   * Sets the send acl notifications property.
-   * 
-   * @param sendAclNotifications
-   */
-  public final native void setSendAclNotifications() /*-{
-    this.setSendAclNotifications();
   }-*/;
 
 }

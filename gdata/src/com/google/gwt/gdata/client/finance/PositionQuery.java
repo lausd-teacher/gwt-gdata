@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.finance;
 import com.google.gwt.gdata.client.Query;
 
 /**
- * Comment unavailable.
+ * Describes a query for the feed of all the positions belonging to the portfolio.
  */
 public class PositionQuery extends Query {
 
   /**
    * Constructor.
+   * 
+   * @param feedUri URI of feed.
    */
   public static native PositionQuery newInstance(String feedUri) /*-{
     return new $wnd.google.gdata.finance.PositionQuery(
@@ -37,7 +39,7 @@ public class PositionQuery extends Query {
   /**
    * Returns the flag indicating whether returns and performance stats should be included in the portfolio and position feed entries.
    * 
-   * @return
+   * @return Flag indicating whether returns and performance stats should be included in the portfolio and position feed entries or null to indicate that the parameter is disabled.
    */
   public final native boolean getIncludeReturns() /*-{
     return this.getIncludeReturns();
@@ -46,16 +48,16 @@ public class PositionQuery extends Query {
   /**
    * Returns the flag to inline transactions under the position feed.
    * 
-   * @return
+   * @return Flag to inline transactions under the position feed or null to indicate that the parameter is disabled.
    */
   public final native boolean getInlineTransactions() /*-{
     return this.getInlineTransactions();
   }-*/;
 
   /**
-   * Sets the flag indicating whether returns and performance stats should be included in the portfolio and position feed entries.
+   * Sets the flag indicating whether returns and performance stats should be included in the portfolio and position feed entries. The default value is false.
    * 
-   * @param includeReturns
+   * @param includeReturns Flag indicating whether returns and performance stats should be included in the portfolio and position feed entries or an equivalent string value or null to disable this parameter.
    */
   public final native void setIncludeReturns(boolean includeReturns) /*-{
     this.setIncludeReturns(
@@ -64,9 +66,9 @@ public class PositionQuery extends Query {
   }-*/;
 
   /**
-   * Sets the flag indicating whether returns and performance stats should be included in the portfolio and position feed entries.
+   * Sets the flag indicating whether returns and performance stats should be included in the portfolio and position feed entries. The default value is false.
    * 
-   * @param includeReturns
+   * @param includeReturns Flag indicating whether returns and performance stats should be included in the portfolio and position feed entries or an equivalent string value or null to disable this parameter.
    */
   public final native void setIncludeReturns(String includeReturns) /*-{
     this.setIncludeReturns(
@@ -75,9 +77,9 @@ public class PositionQuery extends Query {
   }-*/;
 
   /**
-   * Sets the flag to inline transactions under the position feed.
+   * Sets the flag to inline transactions under the position feed. The default value is false.
    * 
-   * @param inlineTransactions
+   * @param inlineTransactions Flag to inline transactions under the position feed or an equivalent string value or null to disable this parameter.
    */
   public final native void setInlineTransactions(boolean inlineTransactions) /*-{
     this.setInlineTransactions(
@@ -86,9 +88,9 @@ public class PositionQuery extends Query {
   }-*/;
 
   /**
-   * Sets the flag to inline transactions under the position feed.
+   * Sets the flag to inline transactions under the position feed. The default value is false.
    * 
-   * @param inlineTransactions
+   * @param inlineTransactions Flag to inline transactions under the position feed or an equivalent string value or null to disable this parameter.
    */
   public final native void setInlineTransactions(String inlineTransactions) /*-{
     this.setInlineTransactions(

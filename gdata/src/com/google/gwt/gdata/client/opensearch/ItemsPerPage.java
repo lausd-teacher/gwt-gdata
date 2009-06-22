@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.opensearch;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes the number of items that will be returned per page for paged feeds.
  */
 public class ItemsPerPage extends JavaScriptObject {
 
   /**
    * Constructs an items-per-page count using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native ItemsPerPage newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.opensearch.ItemsPerPage(
@@ -32,42 +34,33 @@ public class ItemsPerPage extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs an items-per-page count using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native ItemsPerPage newInstance() /*-{
-    return new $wnd.google.gdata.opensearch.ItemsPerPage();
-  }-*/;
-
   protected ItemsPerPage() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is required.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native double getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is required.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is required.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(double value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

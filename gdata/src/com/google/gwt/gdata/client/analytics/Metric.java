@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.analytics;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Metric value.
  */
 public class Metric extends JavaScriptObject {
 
@@ -55,18 +55,13 @@ public class Metric extends JavaScriptObject {
 
   /**
    * Constructs a metric using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: confidenceInterval, name, type, and value.
    */
   public static native Metric newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.analytics.Metric(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a metric using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Metric newInstance() /*-{
-    return new $wnd.google.gdata.analytics.Metric();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -76,45 +71,52 @@ public class Metric extends JavaScriptObject {
   protected Metric() { }
 
   /**
-   * Returns the 95 confidence interval for this metric (lower is better).
+   * Returns the 95 confidence interval for this metric (lower is better). This attribute is optional.
    * 
-   * @return
+   * @return 95 confidence interval for this metric (lower is better) or undefined for none.
    */
   public final native double getConfidenceInterval() /*-{
     return this.getConfidenceInterval();
   }-*/;
 
   /**
-   * Returns the name.
+   * Returns the name. This attribute is required.
    * 
-   * @return
+   * @return Name or undefined for none.
    */
   public final native String getName() /*-{
     return this.getName();
   }-*/;
 
   /**
-   * Returns the the format of data represented by the metric.
+   * Returns the the format of data represented by the metric. This attribute is optional.
    * 
-   * @return
+   * @return The format of data represented by the metric or undefined for none.
    */
   public final native String getType() /*-{
     return this.getType();
   }-*/;
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is required.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the 95 confidence interval for this metric (lower is better).
+   * Sets the 95 confidence interval for this metric (lower is better). This attribute is optional.
+   */
+  public final native void setConfidenceInterval() /*-{
+    this.setConfidenceInterval();
+  }-*/;
+
+  /**
+   * Sets the 95 confidence interval for this metric (lower is better). This attribute is optional.
    * 
-   * @param confidenceInterval
+   * @param confidenceInterval 95 confidence interval for this metric (lower is better) or undefined for none.
    */
   public final native void setConfidenceInterval(double confidenceInterval) /*-{
     this.setConfidenceInterval(
@@ -123,18 +125,16 @@ public class Metric extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the 95 confidence interval for this metric (lower is better).
-   * 
-   * @param confidenceInterval
+   * Sets the name. This attribute is required.
    */
-  public final native void setConfidenceInterval() /*-{
-    this.setConfidenceInterval();
+  public final native void setName() /*-{
+    this.setName();
   }-*/;
 
   /**
-   * Sets the name.
+   * Sets the name. This attribute is required.
    * 
-   * @param name
+   * @param name Name or undefined for none.
    */
   public final native void setName(String name) /*-{
     this.setName(
@@ -143,18 +143,16 @@ public class Metric extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the name.
-   * 
-   * @param name
+   * Sets the the format of data represented by the metric. This attribute is optional.
    */
-  public final native void setName() /*-{
-    this.setName();
+  public final native void setType() /*-{
+    this.setType();
   }-*/;
 
   /**
-   * Sets the the format of data represented by the metric.
+   * Sets the the format of data represented by the metric. This attribute is optional.
    * 
-   * @param type
+   * @param type The format of data represented by the metric or undefined for none.
    */
   public final native void setType(String type) /*-{
     this.setType(
@@ -163,32 +161,21 @@ public class Metric extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the the format of data represented by the metric.
-   * 
-   * @param type
+   * Sets the value. This attribute is required.
    */
-  public final native void setType() /*-{
-    this.setType();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is required.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

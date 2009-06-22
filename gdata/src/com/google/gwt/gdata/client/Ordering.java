@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Control ordering for a set of atom entries.
  */
 public class Ordering extends JavaScriptObject {
 
@@ -40,18 +40,13 @@ public class Ordering extends JavaScriptObject {
 
   /**
    * Constructs an ordering using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: next, orderId, prev, ref, and rel.
    */
   public static native Ordering newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.Ordering(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs an ordering using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Ordering newInstance() /*-{
-    return new $wnd.google.gdata.Ordering();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -61,54 +56,61 @@ public class Ordering extends JavaScriptObject {
   protected Ordering() { }
 
   /**
-   * Returns the next element.
+   * Returns the next element. This attribute is optional.
    * 
-   * @return
+   * @return Next element or undefined for none.
    */
   public final native String getNext() /*-{
     return this.getNext();
   }-*/;
 
   /**
-   * Returns the ordered feed id.
+   * Returns the ordered feed id. This attribute is optional.
    * 
-   * @return
+   * @return Ordered feed id or undefined for none.
    */
   public final native String getOrderId() /*-{
     return this.getOrderId();
   }-*/;
 
   /**
-   * Returns the previous element.
+   * Returns the previous element. This attribute is optional.
    * 
-   * @return
+   * @return Previous element or undefined for none.
    */
   public final native String getPrev() /*-{
     return this.getPrev();
   }-*/;
 
   /**
-   * Returns the other entry id.
+   * Returns the other entry id. This attribute is optional.
    * 
-   * @return
+   * @return Other entry id or undefined for none.
    */
   public final native String getRef() /*-{
     return this.getRef();
   }-*/;
 
   /**
-   * Returns the order type.
+   * Returns the order type. This attribute is optional.
    * 
-   * @return
+   * @return Order type or undefined for none.
    */
   public final native String getRel() /*-{
     return this.getRel();
   }-*/;
 
   /**
-   * Sets the next element.
+   * Sets the next element. This attribute is optional.
+   */
+  public final native void setNext() /*-{
+    this.setNext();
+  }-*/;
+
+  /**
+   * Sets the next element. This attribute is optional.
    * 
-   * @param next
+   * @param next Next element or undefined for none.
    */
   public final native void setNext(String next) /*-{
     this.setNext(
@@ -117,18 +119,16 @@ public class Ordering extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the next element.
-   * 
-   * @param next
+   * Sets the ordered feed id. This attribute is optional.
    */
-  public final native void setNext() /*-{
-    this.setNext();
+  public final native void setOrderId() /*-{
+    this.setOrderId();
   }-*/;
 
   /**
-   * Sets the ordered feed id.
+   * Sets the ordered feed id. This attribute is optional.
    * 
-   * @param orderId
+   * @param orderId Ordered feed id or undefined for none.
    */
   public final native void setOrderId(String orderId) /*-{
     this.setOrderId(
@@ -137,18 +137,16 @@ public class Ordering extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the ordered feed id.
-   * 
-   * @param orderId
+   * Sets the previous element. This attribute is optional.
    */
-  public final native void setOrderId() /*-{
-    this.setOrderId();
+  public final native void setPrev() /*-{
+    this.setPrev();
   }-*/;
 
   /**
-   * Sets the previous element.
+   * Sets the previous element. This attribute is optional.
    * 
-   * @param prev
+   * @param prev Previous element or undefined for none.
    */
   public final native void setPrev(String prev) /*-{
     this.setPrev(
@@ -157,18 +155,16 @@ public class Ordering extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the previous element.
-   * 
-   * @param prev
+   * Sets the other entry id. This attribute is optional.
    */
-  public final native void setPrev() /*-{
-    this.setPrev();
+  public final native void setRef() /*-{
+    this.setRef();
   }-*/;
 
   /**
-   * Sets the other entry id.
+   * Sets the other entry id. This attribute is optional.
    * 
-   * @param ref
+   * @param ref Other entry id or undefined for none.
    */
   public final native void setRef(String ref) /*-{
     this.setRef(
@@ -177,32 +173,21 @@ public class Ordering extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the other entry id.
-   * 
-   * @param ref
+   * Sets the order type. This attribute is optional.
    */
-  public final native void setRef() /*-{
-    this.setRef();
+  public final native void setRel() /*-{
+    this.setRel();
   }-*/;
 
   /**
-   * Sets the order type.
+   * Sets the order type. This attribute is optional.
    * 
-   * @param rel
+   * @param rel Order type or undefined for none.
    */
   public final native void setRel(String rel) /*-{
     this.setRel(
       rel
     );
-  }-*/;
-
-  /**
-   * Sets the order type.
-   * 
-   * @param rel
-   */
-  public final native void setRel() /*-{
-    this.setRel();
   }-*/;
 
 }

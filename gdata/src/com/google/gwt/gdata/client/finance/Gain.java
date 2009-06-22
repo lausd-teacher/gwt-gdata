@@ -21,12 +21,14 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Money;
 
 /**
- * Comment unavailable.
+ * Total gain for the portfolio or position.
  */
 public class Gain extends JavaScriptObject {
 
   /**
    * Constructs a total gain using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: money.
    */
   public static native Gain newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.finance.Gain(
@@ -34,19 +36,12 @@ public class Gain extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a total gain using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Gain newInstance() /*-{
-    return new $wnd.google.gdata.finance.Gain();
-  }-*/;
-
   protected Gain() { }
 
   /**
    * Adds a new monetary value of the total gain.
    * 
-   * @param money
+   * @param money Monetary value of the total gain to add, or object to use as a parameter to the google.gdata.Money constructor.
    */
   public final native void addMoney(Money money) /*-{
     this.addMoney(
@@ -57,7 +52,7 @@ public class Gain extends JavaScriptObject {
   /**
    * Returns the monetary value of the total gain.
    * 
-   * @return
+   * @return Monetary value of the total gain.
    */
   public final native JsArray<Money> getMoney() /*-{
     return this.getMoney();
@@ -65,22 +60,20 @@ public class Gain extends JavaScriptObject {
 
   /**
    * Sets the monetary value of the total gain.
-   * 
-   * @param money
    */
-  public final native void setMoney(JsArray<Money> money) /*-{
-    this.setMoney(
-      money
-    );
+  public final native void setMoney() /*-{
+    this.setMoney();
   }-*/;
 
   /**
    * Sets the monetary value of the total gain.
    * 
-   * @param money
+   * @param money Monetary value of the total gain, where each monetary value of the total gain is added using the addMoney() function, or undefined to clear the monetary value of the total gain.
    */
-  public final native void setMoney() /*-{
-    this.setMoney();
+  public final native void setMoney(JsArray<Money> money) /*-{
+    this.setMoney(
+      money
+    );
   }-*/;
 
 }

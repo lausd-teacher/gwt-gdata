@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.gbase;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a feed of public attributes.
  */
 public class AttributesFeed extends com.google.gwt.gdata.client.Feed<AttributesEntry> {
 
   /**
    * Constructs a Google Base attribute feed using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, entries, generator, id, itemsPerPage, links, startIndex, title, totalResults, and updated.
    */
   public static native AttributesFeed newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.AttributesFeed(
@@ -32,19 +34,12 @@ public class AttributesFeed extends com.google.gwt.gdata.client.Feed<AttributesE
     );
   }-*/;
 
-  /**
-   * Constructs a Google Base attribute feed using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native AttributesFeed newInstance() /*-{
-    return new $wnd.google.gdata.gbase.AttributesFeed();
-  }-*/;
-
   protected AttributesFeed() { }
 
   /**
    * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
    * 
-   * @return
+   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed or undefined for none.
    */
   public final native com.google.gwt.gdata.client.Link getFeedBatchLink() /*-{
     return this.getFeedBatchLink();

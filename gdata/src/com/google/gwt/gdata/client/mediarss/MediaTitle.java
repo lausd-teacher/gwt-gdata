@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.mediarss;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a media title.
  */
 public class MediaTitle extends JavaScriptObject {
 
@@ -35,18 +35,13 @@ public class MediaTitle extends JavaScriptObject {
 
   /**
    * Constructs a media title using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content and type.
    */
   public static native MediaTitle newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.mediarss.MediaTitle(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a media title using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaTitle newInstance() /*-{
-    return new $wnd.google.gdata.mediarss.MediaTitle();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -56,27 +51,34 @@ public class MediaTitle extends JavaScriptObject {
   protected MediaTitle() { }
 
   /**
-   * Returns the text of the title.
+   * Returns the text of the title. This attribute is optional.
    * 
-   * @return
+   * @return Text of the title or undefined for none.
    */
   public final native String getContent() /*-{
     return this.getContent();
   }-*/;
 
   /**
-   * Returns the type of text, either plain or html.
+   * Returns the type of text, either plain or html. This attribute is optional.
    * 
-   * @return
+   * @return Type of text, either plain or html or undefined for none.
    */
   public final native String getType() /*-{
     return this.getType();
   }-*/;
 
   /**
-   * Sets the text of the title.
+   * Sets the text of the title. This attribute is optional.
+   */
+  public final native void setContent() /*-{
+    this.setContent();
+  }-*/;
+
+  /**
+   * Sets the text of the title. This attribute is optional.
    * 
-   * @param content
+   * @param content Text of the title or undefined for none.
    */
   public final native void setContent(String content) /*-{
     this.setContent(
@@ -85,32 +87,21 @@ public class MediaTitle extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the text of the title.
-   * 
-   * @param content
+   * Sets the type of text, either plain or html. This attribute is optional.
    */
-  public final native void setContent() /*-{
-    this.setContent();
+  public final native void setType() /*-{
+    this.setType();
   }-*/;
 
   /**
-   * Sets the type of text, either plain or html.
+   * Sets the type of text, either plain or html. This attribute is optional.
    * 
-   * @param type
+   * @param type Type of text, either plain or html or undefined for none.
    */
   public final native void setType(String type) /*-{
     this.setType(
       type
     );
-  }-*/;
-
-  /**
-   * Sets the type of text, either plain or html.
-   * 
-   * @param type
-   */
-  public final native void setType() /*-{
-    this.setType();
   }-*/;
 
 }

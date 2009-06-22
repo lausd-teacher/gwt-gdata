@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.mediarss;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a media copyright.
  */
 public class MediaCopyright extends JavaScriptObject {
 
   /**
    * Constructs a media copyright using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content and url.
    */
   public static native MediaCopyright newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.mediarss.MediaCopyright(
@@ -32,37 +34,37 @@ public class MediaCopyright extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a media copyright using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaCopyright newInstance() /*-{
-    return new $wnd.google.gdata.mediarss.MediaCopyright();
-  }-*/;
-
   protected MediaCopyright() { }
 
   /**
-   * Returns the text of the copyright.
+   * Returns the text of the copyright. This attribute is optional.
    * 
-   * @return
+   * @return Text of the copyright or undefined for none.
    */
   public final native String getContent() /*-{
     return this.getContent();
   }-*/;
 
   /**
-   * Returns the url to the terms of usage page or copyright information.
+   * Returns the url to the terms of usage page or copyright information. This attribute is optional.
    * 
-   * @return
+   * @return Url to the terms of usage page or copyright information or undefined for none.
    */
   public final native String getUrl() /*-{
     return this.getUrl();
   }-*/;
 
   /**
-   * Sets the text of the copyright.
+   * Sets the text of the copyright. This attribute is optional.
+   */
+  public final native void setContent() /*-{
+    this.setContent();
+  }-*/;
+
+  /**
+   * Sets the text of the copyright. This attribute is optional.
    * 
-   * @param content
+   * @param content Text of the copyright or undefined for none.
    */
   public final native void setContent(String content) /*-{
     this.setContent(
@@ -71,32 +73,21 @@ public class MediaCopyright extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the text of the copyright.
-   * 
-   * @param content
+   * Sets the url to the terms of usage page or copyright information. This attribute is optional.
    */
-  public final native void setContent() /*-{
-    this.setContent();
+  public final native void setUrl() /*-{
+    this.setUrl();
   }-*/;
 
   /**
-   * Sets the url to the terms of usage page or copyright information.
+   * Sets the url to the terms of usage page or copyright information. This attribute is optional.
    * 
-   * @param url
+   * @param url Url to the terms of usage page or copyright information or undefined for none.
    */
   public final native void setUrl(String url) /*-{
     this.setUrl(
       url
     );
-  }-*/;
-
-  /**
-   * Sets the url to the terms of usage page or copyright information.
-   * 
-   * @param url
-   */
-  public final native void setUrl() /*-{
-    this.setUrl();
   }-*/;
 
 }

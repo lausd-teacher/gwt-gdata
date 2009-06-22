@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.mediarss;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a media restriction.
  */
 public class MediaRestriction extends JavaScriptObject {
 
@@ -45,18 +45,13 @@ public class MediaRestriction extends JavaScriptObject {
 
   /**
    * Constructs a media restriction using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content, relationship, and type.
    */
   public static native MediaRestriction newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.mediarss.MediaRestriction(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a media restriction using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaRestriction newInstance() /*-{
-    return new $wnd.google.gdata.mediarss.MediaRestriction();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -66,36 +61,43 @@ public class MediaRestriction extends JavaScriptObject {
   protected MediaRestriction() { }
 
   /**
-   * Returns the distributor URIs or country codes.
+   * Returns the distributor URIs or country codes. This attribute is optional.
    * 
-   * @return
+   * @return Distributor URIs or country codes or undefined for none.
    */
   public final native String getContent() /*-{
     return this.getContent();
   }-*/;
 
   /**
-   * Returns the type of relationship, either allow or deny.
+   * Returns the type of relationship, either 'allow' or 'deny'. This attribute is required.
    * 
-   * @return
+   * @return Type of relationship, either 'allow' or 'deny' or undefined for none.
    */
   public final native String getRelationship() /*-{
     return this.getRelationship();
   }-*/;
 
   /**
-   * Returns the type of restriction, either country or uri.
+   * Returns the type of restriction, either 'country' or 'uri'. This attribute is optional.
    * 
-   * @return
+   * @return Type of restriction, either 'country' or 'uri' or undefined for none.
    */
   public final native String getType() /*-{
     return this.getType();
   }-*/;
 
   /**
-   * Sets the distributor URIs or country codes.
+   * Sets the distributor URIs or country codes. This attribute is optional.
+   */
+  public final native void setContent() /*-{
+    this.setContent();
+  }-*/;
+
+  /**
+   * Sets the distributor URIs or country codes. This attribute is optional.
    * 
-   * @param content
+   * @param content Distributor URIs or country codes or undefined for none.
    */
   public final native void setContent(String content) /*-{
     this.setContent(
@@ -104,18 +106,16 @@ public class MediaRestriction extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the distributor URIs or country codes.
-   * 
-   * @param content
+   * Sets the type of relationship, either 'allow' or 'deny'. This attribute is required.
    */
-  public final native void setContent() /*-{
-    this.setContent();
+  public final native void setRelationship() /*-{
+    this.setRelationship();
   }-*/;
 
   /**
-   * Sets the type of relationship, either allow or deny.
+   * Sets the type of relationship, either 'allow' or 'deny'. This attribute is required.
    * 
-   * @param relationship
+   * @param relationship Type of relationship, either 'allow' or 'deny' or undefined for none.
    */
   public final native void setRelationship(String relationship) /*-{
     this.setRelationship(
@@ -124,32 +124,21 @@ public class MediaRestriction extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the type of relationship, either allow or deny.
-   * 
-   * @param relationship
+   * Sets the type of restriction, either 'country' or 'uri'. This attribute is optional.
    */
-  public final native void setRelationship() /*-{
-    this.setRelationship();
+  public final native void setType() /*-{
+    this.setType();
   }-*/;
 
   /**
-   * Sets the type of restriction, either country or uri.
+   * Sets the type of restriction, either 'country' or 'uri'. This attribute is optional.
    * 
-   * @param type
+   * @param type Type of restriction, either 'country' or 'uri' or undefined for none.
    */
   public final native void setType(String type) /*-{
     this.setType(
       type
     );
-  }-*/;
-
-  /**
-   * Sets the type of restriction, either country or uri.
-   * 
-   * @param type
-   */
-  public final native void setType() /*-{
-    this.setType();
   }-*/;
 
 }

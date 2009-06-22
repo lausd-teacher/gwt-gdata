@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.analytics;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * First day for which to retrieve data.
  */
 public class StartDate extends JavaScriptObject {
 
   /**
    * Constructs a start date using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native StartDate newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.analytics.StartDate(
@@ -32,42 +34,33 @@ public class StartDate extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a start date using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native StartDate newInstance() /*-{
-    return new $wnd.google.gdata.analytics.StartDate();
-  }-*/;
-
   protected StartDate() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is required.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is required.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is required.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

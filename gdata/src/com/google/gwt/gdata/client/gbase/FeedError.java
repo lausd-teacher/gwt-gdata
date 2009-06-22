@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.gbase;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * The description of an error while processing a Google Base datafeed.
  */
 public class FeedError extends JavaScriptObject {
 
   /**
    * Constructs a feed error using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: id, line, and value.
    */
   public static native FeedError newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.FeedError(
@@ -32,46 +34,46 @@ public class FeedError extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a feed error using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native FeedError newInstance() /*-{
-    return new $wnd.google.gdata.gbase.FeedError();
-  }-*/;
-
   protected FeedError() { }
 
   /**
-   * Returns the id.
+   * Returns the id. This attribute is required.
    * 
-   * @return
+   * @return Id or undefined for none.
    */
   public final native String getId() /*-{
     return this.getId();
   }-*/;
 
   /**
-   * Returns the line.
+   * Returns the line. This attribute is optional.
    * 
-   * @return
+   * @return Line or undefined for none.
    */
   public final native double getLine() /*-{
     return this.getLine();
   }-*/;
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is optional.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the id.
+   * Sets the id. This attribute is required.
+   */
+  public final native void setId() /*-{
+    this.setId();
+  }-*/;
+
+  /**
+   * Sets the id. This attribute is required.
    * 
-   * @param id
+   * @param id Id or undefined for none.
    */
   public final native void setId(String id) /*-{
     this.setId(
@@ -80,18 +82,16 @@ public class FeedError extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the id.
-   * 
-   * @param id
+   * Sets the line. This attribute is optional.
    */
-  public final native void setId() /*-{
-    this.setId();
+  public final native void setLine() /*-{
+    this.setLine();
   }-*/;
 
   /**
-   * Sets the line.
+   * Sets the line. This attribute is optional.
    * 
-   * @param line
+   * @param line Line or undefined for none.
    */
   public final native void setLine(double line) /*-{
     this.setLine(
@@ -100,32 +100,21 @@ public class FeedError extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the line.
-   * 
-   * @param line
+   * Sets the value. This attribute is optional.
    */
-  public final native void setLine() /*-{
-    this.setLine();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is optional.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

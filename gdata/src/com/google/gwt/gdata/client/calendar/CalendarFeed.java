@@ -19,24 +19,19 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a feed of Calendars.
  */
 public class CalendarFeed extends com.google.gwt.gdata.client.Feed<CalendarEntry> {
 
   /**
    * Constructs a Calendar feed using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, contributors, entries, generator, id, itemsPerPage, links, startIndex, title, and updated.
    */
   public static native CalendarFeed newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.CalendarFeed(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a Calendar feed using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native CalendarFeed newInstance() /*-{
-    return new $wnd.google.gdata.calendar.CalendarFeed();
   }-*/;
 
   protected CalendarFeed() { }

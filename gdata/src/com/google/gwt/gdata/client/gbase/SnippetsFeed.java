@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.gbase;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a feed of snippets of public items.
  */
 public class SnippetsFeed extends com.google.gwt.gdata.client.Feed<SnippetsEntry> {
 
   /**
    * Constructs a Google Base snippet feed using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, entries, generator, id, itemsPerPage, links, startIndex, title, totalResults, and updated.
    */
   public static native SnippetsFeed newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.SnippetsFeed(
@@ -32,19 +34,12 @@ public class SnippetsFeed extends com.google.gwt.gdata.client.Feed<SnippetsEntry
     );
   }-*/;
 
-  /**
-   * Constructs a Google Base snippet feed using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native SnippetsFeed newInstance() /*-{
-    return new $wnd.google.gdata.gbase.SnippetsFeed();
-  }-*/;
-
   protected SnippetsFeed() { }
 
   /**
    * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
    * 
-   * @return
+   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed or undefined for none.
    */
   public final native com.google.gwt.gdata.client.Link getFeedBatchLink() /*-{
     return this.getFeedBatchLink();
@@ -53,7 +48,7 @@ public class SnippetsFeed extends com.google.gwt.gdata.client.Feed<SnippetsEntry
   /**
    * Returns the link that provides the URI of next page in a paged feed.
    * 
-   * @return
+   * @return Link that provides the URI of next page in a paged feed or undefined for none.
    */
   public final native com.google.gwt.gdata.client.atom.Link getNextLink() /*-{
     return this.getNextLink();
@@ -62,7 +57,7 @@ public class SnippetsFeed extends com.google.gwt.gdata.client.Feed<SnippetsEntry
   /**
    * Returns the link that provides the URI of previous page in a paged feed.
    * 
-   * @return
+   * @return Link that provides the URI of previous page in a paged feed or undefined for none.
    */
   public final native com.google.gwt.gdata.client.atom.Link getPreviousLink() /*-{
     return this.getPreviousLink();

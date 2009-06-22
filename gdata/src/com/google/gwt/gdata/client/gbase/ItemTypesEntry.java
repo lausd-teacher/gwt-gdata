@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.gbase;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes an entry in the feed of public item types.
  */
 public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry<ItemTypesEntry> {
 
   /**
    * Constructs a Google Base item type entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: attributes, authors, categories, content, id, itemType, links, title, and updated.
    */
   public static native ItemTypesEntry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.ItemTypesEntry(
@@ -32,28 +34,21 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry<ItemTypesE
     );
   }-*/;
 
-  /**
-   * Constructs a Google Base item type entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native ItemTypesEntry newInstance() /*-{
-    return new $wnd.google.gdata.gbase.ItemTypesEntry();
-  }-*/;
-
   protected ItemTypesEntry() { }
 
   /**
-   * Returns the gm attributes.
+   * Returns the gm attributes. This element is optional.
    * 
-   * @return
+   * @return Gm attributes or undefined for none.
    */
   public final native GmAttributes getAttributes() /*-{
     return this.getAttributes();
   }-*/;
 
   /**
-   * Returns the item type as defined in /itemtypes feed.
+   * Returns the item type as defined in /itemtypes feed. This element is required.
    * 
-   * @return
+   * @return Item type as defined in /itemtypes feed or undefined for none.
    */
   public final native GmItemType getItemType() /*-{
     return this.getItemType();
@@ -62,16 +57,23 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry<ItemTypesE
   /**
    * Returns the link that provides the URI of a related link to the entry.
    * 
-   * @return
+   * @return Link that provides the URI of a related link to the entry or undefined for none.
    */
   public final native com.google.gwt.gdata.client.atom.Link getRelatedLink() /*-{
     return this.getRelatedLink();
   }-*/;
 
   /**
-   * Sets the gm attributes.
+   * Sets the gm attributes. This element is optional.
+   */
+  public final native void setAttributes() /*-{
+    this.setAttributes();
+  }-*/;
+
+  /**
+   * Sets the gm attributes. This element is optional.
    * 
-   * @param attributes
+   * @param attributes Gm attributes, or object to use as a parameter to the google.gdata.gbase.GmAttributes constructor, or undefined for none.
    */
   public final native void setAttributes(GmAttributes attributes) /*-{
     this.setAttributes(
@@ -80,32 +82,21 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry<ItemTypesE
   }-*/;
 
   /**
-   * Sets the gm attributes.
-   * 
-   * @param attributes
+   * Sets the item type as defined in /itemtypes feed. This element is required.
    */
-  public final native void setAttributes() /*-{
-    this.setAttributes();
+  public final native void setItemType() /*-{
+    this.setItemType();
   }-*/;
 
   /**
-   * Sets the item type as defined in /itemtypes feed.
+   * Sets the item type as defined in /itemtypes feed. This element is required.
    * 
-   * @param itemType
+   * @param itemType Item type as defined in /itemtypes feed, or object to use as a parameter to the google.gdata.gbase.GmItemType constructor, or undefined for none.
    */
   public final native void setItemType(GmItemType itemType) /*-{
     this.setItemType(
       itemType
     );
-  }-*/;
-
-  /**
-   * Sets the item type as defined in /itemtypes feed.
-   * 
-   * @param itemType
-   */
-  public final native void setItemType() /*-{
-    this.setItemType();
   }-*/;
 
 }

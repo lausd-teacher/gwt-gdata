@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Lists notification methods to be suppressed for this reply.
  */
 public class SuppressReplyNotificationsProperty extends JavaScriptObject {
 
   /**
    * Constructs a suppress reply notifications property using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: methods.
    */
   public static native SuppressReplyNotificationsProperty newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.SuppressReplyNotificationsProperty(
@@ -32,42 +34,33 @@ public class SuppressReplyNotificationsProperty extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a suppress reply notifications property using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native SuppressReplyNotificationsProperty newInstance() /*-{
-    return new $wnd.google.gdata.calendar.SuppressReplyNotificationsProperty();
-  }-*/;
-
   protected SuppressReplyNotificationsProperty() { }
 
   /**
-   * Returns the comma separated list of methods.
+   * Returns the comma separated list of methods. This attribute is required.
    * 
-   * @return
+   * @return Comma separated list of methods or undefined for none.
    */
   public final native String getMethods() /*-{
     return this.getMethods();
   }-*/;
 
   /**
-   * Sets the comma separated list of methods.
+   * Sets the comma separated list of methods. This attribute is required.
+   */
+  public final native void setMethods() /*-{
+    this.setMethods();
+  }-*/;
+
+  /**
+   * Sets the comma separated list of methods. This attribute is required.
    * 
-   * @param methods
+   * @param methods Comma separated list of methods or undefined for none.
    */
   public final native void setMethods(String methods) /*-{
     this.setMethods(
       methods
     );
-  }-*/;
-
-  /**
-   * Sets the comma separated list of methods.
-   * 
-   * @param methods
-   */
-  public final native void setMethods() /*-{
-    this.setMethods();
   }-*/;
 
 }

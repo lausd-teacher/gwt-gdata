@@ -22,12 +22,14 @@ import com.google.gwt.gdata.client.FeedLink;
 import com.google.gwt.gdata.client.ResourceId;
 
 /**
- * Comment unavailable.
+ * Describes a map entry.
  */
 public class MapEntry extends com.google.gwt.gdata.client.Entry<MapEntry> {
 
   /**
    * Constructs a map entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, content, control, deleted, edited, feedLink, id, links, published, resourceId, summary, title, and updated.
    */
   public static native MapEntry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.maps.MapEntry(
@@ -35,19 +37,12 @@ public class MapEntry extends com.google.gwt.gdata.client.Entry<MapEntry> {
     );
   }-*/;
 
-  /**
-   * Constructs a map entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MapEntry newInstance() /*-{
-    return new $wnd.google.gdata.maps.MapEntry();
-  }-*/;
-
   protected MapEntry() { }
 
   /**
-   * Returns the link that provides the URI of an alternate format of the entrys or feeds contents.
+   * Returns the link that provides the URI of an alternate format of the entry's or feed's contents.
    * 
-   * @return
+   * @return Link that provides the URI of an alternate format of the entry's or feed's contents or undefined for none.
    */
   public final native com.google.gwt.gdata.client.Link getAtomAlternateLink() /*-{
     return this.getAtomAlternateLink();
@@ -56,43 +51,50 @@ public class MapEntry extends com.google.gwt.gdata.client.Entry<MapEntry> {
   /**
    * Returns the link that provides the URI of the full feed (without any query parameters).
    * 
-   * @return
+   * @return Link that provides the URI of the full feed (without any query parameters) or undefined for none.
    */
   public final native com.google.gwt.gdata.client.Link getAtomFeedLink() /*-{
     return this.getAtomFeedLink();
   }-*/;
 
   /**
-   * Returns the marker for deleted entries.
+   * Returns the marker for deleted entries. This element is optional.
    * 
-   * @return
+   * @return Marker for deleted entries or undefined for none.
    */
   public final native Deleted getDeleted() /*-{
     return this.getDeleted();
   }-*/;
 
   /**
-   * Returns the nested feed link.
+   * Returns the nested feed link. This element is optional.
    * 
-   * @return
+   * @return Nested feed link or undefined for none.
    */
   public final native FeedLink getFeedLink() /*-{
     return this.getFeedLink();
   }-*/;
 
   /**
-   * Returns the resource id.
+   * Returns the resource id. This element is optional.
    * 
-   * @return
+   * @return Resource id or undefined for none.
    */
   public final native ResourceId getResourceId() /*-{
     return this.getResourceId();
   }-*/;
 
   /**
-   * Sets the marker for deleted entries.
+   * Sets the marker for deleted entries. This element is optional.
+   */
+  public final native void setDeleted() /*-{
+    this.setDeleted();
+  }-*/;
+
+  /**
+   * Sets the marker for deleted entries. This element is optional.
    * 
-   * @param deleted
+   * @param deleted Marker for deleted entries, or object to use as a parameter to the google.gdata.Deleted constructor, or undefined for none.
    */
   public final native void setDeleted(Deleted deleted) /*-{
     this.setDeleted(
@@ -101,18 +103,16 @@ public class MapEntry extends com.google.gwt.gdata.client.Entry<MapEntry> {
   }-*/;
 
   /**
-   * Sets the marker for deleted entries.
-   * 
-   * @param deleted
+   * Sets the nested feed link. This element is optional.
    */
-  public final native void setDeleted() /*-{
-    this.setDeleted();
+  public final native void setFeedLink() /*-{
+    this.setFeedLink();
   }-*/;
 
   /**
-   * Sets the nested feed link.
+   * Sets the nested feed link. This element is optional.
    * 
-   * @param feedLink
+   * @param feedLink Nested feed link, or object to use as a parameter to the google.gdata.FeedLink constructor, or undefined for none.
    */
   public final native void setFeedLink(FeedLink feedLink) /*-{
     this.setFeedLink(
@@ -121,32 +121,21 @@ public class MapEntry extends com.google.gwt.gdata.client.Entry<MapEntry> {
   }-*/;
 
   /**
-   * Sets the nested feed link.
-   * 
-   * @param feedLink
+   * Sets the resource id. This element is optional.
    */
-  public final native void setFeedLink() /*-{
-    this.setFeedLink();
+  public final native void setResourceId() /*-{
+    this.setResourceId();
   }-*/;
 
   /**
-   * Sets the resource id.
+   * Sets the resource id. This element is optional.
    * 
-   * @param resourceId
+   * @param resourceId Resource id, or object to use as a parameter to the google.gdata.ResourceId constructor, or undefined for none.
    */
   public final native void setResourceId(ResourceId resourceId) /*-{
     this.setResourceId(
       resourceId
     );
-  }-*/;
-
-  /**
-   * Sets the resource id.
-   * 
-   * @param resourceId
-   */
-  public final native void setResourceId() /*-{
-    this.setResourceId();
   }-*/;
 
 }
