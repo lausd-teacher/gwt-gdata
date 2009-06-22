@@ -20,24 +20,19 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.RecurrenceException;
 
 /**
- * Comment unavailable.
+ * Describes an exception to a recurring Calendar event.
  */
 public class CalendarRecurrenceException extends RecurrenceException {
 
   /**
-   * Constructs a Calendar recurrence exception using an object parameter whose property names match the setter method to use for each property.
+   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: entryLink and specialized.
    */
   public static native CalendarRecurrenceException newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.CalendarRecurrenceException(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a Calendar recurrence exception using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native CalendarRecurrenceException newInstance() /*-{
-    return new $wnd.google.gdata.calendar.CalendarRecurrenceException();
   }-*/;
 
   protected CalendarRecurrenceException() { }

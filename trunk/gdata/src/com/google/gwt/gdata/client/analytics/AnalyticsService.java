@@ -20,7 +20,7 @@ import com.google.gwt.gdata.client.GoogleService;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
- * Comment unavailable.
+ * Analytics service.
  */
 public class AnalyticsService extends GoogleService {
 
@@ -31,6 +31,8 @@ public class AnalyticsService extends GoogleService {
 
   /**
    * Constructor.
+   * 
+   * @param applicationName Name of application (used for tracking).
    */
   public static native AnalyticsService newInstance(String applicationName) /*-{
     return new $wnd.google.gdata.analytics.AnalyticsService(
@@ -47,11 +49,10 @@ public class AnalyticsService extends GoogleService {
   /**
    * Retrieves an account entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native AccountEntry getAccountEntry(String uri, AsyncCallback<AccountEntry> callback) /*-{
     return this.getAccountEntry(
@@ -64,11 +65,10 @@ public class AnalyticsService extends GoogleService {
   /**
    * Retrieves the feed of accounts and profiles to which a given user has access.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native AccountFeed getAccountFeed(AccountQuery query, AsyncCallback<AccountFeed> callback) /*-{
     return this.getAccountFeed(
@@ -81,11 +81,10 @@ public class AnalyticsService extends GoogleService {
   /**
    * Retrieves the feed of accounts and profiles to which a given user has access.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native AccountFeed getAccountFeed(String uri, AsyncCallback<AccountFeed> callback) /*-{
     return this.getAccountFeed(
@@ -98,11 +97,10 @@ public class AnalyticsService extends GoogleService {
   /**
    * Retrieves a data entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native DataEntry getDataEntry(String uri, AsyncCallback<DataEntry> callback) /*-{
     return this.getDataEntry(
@@ -115,11 +113,10 @@ public class AnalyticsService extends GoogleService {
   /**
    * Retrieves the arbitrary data from an Analytics profile.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native DataFeed getDataFeed(DataQuery query, AsyncCallback<DataFeed> callback) /*-{
     return this.getDataFeed(
@@ -132,11 +129,10 @@ public class AnalyticsService extends GoogleService {
   /**
    * Retrieves the arbitrary data from an Analytics profile.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native DataFeed getDataFeed(String uri, AsyncCallback<DataFeed> callback) /*-{
     return this.getDataFeed(

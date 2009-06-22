@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a phone number.
  */
 public class PhoneNumber extends JavaScriptObject {
 
@@ -65,18 +65,13 @@ public class PhoneNumber extends JavaScriptObject {
 
   /**
    * Constructs a phone number using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: label, primary, rel, and value.
    */
   public static native PhoneNumber newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.PhoneNumber(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a phone number using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native PhoneNumber newInstance() /*-{
-    return new $wnd.google.gdata.PhoneNumber();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -86,45 +81,52 @@ public class PhoneNumber extends JavaScriptObject {
   protected PhoneNumber() { }
 
   /**
-   * Returns the simple string value used to name this phone number.
+   * Returns the simple string value used to name this phone number. This attribute is optional.
    * 
-   * @return
+   * @return Simple string value used to name this phone number or undefined for none.
    */
   public final native String getLabel() /*-{
     return this.getLabel();
   }-*/;
 
   /**
-   * Returns whether this is the primary phone number.
+   * Returns whether this is the primary phone number. This attribute is optional.
    * 
-   * @return
+   * @return Whether this is the primary phone number or undefined for none.
    */
   public final native boolean getPrimary() /*-{
     return this.getPrimary();
   }-*/;
 
   /**
-   * Returns the programmatic value that identifies the type of phone number.
+   * Returns the programmatic value that identifies the type of phone number. This attribute is optional.
    * 
-   * @return
+   * @return Programmatic value that identifies the type of phone number or undefined for none.
    */
   public final native String getRel() /*-{
     return this.getRel();
   }-*/;
 
   /**
-   * Returns the human-readable phone number.
+   * Returns the human-readable phone number. This attribute is required.
    * 
-   * @return
+   * @return Human-readable phone number or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the simple string value used to name this phone number.
+   * Sets the simple string value used to name this phone number. This attribute is optional.
+   */
+  public final native void setLabel() /*-{
+    this.setLabel();
+  }-*/;
+
+  /**
+   * Sets the simple string value used to name this phone number. This attribute is optional.
    * 
-   * @param label
+   * @param label Simple string value used to name this phone number or undefined for none.
    */
   public final native void setLabel(String label) /*-{
     this.setLabel(
@@ -133,18 +135,16 @@ public class PhoneNumber extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the simple string value used to name this phone number.
-   * 
-   * @param label
+   * Sets whether this is the primary phone number. This attribute is optional.
    */
-  public final native void setLabel() /*-{
-    this.setLabel();
+  public final native void setPrimary() /*-{
+    this.setPrimary();
   }-*/;
 
   /**
-   * Sets whether this is the primary phone number.
+   * Sets whether this is the primary phone number. This attribute is optional.
    * 
-   * @param primary
+   * @param primary Whether this is the primary phone number or undefined for none.
    */
   public final native void setPrimary(boolean primary) /*-{
     this.setPrimary(
@@ -153,18 +153,16 @@ public class PhoneNumber extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether this is the primary phone number.
-   * 
-   * @param primary
+   * Sets the programmatic value that identifies the type of phone number. This attribute is optional.
    */
-  public final native void setPrimary() /*-{
-    this.setPrimary();
+  public final native void setRel() /*-{
+    this.setRel();
   }-*/;
 
   /**
-   * Sets the programmatic value that identifies the type of phone number.
+   * Sets the programmatic value that identifies the type of phone number. This attribute is optional.
    * 
-   * @param rel
+   * @param rel Programmatic value that identifies the type of phone number or undefined for none.
    */
   public final native void setRel(String rel) /*-{
     this.setRel(
@@ -173,32 +171,21 @@ public class PhoneNumber extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the programmatic value that identifies the type of phone number.
-   * 
-   * @param rel
+   * Sets the human-readable phone number. This attribute is required.
    */
-  public final native void setRel() /*-{
-    this.setRel();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets the human-readable phone number.
+   * Sets the human-readable phone number. This attribute is required.
    * 
-   * @param value
+   * @param value Human-readable phone number or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the human-readable phone number.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

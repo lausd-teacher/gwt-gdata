@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a postal address.
  */
 public class PostalAddress extends JavaScriptObject {
 
@@ -40,18 +40,13 @@ public class PostalAddress extends JavaScriptObject {
 
   /**
    * Constructs a postal address using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: label, primary, rel, and value.
    */
   public static native PostalAddress newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.PostalAddress(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a postal address using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native PostalAddress newInstance() /*-{
-    return new $wnd.google.gdata.PostalAddress();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -61,45 +56,52 @@ public class PostalAddress extends JavaScriptObject {
   protected PostalAddress() { }
 
   /**
-   * Returns the simple string value used to name this address.
+   * Returns the simple string value used to name this address. This attribute is optional.
    * 
-   * @return
+   * @return Simple string value used to name this address or undefined for none.
    */
   public final native String getLabel() /*-{
     return this.getLabel();
   }-*/;
 
   /**
-   * Returns whether this is the primary postal address.
+   * Returns whether this is the primary postal address. This attribute is optional.
    * 
-   * @return
+   * @return Whether this is the primary postal address or undefined for none.
    */
   public final native boolean getPrimary() /*-{
     return this.getPrimary();
   }-*/;
 
   /**
-   * Returns the postal address type.
+   * Returns the postal address type. This attribute is optional.
    * 
-   * @return
+   * @return Postal address type or undefined for none.
    */
   public final native String getRel() /*-{
     return this.getRel();
   }-*/;
 
   /**
-   * Returns the address string.
+   * Returns the address string. This attribute is required.
    * 
-   * @return
+   * @return Address string or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the simple string value used to name this address.
+   * Sets the simple string value used to name this address. This attribute is optional.
+   */
+  public final native void setLabel() /*-{
+    this.setLabel();
+  }-*/;
+
+  /**
+   * Sets the simple string value used to name this address. This attribute is optional.
    * 
-   * @param label
+   * @param label Simple string value used to name this address or undefined for none.
    */
   public final native void setLabel(String label) /*-{
     this.setLabel(
@@ -108,18 +110,16 @@ public class PostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the simple string value used to name this address.
-   * 
-   * @param label
+   * Sets whether this is the primary postal address. This attribute is optional.
    */
-  public final native void setLabel() /*-{
-    this.setLabel();
+  public final native void setPrimary() /*-{
+    this.setPrimary();
   }-*/;
 
   /**
-   * Sets whether this is the primary postal address.
+   * Sets whether this is the primary postal address. This attribute is optional.
    * 
-   * @param primary
+   * @param primary Whether this is the primary postal address or undefined for none.
    */
   public final native void setPrimary(boolean primary) /*-{
     this.setPrimary(
@@ -128,18 +128,16 @@ public class PostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether this is the primary postal address.
-   * 
-   * @param primary
+   * Sets the postal address type. This attribute is optional.
    */
-  public final native void setPrimary() /*-{
-    this.setPrimary();
+  public final native void setRel() /*-{
+    this.setRel();
   }-*/;
 
   /**
-   * Sets the postal address type.
+   * Sets the postal address type. This attribute is optional.
    * 
-   * @param rel
+   * @param rel Postal address type or undefined for none.
    */
   public final native void setRel(String rel) /*-{
     this.setRel(
@@ -148,32 +146,21 @@ public class PostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the postal address type.
-   * 
-   * @param rel
+   * Sets the address string. This attribute is required.
    */
-  public final native void setRel() /*-{
-    this.setRel();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets the address string.
+   * Sets the address string. This attribute is required.
    * 
-   * @param value
+   * @param value Address string or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the address string.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

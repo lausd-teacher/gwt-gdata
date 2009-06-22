@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.mediarss;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a media rating.
  */
 public class MediaRating extends JavaScriptObject {
 
@@ -30,18 +30,13 @@ public class MediaRating extends JavaScriptObject {
 
   /**
    * Constructs a media rating using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content and scheme.
    */
   public static native MediaRating newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.mediarss.MediaRating(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a media rating using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaRating newInstance() /*-{
-    return new $wnd.google.gdata.mediarss.MediaRating();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -51,27 +46,34 @@ public class MediaRating extends JavaScriptObject {
   protected MediaRating() { }
 
   /**
-   * Returns the the rating value.
+   * Returns the the rating value. This attribute is optional.
    * 
-   * @return
+   * @return The rating value or undefined for none.
    */
   public final native String getContent() /*-{
     return this.getContent();
   }-*/;
 
   /**
-   * Returns the URI that identifies the rating scheme.
+   * Returns the URI that identifies the rating scheme. This attribute is optional.
    * 
-   * @return
+   * @return URI that identifies the rating scheme or undefined for none.
    */
   public final native String getScheme() /*-{
     return this.getScheme();
   }-*/;
 
   /**
-   * Sets the the rating value.
+   * Sets the the rating value. This attribute is optional.
+   */
+  public final native void setContent() /*-{
+    this.setContent();
+  }-*/;
+
+  /**
+   * Sets the the rating value. This attribute is optional.
    * 
-   * @param content
+   * @param content The rating value or undefined for none.
    */
   public final native void setContent(String content) /*-{
     this.setContent(
@@ -80,32 +82,21 @@ public class MediaRating extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the the rating value.
-   * 
-   * @param content
+   * Sets the URI that identifies the rating scheme. This attribute is optional.
    */
-  public final native void setContent() /*-{
-    this.setContent();
+  public final native void setScheme() /*-{
+    this.setScheme();
   }-*/;
 
   /**
-   * Sets the URI that identifies the rating scheme.
+   * Sets the URI that identifies the rating scheme. This attribute is optional.
    * 
-   * @param scheme
+   * @param scheme URI that identifies the rating scheme or undefined for none.
    */
   public final native void setScheme(String scheme) /*-{
     this.setScheme(
       scheme
     );
-  }-*/;
-
-  /**
-   * Sets the URI that identifies the rating scheme.
-   * 
-   * @param scheme
-   */
-  public final native void setScheme() /*-{
-    this.setScheme();
   }-*/;
 
 }

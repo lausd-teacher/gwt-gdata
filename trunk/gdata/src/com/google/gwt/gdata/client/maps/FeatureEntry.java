@@ -25,12 +25,14 @@ import com.google.gwt.gdata.client.ResourceId;
 import com.google.gwt.gdata.client.StructuredPostalAddress;
 
 /**
- * Comment unavailable.
+ * Describes a feature entry.
  */
 public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry> {
 
   /**
    * Constructs a feature entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, content, contributors, customProperties, deleted, edited, id, links, postalAddress, published, resourceId, structuredPostalAddress, title, and updated.
    */
   public static native FeatureEntry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.maps.FeatureEntry(
@@ -38,19 +40,12 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry
     );
   }-*/;
 
-  /**
-   * Constructs a feature entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native FeatureEntry newInstance() /*-{
-    return new $wnd.google.gdata.maps.FeatureEntry();
-  }-*/;
-
   protected FeatureEntry() { }
 
   /**
    * Adds a new custom property.
    * 
-   * @param customProperty
+   * @param customProperty Custom property to add, or object to use as a parameter to the google.gdata.CustomProperty constructor.
    */
   public final native void addCustomProperty(CustomProperty customProperty) /*-{
     this.addCustomProperty(
@@ -61,7 +56,7 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry
   /**
    * Returns the link that provides the URI of the full feed (without any query parameters).
    * 
-   * @return
+   * @return Link that provides the URI of the full feed (without any query parameters) or undefined for none.
    */
   public final native com.google.gwt.gdata.client.Link getAtomFeedLink() /*-{
     return this.getAtomFeedLink();
@@ -70,43 +65,43 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry
   /**
    * Returns the custom properties.
    * 
-   * @return
+   * @return Custom properties.
    */
   public final native JsArray<CustomProperty> getCustomProperties() /*-{
     return this.getCustomProperties();
   }-*/;
 
   /**
-   * Returns the marker for deleted entries.
+   * Returns the marker for deleted entries. This element is optional.
    * 
-   * @return
+   * @return Marker for deleted entries or undefined for none.
    */
   public final native Deleted getDeleted() /*-{
     return this.getDeleted();
   }-*/;
 
   /**
-   * Returns the postal address.
+   * Returns the postal address. This element is optional.
    * 
-   * @return
+   * @return Postal address or undefined for none.
    */
   public final native PostalAddress getPostalAddress() /*-{
     return this.getPostalAddress();
   }-*/;
 
   /**
-   * Returns the resource id.
+   * Returns the resource id. This element is optional.
    * 
-   * @return
+   * @return Resource id or undefined for none.
    */
   public final native ResourceId getResourceId() /*-{
     return this.getResourceId();
   }-*/;
 
   /**
-   * Returns the structured postal address.
+   * Returns the structured postal address. This element is optional.
    * 
-   * @return
+   * @return Structured postal address or undefined for none.
    */
   public final native StructuredPostalAddress getStructuredPostalAddress() /*-{
     return this.getStructuredPostalAddress();
@@ -114,8 +109,15 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry
 
   /**
    * Sets the custom properties.
+   */
+  public final native void setCustomProperties() /*-{
+    this.setCustomProperties();
+  }-*/;
+
+  /**
+   * Sets the custom properties.
    * 
-   * @param customProperties
+   * @param customProperties Custom properties, where each custom property is added using the addCustomProperty() function, or undefined to clear the custom properties.
    */
   public final native void setCustomProperties(JsArray<CustomProperty> customProperties) /*-{
     this.setCustomProperties(
@@ -124,18 +126,16 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry
   }-*/;
 
   /**
-   * Sets the custom properties.
-   * 
-   * @param customProperties
+   * Sets the marker for deleted entries. This element is optional.
    */
-  public final native void setCustomProperties() /*-{
-    this.setCustomProperties();
+  public final native void setDeleted() /*-{
+    this.setDeleted();
   }-*/;
 
   /**
-   * Sets the marker for deleted entries.
+   * Sets the marker for deleted entries. This element is optional.
    * 
-   * @param deleted
+   * @param deleted Marker for deleted entries, or object to use as a parameter to the google.gdata.Deleted constructor, or undefined for none.
    */
   public final native void setDeleted(Deleted deleted) /*-{
     this.setDeleted(
@@ -144,18 +144,16 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry
   }-*/;
 
   /**
-   * Sets the marker for deleted entries.
-   * 
-   * @param deleted
+   * Sets the postal address. This element is optional.
    */
-  public final native void setDeleted() /*-{
-    this.setDeleted();
+  public final native void setPostalAddress() /*-{
+    this.setPostalAddress();
   }-*/;
 
   /**
-   * Sets the postal address.
+   * Sets the postal address. This element is optional.
    * 
-   * @param postalAddress
+   * @param postalAddress Postal address, or object to use as a parameter to the google.gdata.PostalAddress constructor, or undefined for none.
    */
   public final native void setPostalAddress(PostalAddress postalAddress) /*-{
     this.setPostalAddress(
@@ -164,18 +162,16 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry
   }-*/;
 
   /**
-   * Sets the postal address.
-   * 
-   * @param postalAddress
+   * Sets the resource id. This element is optional.
    */
-  public final native void setPostalAddress() /*-{
-    this.setPostalAddress();
+  public final native void setResourceId() /*-{
+    this.setResourceId();
   }-*/;
 
   /**
-   * Sets the resource id.
+   * Sets the resource id. This element is optional.
    * 
-   * @param resourceId
+   * @param resourceId Resource id, or object to use as a parameter to the google.gdata.ResourceId constructor, or undefined for none.
    */
   public final native void setResourceId(ResourceId resourceId) /*-{
     this.setResourceId(
@@ -184,32 +180,21 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry
   }-*/;
 
   /**
-   * Sets the resource id.
-   * 
-   * @param resourceId
+   * Sets the structured postal address. This element is optional.
    */
-  public final native void setResourceId() /*-{
-    this.setResourceId();
+  public final native void setStructuredPostalAddress() /*-{
+    this.setStructuredPostalAddress();
   }-*/;
 
   /**
-   * Sets the structured postal address.
+   * Sets the structured postal address. This element is optional.
    * 
-   * @param structuredPostalAddress
+   * @param structuredPostalAddress Structured postal address, or object to use as a parameter to the google.gdata.StructuredPostalAddress constructor, or undefined for none.
    */
   public final native void setStructuredPostalAddress(StructuredPostalAddress structuredPostalAddress) /*-{
     this.setStructuredPostalAddress(
       structuredPostalAddress
     );
-  }-*/;
-
-  /**
-   * Sets the structured postal address.
-   * 
-   * @param structuredPostalAddress
-   */
-  public final native void setStructuredPostalAddress() /*-{
-    this.setStructuredPostalAddress();
   }-*/;
 
 }

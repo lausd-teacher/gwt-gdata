@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.geo;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a W3C geographical location.
  */
 public class W3CPoint extends JavaScriptObject {
 
   /**
    * Constructs a W3C geographical location using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: geoLatitude and geoLongitude.
    */
   public static native W3CPoint newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.geo.W3CPoint(
@@ -32,37 +34,37 @@ public class W3CPoint extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a W3C geographical location using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native W3CPoint newInstance() /*-{
-    return new $wnd.google.gdata.geo.W3CPoint();
-  }-*/;
-
   protected W3CPoint() { }
 
   /**
-   * Returns the W3C latitude.
+   * Returns the W3C latitude. This element is optional.
    * 
-   * @return
+   * @return W3C latitude or undefined for none.
    */
   public final native GeoLat getGeoLatitude() /*-{
     return this.getGeoLatitude();
   }-*/;
 
   /**
-   * Returns the W3C longitude.
+   * Returns the W3C longitude. This element is optional.
    * 
-   * @return
+   * @return W3C longitude or undefined for none.
    */
   public final native GeoLong getGeoLongitude() /*-{
     return this.getGeoLongitude();
   }-*/;
 
   /**
-   * Sets the W3C latitude.
+   * Sets the W3C latitude. This element is optional.
+   */
+  public final native void setGeoLatitude() /*-{
+    this.setGeoLatitude();
+  }-*/;
+
+  /**
+   * Sets the W3C latitude. This element is optional.
    * 
-   * @param geoLatitude
+   * @param geoLatitude W3C latitude, or object to use as a parameter to the google.gdata.geo.GeoLat constructor, or undefined for none.
    */
   public final native void setGeoLatitude(GeoLat geoLatitude) /*-{
     this.setGeoLatitude(
@@ -71,32 +73,21 @@ public class W3CPoint extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the W3C latitude.
-   * 
-   * @param geoLatitude
+   * Sets the W3C longitude. This element is optional.
    */
-  public final native void setGeoLatitude() /*-{
-    this.setGeoLatitude();
+  public final native void setGeoLongitude() /*-{
+    this.setGeoLongitude();
   }-*/;
 
   /**
-   * Sets the W3C longitude.
+   * Sets the W3C longitude. This element is optional.
    * 
-   * @param geoLongitude
+   * @param geoLongitude W3C longitude, or object to use as a parameter to the google.gdata.geo.GeoLong constructor, or undefined for none.
    */
   public final native void setGeoLongitude(GeoLong geoLongitude) /*-{
     this.setGeoLongitude(
       geoLongitude
     );
-  }-*/;
-
-  /**
-   * Sets the W3C longitude.
-   * 
-   * @param geoLongitude
-   */
-  public final native void setGeoLongitude() /*-{
-    this.setGeoLongitude();
   }-*/;
 
 }

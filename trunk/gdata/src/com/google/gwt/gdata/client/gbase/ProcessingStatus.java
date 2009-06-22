@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.gbase;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * The processing status of this item/feed.
  */
 public class ProcessingStatus extends JavaScriptObject {
 
@@ -55,18 +55,13 @@ public class ProcessingStatus extends JavaScriptObject {
 
   /**
    * Constructs a processing status using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: feedErrors, itemsInserted, itemsProcessed, and status.
    */
   public static native ProcessingStatus newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.ProcessingStatus(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a processing status using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native ProcessingStatus newInstance() /*-{
-    return new $wnd.google.gdata.gbase.ProcessingStatus();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -76,45 +71,52 @@ public class ProcessingStatus extends JavaScriptObject {
   protected ProcessingStatus() { }
 
   /**
-   * Returns the feed errors.
+   * Returns the feed errors. This element is optional.
    * 
-   * @return
+   * @return Feed errors or undefined for none.
    */
   public final native FeedErrors getFeedErrors() /*-{
     return this.getFeedErrors();
   }-*/;
 
   /**
-   * Returns the items inserted.
+   * Returns the items inserted. This element is optional.
    * 
-   * @return
+   * @return Items inserted or undefined for none.
    */
   public final native ItemsInserted getItemsInserted() /*-{
     return this.getItemsInserted();
   }-*/;
 
   /**
-   * Returns the items processed.
+   * Returns the items processed. This element is optional.
    * 
-   * @return
+   * @return Items processed or undefined for none.
    */
   public final native ItemsProcessed getItemsProcessed() /*-{
     return this.getItemsProcessed();
   }-*/;
 
   /**
-   * Returns the status.
+   * Returns the status. This attribute is required.
    * 
-   * @return
+   * @return Status or undefined for none.
    */
   public final native String getStatus() /*-{
     return this.getStatus();
   }-*/;
 
   /**
-   * Sets the feed errors.
+   * Sets the feed errors. This element is optional.
+   */
+  public final native void setFeedErrors() /*-{
+    this.setFeedErrors();
+  }-*/;
+
+  /**
+   * Sets the feed errors. This element is optional.
    * 
-   * @param feedErrors
+   * @param feedErrors Feed errors, or object to use as a parameter to the google.gdata.gbase.FeedErrors constructor, or undefined for none.
    */
   public final native void setFeedErrors(FeedErrors feedErrors) /*-{
     this.setFeedErrors(
@@ -123,18 +125,16 @@ public class ProcessingStatus extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the feed errors.
-   * 
-   * @param feedErrors
+   * Sets the items inserted. This element is optional.
    */
-  public final native void setFeedErrors() /*-{
-    this.setFeedErrors();
+  public final native void setItemsInserted() /*-{
+    this.setItemsInserted();
   }-*/;
 
   /**
-   * Sets the items inserted.
+   * Sets the items inserted. This element is optional.
    * 
-   * @param itemsInserted
+   * @param itemsInserted Items inserted, or object to use as a parameter to the google.gdata.gbase.ItemsInserted constructor, or undefined for none.
    */
   public final native void setItemsInserted(ItemsInserted itemsInserted) /*-{
     this.setItemsInserted(
@@ -143,18 +143,16 @@ public class ProcessingStatus extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the items inserted.
-   * 
-   * @param itemsInserted
+   * Sets the items processed. This element is optional.
    */
-  public final native void setItemsInserted() /*-{
-    this.setItemsInserted();
+  public final native void setItemsProcessed() /*-{
+    this.setItemsProcessed();
   }-*/;
 
   /**
-   * Sets the items processed.
+   * Sets the items processed. This element is optional.
    * 
-   * @param itemsProcessed
+   * @param itemsProcessed Items processed, or object to use as a parameter to the google.gdata.gbase.ItemsProcessed constructor, or undefined for none.
    */
   public final native void setItemsProcessed(ItemsProcessed itemsProcessed) /*-{
     this.setItemsProcessed(
@@ -163,32 +161,21 @@ public class ProcessingStatus extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the items processed.
-   * 
-   * @param itemsProcessed
+   * Sets the status. This attribute is required.
    */
-  public final native void setItemsProcessed() /*-{
-    this.setItemsProcessed();
+  public final native void setStatus() /*-{
+    this.setStatus();
   }-*/;
 
   /**
-   * Sets the status.
+   * Sets the status. This attribute is required.
    * 
-   * @param status
+   * @param status Status or undefined for none.
    */
   public final native void setStatus(String status) /*-{
     this.setStatus(
       status
     );
-  }-*/;
-
-  /**
-   * Sets the status.
-   * 
-   * @param status
-   */
-  public final native void setStatus() /*-{
-    this.setStatus();
   }-*/;
 
 }

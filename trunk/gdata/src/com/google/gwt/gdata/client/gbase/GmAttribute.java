@@ -20,7 +20,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
 /**
- * Comment unavailable.
+ * Describes a list of attribute for an item type.
  */
 public class GmAttribute extends JavaScriptObject {
 
@@ -41,18 +41,13 @@ public class GmAttribute extends JavaScriptObject {
 
   /**
    * Constructs a list of attribute for an item type using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: count, importance, name, type, and values.
    */
   public static native GmAttribute newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.GmAttribute(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a list of attribute for an item type using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native GmAttribute newInstance() /*-{
-    return new $wnd.google.gdata.gbase.GmAttribute();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -64,7 +59,7 @@ public class GmAttribute extends JavaScriptObject {
   /**
    * Adds a new gm value.
    * 
-   * @param value
+   * @param value Gm value to add, or object to use as a parameter to the google.gdata.gbase.GmValue constructor.
    */
   public final native void addValue(GmValue value) /*-{
     this.addValue(
@@ -73,36 +68,36 @@ public class GmAttribute extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the count.
+   * Returns the count. This attribute is optional.
    * 
-   * @return
+   * @return Count or undefined for none.
    */
   public final native double getCount() /*-{
     return this.getCount();
   }-*/;
 
   /**
-   * Returns the importance.
+   * Returns the importance. This attribute is optional.
    * 
-   * @return
+   * @return Importance or undefined for none.
    */
   public final native String getImportance() /*-{
     return this.getImportance();
   }-*/;
 
   /**
-   * Returns the name.
+   * Returns the name. This attribute is required.
    * 
-   * @return
+   * @return Name or undefined for none.
    */
   public final native String getName() /*-{
     return this.getName();
   }-*/;
 
   /**
-   * Returns the type.
+   * Returns the type. This attribute is required.
    * 
-   * @return
+   * @return Type or undefined for none.
    */
   public final native String getType() /*-{
     return this.getType();
@@ -111,16 +106,23 @@ public class GmAttribute extends JavaScriptObject {
   /**
    * Returns the gm values.
    * 
-   * @return
+   * @return Gm values.
    */
   public final native JsArray<GmValue> getValues() /*-{
     return this.getValues();
   }-*/;
 
   /**
-   * Sets the count.
+   * Sets the count. This attribute is optional.
+   */
+  public final native void setCount() /*-{
+    this.setCount();
+  }-*/;
+
+  /**
+   * Sets the count. This attribute is optional.
    * 
-   * @param count
+   * @param count Count or undefined for none.
    */
   public final native void setCount(double count) /*-{
     this.setCount(
@@ -129,18 +131,16 @@ public class GmAttribute extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the count.
-   * 
-   * @param count
+   * Sets the importance. This attribute is optional.
    */
-  public final native void setCount() /*-{
-    this.setCount();
+  public final native void setImportance() /*-{
+    this.setImportance();
   }-*/;
 
   /**
-   * Sets the importance.
+   * Sets the importance. This attribute is optional.
    * 
-   * @param importance
+   * @param importance Importance or undefined for none.
    */
   public final native void setImportance(String importance) /*-{
     this.setImportance(
@@ -149,18 +149,16 @@ public class GmAttribute extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the importance.
-   * 
-   * @param importance
+   * Sets the name. This attribute is required.
    */
-  public final native void setImportance() /*-{
-    this.setImportance();
+  public final native void setName() /*-{
+    this.setName();
   }-*/;
 
   /**
-   * Sets the name.
+   * Sets the name. This attribute is required.
    * 
-   * @param name
+   * @param name Name or undefined for none.
    */
   public final native void setName(String name) /*-{
     this.setName(
@@ -169,18 +167,16 @@ public class GmAttribute extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the name.
-   * 
-   * @param name
+   * Sets the type. This attribute is required.
    */
-  public final native void setName() /*-{
-    this.setName();
+  public final native void setType() /*-{
+    this.setType();
   }-*/;
 
   /**
-   * Sets the type.
+   * Sets the type. This attribute is required.
    * 
-   * @param type
+   * @param type Type or undefined for none.
    */
   public final native void setType(String type) /*-{
     this.setType(
@@ -189,32 +185,21 @@ public class GmAttribute extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the type.
-   * 
-   * @param type
+   * Sets the gm values.
    */
-  public final native void setType() /*-{
-    this.setType();
+  public final native void setValues() /*-{
+    this.setValues();
   }-*/;
 
   /**
    * Sets the gm values.
    * 
-   * @param values
+   * @param values Gm values, where each gm value is added using the addValue() function, or undefined to clear the gm values.
    */
   public final native void setValues(JsArray<GmValue> values) /*-{
     this.setValues(
       values
     );
-  }-*/;
-
-  /**
-   * Sets the gm values.
-   * 
-   * @param values
-   */
-  public final native void setValues() /*-{
-    this.setValues();
   }-*/;
 
 }

@@ -20,7 +20,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.atom.Text;
 
 /**
- * Comment unavailable.
+ * KML feature data.
  */
 public class KmlContent extends Text {
 
@@ -30,19 +30,14 @@ public class KmlContent extends Text {
   public static final String TYPE_APPLICATION_VND_GOOGLE_EARTH_KML_XML = getConstant("TYPE_APPLICATION_VND_GOOGLE_EARTH_KML_XML");
 
   /**
-   * Constructs a kml content using an object parameter whose property names match the setter method to use for each property.
+   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: type.
    */
   public static native KmlContent newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.maps.KmlContent(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a kml content using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native KmlContent newInstance() /*-{
-    return new $wnd.google.gdata.maps.KmlContent();
   }-*/;
 
   private static native String getConstant(String name) /*-{

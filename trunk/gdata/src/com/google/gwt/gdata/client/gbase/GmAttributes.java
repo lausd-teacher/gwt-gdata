@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
 /**
- * Comment unavailable.
+ * Describes a gm attributes.
  */
 public class GmAttributes extends JavaScriptObject {
 
   /**
    * Constructs a gm attributes using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: attributes.
    */
   public static native GmAttributes newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.GmAttributes(
@@ -33,19 +35,12 @@ public class GmAttributes extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a gm attributes using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native GmAttributes newInstance() /*-{
-    return new $wnd.google.gdata.gbase.GmAttributes();
-  }-*/;
-
   protected GmAttributes() { }
 
   /**
    * Adds a new list of attribute for an item type.
    * 
-   * @param attribute
+   * @param attribute List of attribute for an item type to add, or object to use as a parameter to the google.gdata.gbase.GmAttribute constructor.
    */
   public final native void addAttribute(GmAttribute attribute) /*-{
     this.addAttribute(
@@ -56,7 +51,7 @@ public class GmAttributes extends JavaScriptObject {
   /**
    * Returns the list of attribute for an item types.
    * 
-   * @return
+   * @return List of attribute for an item types.
    */
   public final native JsArray<GmAttribute> getAttributes() /*-{
     return this.getAttributes();
@@ -64,22 +59,20 @@ public class GmAttributes extends JavaScriptObject {
 
   /**
    * Sets the list of attribute for an item types.
-   * 
-   * @param attributes
    */
-  public final native void setAttributes(JsArray<GmAttribute> attributes) /*-{
-    this.setAttributes(
-      attributes
-    );
+  public final native void setAttributes() /*-{
+    this.setAttributes();
   }-*/;
 
   /**
    * Sets the list of attribute for an item types.
    * 
-   * @param attributes
+   * @param attributes List of attribute for an item types, where each list of attribute for an item type is added using the addAttribute() function, or undefined to clear the list of attribute for an item types.
    */
-  public final native void setAttributes() /*-{
-    this.setAttributes();
+  public final native void setAttributes(JsArray<GmAttribute> attributes) /*-{
+    this.setAttributes(
+      attributes
+    );
   }-*/;
 
 }

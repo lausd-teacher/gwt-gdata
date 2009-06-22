@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Whether anyone can add self as attendee.
  */
 public class AnyoneCanAddSelfProperty extends JavaScriptObject {
 
   /**
    * Constructs an anyone can add self property using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native AnyoneCanAddSelfProperty newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.AnyoneCanAddSelfProperty(
@@ -32,42 +34,33 @@ public class AnyoneCanAddSelfProperty extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs an anyone can add self property using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native AnyoneCanAddSelfProperty newInstance() /*-{
-    return new $wnd.google.gdata.calendar.AnyoneCanAddSelfProperty();
-  }-*/;
-
   protected AnyoneCanAddSelfProperty() { }
 
   /**
-   * Returns value.
+   * Returns value. This attribute is required.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets value.
+   * Sets value. This attribute is required.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets value. This attribute is required.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(boolean value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

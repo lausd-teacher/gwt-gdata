@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a rating.
  */
 public class Rating extends JavaScriptObject {
 
@@ -40,18 +40,13 @@ public class Rating extends JavaScriptObject {
 
   /**
    * Constructs a rating using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: average, max, min, numRaters, rel, and value.
    */
   public static native Rating newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.Rating(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a rating using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Rating newInstance() /*-{
-    return new $wnd.google.gdata.Rating();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -61,63 +56,70 @@ public class Rating extends JavaScriptObject {
   protected Rating() { }
 
   /**
-   * Returns the average rating.
+   * Returns the average rating. This attribute is optional.
    * 
-   * @return
+   * @return Average rating or undefined for none.
    */
   public final native double getAverage() /*-{
     return this.getAverage();
   }-*/;
 
   /**
-   * Returns the rating scales maximum value.
+   * Returns the rating scale's maximum value. This attribute is optional.
    * 
-   * @return
+   * @return Rating scale's maximum value or undefined for none.
    */
   public final native double getMax() /*-{
     return this.getMax();
   }-*/;
 
   /**
-   * Returns the rating scales minimum value.
+   * Returns the rating scale's minimum value. This attribute is optional.
    * 
-   * @return
+   * @return Rating scale's minimum value or undefined for none.
    */
   public final native double getMin() /*-{
     return this.getMin();
   }-*/;
 
   /**
-   * Returns the number of ratings taken into account when computing the average value.
+   * Returns the number of ratings taken into account when computing the average value. This attribute is optional.
    * 
-   * @return
+   * @return Number of ratings taken into account when computing the average value or undefined for none.
    */
   public final native double getNumRaters() /*-{
     return this.getNumRaters();
   }-*/;
 
   /**
-   * Returns the programmatic value that describes the aspect thats being rated, if not specified, the rating is an overall rating.
+   * Returns the programmatic value that describes the aspect that's being rated, if not specified, the rating is an overall rating. This attribute is optional.
    * 
-   * @return
+   * @return Programmatic value that describes the aspect that's being rated, if not specified, the rating is an overall rating or undefined for none.
    */
   public final native String getRel() /*-{
     return this.getRel();
   }-*/;
 
   /**
-   * Returns the rating value.
+   * Returns the rating value. This attribute is optional.
    * 
-   * @return
+   * @return Rating value or undefined for none.
    */
   public final native double getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the average rating.
+   * Sets the average rating. This attribute is optional.
+   */
+  public final native void setAverage() /*-{
+    this.setAverage();
+  }-*/;
+
+  /**
+   * Sets the average rating. This attribute is optional.
    * 
-   * @param average
+   * @param average Average rating or undefined for none.
    */
   public final native void setAverage(double average) /*-{
     this.setAverage(
@@ -126,18 +128,16 @@ public class Rating extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the average rating.
-   * 
-   * @param average
+   * Sets the rating scale's maximum value. This attribute is optional.
    */
-  public final native void setAverage() /*-{
-    this.setAverage();
+  public final native void setMax() /*-{
+    this.setMax();
   }-*/;
 
   /**
-   * Sets the rating scales maximum value.
+   * Sets the rating scale's maximum value. This attribute is optional.
    * 
-   * @param max
+   * @param max Rating scale's maximum value or undefined for none.
    */
   public final native void setMax(double max) /*-{
     this.setMax(
@@ -146,18 +146,16 @@ public class Rating extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the rating scales maximum value.
-   * 
-   * @param max
+   * Sets the rating scale's minimum value. This attribute is optional.
    */
-  public final native void setMax() /*-{
-    this.setMax();
+  public final native void setMin() /*-{
+    this.setMin();
   }-*/;
 
   /**
-   * Sets the rating scales minimum value.
+   * Sets the rating scale's minimum value. This attribute is optional.
    * 
-   * @param min
+   * @param min Rating scale's minimum value or undefined for none.
    */
   public final native void setMin(double min) /*-{
     this.setMin(
@@ -166,18 +164,16 @@ public class Rating extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the rating scales minimum value.
-   * 
-   * @param min
+   * Sets the number of ratings taken into account when computing the average value. This attribute is optional.
    */
-  public final native void setMin() /*-{
-    this.setMin();
+  public final native void setNumRaters() /*-{
+    this.setNumRaters();
   }-*/;
 
   /**
-   * Sets the number of ratings taken into account when computing the average value.
+   * Sets the number of ratings taken into account when computing the average value. This attribute is optional.
    * 
-   * @param numRaters
+   * @param numRaters Number of ratings taken into account when computing the average value or undefined for none.
    */
   public final native void setNumRaters(double numRaters) /*-{
     this.setNumRaters(
@@ -186,18 +182,16 @@ public class Rating extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the number of ratings taken into account when computing the average value.
-   * 
-   * @param numRaters
+   * Sets the programmatic value that describes the aspect that's being rated, if not specified, the rating is an overall rating. This attribute is optional.
    */
-  public final native void setNumRaters() /*-{
-    this.setNumRaters();
+  public final native void setRel() /*-{
+    this.setRel();
   }-*/;
 
   /**
-   * Sets the programmatic value that describes the aspect thats being rated, if not specified, the rating is an overall rating.
+   * Sets the programmatic value that describes the aspect that's being rated, if not specified, the rating is an overall rating. This attribute is optional.
    * 
-   * @param rel
+   * @param rel Programmatic value that describes the aspect that's being rated, if not specified, the rating is an overall rating or undefined for none.
    */
   public final native void setRel(String rel) /*-{
     this.setRel(
@@ -206,32 +200,21 @@ public class Rating extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the programmatic value that describes the aspect thats being rated, if not specified, the rating is an overall rating.
-   * 
-   * @param rel
+   * Sets the rating value. This attribute is optional.
    */
-  public final native void setRel() /*-{
-    this.setRel();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets the rating value.
+   * Sets the rating value. This attribute is optional.
    * 
-   * @param value
+   * @param value Rating value or undefined for none.
    */
   public final native void setValue(double value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the rating value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

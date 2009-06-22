@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes an instant messaging address.
  */
 public class Im extends JavaScriptObject {
 
@@ -80,18 +80,13 @@ public class Im extends JavaScriptObject {
 
   /**
    * Constructs an instant messaging address using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: address, label, primary, protocol, and rel.
    */
   public static native Im newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.Im(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs an instant messaging address using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Im newInstance() /*-{
-    return new $wnd.google.gdata.Im();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -101,54 +96,61 @@ public class Im extends JavaScriptObject {
   protected Im() { }
 
   /**
-   * Returns the IM address.
+   * Returns the IM address. This attribute is required.
    * 
-   * @return
+   * @return IM address or undefined for none.
    */
   public final native String getAddress() /*-{
     return this.getAddress();
   }-*/;
 
   /**
-   * Returns the label.
+   * Returns the label. This attribute is optional.
    * 
-   * @return
+   * @return Label or undefined for none.
    */
   public final native String getLabel() /*-{
     return this.getLabel();
   }-*/;
 
   /**
-   * Returns whether this is the primary instant messaging address.
+   * Returns whether this is the primary instant messaging address. This attribute is optional.
    * 
-   * @return
+   * @return Whether this is the primary instant messaging address or undefined for none.
    */
   public final native boolean getPrimary() /*-{
     return this.getPrimary();
   }-*/;
 
   /**
-   * Returns the im protocol.
+   * Returns the im protocol. This attribute is optional.
    * 
-   * @return
+   * @return Im protocol or undefined for none.
    */
   public final native String getProtocol() /*-{
     return this.getProtocol();
   }-*/;
 
   /**
-   * Returns the im type.
+   * Returns the im type. This attribute is optional.
    * 
-   * @return
+   * @return Im type or undefined for none.
    */
   public final native String getRel() /*-{
     return this.getRel();
   }-*/;
 
   /**
-   * Sets the IM address.
+   * Sets the IM address. This attribute is required.
+   */
+  public final native void setAddress() /*-{
+    this.setAddress();
+  }-*/;
+
+  /**
+   * Sets the IM address. This attribute is required.
    * 
-   * @param address
+   * @param address IM address or undefined for none.
    */
   public final native void setAddress(String address) /*-{
     this.setAddress(
@@ -157,18 +159,16 @@ public class Im extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the IM address.
-   * 
-   * @param address
+   * Sets the label. This attribute is optional.
    */
-  public final native void setAddress() /*-{
-    this.setAddress();
+  public final native void setLabel() /*-{
+    this.setLabel();
   }-*/;
 
   /**
-   * Sets the label.
+   * Sets the label. This attribute is optional.
    * 
-   * @param label
+   * @param label Label or undefined for none.
    */
   public final native void setLabel(String label) /*-{
     this.setLabel(
@@ -177,18 +177,16 @@ public class Im extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the label.
-   * 
-   * @param label
+   * Sets whether this is the primary instant messaging address. This attribute is optional.
    */
-  public final native void setLabel() /*-{
-    this.setLabel();
+  public final native void setPrimary() /*-{
+    this.setPrimary();
   }-*/;
 
   /**
-   * Sets whether this is the primary instant messaging address.
+   * Sets whether this is the primary instant messaging address. This attribute is optional.
    * 
-   * @param primary
+   * @param primary Whether this is the primary instant messaging address or undefined for none.
    */
   public final native void setPrimary(boolean primary) /*-{
     this.setPrimary(
@@ -197,18 +195,16 @@ public class Im extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether this is the primary instant messaging address.
-   * 
-   * @param primary
+   * Sets the im protocol. This attribute is optional.
    */
-  public final native void setPrimary() /*-{
-    this.setPrimary();
+  public final native void setProtocol() /*-{
+    this.setProtocol();
   }-*/;
 
   /**
-   * Sets the im protocol.
+   * Sets the im protocol. This attribute is optional.
    * 
-   * @param protocol
+   * @param protocol Im protocol or undefined for none.
    */
   public final native void setProtocol(String protocol) /*-{
     this.setProtocol(
@@ -217,32 +213,21 @@ public class Im extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the im protocol.
-   * 
-   * @param protocol
+   * Sets the im type. This attribute is optional.
    */
-  public final native void setProtocol() /*-{
-    this.setProtocol();
+  public final native void setRel() /*-{
+    this.setRel();
   }-*/;
 
   /**
-   * Sets the im type.
+   * Sets the im type. This attribute is optional.
    * 
-   * @param rel
+   * @param rel Im type or undefined for none.
    */
   public final native void setRel(String rel) /*-{
     this.setRel(
       rel
     );
-  }-*/;
-
-  /**
-   * Sets the im type.
-   * 
-   * @param rel
-   */
-  public final native void setRel() /*-{
-    this.setRel();
   }-*/;
 
 }

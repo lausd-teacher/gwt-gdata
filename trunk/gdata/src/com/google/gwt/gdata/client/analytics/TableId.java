@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.analytics;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Identifier to be used in ids query string parameter.
  */
 public class TableId extends JavaScriptObject {
 
   /**
    * Constructs a data source ID using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native TableId newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.analytics.TableId(
@@ -32,42 +34,33 @@ public class TableId extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a data source ID using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native TableId newInstance() /*-{
-    return new $wnd.google.gdata.analytics.TableId();
-  }-*/;
-
   protected TableId() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is optional.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is optional.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is optional.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

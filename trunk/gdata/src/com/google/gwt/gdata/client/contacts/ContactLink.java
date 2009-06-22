@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.contacts;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Extends the base Link class with contact extensions.
  */
 public class ContactLink extends com.google.gwt.gdata.client.Link {
 
@@ -39,19 +39,14 @@ public class ContactLink extends com.google.gwt.gdata.client.Link {
   public static final String TYPE_IMAGE = getConstant("TYPE_IMAGE");
 
   /**
-   * Constructs a Contact Link class using an object parameter whose property names match the setter method to use for each property.
+   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: href, length, rel, title, and type.
    */
   public static native ContactLink newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.contacts.ContactLink(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a Contact Link class using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native ContactLink newInstance() /*-{
-    return new $wnd.google.gdata.contacts.ContactLink();
   }-*/;
 
   private static native String getConstant(String name) /*-{

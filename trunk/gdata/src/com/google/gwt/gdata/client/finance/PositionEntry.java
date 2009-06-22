@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.finance;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes an entry in a feed of Finance positions.
  */
 public class PositionEntry extends com.google.gwt.gdata.client.Entry<PositionEntry> {
 
   /**
    * Constructs a Finance position entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, feedLink, id, links, positionData, symbol, title, and updated.
    */
   public static native PositionEntry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.finance.PositionEntry(
@@ -32,46 +34,46 @@ public class PositionEntry extends com.google.gwt.gdata.client.Entry<PositionEnt
     );
   }-*/;
 
-  /**
-   * Constructs a Finance position entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native PositionEntry newInstance() /*-{
-    return new $wnd.google.gdata.finance.PositionEntry();
-  }-*/;
-
   protected PositionEntry() { }
 
   /**
-   * Returns the transaction feed for the position.
+   * Returns the transaction feed for the position. This element is optional.
    * 
-   * @return
+   * @return Transaction feed for the position or undefined for none.
    */
   public final native PositionFeedLink getFeedLink() /*-{
     return this.getFeedLink();
   }-*/;
 
   /**
-   * Returns the data for the position.
+   * Returns the data for the position. This element is required.
    * 
-   * @return
+   * @return Data for the position or undefined for none.
    */
   public final native PositionData getPositionData() /*-{
     return this.getPositionData();
   }-*/;
 
   /**
-   * Returns the stock symbol for the position.
+   * Returns the stock symbol for the position. This element is required.
    * 
-   * @return
+   * @return Stock symbol for the position or undefined for none.
    */
   public final native Symbol getSymbol() /*-{
     return this.getSymbol();
   }-*/;
 
   /**
-   * Sets the transaction feed for the position.
+   * Sets the transaction feed for the position. This element is optional.
+   */
+  public final native void setFeedLink() /*-{
+    this.setFeedLink();
+  }-*/;
+
+  /**
+   * Sets the transaction feed for the position. This element is optional.
    * 
-   * @param feedLink
+   * @param feedLink Transaction feed for the position, or object to use as a parameter to the google.gdata.finance.PositionFeedLink constructor, or undefined for none.
    */
   public final native void setFeedLink(PositionFeedLink feedLink) /*-{
     this.setFeedLink(
@@ -80,18 +82,16 @@ public class PositionEntry extends com.google.gwt.gdata.client.Entry<PositionEnt
   }-*/;
 
   /**
-   * Sets the transaction feed for the position.
-   * 
-   * @param feedLink
+   * Sets the data for the position. This element is required.
    */
-  public final native void setFeedLink() /*-{
-    this.setFeedLink();
+  public final native void setPositionData() /*-{
+    this.setPositionData();
   }-*/;
 
   /**
-   * Sets the data for the position.
+   * Sets the data for the position. This element is required.
    * 
-   * @param positionData
+   * @param positionData Data for the position, or object to use as a parameter to the google.gdata.finance.PositionData constructor, or undefined for none.
    */
   public final native void setPositionData(PositionData positionData) /*-{
     this.setPositionData(
@@ -100,32 +100,21 @@ public class PositionEntry extends com.google.gwt.gdata.client.Entry<PositionEnt
   }-*/;
 
   /**
-   * Sets the data for the position.
-   * 
-   * @param positionData
+   * Sets the stock symbol for the position. This element is required.
    */
-  public final native void setPositionData() /*-{
-    this.setPositionData();
+  public final native void setSymbol() /*-{
+    this.setSymbol();
   }-*/;
 
   /**
-   * Sets the stock symbol for the position.
+   * Sets the stock symbol for the position. This element is required.
    * 
-   * @param symbol
+   * @param symbol Stock symbol for the position, or object to use as a parameter to the google.gdata.finance.Symbol constructor, or undefined for none.
    */
   public final native void setSymbol(Symbol symbol) /*-{
     this.setSymbol(
       symbol
     );
-  }-*/;
-
-  /**
-   * Sets the stock symbol for the position.
-   * 
-   * @param symbol
-   */
-  public final native void setSymbol() /*-{
-    this.setSymbol();
   }-*/;
 
 }

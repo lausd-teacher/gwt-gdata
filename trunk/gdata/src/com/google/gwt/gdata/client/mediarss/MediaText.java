@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.mediarss;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a media text.
  */
 public class MediaText extends JavaScriptObject {
 
@@ -35,18 +35,13 @@ public class MediaText extends JavaScriptObject {
 
   /**
    * Constructs a media text using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content, end, lang, start, and type.
    */
   public static native MediaText newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.mediarss.MediaText(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a media text using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaText newInstance() /*-{
-    return new $wnd.google.gdata.mediarss.MediaText();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -56,54 +51,61 @@ public class MediaText extends JavaScriptObject {
   protected MediaText() { }
 
   /**
-   * Returns the text transcript, closed captioning, or lyrics.
+   * Returns the text transcript, closed captioning, or lyrics. This attribute is optional.
    * 
-   * @return
+   * @return Text transcript, closed captioning, or lyrics or undefined for none.
    */
   public final native String getContent() /*-{
     return this.getContent();
   }-*/;
 
   /**
-   * Returns the end time that the text is relevant.
+   * Returns the end time that the text is relevant. This attribute is optional.
    * 
-   * @return
+   * @return End time that the text is relevant or undefined for none.
    */
   public final native String getEnd() /*-{
     return this.getEnd();
   }-*/;
 
   /**
-   * Returns the primary language in the object.
+   * Returns the primary language in the object. This attribute is optional.
    * 
-   * @return
+   * @return Primary language in the object or undefined for none.
    */
   public final native String getLang() /*-{
     return this.getLang();
   }-*/;
 
   /**
-   * Returns the start time offset when the text starts.
+   * Returns the start time offset when the text starts. This attribute is optional.
    * 
-   * @return
+   * @return Start time offset when the text starts or undefined for none.
    */
   public final native String getStart() /*-{
     return this.getStart();
   }-*/;
 
   /**
-   * Returns the type of text embedded, either plain or html.
+   * Returns the type of text embedded, either plain or html. This attribute is optional.
    * 
-   * @return
+   * @return Type of text embedded, either plain or html or undefined for none.
    */
   public final native String getType() /*-{
     return this.getType();
   }-*/;
 
   /**
-   * Sets the text transcript, closed captioning, or lyrics.
+   * Sets the text transcript, closed captioning, or lyrics. This attribute is optional.
+   */
+  public final native void setContent() /*-{
+    this.setContent();
+  }-*/;
+
+  /**
+   * Sets the text transcript, closed captioning, or lyrics. This attribute is optional.
    * 
-   * @param content
+   * @param content Text transcript, closed captioning, or lyrics or undefined for none.
    */
   public final native void setContent(String content) /*-{
     this.setContent(
@@ -112,18 +114,16 @@ public class MediaText extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the text transcript, closed captioning, or lyrics.
-   * 
-   * @param content
+   * Sets the end time that the text is relevant. This attribute is optional.
    */
-  public final native void setContent() /*-{
-    this.setContent();
+  public final native void setEnd() /*-{
+    this.setEnd();
   }-*/;
 
   /**
-   * Sets the end time that the text is relevant.
+   * Sets the end time that the text is relevant. This attribute is optional.
    * 
-   * @param end
+   * @param end End time that the text is relevant or undefined for none.
    */
   public final native void setEnd(String end) /*-{
     this.setEnd(
@@ -132,18 +132,16 @@ public class MediaText extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the end time that the text is relevant.
-   * 
-   * @param end
+   * Sets the primary language in the object. This attribute is optional.
    */
-  public final native void setEnd() /*-{
-    this.setEnd();
+  public final native void setLang() /*-{
+    this.setLang();
   }-*/;
 
   /**
-   * Sets the primary language in the object.
+   * Sets the primary language in the object. This attribute is optional.
    * 
-   * @param lang
+   * @param lang Primary language in the object or undefined for none.
    */
   public final native void setLang(String lang) /*-{
     this.setLang(
@@ -152,18 +150,16 @@ public class MediaText extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the primary language in the object.
-   * 
-   * @param lang
+   * Sets the start time offset when the text starts. This attribute is optional.
    */
-  public final native void setLang() /*-{
-    this.setLang();
+  public final native void setStart() /*-{
+    this.setStart();
   }-*/;
 
   /**
-   * Sets the start time offset when the text starts.
+   * Sets the start time offset when the text starts. This attribute is optional.
    * 
-   * @param start
+   * @param start Start time offset when the text starts or undefined for none.
    */
   public final native void setStart(String start) /*-{
     this.setStart(
@@ -172,32 +168,21 @@ public class MediaText extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the start time offset when the text starts.
-   * 
-   * @param start
+   * Sets the type of text embedded, either plain or html. This attribute is optional.
    */
-  public final native void setStart() /*-{
-    this.setStart();
+  public final native void setType() /*-{
+    this.setType();
   }-*/;
 
   /**
-   * Sets the type of text embedded, either plain or html.
+   * Sets the type of text embedded, either plain or html. This attribute is optional.
    * 
-   * @param type
+   * @param type Type of text embedded, either plain or html or undefined for none.
    */
   public final native void setType(String type) /*-{
     this.setType(
       type
     );
-  }-*/;
-
-  /**
-   * Sets the type of text embedded, either plain or html.
-   * 
-   * @param type
-   */
-  public final native void setType() /*-{
-    this.setType();
   }-*/;
 
 }

@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.blogger;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a feed of a blog's posts.
  */
 public class BlogPostFeed extends com.google.gwt.gdata.client.Feed<PostEntry> {
 
   /**
    * Constructs a blog post feed using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, entries, generator, id, itemsPerPage, links, startIndex, subtitle, title, totalResults, and updated.
    */
   public static native BlogPostFeed newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.blogger.BlogPostFeed(
@@ -32,19 +34,12 @@ public class BlogPostFeed extends com.google.gwt.gdata.client.Feed<PostEntry> {
     );
   }-*/;
 
-  /**
-   * Constructs a blog post feed using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native BlogPostFeed newInstance() /*-{
-    return new $wnd.google.gdata.blogger.BlogPostFeed();
-  }-*/;
-
   protected BlogPostFeed() { }
 
   /**
    * Returns the link that provides the URI of next page in a paged feed.
    * 
-   * @return
+   * @return Link that provides the URI of next page in a paged feed or undefined for none.
    */
   public final native BloggerLink getNextLink() /*-{
     return this.getNextLink();
@@ -53,7 +48,7 @@ public class BlogPostFeed extends com.google.gwt.gdata.client.Feed<PostEntry> {
   /**
    * Returns the link that provides the URI of previous page in a paged feed.
    * 
-   * @return
+   * @return Link that provides the URI of previous page in a paged feed or undefined for none.
    */
   public final native BloggerLink getPreviousLink() /*-{
     return this.getPreviousLink();

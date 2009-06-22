@@ -19,24 +19,19 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes an entry link used by a recurrence exception.
  */
 public class RecurrenceExceptionEntryLink extends EntryLink {
 
   /**
    * Constructs a recurrence exception entry link using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: entry.
    */
   public static native RecurrenceExceptionEntryLink newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.RecurrenceExceptionEntryLink(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a recurrence exception entry link using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native RecurrenceExceptionEntryLink newInstance() /*-{
-    return new $wnd.google.gdata.RecurrenceExceptionEntryLink();
   }-*/;
 
   protected RecurrenceExceptionEntryLink() { }

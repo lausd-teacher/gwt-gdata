@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a container of a feed link for comment entries.
  */
 public class Comments extends JavaScriptObject {
 
   /**
    * Constructs a Comments class using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: feedLink.
    */
   public static native Comments newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.Comments(
@@ -32,42 +34,33 @@ public class Comments extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a Comments class using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Comments newInstance() /*-{
-    return new $wnd.google.gdata.Comments();
-  }-*/;
-
   protected Comments() { }
 
   /**
-   * Returns the nested feed link.
+   * Returns the nested feed link. This element is required.
    * 
-   * @return
+   * @return Nested feed link or undefined for none.
    */
   public final native FeedLink getFeedLink() /*-{
     return this.getFeedLink();
   }-*/;
 
   /**
-   * Sets the nested feed link.
+   * Sets the nested feed link. This element is required.
+   */
+  public final native void setFeedLink() /*-{
+    this.setFeedLink();
+  }-*/;
+
+  /**
+   * Sets the nested feed link. This element is required.
    * 
-   * @param feedLink
+   * @param feedLink Nested feed link, or object to use as a parameter to the google.gdata.FeedLink constructor, or undefined for none.
    */
   public final native void setFeedLink(FeedLink feedLink) /*-{
     this.setFeedLink(
       feedLink
     );
-  }-*/;
-
-  /**
-   * Sets the nested feed link.
-   * 
-   * @param feedLink
-   */
-  public final native void setFeedLink() /*-{
-    this.setFeedLink();
   }-*/;
 
 }

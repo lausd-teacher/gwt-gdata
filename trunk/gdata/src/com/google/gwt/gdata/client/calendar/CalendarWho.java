@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Who;
 
 /**
- * Comment unavailable.
+ * Extends the base Who class with Calendar extensions.
  */
 public class CalendarWho extends Who {
 
   /**
    * Constructs a Calendar Who class using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: attendeeStatus, email, rel, resource, and valueString.
    */
   public static native CalendarWho newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.CalendarWho(
@@ -33,42 +35,33 @@ public class CalendarWho extends Who {
     );
   }-*/;
 
-  /**
-   * Constructs a Calendar Who class using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native CalendarWho newInstance() /*-{
-    return new $wnd.google.gdata.calendar.CalendarWho();
-  }-*/;
-
   protected CalendarWho() { }
 
   /**
-   * Returns the resource property.
+   * Returns the resource property. This element is optional.
    * 
-   * @return
+   * @return Resource property or undefined for none.
    */
   public final native ResourceProperty getResource() /*-{
     return this.getResource();
   }-*/;
 
   /**
-   * Sets the resource property.
+   * Sets the resource property. This element is optional.
+   */
+  public final native void setResource() /*-{
+    this.setResource();
+  }-*/;
+
+  /**
+   * Sets the resource property. This element is optional.
    * 
-   * @param resource
+   * @param resource Resource property, or object to use as a parameter to the google.gdata.calendar.ResourceProperty constructor, or undefined for none.
    */
   public final native void setResource(ResourceProperty resource) /*-{
     this.setResource(
       resource
     );
-  }-*/;
-
-  /**
-   * Sets the resource property.
-   * 
-   * @param resource
-   */
-  public final native void setResource() /*-{
-    this.setResource();
   }-*/;
 
 }

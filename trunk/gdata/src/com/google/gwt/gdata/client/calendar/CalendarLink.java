@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Extends the base Link class with Calendar extensions.
  */
 public class CalendarLink extends com.google.gwt.gdata.client.acl.Link {
 
@@ -30,18 +30,13 @@ public class CalendarLink extends com.google.gwt.gdata.client.acl.Link {
 
   /**
    * Constructs a Calendar Link class using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: href, length, rel, title, type, and webContent.
    */
   public static native CalendarLink newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.CalendarLink(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a Calendar Link class using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native CalendarLink newInstance() /*-{
-    return new $wnd.google.gdata.calendar.CalendarLink();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -51,32 +46,30 @@ public class CalendarLink extends com.google.gwt.gdata.client.acl.Link {
   protected CalendarLink() { }
 
   /**
-   * Returns the web content.
+   * Returns the web content. This element is optional.
    * 
-   * @return
+   * @return Web content or undefined for none.
    */
   public final native WebContent getWebContent() /*-{
     return this.getWebContent();
   }-*/;
 
   /**
-   * Sets the web content.
+   * Sets the web content. This element is optional.
+   */
+  public final native void setWebContent() /*-{
+    this.setWebContent();
+  }-*/;
+
+  /**
+   * Sets the web content. This element is optional.
    * 
-   * @param webContent
+   * @param webContent Web content, or object to use as a parameter to the google.gdata.calendar.WebContent constructor, or undefined for none.
    */
   public final native void setWebContent(WebContent webContent) /*-{
     this.setWebContent(
       webContent
     );
-  }-*/;
-
-  /**
-   * Sets the web content.
-   * 
-   * @param webContent
-   */
-  public final native void setWebContent() /*-{
-    this.setWebContent();
   }-*/;
 
 }

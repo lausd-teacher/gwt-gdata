@@ -20,7 +20,7 @@ import com.google.gwt.gdata.client.GoogleService;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
- * Comment unavailable.
+ * Google Finance service.
  */
 public class FinanceService extends GoogleService {
 
@@ -31,6 +31,8 @@ public class FinanceService extends GoogleService {
 
   /**
    * Constructor.
+   * 
+   * @param applicationName Name of application (used for tracking).
    */
   public static native FinanceService newInstance(String applicationName) /*-{
     return new $wnd.google.gdata.finance.FinanceService(
@@ -47,11 +49,10 @@ public class FinanceService extends GoogleService {
   /**
    * Retrieves a Finance portfolio entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native PortfolioEntry getPortfolioEntry(String uri, AsyncCallback<PortfolioEntry> callback) /*-{
     return this.getPortfolioEntry(
@@ -62,13 +63,12 @@ public class FinanceService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of all the users portfolios.
+   * Retrieves the feed of all the user's portfolios.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native PortfolioFeed getPortfolioFeed(PortfolioQuery query, AsyncCallback<PortfolioFeed> callback) /*-{
     return this.getPortfolioFeed(
@@ -79,13 +79,12 @@ public class FinanceService extends GoogleService {
   }-*/;
 
   /**
-   * Retrieves the feed of all the users portfolios.
+   * Retrieves the feed of all the user's portfolios.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native PortfolioFeed getPortfolioFeed(String uri, AsyncCallback<PortfolioFeed> callback) /*-{
     return this.getPortfolioFeed(
@@ -98,11 +97,10 @@ public class FinanceService extends GoogleService {
   /**
    * Retrieves a Finance position entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native PositionEntry getPositionEntry(String uri, AsyncCallback<PositionEntry> callback) /*-{
     return this.getPositionEntry(
@@ -115,11 +113,10 @@ public class FinanceService extends GoogleService {
   /**
    * Retrieves the feed of all the positions belonging to the portfolio.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native PositionFeed getPositionFeed(PositionQuery query, AsyncCallback<PositionFeed> callback) /*-{
     return this.getPositionFeed(
@@ -132,11 +129,10 @@ public class FinanceService extends GoogleService {
   /**
    * Retrieves the feed of all the positions belonging to the portfolio.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native PositionFeed getPositionFeed(String uri, AsyncCallback<PositionFeed> callback) /*-{
     return this.getPositionFeed(
@@ -149,11 +145,10 @@ public class FinanceService extends GoogleService {
   /**
    * Retrieves a Finance transaction entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native TransactionEntry getTransactionEntry(String uri, AsyncCallback<TransactionEntry> callback) /*-{
     return this.getTransactionEntry(
@@ -166,11 +161,10 @@ public class FinanceService extends GoogleService {
   /**
    * Retrieves the feed of all the transactions belonging to the position.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of feed.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native TransactionFeed getTransactionFeed(String uri, AsyncCallback<TransactionFeed> callback) /*-{
     return this.getTransactionFeed(

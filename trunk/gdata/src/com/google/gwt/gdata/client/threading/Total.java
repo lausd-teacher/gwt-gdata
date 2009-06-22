@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.threading;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Indicates total number of unique responses to an entry.
  */
 public class Total extends JavaScriptObject {
 
   /**
    * Constructs a total using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native Total newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.threading.Total(
@@ -32,42 +34,33 @@ public class Total extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a total using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Total newInstance() /*-{
-    return new $wnd.google.gdata.threading.Total();
-  }-*/;
-
   protected Total() { }
 
   /**
-   * Returns the number of responses.
+   * Returns the number of responses. This attribute is required.
    * 
-   * @return
+   * @return Number of responses or undefined for none.
    */
   public final native double getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the number of responses.
+   * Sets the number of responses. This attribute is required.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the number of responses. This attribute is required.
    * 
-   * @param value
+   * @param value Number of responses or undefined for none.
    */
   public final native void setValue(double value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the number of responses.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

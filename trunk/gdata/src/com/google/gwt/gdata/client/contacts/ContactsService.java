@@ -20,7 +20,7 @@ import com.google.gwt.gdata.client.GoogleService;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
- * Comment unavailable.
+ * Google Contacts service.
  */
 public class ContactsService extends GoogleService {
 
@@ -31,6 +31,8 @@ public class ContactsService extends GoogleService {
 
   /**
    * Constructor.
+   * 
+   * @param applicationName Name of application (used for tracking).
    */
   public static native ContactsService newInstance(String applicationName) /*-{
     return new $wnd.google.gdata.contacts.ContactsService(
@@ -47,11 +49,10 @@ public class ContactsService extends GoogleService {
   /**
    * Retrieves a contact entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native ContactEntry getContactEntry(String uri, AsyncCallback<ContactEntry> callback) /*-{
     return this.getContactEntry(
@@ -64,11 +65,10 @@ public class ContactsService extends GoogleService {
   /**
    * Retrieves the feed of contacts.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native ContactFeed getContactFeed(ContactQuery query, AsyncCallback<ContactFeed> callback) /*-{
     return this.getContactFeed(
@@ -81,11 +81,10 @@ public class ContactsService extends GoogleService {
   /**
    * Retrieves the feed of contacts.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native ContactFeed getContactFeed(String uri, AsyncCallback<ContactFeed> callback) /*-{
     return this.getContactFeed(
@@ -98,11 +97,10 @@ public class ContactsService extends GoogleService {
   /**
    * Retrieves a contact group entry.
    * 
-   * @param uri
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uri URI of entry.
+   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
    * 
-   * @return
+   * @return Retrieved entry.
    */
   public final native ContactGroupEntry getContactGroupEntry(String uri, AsyncCallback<ContactGroupEntry> callback) /*-{
     return this.getContactGroupEntry(
@@ -115,11 +113,10 @@ public class ContactsService extends GoogleService {
   /**
    * Retrieves the feed of contact groups.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native ContactGroupFeed getContactGroupFeed(ContactQuery query, AsyncCallback<ContactGroupFeed> callback) /*-{
     return this.getContactGroupFeed(
@@ -132,11 +129,10 @@ public class ContactsService extends GoogleService {
   /**
    * Retrieves the feed of contact groups.
    * 
-   * @param uriOrQuery
-   * @param continuation
-   * @param opt_errorHandler
+   * @param uriOrQuery URI of feed or query.
+   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
    * 
-   * @return
+   * @return Retrieved feed.
    */
   public final native ContactGroupFeed getContactGroupFeed(String uri, AsyncCallback<ContactGroupFeed> callback) /*-{
     return this.getContactGroupFeed(

@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a nested feed link.
  */
 public class FeedLink extends JavaScriptObject {
 
   /**
    * Constructs a nested feed link using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: countHint, feed, href, readOnly, and rel.
    */
   public static native FeedLink newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.FeedLink(
@@ -32,64 +34,64 @@ public class FeedLink extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a nested feed link using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native FeedLink newInstance() /*-{
-    return new $wnd.google.gdata.FeedLink();
-  }-*/;
-
   protected FeedLink() { }
 
   /**
-   * Returns the hint at the number of entries in the feed.
+   * Returns the hint at the number of entries in the feed. This attribute is optional.
    * 
-   * @return
+   * @return Hint at the number of entries in the feed or undefined for none.
    */
   public final native double getCountHint() /*-{
     return this.getCountHint();
   }-*/;
 
   /**
-   * Returns the nested feed.
+   * Returns the nested feed. This element is optional.
    * 
-   * @return
+   * @return Nested feed or undefined for none.
    */
   public final native com.google.gwt.gdata.client.Feed getFeed() /*-{
     return this.getFeed();
   }-*/;
 
   /**
-   * Returns the feed URI.
+   * Returns the feed URI. This attribute is optional.
    * 
-   * @return
+   * @return Feed URI or undefined for none.
    */
   public final native String getHref() /*-{
     return this.getHref();
   }-*/;
 
   /**
-   * Returns whether the contained feed is read-only.
+   * Returns whether the contained feed is read-only. This attribute is optional.
    * 
-   * @return
+   * @return Whether the contained feed is read-only or undefined for none.
    */
   public final native boolean getReadOnly() /*-{
     return this.getReadOnly();
   }-*/;
 
   /**
-   * Returns the feed relation type.
+   * Returns the feed relation type. This attribute is optional.
    * 
-   * @return
+   * @return Feed relation type or undefined for none.
    */
   public final native String getRel() /*-{
     return this.getRel();
   }-*/;
 
   /**
-   * Sets the hint at the number of entries in the feed.
+   * Sets the hint at the number of entries in the feed. This attribute is optional.
+   */
+  public final native void setCountHint() /*-{
+    this.setCountHint();
+  }-*/;
+
+  /**
+   * Sets the hint at the number of entries in the feed. This attribute is optional.
    * 
-   * @param countHint
+   * @param countHint Hint at the number of entries in the feed or undefined for none.
    */
   public final native void setCountHint(double countHint) /*-{
     this.setCountHint(
@@ -98,18 +100,16 @@ public class FeedLink extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the hint at the number of entries in the feed.
-   * 
-   * @param countHint
+   * Sets the nested feed. This element is optional.
    */
-  public final native void setCountHint() /*-{
-    this.setCountHint();
+  public final native void setFeed() /*-{
+    this.setFeed();
   }-*/;
 
   /**
-   * Sets the nested feed.
+   * Sets the nested feed. This element is optional.
    * 
-   * @param feed
+   * @param feed Nested feed, or object to use as a parameter to the google.gdata.Feed constructor, or undefined for none.
    */
   public final native void setFeed(Feed feed) /*-{
     this.setFeed(
@@ -118,18 +118,16 @@ public class FeedLink extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the nested feed.
-   * 
-   * @param feed
+   * Sets the feed URI. This attribute is optional.
    */
-  public final native void setFeed() /*-{
-    this.setFeed();
+  public final native void setHref() /*-{
+    this.setHref();
   }-*/;
 
   /**
-   * Sets the feed URI.
+   * Sets the feed URI. This attribute is optional.
    * 
-   * @param href
+   * @param href Feed URI or undefined for none.
    */
   public final native void setHref(String href) /*-{
     this.setHref(
@@ -138,18 +136,16 @@ public class FeedLink extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the feed URI.
-   * 
-   * @param href
+   * Sets whether the contained feed is read-only. This attribute is optional.
    */
-  public final native void setHref() /*-{
-    this.setHref();
+  public final native void setReadOnly() /*-{
+    this.setReadOnly();
   }-*/;
 
   /**
-   * Sets whether the contained feed is read-only.
+   * Sets whether the contained feed is read-only. This attribute is optional.
    * 
-   * @param readOnly
+   * @param readOnly Whether the contained feed is read-only or undefined for none.
    */
   public final native void setReadOnly(boolean readOnly) /*-{
     this.setReadOnly(
@@ -158,32 +154,21 @@ public class FeedLink extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether the contained feed is read-only.
-   * 
-   * @param readOnly
+   * Sets the feed relation type. This attribute is optional.
    */
-  public final native void setReadOnly() /*-{
-    this.setReadOnly();
+  public final native void setRel() /*-{
+    this.setRel();
   }-*/;
 
   /**
-   * Sets the feed relation type.
+   * Sets the feed relation type. This attribute is optional.
    * 
-   * @param rel
+   * @param rel Feed relation type or undefined for none.
    */
   public final native void setRel(String rel) /*-{
     this.setRel(
       rel
     );
-  }-*/;
-
-  /**
-   * Sets the feed relation type.
-   * 
-   * @param rel
-   */
-  public final native void setRel() /*-{
-    this.setRel();
   }-*/;
 
 }

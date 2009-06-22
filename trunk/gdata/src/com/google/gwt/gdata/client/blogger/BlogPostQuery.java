@@ -20,27 +20,29 @@ import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.Query;
 
 /**
- * Comment unavailable.
+ * Describes a query for the feed of a blog's posts.
  */
 public class BlogPostQuery extends Query {
 
   /**
-   * Order the returned feeds entries by their <app:edited> values.
+   * Order the returned feed's entries by their <app:edited> values.
    */
   public static final String ORDERBY_EDITED = getConstant("ORDERBY_EDITED");
 
   /**
-   * Order the returned feeds entries by their <published> values.
+   * Order the returned feed's entries by their <published> values.
    */
   public static final String ORDERBY_PUBLISHED = getConstant("ORDERBY_PUBLISHED");
 
   /**
-   * Order the returned feeds entries by their <updated> values.
+   * Order the returned feed's entries by their <updated> values.
    */
   public static final String ORDERBY_UPDATED = getConstant("ORDERBY_UPDATED");
 
   /**
    * Constructor.
+   * 
+   * @param feedUri URI of feed.
    */
   public static native BlogPostQuery newInstance(String feedUri) /*-{
     return new $wnd.google.gdata.blogger.BlogPostQuery(
@@ -57,7 +59,7 @@ public class BlogPostQuery extends Query {
   /**
    * Returns the maximum number of results to be retrieved.
    * 
-   * @return
+   * @return Maximum number of results to be retrieved or null to indicate that the parameter is disabled.
    */
   public final native double getMaxResults() /*-{
     return this.getMaxResults();
@@ -66,7 +68,7 @@ public class BlogPostQuery extends Query {
   /**
    * Returns the order of entries in a feed.
    * 
-   * @return
+   * @return Order of entries in a feed or null to indicate that the parameter is disabled.
    */
   public final native String getOrderBy() /*-{
     return this.getOrderBy();
@@ -75,7 +77,7 @@ public class BlogPostQuery extends Query {
   /**
    * Returns the maximum published date.
    * 
-   * @return
+   * @return Maximum published date or null to indicate that the parameter is disabled.
    */
   public final native DateTime getPublishedMax() /*-{
     return this.getPublishedMax();
@@ -84,7 +86,7 @@ public class BlogPostQuery extends Query {
   /**
    * Returns the minimum published date.
    * 
-   * @return
+   * @return Minimum published date or null to indicate that the parameter is disabled.
    */
   public final native DateTime getPublishedMin() /*-{
     return this.getPublishedMin();
@@ -93,7 +95,7 @@ public class BlogPostQuery extends Query {
   /**
    * Returns the 1-based index of the first result to be retrieved.
    * 
-   * @return
+   * @return 1-based index of the first result to be retrieved or null to indicate that the parameter is disabled.
    */
   public final native double getStartIndex() /*-{
     return this.getStartIndex();
@@ -102,7 +104,7 @@ public class BlogPostQuery extends Query {
   /**
    * Returns the maximum updated date.
    * 
-   * @return
+   * @return Maximum updated date or null to indicate that the parameter is disabled.
    */
   public final native DateTime getUpdatedMax() /*-{
     return this.getUpdatedMax();
@@ -111,7 +113,7 @@ public class BlogPostQuery extends Query {
   /**
    * Returns the minimum updated date.
    * 
-   * @return
+   * @return Minimum updated date or null to indicate that the parameter is disabled.
    */
   public final native DateTime getUpdatedMin() /*-{
     return this.getUpdatedMin();
@@ -120,7 +122,7 @@ public class BlogPostQuery extends Query {
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults
+   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
    */
   public final native void setMaxResults(double maxResults) /*-{
     this.setMaxResults(
@@ -131,7 +133,7 @@ public class BlogPostQuery extends Query {
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults
+   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
    */
   public final native void setMaxResults(String maxResults) /*-{
     this.setMaxResults(
@@ -140,9 +142,9 @@ public class BlogPostQuery extends Query {
   }-*/;
 
   /**
-   * Sets the order of entries in a feed.
+   * Sets the order of entries in a feed. The default value is 'published'.
    * 
-   * @param orderBy
+   * @param orderBy Order of entries in a feed or null to disable this parameter.
    */
   public final native void setOrderBy(String orderBy) /*-{
     this.setOrderBy(
@@ -153,7 +155,7 @@ public class BlogPostQuery extends Query {
   /**
    * Sets the maximum published date.
    * 
-   * @param publishedMax
+   * @param publishedMax Maximum published date or an equivalent string value or null to disable this parameter.
    */
   public final native void setPublishedMax(DateTime publishedMax) /*-{
     this.setPublishedMax(
@@ -164,7 +166,7 @@ public class BlogPostQuery extends Query {
   /**
    * Sets the maximum published date.
    * 
-   * @param publishedMax
+   * @param publishedMax Maximum published date or an equivalent string value or null to disable this parameter.
    */
   public final native void setPublishedMax(String publishedMax) /*-{
     this.setPublishedMax(
@@ -175,7 +177,7 @@ public class BlogPostQuery extends Query {
   /**
    * Sets the minimum published date.
    * 
-   * @param publishedMin
+   * @param publishedMin Minimum published date or an equivalent string value or null to disable this parameter.
    */
   public final native void setPublishedMin(DateTime publishedMin) /*-{
     this.setPublishedMin(
@@ -186,7 +188,7 @@ public class BlogPostQuery extends Query {
   /**
    * Sets the minimum published date.
    * 
-   * @param publishedMin
+   * @param publishedMin Minimum published date or an equivalent string value or null to disable this parameter.
    */
   public final native void setPublishedMin(String publishedMin) /*-{
     this.setPublishedMin(
@@ -195,9 +197,9 @@ public class BlogPostQuery extends Query {
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved.
+   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex
+   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
    */
   public final native void setStartIndex(double startIndex) /*-{
     this.setStartIndex(
@@ -206,9 +208,9 @@ public class BlogPostQuery extends Query {
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved.
+   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex
+   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
    */
   public final native void setStartIndex(String startIndex) /*-{
     this.setStartIndex(
@@ -219,7 +221,7 @@ public class BlogPostQuery extends Query {
   /**
    * Sets the maximum updated date.
    * 
-   * @param updatedMax
+   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
    */
   public final native void setUpdatedMax(DateTime updatedMax) /*-{
     this.setUpdatedMax(
@@ -230,7 +232,7 @@ public class BlogPostQuery extends Query {
   /**
    * Sets the maximum updated date.
    * 
-   * @param updatedMax
+   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
    */
   public final native void setUpdatedMax(String updatedMax) /*-{
     this.setUpdatedMax(
@@ -241,7 +243,7 @@ public class BlogPostQuery extends Query {
   /**
    * Sets the minimum updated date.
    * 
-   * @param updatedMin
+   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
    */
   public final native void setUpdatedMin(DateTime updatedMin) /*-{
     this.setUpdatedMin(
@@ -252,7 +254,7 @@ public class BlogPostQuery extends Query {
   /**
    * Sets the minimum updated date.
    * 
-   * @param updatedMin
+   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
    */
   public final native void setUpdatedMin(String updatedMin) /*-{
     this.setUpdatedMin(

@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.app;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes an Atom publication control status.
  */
 public class Control extends JavaScriptObject {
 
   /**
    * Constructs a control status using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: draft.
    */
   public static native Control newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.app.Control(
@@ -32,42 +34,33 @@ public class Control extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a control status using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Control newInstance() /*-{
-    return new $wnd.google.gdata.app.Control();
-  }-*/;
-
   protected Control() { }
 
   /**
-   * Returns the draft tag.
+   * Returns the draft tag. This element is optional.
    * 
-   * @return
+   * @return Draft tag or undefined for none.
    */
   public final native Draft getDraft() /*-{
     return this.getDraft();
   }-*/;
 
   /**
-   * Sets the draft tag.
+   * Sets the draft tag. This element is optional.
+   */
+  public final native void setDraft() /*-{
+    this.setDraft();
+  }-*/;
+
+  /**
+   * Sets the draft tag. This element is optional.
    * 
-   * @param draft
+   * @param draft Draft tag, or object to use as a parameter to the google.gdata.app.Draft constructor, or undefined for none.
    */
   public final native void setDraft(Draft draft) /*-{
     this.setDraft(
       draft
     );
-  }-*/;
-
-  /**
-   * Sets the draft tag.
-   * 
-   * @param draft
-   */
-  public final native void setDraft() /*-{
-    this.setDraft();
   }-*/;
 
 }

@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.atom;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a text construct containing either plain text, HTML, or XHTML.
  */
 public class Text extends JavaScriptObject {
 
   /**
    * Constructs a text construct using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: lang, text, type, and uri.
    */
   public static native Text newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.atom.Text(
@@ -32,55 +34,55 @@ public class Text extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a text construct using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Text newInstance() /*-{
-    return new $wnd.google.gdata.atom.Text();
-  }-*/;
-
   protected Text() { }
 
   /**
-   * Returns the language of link title.
+   * Returns the language of link title. This attribute is optional.
    * 
-   * @return
+   * @return Language of link title or undefined for none.
    */
   public final native String getLang() /*-{
     return this.getLang();
   }-*/;
 
   /**
-   * Returns the text content.
+   * Returns the text content. This attribute is optional.
    * 
-   * @return
+   * @return Text content or undefined for none.
    */
   public final native String getText() /*-{
     return this.getText();
   }-*/;
 
   /**
-   * Returns the type of text construct (typically text, html or xhtml).
+   * Returns the type of text construct (typically 'text', 'html' or 'xhtml'). This attribute is optional.
    * 
-   * @return
+   * @return Type of text construct (typically 'text', 'html' or 'xhtml') or undefined for none.
    */
   public final native String getType() /*-{
     return this.getType();
   }-*/;
 
   /**
-   * Returns the external URI.
+   * Returns the external URI. This attribute is optional.
    * 
-   * @return
+   * @return External URI or undefined for none.
    */
   public final native String getUri() /*-{
     return this.getUri();
   }-*/;
 
   /**
-   * Sets the language of link title.
+   * Sets the language of link title. This attribute is optional.
+   */
+  public final native void setLang() /*-{
+    this.setLang();
+  }-*/;
+
+  /**
+   * Sets the language of link title. This attribute is optional.
    * 
-   * @param lang
+   * @param lang Language of link title or undefined for none.
    */
   public final native void setLang(String lang) /*-{
     this.setLang(
@@ -89,18 +91,16 @@ public class Text extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the language of link title.
-   * 
-   * @param lang
+   * Sets the text content. This attribute is optional.
    */
-  public final native void setLang() /*-{
-    this.setLang();
+  public final native void setText() /*-{
+    this.setText();
   }-*/;
 
   /**
-   * Sets the text content.
+   * Sets the text content. This attribute is optional.
    * 
-   * @param text
+   * @param text Text content or undefined for none.
    */
   public final native void setText(String text) /*-{
     this.setText(
@@ -109,18 +109,16 @@ public class Text extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the text content.
-   * 
-   * @param text
+   * Sets the type of text construct (typically 'text', 'html' or 'xhtml'). This attribute is optional.
    */
-  public final native void setText() /*-{
-    this.setText();
+  public final native void setType() /*-{
+    this.setType();
   }-*/;
 
   /**
-   * Sets the type of text construct (typically text, html or xhtml).
+   * Sets the type of text construct (typically 'text', 'html' or 'xhtml'). This attribute is optional.
    * 
-   * @param type
+   * @param type Type of text construct (typically 'text', 'html' or 'xhtml') or undefined for none.
    */
   public final native void setType(String type) /*-{
     this.setType(
@@ -129,32 +127,21 @@ public class Text extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the type of text construct (typically text, html or xhtml).
-   * 
-   * @param type
+   * Sets the external URI. This attribute is optional.
    */
-  public final native void setType() /*-{
-    this.setType();
+  public final native void setUri() /*-{
+    this.setUri();
   }-*/;
 
   /**
-   * Sets the external URI.
+   * Sets the external URI. This attribute is optional.
    * 
-   * @param uri
+   * @param uri External URI or undefined for none.
    */
   public final native void setUri(String uri) /*-{
     this.setUri(
       uri
     );
-  }-*/;
-
-  /**
-   * Sets the external URI.
-   * 
-   * @param uri
-   */
-  public final native void setUri() /*-{
-    this.setUri();
   }-*/;
 
 }

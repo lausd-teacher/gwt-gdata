@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.maps;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a version feed.
  */
 public class VersionFeed extends com.google.gwt.gdata.client.Feed<VersionEntry> {
 
   /**
    * Constructs a version feed using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, entries, id, itemsPerPage, links, startIndex, title, totalResults, and updated.
    */
   public static native VersionFeed newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.maps.VersionFeed(
@@ -32,19 +34,12 @@ public class VersionFeed extends com.google.gwt.gdata.client.Feed<VersionEntry> 
     );
   }-*/;
 
-  /**
-   * Constructs a version feed using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native VersionFeed newInstance() /*-{
-    return new $wnd.google.gdata.maps.VersionFeed();
-  }-*/;
-
   protected VersionFeed() { }
 
   /**
    * Returns the link that provides the URI of the full feed (without any query parameters).
    * 
-   * @return
+   * @return Link that provides the URI of the full feed (without any query parameters) or undefined for none.
    */
   public final native com.google.gwt.gdata.client.Link getAtomFeedLink() /*-{
     return this.getAtomFeedLink();
@@ -53,7 +48,7 @@ public class VersionFeed extends com.google.gwt.gdata.client.Feed<VersionEntry> 
   /**
    * Returns the link that provides the URI of next page in a paged feed.
    * 
-   * @return
+   * @return Link that provides the URI of next page in a paged feed or undefined for none.
    */
   public final native com.google.gwt.gdata.client.Link getNextLink() /*-{
     return this.getNextLink();

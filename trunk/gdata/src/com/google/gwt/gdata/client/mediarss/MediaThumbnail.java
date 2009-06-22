@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.mediarss;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a media thumbnail.
  */
 public class MediaThumbnail extends JavaScriptObject {
 
   /**
    * Constructs a media thumbnail using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: height, time, url, and width.
    */
   public static native MediaThumbnail newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.mediarss.MediaThumbnail(
@@ -32,55 +34,55 @@ public class MediaThumbnail extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a media thumbnail using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaThumbnail newInstance() /*-{
-    return new $wnd.google.gdata.mediarss.MediaThumbnail();
-  }-*/;
-
   protected MediaThumbnail() { }
 
   /**
-   * Returns the height of the thumbnail.
+   * Returns the height of the thumbnail. This attribute is optional.
    * 
-   * @return
+   * @return Height of the thumbnail or undefined for none.
    */
   public final native double getHeight() /*-{
     return this.getHeight();
   }-*/;
 
   /**
-   * Returns the time offset in relation to the media object.
+   * Returns the time offset in relation to the media object. This attribute is optional.
    * 
-   * @return
+   * @return Time offset in relation to the media object or undefined for none.
    */
   public final native String getTime() /*-{
     return this.getTime();
   }-*/;
 
   /**
-   * Returns the url of the thumbnail.
+   * Returns the url of the thumbnail. This attribute is required.
    * 
-   * @return
+   * @return Url of the thumbnail or undefined for none.
    */
   public final native String getUrl() /*-{
     return this.getUrl();
   }-*/;
 
   /**
-   * Returns the width of the thumbnail.
+   * Returns the width of the thumbnail. This attribute is optional.
    * 
-   * @return
+   * @return Width of the thumbnail or undefined for none.
    */
   public final native double getWidth() /*-{
     return this.getWidth();
   }-*/;
 
   /**
-   * Sets the height of the thumbnail.
+   * Sets the height of the thumbnail. This attribute is optional.
+   */
+  public final native void setHeight() /*-{
+    this.setHeight();
+  }-*/;
+
+  /**
+   * Sets the height of the thumbnail. This attribute is optional.
    * 
-   * @param height
+   * @param height Height of the thumbnail or undefined for none.
    */
   public final native void setHeight(double height) /*-{
     this.setHeight(
@@ -89,18 +91,16 @@ public class MediaThumbnail extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the height of the thumbnail.
-   * 
-   * @param height
+   * Sets the time offset in relation to the media object. This attribute is optional.
    */
-  public final native void setHeight() /*-{
-    this.setHeight();
+  public final native void setTime() /*-{
+    this.setTime();
   }-*/;
 
   /**
-   * Sets the time offset in relation to the media object.
+   * Sets the time offset in relation to the media object. This attribute is optional.
    * 
-   * @param time
+   * @param time Time offset in relation to the media object or undefined for none.
    */
   public final native void setTime(String time) /*-{
     this.setTime(
@@ -109,18 +109,16 @@ public class MediaThumbnail extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the time offset in relation to the media object.
-   * 
-   * @param time
+   * Sets the url of the thumbnail. This attribute is required.
    */
-  public final native void setTime() /*-{
-    this.setTime();
+  public final native void setUrl() /*-{
+    this.setUrl();
   }-*/;
 
   /**
-   * Sets the url of the thumbnail.
+   * Sets the url of the thumbnail. This attribute is required.
    * 
-   * @param url
+   * @param url Url of the thumbnail or undefined for none.
    */
   public final native void setUrl(String url) /*-{
     this.setUrl(
@@ -129,32 +127,21 @@ public class MediaThumbnail extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the url of the thumbnail.
-   * 
-   * @param url
+   * Sets the width of the thumbnail. This attribute is optional.
    */
-  public final native void setUrl() /*-{
-    this.setUrl();
+  public final native void setWidth() /*-{
+    this.setWidth();
   }-*/;
 
   /**
-   * Sets the width of the thumbnail.
+   * Sets the width of the thumbnail. This attribute is optional.
    * 
-   * @param width
+   * @param width Width of the thumbnail or undefined for none.
    */
   public final native void setWidth(double width) /*-{
     this.setWidth(
       width
     );
-  }-*/;
-
-  /**
-   * Sets the width of the thumbnail.
-   * 
-   * @param width
-   */
-  public final native void setWidth() /*-{
-    this.setWidth();
   }-*/;
 
 }

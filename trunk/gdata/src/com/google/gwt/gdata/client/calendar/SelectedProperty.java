@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes whether a calendar is selected.
  */
 public class SelectedProperty extends JavaScriptObject {
 
   /**
    * Constructs a selected property using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native SelectedProperty newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.SelectedProperty(
@@ -32,42 +34,33 @@ public class SelectedProperty extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a selected property using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native SelectedProperty newInstance() /*-{
-    return new $wnd.google.gdata.calendar.SelectedProperty();
-  }-*/;
-
   protected SelectedProperty() { }
 
   /**
-   * Returns whether a calendar is selected.
+   * Returns whether a calendar is selected. This attribute is required.
    * 
-   * @return
+   * @return Whether a calendar is selected or undefined for none.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets whether a calendar is selected.
+   * Sets whether a calendar is selected. This attribute is required.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets whether a calendar is selected. This attribute is required.
    * 
-   * @param value
+   * @param value Whether a calendar is selected or undefined for none.
    */
   public final native void setValue(boolean value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets whether a calendar is selected.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

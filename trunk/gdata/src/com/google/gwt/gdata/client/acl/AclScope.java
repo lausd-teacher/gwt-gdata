@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.acl;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes the scope of an entry in an access control list.
  */
 public class AclScope extends JavaScriptObject {
 
@@ -45,18 +45,13 @@ public class AclScope extends JavaScriptObject {
 
   /**
    * Constructs a scope using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: type and value.
    */
   public static native AclScope newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.acl.AclScope(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a scope using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native AclScope newInstance() /*-{
-    return new $wnd.google.gdata.acl.AclScope();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -66,27 +61,34 @@ public class AclScope extends JavaScriptObject {
   protected AclScope() { }
 
   /**
-   * Returns the type.
+   * Returns the type. This attribute is required.
    * 
-   * @return
+   * @return Type or undefined for none.
    */
   public final native String getType() /*-{
     return this.getType();
   }-*/;
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is optional.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the type.
+   * Sets the type. This attribute is required.
+   */
+  public final native void setType() /*-{
+    this.setType();
+  }-*/;
+
+  /**
+   * Sets the type. This attribute is required.
    * 
-   * @param type
+   * @param type Type or undefined for none.
    */
   public final native void setType(String type) /*-{
     this.setType(
@@ -95,32 +97,21 @@ public class AclScope extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the type.
-   * 
-   * @param type
+   * Sets the value. This attribute is optional.
    */
-  public final native void setType() /*-{
-    this.setType();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is optional.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

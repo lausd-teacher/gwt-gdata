@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.finance;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes an entry in a feed of Finance portfolios.
  */
 public class PortfolioEntry extends com.google.gwt.gdata.client.Entry<PortfolioEntry> {
 
   /**
    * Constructs a Finance portfolio entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, feedLink, id, links, portfolioData, title, and updated.
    */
   public static native PortfolioEntry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.finance.PortfolioEntry(
@@ -32,37 +34,37 @@ public class PortfolioEntry extends com.google.gwt.gdata.client.Entry<PortfolioE
     );
   }-*/;
 
-  /**
-   * Constructs a Finance portfolio entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native PortfolioEntry newInstance() /*-{
-    return new $wnd.google.gdata.finance.PortfolioEntry();
-  }-*/;
-
   protected PortfolioEntry() { }
 
   /**
-   * Returns the position feed for the portfolio.
+   * Returns the position feed for the portfolio. This element is optional.
    * 
-   * @return
+   * @return Position feed for the portfolio or undefined for none.
    */
   public final native PortfolioFeedLink getFeedLink() /*-{
     return this.getFeedLink();
   }-*/;
 
   /**
-   * Returns the data for the portfolio.
+   * Returns the data for the portfolio. This element is required.
    * 
-   * @return
+   * @return Data for the portfolio or undefined for none.
    */
   public final native PortfolioData getPortfolioData() /*-{
     return this.getPortfolioData();
   }-*/;
 
   /**
-   * Sets the position feed for the portfolio.
+   * Sets the position feed for the portfolio. This element is optional.
+   */
+  public final native void setFeedLink() /*-{
+    this.setFeedLink();
+  }-*/;
+
+  /**
+   * Sets the position feed for the portfolio. This element is optional.
    * 
-   * @param feedLink
+   * @param feedLink Position feed for the portfolio, or object to use as a parameter to the google.gdata.finance.PortfolioFeedLink constructor, or undefined for none.
    */
   public final native void setFeedLink(PortfolioFeedLink feedLink) /*-{
     this.setFeedLink(
@@ -71,32 +73,21 @@ public class PortfolioEntry extends com.google.gwt.gdata.client.Entry<PortfolioE
   }-*/;
 
   /**
-   * Sets the position feed for the portfolio.
-   * 
-   * @param feedLink
+   * Sets the data for the portfolio. This element is required.
    */
-  public final native void setFeedLink() /*-{
-    this.setFeedLink();
+  public final native void setPortfolioData() /*-{
+    this.setPortfolioData();
   }-*/;
 
   /**
-   * Sets the data for the portfolio.
+   * Sets the data for the portfolio. This element is required.
    * 
-   * @param portfolioData
+   * @param portfolioData Data for the portfolio, or object to use as a parameter to the google.gdata.finance.PortfolioData constructor, or undefined for none.
    */
   public final native void setPortfolioData(PortfolioData portfolioData) /*-{
     this.setPortfolioData(
       portfolioData
     );
-  }-*/;
-
-  /**
-   * Sets the data for the portfolio.
-   * 
-   * @param portfolioData
-   */
-  public final native void setPortfolioData() /*-{
-    this.setPortfolioData();
   }-*/;
 
 }

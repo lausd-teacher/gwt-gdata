@@ -21,12 +21,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import java.util.Date;
 
 /**
- * Comment unavailable.
+ * The time the object was last viewed.
  */
 public class LastViewed extends JavaScriptObject {
 
   /**
    * Constructs a last viewed using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native LastViewed newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.LastViewed(
@@ -34,28 +36,28 @@ public class LastViewed extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a last viewed using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native LastViewed newInstance() /*-{
-    return new $wnd.google.gdata.LastViewed();
-  }-*/;
-
   protected LastViewed() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is optional.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native DateTime getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is optional.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is optional.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(Date value) /*-{
     this.setValue(
@@ -64,18 +66,9 @@ public class LastViewed extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is optional.
    * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(DateTime value) /*-{
     this.setValue(

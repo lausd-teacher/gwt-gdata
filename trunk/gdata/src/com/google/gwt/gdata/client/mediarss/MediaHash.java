@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.mediarss;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a media hash.
  */
 public class MediaHash extends JavaScriptObject {
 
@@ -35,18 +35,13 @@ public class MediaHash extends JavaScriptObject {
 
   /**
    * Constructs a media hash using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: algo and content.
    */
   public static native MediaHash newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.mediarss.MediaHash(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a media hash using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaHash newInstance() /*-{
-    return new $wnd.google.gdata.mediarss.MediaHash();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -56,27 +51,34 @@ public class MediaHash extends JavaScriptObject {
   protected MediaHash() { }
 
   /**
-   * Returns the algorithm used to create the hash.
+   * Returns the algorithm used to create the hash. This attribute is optional.
    * 
-   * @return
+   * @return Algorithm used to create the hash or undefined for none.
    */
   public final native String getAlgo() /*-{
     return this.getAlgo();
   }-*/;
 
   /**
-   * Returns the hash of the binary media file.
+   * Returns the hash of the binary media file. This attribute is optional.
    * 
-   * @return
+   * @return Hash of the binary media file or undefined for none.
    */
   public final native String getContent() /*-{
     return this.getContent();
   }-*/;
 
   /**
-   * Sets the algorithm used to create the hash.
+   * Sets the algorithm used to create the hash. This attribute is optional.
+   */
+  public final native void setAlgo() /*-{
+    this.setAlgo();
+  }-*/;
+
+  /**
+   * Sets the algorithm used to create the hash. This attribute is optional.
    * 
-   * @param algo
+   * @param algo Algorithm used to create the hash or undefined for none.
    */
   public final native void setAlgo(String algo) /*-{
     this.setAlgo(
@@ -85,32 +87,21 @@ public class MediaHash extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the algorithm used to create the hash.
-   * 
-   * @param algo
+   * Sets the hash of the binary media file. This attribute is optional.
    */
-  public final native void setAlgo() /*-{
-    this.setAlgo();
+  public final native void setContent() /*-{
+    this.setContent();
   }-*/;
 
   /**
-   * Sets the hash of the binary media file.
+   * Sets the hash of the binary media file. This attribute is optional.
    * 
-   * @param content
+   * @param content Hash of the binary media file or undefined for none.
    */
   public final native void setContent(String content) /*-{
     this.setContent(
       content
     );
-  }-*/;
-
-  /**
-   * Sets the hash of the binary media file.
-   * 
-   * @param content
-   */
-  public final native void setContent() /*-{
-    this.setContent();
   }-*/;
 
 }

@@ -19,24 +19,19 @@ package com.google.gwt.gdata.client.finance;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a Finance position feed.
  */
 public class PositionFeed extends com.google.gwt.gdata.client.Feed<PositionEntry> {
 
   /**
-   * Constructs a Finance position feed using an object parameter whose property names match the setter method to use for each property.
+   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, entries, id, itemsPerPage, links, startIndex, title, totalResults, and updated.
    */
   public static native PositionFeed newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.finance.PositionFeed(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a Finance position feed using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native PositionFeed newInstance() /*-{
-    return new $wnd.google.gdata.finance.PositionFeed();
   }-*/;
 
   protected PositionFeed() { }

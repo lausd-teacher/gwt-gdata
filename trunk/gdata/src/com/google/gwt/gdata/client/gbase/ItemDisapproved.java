@@ -19,24 +19,19 @@ package com.google.gwt.gdata.client.gbase;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes an item disapproved.
  */
 public class ItemDisapproved extends JavaScriptObject {
 
   /**
-   * Constructs an item disapproved using an object parameter whose property names match the setter method to use for each property.
+   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method.
    */
   public static native ItemDisapproved newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.ItemDisapproved(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs an item disapproved using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native ItemDisapproved newInstance() /*-{
-    return new $wnd.google.gdata.gbase.ItemDisapproved();
   }-*/;
 
   protected ItemDisapproved() { }

@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
 /**
- * Comment unavailable.
+ * The errors of a feed.
  */
 public class FeedErrors extends JavaScriptObject {
 
   /**
    * Constructs a feed errors using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: feedError.
    */
   public static native FeedErrors newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.FeedErrors(
@@ -33,19 +35,12 @@ public class FeedErrors extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a feed errors using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native FeedErrors newInstance() /*-{
-    return new $wnd.google.gdata.gbase.FeedErrors();
-  }-*/;
-
   protected FeedErrors() { }
 
   /**
    * Adds a new feed error.
    * 
-   * @param feedError
+   * @param feedError Feed error to add, or object to use as a parameter to the google.gdata.gbase.FeedError constructor.
    */
   public final native void addFeedError(FeedError feedError) /*-{
     this.addFeedError(
@@ -56,7 +51,7 @@ public class FeedErrors extends JavaScriptObject {
   /**
    * Returns the feed errors.
    * 
-   * @return
+   * @return Feed errors.
    */
   public final native JsArray<FeedError> getFeedError() /*-{
     return this.getFeedError();
@@ -64,22 +59,20 @@ public class FeedErrors extends JavaScriptObject {
 
   /**
    * Sets the feed errors.
-   * 
-   * @param feedError
    */
-  public final native void setFeedError(JsArray<FeedError> feedError) /*-{
-    this.setFeedError(
-      feedError
-    );
+  public final native void setFeedError() /*-{
+    this.setFeedError();
   }-*/;
 
   /**
    * Sets the feed errors.
    * 
-   * @param feedError
+   * @param feedError Feed errors, where each feed error is added using the addFeedError() function, or undefined to clear the feed errors.
    */
-  public final native void setFeedError() /*-{
-    this.setFeedError();
+  public final native void setFeedError(JsArray<FeedError> feedError) /*-{
+    this.setFeedError(
+      feedError
+    );
   }-*/;
 
 }

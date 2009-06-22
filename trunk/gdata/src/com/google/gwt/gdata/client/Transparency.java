@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes the base set of values for event transparency.
  */
 public class Transparency extends JavaScriptObject {
 
@@ -29,24 +29,19 @@ public class Transparency extends JavaScriptObject {
   public static final String VALUE_OPAQUE = getConstant("VALUE_OPAQUE");
 
   /**
-   * Indicates event doesnt consume any time on calendar; event time will not be marked as busy in a free/busy search.
+   * Indicates event doesn't consume any time on calendar; event time will not be marked as busy in a free/busy search.
    */
   public static final String VALUE_TRANSPARENT = getConstant("VALUE_TRANSPARENT");
 
   /**
    * Constructs an event transparency using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native Transparency newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.Transparency(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs an event transparency using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Transparency newInstance() /*-{
-    return new $wnd.google.gdata.Transparency();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -56,32 +51,30 @@ public class Transparency extends JavaScriptObject {
   protected Transparency() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is required.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is required.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is required.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

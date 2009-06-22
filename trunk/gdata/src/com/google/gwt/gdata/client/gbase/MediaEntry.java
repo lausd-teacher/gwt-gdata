@@ -20,12 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.mediarss.MediaContent;
 
 /**
- * Comment unavailable.
+ * Describes an entry in the media feed used for managing the media attachments for one Google Base Item.
  */
 public class MediaEntry extends com.google.gwt.gdata.client.Entry<MediaEntry> {
 
   /**
    * Constructs a Google Base media entry using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, content, id, links, mediaContent, published, title, and updated.
    */
   public static native MediaEntry newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.gbase.MediaEntry(
@@ -33,42 +35,33 @@ public class MediaEntry extends com.google.gwt.gdata.client.Entry<MediaEntry> {
     );
   }-*/;
 
-  /**
-   * Constructs a Google Base media entry using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaEntry newInstance() /*-{
-    return new $wnd.google.gdata.gbase.MediaEntry();
-  }-*/;
-
   protected MediaEntry() { }
 
   /**
-   * Returns the media content.
+   * Returns the media content. This element is optional.
    * 
-   * @return
+   * @return Media content or undefined for none.
    */
   public final native MediaContent getMediaContent() /*-{
     return this.getMediaContent();
   }-*/;
 
   /**
-   * Sets the media content.
+   * Sets the media content. This element is optional.
+   */
+  public final native void setMediaContent() /*-{
+    this.setMediaContent();
+  }-*/;
+
+  /**
+   * Sets the media content. This element is optional.
    * 
-   * @param mediaContent
+   * @param mediaContent Media content, or object to use as a parameter to the google.gdata.mediarss.MediaContent constructor, or undefined for none.
    */
   public final native void setMediaContent(MediaContent mediaContent) /*-{
     this.setMediaContent(
       mediaContent
     );
-  }-*/;
-
-  /**
-   * Sets the media content.
-   * 
-   * @param mediaContent
-   */
-  public final native void setMediaContent() /*-{
-    this.setMediaContent();
   }-*/;
 
 }

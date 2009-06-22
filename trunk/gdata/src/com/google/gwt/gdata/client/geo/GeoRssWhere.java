@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.geo;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a geographical location or region.
  */
 public class GeoRssWhere extends JavaScriptObject {
 
   /**
    * Constructs a geographical location or region using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: envelope and point.
    */
   public static native GeoRssWhere newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.geo.GeoRssWhere(
@@ -32,37 +34,37 @@ public class GeoRssWhere extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a geographical location or region using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native GeoRssWhere newInstance() /*-{
-    return new $wnd.google.gdata.geo.GeoRssWhere();
-  }-*/;
-
   protected GeoRssWhere() { }
 
   /**
-   * Returns the Gml geographical region.
+   * Returns the Gml geographical region. This element is optional.
    * 
-   * @return
+   * @return Gml geographical region or undefined for none.
    */
   public final native GmlEnvelope getEnvelope() /*-{
     return this.getEnvelope();
   }-*/;
 
   /**
-   * Returns the particular geographical point.
+   * Returns the particular geographical point. This element is optional.
    * 
-   * @return
+   * @return Particular geographical point or undefined for none.
    */
   public final native GmlPoint getPoint() /*-{
     return this.getPoint();
   }-*/;
 
   /**
-   * Sets the Gml geographical region.
+   * Sets the Gml geographical region. This element is optional.
+   */
+  public final native void setEnvelope() /*-{
+    this.setEnvelope();
+  }-*/;
+
+  /**
+   * Sets the Gml geographical region. This element is optional.
    * 
-   * @param envelope
+   * @param envelope Gml geographical region, or object to use as a parameter to the google.gdata.geo.GmlEnvelope constructor, or undefined for none.
    */
   public final native void setEnvelope(GmlEnvelope envelope) /*-{
     this.setEnvelope(
@@ -71,32 +73,21 @@ public class GeoRssWhere extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the Gml geographical region.
-   * 
-   * @param envelope
+   * Sets the particular geographical point. This element is optional.
    */
-  public final native void setEnvelope() /*-{
-    this.setEnvelope();
+  public final native void setPoint() /*-{
+    this.setPoint();
   }-*/;
 
   /**
-   * Sets the particular geographical point.
+   * Sets the particular geographical point. This element is optional.
    * 
-   * @param point
+   * @param point Particular geographical point, or object to use as a parameter to the google.gdata.geo.GmlPoint constructor, or undefined for none.
    */
   public final native void setPoint(GmlPoint point) /*-{
     this.setPoint(
       point
     );
-  }-*/;
-
-  /**
-   * Sets the particular geographical point.
-   * 
-   * @param point
-   */
-  public final native void setPoint() /*-{
-    this.setPoint();
   }-*/;
 
 }

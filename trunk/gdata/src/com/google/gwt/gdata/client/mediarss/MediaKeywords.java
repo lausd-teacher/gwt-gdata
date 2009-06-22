@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.mediarss;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a media keywords.
  */
 public class MediaKeywords extends JavaScriptObject {
 
   /**
    * Constructs a media keywords using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content.
    */
   public static native MediaKeywords newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.mediarss.MediaKeywords(
@@ -32,42 +34,33 @@ public class MediaKeywords extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a media keywords using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native MediaKeywords newInstance() /*-{
-    return new $wnd.google.gdata.mediarss.MediaKeywords();
-  }-*/;
-
   protected MediaKeywords() { }
 
   /**
-   * Returns the highly relevant keywords describing the media object.
+   * Returns the highly relevant keywords describing the media object. This attribute is optional.
    * 
-   * @return
+   * @return Highly relevant keywords describing the media object or undefined for none.
    */
   public final native String getContent() /*-{
     return this.getContent();
   }-*/;
 
   /**
-   * Sets the highly relevant keywords describing the media object.
+   * Sets the highly relevant keywords describing the media object. This attribute is optional.
+   */
+  public final native void setContent() /*-{
+    this.setContent();
+  }-*/;
+
+  /**
+   * Sets the highly relevant keywords describing the media object. This attribute is optional.
    * 
-   * @param content
+   * @param content Highly relevant keywords describing the media object or undefined for none.
    */
   public final native void setContent(String content) /*-{
     this.setContent(
       content
     );
-  }-*/;
-
-  /**
-   * Sets the highly relevant keywords describing the media object.
-   * 
-   * @param content
-   */
-  public final native void setContent() /*-{
-    this.setContent();
   }-*/;
 
 }

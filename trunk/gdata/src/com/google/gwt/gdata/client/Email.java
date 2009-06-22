@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * is now at
  */
 public class Email extends JavaScriptObject {
 
@@ -40,18 +40,13 @@ public class Email extends JavaScriptObject {
 
   /**
    * Constructs an email address using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: address, label, primary, and rel.
    */
   public static native Email newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.Email(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs an email address using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Email newInstance() /*-{
-    return new $wnd.google.gdata.Email();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -61,45 +56,52 @@ public class Email extends JavaScriptObject {
   protected Email() { }
 
   /**
-   * Returns the email address.
+   * Returns the email address. This attribute is required.
    * 
-   * @return
+   * @return Email address or undefined for none.
    */
   public final native String getAddress() /*-{
     return this.getAddress();
   }-*/;
 
   /**
-   * Returns the label.
+   * Returns the label. This attribute is optional.
    * 
-   * @return
+   * @return Label or undefined for none.
    */
   public final native String getLabel() /*-{
     return this.getLabel();
   }-*/;
 
   /**
-   * Returns whether this is the primary email address.
+   * Returns whether this is the primary email address. This attribute is optional.
    * 
-   * @return
+   * @return Whether this is the primary email address or undefined for none.
    */
   public final native boolean getPrimary() /*-{
     return this.getPrimary();
   }-*/;
 
   /**
-   * Returns the email type.
+   * Returns the email type. This attribute is optional.
    * 
-   * @return
+   * @return Email type or undefined for none.
    */
   public final native String getRel() /*-{
     return this.getRel();
   }-*/;
 
   /**
-   * Sets the email address.
+   * Sets the email address. This attribute is required.
+   */
+  public final native void setAddress() /*-{
+    this.setAddress();
+  }-*/;
+
+  /**
+   * Sets the email address. This attribute is required.
    * 
-   * @param address
+   * @param address Email address or undefined for none.
    */
   public final native void setAddress(String address) /*-{
     this.setAddress(
@@ -108,18 +110,16 @@ public class Email extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the email address.
-   * 
-   * @param address
+   * Sets the label. This attribute is optional.
    */
-  public final native void setAddress() /*-{
-    this.setAddress();
+  public final native void setLabel() /*-{
+    this.setLabel();
   }-*/;
 
   /**
-   * Sets the label.
+   * Sets the label. This attribute is optional.
    * 
-   * @param label
+   * @param label Label or undefined for none.
    */
   public final native void setLabel(String label) /*-{
     this.setLabel(
@@ -128,18 +128,16 @@ public class Email extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the label.
-   * 
-   * @param label
+   * Sets whether this is the primary email address. This attribute is optional.
    */
-  public final native void setLabel() /*-{
-    this.setLabel();
+  public final native void setPrimary() /*-{
+    this.setPrimary();
   }-*/;
 
   /**
-   * Sets whether this is the primary email address.
+   * Sets whether this is the primary email address. This attribute is optional.
    * 
-   * @param primary
+   * @param primary Whether this is the primary email address or undefined for none.
    */
   public final native void setPrimary(boolean primary) /*-{
     this.setPrimary(
@@ -148,32 +146,21 @@ public class Email extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether this is the primary email address.
-   * 
-   * @param primary
+   * Sets the email type. This attribute is optional.
    */
-  public final native void setPrimary() /*-{
-    this.setPrimary();
+  public final native void setRel() /*-{
+    this.setRel();
   }-*/;
 
   /**
-   * Sets the email type.
+   * Sets the email type. This attribute is optional.
    * 
-   * @param rel
+   * @param rel Email type or undefined for none.
    */
   public final native void setRel(String rel) /*-{
     this.setRel(
       rel
     );
-  }-*/;
-
-  /**
-   * Sets the email type.
-   * 
-   * @param rel
-   */
-  public final native void setRel() /*-{
-    this.setRel();
   }-*/;
 
 }

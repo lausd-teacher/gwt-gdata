@@ -20,24 +20,19 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Comments;
 
 /**
- * Comment unavailable.
+ * Describes a container of a feed link for Calendar comment entries.
  */
 public class CalendarComments extends Comments {
 
   /**
    * Constructs a Calendar comments class using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: feedLink.
    */
   public static native CalendarComments newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.calendar.CalendarComments(
       params
     );
-  }-*/;
-
-  /**
-   * Constructs a Calendar comments class using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native CalendarComments newInstance() /*-{
-    return new $wnd.google.gdata.calendar.CalendarComments();
   }-*/;
 
   protected CalendarComments() { }

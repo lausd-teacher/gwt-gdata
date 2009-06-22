@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.app;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Specifies a type of representation that can be POSTed to a Collection.
  */
 public class Accept extends JavaScriptObject {
 
   /**
    * Constructs an accept element using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
   public static native Accept newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.app.Accept(
@@ -32,42 +34,33 @@ public class Accept extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs an accept element using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Accept newInstance() /*-{
-    return new $wnd.google.gdata.app.Accept();
-  }-*/;
-
   protected Accept() { }
 
   /**
-   * Returns the value.
+   * Returns the value. This attribute is optional.
    * 
-   * @return
+   * @return Value or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the value.
+   * Sets the value. This attribute is optional.
+   */
+  public final native void setValue() /*-{
+    this.setValue();
+  }-*/;
+
+  /**
+   * Sets the value. This attribute is optional.
    * 
-   * @param value
+   * @param value Value or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }

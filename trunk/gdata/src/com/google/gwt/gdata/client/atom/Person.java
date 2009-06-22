@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.atom;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Describes a person construct used for authors and contributors.
  */
 public class Person extends JavaScriptObject {
 
   /**
    * Constructs a person construct using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: email, name, nameLang, and uri.
    */
   public static native Person newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.atom.Person(
@@ -32,55 +34,55 @@ public class Person extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a person construct using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Person newInstance() /*-{
-    return new $wnd.google.gdata.atom.Person();
-  }-*/;
-
   protected Person() { }
 
   /**
-   * Returns the authors email address.
+   * Returns the author's email address. This element is optional.
    * 
-   * @return
+   * @return Author's email address or undefined for none.
    */
   public final native com.google.gwt.gdata.client.atom.Email getEmail() /*-{
     return this.getEmail();
   }-*/;
 
   /**
-   * Returns the authors name.
+   * Returns the author's name. This element is required.
    * 
-   * @return
+   * @return Author's name or undefined for none.
    */
   public final native Name getName() /*-{
     return this.getName();
   }-*/;
 
   /**
-   * Returns the language of name.
+   * Returns the language of name. This attribute is optional.
    * 
-   * @return
+   * @return Language of name or undefined for none.
    */
   public final native String getNameLang() /*-{
     return this.getNameLang();
   }-*/;
 
   /**
-   * Returns the authors URI.
+   * Returns the author's URI. This element is optional.
    * 
-   * @return
+   * @return Author's URI or undefined for none.
    */
   public final native Uri getUri() /*-{
     return this.getUri();
   }-*/;
 
   /**
-   * Sets the authors email address.
+   * Sets the author's email address. This element is optional.
+   */
+  public final native void setEmail() /*-{
+    this.setEmail();
+  }-*/;
+
+  /**
+   * Sets the author's email address. This element is optional.
    * 
-   * @param email
+   * @param email Author's email address, or object to use as a parameter to the google.gdata.atom.Email constructor, or undefined for none.
    */
   public final native void setEmail(Email email) /*-{
     this.setEmail(
@@ -89,18 +91,16 @@ public class Person extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the authors email address.
-   * 
-   * @param email
+   * Sets the author's name. This element is required.
    */
-  public final native void setEmail() /*-{
-    this.setEmail();
+  public final native void setName() /*-{
+    this.setName();
   }-*/;
 
   /**
-   * Sets the authors name.
+   * Sets the author's name. This element is required.
    * 
-   * @param name
+   * @param name Author's name, or object to use as a parameter to the google.gdata.atom.Name constructor, or undefined for none.
    */
   public final native void setName(Name name) /*-{
     this.setName(
@@ -109,18 +109,16 @@ public class Person extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the authors name.
-   * 
-   * @param name
+   * Sets the language of name. This attribute is optional.
    */
-  public final native void setName() /*-{
-    this.setName();
+  public final native void setNameLang() /*-{
+    this.setNameLang();
   }-*/;
 
   /**
-   * Sets the language of name.
+   * Sets the language of name. This attribute is optional.
    * 
-   * @param nameLang
+   * @param nameLang Language of name or undefined for none.
    */
   public final native void setNameLang(String nameLang) /*-{
     this.setNameLang(
@@ -129,32 +127,21 @@ public class Person extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the language of name.
-   * 
-   * @param nameLang
+   * Sets the author's URI. This element is optional.
    */
-  public final native void setNameLang() /*-{
-    this.setNameLang();
+  public final native void setUri() /*-{
+    this.setUri();
   }-*/;
 
   /**
-   * Sets the authors URI.
+   * Sets the author's URI. This element is optional.
    * 
-   * @param uri
+   * @param uri Author's URI, or object to use as a parameter to the google.gdata.atom.Uri constructor, or undefined for none.
    */
   public final native void setUri(Uri uri) /*-{
     this.setUri(
       uri
     );
-  }-*/;
-
-  /**
-   * Sets the authors URI.
-   * 
-   * @param uri
-   */
-  public final native void setUri() /*-{
-    this.setUri();
   }-*/;
 
 }

@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.analytics;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Generic account-level property.
  */
 public class Property extends JavaScriptObject {
 
   /**
    * Constructs a property using an object parameter whose property names match the setter method to use for each property.
+   * 
+   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: name and value.
    */
   public static native Property newInstance(JavaScriptObject params) /*-{
     return new $wnd.google.gdata.analytics.Property(
@@ -32,37 +34,37 @@ public class Property extends JavaScriptObject {
     );
   }-*/;
 
-  /**
-   * Constructs a property using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native Property newInstance() /*-{
-    return new $wnd.google.gdata.analytics.Property();
-  }-*/;
-
   protected Property() { }
 
   /**
-   * Returns the name of the property.
+   * Returns the name of the property. This attribute is required.
    * 
-   * @return
+   * @return Name of the property or undefined for none.
    */
   public final native String getName() /*-{
     return this.getName();
   }-*/;
 
   /**
-   * Returns the value of the property.
+   * Returns the value of the property. This attribute is required.
    * 
-   * @return
+   * @return Value of the property or undefined for none.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets the name of the property.
+   * Sets the name of the property. This attribute is required.
+   */
+  public final native void setName() /*-{
+    this.setName();
+  }-*/;
+
+  /**
+   * Sets the name of the property. This attribute is required.
    * 
-   * @param name
+   * @param name Name of the property or undefined for none.
    */
   public final native void setName(String name) /*-{
     this.setName(
@@ -71,32 +73,21 @@ public class Property extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the name of the property.
-   * 
-   * @param name
+   * Sets the value of the property. This attribute is required.
    */
-  public final native void setName() /*-{
-    this.setName();
+  public final native void setValue() /*-{
+    this.setValue();
   }-*/;
 
   /**
-   * Sets the value of the property.
+   * Sets the value of the property. This attribute is required.
    * 
-   * @param value
+   * @param value Value of the property or undefined for none.
    */
   public final native void setValue(String value) /*-{
     this.setValue(
       value
     );
-  }-*/;
-
-  /**
-   * Sets the value of the property.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
   }-*/;
 
 }
