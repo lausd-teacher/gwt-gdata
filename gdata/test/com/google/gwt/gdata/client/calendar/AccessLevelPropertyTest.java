@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -40,11 +39,11 @@ public class AccessLevelPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AccessLevelProperty.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", AccessLevelProperty.newInstance());
   }
 
   public void testProperties() {
-    AccessLevelProperty obj = AccessLevelProperty.newInstance(JavaScriptObject.createObject());
+    AccessLevelProperty obj = AccessLevelProperty.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

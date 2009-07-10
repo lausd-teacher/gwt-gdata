@@ -74,14 +74,11 @@ public class Who extends JavaScriptObject {
   public static final String REL_TASK_ASSIGNED_TO = getConstant("REL_TASK_ASSIGNED_TO");
 
   /**
-   * Constructs a person description using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: attendeeStatus, attendeeType, email, entryLink, rel, and valueString.
+   * Constructs a person description.
+   * @return A Who object.
    */
-  public static native Who newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Who(
-      params
-    );
+  public static native Who newInstance() /*-{
+    return new $wnd.google.gdata.Who();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -93,7 +90,7 @@ public class Who extends JavaScriptObject {
   /**
    * Returns the event attendee status. This element is optional.
    * 
-   * @return Event attendee status or undefined for none.
+   * @return Event attendee status.
    */
   public final native AttendeeStatus getAttendeeStatus() /*-{
     return this.getAttendeeStatus();
@@ -102,7 +99,7 @@ public class Who extends JavaScriptObject {
   /**
    * Returns the event attendee type. This element is optional.
    * 
-   * @return Event attendee type or undefined for none.
+   * @return Event attendee type.
    */
   public final native AttendeeType getAttendeeType() /*-{
     return this.getAttendeeType();
@@ -111,7 +108,7 @@ public class Who extends JavaScriptObject {
   /**
    * Returns the email address. This attribute is optional.
    * 
-   * @return Email address or undefined for none.
+   * @return Email address.
    */
   public final native String getEmail() /*-{
     return this.getEmail();
@@ -120,8 +117,9 @@ public class Who extends JavaScriptObject {
   /**
    * Returns the nested person entry. This element is optional.
    * 
-   * @return Nested person entry or undefined for none.
+   * @return Nested person entry.
    */
+  @SuppressWarnings("unchecked")
   public final native EntryLink getEntryLink() /*-{
     return this.getEntryLink();
   }-*/;
@@ -129,7 +127,7 @@ public class Who extends JavaScriptObject {
   /**
    * Returns the relationship between the containing entity and the contained person. This attribute is optional.
    * 
-   * @return Relationship between the containing entity and the contained person or undefined for none.
+   * @return Relationship between the containing entity and the contained person.
    */
   public final native String getRel() /*-{
     return this.getRel();
@@ -138,7 +136,7 @@ public class Who extends JavaScriptObject {
   /**
    * Returns the simple string value that can be used as a representation of this person. This attribute is optional.
    * 
-   * @return Simple string value that can be used as a representation of this person or undefined for none.
+   * @return Simple string value that can be used as a representation of this person.
    */
   public final native String getValueString() /*-{
     return this.getValueString();
@@ -146,20 +144,11 @@ public class Who extends JavaScriptObject {
 
   /**
    * Sets the event attendee status. This element is optional.
-   */
-  public final native void setAttendeeStatus() /*-{
-    this.setAttendeeStatus();
-  }-*/;
-
-  /**
-   * Sets the event attendee status. This element is optional.
    * 
-   * @param attendeeStatus Event attendee status, or object to use as a parameter to the google.gdata.AttendeeStatus constructor, or undefined for none.
+   * @param attendeeStatus Event attendee status.
    */
   public final native void setAttendeeStatus(AttendeeStatus attendeeStatus) /*-{
-    this.setAttendeeStatus(
-      attendeeStatus
-    );
+    this.setAttendeeStatus(attendeeStatus);
   }-*/;
 
   /**
@@ -172,84 +161,47 @@ public class Who extends JavaScriptObject {
   /**
    * Sets the event attendee type. This element is optional.
    * 
-   * @param attendeeType Event attendee type, or object to use as a parameter to the google.gdata.AttendeeType constructor, or undefined for none.
+   * @param attendeeType Event attendee type.
    */
   public final native void setAttendeeType(AttendeeType attendeeType) /*-{
-    this.setAttendeeType(
-      attendeeType
-    );
+    this.setAttendeeType(attendeeType);
   }-*/;
-
-  /**
-   * Sets the email address. This attribute is optional.
-   */
-  public final native void setEmail() /*-{
-    this.setEmail();
-  }-*/;
-
+  
   /**
    * Sets the email address. This attribute is optional.
    * 
-   * @param email Email address or undefined for none.
+   * @param email Email address.
    */
   public final native void setEmail(String email) /*-{
-    this.setEmail(
-      email
-    );
-  }-*/;
-
-  /**
-   * Sets the nested person entry. This element is optional.
-   */
-  public final native void setEntryLink() /*-{
-    this.setEntryLink();
+    this.setEmail(email);
   }-*/;
 
   /**
    * Sets the nested person entry. This element is optional.
    * 
-   * @param entryLink Nested person entry, or object to use as a parameter to the google.gdata.EntryLink constructor, or undefined for none.
+   * @param entryLink Nested person entry.
    */
+  @SuppressWarnings("unchecked")
   public final native void setEntryLink(EntryLink entryLink) /*-{
-    this.setEntryLink(
-      entryLink
-    );
-  }-*/;
-
-  /**
-   * Sets the relationship between the containing entity and the contained person. This attribute is optional.
-   */
-  public final native void setRel() /*-{
-    this.setRel();
+    this.setEntryLink(entryLink);
   }-*/;
 
   /**
    * Sets the relationship between the containing entity and the contained person. This attribute is optional.
    * 
-   * @param rel Relationship between the containing entity and the contained person or undefined for none.
+   * @param rel Relationship between the containing entity and the contained person.
    */
   public final native void setRel(String rel) /*-{
-    this.setRel(
-      rel
-    );
-  }-*/;
-
-  /**
-   * Sets the simple string value that can be used as a representation of this person. This attribute is optional.
-   */
-  public final native void setValueString() /*-{
-    this.setValueString();
+    this.setRel(rel);
   }-*/;
 
   /**
    * Sets the simple string value that can be used as a representation of this person. This attribute is optional.
    * 
-   * @param valueString Simple string value that can be used as a representation of this person or undefined for none.
+   * @param valueString Simple string value that can be used as a representation of this person.
    */
   public final native void setValueString(String valueString) /*-{
-    this.setValueString(
-      valueString
-    );
+    this.setValueString(valueString);
   }-*/;
 
 }

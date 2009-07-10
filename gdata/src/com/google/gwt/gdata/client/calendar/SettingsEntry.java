@@ -16,22 +16,18 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Describes a Calendar Settings property entry.
  */
 public class SettingsEntry extends com.google.gwt.gdata.client.Entry<SettingsEntry> {
 
   /**
-   * Constructs a Calendar Settings property entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, id, settingsProperty, title, and updated.
+   * Constructs a Calendar Settings property entry.
+   * @return A SettingsEntry object.
    */
-  public static native SettingsEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.SettingsEntry(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native SettingsEntry newInstance() /*-{
+    return new $wnd.google.gdata.calendar.SettingsEntry();
   }-*/;
 
   protected SettingsEntry() { }
@@ -39,7 +35,7 @@ public class SettingsEntry extends com.google.gwt.gdata.client.Entry<SettingsEnt
   /**
    * Returns the settings property. This element is required.
    * 
-   * @return Settings property or undefined for none.
+   * @return Settings property.
    */
   public final native SettingsProperty getSettingsProperty() /*-{
     return this.getSettingsProperty();
@@ -47,20 +43,11 @@ public class SettingsEntry extends com.google.gwt.gdata.client.Entry<SettingsEnt
 
   /**
    * Sets the settings property. This element is required.
-   */
-  public final native void setSettingsProperty() /*-{
-    this.setSettingsProperty();
-  }-*/;
-
-  /**
-   * Sets the settings property. This element is required.
    * 
-   * @param settingsProperty Settings property, or object to use as a parameter to the google.gdata.calendar.SettingsProperty constructor, or undefined for none.
+   * @param settingsProperty Settings property.
    */
   public final native void setSettingsProperty(SettingsProperty settingsProperty) /*-{
-    this.setSettingsProperty(
-      settingsProperty
-    );
+    this.setSettingsProperty(settingsProperty);
   }-*/;
 
 }

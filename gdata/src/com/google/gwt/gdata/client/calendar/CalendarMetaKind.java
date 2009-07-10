@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Kind;
 
 /**
@@ -30,14 +29,11 @@ public class CalendarMetaKind extends Kind {
   public static final String TERM_CALENDARMETA = getConstant("TERM_CALENDARMETA");
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: scheme and term.
+   * Constructs a calendar meta kind.
+   * @return A CalendarMetaKind object.
    */
-  public static native CalendarMetaKind newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.CalendarMetaKind(
-      params
-    );
+  public static native CalendarMetaKind newInstance() /*-{
+    return new $wnd.google.gdata.calendar.CalendarMetaKind();
   }-*/;
 
   private static native String getConstant(String name) /*-{

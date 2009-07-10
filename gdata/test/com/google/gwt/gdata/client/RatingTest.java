@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -35,11 +34,11 @@ public class RatingTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Rating.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Rating.newInstance());
   }
 
   public void testProperties() {
-    Rating obj = Rating.newInstance(JavaScriptObject.createObject());
+    Rating obj = Rating.newInstance();
     double min = 600813;
     obj.setMin(min);
     assertEquals("min", obj.getMin(), min);

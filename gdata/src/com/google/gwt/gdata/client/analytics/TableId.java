@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class TableId extends JavaScriptObject {
 
   /**
-   * Constructs a data source ID using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a data source ID.
+   * @return A TableId object.
    */
-  public static native TableId newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.analytics.TableId(
-      params
-    );
+  public static native TableId newInstance() /*-{
+    return new $wnd.google.gdata.analytics.TableId();
   }-*/;
 
   protected TableId() { }
@@ -39,7 +36,7 @@ public class TableId extends JavaScriptObject {
   /**
    * Returns the value. This attribute is optional.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class TableId extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is optional.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is optional.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,12 +28,12 @@ public class CommentsTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Comments.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Comments.newInstance());
   }
 
   public void testProperties() {
-    Comments obj = Comments.newInstance(JavaScriptObject.createObject());
-    FeedLink feedlink = FeedLink.newInstance(JavaScriptObject.createObject());
+    Comments obj = Comments.newInstance();
+    FeedLink feedlink = FeedLink.newInstance();
     obj.setFeedLink(feedlink);
     assertSame("feedlink", obj.getFeedLink(), feedlink);
   }

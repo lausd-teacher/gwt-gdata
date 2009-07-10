@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.maps;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class MapFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MapFeed.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", MapFeed.newInstance());
   }
 
   public void testOther() {
-    MapFeed obj = MapFeed.newInstance(JavaScriptObject.createObject());
+    MapFeed obj = MapFeed.newInstance();
     // Unit Test for getAtomFeedLink()
     assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
     // Unit Test for getNextLink()

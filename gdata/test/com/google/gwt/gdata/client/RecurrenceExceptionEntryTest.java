@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,40 +28,39 @@ public class RecurrenceExceptionEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", RecurrenceExceptionEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", RecurrenceExceptionEntry.newInstance());
   }
 
   public void testOther() {
-    RecurrenceExceptionEntry obj = RecurrenceExceptionEntry.newInstance(JavaScriptObject.createObject());
     // Unit Test for addWhen(When when)
     // Unit Test for addWhere(Where where)
     // Unit Test for addWho(Who who)
-    // Unit Test for getWhen()
-    assertEquals("getWhen", obj.getWhen(), null);
-    // Unit Test for getWhere()
-    assertEquals("getWhere", obj.getWhere(), null);
-    // Unit Test for getWho()
-    assertEquals("getWho", obj.getWho(), null);
-    // Unit Test for setWhen(JsArray when)
-    // Unit Test for setWhere(JsArray where)
-    // Unit Test for setWho(JsArray who)
   }
 
   public void testProperties() {
-    RecurrenceExceptionEntry obj = RecurrenceExceptionEntry.newInstance(JavaScriptObject.createObject());
-    Transparency transparency = Transparency.newInstance(JavaScriptObject.createObject());
+    RecurrenceExceptionEntry obj = RecurrenceExceptionEntry.newInstance();
+    Who[] who = new Who[]{ Who.newInstance() };
+    obj.setWho(who);
+    assertEquals("who", obj.getWho().length, who.length);
+    Transparency transparency = Transparency.newInstance();
     obj.setTransparency(transparency);
     assertSame("transparency", obj.getTransparency(), transparency);
-    EventStatus eventstatus = EventStatus.newInstance(JavaScriptObject.createObject());
+    EventStatus eventstatus = EventStatus.newInstance();
     obj.setEventStatus(eventstatus);
     assertSame("eventstatus", obj.getEventStatus(), eventstatus);
-    OriginalEvent originalevent = OriginalEvent.newInstance(JavaScriptObject.createObject());
+    OriginalEvent originalevent = OriginalEvent.newInstance();
     obj.setOriginalEvent(originalevent);
     assertSame("originalevent", obj.getOriginalEvent(), originalevent);
-    Visibility visibility = Visibility.newInstance(JavaScriptObject.createObject());
+    When[] when = new When[]{ When.newInstance() };
+    obj.setWhen(when);
+    assertEquals("when", obj.getWhen().length, when.length);
+    Visibility visibility = Visibility.newInstance();
     obj.setVisibility(visibility);
     assertSame("visibility", obj.getVisibility(), visibility);
-    Comments comments = Comments.newInstance(JavaScriptObject.createObject());
+    Where[] where = new Where[]{ Where.newInstance() };
+    obj.setWhere(where);
+    assertEquals("where", obj.getWhere().length, where.length);
+    Comments comments = Comments.newInstance();
     obj.setComments(comments);
     assertSame("comments", obj.getComments(), comments);
   }

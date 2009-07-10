@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class CalendarEventFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarEventFeed.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", CalendarEventFeed.newInstance());
   }
 
   public void testOther() {
-    CalendarEventFeed obj = CalendarEventFeed.newInstance(JavaScriptObject.createObject());
+    CalendarEventFeed obj = CalendarEventFeed.newInstance();
     // Unit Test for getFeedBatchLink()
     assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
     // Unit Test for getNextLink()
@@ -43,14 +42,14 @@ public class CalendarEventFeedTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    CalendarEventFeed obj = CalendarEventFeed.newInstance(JavaScriptObject.createObject());
-    TimeZoneProperty timezone = TimeZoneProperty.newInstance(JavaScriptObject.createObject());
+    CalendarEventFeed obj = CalendarEventFeed.newInstance();
+    TimeZoneProperty timezone = TimeZoneProperty.newInstance();
     obj.setTimeZone(timezone);
     assertSame("timezone", obj.getTimeZone(), timezone);
     AllowGSyncProperty allowgsync = AllowGSyncProperty.newInstance();
     obj.setAllowGSync(allowgsync);
     assertSame("allowgsync", obj.getAllowGSync(), allowgsync);
-    TimesCleanedProperty timescleaned = TimesCleanedProperty.newInstance(JavaScriptObject.createObject());
+    TimesCleanedProperty timescleaned = TimesCleanedProperty.newInstance();
     obj.setTimesCleaned(timescleaned);
     assertSame("timescleaned", obj.getTimesCleaned(), timescleaned);
   }

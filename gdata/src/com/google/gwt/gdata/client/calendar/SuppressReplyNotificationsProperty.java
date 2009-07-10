@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class SuppressReplyNotificationsProperty extends JavaScriptObject {
 
   /**
-   * Constructs a suppress reply notifications property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: methods.
+   * Constructs a suppress reply notifications property.
+   * @return A SuppressReplyNotificationsProperty object.
    */
-  public static native SuppressReplyNotificationsProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.SuppressReplyNotificationsProperty(
-      params
-    );
+  public static native SuppressReplyNotificationsProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.SuppressReplyNotificationsProperty();
   }-*/;
 
   protected SuppressReplyNotificationsProperty() { }
@@ -39,7 +36,7 @@ public class SuppressReplyNotificationsProperty extends JavaScriptObject {
   /**
    * Returns the comma separated list of methods. This attribute is required.
    * 
-   * @return Comma separated list of methods or undefined for none.
+   * @return Comma separated list of methods.
    */
   public final native String getMethods() /*-{
     return this.getMethods();
@@ -47,20 +44,11 @@ public class SuppressReplyNotificationsProperty extends JavaScriptObject {
 
   /**
    * Sets the comma separated list of methods. This attribute is required.
-   */
-  public final native void setMethods() /*-{
-    this.setMethods();
-  }-*/;
-
-  /**
-   * Sets the comma separated list of methods. This attribute is required.
    * 
-   * @param methods Comma separated list of methods or undefined for none.
+   * @param methods Comma separated list of methods.
    */
   public final native void setMethods(String methods) /*-{
-    this.setMethods(
-      methods
-    );
+    this.setMethods(methods);
   }-*/;
 
 }

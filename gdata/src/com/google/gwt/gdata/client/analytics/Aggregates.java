@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.analytics;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 
 /**
  * Describes an aggregates.
@@ -25,14 +24,11 @@ import com.google.gwt.core.client.JsArray;
 public class Aggregates extends JavaScriptObject {
 
   /**
-   * Constructs an aggregates using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: metrics.
+   * Constructs an aggregates.
+   * @return An Aggregates object.
    */
-  public static native Aggregates newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.analytics.Aggregates(
-      params
-    );
+  public static native Aggregates newInstance() /*-{
+    return new $wnd.google.gdata.analytics.Aggregates();
   }-*/;
 
   protected Aggregates() { }
@@ -40,12 +36,10 @@ public class Aggregates extends JavaScriptObject {
   /**
    * Adds a new metric.
    * 
-   * @param metric Metric to add, or object to use as a parameter to the google.gdata.analytics.Metric constructor.
+   * @param metric Metric to add.
    */
   public final native void addMetric(Metric metric) /*-{
-    this.addMetric(
-      metric
-    );
+    this.addMetric(metric);
   }-*/;
 
   /**
@@ -53,25 +47,18 @@ public class Aggregates extends JavaScriptObject {
    * 
    * @return Metrics.
    */
-  public final native JsArray<Metric> getMetrics() /*-{
-    return this.getMetrics();
-  }-*/;
-
-  /**
-   * Sets the metrics.
-   */
-  public final native void setMetrics() /*-{
-    this.setMetrics();
+  public final native Metric[] getMetrics() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getMetrics());
   }-*/;
 
   /**
    * Sets the metrics.
    * 
-   * @param metrics Metrics, where each metric is added using the addMetric() function, or undefined to clear the metrics.
+   * @param metrics Metrics, where each metric is added using addMetric().
    */
-  public final native void setMetrics(JsArray<Metric> metrics) /*-{
+  public final native void setMetrics(Metric[] metrics) /*-{
     this.setMetrics(
-      metrics
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(metrics)
     );
   }-*/;
 

@@ -45,14 +45,13 @@ public class CalendarEventQuery extends Query {
   public static final String SORTORDER_DESCENDING = getConstant("SORTORDER_DESCENDING");
 
   /**
-   * Constructor.
+   * Constructs a calendar event query.
    * 
    * @param feedUri URI of feed.
+   * @return A CalendarEventQuery object.
    */
   public static native CalendarEventQuery newInstance(String feedUri) /*-{
-    return new $wnd.google.gdata.calendar.CalendarEventQuery(
-      feedUri
-    );
+    return new $wnd.google.gdata.calendar.CalendarEventQuery(feedUri);
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -64,7 +63,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the author name or email address.
    * 
-   * @return Author name or email address or null to indicate that the parameter is disabled.
+   * @return Author name or email address.
    */
   public final native String getAuthor() /*-{
     return this.getAuthor();
@@ -73,7 +72,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the full-text query string.
    * 
-   * @return Full-text query string or null to indicate that the parameter is disabled.
+   * @return Full-text query string.
    */
   public final native String getFullTextQuery() /*-{
     return this.getFullTextQuery();
@@ -82,7 +81,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the shortcut to request all events that are scheduled for future times which overrides the recurrence-expansion-start, recurrence-expansion-end, start-min, and start-max values.
    * 
-   * @return Shortcut to request all events that are scheduled for future times which overrides the recurrence-expansion-start, recurrence-expansion-end, start-min, and start-max values or null to indicate that the parameter is disabled.
+   * @return Shortcut to request all events that are scheduled for future times which overrides the recurrence-expansion-start, recurrence-expansion-end, start-min, and start-max values.
    */
   public final native boolean getFutureEvents() /*-{
     return this.getFutureEvents();
@@ -91,7 +90,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the latest event start time to match (default is 2031-01-01).
    * 
-   * @return Latest event start time to match (default is 2031-01-01) or null to indicate that the parameter is disabled.
+   * @return Latest event start time to match (default is 2031-01-01).
    */
   public final native DateTime getMaximumStartTime() /*-{
     return this.getMaximumStartTime();
@@ -100,7 +99,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the maximum number of results to be retrieved.
    * 
-   * @return Maximum number of results to be retrieved or null to indicate that the parameter is disabled.
+   * @return Maximum number of results to be retrieved.
    */
   public final native double getMaxResults() /*-{
     return this.getMaxResults();
@@ -109,7 +108,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the earliest event start time to match (default is 1970-01-01).
    * 
-   * @return Earliest event start time to match (default is 1970-01-01) or null to indicate that the parameter is disabled.
+   * @return Earliest event start time to match (default is 1970-01-01).
    */
   public final native DateTime getMinimumStartTime() /*-{
     return this.getMinimumStartTime();
@@ -118,7 +117,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the order of entries in a feed.
    * 
-   * @return Order of entries in a feed or null to indicate that the parameter is disabled.
+   * @return Order of entries in a feed.
    */
   public final native String getOrderBy() /*-{
     return this.getOrderBy();
@@ -127,7 +126,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the end of time period for which to expand recurring events.
    * 
-   * @return End of time period for which to expand recurring events or null to indicate that the parameter is disabled.
+   * @return End of time period for which to expand recurring events.
    */
   public final native DateTime getRecurrenceExpansionEnd() /*-{
     return this.getRecurrenceExpansionEnd();
@@ -136,7 +135,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the beginning of time period for which to expand recurring events.
    * 
-   * @return Beginning of time period for which to expand recurring events or null to indicate that the parameter is disabled.
+   * @return Beginning of time period for which to expand recurring events.
    */
   public final native DateTime getRecurrenceExpansionStart() /*-{
     return this.getRecurrenceExpansionStart();
@@ -145,7 +144,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the whether to include the allowGSync flag in the output.
    * 
-   * @return Whether to include the allowGSync flag in the output or null to indicate that the parameter is disabled.
+   * @return Whether to include the allowGSync flag in the output.
    */
   public final native boolean getShowAllowGSync() /*-{
     return this.getShowAllowGSync();
@@ -154,7 +153,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the whether recurring events should be expanded or represented as a single event.
    * 
-   * @return Whether recurring events should be expanded or represented as a single event or null to indicate that the parameter is disabled.
+   * @return Whether recurring events should be expanded or represented as a single event.
    */
   public final native boolean getSingleEvents() /*-{
     return this.getSingleEvents();
@@ -163,7 +162,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the direction of sorting.
    * 
-   * @return Direction of sorting or null to indicate that the parameter is disabled.
+   * @return Direction of sorting.
    */
   public final native String getSortOrder() /*-{
     return this.getSortOrder();
@@ -172,7 +171,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the 1-based index of the first result to be retrieved.
    * 
-   * @return 1-based index of the first result to be retrieved or null to indicate that the parameter is disabled.
+   * @return 1-based index of the first result to be retrieved.
    */
   public final native double getStartIndex() /*-{
     return this.getStartIndex();
@@ -181,7 +180,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the maximum updated date.
    * 
-   * @return Maximum updated date or null to indicate that the parameter is disabled.
+   * @return Maximum updated date.
    */
   public final native DateTime getUpdatedMax() /*-{
     return this.getUpdatedMax();
@@ -190,7 +189,7 @@ public class CalendarEventQuery extends Query {
   /**
    * Returns the minimum updated date.
    * 
-   * @return Minimum updated date or null to indicate that the parameter is disabled.
+   * @return Minimum updated date.
    */
   public final native DateTime getUpdatedMin() /*-{
     return this.getUpdatedMin();
@@ -199,287 +198,136 @@ public class CalendarEventQuery extends Query {
   /**
    * Sets the author name or email address.
    * 
-   * @param author Author name or email address or null to disable this parameter.
+   * @param author Author name or email address.
    */
   public final native void setAuthor(String author) /*-{
-    this.setAuthor(
-      author
-    );
+    this.setAuthor(author);
   }-*/;
 
   /**
    * Sets the full-text query string.
    * 
-   * @param fullTextQuery Full-text query string or null to disable this parameter.
+   * @param fullTextQuery Full-text query string.
    */
   public final native void setFullTextQuery(String fullTextQuery) /*-{
-    this.setFullTextQuery(
-      fullTextQuery
-    );
+    this.setFullTextQuery(fullTextQuery);
   }-*/;
 
   /**
    * Sets the shortcut to request all events that are scheduled for future times which overrides the recurrence-expansion-start, recurrence-expansion-end, start-min, and start-max values. The default value is false.
    * 
-   * @param futureEvents Shortcut to request all events that are scheduled for future times which overrides the recurrence-expansion-start, recurrence-expansion-end, start-min, and start-max values or an equivalent string value or null to disable this parameter.
+   * @param futureEvents Shortcut to request all events that are scheduled for future times which overrides the recurrence-expansion-start, recurrence-expansion-end, start-min, and start-max values.
    */
   public final native void setFutureEvents(boolean futureEvents) /*-{
-    this.setFutureEvents(
-      futureEvents
-    );
-  }-*/;
-
-  /**
-   * Sets the shortcut to request all events that are scheduled for future times which overrides the recurrence-expansion-start, recurrence-expansion-end, start-min, and start-max values. The default value is false.
-   * 
-   * @param futureEvents Shortcut to request all events that are scheduled for future times which overrides the recurrence-expansion-start, recurrence-expansion-end, start-min, and start-max values or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setFutureEvents(String futureEvents) /*-{
-    this.setFutureEvents(
-      futureEvents
-    );
+    this.setFutureEvents(futureEvents);
   }-*/;
 
   /**
    * Sets the latest event start time to match (default is 2031-01-01).
    * 
-   * @param maximumStartTime Latest event start time to match (default is 2031-01-01) or an equivalent string value or null to disable this parameter.
+   * @param maximumStartTime Latest event start time to match (default is 2031-01-01).
    */
   public final native void setMaximumStartTime(DateTime maximumStartTime) /*-{
-    this.setMaximumStartTime(
-      maximumStartTime
-    );
-  }-*/;
-
-  /**
-   * Sets the latest event start time to match (default is 2031-01-01).
-   * 
-   * @param maximumStartTime Latest event start time to match (default is 2031-01-01) or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setMaximumStartTime(String maximumStartTime) /*-{
-    this.setMaximumStartTime(
-      maximumStartTime
-    );
+    this.setMaximumStartTime(maximumStartTime);
   }-*/;
 
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param maxResults Maximum number of results to be retrieved.
    */
   public final native void setMaxResults(double maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
-  }-*/;
-
-  /**
-   * Sets the maximum number of results to be retrieved.
-   * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setMaxResults(String maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
+    this.setMaxResults(maxResults);
   }-*/;
 
   /**
    * Sets the earliest event start time to match (default is 1970-01-01).
    * 
-   * @param minimumStartTime Earliest event start time to match (default is 1970-01-01) or an equivalent string value or null to disable this parameter.
+   * @param minimumStartTime Earliest event start time to match (default is 1970-01-01).
    */
   public final native void setMinimumStartTime(DateTime minimumStartTime) /*-{
-    this.setMinimumStartTime(
-      minimumStartTime
-    );
-  }-*/;
-
-  /**
-   * Sets the earliest event start time to match (default is 1970-01-01).
-   * 
-   * @param minimumStartTime Earliest event start time to match (default is 1970-01-01) or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setMinimumStartTime(String minimumStartTime) /*-{
-    this.setMinimumStartTime(
-      minimumStartTime
-    );
+    this.setMinimumStartTime(minimumStartTime);
   }-*/;
 
   /**
    * Sets the order of entries in a feed. The default value is 'lastmodified'.
    * 
-   * @param orderBy Order of entries in a feed or null to disable this parameter.
+   * @param orderBy Order of entries in a feed.
    */
   public final native void setOrderBy(String orderBy) /*-{
-    this.setOrderBy(
-      orderBy
-    );
+    this.setOrderBy(orderBy);
   }-*/;
 
   /**
    * Sets the end of time period for which to expand recurring events.
    * 
-   * @param recurrenceExpansionEnd End of time period for which to expand recurring events or an equivalent string value or null to disable this parameter.
+   * @param recurrenceExpansionEnd End of time period for which to expand recurring events.
    */
   public final native void setRecurrenceExpansionEnd(DateTime recurrenceExpansionEnd) /*-{
-    this.setRecurrenceExpansionEnd(
-      recurrenceExpansionEnd
-    );
-  }-*/;
-
-  /**
-   * Sets the end of time period for which to expand recurring events.
-   * 
-   * @param recurrenceExpansionEnd End of time period for which to expand recurring events or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setRecurrenceExpansionEnd(String recurrenceExpansionEnd) /*-{
-    this.setRecurrenceExpansionEnd(
-      recurrenceExpansionEnd
-    );
+    this.setRecurrenceExpansionEnd(recurrenceExpansionEnd);
   }-*/;
 
   /**
    * Sets the beginning of time period for which to expand recurring events.
    * 
-   * @param recurrenceExpansionStart Beginning of time period for which to expand recurring events or an equivalent string value or null to disable this parameter.
+   * @param recurrenceExpansionStart Beginning of time period for which to expand recurring events.
    */
   public final native void setRecurrenceExpansionStart(DateTime recurrenceExpansionStart) /*-{
-    this.setRecurrenceExpansionStart(
-      recurrenceExpansionStart
-    );
-  }-*/;
-
-  /**
-   * Sets the beginning of time period for which to expand recurring events.
-   * 
-   * @param recurrenceExpansionStart Beginning of time period for which to expand recurring events or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setRecurrenceExpansionStart(String recurrenceExpansionStart) /*-{
-    this.setRecurrenceExpansionStart(
-      recurrenceExpansionStart
-    );
+    this.setRecurrenceExpansionStart(recurrenceExpansionStart);
   }-*/;
 
   /**
    * Sets the whether to include the allowGSync flag in the output. The default value is false.
    * 
-   * @param showAllowGSync Whether to include the allowGSync flag in the output or an equivalent string value or null to disable this parameter.
+   * @param showAllowGSync Whether to include the allowGSync flag in the output.
    */
   public final native void setShowAllowGSync(boolean showAllowGSync) /*-{
-    this.setShowAllowGSync(
-      showAllowGSync
-    );
-  }-*/;
-
-  /**
-   * Sets the whether to include the allowGSync flag in the output. The default value is false.
-   * 
-   * @param showAllowGSync Whether to include the allowGSync flag in the output or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setShowAllowGSync(String showAllowGSync) /*-{
-    this.setShowAllowGSync(
-      showAllowGSync
-    );
+    this.setShowAllowGSync(showAllowGSync);
   }-*/;
 
   /**
    * Sets the whether recurring events should be expanded or represented as a single event. The default value is false.
    * 
-   * @param singleEvents Whether recurring events should be expanded or represented as a single event or an equivalent string value or null to disable this parameter.
+   * @param singleEvents Whether recurring events should be expanded or represented as a single event.
    */
   public final native void setSingleEvents(boolean singleEvents) /*-{
-    this.setSingleEvents(
-      singleEvents
-    );
-  }-*/;
-
-  /**
-   * Sets the whether recurring events should be expanded or represented as a single event. The default value is false.
-   * 
-   * @param singleEvents Whether recurring events should be expanded or represented as a single event or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setSingleEvents(String singleEvents) /*-{
-    this.setSingleEvents(
-      singleEvents
-    );
+    this.setSingleEvents(singleEvents);
   }-*/;
 
   /**
    * Sets the direction of sorting.
    * 
-   * @param sortOrder Direction of sorting or null to disable this parameter.
+   * @param sortOrder Direction of sorting.
    */
   public final native void setSortOrder(String sortOrder) /*-{
-    this.setSortOrder(
-      sortOrder
-    );
+    this.setSortOrder(sortOrder);
   }-*/;
 
   /**
    * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param startIndex 1-based index of the first result to be retrieved.
    */
   public final native void setStartIndex(double startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
-  }-*/;
-
-  /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
-   * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setStartIndex(String startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
+    this.setStartIndex(startIndex);
   }-*/;
 
   /**
    * Sets the maximum updated date.
    * 
-   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
+   * @param updatedMax Maximum updated date.
    */
   public final native void setUpdatedMax(DateTime updatedMax) /*-{
-    this.setUpdatedMax(
-      updatedMax
-    );
-  }-*/;
-
-  /**
-   * Sets the maximum updated date.
-   * 
-   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setUpdatedMax(String updatedMax) /*-{
-    this.setUpdatedMax(
-      updatedMax
-    );
+    this.setUpdatedMax(updatedMax);
   }-*/;
 
   /**
    * Sets the minimum updated date.
    * 
-   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
+   * @param updatedMin Minimum updated date.
    */
   public final native void setUpdatedMin(DateTime updatedMin) /*-{
-    this.setUpdatedMin(
-      updatedMin
-    );
+    this.setUpdatedMin(updatedMin);
   }-*/;
-
-  /**
-   * Sets the minimum updated date.
-   * 
-   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setUpdatedMin(String updatedMin) /*-{
-    this.setUpdatedMin(
-      updatedMin
-    );
-  }-*/;
-
+  
 }

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.atom;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,21 +28,21 @@ public class PersonTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Person.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Person.newInstance());
   }
 
   public void testProperties() {
-    Person obj = Person.newInstance(JavaScriptObject.createObject());
-    Name name = Name.newInstance(JavaScriptObject.createObject());
+    Person obj = Person.newInstance();
+    Name name = Name.newInstance();
     obj.setName(name);
     assertSame("name", obj.getName(), name);
     String namelang = "myValue";
     obj.setNameLang(namelang);
     assertEquals("namelang", obj.getNameLang(), namelang);
-    Uri uri = Uri.newInstance(JavaScriptObject.createObject());
+    Uri uri = Uri.newInstance();
     obj.setUri(uri);
     assertSame("uri", obj.getUri(), uri);
-    Email email = Email.newInstance(JavaScriptObject.createObject());
+    Email email = Email.newInstance();
     obj.setEmail(email);
     assertSame("email", obj.getEmail(), email);
   }

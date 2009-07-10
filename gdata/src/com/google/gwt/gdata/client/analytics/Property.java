@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Property extends JavaScriptObject {
 
   /**
-   * Constructs a property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: name and value.
+   * Constructs a property.
+   * @return A Property object.
    */
-  public static native Property newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.analytics.Property(
-      params
-    );
+  public static native Property newInstance() /*-{
+    return new $wnd.google.gdata.analytics.Property();
   }-*/;
 
   protected Property() { }
@@ -39,7 +36,7 @@ public class Property extends JavaScriptObject {
   /**
    * Returns the name of the property. This attribute is required.
    * 
-   * @return Name of the property or undefined for none.
+   * @return Name of the property.
    */
   public final native String getName() /*-{
     return this.getName();
@@ -48,7 +45,7 @@ public class Property extends JavaScriptObject {
   /**
    * Returns the value of the property. This attribute is required.
    * 
-   * @return Value of the property or undefined for none.
+   * @return Value of the property.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -56,38 +53,20 @@ public class Property extends JavaScriptObject {
 
   /**
    * Sets the name of the property. This attribute is required.
-   */
-  public final native void setName() /*-{
-    this.setName();
-  }-*/;
-
-  /**
-   * Sets the name of the property. This attribute is required.
    * 
-   * @param name Name of the property or undefined for none.
+   * @param name Name of the property.
    */
   public final native void setName(String name) /*-{
-    this.setName(
-      name
-    );
-  }-*/;
-
-  /**
-   * Sets the value of the property. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
+    this.setName(name);
   }-*/;
 
   /**
    * Sets the value of the property. This attribute is required.
    * 
-   * @param value Value of the property or undefined for none.
+   * @param value Value of the property.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

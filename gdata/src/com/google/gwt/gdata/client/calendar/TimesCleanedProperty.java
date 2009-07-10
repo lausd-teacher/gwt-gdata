@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class TimesCleanedProperty extends JavaScriptObject {
 
   /**
-   * Constructs a times cleaned property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a times cleaned property.
+   * @return A TimesCleanedProperty object.
    */
-  public static native TimesCleanedProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.TimesCleanedProperty(
-      params
-    );
+  public static native TimesCleanedProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.TimesCleanedProperty();
   }-*/;
 
   protected TimesCleanedProperty() { }
@@ -39,7 +36,7 @@ public class TimesCleanedProperty extends JavaScriptObject {
   /**
    * Returns the number of times calendar was cleaned. This attribute is required.
    * 
-   * @return Number of times calendar was cleaned or undefined for none.
+   * @return Number of times calendar was cleaned.
    */
   public final native double getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class TimesCleanedProperty extends JavaScriptObject {
 
   /**
    * Sets the number of times calendar was cleaned. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the number of times calendar was cleaned. This attribute is required.
    * 
-   * @param value Number of times calendar was cleaned or undefined for none.
+   * @param value Number of times calendar was cleaned.
    */
   public final native void setValue(double value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

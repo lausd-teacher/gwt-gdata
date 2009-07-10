@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class StartIndex extends JavaScriptObject {
 
   /**
-   * Constructs a start index using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a start index.
+   * @return A StartIndex object.
    */
-  public static native StartIndex newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.opensearch.StartIndex(
-      params
-    );
+  public static native StartIndex newInstance() /*-{
+    return new $wnd.google.gdata.opensearch.StartIndex();
   }-*/;
 
   protected StartIndex() { }
@@ -39,7 +36,7 @@ public class StartIndex extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native double getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class StartIndex extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(double value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

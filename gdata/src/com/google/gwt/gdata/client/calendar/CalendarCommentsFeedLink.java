@@ -16,23 +16,20 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.FeedLink;
 
 /**
  * Describes a nested Calendar comments feed link.
  */
-public class CalendarCommentsFeedLink extends FeedLink {
+public class CalendarCommentsFeedLink extends FeedLink<CalendarCommentFeed> {
 
   /**
-   * Constructs a nested Calendar comments feed link using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: countHint, feed, href, readOnly, and rel.
+   * Constructs a nested Calendar comments feed link.
+   * @return A CalendarCommentsFeedLink object.
    */
-  public static native CalendarCommentsFeedLink newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.CalendarCommentsFeedLink(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native CalendarCommentsFeedLink newInstance() /*-{
+    return new $wnd.google.gdata.calendar.CalendarCommentsFeedLink();
   }-*/;
 
   protected CalendarCommentsFeedLink() { }

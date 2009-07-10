@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,18 +28,18 @@ public class PositionEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PositionEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", PositionEntry.newInstance());
   }
 
   public void testProperties() {
-    PositionEntry obj = PositionEntry.newInstance(JavaScriptObject.createObject());
-    PositionData positiondata = PositionData.newInstance(JavaScriptObject.createObject());
+    PositionEntry obj = PositionEntry.newInstance();
+    PositionData positiondata = PositionData.newInstance();
     obj.setPositionData(positiondata);
     assertSame("positiondata", obj.getPositionData(), positiondata);
-    PositionFeedLink feedlink = PositionFeedLink.newInstance(JavaScriptObject.createObject());
+    PositionFeedLink feedlink = PositionFeedLink.newInstance();
     obj.setFeedLink(feedlink);
     assertSame("feedlink", obj.getFeedLink(), feedlink);
-    Symbol symbol = Symbol.newInstance(JavaScriptObject.createObject());
+    Symbol symbol = Symbol.newInstance();
     obj.setSymbol(symbol);
     assertSame("symbol", obj.getSymbol(), symbol);
   }

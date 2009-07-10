@@ -69,14 +69,11 @@ public class StructuredPostalAddress extends JavaScriptObject {
   public static final String USAGE_LOCAL = getConstant("USAGE_LOCAL");
 
   /**
-   * Constructs a structured postal address using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: agent, city, country, formattedAddress, housename, label, mailClass, neighborhood, pobox, postcode, primary, region, rel, street, subregion, and usage.
+   * Constructs a structured postal address.
+   * @return A StructuredPostalAddress.
    */
-  public static native StructuredPostalAddress newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.StructuredPostalAddress(
-      params
-    );
+  public static native StructuredPostalAddress newInstance() /*-{
+    return new $wnd.google.gdata.StructuredPostalAddress();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -88,7 +85,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the Used in work addresses. Also for 'in care of' or 'c/o'. This element is optional.
    * 
-   * @return Used in work addresses. Also for 'in care of' or 'c/o' or undefined for none.
+   * @return Used in work addresses. Also for 'in care of' or 'c/o'.
    */
   public final native Agent getAgent() /*-{
     return this.getAgent();
@@ -97,7 +94,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the Can be city, village, town, borough, etc. This element is optional.
    * 
-   * @return Can be city, village, town, borough, etc or undefined for none.
+   * @return Can be city, village, town, borough, etc.
    */
   public final native City getCity() /*-{
     return this.getCity();
@@ -106,7 +103,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the The country name. This element is optional.
    * 
-   * @return The country name or undefined for none.
+   * @return The country name.
    */
   public final native Country getCountry() /*-{
     return this.getCountry();
@@ -115,7 +112,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the The full, unstructured address. This element is optional.
    * 
-   * @return The full, unstructured address or undefined for none.
+   * @return The full, unstructured address.
    */
   public final native FormattedAddress getFormattedAddress() /*-{
     return this.getFormattedAddress();
@@ -124,7 +121,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the Used in places where houses or buildings have names. This element is optional.
    * 
-   * @return Used in places where houses or buildings have names or undefined for none.
+   * @return Used in places where houses or buildings have names.
    */
   public final native HouseName getHousename() /*-{
     return this.getHousename();
@@ -133,7 +130,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the Simple string value used to name this address. This attribute is optional.
    * 
-   * @return Simple string value used to name this address or undefined for none.
+   * @return Simple string value used to name this address.
    */
   public final native String getLabel() /*-{
     return this.getLabel();
@@ -142,7 +139,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the The mail class. This attribute is optional.
    * 
-   * @return The mail class or undefined for none.
+   * @return The mail class.
    */
   public final native String getMailClass() /*-{
     return this.getMailClass();
@@ -151,7 +148,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the Neighborhood. Used to disambiguate a street. This element is optional.
    * 
-   * @return Neighborhood. Used to disambiguate a street or undefined for none.
+   * @return Neighborhood. Used to disambiguate a street.
    */
   public final native Neighborhood getNeighborhood() /*-{
     return this.getNeighborhood();
@@ -160,7 +157,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the P.O. box. This element is optional.
    * 
-   * @return P.O. box or undefined for none.
+   * @return P.O. box.
    */
   public final native PoBox getPobox() /*-{
     return this.getPobox();
@@ -169,7 +166,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the Postal code. This element is optional.
    * 
-   * @return Postal code or undefined for none.
+   * @return Postal code.
    */
   public final native PostCode getPostcode() /*-{
     return this.getPostcode();
@@ -178,7 +175,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns whether this is the primary postal address. This attribute is optional.
    * 
-   * @return Whether this is the primary postal address or undefined for none.
+   * @return Whether this is the primary postal address.
    */
   public final native boolean getPrimary() /*-{
     return this.getPrimary();
@@ -187,7 +184,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the Region is state, province, county (in Ireland), Land (in Germany), departement (in France), etc. This element is optional.
    * 
-   * @return Region is state, province, county (in Ireland), Land (in Germany), departement (in France), etc or undefined for none.
+   * @return Region is state, province, county (in Ireland), Land (in Germany), departement (in France), etc.
    */
   public final native Region getRegion() /*-{
     return this.getRegion();
@@ -196,7 +193,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the the postal address type. This attribute is optional.
    * 
-   * @return The postal address type or undefined for none.
+   * @return The postal address type.
    */
   public final native String getRel() /*-{
     return this.getRel();
@@ -205,7 +202,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number. This element is optional.
    * 
-   * @return Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number or undefined for none.
+   * @return Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number.
    */
   public final native Street getStreet() /*-{
     return this.getStreet();
@@ -214,7 +211,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the Subregion is county (US), province (in Italy), etc. This element is optional.
    * 
-   * @return Subregion is county (US), province (in Italy), etc or undefined for none.
+   * @return Subregion is county (US), province (in Italy), etc.
    */
   public final native Subregion getSubregion() /*-{
     return this.getSubregion();
@@ -223,7 +220,7 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Returns the The context for the address use. This attribute is optional.
    * 
-   * @return The context for the address use or undefined for none.
+   * @return The context for the address use.
    */
   public final native String getUsage() /*-{
     return this.getUsage();
@@ -231,290 +228,146 @@ public class StructuredPostalAddress extends JavaScriptObject {
 
   /**
    * Sets the Used in work addresses. Also for 'in care of' or 'c/o'. This element is optional.
-   */
-  public final native void setAgent() /*-{
-    this.setAgent();
-  }-*/;
-
-  /**
-   * Sets the Used in work addresses. Also for 'in care of' or 'c/o'. This element is optional.
    * 
-   * @param agent Used in work addresses. Also for 'in care of' or 'c/o', or object to use as a parameter to the google.gdata.Agent constructor, or undefined for none.
+   * @param agent Used in work addresses. Also for 'in care of' or 'c/o'.
    */
   public final native void setAgent(Agent agent) /*-{
-    this.setAgent(
-      agent
-    );
-  }-*/;
-
-  /**
-   * Sets the Can be city, village, town, borough, etc. This element is optional.
-   */
-  public final native void setCity() /*-{
-    this.setCity();
+    this.setAgent(agent);
   }-*/;
 
   /**
    * Sets the Can be city, village, town, borough, etc. This element is optional.
    * 
-   * @param city Can be city, village, town, borough, etc, or object to use as a parameter to the google.gdata.City constructor, or undefined for none.
+   * @param city Can be city, village, town, borough, etc.
    */
   public final native void setCity(City city) /*-{
-    this.setCity(
-      city
-    );
-  }-*/;
-
-  /**
-   * Sets the The country name. This element is optional.
-   */
-  public final native void setCountry() /*-{
-    this.setCountry();
+    this.setCity(city);
   }-*/;
 
   /**
    * Sets the The country name. This element is optional.
    * 
-   * @param country The country name, or object to use as a parameter to the google.gdata.Country constructor, or undefined for none.
+   * @param country The country name.
    */
   public final native void setCountry(Country country) /*-{
-    this.setCountry(
-      country
-    );
-  }-*/;
-
-  /**
-   * Sets the The full, unstructured address. This element is optional.
-   */
-  public final native void setFormattedAddress() /*-{
-    this.setFormattedAddress();
+    this.setCountry(country);
   }-*/;
 
   /**
    * Sets the The full, unstructured address. This element is optional.
    * 
-   * @param formattedAddress The full, unstructured address, or object to use as a parameter to the google.gdata.FormattedAddress constructor, or undefined for none.
+   * @param formattedAddress The full, unstructured address.
    */
   public final native void setFormattedAddress(FormattedAddress formattedAddress) /*-{
-    this.setFormattedAddress(
-      formattedAddress
-    );
-  }-*/;
-
-  /**
-   * Sets the Used in places where houses or buildings have names. This element is optional.
-   */
-  public final native void setHousename() /*-{
-    this.setHousename();
+    this.setFormattedAddress(formattedAddress);
   }-*/;
 
   /**
    * Sets the Used in places where houses or buildings have names. This element is optional.
    * 
-   * @param housename Used in places where houses or buildings have names, or object to use as a parameter to the google.gdata.HouseName constructor, or undefined for none.
+   * @param housename Used in places where houses or buildings have names.
    */
   public final native void setHousename(HouseName housename) /*-{
-    this.setHousename(
-      housename
-    );
-  }-*/;
-
-  /**
-   * Sets the Simple string value used to name this address. This attribute is optional.
-   */
-  public final native void setLabel() /*-{
-    this.setLabel();
+    this.setHousename(housename);
   }-*/;
 
   /**
    * Sets the Simple string value used to name this address. This attribute is optional.
    * 
-   * @param label Simple string value used to name this address or undefined for none.
+   * @param label Simple string value used to name this address.
    */
   public final native void setLabel(String label) /*-{
-    this.setLabel(
-      label
-    );
-  }-*/;
-
-  /**
-   * Sets the The mail class. This attribute is optional.
-   */
-  public final native void setMailClass() /*-{
-    this.setMailClass();
+    this.setLabel(label);
   }-*/;
 
   /**
    * Sets the The mail class. This attribute is optional.
    * 
-   * @param mailClass The mail class or undefined for none.
+   * @param mailClass The mail class.
    */
   public final native void setMailClass(String mailClass) /*-{
-    this.setMailClass(
-      mailClass
-    );
-  }-*/;
-
-  /**
-   * Sets the Neighborhood. Used to disambiguate a street. This element is optional.
-   */
-  public final native void setNeighborhood() /*-{
-    this.setNeighborhood();
+    this.setMailClass(mailClass);
   }-*/;
 
   /**
    * Sets the Neighborhood. Used to disambiguate a street. This element is optional.
    * 
-   * @param neighborhood Neighborhood. Used to disambiguate a street, or object to use as a parameter to the google.gdata.Neighborhood constructor, or undefined for none.
+   * @param neighborhood Neighborhood. Used to disambiguate a street.
    */
   public final native void setNeighborhood(Neighborhood neighborhood) /*-{
-    this.setNeighborhood(
-      neighborhood
-    );
-  }-*/;
-
-  /**
-   * Sets the P.O. box. This element is optional.
-   */
-  public final native void setPobox() /*-{
-    this.setPobox();
+    this.setNeighborhood(neighborhood);
   }-*/;
 
   /**
    * Sets the P.O. box. This element is optional.
    * 
-   * @param pobox P.O. box, or object to use as a parameter to the google.gdata.PoBox constructor, or undefined for none.
+   * @param pobox P.O. box.
    */
   public final native void setPobox(PoBox pobox) /*-{
-    this.setPobox(
-      pobox
-    );
-  }-*/;
-
-  /**
-   * Sets the Postal code. This element is optional.
-   */
-  public final native void setPostcode() /*-{
-    this.setPostcode();
+    this.setPobox(pobox);
   }-*/;
 
   /**
    * Sets the Postal code. This element is optional.
    * 
-   * @param postcode Postal code, or object to use as a parameter to the google.gdata.PostCode constructor, or undefined for none.
+   * @param postcode Postal code.
    */
   public final native void setPostcode(PostCode postcode) /*-{
-    this.setPostcode(
-      postcode
-    );
-  }-*/;
-
-  /**
-   * Sets whether this is the primary postal address. This attribute is optional.
-   */
-  public final native void setPrimary() /*-{
-    this.setPrimary();
+    this.setPostcode(postcode);
   }-*/;
 
   /**
    * Sets whether this is the primary postal address. This attribute is optional.
    * 
-   * @param primary Whether this is the primary postal address or undefined for none.
+   * @param primary Whether this is the primary postal address.
    */
   public final native void setPrimary(boolean primary) /*-{
-    this.setPrimary(
-      primary
-    );
-  }-*/;
-
-  /**
-   * Sets the Region is state, province, county (in Ireland), Land (in Germany), departement (in France), etc. This element is optional.
-   */
-  public final native void setRegion() /*-{
-    this.setRegion();
+    this.setPrimary(primary);
   }-*/;
 
   /**
    * Sets the Region is state, province, county (in Ireland), Land (in Germany), departement (in France), etc. This element is optional.
    * 
-   * @param region Region is state, province, county (in Ireland), Land (in Germany), departement (in France), etc, or object to use as a parameter to the google.gdata.Region constructor, or undefined for none.
+   * @param region Region is state, province, county (in Ireland), Land (in Germany), departement (in France), etc.
    */
   public final native void setRegion(Region region) /*-{
-    this.setRegion(
-      region
-    );
-  }-*/;
-
-  /**
-   * Sets the the postal address type. This attribute is optional.
-   */
-  public final native void setRel() /*-{
-    this.setRel();
+    this.setRegion(region);
   }-*/;
 
   /**
    * Sets the the postal address type. This attribute is optional.
    * 
-   * @param rel The postal address type or undefined for none.
+   * @param rel The postal address type.
    */
   public final native void setRel(String rel) /*-{
-    this.setRel(
-      rel
-    );
-  }-*/;
-
-  /**
-   * Sets the Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number. This element is optional.
-   */
-  public final native void setStreet() /*-{
-    this.setStreet();
+    this.setRel(rel);
   }-*/;
 
   /**
    * Sets the Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number. This element is optional.
    * 
-   * @param street Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number, or object to use as a parameter to the google.gdata.Street constructor, or undefined for none.
+   * @param street Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number.
    */
   public final native void setStreet(Street street) /*-{
-    this.setStreet(
-      street
-    );
+    this.setStreet(street);
   }-*/;
-
-  /**
-   * Sets the Subregion is county (US), province (in Italy), etc. This element is optional.
-   */
-  public final native void setSubregion() /*-{
-    this.setSubregion();
-  }-*/;
-
+  
   /**
    * Sets the Subregion is county (US), province (in Italy), etc. This element is optional.
    * 
-   * @param subregion Subregion is county (US), province (in Italy), etc, or object to use as a parameter to the google.gdata.Subregion constructor, or undefined for none.
+   * @param subregion Subregion is county (US), province (in Italy), etc.
    */
   public final native void setSubregion(Subregion subregion) /*-{
-    this.setSubregion(
-      subregion
-    );
-  }-*/;
-
-  /**
-   * Sets the The context for the address use. This attribute is optional.
-   */
-  public final native void setUsage() /*-{
-    this.setUsage();
+    this.setSubregion(subregion);
   }-*/;
 
   /**
    * Sets the The context for the address use. This attribute is optional.
    * 
-   * @param usage The context for the address use or undefined for none.
+   * @param usage The context for the address use.
    */
   public final native void setUsage(String usage) /*-{
-    this.setUsage(
-      usage
-    );
+    this.setUsage(usage);
   }-*/;
 
 }

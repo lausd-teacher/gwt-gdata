@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.atom.Category;
 
 /**
@@ -30,14 +29,11 @@ public class Kind extends Category {
   public static final String SCHEME_KIND = getConstant("SCHEME_KIND");
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: label, scheme, and term.
+   * Constructs a kind.
+   * @return A Kind object.
    */
-  public static native Kind newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Kind(
-      params
-    );
+  public static native Kind newInstance() /*-{
+    return new $wnd.google.gdata.Kind();
   }-*/;
 
   private static native String getConstant(String name) /*-{

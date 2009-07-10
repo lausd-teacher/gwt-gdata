@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 import java.util.Date;
@@ -39,11 +38,11 @@ public class ReminderTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Reminder.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Reminder.newInstance());
   }
 
   public void testOther() {
-    Reminder obj = Reminder.newInstance(JavaScriptObject.createObject());
+    Reminder obj = Reminder.newInstance();
     // Unit Test for setAbsoluteTime(Date absoluteTime)
     Date value = new Date();
     obj.setAbsoluteTime(value);
@@ -51,7 +50,7 @@ public class ReminderTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    Reminder obj = Reminder.newInstance(JavaScriptObject.createObject());
+    Reminder obj = Reminder.newInstance();
     double minutes = 600813;
     obj.setMinutes(minutes);
     assertEquals("minutes", obj.getMinutes(), minutes);

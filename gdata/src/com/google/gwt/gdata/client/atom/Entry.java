@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.atom;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 
 /**
  * Describes the base class for a GData entry.
@@ -25,14 +24,11 @@ import com.google.gwt.core.client.JsArray;
 public class Entry extends JavaScriptObject {
 
   /**
-   * Constructs an entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, content, contributors, id, links, published, rights, summary, title, and updated.
+   * Constructs an entry.
+   * @return An Entry object.
    */
-  public static native Entry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.atom.Entry(
-      params
-    );
+  public static native Entry newInstance() /*-{
+    return new $wnd.google.gdata.atom.Entry();
   }-*/;
 
   protected Entry() { }
@@ -40,45 +36,37 @@ public class Entry extends JavaScriptObject {
   /**
    * Adds a new author.
    * 
-   * @param author Author to add, or object to use as a parameter to the google.gdata.atom.Person constructor.
+   * @param author Author to add.
    */
   public final native void addAuthor(Person author) /*-{
-    this.addAuthor(
-      author
-    );
+    this.addAuthor(author);
   }-*/;
 
   /**
    * Adds a new category.
    * 
-   * @param category Category to add, or object to use as a parameter to the google.gdata.atom.Category constructor.
+   * @param category Category to add.
    */
   public final native void addCategory(Category category) /*-{
-    this.addCategory(
-      category
-    );
+    this.addCategory(category);
   }-*/;
 
   /**
    * Adds a new contributor.
    * 
-   * @param contributor Contributor to add, or object to use as a parameter to the google.gdata.atom.Person constructor.
+   * @param contributor Contributor to add.
    */
   public final native void addContributor(Person contributor) /*-{
-    this.addContributor(
-      contributor
-    );
+    this.addContributor(contributor);
   }-*/;
 
   /**
    * Adds a new link.
    * 
-   * @param link Link to add, or object to use as a parameter to the google.gdata.atom.Link constructor.
+   * @param link Link to add.
    */
   public final native void addLink(Link link) /*-{
-    this.addLink(
-      link
-    );
+    this.addLink(link);
   }-*/;
 
   /**
@@ -86,8 +74,8 @@ public class Entry extends JavaScriptObject {
    * 
    * @return Authors.
    */
-  public final native JsArray<Person> getAuthors() /*-{
-    return this.getAuthors();
+  public final native Person[] getAuthors() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getAuthors());
   }-*/;
 
   /**
@@ -95,14 +83,14 @@ public class Entry extends JavaScriptObject {
    * 
    * @return Categories.
    */
-  public final native JsArray<Category> getCategories() /*-{
-    return this.getCategories();
+  public final native Category[] getCategories() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getCategories());
   }-*/;
 
   /**
    * Returns the content. This element is optional.
    * 
-   * @return Content or undefined for none.
+   * @return Content.
    */
   public final native Text getContent() /*-{
     return this.getContent();
@@ -113,14 +101,14 @@ public class Entry extends JavaScriptObject {
    * 
    * @return Contributors.
    */
-  public final native JsArray<Person> getContributors() /*-{
-    return this.getContributors();
+  public final native Person[] getContributors() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getContributors());
   }-*/;
 
   /**
    * Returns the entry identifier. This element is required.
    * 
-   * @return Entry identifier or undefined for none.
+   * @return Entry identifier.
    */
   public final native Id getId() /*-{
     return this.getId();
@@ -131,14 +119,14 @@ public class Entry extends JavaScriptObject {
    * 
    * @return Links.
    */
-  public final native JsArray<com.google.gwt.gdata.client.atom.Link> getLinks() /*-{
-    return this.getLinks();
+  public final native com.google.gwt.gdata.client.atom.Link[] getLinks() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getLinks());
   }-*/;
 
   /**
    * Returns the creation timestamp. This element is optional.
    * 
-   * @return Creation timestamp or undefined for none.
+   * @return Creation timestamp.
    */
   public final native Published getPublished() /*-{
     return this.getPublished();
@@ -147,7 +135,7 @@ public class Entry extends JavaScriptObject {
   /**
    * Returns the rights. This element is optional.
    * 
-   * @return Rights or undefined for none.
+   * @return Rights.
    */
   public final native Text getRights() /*-{
     return this.getRights();
@@ -156,7 +144,7 @@ public class Entry extends JavaScriptObject {
   /**
    * Returns the summary. This element is optional.
    * 
-   * @return Summary or undefined for none.
+   * @return Summary.
    */
   public final native Text getSummary() /*-{
     return this.getSummary();
@@ -165,7 +153,7 @@ public class Entry extends JavaScriptObject {
   /**
    * Returns the title. This element is required.
    * 
-   * @return Title or undefined for none.
+   * @return Title.
    */
   public final native Text getTitle() /*-{
     return this.getTitle();
@@ -174,7 +162,7 @@ public class Entry extends JavaScriptObject {
   /**
    * Returns the updated timestamp. This element is required.
    * 
-   * @return Updated timestamp or undefined for none.
+   * @return Updated timestamp.
    */
   public final native Updated getUpdated() /*-{
     return this.getUpdated();
@@ -182,200 +170,109 @@ public class Entry extends JavaScriptObject {
 
   /**
    * Sets the authors.
-   */
-  public final native void setAuthors() /*-{
-    this.setAuthors();
-  }-*/;
-
-  /**
-   * Sets the authors.
    * 
-   * @param authors Authors, where each author is added using the addAuthor() function, or undefined to clear the authors.
+   * @param authors Authors, where each author is added using addAuthor().
    */
-  public final native void setAuthors(JsArray<Person> authors) /*-{
+  public final native void setAuthors(Person[] authors) /*-{
     this.setAuthors(
-      authors
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(authors)
     );
   }-*/;
 
   /**
    * Sets the categories.
-   */
-  public final native void setCategories() /*-{
-    this.setCategories();
-  }-*/;
-
-  /**
-   * Sets the categories.
    * 
-   * @param categories Categories, where each category is added using the addCategory() function, or undefined to clear the categories.
+   * @param categories Categories, where each category is added using addCategory().
    */
-  public final native void setCategories(JsArray<Category> categories) /*-{
+  public final native void setCategories(Category[] categories) /*-{
     this.setCategories(
-      categories
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(categories)
     );
   }-*/;
 
   /**
    * Sets the content. This element is optional.
-   */
-  public final native void setContent() /*-{
-    this.setContent();
-  }-*/;
-
-  /**
-   * Sets the content. This element is optional.
    * 
-   * @param content Content, or object to use as a parameter to the google.gdata.atom.Text constructor, or undefined for none.
+   * @param content Content.
    */
   public final native void setContent(Text content) /*-{
-    this.setContent(
-      content
-    );
-  }-*/;
-
-  /**
-   * Sets the contributors.
-   */
-  public final native void setContributors() /*-{
-    this.setContributors();
+    this.setContent(content);
   }-*/;
 
   /**
    * Sets the contributors.
    * 
-   * @param contributors Contributors, where each contributor is added using the addContributor() function, or undefined to clear the contributors.
+   * @param contributors Contributors, where each contributor is added using addContributor().
    */
-  public final native void setContributors(JsArray<Person> contributors) /*-{
+  public final native void setContributors(Person[] contributors) /*-{
     this.setContributors(
-      contributors
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(contributors)
     );
   }-*/;
 
   /**
    * Sets the entry identifier. This element is required.
-   */
-  public final native void setId() /*-{
-    this.setId();
-  }-*/;
-
-  /**
-   * Sets the entry identifier. This element is required.
    * 
-   * @param id Entry identifier, or object to use as a parameter to the google.gdata.atom.Id constructor, or undefined for none.
+   * @param id Entry identifier.
    */
   public final native void setId(Id id) /*-{
-    this.setId(
-      id
-    );
-  }-*/;
-
-  /**
-   * Sets the links.
-   */
-  public final native void setLinks() /*-{
-    this.setLinks();
+    this.setId(id);
   }-*/;
 
   /**
    * Sets the links.
    * 
-   * @param links Links, where each link is added using the addLink() function, or undefined to clear the links.
+   * @param links Links, where each link is added using addLink().
    */
-  public final native void setLinks(JsArray<Link> links) /*-{
+  public final native void setLinks(Link[] links) /*-{
     this.setLinks(
-      links
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(links)
     );
   }-*/;
 
   /**
    * Sets the creation timestamp. This element is optional.
-   */
-  public final native void setPublished() /*-{
-    this.setPublished();
-  }-*/;
-
-  /**
-   * Sets the creation timestamp. This element is optional.
    * 
-   * @param published Creation timestamp, or object to use as a parameter to the google.gdata.atom.Published constructor, or undefined for none.
+   * @param published Creation timestamp.
    */
   public final native void setPublished(Published published) /*-{
-    this.setPublished(
-      published
-    );
-  }-*/;
-
-  /**
-   * Sets the rights. This element is optional.
-   */
-  public final native void setRights() /*-{
-    this.setRights();
+    this.setPublished(published);
   }-*/;
 
   /**
    * Sets the rights. This element is optional.
    * 
-   * @param rights Rights, or object to use as a parameter to the google.gdata.atom.Text constructor, or undefined for none.
+   * @param rights Rights.
    */
   public final native void setRights(Text rights) /*-{
-    this.setRights(
-      rights
-    );
-  }-*/;
-
-  /**
-   * Sets the summary. This element is optional.
-   */
-  public final native void setSummary() /*-{
-    this.setSummary();
+    this.setRights(rights);
   }-*/;
 
   /**
    * Sets the summary. This element is optional.
    * 
-   * @param summary Summary, or object to use as a parameter to the google.gdata.atom.Text constructor, or undefined for none.
+   * @param summary Summary.
    */
   public final native void setSummary(Text summary) /*-{
-    this.setSummary(
-      summary
-    );
-  }-*/;
-
-  /**
-   * Sets the title. This element is required.
-   */
-  public final native void setTitle() /*-{
-    this.setTitle();
+    this.setSummary(summary);
   }-*/;
 
   /**
    * Sets the title. This element is required.
    * 
-   * @param title Title, or object to use as a parameter to the google.gdata.atom.Text constructor, or undefined for none.
+   * @param title Title.
    */
   public final native void setTitle(Text title) /*-{
-    this.setTitle(
-      title
-    );
-  }-*/;
-
-  /**
-   * Sets the updated timestamp. This element is required.
-   */
-  public final native void setUpdated() /*-{
-    this.setUpdated();
+    this.setTitle(title);
   }-*/;
 
   /**
    * Sets the updated timestamp. This element is required.
    * 
-   * @param updated Updated timestamp, or object to use as a parameter to the google.gdata.atom.Updated constructor, or undefined for none.
+   * @param updated Updated timestamp.
    */
   public final native void setUpdated(Updated updated) /*-{
-    this.setUpdated(
-      updated
-    );
+    this.setUpdated(updated);
   }-*/;
 
 }

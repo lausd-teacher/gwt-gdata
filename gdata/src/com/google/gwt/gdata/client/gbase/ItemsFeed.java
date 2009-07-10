@@ -17,7 +17,7 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
+import com.google.gwt.gdata.client.impl.Map;
 
 /**
  * Describes a feed of a user's private items.
@@ -25,31 +25,29 @@ import com.google.gwt.core.client.JsArray;
 public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
 
   /**
-   * Constructs a Google Base item feed using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: attributes, authors, categories, entries, generator, id, itemsPerPage, links, startIndex, title, totalResults, and updated.
+   * Constructs a Google Base item feed.
+   * @return An ItemsFeed object.
    */
-  public static native ItemsFeed newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.ItemsFeed(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native ItemsFeed newInstance() /*-{
+    return new $wnd.google.gdata.gbase.ItemsFeed();
   }-*/;
 
   protected ItemsFeed() { }
 
   /**
-   * Returns the attributes. The returned object is a map from attribute name to the associated google.gdata.gbase.Attribute class.
+   * Returns the attributes. The returned object is a map from attribute name to the associated Attribute class.
    * 
    * @return Attributes.
    */
-  public final native JsArray<Attribute> getAttributes() /*-{
+  public final native Map<Attribute> getAttributes() /*-{
     return this.getAttributes();
   }-*/;
 
   /**
    * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
    * 
-   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed or undefined for none.
+   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
    */
   public final native com.google.gwt.gdata.client.Link getFeedBatchLink() /*-{
     return this.getFeedBatchLink();
@@ -59,43 +57,19 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
    * Sets the attribute.
    * 
    * @param name name of attribute.
-   */
-  public final native void setAttribute(String name) /*-{
-    this.setAttribute(
-      name,
-      undefined
-    );
-  }-*/;
-
-  /**
-   * Sets the attribute.
-   * 
-   * @param name name of attribute.
-   * @param attribute Attribute to add, or object to use as a parameter to the google.gdata.gbase.Attribute constructor, or undefined to remove.
+   * @param attribute Attribute to add.
    */
   public final native void setAttribute(String name, Attribute attribute) /*-{
-    this.setAttribute(
-      name,
-      attribute
-    );
+    this.setAttribute(name, attribute);
   }-*/;
 
   /**
-   * Sets the attributes. The parameter is a map from attribute name to the associated google.gdata.gbase.Attribute class.
-   */
-  public final native void setAttributes() /*-{
-    this.setAttributes();
-  }-*/;
-
-  /**
-   * Sets the attributes. The parameter is a map from attribute name to the associated google.gdata.gbase.Attribute class.
+   * Sets the attributes. The parameter is a map from attribute name to the associated Attribute class.
    * 
-   * @param attributes Attributes, where each attribute is added using the setAttribute() function, or undefined to clear the attributes.
+   * @param attributes Attributes, where each attribute is added using setAttribute().
    */
   public final native void setAttributes(JavaScriptObject attributes) /*-{
-    this.setAttributes(
-      attributes
-    );
+    this.setAttributes(attributes);
   }-*/;
 
 }

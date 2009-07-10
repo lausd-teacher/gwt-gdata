@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class QuotaBytesUsedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", QuotaBytesUsed.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", QuotaBytesUsed.newInstance());
   }
 
   public void testProperties() {
-    QuotaBytesUsed obj = QuotaBytesUsed.newInstance(JavaScriptObject.createObject());
+    QuotaBytesUsed obj = QuotaBytesUsed.newInstance();
     double value = 600813;
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

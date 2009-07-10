@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,14 +28,17 @@ public class AggregatesTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Aggregates.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Aggregates.newInstance());
   }
 
   public void testOther() {
-    Aggregates obj = Aggregates.newInstance(JavaScriptObject.createObject());
     // Unit Test for addMetric(Metric metric)
-    // Unit Test for getMetrics()
-    assertEquals("getMetrics", obj.getMetrics(), null);
-    // Unit Test for setMetrics(JsArray metrics)
+  }
+
+  public void testProperties() {
+    Aggregates obj = Aggregates.newInstance();
+    Metric[] metrics = new Metric[]{ Metric.newInstance() };
+    obj.setMetrics(metrics);
+    assertEquals("metrics", obj.getMetrics().length, metrics.length);
   }
 }

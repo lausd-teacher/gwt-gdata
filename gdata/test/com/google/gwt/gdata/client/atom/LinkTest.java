@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.atom;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -43,11 +42,11 @@ public class LinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Link.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Link.newInstance());
   }
 
   public void testProperties() {
-    Link obj = Link.newInstance(JavaScriptObject.createObject());
+    Link obj = Link.newInstance();
     String type = "myValue";
     obj.setType(type);
     assertEquals("type", obj.getType(), type);

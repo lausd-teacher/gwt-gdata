@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class StreetTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Street.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Street.newInstance());
   }
 
   public void testProperties() {
-    Street obj = Street.newInstance(JavaScriptObject.createObject());
+    Street obj = Street.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

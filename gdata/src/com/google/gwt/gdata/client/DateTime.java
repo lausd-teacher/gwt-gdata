@@ -21,19 +21,15 @@ import com.google.gwt.core.client.JavaScriptObject;
 import java.util.Date;
 
 /**
- * Comment unavailable.
+ * Represents a timestamp that is either a calendar date or a more specific time with millisecond precision
  */
 public class DateTime extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.DateTime;
-  }-*/;
-
-  /**
    * Constructs a timestamp.
+   * @param date Date value.
+   * @param dateOnly Whether this timestamp represents a calendar date.
+   * @return A DateTime object.
    */
   public static native DateTime newInstance(Date date, boolean dateOnly) /*-{
     return new $wnd.google.gdata.DateTime(
@@ -44,12 +40,11 @@ public class DateTime extends JavaScriptObject {
 
   /**
    * Constructs a timestamp.
+   * @param date Date value.
+   * @return A DateTime object.
    */
   public static native DateTime newInstance(Date date) /*-{
-    return new $wnd.google.gdata.DateTime(
-      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(date)),
-      undefined
-    );
+    return new $wnd.google.gdata.DateTime(new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(date)));
   }-*/;
 
   protected DateTime() { }
@@ -57,33 +52,29 @@ public class DateTime extends JavaScriptObject {
   /**
    * Returns whether the given timestamp is equal to this timestamp.
    * 
-   * @param otherDateTime
+   * @param otherDateTime Other timestamp. 
    * 
-   * @return
+   * @return Whether they are equal.
    */
-  public final native boolean equals2(DateTime otherDateTime) /*-{
-    return this.equals(
-      otherDateTime
-    );
+  public final native boolean equalsTo(DateTime otherDateTime) /*-{
+    return this.equals(otherDateTime);
   }-*/;
 
   /**
    * Returns the GData timestamp for the ISO 8601 string representation.
    * 
-   * @param isoString
+   * @param isoString ISO 8601 string representation.
    * 
-   * @return
+   * @return GData timestamp.
    */
   public final native DateTime fromIso8601(String isoString) /*-{
-    return this.fromIso8601(
-      isoString
-    );
+    return this.fromIso8601(isoString);
   }-*/;
 
   /**
    * Returns the Date value.
    * 
-   * @return
+   * @return Date value
    */
   public final native Date getDate() /*-{
     return @com.google.gwt.gdata.client.impl.DateHelper::millisecondsToDate(D)(this.getDate().getTime());
@@ -92,7 +83,7 @@ public class DateTime extends JavaScriptObject {
   /**
    * Returns whether this timestamp represents a calendar date.
    * 
-   * @return
+   * @return Whether this timestamp represents a calendar date.
    */
   public final native boolean isDateOnly() /*-{
     return this.isDateOnly();
@@ -101,49 +92,41 @@ public class DateTime extends JavaScriptObject {
   /**
    * Sets the Date value.
    * 
-   * @param date
+   * @param date Date value.
    */
   public final native void setDate(Date date) /*-{
-    this.setDate(
-      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(date))
-    );
+    this.setDate(new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(date)));
   }-*/;
 
   /**
    * Sets whether this timestamp represents a calendar date.
    * 
-   * @param dateOnly
+   * @param dateOnly Whether this timestamp represents a calendar date.
    */
   public final native void setDateOnly(boolean dateOnly) /*-{
-    this.setDateOnly(
-      dateOnly
-    );
+    this.setDateOnly(dateOnly);
   }-*/;
 
   /**
-   * Returns the ISO 8601 string representation of the GData timestamp or Date class.
+   * Returns the ISO 8601 string representation of the Date object.
    * 
-   * @param dateTime
+   * @param dateTime GData timestamp to represent a timestamp with millesecond precision.
    * 
-   * @return
+   * @return ISO 8601 string representation.
    */
   public final native String toIso8601(Date dateTime) /*-{
-    return this.toIso8601(
-      new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(dateTime))
-    );
+    return this.toIso8601(new Date(@com.google.gwt.gdata.client.impl.DateHelper::dateToMilliseconds(Ljava/util/Date;)(dateTime)));
   }-*/;
 
   /**
-   * Returns the ISO 8601 string representation of the GData timestamp or Date class.
+   * Returns the ISO 8601 string representation of the GData timestamp.
    * 
-   * @param dateTime
+   * @param dateTime Date value to represent a timestamp with millesecond precision.
    * 
-   * @return
+   * @return ISO 8601 string representation.
    */
   public final native String toIso8601(DateTime dateTime) /*-{
-    return this.toIso8601(
-      dateTime
-    );
+    return this.toIso8601(dateTime);
   }-*/;
 
 }

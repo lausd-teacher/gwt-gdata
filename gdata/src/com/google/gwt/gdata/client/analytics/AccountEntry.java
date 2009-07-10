@@ -16,23 +16,18 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-
 /**
  * Entry element for account feed.
  */
 public class AccountEntry extends com.google.gwt.gdata.client.Entry<AccountEntry> {
 
   /**
-   * Constructs an account entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: id, links, properties, tableId, title, and updated.
+   * Constructs an account entry.
+   * @return An AccountEntry object.
    */
-  public static native AccountEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.analytics.AccountEntry(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native AccountEntry newInstance() /*-{
+    return new $wnd.google.gdata.analytics.AccountEntry();
   }-*/;
 
   protected AccountEntry() { }
@@ -40,12 +35,10 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry<AccountEntry
   /**
    * Adds a new property.
    * 
-   * @param property Property to add, or object to use as a parameter to the google.gdata.analytics.Property constructor.
+   * @param property Property to add.
    */
   public final native void addProperty(Property property) /*-{
-    this.addProperty(
-      property
-    );
+    this.addProperty(property);
   }-*/;
 
   /**
@@ -53,8 +46,8 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry<AccountEntry
    * 
    * @return Properties.
    */
-  public final native JsArray<Property> getProperties() /*-{
-    return this.getProperties();
+  public final native Property[] getProperties() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getProperties());
   }-*/;
 
   /**
@@ -65,15 +58,13 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry<AccountEntry
    * @return The corresponding property value, or null if the named property is not present in this entry.
    */
   public final native String getPropertyValue(String name) /*-{
-    return this.getPropertyValue(
-      name
-    );
+    return this.getPropertyValue(name);
   }-*/;
 
   /**
    * Returns the data source ID. This element is required.
    * 
-   * @return Data source ID or undefined for none.
+   * @return Data source ID.
    */
   public final native TableId getTableId() /*-{
     return this.getTableId();
@@ -81,38 +72,22 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry<AccountEntry
 
   /**
    * Sets the properties.
-   */
-  public final native void setProperties() /*-{
-    this.setProperties();
-  }-*/;
-
-  /**
-   * Sets the properties.
    * 
-   * @param properties Properties, where each property is added using the addProperty() function, or undefined to clear the properties.
+   * @param properties Properties, where each property is added using addProperty().
    */
-  public final native void setProperties(JsArray<Property> properties) /*-{
+  public final native void setProperties(Property[] properties) /*-{
     this.setProperties(
-      properties
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(properties)
     );
   }-*/;
 
   /**
    * Sets the data source ID. This element is required.
-   */
-  public final native void setTableId() /*-{
-    this.setTableId();
-  }-*/;
-
-  /**
-   * Sets the data source ID. This element is required.
    * 
-   * @param tableId Data source ID, or object to use as a parameter to the google.gdata.analytics.TableId constructor, or undefined for none.
+   * @param tableId Data source ID.
    */
   public final native void setTableId(TableId tableId) /*-{
-    this.setTableId(
-      tableId
-    );
+    this.setTableId(tableId);
   }-*/;
 
 }

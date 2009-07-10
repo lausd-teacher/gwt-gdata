@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.geo;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,12 +28,12 @@ public class GmlPointTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GmlPoint.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", GmlPoint.newInstance());
   }
 
   public void testProperties() {
-    GmlPoint obj = GmlPoint.newInstance(JavaScriptObject.createObject());
-    GmlPos pos = GmlPos.newInstance(JavaScriptObject.createObject());
+    GmlPoint obj = GmlPoint.newInstance();
+    GmlPos pos = GmlPos.newInstance();
     obj.setPos(pos);
     assertSame("pos", obj.getPos(), pos);
   }

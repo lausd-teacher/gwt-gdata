@@ -16,23 +16,19 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.RecurrenceExceptionEntry;
 
 /**
- * Describes an entry used by a Calendar recurrence exception entry link.
+ * Describes an entry used by a Calendar recurrence exception entry link. Defined in gdata.js
  */
 public class CalendarRecurrenceExceptionEntry extends RecurrenceExceptionEntry {
 
   /**
-   * Constructs a Calendar recurrence exception entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, comments, content, contributors, eventStatus, id, links, originalEvent, published, sequence, title, transparency, uid, updated, visibility, when, where, and who.
+   * Constructs a Calendar recurrence exception entry.
+   * @return A CalendarRecurrenceExceptionEntry object.
    */
-  public static native CalendarRecurrenceExceptionEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.CalendarRecurrenceExceptionEntry(
-      params
-    );
+  public static native CalendarRecurrenceExceptionEntry newInstance() /*-{
+    return new $wnd.google.gdata.calendar.CalendarRecurrenceExceptionEntry();
   }-*/;
 
   protected CalendarRecurrenceExceptionEntry() { }
@@ -40,7 +36,7 @@ public class CalendarRecurrenceExceptionEntry extends RecurrenceExceptionEntry {
   /**
    * Returns the sequence number property. This element is optional.
    * 
-   * @return Sequence number property or undefined for none.
+   * @return Sequence number property.
    */
   public final native SequenceNumberProperty getSequence() /*-{
     return this.getSequence();
@@ -49,7 +45,7 @@ public class CalendarRecurrenceExceptionEntry extends RecurrenceExceptionEntry {
   /**
    * Returns the ical export UID property. This element is optional.
    * 
-   * @return Ical export UID property or undefined for none.
+   * @return Ical export UID property.
    */
   public final native IcalUIDProperty getUid() /*-{
     return this.getUid();
@@ -65,30 +61,19 @@ public class CalendarRecurrenceExceptionEntry extends RecurrenceExceptionEntry {
   /**
    * Sets the sequence number property. This element is optional.
    * 
-   * @param sequence Sequence number property, or object to use as a parameter to the google.gdata.calendar.SequenceNumberProperty constructor, or undefined for none.
+   * @param sequence Sequence number property.
    */
   public final native void setSequence(SequenceNumberProperty sequence) /*-{
-    this.setSequence(
-      sequence
-    );
-  }-*/;
-
-  /**
-   * Sets the ical export UID property. This element is optional.
-   */
-  public final native void setUid() /*-{
-    this.setUid();
+    this.setSequence(sequence);
   }-*/;
 
   /**
    * Sets the ical export UID property. This element is optional.
    * 
-   * @param uid Ical export UID property, or object to use as a parameter to the google.gdata.calendar.IcalUIDProperty constructor, or undefined for none.
+   * @param uid Ical export UID property.
    */
   public final native void setUid(IcalUIDProperty uid) /*-{
-    this.setUid(
-      uid
-    );
+    this.setUid(uid);
   }-*/;
 
 }

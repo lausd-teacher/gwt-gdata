@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Logo extends JavaScriptObject {
 
   /**
-   * Constructs a logo link using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a logo link.
+   * @return A Logo object.
    */
-  public static native Logo newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.atom.Logo(
-      params
-    );
+  public static native Logo newInstance() /*-{
+    return new $wnd.google.gdata.atom.Logo();
   }-*/;
 
   protected Logo() { }
@@ -39,7 +36,7 @@ public class Logo extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class Logo extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

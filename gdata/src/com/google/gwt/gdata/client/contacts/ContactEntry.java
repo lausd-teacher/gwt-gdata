@@ -16,24 +16,19 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Deleted;
 
 /**
  * Describes a contact entry.
  */
-public class ContactEntry extends PersonEntry {
+public class ContactEntry extends PersonEntry<ContactEntry> {
 
   /**
-   * Constructs a contact entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, content, deleted, edited, emailAddresses, extendedProperties, groupMembershipInfos, id, imAddresses, links, organizations, phoneNumbers, postalAddresses, title, and updated.
+   * Constructs a contact entry.
+   * @return A ContactEntry object.
    */
-  public static native ContactEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.contacts.ContactEntry(
-      params
-    );
+  public static native ContactEntry newInstance() /*-{
+    return new $wnd.google.gdata.contacts.ContactEntry();
   }-*/;
 
   protected ContactEntry() { }
@@ -41,18 +36,16 @@ public class ContactEntry extends PersonEntry {
   /**
    * Adds a new group membership info.
    * 
-   * @param groupMembershipInfo Group membership info to add, or object to use as a parameter to the google.gdata.contacts.GroupMembershipInfo constructor.
+   * @param groupMembershipInfo Group membership info to add.
    */
   public final native void addGroupMembershipInfo(GroupMembershipInfo groupMembershipInfo) /*-{
-    this.addGroupMembershipInfo(
-      groupMembershipInfo
-    );
+    this.addGroupMembershipInfo(groupMembershipInfo);
   }-*/;
 
   /**
    * Returns the marker for deleted entries. This element is optional.
    * 
-   * @return Marker for deleted entries or undefined for none.
+   * @return Marker for deleted entries.
    */
   public final native Deleted getDeleted() /*-{
     return this.getDeleted();
@@ -63,26 +56,17 @@ public class ContactEntry extends PersonEntry {
    * 
    * @return Group membership infos.
    */
-  public final native JsArray<GroupMembershipInfo> getGroupMembershipInfos() /*-{
-    return this.getGroupMembershipInfos();
-  }-*/;
-
-  /**
-   * Sets the marker for deleted entries. This element is optional.
-   */
-  public final native void setDeleted() /*-{
-    this.setDeleted();
+  public final native GroupMembershipInfo[] getGroupMembershipInfos() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getGroupMembershipInfos());
   }-*/;
 
   /**
    * Sets the marker for deleted entries. This element is optional.
    * 
-   * @param deleted Marker for deleted entries, or object to use as a parameter to the google.gdata.Deleted constructor, or undefined for none.
+   * @param deleted Marker for deleted entries.
    */
   public final native void setDeleted(Deleted deleted) /*-{
-    this.setDeleted(
-      deleted
-    );
+    this.setDeleted(deleted);
   }-*/;
 
   /**
@@ -95,11 +79,11 @@ public class ContactEntry extends PersonEntry {
   /**
    * Sets the group membership infos.
    * 
-   * @param groupMembershipInfos Group membership infos, where each group membership info is added using the addGroupMembershipInfo() function, or undefined to clear the group membership infos.
+   * @param groupMembershipInfos Group membership infos, where each group membership info is added using addGroupMembershipInfo().
    */
-  public final native void setGroupMembershipInfos(JsArray<GroupMembershipInfo> groupMembershipInfos) /*-{
+  public final native void setGroupMembershipInfos(GroupMembershipInfo[] groupMembershipInfos) /*-{
     this.setGroupMembershipInfos(
-      groupMembershipInfos
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(groupMembershipInfos)
     );
   }-*/;
 

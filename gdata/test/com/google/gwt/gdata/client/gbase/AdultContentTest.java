@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -34,11 +33,11 @@ public class AdultContentTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AdultContent.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", AdultContent.newInstance());
   }
 
   public void testProperties() {
-    AdultContent obj = AdultContent.newInstance(JavaScriptObject.createObject());
+    AdultContent obj = AdultContent.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

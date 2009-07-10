@@ -19,28 +19,13 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Whether GSync is allowed.
  */
 public class AllowGSyncProperty extends JavaScriptObject {
 
   /**
-   * Retrieves the constructor for underlying JavaScript object.
-   */
-  public static native JavaScriptObject getConstructor() /*-{
-    return $wnd.google.gdata.calendar.AllowGSyncProperty;
-  }-*/;
-
-  /**
-   * Constructs an anyone can add self property using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native AllowGSyncProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.AllowGSyncProperty(
-      params
-    );
-  }-*/;
-
-  /**
-   * Constructs an anyone can add self property using an object parameter whose property names match the setter method to use for each property.
+   * Constructs an AllowGSync property.
+   * @return An AllowGSyncProperty object.
    */
   public static native AllowGSyncProperty newInstance() /*-{
     return new $wnd.google.gdata.calendar.AllowGSyncProperty();
@@ -51,7 +36,7 @@ public class AllowGSyncProperty extends JavaScriptObject {
   /**
    * Returns value.
    * 
-   * @return
+   * @return Value
    */
   public final native boolean getValue() /*-{
     return this.getValue();
@@ -60,21 +45,10 @@ public class AllowGSyncProperty extends JavaScriptObject {
   /**
    * Sets value.
    * 
-   * @param value
+   * @param value Value
    */
   public final native void setValue(boolean value) /*-{
-    this.setValue(
-      value
-    );
-  }-*/;
-
-  /**
-   * Sets value.
-   * 
-   * @param value
-   */
-  public final native void setValue() /*-{
-    this.setValue();
+    this.setValue(value);
   }-*/;
 
 }

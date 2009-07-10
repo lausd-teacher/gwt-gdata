@@ -16,7 +16,7 @@
 
 package com.google.gwt.gdata.client.maps;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.gdata.client.CustomProperty;
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.PostalAddress;
 import com.google.gwt.gdata.client.ResourceId;
@@ -33,31 +33,31 @@ public class FeatureEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", FeatureEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", FeatureEntry.newInstance());
   }
 
   public void testOther() {
-    FeatureEntry obj = FeatureEntry.newInstance(JavaScriptObject.createObject());
+    FeatureEntry obj = FeatureEntry.newInstance();
     // Unit Test for addCustomProperty(CustomProperty customProperty)
     // Unit Test for getAtomFeedLink()
     assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
-    // Unit Test for getCustomProperties()
-    assertEquals("getCustomProperties", obj.getCustomProperties(), null);
-    // Unit Test for setCustomProperties(JsArray customProperties)
   }
 
   public void testProperties() {
-    FeatureEntry obj = FeatureEntry.newInstance(JavaScriptObject.createObject());
-    PostalAddress postaladdress = PostalAddress.newInstance(JavaScriptObject.createObject());
+    FeatureEntry obj = FeatureEntry.newInstance();
+    PostalAddress postaladdress = PostalAddress.newInstance();
     obj.setPostalAddress(postaladdress);
     assertSame("postaladdress", obj.getPostalAddress(), postaladdress);
-    StructuredPostalAddress structuredpostaladdress = StructuredPostalAddress.newInstance(JavaScriptObject.createObject());
+    CustomProperty[] customproperties = new CustomProperty[]{ CustomProperty.newInstance() };
+    obj.setCustomProperties(customproperties);
+    assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length);
+    StructuredPostalAddress structuredpostaladdress = StructuredPostalAddress.newInstance();
     obj.setStructuredPostalAddress(structuredpostaladdress);
     assertSame("structuredpostaladdress", obj.getStructuredPostalAddress(), structuredpostaladdress);
-    ResourceId resourceid = ResourceId.newInstance(JavaScriptObject.createObject());
+    ResourceId resourceid = ResourceId.newInstance();
     obj.setResourceId(resourceid);
     assertSame("resourceid", obj.getResourceId(), resourceid);
-    Deleted deleted = Deleted.newInstance(JavaScriptObject.createObject());
+    Deleted deleted = Deleted.newInstance();
     obj.setDeleted(deleted);
     assertSame("deleted", obj.getDeleted(), deleted);
   }

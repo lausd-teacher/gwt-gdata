@@ -23,7 +23,7 @@ import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
- * Comment unavailable.
+ * Provides utility methods for interacting with Callbacks in GWT.
  */
 public class CallbackHelper {
 

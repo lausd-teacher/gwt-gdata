@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class FeedFileName extends JavaScriptObject {
 
   /**
-   * Constructs a feed file name using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a feed file name.
+   * @return A FeedFileName object.
    */
-  public static native FeedFileName newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.FeedFileName(
-      params
-    );
+  public static native FeedFileName newInstance() /*-{
+    return new $wnd.google.gdata.gbase.FeedFileName();
   }-*/;
 
   protected FeedFileName() { }
@@ -39,7 +36,7 @@ public class FeedFileName extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class FeedFileName extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

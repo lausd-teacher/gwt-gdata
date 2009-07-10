@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,6 +28,6 @@ public class ItemDisapprovedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ItemDisapproved.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", ItemDisapproved.newInstance());
   }
 }

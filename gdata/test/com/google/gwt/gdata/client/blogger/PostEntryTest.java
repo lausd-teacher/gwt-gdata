@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.mediarss.MediaThumbnail;
 import com.google.gwt.gdata.client.threading.Total;
 import com.google.gwt.junit.client.GWTTestCase;
@@ -31,11 +30,11 @@ public class PostEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PostEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", PostEntry.newInstance());
   }
 
   public void testOther() {
-    PostEntry obj = PostEntry.newInstance(JavaScriptObject.createObject());
+    PostEntry obj = PostEntry.newInstance();
     // Unit Test for getEnclosureLink()
     assertEquals("getEnclosureLink", obj.getEnclosureLink(), null);
     // Unit Test for getEntryPostLink()
@@ -51,11 +50,11 @@ public class PostEntryTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    PostEntry obj = PostEntry.newInstance(JavaScriptObject.createObject());
-    Total total = Total.newInstance(JavaScriptObject.createObject());
+    PostEntry obj = PostEntry.newInstance();
+    Total total = Total.newInstance();
     obj.setTotal(total);
     assertSame("total", obj.getTotal(), total);
-    MediaThumbnail thumbnail = MediaThumbnail.newInstance(JavaScriptObject.createObject());
+    MediaThumbnail thumbnail = MediaThumbnail.newInstance();
     obj.setThumbnail(thumbnail);
     assertSame("thumbnail", obj.getThumbnail(), thumbnail);
   }

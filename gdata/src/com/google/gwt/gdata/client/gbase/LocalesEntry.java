@@ -16,22 +16,18 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Describes an entry in the feed of locales.
  */
 public class LocalesEntry extends com.google.gwt.gdata.client.Entry<LocalesEntry> {
 
   /**
-   * Constructs a Google Base locale entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, content, id, links, title, and updated.
+   * Constructs a Google Base locale entry.
+   * @return A LocalesEntry object.
    */
-  public static native LocalesEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.LocalesEntry(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native LocalesEntry newInstance() /*-{
+    return new $wnd.google.gdata.gbase.LocalesEntry();
   }-*/;
 
   protected LocalesEntry() { }
@@ -39,7 +35,7 @@ public class LocalesEntry extends com.google.gwt.gdata.client.Entry<LocalesEntry
   /**
    * Returns the link that provides the URI of a related link to the entry.
    * 
-   * @return Link that provides the URI of a related link to the entry or undefined for none.
+   * @return Link that provides the URI of a related link to the entry.
    */
   public final native com.google.gwt.gdata.client.atom.Link getRelatedLink() /*-{
     return this.getRelatedLink();

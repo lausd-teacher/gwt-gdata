@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class GmlPoint extends JavaScriptObject {
 
   /**
-   * Constructs a particular geographical point using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: pos.
+   * Constructs a particular geographical point.
+   * @return A GmlPoint object.
    */
-  public static native GmlPoint newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.geo.GmlPoint(
-      params
-    );
+  public static native GmlPoint newInstance() /*-{
+    return new $wnd.google.gdata.geo.GmlPoint();
   }-*/;
 
   protected GmlPoint() { }
@@ -39,7 +36,7 @@ public class GmlPoint extends JavaScriptObject {
   /**
    * Returns the latitude and longitude. This element is optional.
    * 
-   * @return Latitude and longitude or undefined for none.
+   * @return Latitude and longitude.
    */
   public final native GmlPos getPos() /*-{
     return this.getPos();
@@ -47,20 +44,11 @@ public class GmlPoint extends JavaScriptObject {
 
   /**
    * Sets the latitude and longitude. This element is optional.
-   */
-  public final native void setPos() /*-{
-    this.setPos();
-  }-*/;
-
-  /**
-   * Sets the latitude and longitude. This element is optional.
    * 
-   * @param pos Latitude and longitude, or object to use as a parameter to the google.gdata.geo.GmlPos constructor, or undefined for none.
+   * @param pos Latitude and longitude.
    */
   public final native void setPos(GmlPos pos) /*-{
-    this.setPos(
-      pos
-    );
+    this.setPos(pos);
   }-*/;
 
 }

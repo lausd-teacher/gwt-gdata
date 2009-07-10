@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -35,6 +34,6 @@ public class ContactLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ContactLink.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", ContactLink.newInstance());
   }
 }

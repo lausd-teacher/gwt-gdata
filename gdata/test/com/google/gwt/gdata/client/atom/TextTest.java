@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.atom;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class TextTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Text.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Text.newInstance());
   }
 
   public void testProperties() {
-    Text obj = Text.newInstance(JavaScriptObject.createObject());
+    Text obj = Text.newInstance();
     String uri = "myValue";
     obj.setUri(uri);
     assertEquals("uri", obj.getUri(), uri);

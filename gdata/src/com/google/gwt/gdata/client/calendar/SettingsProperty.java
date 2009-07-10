@@ -104,14 +104,11 @@ public class SettingsProperty extends JavaScriptObject {
   public static final String NAME_WEEK_START = getConstant("NAME_WEEK_START");
 
   /**
-   * Constructs a settings property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: name and value.
+   * Constructs a settings property.
+   * @return A SettingsProperty object.
    */
-  public static native SettingsProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.SettingsProperty(
-      params
-    );
+  public static native SettingsProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.SettingsProperty();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -123,7 +120,7 @@ public class SettingsProperty extends JavaScriptObject {
   /**
    * Returns the Property name. This attribute is required.
    * 
-   * @return Property name or undefined for none.
+   * @return Property name.
    */
   public final native String getName() /*-{
     return this.getName();
@@ -132,7 +129,7 @@ public class SettingsProperty extends JavaScriptObject {
   /**
    * Returns the Property value. This attribute is required.
    * 
-   * @return Property value or undefined for none.
+   * @return Property value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -140,38 +137,20 @@ public class SettingsProperty extends JavaScriptObject {
 
   /**
    * Sets the Property name. This attribute is required.
-   */
-  public final native void setName() /*-{
-    this.setName();
-  }-*/;
-
-  /**
-   * Sets the Property name. This attribute is required.
    * 
-   * @param name Property name or undefined for none.
+   * @param name Property name.
    */
   public final native void setName(String name) /*-{
-    this.setName(
-      name
-    );
-  }-*/;
-
-  /**
-   * Sets the Property value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
+    this.setName(name);
   }-*/;
 
   /**
    * Sets the Property value. This attribute is required.
    * 
-   * @param value Property value or undefined for none.
+   * @param value Property value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

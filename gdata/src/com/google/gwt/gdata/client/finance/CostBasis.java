@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.finance;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Money;
 
 /**
@@ -26,27 +25,22 @@ import com.google.gwt.gdata.client.Money;
 public class CostBasis extends JavaScriptObject {
 
   /**
-   * Constructs a cost basis using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: money.
+   * Constructs a cost basis.
+   * @return A CostBasis object.
    */
-  public static native CostBasis newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.finance.CostBasis(
-      params
-    );
+  public static native CostBasis newInstance() /*-{
+    return new $wnd.google.gdata.finance.CostBasis();
   }-*/;
 
   protected CostBasis() { }
 
   /**
-   * Adds a new monetary value of the cost basi.
+   * Adds a new monetary value of the cost basis.
    * 
-   * @param money Monetary value of the cost basi to add, or object to use as a parameter to the google.gdata.Money constructor.
+   * @param money Monetary value of the cost basis to add.
    */
   public final native void addMoney(Money money) /*-{
-    this.addMoney(
-      money
-    );
+    this.addMoney(money);
   }-*/;
 
   /**
@@ -54,25 +48,18 @@ public class CostBasis extends JavaScriptObject {
    * 
    * @return Monetary value of the cost basis.
    */
-  public final native JsArray<Money> getMoney() /*-{
-    return this.getMoney();
+  public final native Money[] getMoney() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getMoney());
   }-*/;
-
-  /**
-   * Sets the monetary value of the cost basis.
-   */
-  public final native void setMoney() /*-{
-    this.setMoney();
-  }-*/;
-
+  
   /**
    * Sets the monetary value of the cost basis.
    * 
-   * @param money Monetary value of the cost basis, where each monetary value of the cost basi is added using the addMoney() function, or undefined to clear the monetary value of the cost basis.
+   * @param money Monetary value of the cost basis, where each monetary value of the cost basis is added using addMoney().
    */
-  public final native void setMoney(JsArray<Money> money) /*-{
+  public final native void setMoney(Money[] money) /*-{
     this.setMoney(
-      money
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(money)
     );
   }-*/;
 

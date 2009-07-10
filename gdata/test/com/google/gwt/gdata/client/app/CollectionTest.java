@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.app;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -30,26 +29,25 @@ public class CollectionTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Collection.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Collection.newInstance());
   }
 
   public void testOther() {
-    Collection obj = Collection.newInstance(JavaScriptObject.createObject());
     // Unit Test for addAccept(Accept accept)
     // Unit Test for addCategories(Categories categories)
-    // Unit Test for getAccepts()
-    assertEquals("getAccepts", obj.getAccepts(), null);
-    // Unit Test for getCategorieses()
-    assertEquals("getCategorieses", obj.getCategorieses(), null);
-    // Unit Test for setAccepts(JsArray accepts)
-    // Unit Test for setCategorieses(JsArray categorieses)
   }
 
   public void testProperties() {
-    Collection obj = Collection.newInstance(JavaScriptObject.createObject());
-    Text title = Text.newInstance(JavaScriptObject.createObject());
+    Collection obj = Collection.newInstance();
+    Accept[] accepts = new Accept[]{ Accept.newInstance() };
+    obj.setAccepts(accepts);
+    assertEquals("accepts", obj.getAccepts().length, accepts.length);
+    Text title = Text.newInstance();
     obj.setTitle(title);
     assertSame("title", obj.getTitle(), title);
+    Categories[] categorieses = new Categories[]{ Categories.newInstance() };
+    obj.setCategorieses(categorieses);
+    assertEquals("categorieses", obj.getCategorieses().length, categorieses.length);
     String href = "myValue";
     obj.setHref(href);
     assertEquals("href", obj.getHref(), href);

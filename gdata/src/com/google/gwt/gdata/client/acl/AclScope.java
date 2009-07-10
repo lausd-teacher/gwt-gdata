@@ -44,14 +44,11 @@ public class AclScope extends JavaScriptObject {
   public static final String TYPE_USER = getConstant("TYPE_USER");
 
   /**
-   * Constructs a scope using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: type and value.
+   * Constructs a scope.
+   * @return An AclScope object.
    */
-  public static native AclScope newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.acl.AclScope(
-      params
-    );
+  public static native AclScope newInstance() /*-{
+    return new $wnd.google.gdata.acl.AclScope();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -63,7 +60,7 @@ public class AclScope extends JavaScriptObject {
   /**
    * Returns the type. This attribute is required.
    * 
-   * @return Type or undefined for none.
+   * @return Type.
    */
   public final native String getType() /*-{
     return this.getType();
@@ -72,7 +69,7 @@ public class AclScope extends JavaScriptObject {
   /**
    * Returns the value. This attribute is optional.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -80,38 +77,20 @@ public class AclScope extends JavaScriptObject {
 
   /**
    * Sets the type. This attribute is required.
-   */
-  public final native void setType() /*-{
-    this.setType();
-  }-*/;
-
-  /**
-   * Sets the type. This attribute is required.
    * 
-   * @param type Type or undefined for none.
+   * @param type Type.
    */
   public final native void setType(String type) /*-{
-    this.setType(
-      type
-    );
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is optional.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
+    this.setType(type);
   }-*/;
 
   /**
    * Sets the value. This attribute is optional.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

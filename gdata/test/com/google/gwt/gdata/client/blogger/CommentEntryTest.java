@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.threading.InReplyTo;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -30,11 +29,11 @@ public class CommentEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CommentEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", CommentEntry.newInstance());
   }
 
   public void testOther() {
-    CommentEntry obj = CommentEntry.newInstance(JavaScriptObject.createObject());
+    CommentEntry obj = CommentEntry.newInstance();
     // Unit Test for getHtmlLink()
     assertEquals("getHtmlLink", obj.getHtmlLink(), null);
     // Unit Test for getRepliesLink()
@@ -42,8 +41,8 @@ public class CommentEntryTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    CommentEntry obj = CommentEntry.newInstance(JavaScriptObject.createObject());
-    InReplyTo inreplyto = InReplyTo.newInstance(JavaScriptObject.createObject());
+    CommentEntry obj = CommentEntry.newInstance();
+    InReplyTo inreplyto = InReplyTo.newInstance();
     obj.setInReplyTo(inreplyto);
     assertSame("inreplyto", obj.getInReplyTo(), inreplyto);
   }

@@ -22,9 +22,10 @@ import com.google.gwt.gdata.client.opensearch.TotalResults;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
- * Comment unavailable.
- * @param <E>
+ * Describes a feed for the Google Data API.
+ * @param <E> The Entry type.
  */
+@SuppressWarnings("unchecked")
 public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed<E> {
 
   protected Feed() { }
@@ -32,7 +33,7 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   /**
    * Returns the link that provides the URI that can be used to post new entries to the feed.
    * 
-   * @return
+   * @return Link that provides the URI that can be used to post new entries to the feed.
    */
   public final native com.google.gwt.gdata.client.Link getEntryPostLink() /*-{
     return this.getEntryPostLink();
@@ -50,7 +51,7 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   /**
    * Returns the link that provides the URI of an alternate format of the entrys or feeds contents.
    * 
-   * @return
+   * @return Link that provides the URI of an alternate format of the entry's or feed's contents.
    */
   public final native com.google.gwt.gdata.client.Link getHtmlLink() /*-{
     return this.getHtmlLink();
@@ -59,7 +60,7 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   /**
    * Returns the items-per-page count.
    * 
-   * @return
+   * @return Items-per-page count.
    */
   public final native ItemsPerPage getItemsPerPage() /*-{
     return this.getItemsPerPage();
@@ -68,42 +69,31 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   /**
    * Returns the link of a relation and type.
    * 
-   * @param rel
-   * @param opt_type
-   * 
-   * @return
+   * @param rel Link relation type to filter on or null to ignore.
+   * @param type MIME type of the link target to filter on.
+   * @return First link whose relation and type is a match or null for none. 
    */
   public final native com.google.gwt.gdata.client.Link getLink(String rel, String type) /*-{
-    return this.getLink(
-      rel,
-      type
-    );
+    return this.getLink(rel, type);
   }-*/;
 
   /**
    * Returns the link of a relation and type.
    * 
-   * @param rel
-   * @param opt_type
-   * 
-   * @return
+   * @param rel Link relation type to filter on or null to ignore.
+   * @return First link whose relation and type is a match or null for none. 
    */
   public final native com.google.gwt.gdata.client.Link getLink(String rel) /*-{
-    return this.getLink(
-      rel,
-      undefined
-    );
+    return this.getLink(rel);
   }-*/;
 
   /**
    * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
    * 
-   * @param continuation
-   * @param opt_errorHandler
-   * 
-   * @return
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the feed.
    */
-  public final native Feed<Entry> getSelf(AsyncCallback<Feed<Entry>> callback) /*-{
+  public final native Feed<E> getSelf(AsyncCallback<Feed<E>> callback) /*-{
     return this.getSelf(
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
@@ -113,7 +103,7 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   /**
    * Returns the link that provides the URI of the feed or entry.
    * 
-   * @return
+   * @return Link that provides the URI of the feed or entry.
    */
   public final native com.google.gwt.gdata.client.Link getSelfLink() /*-{
     return this.getSelfLink();
@@ -122,7 +112,7 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   /**
    * Returns the start index.
    * 
-   * @return
+   * @return Start index.
    */
   public final native StartIndex getStartIndex() /*-{
     return this.getStartIndex();
@@ -131,7 +121,7 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   /**
    * Returns the total results count.
    * 
-   * @return
+   * @return Total results count.
    */
   public final native TotalResults getTotalResults() /*-{
     return this.getTotalResults();
@@ -140,13 +130,10 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   /**
    * Inserts a new entry into the feed.
    * 
-   * @param entry
-   * @param continuation
-   * @param opt_errorHandler
-   * 
-   * @return
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native com.google.gwt.gdata.client.Entry insertEntry(Entry entry, AsyncCallback<Entry> callback) /*-{
+  public final native void insertEntry(E entry, AsyncCallback<E> callback) /*-{
     return this.insertEntry(
       entry,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -157,61 +144,28 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   /**
    * Sets the items-per-page count.
    * 
-   * @param itemsPerPage
+   * @param itemsPerPage Sets the items-per-page count. This element is optional.
    */
   public final native void setItemsPerPage(ItemsPerPage itemsPerPage) /*-{
-    this.setItemsPerPage(
-      itemsPerPage
-    );
-  }-*/;
-
-  /**
-   * Sets the items-per-page count.
-   * 
-   * @param itemsPerPage
-   */
-  public final native void setItemsPerPage() /*-{
-    this.setItemsPerPage();
+    this.setItemsPerPage(itemsPerPage);
   }-*/;
 
   /**
    * Sets the start index.
    * 
-   * @param startIndex
+   * @param startIndex Start index.
    */
   public final native void setStartIndex(StartIndex startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
-  }-*/;
-
-  /**
-   * Sets the start index.
-   * 
-   * @param startIndex
-   */
-  public final native void setStartIndex() /*-{
-    this.setStartIndex();
+    this.setStartIndex(startIndex);
   }-*/;
 
   /**
    * Sets the total results count.
    * 
-   * @param totalResults
+   * @param totalResults Total results count.
    */
   public final native void setTotalResults(TotalResults totalResults) /*-{
-    this.setTotalResults(
-      totalResults
-    );
-  }-*/;
-
-  /**
-   * Sets the total results count.
-   * 
-   * @param totalResults
-   */
-  public final native void setTotalResults() /*-{
-    this.setTotalResults();
+    this.setTotalResults(totalResults);
   }-*/;
 
 }

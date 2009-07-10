@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class SendAclNotificationsPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SendAclNotificationsProperty.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", SendAclNotificationsProperty.newInstance());
   }
 
   public void testProperties() {
-    SendAclNotificationsProperty obj = SendAclNotificationsProperty.newInstance(JavaScriptObject.createObject());
+    SendAclNotificationsProperty obj = SendAclNotificationsProperty.newInstance();
     boolean value = true;
     obj.setValue(value);
     assertSame("value", obj.getValue(), value);

@@ -16,22 +16,18 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Describes feed of a Calendar event's comments.
  */
 public class CalendarCommentFeed extends com.google.gwt.gdata.client.Feed<CalendarCommentEntry> {
 
   /**
-   * Constructs a Calendar event's comments feed using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, contributors, entries, generator, id, itemsPerPage, links, startIndex, title, totalResults, and updated.
+   * Constructs a Calendar event's comments feed.
+   * @return A CalendarCommentFeed object.
    */
-  public static native CalendarCommentFeed newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.CalendarCommentFeed(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native CalendarCommentFeed newInstance() /*-{
+    return new $wnd.google.gdata.calendar.CalendarCommentFeed();
   }-*/;
 
   protected CalendarCommentFeed() { }

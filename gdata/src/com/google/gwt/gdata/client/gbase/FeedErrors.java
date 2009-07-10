@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 
 /**
  * The errors of a feed.
@@ -25,14 +24,11 @@ import com.google.gwt.core.client.JsArray;
 public class FeedErrors extends JavaScriptObject {
 
   /**
-   * Constructs a feed errors using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: feedError.
+   * Constructs a feed errors.
+   * @return A FeedError object.
    */
-  public static native FeedErrors newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.FeedErrors(
-      params
-    );
+  public static native FeedErrors newInstance() /*-{
+    return new $wnd.google.gdata.gbase.FeedErrors();
   }-*/;
 
   protected FeedErrors() { }
@@ -40,12 +36,10 @@ public class FeedErrors extends JavaScriptObject {
   /**
    * Adds a new feed error.
    * 
-   * @param feedError Feed error to add, or object to use as a parameter to the google.gdata.gbase.FeedError constructor.
+   * @param feedError Feed error to add.
    */
   public final native void addFeedError(FeedError feedError) /*-{
-    this.addFeedError(
-      feedError
-    );
+    this.addFeedError(feedError);
   }-*/;
 
   /**
@@ -53,25 +47,18 @@ public class FeedErrors extends JavaScriptObject {
    * 
    * @return Feed errors.
    */
-  public final native JsArray<FeedError> getFeedError() /*-{
-    return this.getFeedError();
-  }-*/;
-
-  /**
-   * Sets the feed errors.
-   */
-  public final native void setFeedError() /*-{
-    this.setFeedError();
+  public final native FeedError[] getFeedError() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getFeedError());
   }-*/;
 
   /**
    * Sets the feed errors.
    * 
-   * @param feedError Feed errors, where each feed error is added using the addFeedError() function, or undefined to clear the feed errors.
+   * @param feedError Feed errors, where each feed error is added using addFeedError().
    */
-  public final native void setFeedError(JsArray<FeedError> feedError) /*-{
+  public final native void setFeedError(FeedError[] feedError) /*-{
     this.setFeedError(
-      feedError
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(feedError)
     );
   }-*/;
 

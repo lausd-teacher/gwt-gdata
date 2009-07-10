@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -34,11 +33,11 @@ public class ItemPublishingPriorityTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ItemPublishingPriority.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", ItemPublishingPriority.newInstance());
   }
 
   public void testProperties() {
-    ItemPublishingPriority obj = ItemPublishingPriority.newInstance(JavaScriptObject.createObject());
+    ItemPublishingPriority obj = ItemPublishingPriority.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

@@ -30,14 +30,13 @@ public class ContactsService extends GoogleService {
   public static final String SERVICE_NAME = getConstant("SERVICE_NAME");
 
   /**
-   * Constructor.
+   * Constructs a ContactsService object.
    * 
    * @param applicationName Name of application (used for tracking).
+   * @return A ContactsService object.
    */
   public static native ContactsService newInstance(String applicationName) /*-{
-    return new $wnd.google.gdata.contacts.ContactsService(
-      applicationName
-    );
+    return new $wnd.google.gdata.contacts.ContactsService(applicationName);
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -50,12 +49,10 @@ public class ContactsService extends GoogleService {
    * Retrieves a contact entry.
    * 
    * @param uri URI of entry.
-   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
-   * 
-   * @return Retrieved entry.
+   * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native ContactEntry getContactEntry(String uri, AsyncCallback<ContactEntry> callback) /*-{
-    return this.getContactEntry(
+  public final native void getContactEntry(String uri, AsyncCallback<ContactEntry> callback) /*-{
+    this.getContactEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
@@ -65,13 +62,11 @@ public class ContactsService extends GoogleService {
   /**
    * Retrieves the feed of contacts.
    * 
-   * @param uriOrQuery URI of feed or query.
-   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
-   * 
-   * @return Retrieved feed.
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native ContactFeed getContactFeed(ContactQuery query, AsyncCallback<ContactFeed> callback) /*-{
-    return this.getContactFeed(
+  public final native void getContactFeed(ContactQuery query, AsyncCallback<ContactFeed> callback) /*-{
+    this.getContactFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
@@ -81,13 +76,11 @@ public class ContactsService extends GoogleService {
   /**
    * Retrieves the feed of contacts.
    * 
-   * @param uriOrQuery URI of feed or query.
-   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
-   * 
-   * @return Retrieved feed.
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native ContactFeed getContactFeed(String uri, AsyncCallback<ContactFeed> callback) /*-{
-    return this.getContactFeed(
+  public final native void getContactFeed(String uri, AsyncCallback<ContactFeed> callback) /*-{
+    this.getContactFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
@@ -98,12 +91,10 @@ public class ContactsService extends GoogleService {
    * Retrieves a contact group entry.
    * 
    * @param uri URI of entry.
-   * @param continuation Function to call with entry retrieved. For example: function(entryRoot) { var entry entryRoot.entry; }; .
-   * 
-   * @return Retrieved entry.
+   * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native ContactGroupEntry getContactGroupEntry(String uri, AsyncCallback<ContactGroupEntry> callback) /*-{
-    return this.getContactGroupEntry(
+  public final native void getContactGroupEntry(String uri, AsyncCallback<ContactGroupEntry> callback) /*-{
+    this.getContactGroupEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
@@ -113,13 +104,11 @@ public class ContactsService extends GoogleService {
   /**
    * Retrieves the feed of contact groups.
    * 
-   * @param uriOrQuery URI of feed or query.
-   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
-   * 
-   * @return Retrieved feed.
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native ContactGroupFeed getContactGroupFeed(ContactQuery query, AsyncCallback<ContactGroupFeed> callback) /*-{
-    return this.getContactGroupFeed(
+  public final native void getContactGroupFeed(ContactQuery query, AsyncCallback<ContactGroupFeed> callback) /*-{
+    this.getContactGroupFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
@@ -129,13 +118,11 @@ public class ContactsService extends GoogleService {
   /**
    * Retrieves the feed of contact groups.
    * 
-   * @param uriOrQuery URI of feed or query.
-   * @param continuation Function to call with feed retrieved. For example: function(feedRoot) { var feed feedRoot.feed; var entries feed.entry; }; .
-   * 
-   * @return Retrieved feed.
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native ContactGroupFeed getContactGroupFeed(String uri, AsyncCallback<ContactGroupFeed> callback) /*-{
-    return this.getContactGroupFeed(
+  public final native void getContactGroupFeed(String uri, AsyncCallback<ContactGroupFeed> callback) /*-{
+    this.getContactGroupFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }

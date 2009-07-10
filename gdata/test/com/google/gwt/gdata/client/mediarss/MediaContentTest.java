@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.mediarss;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -35,66 +34,62 @@ public class MediaContentTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaContent.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", MediaContent.newInstance());
   }
 
   public void testOther() {
-    MediaContent obj = MediaContent.newInstance(JavaScriptObject.createObject());
     // Unit Test for addCategory(MediaCategory category)
     // Unit Test for addCredit(MediaCredit credit)
     // Unit Test for addRating(MediaRating rating)
     // Unit Test for addRestriction(MediaRestriction restriction)
     // Unit Test for addText(MediaText text)
     // Unit Test for addThumbnail(MediaThumbnail thumbnail)
-    // Unit Test for getCategories()
-    assertEquals("getCategories", obj.getCategories(), null);
-    // Unit Test for getCredits()
-    assertEquals("getCredits", obj.getCredits(), null);
-    // Unit Test for getRatings()
-    assertEquals("getRatings", obj.getRatings(), null);
-    // Unit Test for getRestrictions()
-    assertEquals("getRestrictions", obj.getRestrictions(), null);
-    // Unit Test for getTexts()
-    assertEquals("getTexts", obj.getTexts(), null);
-    // Unit Test for getThumbnails()
-    assertEquals("getThumbnails", obj.getThumbnails(), null);
-    // Unit Test for setCategories(JsArray categories)
-    // Unit Test for setCredits(JsArray credits)
-    // Unit Test for setRatings(JsArray ratings)
-    // Unit Test for setRestrictions(JsArray restrictions)
-    // Unit Test for setTexts(JsArray texts)
-    // Unit Test for setThumbnails(JsArray thumbnails)
   }
 
   public void testProperties() {
-    MediaContent obj = MediaContent.newInstance(JavaScriptObject.createObject());
+    MediaContent obj = MediaContent.newInstance();
     double channels = 600813;
     obj.setChannels(channels);
     assertEquals("channels", obj.getChannels(), channels);
     double duration = 600813;
     obj.setDuration(duration);
     assertEquals("duration", obj.getDuration(), duration);
+    MediaCategory[] categories = new MediaCategory[]{ MediaCategory.newInstance() };
+    obj.setCategories(categories);
+    assertEquals("categories", obj.getCategories().length, categories.length);
     String medium = "myValue";
     obj.setMedium(medium);
     assertEquals("medium", obj.getMedium(), medium);
     double samplingrate = 600813;
     obj.setSamplingrate(samplingrate);
     assertEquals("samplingrate", obj.getSamplingrate(), samplingrate);
-    MediaCopyright copyright = MediaCopyright.newInstance(JavaScriptObject.createObject());
+    MediaRating[] ratings = new MediaRating[]{ MediaRating.newInstance() };
+    obj.setRatings(ratings);
+    assertEquals("ratings", obj.getRatings().length, ratings.length);
+    MediaCopyright copyright = MediaCopyright.newInstance();
     obj.setCopyright(copyright);
     assertSame("copyright", obj.getCopyright(), copyright);
-    MediaTitle title = MediaTitle.newInstance(JavaScriptObject.createObject());
+    MediaTitle title = MediaTitle.newInstance();
     obj.setTitle(title);
     assertSame("title", obj.getTitle(), title);
-    MediaHash hash = MediaHash.newInstance(JavaScriptObject.createObject());
+    MediaText[] texts = new MediaText[]{ MediaText.newInstance() };
+    obj.setTexts(texts);
+    assertEquals("texts", obj.getTexts().length, texts.length);
+    MediaHash hash = MediaHash.newInstance();
     obj.setHash(hash);
     assertSame("hash", obj.getHash(), hash);
+    MediaRestriction[] restrictions = new MediaRestriction[]{ MediaRestriction.newInstance() };
+    obj.setRestrictions(restrictions);
+    assertEquals("restrictions", obj.getRestrictions().length, restrictions.length);
     String type = "myValue";
     obj.setType(type);
     assertEquals("type", obj.getType(), type);
-    MediaKeywords keywords = MediaKeywords.newInstance(JavaScriptObject.createObject());
+    MediaKeywords keywords = MediaKeywords.newInstance();
     obj.setKeywords(keywords);
     assertSame("keywords", obj.getKeywords(), keywords);
+    MediaThumbnail[] thumbnails = new MediaThumbnail[]{ MediaThumbnail.newInstance() };
+    obj.setThumbnails(thumbnails);
+    assertEquals("thumbnails", obj.getThumbnails().length, thumbnails.length);
     double height = 600813;
     obj.setHeight(height);
     assertEquals("height", obj.getHeight(), height);
@@ -104,7 +99,7 @@ public class MediaContentTest extends GWTTestCase {
     double filesize = 600813;
     obj.setFileSize(filesize);
     assertEquals("filesize", obj.getFileSize(), filesize);
-    MediaPlayer player = MediaPlayer.newInstance(JavaScriptObject.createObject());
+    MediaPlayer player = MediaPlayer.newInstance();
     obj.setPlayer(player);
     assertSame("player", obj.getPlayer(), player);
     double bitrate = 600813;
@@ -119,7 +114,7 @@ public class MediaContentTest extends GWTTestCase {
     double width = 600813;
     obj.setWidth(width);
     assertEquals("width", obj.getWidth(), width);
-    MediaDescription description = MediaDescription.newInstance(JavaScriptObject.createObject());
+    MediaDescription description = MediaDescription.newInstance();
     obj.setDescription(description);
     assertSame("description", obj.getDescription(), description);
     String expression = "myValue";
@@ -128,5 +123,8 @@ public class MediaContentTest extends GWTTestCase {
     double framerate = 600813;
     obj.setFramerate(framerate);
     assertEquals("framerate", obj.getFramerate(), framerate);
+    MediaCredit[] credits = new MediaCredit[]{ MediaCredit.newInstance() };
+    obj.setCredits(credits);
+    assertEquals("credits", obj.getCredits().length, credits.length);
   }
 }

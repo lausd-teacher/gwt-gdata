@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.mediarss;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class MediaCreditTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaCredit.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", MediaCredit.newInstance());
   }
 
   public void testProperties() {
-    MediaCredit obj = MediaCredit.newInstance(JavaScriptObject.createObject());
+    MediaCredit obj = MediaCredit.newInstance();
     String scheme = "myValue";
     obj.setScheme(scheme);
     assertEquals("scheme", obj.getScheme(), scheme);

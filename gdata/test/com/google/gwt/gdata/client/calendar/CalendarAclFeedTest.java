@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class CalendarAclFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarAclFeed.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", CalendarAclFeed.newInstance());
   }
 
   public void testOther() {
-    CalendarAclFeed obj = CalendarAclFeed.newInstance(JavaScriptObject.createObject());
+    CalendarAclFeed obj = CalendarAclFeed.newInstance();
     // Unit Test for getControlledObjectLink()
     assertEquals("getControlledObjectLink", obj.getControlledObjectLink(), null);
   }

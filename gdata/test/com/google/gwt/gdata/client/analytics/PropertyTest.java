@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class PropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Property.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Property.newInstance());
   }
 
   public void testProperties() {
-    Property obj = Property.newInstance(JavaScriptObject.createObject());
+    Property obj = Property.newInstance();
     String name = "myValue";
     obj.setName(name);
     assertEquals("name", obj.getName(), name);

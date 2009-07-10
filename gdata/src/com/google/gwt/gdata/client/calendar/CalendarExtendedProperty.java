@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.ExtendedProperty;
 
 /**
@@ -30,14 +29,11 @@ public class CalendarExtendedProperty extends ExtendedProperty {
   public static final String REALM_CALENDAR = getConstant("REALM_CALENDAR");
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: name, realm, and value.
+   * Constructs a calendar extended property.
+   * @return A CalendarExtendedProperty object.
    */
-  public static native CalendarExtendedProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.CalendarExtendedProperty(
-      params
-    );
+  public static native CalendarExtendedProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.CalendarExtendedProperty();
   }-*/;
 
   private static native String getConstant(String name) /*-{

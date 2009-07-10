@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class TimesCleanedPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", TimesCleanedProperty.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", TimesCleanedProperty.newInstance());
   }
 
   public void testProperties() {
-    TimesCleanedProperty obj = TimesCleanedProperty.newInstance(JavaScriptObject.createObject());
+    TimesCleanedProperty obj = TimesCleanedProperty.newInstance();
     double value = 600813;
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

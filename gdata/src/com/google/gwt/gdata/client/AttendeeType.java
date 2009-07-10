@@ -34,14 +34,11 @@ public class AttendeeType extends JavaScriptObject {
   public static final String VALUE_REQUIRED = getConstant("VALUE_REQUIRED");
 
   /**
-   * Constructs an attendee type using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs an attendee type.
+   * @return An AttendeeType object.
    */
-  public static native AttendeeType newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.AttendeeType(
-      params
-    );
+  public static native AttendeeType newInstance() /*-{
+    return new $wnd.google.gdata.AttendeeType();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -53,7 +50,7 @@ public class AttendeeType extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return The value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -61,20 +58,11 @@ public class AttendeeType extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value The value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

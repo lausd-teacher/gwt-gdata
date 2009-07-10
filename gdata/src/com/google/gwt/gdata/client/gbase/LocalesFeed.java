@@ -16,22 +16,18 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Describes a feed of locales.
  */
 public class LocalesFeed extends com.google.gwt.gdata.client.Feed<LocalesEntry> {
 
   /**
-   * Constructs a Google Base locale feed using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, entries, generator, id, itemsPerPage, links, startIndex, title, totalResults, and updated.
+   * Constructs a Google Base locale feed.
+   * @return A LocalesFeed object.
    */
-  public static native LocalesFeed newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.LocalesFeed(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native LocalesFeed newInstance() /*-{
+    return new $wnd.google.gdata.gbase.LocalesFeed();
   }-*/;
 
   protected LocalesFeed() { }
@@ -39,7 +35,7 @@ public class LocalesFeed extends com.google.gwt.gdata.client.Feed<LocalesEntry> 
   /**
    * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
    * 
-   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed or undefined for none.
+   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
    */
   public final native com.google.gwt.gdata.client.Link getFeedBatchLink() /*-{
     return this.getFeedBatchLink();

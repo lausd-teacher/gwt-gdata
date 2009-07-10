@@ -16,8 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.EventEntry;
 import com.google.gwt.gdata.client.geo.GeoRssWhere;
 
@@ -27,14 +25,11 @@ import com.google.gwt.gdata.client.geo.GeoRssWhere;
 public class CalendarEventEntry extends EventEntry {
 
   /**
-   * Constructs a Calendar event entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: anyoneCanAddSelf, authors, categories, comments, content, contributors, eventStatus, extendedProperties, geoLocation, guestsCanInviteOthers, guestsCanModify, guestsCanSeeGuests, id, links, locations, originalEvent, participants, privateCopy, published, quickAdd, recurrence, recurrenceException, reminders, sendEventNotifications, sequence, summary, suppressReplyNotifications, syncEvent, times, title, transparency, uid, updated, and visibility.
+   * Constructs a Calendar event entry.
+   * @return A CalendarEventEntry object.
    */
-  public static native CalendarEventEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.CalendarEventEntry(
-      params
-    );
+  public static native CalendarEventEntry newInstance() /*-{
+    return new $wnd.google.gdata.calendar.CalendarEventEntry();
   }-*/;
 
   protected CalendarEventEntry() { }
@@ -42,18 +37,16 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Adds a new calendar extended property.
    * 
-   * @param extendedProperty Calendar extended property to add, or object to use as a parameter to the google.gdata.calendar.CalendarExtendedProperty constructor.
+   * @param extendedProperty Calendar extended property to add.
    */
   public final native void addExtendedProperty(CalendarExtendedProperty extendedProperty) /*-{
-    this.addExtendedProperty(
-      extendedProperty
-    );
+    this.addExtendedProperty(extendedProperty);
   }-*/;
 
   /**
    * Returns the anyone can add self property. This element is optional.
    * 
-   * @return Anyone can add self property or undefined for none.
+   * @return Anyone can add self property.
    */
   public final native AnyoneCanAddSelfProperty getAnyoneCanAddSelf() /*-{
     return this.getAnyoneCanAddSelf();
@@ -64,14 +57,14 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @return Calendar extended properties.
    */
-  public final native JsArray<CalendarExtendedProperty> getExtendedProperties() /*-{
-    return this.getExtendedProperties();
+  public final native CalendarExtendedProperty[] getExtendedProperties() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getExtendedProperties());
   }-*/;
 
   /**
    * Returns the geolocation as a georss:where. This element is optional.
    * 
-   * @return Geolocation as a georss:where or undefined for none.
+   * @return Geolocation as a georss:where.
    */
   public final native GeoRssWhere getGeoLocation() /*-{
     return this.getGeoLocation();
@@ -80,7 +73,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the guests can invite others property. This element is optional.
    * 
-   * @return Guests can invite others property or undefined for none.
+   * @return Guests can invite others property.
    */
   public final native GuestsCanInviteOthersProperty getGuestsCanInviteOthers() /*-{
     return this.getGuestsCanInviteOthers();
@@ -89,7 +82,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the guests can modify property. This element is optional.
    * 
-   * @return Guests can modify property or undefined for none.
+   * @return Guests can modify property.
    */
   public final native GuestsCanModifyProperty getGuestsCanModify() /*-{
     return this.getGuestsCanModify();
@@ -98,7 +91,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the guests can see guests property. This element is optional.
    * 
-   * @return Guests can see guests property or undefined for none.
+   * @return Guests can see guests property.
    */
   public final native GuestsCanSeeGuestsProperty getGuestsCanSeeGuests() /*-{
     return this.getGuestsCanSeeGuests();
@@ -107,7 +100,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the link that provides the URI of an alternate format of the entry's or feed's contents.
    * 
-   * @return Link that provides the URI of an alternate format of the entry's or feed's contents or undefined for none.
+   * @return Link that provides the URI of an alternate format of the entry's or feed's contents.
    */
   public final native CalendarLink getHtmlLink() /*-{
     return this.getHtmlLink();
@@ -116,7 +109,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the private copy property. This element is optional.
    * 
-   * @return Private copy property or undefined for none.
+   * @return Private copy property.
    */
   public final native PrivateCopyProperty getPrivateCopy() /*-{
     return this.getPrivateCopy();
@@ -125,7 +118,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the quick-add property. This element is optional.
    * 
-   * @return Quick-add property or undefined for none.
+   * @return Quick-add property.
    */
   public final native QuickAddProperty getQuickAdd() /*-{
     return this.getQuickAdd();
@@ -134,7 +127,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the send event notifications property. This element is optional.
    * 
-   * @return Send event notifications property or undefined for none.
+   * @return Send event notifications property.
    */
   public final native SendEventNotificationsProperty getSendEventNotifications() /*-{
     return this.getSendEventNotifications();
@@ -143,7 +136,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the sequence number property. This element is optional.
    * 
-   * @return Sequence number property or undefined for none.
+   * @return Sequence number property.
    */
   public final native SequenceNumberProperty getSequence() /*-{
     return this.getSequence();
@@ -152,7 +145,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the suppress reply notifications property. This element is optional.
    * 
-   * @return Suppress reply notifications property or undefined for none.
+   * @return Suppress reply notifications property.
    */
   public final native SuppressReplyNotificationsProperty getSuppressReplyNotifications() /*-{
     return this.getSuppressReplyNotifications();
@@ -161,7 +154,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the sync event property. This element is optional.
    * 
-   * @return Sync event property or undefined for none.
+   * @return Sync event property.
    */
   public final native SyncEventProperty getSyncEvent() /*-{
     return this.getSyncEvent();
@@ -170,7 +163,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the ical export UID property. This element is optional.
    * 
-   * @return Ical export UID property or undefined for none.
+   * @return Ical export UID property.
    */
   public final native IcalUIDProperty getUid() /*-{
     return this.getUid();
@@ -179,7 +172,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the web content.
    * 
-   * @return Web content or undefined for none.
+   * @return Web content.
    */
   public final native WebContent getWebContent() /*-{
     return this.getWebContent();
@@ -188,7 +181,7 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Returns the link that provides the URI of the web content.
    * 
-   * @return Link that provides the URI of the web content or undefined for none.
+   * @return Link that provides the URI of the web content.
    */
   public final native CalendarLink getWebContentLink() /*-{
     return this.getWebContentLink();
@@ -203,236 +196,122 @@ public class CalendarEventEntry extends EventEntry {
 
   /**
    * Sets the anyone can add self property. This element is optional.
-   */
-  public final native void setAnyoneCanAddSelf() /*-{
-    this.setAnyoneCanAddSelf();
-  }-*/;
-
-  /**
-   * Sets the anyone can add self property. This element is optional.
    * 
-   * @param anyoneCanAddSelf Anyone can add self property, or object to use as a parameter to the google.gdata.calendar.AnyoneCanAddSelfProperty constructor, or undefined for none.
+   * @param anyoneCanAddSelf Anyone can add self property.
    */
   public final native void setAnyoneCanAddSelf(AnyoneCanAddSelfProperty anyoneCanAddSelf) /*-{
-    this.setAnyoneCanAddSelf(
-      anyoneCanAddSelf
-    );
+    this.setAnyoneCanAddSelf(anyoneCanAddSelf);
   }-*/;
-
-  /**
-   * Sets the calendar extended properties.
-   */
-  public final native void setExtendedProperties() /*-{
-    this.setExtendedProperties();
-  }-*/;
-
+  
   /**
    * Sets the calendar extended properties.
    * 
-   * @param extendedProperties Calendar extended properties, where each calendar extended property is added using the addExtendedProperty() function, or undefined to clear the calendar extended properties.
+   * @param extendedProperties Calendar extended properties, where each calendar extended property is added using addExtendedProperty().
    */
-  public final native void setExtendedProperties(JsArray<CalendarExtendedProperty> extendedProperties) /*-{
+  public final native void setExtendedProperties(CalendarExtendedProperty[] extendedProperties) /*-{
     this.setExtendedProperties(
-      extendedProperties
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(extendedProperties)
     );
   }-*/;
 
   /**
    * Sets the geolocation as a georss:where. This element is optional.
-   */
-  public final native void setGeoLocation() /*-{
-    this.setGeoLocation();
-  }-*/;
-
-  /**
-   * Sets the geolocation as a georss:where. This element is optional.
    * 
-   * @param geoLocation Geolocation as a georss:where, or object to use as a parameter to the google.gdata.geo.GeoRssWhere constructor, or undefined for none.
+   * @param geoLocation Geolocation as a georss:where.
    */
   public final native void setGeoLocation(GeoRssWhere geoLocation) /*-{
-    this.setGeoLocation(
-      geoLocation
-    );
-  }-*/;
-
-  /**
-   * Sets the guests can invite others property. This element is optional.
-   */
-  public final native void setGuestsCanInviteOthers() /*-{
-    this.setGuestsCanInviteOthers();
+    this.setGeoLocation(geoLocation);
   }-*/;
 
   /**
    * Sets the guests can invite others property. This element is optional.
    * 
-   * @param guestsCanInviteOthers Guests can invite others property, or object to use as a parameter to the google.gdata.calendar.GuestsCanInviteOthersProperty constructor, or undefined for none.
+   * @param guestsCanInviteOthers Guests can invite others property.
    */
   public final native void setGuestsCanInviteOthers(GuestsCanInviteOthersProperty guestsCanInviteOthers) /*-{
-    this.setGuestsCanInviteOthers(
-      guestsCanInviteOthers
-    );
-  }-*/;
-
-  /**
-   * Sets the guests can modify property. This element is optional.
-   */
-  public final native void setGuestsCanModify() /*-{
-    this.setGuestsCanModify();
+    this.setGuestsCanInviteOthers(guestsCanInviteOthers);
   }-*/;
 
   /**
    * Sets the guests can modify property. This element is optional.
    * 
-   * @param guestsCanModify Guests can modify property, or object to use as a parameter to the google.gdata.calendar.GuestsCanModifyProperty constructor, or undefined for none.
+   * @param guestsCanModify Guests can modify property.
    */
   public final native void setGuestsCanModify(GuestsCanModifyProperty guestsCanModify) /*-{
-    this.setGuestsCanModify(
-      guestsCanModify
-    );
-  }-*/;
-
-  /**
-   * Sets the guests can see guests property. This element is optional.
-   */
-  public final native void setGuestsCanSeeGuests() /*-{
-    this.setGuestsCanSeeGuests();
+    this.setGuestsCanModify(guestsCanModify);
   }-*/;
 
   /**
    * Sets the guests can see guests property. This element is optional.
    * 
-   * @param guestsCanSeeGuests Guests can see guests property, or object to use as a parameter to the google.gdata.calendar.GuestsCanSeeGuestsProperty constructor, or undefined for none.
+   * @param guestsCanSeeGuests Guests can see guests property.
    */
   public final native void setGuestsCanSeeGuests(GuestsCanSeeGuestsProperty guestsCanSeeGuests) /*-{
-    this.setGuestsCanSeeGuests(
-      guestsCanSeeGuests
-    );
-  }-*/;
-
-  /**
-   * Sets the private copy property. This element is optional.
-   */
-  public final native void setPrivateCopy() /*-{
-    this.setPrivateCopy();
+    this.setGuestsCanSeeGuests(guestsCanSeeGuests);
   }-*/;
 
   /**
    * Sets the private copy property. This element is optional.
    * 
-   * @param privateCopy Private copy property, or object to use as a parameter to the google.gdata.calendar.PrivateCopyProperty constructor, or undefined for none.
+   * @param privateCopy Private copy property.
    */
   public final native void setPrivateCopy(PrivateCopyProperty privateCopy) /*-{
-    this.setPrivateCopy(
-      privateCopy
-    );
-  }-*/;
-
-  /**
-   * Sets the quick-add property. This element is optional.
-   */
-  public final native void setQuickAdd() /*-{
-    this.setQuickAdd();
+    this.setPrivateCopy(privateCopy);
   }-*/;
 
   /**
    * Sets the quick-add property. This element is optional.
    * 
-   * @param quickAdd Quick-add property, or object to use as a parameter to the google.gdata.calendar.QuickAddProperty constructor, or undefined for none.
+   * @param quickAdd Quick-add property.
    */
   public final native void setQuickAdd(QuickAddProperty quickAdd) /*-{
-    this.setQuickAdd(
-      quickAdd
-    );
-  }-*/;
-
-  /**
-   * Sets the send event notifications property. This element is optional.
-   */
-  public final native void setSendEventNotifications() /*-{
-    this.setSendEventNotifications();
+    this.setQuickAdd(quickAdd);
   }-*/;
 
   /**
    * Sets the send event notifications property. This element is optional.
    * 
-   * @param sendEventNotifications Send event notifications property, or object to use as a parameter to the google.gdata.calendar.SendEventNotificationsProperty constructor, or undefined for none.
+   * @param sendEventNotifications Send event notifications property.
    */
   public final native void setSendEventNotifications(SendEventNotificationsProperty sendEventNotifications) /*-{
-    this.setSendEventNotifications(
-      sendEventNotifications
-    );
-  }-*/;
-
-  /**
-   * Sets the sequence number property. This element is optional.
-   */
-  public final native void setSequence() /*-{
-    this.setSequence();
+    this.setSendEventNotifications(sendEventNotifications);
   }-*/;
 
   /**
    * Sets the sequence number property. This element is optional.
    * 
-   * @param sequence Sequence number property, or object to use as a parameter to the google.gdata.calendar.SequenceNumberProperty constructor, or undefined for none.
+   * @param sequence Sequence number property.
    */
   public final native void setSequence(SequenceNumberProperty sequence) /*-{
-    this.setSequence(
-      sequence
-    );
-  }-*/;
-
-  /**
-   * Sets the suppress reply notifications property. This element is optional.
-   */
-  public final native void setSuppressReplyNotifications() /*-{
-    this.setSuppressReplyNotifications();
+    this.setSequence(sequence);
   }-*/;
 
   /**
    * Sets the suppress reply notifications property. This element is optional.
    * 
-   * @param suppressReplyNotifications Suppress reply notifications property, or object to use as a parameter to the google.gdata.calendar.SuppressReplyNotificationsProperty constructor, or undefined for none.
+   * @param suppressReplyNotifications Suppress reply notifications property.
    */
   public final native void setSuppressReplyNotifications(SuppressReplyNotificationsProperty suppressReplyNotifications) /*-{
-    this.setSuppressReplyNotifications(
-      suppressReplyNotifications
-    );
+    this.setSuppressReplyNotifications(suppressReplyNotifications);
   }-*/;
 
-  /**
-   * Sets the sync event property. This element is optional.
-   */
-  public final native void setSyncEvent() /*-{
-    this.setSyncEvent();
-  }-*/;
 
   /**
    * Sets the sync event property. This element is optional.
    * 
-   * @param syncEvent Sync event property, or object to use as a parameter to the google.gdata.calendar.SyncEventProperty constructor, or undefined for none.
+   * @param syncEvent Sync event property.
    */
   public final native void setSyncEvent(SyncEventProperty syncEvent) /*-{
-    this.setSyncEvent(
-      syncEvent
-    );
-  }-*/;
-
-  /**
-   * Sets the ical export UID property. This element is optional.
-   */
-  public final native void setUid() /*-{
-    this.setUid();
+    this.setSyncEvent(syncEvent);
   }-*/;
 
   /**
    * Sets the ical export UID property. This element is optional.
    * 
-   * @param uid Ical export UID property, or object to use as a parameter to the google.gdata.calendar.IcalUIDProperty constructor, or undefined for none.
+   * @param uid Ical export UID property.
    */
   public final native void setUid(IcalUIDProperty uid) /*-{
-    this.setUid(
-      uid
-    );
+    this.setUid(uid);
   }-*/;
 
   /**
@@ -441,9 +320,7 @@ public class CalendarEventEntry extends EventEntry {
    * @param webContentLink Link that provides the URI of the web content.
    */
   public final native void setWebContentLink(CalendarLink webContentLink) /*-{
-    this.setWebContentLink(
-      webContentLink
-    );
+    this.setWebContentLink(webContentLink);
   }-*/;
 
 }

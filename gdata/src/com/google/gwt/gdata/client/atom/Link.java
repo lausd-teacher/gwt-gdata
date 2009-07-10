@@ -79,14 +79,11 @@ public class Link extends JavaScriptObject {
   public static final String TYPE_HTML = getConstant("TYPE_HTML");
 
   /**
-   * Constructs an external link using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: href, hrefLang, length, rel, title, titleLang, and type.
+   * Constructs an external link.
+   * @return A Link object.
    */
-  public static native Link newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.atom.Link(
-      params
-    );
+  public static native Link newInstance() /*-{
+    return new $wnd.google.gdata.atom.Link();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -98,7 +95,7 @@ public class Link extends JavaScriptObject {
   /**
    * Returns the link URI. This attribute is required.
    * 
-   * @return Link URI or undefined for none.
+   * @return Link URI.
    */
   public final native String getHref() /*-{
     return this.getHref();
@@ -107,7 +104,7 @@ public class Link extends JavaScriptObject {
   /**
    * Returns the language of resource pointed to by href. This attribute is optional.
    * 
-   * @return Language of resource pointed to by href or undefined for none.
+   * @return Language of resource pointed to by href.
    */
   public final native String getHrefLang() /*-{
     return this.getHrefLang();
@@ -116,7 +113,7 @@ public class Link extends JavaScriptObject {
   /**
    * Returns the length of the resource pointed to by href in bytes. This attribute is optional.
    * 
-   * @return Length of the resource pointed to by href in bytes or undefined for none.
+   * @return Length of the resource pointed to by href in bytes.
    */
   public final native double getLength() /*-{
     return this.getLength();
@@ -125,7 +122,7 @@ public class Link extends JavaScriptObject {
   /**
    * Returns the link relation type. This attribute is optional.
    * 
-   * @return Link relation type or undefined for none.
+   * @return Link relation type.
    */
   public final native String getRel() /*-{
     return this.getRel();
@@ -134,7 +131,7 @@ public class Link extends JavaScriptObject {
   /**
    * Returns the link title. This attribute is optional.
    * 
-   * @return Link title or undefined for none.
+   * @return Link title.
    */
   public final native String getTitle() /*-{
     return this.getTitle();
@@ -143,7 +140,7 @@ public class Link extends JavaScriptObject {
   /**
    * Returns the language of link title. This attribute is optional.
    * 
-   * @return Language of link title or undefined for none.
+   * @return Language of link title.
    */
   public final native String getTitleLang() /*-{
     return this.getTitleLang();
@@ -152,7 +149,7 @@ public class Link extends JavaScriptObject {
   /**
    * Returns the MIME type of link target. This attribute is optional.
    * 
-   * @return MIME type of link target or undefined for none.
+   * @return MIME type of link target.
    */
   public final native String getType() /*-{
     return this.getType();
@@ -160,128 +157,65 @@ public class Link extends JavaScriptObject {
 
   /**
    * Sets the link URI. This attribute is required.
-   */
-  public final native void setHref() /*-{
-    this.setHref();
-  }-*/;
-
-  /**
-   * Sets the link URI. This attribute is required.
    * 
-   * @param href Link URI or undefined for none.
+   * @param href Link URI.
    */
   public final native void setHref(String href) /*-{
-    this.setHref(
-      href
-    );
-  }-*/;
-
-  /**
-   * Sets the language of resource pointed to by href. This attribute is optional.
-   */
-  public final native void setHrefLang() /*-{
-    this.setHrefLang();
+    this.setHref(href);
   }-*/;
 
   /**
    * Sets the language of resource pointed to by href. This attribute is optional.
    * 
-   * @param hrefLang Language of resource pointed to by href or undefined for none.
+   * @param hrefLang Language of resource pointed to by href.
    */
   public final native void setHrefLang(String hrefLang) /*-{
-    this.setHrefLang(
-      hrefLang
-    );
-  }-*/;
-
-  /**
-   * Sets the length of the resource pointed to by href in bytes. This attribute is optional.
-   */
-  public final native void setLength() /*-{
-    this.setLength();
+    this.setHrefLang(hrefLang);
   }-*/;
 
   /**
    * Sets the length of the resource pointed to by href in bytes. This attribute is optional.
    * 
-   * @param length Length of the resource pointed to by href in bytes or undefined for none.
+   * @param length Length of the resource pointed to by href in bytes.
    */
   public final native void setLength(double length) /*-{
-    this.setLength(
-      length
-    );
-  }-*/;
-
-  /**
-   * Sets the link relation type. This attribute is optional.
-   */
-  public final native void setRel() /*-{
-    this.setRel();
+    this.setLength(length);
   }-*/;
 
   /**
    * Sets the link relation type. This attribute is optional.
    * 
-   * @param rel Link relation type or undefined for none.
+   * @param rel Link relation type.
    */
   public final native void setRel(String rel) /*-{
-    this.setRel(
-      rel
-    );
-  }-*/;
-
-  /**
-   * Sets the link title. This attribute is optional.
-   */
-  public final native void setTitle() /*-{
-    this.setTitle();
+    this.setRel(rel);
   }-*/;
 
   /**
    * Sets the link title. This attribute is optional.
    * 
-   * @param title Link title or undefined for none.
+   * @param title Link title.
    */
   public final native void setTitle(String title) /*-{
-    this.setTitle(
-      title
-    );
-  }-*/;
-
-  /**
-   * Sets the language of link title. This attribute is optional.
-   */
-  public final native void setTitleLang() /*-{
-    this.setTitleLang();
+    this.setTitle(title);
   }-*/;
 
   /**
    * Sets the language of link title. This attribute is optional.
    * 
-   * @param titleLang Language of link title or undefined for none.
+   * @param titleLang Language of link title.
    */
   public final native void setTitleLang(String titleLang) /*-{
-    this.setTitleLang(
-      titleLang
-    );
-  }-*/;
-
-  /**
-   * Sets the MIME type of link target. This attribute is optional.
-   */
-  public final native void setType() /*-{
-    this.setType();
+    this.setTitleLang(titleLang);
   }-*/;
 
   /**
    * Sets the MIME type of link target. This attribute is optional.
    * 
-   * @param type MIME type of link target or undefined for none.
+   * @param type MIME type of link target.
    */
   public final native void setType(String type) /*-{
-    this.setType(
-      type
-    );
+    this.setType(type);
   }-*/;
 
 }

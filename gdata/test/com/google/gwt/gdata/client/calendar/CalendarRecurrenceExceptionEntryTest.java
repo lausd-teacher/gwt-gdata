@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,15 +28,15 @@ public class CalendarRecurrenceExceptionEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarRecurrenceExceptionEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", CalendarRecurrenceExceptionEntry.newInstance());
   }
 
   public void testProperties() {
-    CalendarRecurrenceExceptionEntry obj = CalendarRecurrenceExceptionEntry.newInstance(JavaScriptObject.createObject());
-    IcalUIDProperty uid = IcalUIDProperty.newInstance(JavaScriptObject.createObject());
+    CalendarRecurrenceExceptionEntry obj = CalendarRecurrenceExceptionEntry.newInstance();
+    IcalUIDProperty uid = IcalUIDProperty.newInstance();
     obj.setUid(uid);
     assertSame("uid", obj.getUid(), uid);
-    SequenceNumberProperty sequence = SequenceNumberProperty.newInstance(JavaScriptObject.createObject());
+    SequenceNumberProperty sequence = SequenceNumberProperty.newInstance();
     obj.setSequence(sequence);
     assertSame("sequence", obj.getSequence(), sequence);
   }

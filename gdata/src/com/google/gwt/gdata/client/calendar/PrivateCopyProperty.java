@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class PrivateCopyProperty extends JavaScriptObject {
 
   /**
-   * Constructs a private copy property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a private copy property.
+   * @return A PrivateCopyProperty object.
    */
-  public static native PrivateCopyProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.PrivateCopyProperty(
-      params
-    );
+  public static native PrivateCopyProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.PrivateCopyProperty();
   }-*/;
 
   protected PrivateCopyProperty() { }
@@ -39,7 +36,7 @@ public class PrivateCopyProperty extends JavaScriptObject {
   /**
    * Returns value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class PrivateCopyProperty extends JavaScriptObject {
 
   /**
    * Sets value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(boolean value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

@@ -16,23 +16,18 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-
 /**
  * Entry element for data feed.
  */
 public class DataEntry extends com.google.gwt.gdata.client.Entry<DataEntry> {
 
   /**
-   * Constructs a data entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: dimensions, id, links, metrics, title, and updated.
+   * Constructs a data entry.
+   * @return A DataEntry object.
    */
-  public static native DataEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.analytics.DataEntry(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native DataEntry newInstance() /*-{
+    return new $wnd.google.gdata.analytics.DataEntry();
   }-*/;
 
   protected DataEntry() { }
@@ -40,36 +35,29 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry<DataEntry> {
   /**
    * Adds a new dimension.
    * 
-   * @param dimension Dimension to add, or object to use as a parameter to the google.gdata.analytics.Dimension constructor.
+   * @param dimension Dimension to add.
    */
   public final native void addDimension(Dimension dimension) /*-{
-    this.addDimension(
-      dimension
-    );
+    this.addDimension(dimension);
   }-*/;
 
   /**
    * Adds a new metric.
    * 
-   * @param metric Metric to add, or object to use as a parameter to the google.gdata.analytics.Metric constructor.
+   * @param metric Metric to add.
    */
   public final native void addMetric(Metric metric) /*-{
-    this.addMetric(
-      metric
-    );
+    this.addMetric(metric);
   }-*/;
 
   /**
    * Returns the dimension with the given name in this entry.
    * 
-   * @param name The name of the dimension to retrieve
-   * 
-   * @return The dimension with the given name, or null if no such dimension is present
+   * @param name The name of the dimension to retrieve.
+   * @return The dimension with the given name.
    */
   public final native Dimension getDimension(String name) /*-{
-    return this.getDimension(
-      name
-    );
+    return this.getDimension(name);
   }-*/;
 
   /**
@@ -77,21 +65,18 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry<DataEntry> {
    * 
    * @return Dimensions.
    */
-  public final native JsArray<Dimension> getDimensions() /*-{
-    return this.getDimensions();
+  public final native Dimension[] getDimensions() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getDimensions());
   }-*/;
 
   /**
    * Returns the metric with the given name in this entry.
    * 
-   * @param name The name of the metric to retrieve
-   * 
-   * @return The dimension with the given name, or null if no such metric is present
+   * @param name The name of the metric to retrieve.
+   * @return The dimension with the given name.
    */
   public final native Metric getMetric(String name) /*-{
-    return this.getMetric(
-      name
-    );
+    return this.getMetric(name);
   }-*/;
 
   /**
@@ -99,56 +84,39 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry<DataEntry> {
    * 
    * @return Metrics.
    */
-  public final native JsArray<Metric> getMetrics() /*-{
-    return this.getMetrics();
+  public final native Metric[] getMetrics() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getMetrics());
   }-*/;
 
   /**
    * Returns the value of the dimension or metric with the given name in this entry.
    * 
-   * @param name The name of the dimension or metric to retrieve
-   * 
-   * @return The value of the named dimension or metric, or null if no dimension or metric with the given name exists in this entry
+   * @param name The name of the dimension or metric to retrieve.
+   * @return The value of the named dimension or metric.
    */
   public final native String getValueOf(String name) /*-{
-    return this.getValueOf(
-      name
-    );
-  }-*/;
-
-  /**
-   * Sets the dimensions.
-   */
-  public final native void setDimensions() /*-{
-    this.setDimensions();
+    return this.getValueOf(name);
   }-*/;
 
   /**
    * Sets the dimensions.
    * 
-   * @param dimensions Dimensions, where each dimension is added using the addDimension() function, or undefined to clear the dimensions.
+   * @param dimensions Dimensions, where each dimension is added using addDimension().
    */
-  public final native void setDimensions(JsArray<Dimension> dimensions) /*-{
+  public final native void setDimensions(Dimension[] dimensions) /*-{
     this.setDimensions(
-      dimensions
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(dimensions)
     );
   }-*/;
 
   /**
    * Sets the metrics.
-   */
-  public final native void setMetrics() /*-{
-    this.setMetrics();
-  }-*/;
-
-  /**
-   * Sets the metrics.
    * 
-   * @param metrics Metrics, where each metric is added using the addMetric() function, or undefined to clear the metrics.
+   * @param metrics Metrics, where each metric is added using addMetric().
    */
-  public final native void setMetrics(JsArray<Metric> metrics) /*-{
+  public final native void setMetrics(Metric[] metrics) /*-{
     this.setMetrics(
-      metrics
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(metrics)
     );
   }-*/;
 

@@ -19,19 +19,16 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * P.O. box.
+ * Describes P.O. box.
  */
 public class PoBox extends JavaScriptObject {
 
   /**
-   * Constructs a po box using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a po box.
+   * return A PoBox object.
    */
-  public static native PoBox newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.PoBox(
-      params
-    );
+  public static native PoBox newInstance() /*-{
+    return new $wnd.google.gdata.PoBox();
   }-*/;
 
   protected PoBox() { }
@@ -39,7 +36,7 @@ public class PoBox extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class PoBox extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -38,21 +37,21 @@ public class ProcessingStatusTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ProcessingStatus.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", ProcessingStatus.newInstance());
   }
 
   public void testProperties() {
-    ProcessingStatus obj = ProcessingStatus.newInstance(JavaScriptObject.createObject());
+    ProcessingStatus obj = ProcessingStatus.newInstance();
     String status = "myValue";
     obj.setStatus(status);
     assertEquals("status", obj.getStatus(), status);
-    ItemsProcessed itemsprocessed = ItemsProcessed.newInstance(JavaScriptObject.createObject());
+    ItemsProcessed itemsprocessed = ItemsProcessed.newInstance();
     obj.setItemsProcessed(itemsprocessed);
     assertSame("itemsprocessed", obj.getItemsProcessed(), itemsprocessed);
-    ItemsInserted itemsinserted = ItemsInserted.newInstance(JavaScriptObject.createObject());
+    ItemsInserted itemsinserted = ItemsInserted.newInstance();
     obj.setItemsInserted(itemsinserted);
     assertSame("itemsinserted", obj.getItemsInserted(), itemsinserted);
-    FeedErrors feederrors = FeedErrors.newInstance(JavaScriptObject.createObject());
+    FeedErrors feederrors = FeedErrors.newInstance();
     obj.setFeedErrors(feederrors);
     assertSame("feederrors", obj.getFeedErrors(), feederrors);
   }

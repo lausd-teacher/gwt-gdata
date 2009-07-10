@@ -51,14 +51,11 @@ public class Reminder extends JavaScriptObject {
   public static final String METHOD_SMS = getConstant("METHOD_SMS");
 
   /**
-   * Constructs a reminder using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: absoluteTime, days, hours, method, and minutes.
+   * Constructs a reminder.
+   * @return A Reminder object.
    */
-  public static native Reminder newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Reminder(
-      params
-    );
+  public static native Reminder newInstance() /*-{
+    return new $wnd.google.gdata.Reminder();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -70,7 +67,7 @@ public class Reminder extends JavaScriptObject {
   /**
    * Returns the absolute time of the reminder. This attribute is optional.
    * 
-   * @return Absolute time of the reminder or undefined for none.
+   * @return Absolute time of the reminder.
    */
   public final native DateTime getAbsoluteTime() /*-{
     return this.getAbsoluteTime();
@@ -79,7 +76,7 @@ public class Reminder extends JavaScriptObject {
   /**
    * Returns the number of days before the start time. This attribute is optional.
    * 
-   * @return Number of days before the start time or undefined for none.
+   * @return Number of days before the start time.
    */
   public final native double getDays() /*-{
     return this.getDays();
@@ -88,7 +85,7 @@ public class Reminder extends JavaScriptObject {
   /**
    * Returns the number of hours before the start time. This attribute is optional.
    * 
-   * @return Number of hours before the start time or undefined for none.
+   * @return Number of hours before the start time.
    */
   public final native double getHours() /*-{
     return this.getHours();
@@ -97,7 +94,7 @@ public class Reminder extends JavaScriptObject {
   /**
    * Returns the method. This attribute is optional.
    * 
-   * @return Method or undefined for none.
+   * @return Method.
    */
   public final native String getMethod() /*-{
     return this.getMethod();
@@ -106,23 +103,17 @@ public class Reminder extends JavaScriptObject {
   /**
    * Returns the number of minute before the start times. This attribute is optional.
    * 
-   * @return Number of minute before the start times or undefined for none.
+   * @return Number of minute before the start times.
    */
   public final native double getMinutes() /*-{
     return this.getMinutes();
   }-*/;
 
-  /**
-   * Sets the absolute time of the reminder. This attribute is optional.
-   */
-  public final native void setAbsoluteTime() /*-{
-    this.setAbsoluteTime();
-  }-*/;
 
   /**
    * Sets the absolute time of the reminder. This attribute is optional.
    * 
-   * @param absoluteTime Absolute time of the reminder or undefined for none.
+   * @param absoluteTime Absolute time of the reminder.
    */
   public final native void setAbsoluteTime(Date absoluteTime) /*-{
     this.setAbsoluteTime(
@@ -133,84 +124,46 @@ public class Reminder extends JavaScriptObject {
   /**
    * Sets the absolute time of the reminder. This attribute is optional.
    * 
-   * @param absoluteTime Absolute time of the reminder or undefined for none.
+   * @param absoluteTime Absolute time of the reminder.
    */
   public final native void setAbsoluteTime(DateTime absoluteTime) /*-{
-    this.setAbsoluteTime(
-      absoluteTime
-    );
-  }-*/;
-
-  /**
-   * Sets the number of days before the start time. This attribute is optional.
-   */
-  public final native void setDays() /*-{
-    this.setDays();
+    this.setAbsoluteTime(absoluteTime);
   }-*/;
 
   /**
    * Sets the number of days before the start time. This attribute is optional.
    * 
-   * @param days Number of days before the start time or undefined for none.
+   * @param days Number of days before the start time.
    */
   public final native void setDays(double days) /*-{
-    this.setDays(
-      days
-    );
-  }-*/;
-
-  /**
-   * Sets the number of hours before the start time. This attribute is optional.
-   */
-  public final native void setHours() /*-{
-    this.setHours();
+    this.setDays(days);
   }-*/;
 
   /**
    * Sets the number of hours before the start time. This attribute is optional.
    * 
-   * @param hours Number of hours before the start time or undefined for none.
+   * @param hours Number of hours before the start time.
    */
   public final native void setHours(double hours) /*-{
-    this.setHours(
-      hours
-    );
-  }-*/;
-
-  /**
-   * Sets the method. This attribute is optional.
-   */
-  public final native void setMethod() /*-{
-    this.setMethod();
+    this.setHours(hours);
   }-*/;
 
   /**
    * Sets the method. This attribute is optional.
    * 
-   * @param method Method or undefined for none.
+   * @param method Method.
    */
   public final native void setMethod(String method) /*-{
-    this.setMethod(
-      method
-    );
-  }-*/;
-
-  /**
-   * Sets the number of minute before the start times. This attribute is optional.
-   */
-  public final native void setMinutes() /*-{
-    this.setMinutes();
+    this.setMethod(method);
   }-*/;
 
   /**
    * Sets the number of minute before the start times. This attribute is optional.
    * 
-   * @param minutes Number of minute before the start times or undefined for none.
+   * @param minutes Number of minute before the start times.
    */
   public final native void setMinutes(double minutes) /*-{
-    this.setMinutes(
-      minutes
-    );
+    this.setMinutes(minutes);
   }-*/;
 
 }

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class FeedFileNameTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", FeedFileName.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", FeedFileName.newInstance());
   }
 
   public void testProperties() {
-    FeedFileName obj = FeedFileName.newInstance(JavaScriptObject.createObject());
+    FeedFileName obj = FeedFileName.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

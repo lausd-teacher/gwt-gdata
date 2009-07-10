@@ -26,14 +26,11 @@ import java.util.Date;
 public class LastViewed extends JavaScriptObject {
 
   /**
-   * Constructs a last viewed using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a last viewed.
+   * @return A LastViewed object.
    */
-  public static native LastViewed newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.LastViewed(
-      params
-    );
+  public static native LastViewed newInstance() /*-{
+    return new $wnd.google.gdata.LastViewed();
   }-*/;
 
   protected LastViewed() { }
@@ -41,23 +38,16 @@ public class LastViewed extends JavaScriptObject {
   /**
    * Returns the value. This attribute is optional.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native DateTime getValue() /*-{
     return this.getValue();
   }-*/;
-
-  /**
-   * Sets the value. This attribute is optional.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
+  
   /**
    * Sets the value. This attribute is optional.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(Date value) /*-{
     this.setValue(
@@ -68,12 +58,10 @@ public class LastViewed extends JavaScriptObject {
   /**
    * Sets the value. This attribute is optional.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(DateTime value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

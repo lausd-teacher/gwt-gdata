@@ -24,14 +24,13 @@ import com.google.gwt.gdata.client.Query;
 public class AccountQuery extends Query {
 
   /**
-   * Constructor.
+   * Constructs an account query.
    * 
    * @param feedUri URI of feed.
+   * @return An AccountQuery object.
    */
   public static native AccountQuery newInstance(String feedUri) /*-{
-    return new $wnd.google.gdata.analytics.AccountQuery(
-      feedUri
-    );
+    return new $wnd.google.gdata.analytics.AccountQuery(feedUri);
   }-*/;
 
   protected AccountQuery() { }
@@ -39,7 +38,7 @@ public class AccountQuery extends Query {
   /**
    * Returns the maximum number of results to be retrieved.
    * 
-   * @return Maximum number of results to be retrieved or null to indicate that the parameter is disabled.
+   * @return Maximum number of results to be retrieved.
    */
   public final native double getMaxResults() /*-{
     return this.getMaxResults();
@@ -48,7 +47,7 @@ public class AccountQuery extends Query {
   /**
    * Returns the whether to indent the elements.
    * 
-   * @return Whether to indent the elements or null to indicate that the parameter is disabled.
+   * @return Whether to indent the elements.
    */
   public final native boolean getPrettyprint() /*-{
     return this.getPrettyprint();
@@ -57,7 +56,7 @@ public class AccountQuery extends Query {
   /**
    * Returns the 1-based index of the first result to be retrieved.
    * 
-   * @return 1-based index of the first result to be retrieved or null to indicate that the parameter is disabled.
+   * @return 1-based index of the first result to be retrieved.
    */
   public final native double getStartIndex() /*-{
     return this.getStartIndex();
@@ -66,67 +65,28 @@ public class AccountQuery extends Query {
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param maxResults Maximum number of results to be retrieved.
    */
   public final native void setMaxResults(double maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
-  }-*/;
-
-  /**
-   * Sets the maximum number of results to be retrieved.
-   * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setMaxResults(String maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
+    this.setMaxResults(maxResults);
   }-*/;
 
   /**
    * Sets the whether to indent the elements. The default value is false.
    * 
-   * @param prettyprint Whether to indent the elements or an equivalent string value or null to disable this parameter.
+   * @param prettyprint Whether to indent the elements.
    */
   public final native void setPrettyprint(boolean prettyprint) /*-{
-    this.setPrettyprint(
-      prettyprint
-    );
-  }-*/;
-
-  /**
-   * Sets the whether to indent the elements. The default value is false.
-   * 
-   * @param prettyprint Whether to indent the elements or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setPrettyprint(String prettyprint) /*-{
-    this.setPrettyprint(
-      prettyprint
-    );
+    this.setPrettyprint(prettyprint);
   }-*/;
 
   /**
    * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param startIndex 1-based index of the first result to be retrieved.
    */
   public final native void setStartIndex(double startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
-  }-*/;
-
-  /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
-   * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setStartIndex(String startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
+    this.setStartIndex(startIndex);
   }-*/;
 
 }

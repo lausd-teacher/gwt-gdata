@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -34,11 +33,11 @@ public class TransparencyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Transparency.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Transparency.newInstance());
   }
 
   public void testProperties() {
-    Transparency obj = Transparency.newInstance(JavaScriptObject.createObject());
+    Transparency obj = Transparency.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

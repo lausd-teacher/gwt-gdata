@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Person extends JavaScriptObject {
 
   /**
-   * Constructs a person construct using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: email, name, nameLang, and uri.
+   * Constructs a person.
+   * @return A Person object.
    */
-  public static native Person newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.atom.Person(
-      params
-    );
+  public static native Person newInstance() /*-{
+    return new $wnd.google.gdata.atom.Person();
   }-*/;
 
   protected Person() { }
@@ -39,7 +36,7 @@ public class Person extends JavaScriptObject {
   /**
    * Returns the author's email address. This element is optional.
    * 
-   * @return Author's email address or undefined for none.
+   * @return Author's email address.
    */
   public final native com.google.gwt.gdata.client.atom.Email getEmail() /*-{
     return this.getEmail();
@@ -48,7 +45,7 @@ public class Person extends JavaScriptObject {
   /**
    * Returns the author's name. This element is required.
    * 
-   * @return Author's name or undefined for none.
+   * @return Author's name.
    */
   public final native Name getName() /*-{
     return this.getName();
@@ -57,7 +54,7 @@ public class Person extends JavaScriptObject {
   /**
    * Returns the language of name. This attribute is optional.
    * 
-   * @return Language of name or undefined for none.
+   * @return Language of name.
    */
   public final native String getNameLang() /*-{
     return this.getNameLang();
@@ -66,7 +63,7 @@ public class Person extends JavaScriptObject {
   /**
    * Returns the author's URI. This element is optional.
    * 
-   * @return Author's URI or undefined for none.
+   * @return Author's URI.
    */
   public final native Uri getUri() /*-{
     return this.getUri();
@@ -74,74 +71,38 @@ public class Person extends JavaScriptObject {
 
   /**
    * Sets the author's email address. This element is optional.
-   */
-  public final native void setEmail() /*-{
-    this.setEmail();
-  }-*/;
-
-  /**
-   * Sets the author's email address. This element is optional.
    * 
-   * @param email Author's email address, or object to use as a parameter to the google.gdata.atom.Email constructor, or undefined for none.
+   * @param email Author's email address.
    */
   public final native void setEmail(Email email) /*-{
-    this.setEmail(
-      email
-    );
-  }-*/;
-
-  /**
-   * Sets the author's name. This element is required.
-   */
-  public final native void setName() /*-{
-    this.setName();
+    this.setEmail(email);
   }-*/;
 
   /**
    * Sets the author's name. This element is required.
    * 
-   * @param name Author's name, or object to use as a parameter to the google.gdata.atom.Name constructor, or undefined for none.
+   * @param name Author's name.
    */
   public final native void setName(Name name) /*-{
-    this.setName(
-      name
-    );
-  }-*/;
-
-  /**
-   * Sets the language of name. This attribute is optional.
-   */
-  public final native void setNameLang() /*-{
-    this.setNameLang();
+    this.setName(name);
   }-*/;
 
   /**
    * Sets the language of name. This attribute is optional.
    * 
-   * @param nameLang Language of name or undefined for none.
+   * @param nameLang Language of name.
    */
   public final native void setNameLang(String nameLang) /*-{
-    this.setNameLang(
-      nameLang
-    );
-  }-*/;
-
-  /**
-   * Sets the author's URI. This element is optional.
-   */
-  public final native void setUri() /*-{
-    this.setUri();
+    this.setNameLang(nameLang);
   }-*/;
 
   /**
    * Sets the author's URI. This element is optional.
    * 
-   * @param uri Author's URI, or object to use as a parameter to the google.gdata.atom.Uri constructor, or undefined for none.
+   * @param uri Author's URI.
    */
   public final native void setUri(Uri uri) /*-{
-    this.setUri(
-      uri
-    );
+    this.setUri(uri);
   }-*/;
 
 }

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -36,11 +35,11 @@ public class VisibilityTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Visibility.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Visibility.newInstance());
   }
 
   public void testProperties() {
-    Visibility obj = Visibility.newInstance(JavaScriptObject.createObject());
+    Visibility obj = Visibility.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class TargetCountryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", TargetCountry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", TargetCountry.newInstance());
   }
 
   public void testProperties() {
-    TargetCountry obj = TargetCountry.newInstance(JavaScriptObject.createObject());
+    TargetCountry obj = TargetCountry.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

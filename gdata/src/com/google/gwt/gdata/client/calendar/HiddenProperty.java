@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class HiddenProperty extends JavaScriptObject {
 
   /**
-   * Constructs a hidden property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a hidden property.
+   * @return A HiddenProperty object.
    */
-  public static native HiddenProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.HiddenProperty(
-      params
-    );
+  public static native HiddenProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.HiddenProperty();
   }-*/;
 
   protected HiddenProperty() { }
@@ -39,7 +36,7 @@ public class HiddenProperty extends JavaScriptObject {
   /**
    * Returns whether a calendar is hidden. This attribute is required.
    * 
-   * @return Whether a calendar is hidden or undefined for none.
+   * @return Whether a calendar is hidden.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class HiddenProperty extends JavaScriptObject {
 
   /**
    * Sets whether a calendar is hidden. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets whether a calendar is hidden. This attribute is required.
    * 
-   * @param value Whether a calendar is hidden or undefined for none.
+   * @param value Whether a calendar is hidden.
    */
   public final native void setValue(boolean value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

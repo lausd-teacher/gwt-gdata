@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -30,20 +29,19 @@ public class ContactEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ContactEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", ContactEntry.newInstance());
   }
 
   public void testOther() {
-    ContactEntry obj = ContactEntry.newInstance(JavaScriptObject.createObject());
     // Unit Test for addGroupMembershipInfo(GroupMembershipInfo groupMembershipInfo)
-    // Unit Test for getGroupMembershipInfos()
-    assertEquals("getGroupMembershipInfos", obj.getGroupMembershipInfos(), null);
-    // Unit Test for setGroupMembershipInfos(JsArray groupMembershipInfos)
   }
 
   public void testProperties() {
-    ContactEntry obj = ContactEntry.newInstance(JavaScriptObject.createObject());
-    Deleted deleted = Deleted.newInstance(JavaScriptObject.createObject());
+    ContactEntry obj = ContactEntry.newInstance();
+    GroupMembershipInfo[] groupmembershipinfos = new GroupMembershipInfo[]{ GroupMembershipInfo.newInstance() };
+    obj.setGroupMembershipInfos(groupmembershipinfos);
+    assertEquals("groupmembershipinfos", obj.getGroupMembershipInfos().length, groupmembershipinfos.length);
+    Deleted deleted = Deleted.newInstance();
     obj.setDeleted(deleted);
     assertSame("deleted", obj.getDeleted(), deleted);
   }

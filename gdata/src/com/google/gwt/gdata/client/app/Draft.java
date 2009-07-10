@@ -34,14 +34,11 @@ public class Draft extends JavaScriptObject {
   public static final String VALUE_YES = getConstant("VALUE_YES");
 
   /**
-   * Constructs a draft tag using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a draft tag.
+   * @return A Draft object.
    */
-  public static native Draft newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.app.Draft(
-      params
-    );
+  public static native Draft newInstance() /*-{
+    return new $wnd.google.gdata.app.Draft();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -53,7 +50,7 @@ public class Draft extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -61,20 +58,11 @@ public class Draft extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

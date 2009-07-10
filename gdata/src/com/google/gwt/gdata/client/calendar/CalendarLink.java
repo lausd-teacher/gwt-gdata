@@ -16,8 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Extends the base Link class with Calendar extensions.
  */
@@ -29,14 +27,11 @@ public class CalendarLink extends com.google.gwt.gdata.client.acl.Link {
   public static final String REL_WEB_CONTENT = getConstant("REL_WEB_CONTENT");
 
   /**
-   * Constructs a Calendar Link class using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: href, length, rel, title, type, and webContent.
+   * Constructs a Calendar Link class.
+   * @return A CalendarLink object.
    */
-  public static native CalendarLink newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.CalendarLink(
-      params
-    );
+  public static native CalendarLink newInstance() /*-{
+    return new $wnd.google.gdata.calendar.CalendarLink();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -48,7 +43,7 @@ public class CalendarLink extends com.google.gwt.gdata.client.acl.Link {
   /**
    * Returns the web content. This element is optional.
    * 
-   * @return Web content or undefined for none.
+   * @return Web content.
    */
   public final native WebContent getWebContent() /*-{
     return this.getWebContent();
@@ -56,20 +51,11 @@ public class CalendarLink extends com.google.gwt.gdata.client.acl.Link {
 
   /**
    * Sets the web content. This element is optional.
-   */
-  public final native void setWebContent() /*-{
-    this.setWebContent();
-  }-*/;
-
-  /**
-   * Sets the web content. This element is optional.
    * 
-   * @param webContent Web content, or object to use as a parameter to the google.gdata.calendar.WebContent constructor, or undefined for none.
+   * @param webContent Web content.
    */
   public final native void setWebContent(WebContent webContent) /*-{
-    this.setWebContent(
-      webContent
-    );
+    this.setWebContent(webContent);
   }-*/;
 
 }

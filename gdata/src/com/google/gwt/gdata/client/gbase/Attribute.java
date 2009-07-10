@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Attribute extends JavaScriptObject {
 
   /**
-   * Constructs an attribute using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: type and value.
+   * Constructs an attribute.
+   * @return An Attribute object.
    */
-  public static native Attribute newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.Attribute(
-      params
-    );
+  public static native Attribute newInstance() /*-{
+    return new $wnd.google.gdata.gbase.Attribute();
   }-*/;
 
   protected Attribute() { }
@@ -39,7 +36,7 @@ public class Attribute extends JavaScriptObject {
   /**
    * Returns the type of the attribute. This attribute is required.
    * 
-   * @return Type of the attribute or undefined for none.
+   * @return Type of the attribute.
    */
   public final native String getType() /*-{
     return this.getType();
@@ -48,7 +45,7 @@ public class Attribute extends JavaScriptObject {
   /**
    * Returns the value. This attribute is optional.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -56,38 +53,20 @@ public class Attribute extends JavaScriptObject {
 
   /**
    * Sets the type of the attribute. This attribute is required.
-   */
-  public final native void setType() /*-{
-    this.setType();
-  }-*/;
-
-  /**
-   * Sets the type of the attribute. This attribute is required.
    * 
-   * @param type Type of the attribute or undefined for none.
+   * @param type Type of the attribute.
    */
   public final native void setType(String type) /*-{
-    this.setType(
-      type
-    );
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is optional.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
+    this.setType(type);
   }-*/;
 
   /**
    * Sets the value. This attribute is optional.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

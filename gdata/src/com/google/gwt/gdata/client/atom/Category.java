@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Category extends JavaScriptObject {
 
   /**
-   * Constructs a category using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: label, labelLang, scheme, and term.
+   * Constructs a category.
+   * @return A Category object.
    */
-  public static native Category newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.atom.Category(
-      params
-    );
+  public static native Category newInstance() /*-{
+    return new $wnd.google.gdata.atom.Category();
   }-*/;
 
   protected Category() { }
@@ -39,7 +36,7 @@ public class Category extends JavaScriptObject {
   /**
    * Returns the human-readable label. This attribute is optional.
    * 
-   * @return Human-readable label or undefined for none.
+   * @return Human-readable label.
    */
   public final native String getLabel() /*-{
     return this.getLabel();
@@ -48,7 +45,7 @@ public class Category extends JavaScriptObject {
   /**
    * Returns the language. This attribute is optional.
    * 
-   * @return Language or undefined for none.
+   * @return Language.
    */
   public final native String getLabelLang() /*-{
     return this.getLabelLang();
@@ -57,7 +54,7 @@ public class Category extends JavaScriptObject {
   /**
    * Returns the scheme (domain). This attribute is optional.
    * 
-   * @return Scheme (domain) or undefined for none.
+   * @return Scheme (domain).
    */
   public final native String getScheme() /*-{
     return this.getScheme();
@@ -66,7 +63,7 @@ public class Category extends JavaScriptObject {
   /**
    * Returns the term. This attribute is required.
    * 
-   * @return Term or undefined for none.
+   * @return Term.
    */
   public final native String getTerm() /*-{
     return this.getTerm();
@@ -74,74 +71,38 @@ public class Category extends JavaScriptObject {
 
   /**
    * Sets the human-readable label. This attribute is optional.
-   */
-  public final native void setLabel() /*-{
-    this.setLabel();
-  }-*/;
-
-  /**
-   * Sets the human-readable label. This attribute is optional.
    * 
-   * @param label Human-readable label or undefined for none.
+   * @param label Human-readable label.
    */
   public final native void setLabel(String label) /*-{
-    this.setLabel(
-      label
-    );
-  }-*/;
-
-  /**
-   * Sets the language. This attribute is optional.
-   */
-  public final native void setLabelLang() /*-{
-    this.setLabelLang();
+    this.setLabel(label);
   }-*/;
 
   /**
    * Sets the language. This attribute is optional.
    * 
-   * @param labelLang Language or undefined for none.
+   * @param labelLang Language.
    */
   public final native void setLabelLang(String labelLang) /*-{
-    this.setLabelLang(
-      labelLang
-    );
-  }-*/;
-
-  /**
-   * Sets the scheme (domain). This attribute is optional.
-   */
-  public final native void setScheme() /*-{
-    this.setScheme();
+    this.setLabelLang(labelLang);
   }-*/;
 
   /**
    * Sets the scheme (domain). This attribute is optional.
    * 
-   * @param scheme Scheme (domain) or undefined for none.
+   * @param scheme Scheme (domain).
    */
   public final native void setScheme(String scheme) /*-{
-    this.setScheme(
-      scheme
-    );
-  }-*/;
-
-  /**
-   * Sets the term. This attribute is required.
-   */
-  public final native void setTerm() /*-{
-    this.setTerm();
+    this.setScheme(scheme);
   }-*/;
 
   /**
    * Sets the term. This attribute is required.
    * 
-   * @param term Term or undefined for none.
+   * @param term Term.
    */
   public final native void setTerm(String term) /*-{
-    this.setTerm(
-      term
-    );
+    this.setTerm(term);
   }-*/;
 
 }

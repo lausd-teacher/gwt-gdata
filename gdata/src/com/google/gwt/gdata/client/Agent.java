@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Agent extends JavaScriptObject {
 
   /**
-   * Constructs an agent using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs an agent object.
+   * @return An Agent object.
    */
-  public static native Agent newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Agent(
-      params
-    );
+  public static native Agent newInstance() /*-{
+    return new $wnd.google.gdata.Agent();
   }-*/;
 
   protected Agent() { }
@@ -39,7 +36,7 @@ public class Agent extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return The value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class Agent extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value The value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

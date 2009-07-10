@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,13 +28,13 @@ public class SnippetsEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SnippetsEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", SnippetsEntry.newInstance());
   }
 
   public void testOther() {
-    SnippetsEntry obj = SnippetsEntry.newInstance(JavaScriptObject.createObject());
+    SnippetsEntry obj = SnippetsEntry.newInstance();
     // Unit Test for getAttributes()
-    assertEquals("getAttributes", obj.getAttributes(), null);
+    assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
     // Unit Test for getHtmlLink()
     assertEquals("getHtmlLink", obj.getHtmlLink(), null);
     // Unit Test for setAttribute(String name, Attribute attribute)

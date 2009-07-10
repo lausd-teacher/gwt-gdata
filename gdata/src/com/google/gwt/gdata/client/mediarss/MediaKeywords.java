@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class MediaKeywords extends JavaScriptObject {
 
   /**
-   * Constructs a media keywords using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content.
+   * Constructs a media keywords.
+   * @return A MediaKeywords object.
    */
-  public static native MediaKeywords newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.mediarss.MediaKeywords(
-      params
-    );
+  public static native MediaKeywords newInstance() /*-{
+    return new $wnd.google.gdata.mediarss.MediaKeywords();
   }-*/;
 
   protected MediaKeywords() { }
@@ -39,7 +36,7 @@ public class MediaKeywords extends JavaScriptObject {
   /**
    * Returns the highly relevant keywords describing the media object. This attribute is optional.
    * 
-   * @return Highly relevant keywords describing the media object or undefined for none.
+   * @return Highly relevant keywords describing the media object.
    */
   public final native String getContent() /*-{
     return this.getContent();
@@ -47,20 +44,11 @@ public class MediaKeywords extends JavaScriptObject {
 
   /**
    * Sets the highly relevant keywords describing the media object. This attribute is optional.
-   */
-  public final native void setContent() /*-{
-    this.setContent();
-  }-*/;
-
-  /**
-   * Sets the highly relevant keywords describing the media object. This attribute is optional.
    * 
-   * @param content Highly relevant keywords describing the media object or undefined for none.
+   * @param content Highly relevant keywords describing the media object.
    */
   public final native void setContent(String content) /*-{
-    this.setContent(
-      content
-    );
+    this.setContent(content);
   }-*/;
 
 }

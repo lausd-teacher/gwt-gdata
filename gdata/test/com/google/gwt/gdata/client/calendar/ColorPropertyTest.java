@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -53,11 +52,11 @@ public class ColorPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ColorProperty.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", ColorProperty.newInstance());
   }
 
   public void testProperties() {
-    ColorProperty obj = ColorProperty.newInstance(JavaScriptObject.createObject());
+    ColorProperty obj = ColorProperty.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

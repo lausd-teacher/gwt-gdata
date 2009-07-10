@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class SymbolTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Symbol.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Symbol.newInstance());
   }
 
   public void testProperties() {
-    Symbol obj = Symbol.newInstance(JavaScriptObject.createObject());
+    Symbol obj = Symbol.newInstance();
     String exchange = "myValue";
     obj.setExchange(exchange);
     assertEquals("exchange", obj.getExchange(), exchange);

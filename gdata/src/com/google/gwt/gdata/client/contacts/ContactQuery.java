@@ -20,7 +20,7 @@ import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.Query;
 
 /**
- * Describes a query for the following feeds:
+ * Describes a query.
  */
 public class ContactQuery extends Query {
 
@@ -55,14 +55,13 @@ public class ContactQuery extends Query {
   public static final String SORTORDER_NONE = getConstant("SORTORDER_NONE");
 
   /**
-   * Constructor.
+   * Constructs a Contact query.
    * 
    * @param feedUri URI of feed.
+   * @return A ContactQuery object.
    */
   public static native ContactQuery newInstance(String feedUri) /*-{
-    return new $wnd.google.gdata.contacts.ContactQuery(
-      feedUri
-    );
+    return new $wnd.google.gdata.contacts.ContactQuery(feedUri);
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -74,7 +73,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the group id. Results are limited to contacts belonging to this group.
    * 
-   * @return Group id or null to indicate that the parameter is disabled.
+   * @return Group id.
    */
   public final native String getGroup() /*-{
     return this.getGroup();
@@ -83,7 +82,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the maximum number of results to be retrieved.
    * 
-   * @return Maximum number of results to be retrieved or null to indicate that the parameter is disabled.
+   * @return Maximum number of results to be retrieved.
    */
   public final native double getMaxResults() /*-{
     return this.getMaxResults();
@@ -92,7 +91,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the order of entries in a feed.
    * 
-   * @return Order of entries in a feed or null to indicate that the parameter is disabled.
+   * @return Order of entries in a feed.
    */
   public final native String getOrderBy() /*-{
     return this.getOrderBy();
@@ -101,7 +100,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the should tombstones be returned.
    * 
-   * @return Should tombstones be returned or null to indicate that the parameter is disabled.
+   * @return Should tombstones be returned.
    */
   public final native boolean getShowDeleted() /*-{
     return this.getShowDeleted();
@@ -110,7 +109,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the direction of sorting.
    * 
-   * @return Direction of sorting or null to indicate that the parameter is disabled.
+   * @return Direction of sorting.
    */
   public final native String getSortOrder() /*-{
     return this.getSortOrder();
@@ -119,7 +118,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the 1-based index of the first result to be retrieved.
    * 
-   * @return 1-based index of the first result to be retrieved or null to indicate that the parameter is disabled.
+   * @return 1-based index of the first result to be retrieved.
    */
   public final native double getStartIndex() /*-{
     return this.getStartIndex();
@@ -128,7 +127,7 @@ public class ContactQuery extends Query {
   /**
    * Returns the maximum updated date.
    * 
-   * @return Maximum updated date or null to indicate that the parameter is disabled.
+   * @return Maximum updated dat.
    */
   public final native DateTime getUpdatedMax() /*-{
     return this.getUpdatedMax();
@@ -137,153 +136,83 @@ public class ContactQuery extends Query {
   /**
    * Returns the minimum updated date.
    * 
-   * @return Minimum updated date or null to indicate that the parameter is disabled.
+   * @return Minimum updated date.
    */
   public final native DateTime getUpdatedMin() /*-{
     return this.getUpdatedMin();
   }-*/;
 
   /**
-   * Sets the group id. Results are limited to contacts belonging to this group..
+   * Sets the group id. Results are limited to contacts belonging to this group.
    * 
-   * @param group Group id or null to disable this parameter.
+   * @param group Group id.
    */
   public final native void setGroup(String group) /*-{
-    this.setGroup(
-      group
-    );
+    this.setGroup(group);
   }-*/;
 
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param maxResults Maximum number of results to be retrieved.
    */
   public final native void setMaxResults(double maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
-  }-*/;
-
-  /**
-   * Sets the maximum number of results to be retrieved.
-   * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setMaxResults(String maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
+    this.setMaxResults(maxResults);
   }-*/;
 
   /**
    * Sets the order of entries in a feed. The default value is 'none'.
    * 
-   * @param orderBy Order of entries in a feed or null to disable this parameter.
+   * @param orderBy Order of entries in a feed.
    */
   public final native void setOrderBy(String orderBy) /*-{
-    this.setOrderBy(
-      orderBy
-    );
+    this.setOrderBy(orderBy);
   }-*/;
 
   /**
    * Sets the should tombstones be returned. The default value is false.
    * 
-   * @param showDeleted Should tombstones be returned or an equivalent string value or null to disable this parameter.
+   * @param showDeleted Should tombstones be returned.
    */
   public final native void setShowDeleted(boolean showDeleted) /*-{
-    this.setShowDeleted(
-      showDeleted
-    );
-  }-*/;
-
-  /**
-   * Sets the should tombstones be returned. The default value is false.
-   * 
-   * @param showDeleted Should tombstones be returned or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setShowDeleted(String showDeleted) /*-{
-    this.setShowDeleted(
-      showDeleted
-    );
+    this.setShowDeleted(showDeleted);
   }-*/;
 
   /**
    * Sets the direction of sorting. The default value is 'none'.
    * 
-   * @param sortOrder Direction of sorting or null to disable this parameter.
+   * @param sortOrder Direction of sorting.
    */
   public final native void setSortOrder(String sortOrder) /*-{
-    this.setSortOrder(
-      sortOrder
-    );
+    this.setSortOrder(sortOrder);
   }-*/;
 
   /**
    * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param startIndex 1-based index of the first result to be retrieved.
    */
   public final native void setStartIndex(double startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
-  }-*/;
-
-  /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
-   * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setStartIndex(String startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
+    this.setStartIndex(startIndex);
   }-*/;
 
   /**
    * Sets the maximum updated date.
    * 
-   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
+   * @param updatedMax Maximum updated date.
    */
   public final native void setUpdatedMax(DateTime updatedMax) /*-{
-    this.setUpdatedMax(
-      updatedMax
-    );
+    this.setUpdatedMax(updatedMax);
   }-*/;
 
-  /**
-   * Sets the maximum updated date.
-   * 
-   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setUpdatedMax(String updatedMax) /*-{
-    this.setUpdatedMax(
-      updatedMax
-    );
-  }-*/;
 
   /**
    * Sets the minimum updated date.
    * 
-   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
+   * @param updatedMin Minimum updated date.
    */
   public final native void setUpdatedMin(DateTime updatedMin) /*-{
-    this.setUpdatedMin(
-      updatedMin
-    );
-  }-*/;
-
-  /**
-   * Sets the minimum updated date.
-   * 
-   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setUpdatedMin(String updatedMin) /*-{
-    this.setUpdatedMin(
-      updatedMin
-    );
+    this.setUpdatedMin(updatedMin);
   }-*/;
 
 }

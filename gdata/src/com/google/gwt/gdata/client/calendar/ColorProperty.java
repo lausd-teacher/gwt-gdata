@@ -129,14 +129,11 @@ public class ColorProperty extends JavaScriptObject {
   public static final String VALUE_RGB_BE6D00 = getConstant("VALUE_RGB_BE6D00");
 
   /**
-   * Constructs a color property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a color property.
+   * @return A ColorProperty object.
    */
-  public static native ColorProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.ColorProperty(
-      params
-    );
+  public static native ColorProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.ColorProperty();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -148,7 +145,7 @@ public class ColorProperty extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -156,20 +153,11 @@ public class ColorProperty extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

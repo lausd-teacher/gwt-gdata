@@ -20,18 +20,16 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * Describes a Gml geographical region.
+ * @return A GmlEnvelope object.
  */
 public class GmlEnvelope extends JavaScriptObject {
 
   /**
-   * Constructs a Gml geographical region using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: lowerCorner and upperCorner.
+   * Constructs a Gml geographical region.
+   * @return A GmlEnvelope object.
    */
-  public static native GmlEnvelope newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.geo.GmlEnvelope(
-      params
-    );
+  public static native GmlEnvelope newInstance() /*-{
+    return new $wnd.google.gdata.geo.GmlEnvelope();
   }-*/;
 
   protected GmlEnvelope() { }
@@ -39,7 +37,7 @@ public class GmlEnvelope extends JavaScriptObject {
   /**
    * Returns the lower corner of a region. This element is optional.
    * 
-   * @return Lower corner of a region or undefined for none.
+   * @return Lower corner of a region.
    */
   public final native GmlLowerCorner getLowerCorner() /*-{
     return this.getLowerCorner();
@@ -48,46 +46,28 @@ public class GmlEnvelope extends JavaScriptObject {
   /**
    * Returns the upper corner of a region. This element is optional.
    * 
-   * @return Upper corner of a region or undefined for none.
+   * @return Upper corner of a region.
    */
   public final native GmlUpperCorner getUpperCorner() /*-{
     return this.getUpperCorner();
   }-*/;
-
-  /**
-   * Sets the lower corner of a region. This element is optional.
-   */
-  public final native void setLowerCorner() /*-{
-    this.setLowerCorner();
-  }-*/;
-
+  
   /**
    * Sets the lower corner of a region. This element is optional.
    * 
-   * @param lowerCorner Lower corner of a region, or object to use as a parameter to the google.gdata.geo.GmlLowerCorner constructor, or undefined for none.
+   * @param lowerCorner Lower corner of a region.
    */
   public final native void setLowerCorner(GmlLowerCorner lowerCorner) /*-{
-    this.setLowerCorner(
-      lowerCorner
-    );
-  }-*/;
-
-  /**
-   * Sets the upper corner of a region. This element is optional.
-   */
-  public final native void setUpperCorner() /*-{
-    this.setUpperCorner();
+    this.setLowerCorner(lowerCorner);
   }-*/;
 
   /**
    * Sets the upper corner of a region. This element is optional.
    * 
-   * @param upperCorner Upper corner of a region, or object to use as a parameter to the google.gdata.geo.GmlUpperCorner constructor, or undefined for none.
+   * @param upperCorner Upper corner of a region.
    */
   public final native void setUpperCorner(GmlUpperCorner upperCorner) /*-{
-    this.setUpperCorner(
-      upperCorner
-    );
+    this.setUpperCorner(upperCorner);
   }-*/;
 
 }

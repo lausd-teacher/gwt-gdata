@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.threading;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class TotalTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Total.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Total.newInstance());
   }
 
   public void testProperties() {
-    Total obj = Total.newInstance(JavaScriptObject.createObject());
+    Total obj = Total.newInstance();
     double value = 600813;
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

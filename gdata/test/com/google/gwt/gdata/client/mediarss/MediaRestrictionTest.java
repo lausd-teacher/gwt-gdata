@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.mediarss;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -36,11 +35,11 @@ public class MediaRestrictionTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaRestriction.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", MediaRestriction.newInstance());
   }
 
   public void testProperties() {
-    MediaRestriction obj = MediaRestriction.newInstance(JavaScriptObject.createObject());
+    MediaRestriction obj = MediaRestriction.newInstance();
     String type = "myValue";
     obj.setType(type);
     assertEquals("type", obj.getType(), type);

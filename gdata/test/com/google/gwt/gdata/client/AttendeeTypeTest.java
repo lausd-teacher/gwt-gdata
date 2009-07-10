@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -34,11 +33,11 @@ public class AttendeeTypeTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AttendeeType.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", AttendeeType.newInstance());
   }
 
   public void testProperties() {
-    AttendeeType obj = AttendeeType.newInstance(JavaScriptObject.createObject());
+    AttendeeType obj = AttendeeType.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

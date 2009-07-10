@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class GuestsCanModifyProperty extends JavaScriptObject {
 
   /**
-   * Constructs a guests can modify property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a guests can modify property.
+   * @return A GuestsCanModifyProperty object.
    */
-  public static native GuestsCanModifyProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.GuestsCanModifyProperty(
-      params
-    );
+  public static native GuestsCanModifyProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.GuestsCanModifyProperty();
   }-*/;
 
   protected GuestsCanModifyProperty() { }
@@ -39,7 +36,7 @@ public class GuestsCanModifyProperty extends JavaScriptObject {
   /**
    * Returns value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class GuestsCanModifyProperty extends JavaScriptObject {
 
   /**
    * Sets value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(boolean value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

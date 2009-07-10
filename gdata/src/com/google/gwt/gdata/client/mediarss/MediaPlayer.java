@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class MediaPlayer extends JavaScriptObject {
 
   /**
-   * Constructs a media player using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: height, url, and width.
+   * Constructs a media player.
+   * @return A MediaPlayer object.
    */
-  public static native MediaPlayer newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.mediarss.MediaPlayer(
-      params
-    );
+  public static native MediaPlayer newInstance() /*-{
+    return new $wnd.google.gdata.mediarss.MediaPlayer();
   }-*/;
 
   protected MediaPlayer() { }
@@ -39,7 +36,7 @@ public class MediaPlayer extends JavaScriptObject {
   /**
    * Returns the height of the browser window. This attribute is optional.
    * 
-   * @return Height of the browser window or undefined for none.
+   * @return Height of the browser window.
    */
   public final native double getHeight() /*-{
     return this.getHeight();
@@ -48,7 +45,7 @@ public class MediaPlayer extends JavaScriptObject {
   /**
    * Returns the url of the player console that plays the media. This attribute is required.
    * 
-   * @return Url of the player console that plays the media or undefined for none.
+   * @return Url of the player console that plays the media.
    */
   public final native String getUrl() /*-{
     return this.getUrl();
@@ -57,7 +54,7 @@ public class MediaPlayer extends JavaScriptObject {
   /**
    * Returns the width of the browser window. This attribute is optional.
    * 
-   * @return Width of the browser window or undefined for none.
+   * @return Width of the browser window.
    */
   public final native double getWidth() /*-{
     return this.getWidth();
@@ -65,56 +62,29 @@ public class MediaPlayer extends JavaScriptObject {
 
   /**
    * Sets the height of the browser window. This attribute is optional.
-   */
-  public final native void setHeight() /*-{
-    this.setHeight();
-  }-*/;
-
-  /**
-   * Sets the height of the browser window. This attribute is optional.
    * 
-   * @param height Height of the browser window or undefined for none.
+   * @param height Height of the browser window.
    */
   public final native void setHeight(double height) /*-{
-    this.setHeight(
-      height
-    );
-  }-*/;
-
-  /**
-   * Sets the url of the player console that plays the media. This attribute is required.
-   */
-  public final native void setUrl() /*-{
-    this.setUrl();
+    this.setHeight(height);
   }-*/;
 
   /**
    * Sets the url of the player console that plays the media. This attribute is required.
    * 
-   * @param url Url of the player console that plays the media or undefined for none.
+   * @param url Url of the player console that plays the media.
    */
   public final native void setUrl(String url) /*-{
-    this.setUrl(
-      url
-    );
-  }-*/;
-
-  /**
-   * Sets the width of the browser window. This attribute is optional.
-   */
-  public final native void setWidth() /*-{
-    this.setWidth();
+    this.setUrl(url);
   }-*/;
 
   /**
    * Sets the width of the browser window. This attribute is optional.
    * 
-   * @param width Width of the browser window or undefined for none.
+   * @param width Width of the browser window.
    */
   public final native void setWidth(double width) /*-{
-    this.setWidth(
-      width
-    );
+    this.setWidth(width);
   }-*/;
 
 }

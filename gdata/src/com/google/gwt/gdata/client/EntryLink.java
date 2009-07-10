@@ -19,19 +19,18 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Describes a nested entry link.
+ * Describes a nested entry.
+ * @param <E> The Entry type.
  */
-public class EntryLink extends JavaScriptObject {
+@SuppressWarnings("unchecked")
+public class EntryLink<E extends Entry> extends JavaScriptObject {
 
   /**
-   * Constructs a nested entry link using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: entry, href, readOnly, and rel.
+   * Constructs a nested entry link.
+   * @return An EntryLink object.
    */
-  public static native EntryLink newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.EntryLink(
-      params
-    );
+  public static native <E extends Entry> EntryLink<E> newInstance() /*-{
+    return new $wnd.google.gdata.EntryLink();
   }-*/;
 
   protected EntryLink() { }
@@ -39,16 +38,16 @@ public class EntryLink extends JavaScriptObject {
   /**
    * Returns the nested entry. This element is optional.
    * 
-   * @return Nested entry or undefined for none.
+   * @return Nested entry.
    */
-  public final native com.google.gwt.gdata.client.Entry getEntry() /*-{
+  public final native E getEntry() /*-{
     return this.getEntry();
   }-*/;
 
   /**
    * Returns the entry URI. This attribute is optional.
    * 
-   * @return Entry URI or undefined for none.
+   * @return Entry URI.
    */
   public final native String getHref() /*-{
     return this.getHref();
@@ -57,7 +56,7 @@ public class EntryLink extends JavaScriptObject {
   /**
    * Returns whether the contained entry is read-only. This attribute is optional.
    * 
-   * @return Whether the contained entry is read-only or undefined for none.
+   * @return Whether the contained entry is read-only.
    */
   public final native boolean getReadOnly() /*-{
     return this.getReadOnly();
@@ -66,7 +65,7 @@ public class EntryLink extends JavaScriptObject {
   /**
    * Returns the entry relation type. This attribute is optional.
    * 
-   * @return Entry relation type or undefined for none.
+   * @return Entry relation type.
    */
   public final native String getRel() /*-{
     return this.getRel();
@@ -74,74 +73,38 @@ public class EntryLink extends JavaScriptObject {
 
   /**
    * Sets the nested entry. This element is optional.
-   */
-  public final native void setEntry() /*-{
-    this.setEntry();
-  }-*/;
-
-  /**
-   * Sets the nested entry. This element is optional.
    * 
-   * @param entry Nested entry, or object to use as a parameter to the google.gdata.Entry constructor, or undefined for none.
+   * @param entry Nested entry.
    */
-  public final native void setEntry(Entry entry) /*-{
-    this.setEntry(
-      entry
-    );
-  }-*/;
-
-  /**
-   * Sets the entry URI. This attribute is optional.
-   */
-  public final native void setHref() /*-{
-    this.setHref();
+  public final native void setEntry(E entry) /*-{
+    this.setEntry(entry);
   }-*/;
 
   /**
    * Sets the entry URI. This attribute is optional.
    * 
-   * @param href Entry URI or undefined for none.
+   * @param href Entry URI.
    */
   public final native void setHref(String href) /*-{
-    this.setHref(
-      href
-    );
-  }-*/;
-
-  /**
-   * Sets whether the contained entry is read-only. This attribute is optional.
-   */
-  public final native void setReadOnly() /*-{
-    this.setReadOnly();
+    this.setHref(href);
   }-*/;
 
   /**
    * Sets whether the contained entry is read-only. This attribute is optional.
    * 
-   * @param readOnly Whether the contained entry is read-only or undefined for none.
+   * @param readOnly Whether the contained entry is read-only.
    */
   public final native void setReadOnly(boolean readOnly) /*-{
-    this.setReadOnly(
-      readOnly
-    );
-  }-*/;
-
-  /**
-   * Sets the entry relation type. This attribute is optional.
-   */
-  public final native void setRel() /*-{
-    this.setRel();
+    this.setReadOnly(readOnly);
   }-*/;
 
   /**
    * Sets the entry relation type. This attribute is optional.
    * 
-   * @param rel Entry relation type or undefined for none.
+   * @param rel Entry relation type.
    */
   public final native void setRel(String rel) /*-{
-    this.setRel(
-      rel
-    );
+    this.setRel(rel);
   }-*/;
 
 }

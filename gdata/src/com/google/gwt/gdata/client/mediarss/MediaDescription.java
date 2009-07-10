@@ -34,14 +34,11 @@ public class MediaDescription extends JavaScriptObject {
   public static final String TYPE_PLAIN = getConstant("TYPE_PLAIN");
 
   /**
-   * Constructs a media description using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content and type.
+   * Constructs a media description.
+   * @return A MediaDescription object.
    */
-  public static native MediaDescription newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.mediarss.MediaDescription(
-      params
-    );
+  public static native MediaDescription newInstance() /*-{
+    return new $wnd.google.gdata.mediarss.MediaDescription();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -53,7 +50,7 @@ public class MediaDescription extends JavaScriptObject {
   /**
    * Returns the text of the description. This attribute is optional.
    * 
-   * @return Text of the description or undefined for none.
+   * @return Text of the description.
    */
   public final native String getContent() /*-{
     return this.getContent();
@@ -62,7 +59,7 @@ public class MediaDescription extends JavaScriptObject {
   /**
    * Returns the type of text embedded, either plain or html. This attribute is optional.
    * 
-   * @return Type of text embedded, either plain or html or undefined for none.
+   * @return Type of text embedded, either plain or html.
    */
   public final native String getType() /*-{
     return this.getType();
@@ -70,38 +67,20 @@ public class MediaDescription extends JavaScriptObject {
 
   /**
    * Sets the text of the description. This attribute is optional.
-   */
-  public final native void setContent() /*-{
-    this.setContent();
-  }-*/;
-
-  /**
-   * Sets the text of the description. This attribute is optional.
    * 
-   * @param content Text of the description or undefined for none.
+   * @param content Text of the description.
    */
   public final native void setContent(String content) /*-{
-    this.setContent(
-      content
-    );
-  }-*/;
-
-  /**
-   * Sets the type of text embedded, either plain or html. This attribute is optional.
-   */
-  public final native void setType() /*-{
-    this.setType();
+    this.setContent(content);
   }-*/;
 
   /**
    * Sets the type of text embedded, either plain or html. This attribute is optional.
    * 
-   * @param type Type of text embedded, either plain or html or undefined for none.
+   * @param type Type of text embedded, either plain or html.
    */
   public final native void setType(String type) /*-{
-    this.setType(
-      type
-    );
+    this.setType(type);
   }-*/;
 
 }

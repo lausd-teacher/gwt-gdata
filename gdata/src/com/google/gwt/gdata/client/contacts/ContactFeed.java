@@ -16,22 +16,18 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Describes a contact feed.
  */
 public class ContactFeed extends com.google.gwt.gdata.client.Feed<ContactEntry> {
 
   /**
-   * Constructs a contact feed using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, entries, generator, id, itemsPerPage, links, startIndex, title, totalResults, and updated.
+   * Constructs a contact feed.
+   * @return A ContactFeed object.
    */
-  public static native ContactFeed newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.contacts.ContactFeed(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native ContactFeed newInstance() /*-{
+    return new $wnd.google.gdata.contacts.ContactFeed();
   }-*/;
 
   protected ContactFeed() { }
@@ -39,7 +35,7 @@ public class ContactFeed extends com.google.gwt.gdata.client.Feed<ContactEntry> 
   /**
    * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
    * 
-   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed or undefined for none.
+   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
    */
   public final native ContactLink getFeedBatchLink() /*-{
     return this.getFeedBatchLink();
@@ -48,7 +44,7 @@ public class ContactFeed extends com.google.gwt.gdata.client.Feed<ContactEntry> 
   /**
    * Returns the link that provides the URI of next page in a paged feed.
    * 
-   * @return Link that provides the URI of next page in a paged feed or undefined for none.
+   * @return Link that provides the URI of next page in a paged feed.
    */
   public final native ContactLink getNextLink() /*-{
     return this.getNextLink();
@@ -57,7 +53,7 @@ public class ContactFeed extends com.google.gwt.gdata.client.Feed<ContactEntry> 
   /**
    * Returns the link that provides the URI of previous page in a paged feed.
    * 
-   * @return Link that provides the URI of previous page in a paged feed or undefined for none.
+   * @return Link that provides the URI of previous page in a paged feed.
    */
   public final native ContactLink getPreviousLink() /*-{
     return this.getPreviousLink();

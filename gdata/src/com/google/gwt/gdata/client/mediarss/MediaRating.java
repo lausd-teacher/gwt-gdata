@@ -29,14 +29,11 @@ public class MediaRating extends JavaScriptObject {
   public static final String SCHEME_DEFAULT_SCHEME = getConstant("SCHEME_DEFAULT_SCHEME");
 
   /**
-   * Constructs a media rating using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content and scheme.
+   * Constructs a media rating.
+   * @return A MediaRating object.
    */
-  public static native MediaRating newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.mediarss.MediaRating(
-      params
-    );
+  public static native MediaRating newInstance() /*-{
+    return new $wnd.google.gdata.mediarss.MediaRating();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -48,7 +45,7 @@ public class MediaRating extends JavaScriptObject {
   /**
    * Returns the the rating value. This attribute is optional.
    * 
-   * @return The rating value or undefined for none.
+   * @return The rating value.
    */
   public final native String getContent() /*-{
     return this.getContent();
@@ -57,7 +54,7 @@ public class MediaRating extends JavaScriptObject {
   /**
    * Returns the URI that identifies the rating scheme. This attribute is optional.
    * 
-   * @return URI that identifies the rating scheme or undefined for none.
+   * @return URI that identifies the rating scheme.
    */
   public final native String getScheme() /*-{
     return this.getScheme();
@@ -65,38 +62,20 @@ public class MediaRating extends JavaScriptObject {
 
   /**
    * Sets the the rating value. This attribute is optional.
-   */
-  public final native void setContent() /*-{
-    this.setContent();
-  }-*/;
-
-  /**
-   * Sets the the rating value. This attribute is optional.
    * 
-   * @param content The rating value or undefined for none.
+   * @param content The rating value.
    */
   public final native void setContent(String content) /*-{
-    this.setContent(
-      content
-    );
-  }-*/;
-
-  /**
-   * Sets the URI that identifies the rating scheme. This attribute is optional.
-   */
-  public final native void setScheme() /*-{
-    this.setScheme();
+    this.setContent(content);
   }-*/;
 
   /**
    * Sets the URI that identifies the rating scheme. This attribute is optional.
    * 
-   * @param scheme URI that identifies the rating scheme or undefined for none.
+   * @param scheme URI that identifies the rating scheme.
    */
   public final native void setScheme(String scheme) /*-{
-    this.setScheme(
-      scheme
-    );
+    this.setScheme(scheme);
   }-*/;
 
 }

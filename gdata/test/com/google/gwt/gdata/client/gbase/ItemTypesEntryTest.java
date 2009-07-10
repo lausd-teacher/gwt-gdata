@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,21 +28,21 @@ public class ItemTypesEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ItemTypesEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", ItemTypesEntry.newInstance());
   }
 
   public void testOther() {
-    ItemTypesEntry obj = ItemTypesEntry.newInstance(JavaScriptObject.createObject());
+    ItemTypesEntry obj = ItemTypesEntry.newInstance();
     // Unit Test for getRelatedLink()
     assertEquals("getRelatedLink", obj.getRelatedLink(), null);
   }
 
   public void testProperties() {
-    ItemTypesEntry obj = ItemTypesEntry.newInstance(JavaScriptObject.createObject());
-    GmAttributes attributes = GmAttributes.newInstance(JavaScriptObject.createObject());
+    ItemTypesEntry obj = ItemTypesEntry.newInstance();
+    GmAttributes attributes = GmAttributes.newInstance();
     obj.setAttributes(attributes);
     assertSame("attributes", obj.getAttributes(), attributes);
-    GmItemType itemtype = GmItemType.newInstance(JavaScriptObject.createObject());
+    GmItemType itemtype = GmItemType.newInstance();
     obj.setItemType(itemtype);
     assertSame("itemtype", obj.getItemType(), itemtype);
   }

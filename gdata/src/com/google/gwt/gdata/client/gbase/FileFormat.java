@@ -39,14 +39,11 @@ public class FileFormat extends JavaScriptObject {
   public static final String FORMAT_XML = getConstant("FORMAT_XML");
 
   /**
-   * Constructs a file format using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: delimiter, encoding, format, and useQuotedFields.
+   * Constructs a file format.
+   * @return A FileFormat object.
    */
-  public static native FileFormat newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.FileFormat(
-      params
-    );
+  public static native FileFormat newInstance() /*-{
+    return new $wnd.google.gdata.gbase.FileFormat();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -58,7 +55,7 @@ public class FileFormat extends JavaScriptObject {
   /**
    * Returns the delimiter. This element is optional.
    * 
-   * @return Delimiter or undefined for none.
+   * @return Delimiter.
    */
   public final native Delimiter getDelimiter() /*-{
     return this.getDelimiter();
@@ -67,7 +64,7 @@ public class FileFormat extends JavaScriptObject {
   /**
    * Returns the encoding. This element is optional.
    * 
-   * @return Encoding or undefined for none.
+   * @return Encoding.
    */
   public final native Encoding getEncoding() /*-{
     return this.getEncoding();
@@ -76,7 +73,7 @@ public class FileFormat extends JavaScriptObject {
   /**
    * Returns the format. This attribute is required.
    * 
-   * @return Format or undefined for none.
+   * @return Format.
    */
   public final native String getFormat() /*-{
     return this.getFormat();
@@ -85,7 +82,7 @@ public class FileFormat extends JavaScriptObject {
   /**
    * Returns the boolean to indicate whether to use quoted fields. This element is optional.
    * 
-   * @return Boolean to indicate whether to use quoted fields or undefined for none.
+   * @return Boolean to indicate whether to use quoted fields.
    */
   public final native UseQuotedFields getUseQuotedFields() /*-{
     return this.getUseQuotedFields();
@@ -93,74 +90,38 @@ public class FileFormat extends JavaScriptObject {
 
   /**
    * Sets the delimiter. This element is optional.
-   */
-  public final native void setDelimiter() /*-{
-    this.setDelimiter();
-  }-*/;
-
-  /**
-   * Sets the delimiter. This element is optional.
    * 
-   * @param delimiter Delimiter, or object to use as a parameter to the google.gdata.gbase.Delimiter constructor, or undefined for none.
+   * @param delimiter Delimiter.
    */
   public final native void setDelimiter(Delimiter delimiter) /*-{
-    this.setDelimiter(
-      delimiter
-    );
-  }-*/;
-
-  /**
-   * Sets the encoding. This element is optional.
-   */
-  public final native void setEncoding() /*-{
-    this.setEncoding();
+    this.setDelimiter(delimiter);
   }-*/;
 
   /**
    * Sets the encoding. This element is optional.
    * 
-   * @param encoding Encoding, or object to use as a parameter to the google.gdata.gbase.Encoding constructor, or undefined for none.
+   * @param encoding Encoding.
    */
   public final native void setEncoding(Encoding encoding) /*-{
-    this.setEncoding(
-      encoding
-    );
-  }-*/;
-
-  /**
-   * Sets the format. This attribute is required.
-   */
-  public final native void setFormat() /*-{
-    this.setFormat();
+    this.setEncoding(encoding);
   }-*/;
 
   /**
    * Sets the format. This attribute is required.
    * 
-   * @param format Format or undefined for none.
+   * @param format Format.
    */
   public final native void setFormat(String format) /*-{
-    this.setFormat(
-      format
-    );
-  }-*/;
-
-  /**
-   * Sets the boolean to indicate whether to use quoted fields. This element is optional.
-   */
-  public final native void setUseQuotedFields() /*-{
-    this.setUseQuotedFields();
+    this.setFormat(format);
   }-*/;
 
   /**
    * Sets the boolean to indicate whether to use quoted fields. This element is optional.
    * 
-   * @param useQuotedFields Boolean to indicate whether to use quoted fields, or object to use as a parameter to the google.gdata.gbase.UseQuotedFields constructor, or undefined for none.
+   * @param useQuotedFields Boolean to indicate whether to use quoted fields.
    */
   public final native void setUseQuotedFields(UseQuotedFields useQuotedFields) /*-{
-    this.setUseQuotedFields(
-      useQuotedFields
-    );
+    this.setUseQuotedFields(useQuotedFields);
   }-*/;
 
 }

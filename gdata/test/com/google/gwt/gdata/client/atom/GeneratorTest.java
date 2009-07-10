@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.atom;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class GeneratorTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Generator.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Generator.newInstance());
   }
 
   public void testProperties() {
-    Generator obj = Generator.newInstance(JavaScriptObject.createObject());
+    Generator obj = Generator.newInstance();
     String name = "myValue";
     obj.setName(name);
     assertEquals("name", obj.getName(), name);

@@ -19,24 +19,40 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * Represents a GData error.
  */
 public class Error extends JavaScriptObject {
 
   protected Error() { }
-
+  
+  /**
+   * Returns the error description.
+   * @return Error description.
+   */
   public final native String getDescription() /*-{
     return this.description;
   }-*/;
 
+  /**
+   * Returns the error message.
+   * @return Erro message.
+   */
   public final native String getMessage() /*-{
     return this.message;
   }-*/;
 
+  /**
+   * Returns the error name.
+   * @return Erro name.
+   */
   public final native String getName() /*-{
     return this.name;
   }-*/;
 
+  /**
+   * Returns the error's status text content type.
+   * @return Status text content type.
+   */
   public final native String getStatusTextContentType() /*-{
     return this.statusTextContentType;
   }-*/;

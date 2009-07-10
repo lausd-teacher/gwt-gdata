@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.mediarss;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 
 /**
  * Describes a media content.
@@ -40,14 +39,11 @@ public class MediaContent extends JavaScriptObject {
   public static final String EXPRESSION_SAMPLE = getConstant("EXPRESSION_SAMPLE");
 
   /**
-   * Constructs a media content using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: bitrate, categories, channels, copyright, credits, description, duration, expression, fileSize, framerate, hash, height, isDefault, keywords, language, medium, player, ratings, restrictions, samplingrate, texts, thumbnails, title, type, url, and width.
+   * Constructs a media content.
+   * @return A MediaContent object.
    */
-  public static native MediaContent newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.mediarss.MediaContent(
-      params
-    );
+  public static native MediaContent newInstance() /*-{
+    return new $wnd.google.gdata.mediarss.MediaContent();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -59,73 +55,61 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Adds a new media category.
    * 
-   * @param category Media category to add, or object to use as a parameter to the google.gdata.mediarss.MediaCategory constructor.
+   * @param category Media category to add.
    */
   public final native void addCategory(MediaCategory category) /*-{
-    this.addCategory(
-      category
-    );
+    this.addCategory(category);
   }-*/;
 
   /**
    * Adds a new media credit.
    * 
-   * @param credit Media credit to add, or object to use as a parameter to the google.gdata.mediarss.MediaCredit constructor.
+   * @param credit Media credit to add.
    */
   public final native void addCredit(MediaCredit credit) /*-{
-    this.addCredit(
-      credit
-    );
+    this.addCredit(credit);
   }-*/;
 
   /**
    * Adds a new media rating.
    * 
-   * @param rating Media rating to add, or object to use as a parameter to the google.gdata.mediarss.MediaRating constructor.
+   * @param rating Media rating to add.
    */
   public final native void addRating(MediaRating rating) /*-{
-    this.addRating(
-      rating
-    );
+    this.addRating(rating);
   }-*/;
 
   /**
    * Adds a new media restriction.
    * 
-   * @param restriction Media restriction to add, or object to use as a parameter to the google.gdata.mediarss.MediaRestriction constructor.
+   * @param restriction Media restriction to add.
    */
   public final native void addRestriction(MediaRestriction restriction) /*-{
-    this.addRestriction(
-      restriction
-    );
+    this.addRestriction(restriction);
   }-*/;
 
   /**
    * Adds a new media text.
    * 
-   * @param text Media text to add, or object to use as a parameter to the google.gdata.mediarss.MediaText constructor.
+   * @param text Media text to add.
    */
   public final native void addText(MediaText text) /*-{
-    this.addText(
-      text
-    );
+    this.addText(text);
   }-*/;
 
   /**
    * Adds a new media thumbnail.
    * 
-   * @param thumbnail Media thumbnail to add, or object to use as a parameter to the google.gdata.mediarss.MediaThumbnail constructor.
+   * @param thumbnail Media thumbnail to add.
    */
   public final native void addThumbnail(MediaThumbnail thumbnail) /*-{
-    this.addThumbnail(
-      thumbnail
-    );
+    this.addThumbnail(thumbnail);
   }-*/;
 
   /**
    * Returns the kilobits per second of media. This attribute is optional.
    * 
-   * @return Kilobits per second of media or undefined for none.
+   * @return Kilobits per second of media.
    */
   public final native double getBitrate() /*-{
     return this.getBitrate();
@@ -136,14 +120,14 @@ public class MediaContent extends JavaScriptObject {
    * 
    * @return Media categories.
    */
-  public final native JsArray<MediaCategory> getCategories() /*-{
-    return this.getCategories();
+  public final native MediaCategory[] getCategories() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getCategories());
   }-*/;
 
   /**
    * Returns the number of audio channels. This attribute is optional.
    * 
-   * @return Number of audio channels or undefined for none.
+   * @return Number of audio channels.
    */
   public final native double getChannels() /*-{
     return this.getChannels();
@@ -152,7 +136,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the media copyright. This element is optional.
    * 
-   * @return Media copyright or undefined for none.
+   * @return Media copyright.
    */
   public final native MediaCopyright getCopyright() /*-{
     return this.getCopyright();
@@ -163,14 +147,14 @@ public class MediaContent extends JavaScriptObject {
    * 
    * @return Media credits.
    */
-  public final native JsArray<MediaCredit> getCredits() /*-{
-    return this.getCredits();
+  public final native MediaCredit[] getCredits() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getCredits());
   }-*/;
 
   /**
    * Returns the media description. This element is optional.
    * 
-   * @return Media description or undefined for none.
+   * @return Media description.
    */
   public final native MediaDescription getDescription() /*-{
     return this.getDescription();
@@ -179,7 +163,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the number of seconds of media. This attribute is optional.
    * 
-   * @return Number of seconds of media or undefined for none.
+   * @return Number of seconds of media.
    */
   public final native double getDuration() /*-{
     return this.getDuration();
@@ -188,7 +172,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the specifies if object is a sample or full version. This attribute is optional.
    * 
-   * @return Specifies if object is a sample or full version or undefined for none.
+   * @return Specifies if object is a sample or full version.
    */
   public final native String getExpression() /*-{
     return this.getExpression();
@@ -197,7 +181,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the size of media file in bytes. This attribute is optional.
    * 
-   * @return Size of media file in bytes or undefined for none.
+   * @return Size of media file in bytes.
    */
   public final native double getFileSize() /*-{
     return this.getFileSize();
@@ -206,7 +190,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the number of frames per second of media. This attribute is optional.
    * 
-   * @return Number of frames per second of media or undefined for none.
+   * @return Number of frames per second of media .
    */
   public final native double getFramerate() /*-{
     return this.getFramerate();
@@ -215,7 +199,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the media hash. This element is optional.
    * 
-   * @return Media hash or undefined for none.
+   * @return Media hash.
    */
   public final native MediaHash getHash() /*-{
     return this.getHash();
@@ -224,7 +208,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the height of the media object. This attribute is optional.
    * 
-   * @return Height of the media object or undefined for none.
+   * @return Height of the media object.
    */
   public final native double getHeight() /*-{
     return this.getHeight();
@@ -233,7 +217,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns is this default object for the group. This attribute is optional.
    * 
-   * @return Is this default object for the group or undefined for none.
+   * @return Is this default object for the group.
    */
   public final native boolean getIsDefault() /*-{
     return this.getIsDefault();
@@ -242,7 +226,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the media keywords. This element is optional.
    * 
-   * @return Media keywords or undefined for none.
+   * @return Media keywords.
    */
   public final native MediaKeywords getKeywords() /*-{
     return this.getKeywords();
@@ -251,7 +235,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the primary language encapsulated in the media. This attribute is optional.
    * 
-   * @return Primary language encapsulated in the media or undefined for none.
+   * @return Primary language encapsulated in the media.
    */
   public final native String getLanguage() /*-{
     return this.getLanguage();
@@ -260,7 +244,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the simple type of object. This attribute is optional.
    * 
-   * @return Simple type of object or undefined for none.
+   * @return Simple type of object.
    */
   public final native String getMedium() /*-{
     return this.getMedium();
@@ -269,7 +253,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the media player. This element is optional.
    * 
-   * @return Media player or undefined for none.
+   * @return Media player.
    */
   public final native MediaPlayer getPlayer() /*-{
     return this.getPlayer();
@@ -280,8 +264,8 @@ public class MediaContent extends JavaScriptObject {
    * 
    * @return Media ratings.
    */
-  public final native JsArray<MediaRating> getRatings() /*-{
-    return this.getRatings();
+  public final native MediaRating[] getRatings() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getRatings());
   }-*/;
 
   /**
@@ -289,14 +273,14 @@ public class MediaContent extends JavaScriptObject {
    * 
    * @return Media restrictions.
    */
-  public final native JsArray<MediaRestriction> getRestrictions() /*-{
-    return this.getRestrictions();
+  public final native MediaRestriction[] getRestrictions() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getRestrictions());
   }-*/;
 
   /**
    * Returns the nubmer of samples per second of media. This attribute is optional.
    * 
-   * @return Nubmer of samples per second of media or undefined for none.
+   * @return Nubmer of samples per second of media.
    */
   public final native double getSamplingrate() /*-{
     return this.getSamplingrate();
@@ -307,8 +291,8 @@ public class MediaContent extends JavaScriptObject {
    * 
    * @return Media texts.
    */
-  public final native JsArray<MediaText> getTexts() /*-{
-    return this.getTexts();
+  public final native MediaText[] getTexts() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getTexts());
   }-*/;
 
   /**
@@ -316,14 +300,14 @@ public class MediaContent extends JavaScriptObject {
    * 
    * @return Media thumbnails.
    */
-  public final native JsArray<MediaThumbnail> getThumbnails() /*-{
-    return this.getThumbnails();
+  public final native MediaThumbnail[] getThumbnails() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getThumbnails());
   }-*/;
 
   /**
    * Returns the media title. This element is optional.
    * 
-   * @return Media title or undefined for none.
+   * @return Media title.
    */
   public final native MediaTitle getTitle() /*-{
     return this.getTitle();
@@ -332,7 +316,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the standard mime type. This attribute is optional.
    * 
-   * @return Standard mime type or undefined for none.
+   * @return Standard mime type.
    */
   public final native String getType() /*-{
     return this.getType();
@@ -341,7 +325,7 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the direct url to the media object. This attribute is optional.
    * 
-   * @return Direct url to the media object or undefined for none.
+   * @return Direct url to the media object.
    */
   public final native String getUrl() /*-{
     return this.getUrl();
@@ -350,478 +334,257 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Returns the width of the media object. This attribute is optional.
    * 
-   * @return Width of the media object or undefined for none.
+   * @return Width of the media object.
    */
   public final native double getWidth() /*-{
     return this.getWidth();
   }-*/;
-
-  /**
-   * Sets the kilobits per second of media. This attribute is optional.
-   */
-  public final native void setBitrate() /*-{
-    this.setBitrate();
-  }-*/;
-
+  
   /**
    * Sets the kilobits per second of media. This attribute is optional.
    * 
-   * @param bitrate Kilobits per second of media or undefined for none.
+   * @param bitrate Kilobits per second of media.
    */
   public final native void setBitrate(double bitrate) /*-{
-    this.setBitrate(
-      bitrate
-    );
+    this.setBitrate(bitrate);
   }-*/;
 
-  /**
-   * Sets the media categories.
-   */
-  public final native void setCategories() /*-{
-    this.setCategories();
-  }-*/;
 
   /**
    * Sets the media categories.
    * 
-   * @param categories Media categories, where each media category is added using the addCategory() function, or undefined to clear the media categories.
+   * @param categories Media categories, where each media category is added using addCategory().
    */
-  public final native void setCategories(JsArray<MediaCategory> categories) /*-{
+  public final native void setCategories(MediaCategory[] categories) /*-{
     this.setCategories(
-      categories
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(categories)
     );
   }-*/;
 
   /**
    * Sets the number of audio channels. This attribute is optional.
-   */
-  public final native void setChannels() /*-{
-    this.setChannels();
-  }-*/;
-
-  /**
-   * Sets the number of audio channels. This attribute is optional.
    * 
-   * @param channels Number of audio channels or undefined for none.
+   * @param channels Number of audio channels.
    */
   public final native void setChannels(double channels) /*-{
-    this.setChannels(
-      channels
-    );
-  }-*/;
-
-  /**
-   * Sets the media copyright. This element is optional.
-   */
-  public final native void setCopyright() /*-{
-    this.setCopyright();
+    this.setChannels(channels);
   }-*/;
 
   /**
    * Sets the media copyright. This element is optional.
    * 
-   * @param copyright Media copyright, or object to use as a parameter to the google.gdata.mediarss.MediaCopyright constructor, or undefined for none.
+   * @param copyright Media copyright.
    */
   public final native void setCopyright(MediaCopyright copyright) /*-{
-    this.setCopyright(
-      copyright
-    );
-  }-*/;
-
-  /**
-   * Sets the media credits.
-   */
-  public final native void setCredits() /*-{
-    this.setCredits();
+    this.setCopyright(copyright);
   }-*/;
 
   /**
    * Sets the media credits.
    * 
-   * @param credits Media credits, where each media credit is added using the addCredit() function, or undefined to clear the media credits.
+   * @param credits Media credits, where each media credit is added using addCredit().
    */
-  public final native void setCredits(JsArray<MediaCredit> credits) /*-{
+  public final native void setCredits(MediaCredit[] credits) /*-{
     this.setCredits(
-      credits
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(credits)
     );
   }-*/;
 
   /**
    * Sets the media description. This element is optional.
-   */
-  public final native void setDescription() /*-{
-    this.setDescription();
-  }-*/;
-
-  /**
-   * Sets the media description. This element is optional.
    * 
-   * @param description Media description, or object to use as a parameter to the google.gdata.mediarss.MediaDescription constructor, or undefined for none.
+   * @param description Media description.
    */
   public final native void setDescription(MediaDescription description) /*-{
-    this.setDescription(
-      description
-    );
-  }-*/;
-
-  /**
-   * Sets the number of seconds of media. This attribute is optional.
-   */
-  public final native void setDuration() /*-{
-    this.setDuration();
+    this.setDescription(description);
   }-*/;
 
   /**
    * Sets the number of seconds of media. This attribute is optional.
    * 
-   * @param duration Number of seconds of media or undefined for none.
+   * @param duration Number of seconds of media.
    */
   public final native void setDuration(double duration) /*-{
-    this.setDuration(
-      duration
-    );
-  }-*/;
-
-  /**
-   * Sets the specifies if object is a sample or full version. This attribute is optional.
-   */
-  public final native void setExpression() /*-{
-    this.setExpression();
+    this.setDuration(duration);
   }-*/;
 
   /**
    * Sets the specifies if object is a sample or full version. This attribute is optional.
    * 
-   * @param expression Specifies if object is a sample or full version or undefined for none.
+   * @param expression Specifies if object is a sample or full version.
    */
   public final native void setExpression(String expression) /*-{
-    this.setExpression(
-      expression
-    );
-  }-*/;
-
-  /**
-   * Sets the size of media file in bytes. This attribute is optional.
-   */
-  public final native void setFileSize() /*-{
-    this.setFileSize();
+    this.setExpression(expression);
   }-*/;
 
   /**
    * Sets the size of media file in bytes. This attribute is optional.
    * 
-   * @param fileSize Size of media file in bytes or undefined for none.
+   * @param fileSize Size of media file in bytes.
    */
   public final native void setFileSize(double fileSize) /*-{
-    this.setFileSize(
-      fileSize
-    );
-  }-*/;
-
-  /**
-   * Sets the number of frames per second of media. This attribute is optional.
-   */
-  public final native void setFramerate() /*-{
-    this.setFramerate();
+    this.setFileSize(fileSize);
   }-*/;
 
   /**
    * Sets the number of frames per second of media. This attribute is optional.
    * 
-   * @param framerate Number of frames per second of media or undefined for none.
+   * @param framerate Number of frames per second of media.
    */
   public final native void setFramerate(double framerate) /*-{
-    this.setFramerate(
-      framerate
-    );
-  }-*/;
-
-  /**
-   * Sets the media hash. This element is optional.
-   */
-  public final native void setHash() /*-{
-    this.setHash();
+    this.setFramerate(framerate);
   }-*/;
 
   /**
    * Sets the media hash. This element is optional.
    * 
-   * @param hash Media hash, or object to use as a parameter to the google.gdata.mediarss.MediaHash constructor, or undefined for none.
+   * @param hash Media hash.
    */
   public final native void setHash(MediaHash hash) /*-{
-    this.setHash(
-      hash
-    );
-  }-*/;
-
-  /**
-   * Sets the height of the media object. This attribute is optional.
-   */
-  public final native void setHeight() /*-{
-    this.setHeight();
+    this.setHash(hash);
   }-*/;
 
   /**
    * Sets the height of the media object. This attribute is optional.
    * 
-   * @param height Height of the media object or undefined for none.
+   * @param height Height of the media object.
    */
   public final native void setHeight(double height) /*-{
-    this.setHeight(
-      height
-    );
-  }-*/;
-
-  /**
-   * Sets is this default object for the group. This attribute is optional.
-   */
-  public final native void setIsDefault() /*-{
-    this.setIsDefault();
+    this.setHeight(height);
   }-*/;
 
   /**
    * Sets is this default object for the group. This attribute is optional.
    * 
-   * @param isDefault Is this default object for the group or undefined for none.
+   * @param isDefault Is this default object for the group.
    */
   public final native void setIsDefault(boolean isDefault) /*-{
-    this.setIsDefault(
-      isDefault
-    );
-  }-*/;
-
-  /**
-   * Sets the media keywords. This element is optional.
-   */
-  public final native void setKeywords() /*-{
-    this.setKeywords();
+    this.setIsDefault(isDefault);
   }-*/;
 
   /**
    * Sets the media keywords. This element is optional.
    * 
-   * @param keywords Media keywords, or object to use as a parameter to the google.gdata.mediarss.MediaKeywords constructor, or undefined for none.
+   * @param keywords Media keywords.
    */
   public final native void setKeywords(MediaKeywords keywords) /*-{
-    this.setKeywords(
-      keywords
-    );
-  }-*/;
-
-  /**
-   * Sets the primary language encapsulated in the media. This attribute is optional.
-   */
-  public final native void setLanguage() /*-{
-    this.setLanguage();
+    this.setKeywords(keywords);
   }-*/;
 
   /**
    * Sets the primary language encapsulated in the media. This attribute is optional.
    * 
-   * @param language Primary language encapsulated in the media or undefined for none.
+   * @param language Primary language encapsulated in the media.
    */
   public final native void setLanguage(String language) /*-{
-    this.setLanguage(
-      language
-    );
-  }-*/;
-
-  /**
-   * Sets the simple type of object. This attribute is optional.
-   */
-  public final native void setMedium() /*-{
-    this.setMedium();
+    this.setLanguage(language);
   }-*/;
 
   /**
    * Sets the simple type of object. This attribute is optional.
    * 
-   * @param medium Simple type of object or undefined for none.
+   * @param medium Simple type of object.
    */
   public final native void setMedium(String medium) /*-{
-    this.setMedium(
-      medium
-    );
-  }-*/;
-
-  /**
-   * Sets the media player. This element is optional.
-   */
-  public final native void setPlayer() /*-{
-    this.setPlayer();
+    this.setMedium(medium);
   }-*/;
 
   /**
    * Sets the media player. This element is optional.
    * 
-   * @param player Media player, or object to use as a parameter to the google.gdata.mediarss.MediaPlayer constructor, or undefined for none.
+   * @param player Media player.
    */
   public final native void setPlayer(MediaPlayer player) /*-{
-    this.setPlayer(
-      player
-    );
-  }-*/;
-
-  /**
-   * Sets the media ratings.
-   */
-  public final native void setRatings() /*-{
-    this.setRatings();
+    this.setPlayer(player);
   }-*/;
 
   /**
    * Sets the media ratings.
    * 
-   * @param ratings Media ratings, where each media rating is added using the addRating() function, or undefined to clear the media ratings.
+   * @param ratings Media ratings, where each media rating is added using addRating().
    */
-  public final native void setRatings(JsArray<MediaRating> ratings) /*-{
+  public final native void setRatings(MediaRating[] ratings) /*-{
     this.setRatings(
-      ratings
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(ratings)
     );
   }-*/;
 
   /**
    * Sets the media restrictions.
-   */
-  public final native void setRestrictions() /*-{
-    this.setRestrictions();
-  }-*/;
-
-  /**
-   * Sets the media restrictions.
    * 
-   * @param restrictions Media restrictions, where each media restriction is added using the addRestriction() function, or undefined to clear the media restrictions.
+   * @param restrictions Media restrictions, where each media restriction is added using addRestriction().
    */
-  public final native void setRestrictions(JsArray<MediaRestriction> restrictions) /*-{
+  public final native void setRestrictions(MediaRestriction[] restrictions) /*-{
     this.setRestrictions(
-      restrictions
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(restrictions)
     );
   }-*/;
 
   /**
    * Sets the nubmer of samples per second of media. This attribute is optional.
-   */
-  public final native void setSamplingrate() /*-{
-    this.setSamplingrate();
-  }-*/;
-
-  /**
-   * Sets the nubmer of samples per second of media. This attribute is optional.
    * 
-   * @param samplingrate Nubmer of samples per second of media or undefined for none.
+   * @param samplingrate Nubmer of samples per second of media.
    */
   public final native void setSamplingrate(double samplingrate) /*-{
-    this.setSamplingrate(
-      samplingrate
-    );
-  }-*/;
-
-  /**
-   * Sets the media texts.
-   */
-  public final native void setTexts() /*-{
-    this.setTexts();
+    this.setSamplingrate(samplingrate);
   }-*/;
 
   /**
    * Sets the media texts.
    * 
-   * @param texts Media texts, where each media text is added using the addText() function, or undefined to clear the media texts.
+   * @param texts Media texts, where each media text is added using addText().
    */
-  public final native void setTexts(JsArray<MediaText> texts) /*-{
+  public final native void setTexts(MediaText[] texts) /*-{
     this.setTexts(
-      texts
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(texts)
     );
   }-*/;
 
   /**
    * Sets the media thumbnails.
-   */
-  public final native void setThumbnails() /*-{
-    this.setThumbnails();
-  }-*/;
-
-  /**
-   * Sets the media thumbnails.
    * 
-   * @param thumbnails Media thumbnails, where each media thumbnail is added using the addThumbnail() function, or undefined to clear the media thumbnails.
+   * @param thumbnails Media thumbnails, where each media thumbnail is added using addThumbnail().
    */
-  public final native void setThumbnails(JsArray<MediaThumbnail> thumbnails) /*-{
+  public final native void setThumbnails(MediaThumbnail[] thumbnails) /*-{
     this.setThumbnails(
-      thumbnails
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(thumbnails)
     );
   }-*/;
 
   /**
    * Sets the media title. This element is optional.
-   */
-  public final native void setTitle() /*-{
-    this.setTitle();
-  }-*/;
-
-  /**
-   * Sets the media title. This element is optional.
    * 
-   * @param title Media title, or object to use as a parameter to the google.gdata.mediarss.MediaTitle constructor, or undefined for none.
+   * @param title Media title.
    */
   public final native void setTitle(MediaTitle title) /*-{
-    this.setTitle(
-      title
-    );
-  }-*/;
-
-  /**
-   * Sets the standard mime type. This attribute is optional.
-   */
-  public final native void setType() /*-{
-    this.setType();
+    this.setTitle(title);
   }-*/;
 
   /**
    * Sets the standard mime type. This attribute is optional.
    * 
-   * @param type Standard mime type or undefined for none.
+   * @param type Standard mime type.
    */
   public final native void setType(String type) /*-{
-    this.setType(
-      type
-    );
-  }-*/;
-
-  /**
-   * Sets the direct url to the media object. This attribute is optional.
-   */
-  public final native void setUrl() /*-{
-    this.setUrl();
+    this.setType(type);
   }-*/;
 
   /**
    * Sets the direct url to the media object. This attribute is optional.
    * 
-   * @param url Direct url to the media object or undefined for none.
+   * @param url Direct url to the media object.
    */
   public final native void setUrl(String url) /*-{
-    this.setUrl(
-      url
-    );
-  }-*/;
-
-  /**
-   * Sets the width of the media object. This attribute is optional.
-   */
-  public final native void setWidth() /*-{
-    this.setWidth();
+    this.setUrl(url);
   }-*/;
 
   /**
    * Sets the width of the media object. This attribute is optional.
    * 
-   * @param width Width of the media object or undefined for none.
+   * @param width Width of the media object.
    */
   public final native void setWidth(double width) /*-{
-    this.setWidth(
-      width
-    );
+    this.setWidth(width);
   }-*/;
 
 }

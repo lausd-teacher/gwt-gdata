@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.mediarss.MediaContent;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -30,12 +29,12 @@ public class MediaEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", MediaEntry.newInstance());
   }
 
   public void testProperties() {
-    MediaEntry obj = MediaEntry.newInstance(JavaScriptObject.createObject());
-    MediaContent mediacontent = MediaContent.newInstance(JavaScriptObject.createObject());
+    MediaEntry obj = MediaEntry.newInstance();
+    MediaContent mediacontent = MediaContent.newInstance();
     obj.setMediaContent(mediacontent);
     assertSame("mediacontent", obj.getMediaContent(), mediacontent);
   }

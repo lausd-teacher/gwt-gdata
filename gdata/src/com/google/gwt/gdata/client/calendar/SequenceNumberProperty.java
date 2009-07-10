@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class SequenceNumberProperty extends JavaScriptObject {
 
   /**
-   * Constructs a sequence number property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a sequence number property.
+   * @return A SequenceNumberProperty object.
    */
-  public static native SequenceNumberProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.SequenceNumberProperty(
-      params
-    );
+  public static native SequenceNumberProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.SequenceNumberProperty();
   }-*/;
 
   protected SequenceNumberProperty() { }
@@ -39,7 +36,7 @@ public class SequenceNumberProperty extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native double getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class SequenceNumberProperty extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(double value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

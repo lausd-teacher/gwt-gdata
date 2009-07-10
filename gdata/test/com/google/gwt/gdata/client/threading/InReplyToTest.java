@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.threading;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class InReplyToTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", InReplyTo.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", InReplyTo.newInstance());
   }
 
   public void testProperties() {
-    InReplyTo obj = InReplyTo.newInstance(JavaScriptObject.createObject());
+    InReplyTo obj = InReplyTo.newInstance();
     String type = "myValue";
     obj.setType(type);
     assertEquals("type", obj.getType(), type);

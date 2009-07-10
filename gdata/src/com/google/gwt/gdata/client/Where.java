@@ -39,14 +39,11 @@ public class Where extends JavaScriptObject {
   public static final String REL_EVENT_PARKING = getConstant("REL_EVENT_PARKING");
 
   /**
-   * Constructs a place description using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: entryLink, label, rel, and valueString.
+   * Constructs a place description.
+   * @return A Where object.
    */
-  public static native Where newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Where(
-      params
-    );
+  public static native Where newInstance() /*-{
+    return new $wnd.google.gdata.Where();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -58,8 +55,9 @@ public class Where extends JavaScriptObject {
   /**
    * Returns the nested person or venue (Contact) entry. This element is optional.
    * 
-   * @return Nested person or venue (Contact) entry or undefined for none.
+   * @return Nested person or venue (Contact) entry.
    */
+  @SuppressWarnings("unchecked")
   public final native EntryLink getEntryLink() /*-{
     return this.getEntryLink();
   }-*/;
@@ -67,7 +65,7 @@ public class Where extends JavaScriptObject {
   /**
    * Returns the user-readable label that identifies this location in case multiple locations may be present. This attribute is optional.
    * 
-   * @return User-readable label that identifies this location in case multiple locations may be present or undefined for none.
+   * @return User-readable label that identifies this location in case multiple locations may be present.
    */
   public final native String getLabel() /*-{
     return this.getLabel();
@@ -76,7 +74,7 @@ public class Where extends JavaScriptObject {
   /**
    * Returns the meaning of this location. This attribute is optional.
    * 
-   * @return Meaning of this location or undefined for none.
+   * @return Meaning of this location.
    */
   public final native String getRel() /*-{
     return this.getRel();
@@ -85,7 +83,7 @@ public class Where extends JavaScriptObject {
   /**
    * Returns the text description of the place. This attribute is optional.
    * 
-   * @return Text description of the place or undefined for none.
+   * @return Text description of the place.
    */
   public final native String getValueString() /*-{
     return this.getValueString();
@@ -93,74 +91,39 @@ public class Where extends JavaScriptObject {
 
   /**
    * Sets the nested person or venue (Contact) entry. This element is optional.
-   */
-  public final native void setEntryLink() /*-{
-    this.setEntryLink();
-  }-*/;
-
-  /**
-   * Sets the nested person or venue (Contact) entry. This element is optional.
    * 
-   * @param entryLink Nested person or venue (Contact) entry, or object to use as a parameter to the google.gdata.EntryLink constructor, or undefined for none.
+   * @param entryLink Nested person or venue (Contact) entry.
    */
+  @SuppressWarnings("unchecked")
   public final native void setEntryLink(EntryLink entryLink) /*-{
-    this.setEntryLink(
-      entryLink
-    );
-  }-*/;
-
-  /**
-   * Sets the user-readable label that identifies this location in case multiple locations may be present. This attribute is optional.
-   */
-  public final native void setLabel() /*-{
-    this.setLabel();
+    this.setEntryLink(entryLink);
   }-*/;
 
   /**
    * Sets the user-readable label that identifies this location in case multiple locations may be present. This attribute is optional.
    * 
-   * @param label User-readable label that identifies this location in case multiple locations may be present or undefined for none.
+   * @param label User-readable label that identifies this location in case multiple locations may be present.
    */
   public final native void setLabel(String label) /*-{
-    this.setLabel(
-      label
-    );
-  }-*/;
-
-  /**
-   * Sets the meaning of this location. This attribute is optional.
-   */
-  public final native void setRel() /*-{
-    this.setRel();
+    this.setLabel(label);
   }-*/;
 
   /**
    * Sets the meaning of this location. This attribute is optional.
    * 
-   * @param rel Meaning of this location or undefined for none.
+   * @param rel Meaning of this location.
    */
   public final native void setRel(String rel) /*-{
-    this.setRel(
-      rel
-    );
-  }-*/;
-
-  /**
-   * Sets the text description of the place. This attribute is optional.
-   */
-  public final native void setValueString() /*-{
-    this.setValueString();
+    this.setRel(rel);
   }-*/;
 
   /**
    * Sets the text description of the place. This attribute is optional.
    * 
-   * @param valueString Text description of the place or undefined for none.
+   * @param valueString Text description of the place.
    */
   public final native void setValueString(String valueString) /*-{
-    this.setValueString(
-      valueString
-    );
+    this.setValueString(valueString);
   }-*/;
 
 }

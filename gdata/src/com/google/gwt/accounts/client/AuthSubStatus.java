@@ -17,7 +17,7 @@
 package com.google.gwt.accounts.client;
 
 /**
- * Comment unavailable.
+ * Represents the AuthSub authentication status.
  */
 public enum AuthSubStatus {
   LOGGED_OUT, LOGGING_IN, LOGGED_IN;

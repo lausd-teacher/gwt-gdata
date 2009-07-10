@@ -30,7 +30,6 @@ public class DateTimeTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("getConstructor()", DateTime.getConstructor());
     assertNotNull("newInstance()", DateTime.newInstance(new Date(), false));
   }
 

@@ -24,14 +24,13 @@ import com.google.gwt.gdata.client.Query;
 public class BlogQuery extends Query {
 
   /**
-   * Constructor.
+   * Constructs a blog query.
    * 
    * @param feedUri URI of feed.
+   * @return A BlogQuery object.
    */
   public static native BlogQuery newInstance(String feedUri) /*-{
-    return new $wnd.google.gdata.blogger.BlogQuery(
-      feedUri
-    );
+    return new $wnd.google.gdata.blogger.BlogQuery(feedUri);
   }-*/;
 
   protected BlogQuery() { }
@@ -39,7 +38,7 @@ public class BlogQuery extends Query {
   /**
    * Returns the maximum number of results to be retrieved.
    * 
-   * @return Maximum number of results to be retrieved or null to indicate that the parameter is disabled.
+   * @return Maximum number of results to be retrieved.
    */
   public final native double getMaxResults() /*-{
     return this.getMaxResults();
@@ -48,7 +47,7 @@ public class BlogQuery extends Query {
   /**
    * Returns the 1-based index of the first result to be retrieved.
    * 
-   * @return 1-based index of the first result to be retrieved or null to indicate that the parameter is disabled.
+   * @return 1-based index of the first result to be retrieved.
    */
   public final native double getStartIndex() /*-{
     return this.getStartIndex();
@@ -57,45 +56,19 @@ public class BlogQuery extends Query {
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param maxResults Maximum number of results to be retrieved.
    */
   public final native void setMaxResults(double maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
-  }-*/;
-
-  /**
-   * Sets the maximum number of results to be retrieved.
-   * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setMaxResults(String maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
+    this.setMaxResults(maxResults);
   }-*/;
 
   /**
    * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param startIndex 1-based index of the first result to be retrieved.
    */
   public final native void setStartIndex(double startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
-  }-*/;
-
-  /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
-   * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setStartIndex(String startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
+    this.setStartIndex(startIndex);
   }-*/;
 
 }

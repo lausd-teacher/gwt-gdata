@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Kind;
 
 /**
@@ -30,14 +29,11 @@ public class SettingsKind extends Kind {
   public static final String TERM_SETTINGS = getConstant("TERM_SETTINGS");
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: scheme and term.
+   * Constructs a settings kind.
+   * @return A SettingsKind object.
    */
-  public static native SettingsKind newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.SettingsKind(
-      params
-    );
+  public static native SettingsKind newInstance() /*-{
+    return new $wnd.google.gdata.calendar.SettingsKind();
   }-*/;
 
   private static native String getConstant(String name) /*-{

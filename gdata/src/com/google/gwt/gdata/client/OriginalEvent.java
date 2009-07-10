@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class OriginalEvent extends JavaScriptObject {
 
   /**
-   * Constructs an original event using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: href, originalId, and originalStartTime.
+   * Constructs an original event.
+   * @return An OriginalEvent object.
    */
-  public static native OriginalEvent newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.OriginalEvent(
-      params
-    );
+  public static native OriginalEvent newInstance() /*-{
+    return new $wnd.google.gdata.OriginalEvent();
   }-*/;
 
   protected OriginalEvent() { }
@@ -39,7 +36,7 @@ public class OriginalEvent extends JavaScriptObject {
   /**
    * Returns the URL of the original recurring event entry. This attribute is required.
    * 
-   * @return URL of the original recurring event entry or undefined for none.
+   * @return URL of the original recurring event entry.
    */
   public final native String getHref() /*-{
     return this.getHref();
@@ -48,7 +45,7 @@ public class OriginalEvent extends JavaScriptObject {
   /**
    * Returns the event ID of the original recurring event entry. This attribute is required.
    * 
-   * @return Event ID of the original recurring event entry or undefined for none.
+   * @return Event ID of the original recurring event entry.
    */
   public final native String getOriginalId() /*-{
     return this.getOriginalId();
@@ -57,7 +54,7 @@ public class OriginalEvent extends JavaScriptObject {
   /**
    * Returns the original start time. This element is required.
    * 
-   * @return Original start time or undefined for none.
+   * @return Original start time.
    */
   public final native When getOriginalStartTime() /*-{
     return this.getOriginalStartTime();
@@ -65,56 +62,29 @@ public class OriginalEvent extends JavaScriptObject {
 
   /**
    * Sets the URL of the original recurring event entry. This attribute is required.
-   */
-  public final native void setHref() /*-{
-    this.setHref();
-  }-*/;
-
-  /**
-   * Sets the URL of the original recurring event entry. This attribute is required.
    * 
-   * @param href URL of the original recurring event entry or undefined for none.
+   * @param href URL of the original recurring event entry.
    */
   public final native void setHref(String href) /*-{
-    this.setHref(
-      href
-    );
-  }-*/;
-
-  /**
-   * Sets the event ID of the original recurring event entry. This attribute is required.
-   */
-  public final native void setOriginalId() /*-{
-    this.setOriginalId();
+    this.setHref(href);
   }-*/;
 
   /**
    * Sets the event ID of the original recurring event entry. This attribute is required.
    * 
-   * @param originalId Event ID of the original recurring event entry or undefined for none.
+   * @param originalId Event ID of the original recurring event entry.
    */
   public final native void setOriginalId(String originalId) /*-{
-    this.setOriginalId(
-      originalId
-    );
-  }-*/;
-
-  /**
-   * Sets the original start time. This element is required.
-   */
-  public final native void setOriginalStartTime() /*-{
-    this.setOriginalStartTime();
+    this.setOriginalId(originalId);
   }-*/;
 
   /**
    * Sets the original start time. This element is required.
    * 
-   * @param originalStartTime Original start time, or object to use as a parameter to the google.gdata.When constructor, or undefined for none.
+   * @param originalStartTime Original start time.
    */
   public final native void setOriginalStartTime(When originalStartTime) /*-{
-    this.setOriginalStartTime(
-      originalStartTime
-    );
+    this.setOriginalStartTime(originalStartTime);
   }-*/;
 
 }

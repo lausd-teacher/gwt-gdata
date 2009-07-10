@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class ResourcePropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ResourceProperty.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", ResourceProperty.newInstance());
   }
 
   public void testProperties() {
-    ResourceProperty obj = ResourceProperty.newInstance(JavaScriptObject.createObject());
+    ResourceProperty obj = ResourceProperty.newInstance();
     String id = "myValue";
     obj.setId(id);
     assertEquals("id", obj.getId(), id);

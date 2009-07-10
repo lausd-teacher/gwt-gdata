@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class InReplyTo extends JavaScriptObject {
 
   /**
-   * Constructs an in reply to using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: href, ref, source, and type.
+   * Constructs an in reply to.
+   * @return An InReplyTo object.
    */
-  public static native InReplyTo newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.threading.InReplyTo(
-      params
-    );
+  public static native InReplyTo newInstance() /*-{
+    return new $wnd.google.gdata.threading.InReplyTo();
   }-*/;
 
   protected InReplyTo() { }
@@ -39,7 +36,7 @@ public class InReplyTo extends JavaScriptObject {
   /**
    * Returns the IRI that may be used to retrieve a representation of the resource being responded to. This attribute is optional.
    * 
-   * @return IRI that may be used to retrieve a representation of the resource being responded to or undefined for none.
+   * @return IRI that may be used to retrieve a representation of the resource being responded to.
    */
   public final native String getHref() /*-{
     return this.getHref();
@@ -48,7 +45,7 @@ public class InReplyTo extends JavaScriptObject {
   /**
    * Returns the persistent universally unique identifier of the resource being responded to. This attribute is required.
    * 
-   * @return Persistent universally unique identifier of the resource being responded to or undefined for none.
+   * @return Persistent universally unique identifier of the resource being responded.
    */
   public final native String getRef() /*-{
     return this.getRef();
@@ -57,7 +54,7 @@ public class InReplyTo extends JavaScriptObject {
   /**
    * Returns the IRI of an Atom Feed or Entry Document containing an atom:entry with an atom:id value equal to the value of the "ref" attribute. This attribute is optional.
    * 
-   * @return IRI of an Atom Feed or Entry Document containing an atom:entry with an atom:id value equal to the value of the "ref" attribute or undefined for none.
+   * @return IRI of an Atom Feed or Entry Document containing an atom:entry with an atom:id value equal to the value of the "ref" attribute.
    */
   public final native String getSource() /*-{
     return this.getSource();
@@ -66,7 +63,7 @@ public class InReplyTo extends JavaScriptObject {
   /**
    * Returns the hint to the client about the media type of the resource identified by the "href" attribute. This attribute is optional.
    * 
-   * @return Hint to the client about the media type of the resource identified by the "href" attribute or undefined for none.
+   * @return Hint to the client about the media type of the resource identified by the "href" attribute.
    */
   public final native String getType() /*-{
     return this.getType();
@@ -74,74 +71,38 @@ public class InReplyTo extends JavaScriptObject {
 
   /**
    * Sets the IRI that may be used to retrieve a representation of the resource being responded to. This attribute is optional.
-   */
-  public final native void setHref() /*-{
-    this.setHref();
-  }-*/;
-
-  /**
-   * Sets the IRI that may be used to retrieve a representation of the resource being responded to. This attribute is optional.
    * 
-   * @param href IRI that may be used to retrieve a representation of the resource being responded to or undefined for none.
+   * @param href IRI that may be used to retrieve a representation of the resource being responded to.
    */
   public final native void setHref(String href) /*-{
-    this.setHref(
-      href
-    );
-  }-*/;
-
-  /**
-   * Sets the persistent universally unique identifier of the resource being responded to. This attribute is required.
-   */
-  public final native void setRef() /*-{
-    this.setRef();
+    this.setHref(href);
   }-*/;
 
   /**
    * Sets the persistent universally unique identifier of the resource being responded to. This attribute is required.
    * 
-   * @param ref Persistent universally unique identifier of the resource being responded to or undefined for none.
+   * @param ref Persistent universally unique identifier of the resource being responded to.
    */
   public final native void setRef(String ref) /*-{
-    this.setRef(
-      ref
-    );
-  }-*/;
-
-  /**
-   * Sets the IRI of an Atom Feed or Entry Document containing an atom:entry with an atom:id value equal to the value of the "ref" attribute. This attribute is optional.
-   */
-  public final native void setSource() /*-{
-    this.setSource();
+    this.setRef(ref);
   }-*/;
 
   /**
    * Sets the IRI of an Atom Feed or Entry Document containing an atom:entry with an atom:id value equal to the value of the "ref" attribute. This attribute is optional.
    * 
-   * @param source IRI of an Atom Feed or Entry Document containing an atom:entry with an atom:id value equal to the value of the "ref" attribute or undefined for none.
+   * @param source IRI of an Atom Feed or Entry Document containing an atom:entry with an atom:id value equal to the value of the "ref" attribute.
    */
   public final native void setSource(String source) /*-{
-    this.setSource(
-      source
-    );
-  }-*/;
-
-  /**
-   * Sets the hint to the client about the media type of the resource identified by the "href" attribute. This attribute is optional.
-   */
-  public final native void setType() /*-{
-    this.setType();
+    this.setSource(source);
   }-*/;
 
   /**
    * Sets the hint to the client about the media type of the resource identified by the "href" attribute. This attribute is optional.
    * 
-   * @param type Hint to the client about the media type of the resource identified by the "href" attribute or undefined for none.
+   * @param type Hint to the client about the media type of the resource identified by the "href" attribute.
    */
   public final native void setType(String type) /*-{
-    this.setType(
-      type
-    );
+    this.setType(type);
   }-*/;
 
 }

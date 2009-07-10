@@ -24,7 +24,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class AdultContent extends JavaScriptObject {
 
   /**
-   * The customer associated with this account declares that he does notprovide any adult-only content.
+   * The customer associated with this account declares that he does not provide any adult-only content.
    */
   public static final String VALUE_NO = getConstant("VALUE_NO");
 
@@ -34,14 +34,11 @@ public class AdultContent extends JavaScriptObject {
   public static final String VALUE_YES = getConstant("VALUE_YES");
 
   /**
-   * Constructs an Adult Content using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs an Adult Content.
+   * @return An AdultContent object.
    */
-  public static native AdultContent newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.AdultContent(
-      params
-    );
+  public static native AdultContent newInstance() /*-{
+    return new $wnd.google.gdata.gbase.AdultContent();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -53,7 +50,7 @@ public class AdultContent extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -61,20 +58,11 @@ public class AdultContent extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

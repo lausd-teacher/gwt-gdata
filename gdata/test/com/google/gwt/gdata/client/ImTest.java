@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -43,11 +42,11 @@ public class ImTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Im.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Im.newInstance());
   }
 
   public void testProperties() {
-    Im obj = Im.newInstance(JavaScriptObject.createObject());
+    Im obj = Im.newInstance();
     boolean primary = true;
     obj.setPrimary(primary);
     assertSame("primary", obj.getPrimary(), primary);

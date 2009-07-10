@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,6 +28,6 @@ public class PositionFeedLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PositionFeedLink.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", PositionFeedLink.newInstance());
   }
 }

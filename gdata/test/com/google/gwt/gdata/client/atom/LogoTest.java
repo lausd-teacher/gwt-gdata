@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.atom;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class LogoTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Logo.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Logo.newInstance());
   }
 
   public void testProperties() {
-    Logo obj = Logo.newInstance(JavaScriptObject.createObject());
+    Logo obj = Logo.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

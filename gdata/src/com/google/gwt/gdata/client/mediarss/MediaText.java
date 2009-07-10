@@ -34,14 +34,11 @@ public class MediaText extends JavaScriptObject {
   public static final String TYPE_PLAIN = getConstant("TYPE_PLAIN");
 
   /**
-   * Constructs a media text using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content, end, lang, start, and type.
+   * Constructs a media text.
+   * @return A MediaText object.
    */
-  public static native MediaText newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.mediarss.MediaText(
-      params
-    );
+  public static native MediaText newInstance() /*-{
+    return new $wnd.google.gdata.mediarss.MediaText();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -53,7 +50,7 @@ public class MediaText extends JavaScriptObject {
   /**
    * Returns the text transcript, closed captioning, or lyrics. This attribute is optional.
    * 
-   * @return Text transcript, closed captioning, or lyrics or undefined for none.
+   * @return Text transcript, closed captioning, or lyrics.
    */
   public final native String getContent() /*-{
     return this.getContent();
@@ -62,7 +59,7 @@ public class MediaText extends JavaScriptObject {
   /**
    * Returns the end time that the text is relevant. This attribute is optional.
    * 
-   * @return End time that the text is relevant or undefined for none.
+   * @return End time that the text is relevant.
    */
   public final native String getEnd() /*-{
     return this.getEnd();
@@ -71,7 +68,7 @@ public class MediaText extends JavaScriptObject {
   /**
    * Returns the primary language in the object. This attribute is optional.
    * 
-   * @return Primary language in the object or undefined for none.
+   * @return Primary language in the object.
    */
   public final native String getLang() /*-{
     return this.getLang();
@@ -80,7 +77,7 @@ public class MediaText extends JavaScriptObject {
   /**
    * Returns the start time offset when the text starts. This attribute is optional.
    * 
-   * @return Start time offset when the text starts or undefined for none.
+   * @return Start time offset when the text starts.
    */
   public final native String getStart() /*-{
     return this.getStart();
@@ -89,7 +86,7 @@ public class MediaText extends JavaScriptObject {
   /**
    * Returns the type of text embedded, either plain or html. This attribute is optional.
    * 
-   * @return Type of text embedded, either plain or html or undefined for none.
+   * @return Type of text embedded, either plain or html.
    */
   public final native String getType() /*-{
     return this.getType();
@@ -105,84 +102,46 @@ public class MediaText extends JavaScriptObject {
   /**
    * Sets the text transcript, closed captioning, or lyrics. This attribute is optional.
    * 
-   * @param content Text transcript, closed captioning, or lyrics or undefined for none.
+   * @param content Text transcript, closed captioning, or lyrics.
    */
   public final native void setContent(String content) /*-{
-    this.setContent(
-      content
-    );
-  }-*/;
-
-  /**
-   * Sets the end time that the text is relevant. This attribute is optional.
-   */
-  public final native void setEnd() /*-{
-    this.setEnd();
+    this.setContent(content);
   }-*/;
 
   /**
    * Sets the end time that the text is relevant. This attribute is optional.
    * 
-   * @param end End time that the text is relevant or undefined for none.
+   * @param end End time that the text is relevant.
    */
   public final native void setEnd(String end) /*-{
-    this.setEnd(
-      end
-    );
-  }-*/;
-
-  /**
-   * Sets the primary language in the object. This attribute is optional.
-   */
-  public final native void setLang() /*-{
-    this.setLang();
+    this.setEnd(end);
   }-*/;
 
   /**
    * Sets the primary language in the object. This attribute is optional.
    * 
-   * @param lang Primary language in the object or undefined for none.
+   * @param lang Primary language in the object.
    */
   public final native void setLang(String lang) /*-{
-    this.setLang(
-      lang
-    );
-  }-*/;
-
-  /**
-   * Sets the start time offset when the text starts. This attribute is optional.
-   */
-  public final native void setStart() /*-{
-    this.setStart();
+    this.setLang(lang);
   }-*/;
 
   /**
    * Sets the start time offset when the text starts. This attribute is optional.
    * 
-   * @param start Start time offset when the text starts or undefined for none.
+   * @param start Start time offset when the text starts.
    */
   public final native void setStart(String start) /*-{
-    this.setStart(
-      start
-    );
-  }-*/;
-
-  /**
-   * Sets the type of text embedded, either plain or html. This attribute is optional.
-   */
-  public final native void setType() /*-{
-    this.setType();
+    this.setStart(start);
   }-*/;
 
   /**
    * Sets the type of text embedded, either plain or html. This attribute is optional.
    * 
-   * @param type Type of text embedded, either plain or html or undefined for none.
+   * @param type Type of text embedded, either plain or html.
    */
   public final native void setType(String type) /*-{
-    this.setType(
-      type
-    );
+    this.setType(type);
   }-*/;
 
 }

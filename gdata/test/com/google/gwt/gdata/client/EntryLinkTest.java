@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,18 +28,18 @@ public class EntryLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", EntryLink.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", EntryLink.newInstance());
   }
 
   public void testOther() {
-    EntryLink obj = EntryLink.newInstance(JavaScriptObject.createObject());
+    EntryLink obj = EntryLink.newInstance();
     // Unit Test for getEntry()
     assertEquals("getEntry", obj.getEntry(), null);
     // Unit Test for setEntry(Entry entry)
   }
 
   public void testProperties() {
-    EntryLink obj = EntryLink.newInstance(JavaScriptObject.createObject());
+    EntryLink obj = EntryLink.newInstance();
     boolean readonly = true;
     obj.setReadOnly(readonly);
     assertSame("readonly", obj.getReadOnly(), readonly);

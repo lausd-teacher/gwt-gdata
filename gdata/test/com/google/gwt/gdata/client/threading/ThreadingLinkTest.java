@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.threading;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -36,7 +35,7 @@ public class ThreadingLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ThreadingLink.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", ThreadingLink.newInstance());
   }
 
   public void testOther() {
@@ -44,7 +43,7 @@ public class ThreadingLinkTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    ThreadingLink obj = ThreadingLink.newInstance(JavaScriptObject.createObject());
+    ThreadingLink obj = ThreadingLink.newInstance();
     double count = 600813;
     obj.setCount(count);
     assertEquals("count", obj.getCount(), count);

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.acl.AclEntry;
 
 /**
@@ -25,14 +24,11 @@ import com.google.gwt.gdata.client.acl.AclEntry;
 public class CalendarAclEntry extends AclEntry {
 
   /**
-   * Constructs a Calendar ACL entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, content, contributors, id, links, role, scope, sendAclNotifications, title, and updated.
+   * Constructs a Calendar ACL entry.
+   * @return A CalendarAclEntry object.
    */
-  public static native CalendarAclEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.CalendarAclEntry(
-      params
-    );
+  public static native CalendarAclEntry newInstance() /*-{
+    return new $wnd.google.gdata.calendar.CalendarAclEntry();
   }-*/;
 
   protected CalendarAclEntry() { }
@@ -40,7 +36,7 @@ public class CalendarAclEntry extends AclEntry {
   /**
    * Returns the send acl notifications property. This element is optional.
    * 
-   * @return Send acl notifications property or undefined for none.
+   * @return Send acl notifications.
    */
   public final native SendAclNotificationsProperty getSendAclNotifications() /*-{
     return this.getSendAclNotifications();
@@ -48,20 +44,11 @@ public class CalendarAclEntry extends AclEntry {
 
   /**
    * Sets the send acl notifications property. This element is optional.
-   */
-  public final native void setSendAclNotifications() /*-{
-    this.setSendAclNotifications();
-  }-*/;
-
-  /**
-   * Sets the send acl notifications property. This element is optional.
    * 
-   * @param sendAclNotifications Send acl notifications property, or object to use as a parameter to the google.gdata.calendar.SendAclNotificationsProperty constructor, or undefined for none.
+   * @param sendAclNotifications Send acl notifications property.
    */
   public final native void setSendAclNotifications(SendAclNotificationsProperty sendAclNotifications) /*-{
-    this.setSendAclNotifications(
-      sendAclNotifications
-    );
+    this.setSendAclNotifications(sendAclNotifications);
   }-*/;
 
 }

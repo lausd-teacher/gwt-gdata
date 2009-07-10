@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class SuppressReplyNotificationsPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SuppressReplyNotificationsProperty.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", SuppressReplyNotificationsProperty.newInstance());
   }
 
   public void testProperties() {
-    SuppressReplyNotificationsProperty obj = SuppressReplyNotificationsProperty.newInstance(JavaScriptObject.createObject());
+    SuppressReplyNotificationsProperty obj = SuppressReplyNotificationsProperty.newInstance();
     String methods = "myValue";
     obj.setMethods(methods);
     assertEquals("methods", obj.getMethods(), methods);

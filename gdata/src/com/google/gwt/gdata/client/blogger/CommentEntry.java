@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.threading.InReplyTo;
 
 /**
@@ -25,14 +24,12 @@ import com.google.gwt.gdata.client.threading.InReplyTo;
 public class CommentEntry extends com.google.gwt.gdata.client.Entry<CommentEntry> {
 
   /**
-   * Constructs a comment entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, content, edited, id, inReplyTo, links, published, title, and updated.
+   * Constructs a comment entry.
+   * @return A CommentEntry object.
    */
-  public static native CommentEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.blogger.CommentEntry(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native CommentEntry newInstance() /*-{
+    return new $wnd.google.gdata.blogger.CommentEntry();
   }-*/;
 
   protected CommentEntry() { }
@@ -40,7 +37,7 @@ public class CommentEntry extends com.google.gwt.gdata.client.Entry<CommentEntry
   /**
    * Returns the link that provides the URI of an alternate format of the entry's or feed's contents.
    * 
-   * @return Link that provides the URI of an alternate format of the entry's or feed's contents or undefined for none.
+   * @return Link that provides the URI of an alternate format of the entry's or feed's contents.
    */
   public final native BloggerLink getHtmlLink() /*-{
     return this.getHtmlLink();
@@ -49,7 +46,7 @@ public class CommentEntry extends com.google.gwt.gdata.client.Entry<CommentEntry
   /**
    * Returns the in reply to. This element is optional.
    * 
-   * @return In reply to or undefined for none.
+   * @return In reply to.
    */
   public final native InReplyTo getInReplyTo() /*-{
     return this.getInReplyTo();
@@ -58,7 +55,7 @@ public class CommentEntry extends com.google.gwt.gdata.client.Entry<CommentEntry
   /**
    * Returns the link that provides the URI of the web content.
    * 
-   * @return Link that provides the URI of the web content or undefined for none.
+   * @return Link that provides the URI of the web content.
    */
   public final native BloggerLink getRepliesLink() /*-{
     return this.getRepliesLink();
@@ -66,20 +63,11 @@ public class CommentEntry extends com.google.gwt.gdata.client.Entry<CommentEntry
 
   /**
    * Sets the in reply to. This element is optional.
-   */
-  public final native void setInReplyTo() /*-{
-    this.setInReplyTo();
-  }-*/;
-
-  /**
-   * Sets the in reply to. This element is optional.
    * 
-   * @param inReplyTo In reply to, or object to use as a parameter to the google.gdata.threading.InReplyTo constructor, or undefined for none.
+   * @param inReplyTo In reply to.
    */
   public final native void setInReplyTo(InReplyTo inReplyTo) /*-{
-    this.setInReplyTo(
-      inReplyTo
-    );
+    this.setInReplyTo(inReplyTo);
   }-*/;
 
 }

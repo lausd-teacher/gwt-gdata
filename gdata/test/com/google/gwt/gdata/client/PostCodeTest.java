@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class PostCodeTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PostCode.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", PostCode.newInstance());
   }
 
   public void testProperties() {
-    PostCode obj = PostCode.newInstance(JavaScriptObject.createObject());
+    PostCode obj = PostCode.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

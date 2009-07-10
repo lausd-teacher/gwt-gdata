@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.app;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,12 +28,12 @@ public class ControlTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Control.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Control.newInstance());
   }
 
   public void testProperties() {
-    Control obj = Control.newInstance(JavaScriptObject.createObject());
-    Draft draft = Draft.newInstance(JavaScriptObject.createObject());
+    Control obj = Control.newInstance();
+    Draft draft = Draft.newInstance();
     obj.setDraft(draft);
     assertSame("draft", obj.getDraft(), draft);
   }

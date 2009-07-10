@@ -16,23 +16,20 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.FeedLink;
 
 /**
  * Describes a portfolio feed link.
  */
-public class PortfolioFeedLink extends FeedLink {
+public class PortfolioFeedLink extends FeedLink<PortfolioFeed> {
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: feed and href.
+   * Constructs a position feed link.
+   * @return A PortfolioFeedLink object.
    */
-  public static native PortfolioFeedLink newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.finance.PortfolioFeedLink(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native PortfolioFeedLink newInstance() /*-{
+    return new $wnd.google.gdata.finance.PortfolioFeedLink();
   }-*/;
 
   protected PortfolioFeedLink() { }

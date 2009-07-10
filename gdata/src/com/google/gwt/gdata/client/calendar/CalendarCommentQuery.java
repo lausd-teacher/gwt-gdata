@@ -25,14 +25,13 @@ import com.google.gwt.gdata.client.Query;
 public class CalendarCommentQuery extends Query {
 
   /**
-   * Constructor.
+   * Constructs a calendar comment query.
    * 
    * @param feedUri URI of feed.
+   * @return A CalendarCommentQuery object.
    */
   public static native CalendarCommentQuery newInstance(String feedUri) /*-{
-    return new $wnd.google.gdata.calendar.CalendarCommentQuery(
-      feedUri
-    );
+    return new $wnd.google.gdata.calendar.CalendarCommentQuery(feedUri);
   }-*/;
 
   protected CalendarCommentQuery() { }
@@ -40,7 +39,7 @@ public class CalendarCommentQuery extends Query {
   /**
    * Returns the author name or email address.
    * 
-   * @return Author name or email address or null to indicate that the parameter is disabled.
+   * @return Author name or email address.
    */
   public final native String getAuthor() /*-{
     return this.getAuthor();
@@ -49,7 +48,7 @@ public class CalendarCommentQuery extends Query {
   /**
    * Returns the full-text query string.
    * 
-   * @return Full-text query string or null to indicate that the parameter is disabled.
+   * @return Full-text query string.
    */
   public final native String getFullTextQuery() /*-{
     return this.getFullTextQuery();
@@ -58,7 +57,7 @@ public class CalendarCommentQuery extends Query {
   /**
    * Returns the maximum number of results to be retrieved.
    * 
-   * @return Maximum number of results to be retrieved or null to indicate that the parameter is disabled.
+   * @return Maximum number of results to be retrieved.
    */
   public final native double getMaxResults() /*-{
     return this.getMaxResults();
@@ -67,7 +66,7 @@ public class CalendarCommentQuery extends Query {
   /**
    * Returns the 1-based index of the first result to be retrieved.
    * 
-   * @return 1-based index of the first result to be retrieved or null to indicate that the parameter is disabled.
+   * @return 1-based index of the first result to be retrieved.
    */
   public final native double getStartIndex() /*-{
     return this.getStartIndex();
@@ -76,7 +75,7 @@ public class CalendarCommentQuery extends Query {
   /**
    * Returns the maximum updated date.
    * 
-   * @return Maximum updated date or null to indicate that the parameter is disabled.
+   * @return Maximum updated date.
    */
   public final native DateTime getUpdatedMax() /*-{
     return this.getUpdatedMax();
@@ -85,7 +84,7 @@ public class CalendarCommentQuery extends Query {
   /**
    * Returns the minimum updated date.
    * 
-   * @return Minimum updated date or null to indicate that the parameter is disabled.
+   * @return Minimum updated date.
    */
   public final native DateTime getUpdatedMin() /*-{
     return this.getUpdatedMin();
@@ -94,111 +93,55 @@ public class CalendarCommentQuery extends Query {
   /**
    * Sets the author name or email address.
    * 
-   * @param author Author name or email address or null to disable this parameter.
+   * @param author Author name or email address.
    */
   public final native void setAuthor(String author) /*-{
-    this.setAuthor(
-      author
-    );
+    this.setAuthor(author);
   }-*/;
 
   /**
    * Sets the full-text query string.
    * 
-   * @param fullTextQuery Full-text query string or null to disable this parameter.
+   * @param fullTextQuery Full-text query string.
    */
   public final native void setFullTextQuery(String fullTextQuery) /*-{
-    this.setFullTextQuery(
-      fullTextQuery
-    );
+    this.setFullTextQuery(fullTextQuery);
   }-*/;
 
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param maxResults Maximum number of results to be retrieved.
    */
   public final native void setMaxResults(double maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
-  }-*/;
-
-  /**
-   * Sets the maximum number of results to be retrieved.
-   * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setMaxResults(String maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
+    this.setMaxResults(maxResults);
   }-*/;
 
   /**
    * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param startIndex 1-based index of the first result to be retrieved.
    */
   public final native void setStartIndex(double startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
-  }-*/;
-
-  /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
-   * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setStartIndex(String startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
+    this.setStartIndex(startIndex);
   }-*/;
 
   /**
    * Sets the maximum updated date.
    * 
-   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
+   * @param updatedMax Maximum updated date.
    */
   public final native void setUpdatedMax(DateTime updatedMax) /*-{
-    this.setUpdatedMax(
-      updatedMax
-    );
-  }-*/;
-
-  /**
-   * Sets the maximum updated date.
-   * 
-   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setUpdatedMax(String updatedMax) /*-{
-    this.setUpdatedMax(
-      updatedMax
-    );
+    this.setUpdatedMax(updatedMax);
   }-*/;
 
   /**
    * Sets the minimum updated date.
    * 
-   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
+   * @param updatedMin Minimum updated date.
    */
   public final native void setUpdatedMin(DateTime updatedMin) /*-{
-    this.setUpdatedMin(
-      updatedMin
-    );
-  }-*/;
-
-  /**
-   * Sets the minimum updated date.
-   * 
-   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setUpdatedMin(String updatedMin) /*-{
-    this.setUpdatedMin(
-      updatedMin
-    );
+    this.setUpdatedMin(updatedMin);
   }-*/;
 
 }

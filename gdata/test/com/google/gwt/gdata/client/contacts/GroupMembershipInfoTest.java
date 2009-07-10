@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class GroupMembershipInfoTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GroupMembershipInfo.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", GroupMembershipInfo.newInstance());
   }
 
   public void testProperties() {
-    GroupMembershipInfo obj = GroupMembershipInfo.newInstance(JavaScriptObject.createObject());
+    GroupMembershipInfo obj = GroupMembershipInfo.newInstance();
     boolean deleted = true;
     obj.setDeleted(deleted);
     assertSame("deleted", obj.getDeleted(), deleted);

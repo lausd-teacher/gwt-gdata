@@ -16,22 +16,18 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Feed element in account feed.
  */
 public class AccountFeed extends com.google.gwt.gdata.client.Feed<AccountEntry> {
 
   /**
-   * Constructs an account feed using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, entries, generator, id, itemsPerPage, links, startIndex, title, totalResults, and updated.
+   * Constructs an account feed.
+   * @return An AccountFeed object.
    */
-  public static native AccountFeed newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.analytics.AccountFeed(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native AccountFeed newInstance() /*-{
+    return new $wnd.google.gdata.analytics.AccountFeed();
   }-*/;
 
   protected AccountFeed() { }
@@ -39,7 +35,7 @@ public class AccountFeed extends com.google.gwt.gdata.client.Feed<AccountEntry> 
   /**
    * Returns the link that provides the URI of next page in a paged feed.
    * 
-   * @return Link that provides the URI of next page in a paged feed or undefined for none.
+   * @return Link that provides the URI of next page in a paged feed.
    */
   public final native com.google.gwt.gdata.client.Link getNextLink() /*-{
     return this.getNextLink();
@@ -48,7 +44,7 @@ public class AccountFeed extends com.google.gwt.gdata.client.Feed<AccountEntry> 
   /**
    * Returns the link that provides the URI of previous page in a paged feed.
    * 
-   * @return Link that provides the URI of previous page in a paged feed or undefined for none.
+   * @return Link that provides the URI of previous page in a paged feed.
    */
   public final native com.google.gwt.gdata.client.Link getPreviousLink() /*-{
     return this.getPreviousLink();

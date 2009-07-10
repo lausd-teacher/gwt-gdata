@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Kind;
 
 /**
@@ -30,14 +29,11 @@ public class ContactKind extends Kind {
   public static final String TERM_CONTACT = getConstant("TERM_CONTACT");
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: scheme and term.
+   * Constructs a contact kind.
+   * @return A ContactKind object.
    */
-  public static native ContactKind newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.contacts.ContactKind(
-      params
-    );
+  public static native ContactKind newInstance() /*-{
+    return new $wnd.google.gdata.contacts.ContactKind();
   }-*/;
 
   private static native String getConstant(String name) /*-{

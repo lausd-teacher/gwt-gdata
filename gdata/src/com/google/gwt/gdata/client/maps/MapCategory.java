@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.maps;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Kind;
 
 /**
@@ -30,14 +29,11 @@ public class MapCategory extends Kind {
   public static final String TERM_MAP = getConstant("TERM_MAP");
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: scheme and term.
+   * Constructs a map category.
+   * @return A MapCategory object.
    */
-  public static native MapCategory newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.maps.MapCategory(
-      params
-    );
+  public static native MapCategory newInstance() /*-{
+    return new $wnd.google.gdata.maps.MapCategory();
   }-*/;
 
   private static native String getConstant(String name) /*-{

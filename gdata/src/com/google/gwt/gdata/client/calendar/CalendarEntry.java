@@ -16,8 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Where;
 
 /**
@@ -26,14 +24,12 @@ import com.google.gwt.gdata.client.Where;
 public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEntry> {
 
   /**
-   * Constructs a Calendar entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: accessLevel, authors, categories, color, content, contributors, hidden, id, links, locations, overrideName, published, selected, summary, timeZone, timesCleaned, title, and updated.
+   * Constructs a Calendar entry.
+   * @return A CalendarEntry object.
    */
-  public static native CalendarEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.CalendarEntry(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native CalendarEntry newInstance() /*-{
+    return new $wnd.google.gdata.calendar.CalendarEntry();
   }-*/;
 
   protected CalendarEntry() { }
@@ -41,18 +37,16 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
   /**
    * Adds a new calendar location.
    * 
-   * @param location Calendar location to add, or object to use as a parameter to the google.gdata.Where constructor.
+   * @param location Calendar location to add.
    */
   public final native void addLocation(Where location) /*-{
-    this.addLocation(
-      location
-    );
+    this.addLocation(location);
   }-*/;
 
   /**
    * Returns the link that provides the URI of the feed for the access control list for the entry.
    * 
-   * @return Link that provides the URI of the feed for the access control list for the entry or undefined for none.
+   * @return Link that provides the URI of the feed for the access control list for the entry.
    */
   public final native CalendarLink getAccessControlListLink() /*-{
     return this.getAccessControlListLink();
@@ -61,7 +55,7 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
   /**
    * Returns the access level property. This element is required.
    * 
-   * @return Access level property or undefined for none.
+   * @return Access level property.
    */
   public final native AccessLevelProperty getAccessLevel() /*-{
     return this.getAccessLevel();
@@ -70,7 +64,7 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
   /**
    * Returns the link that provides the URI of an alternate format of the entry's or feed's contents.
    * 
-   * @return Link that provides the URI of an alternate format of the entry's or feed's contents or undefined for none.
+   * @return Link that provides the URI of an alternate format of the entry's or feed's contents.
    */
   public final native CalendarLink getAtomAlternateLink() /*-{
     return this.getAtomAlternateLink();
@@ -79,7 +73,7 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
   /**
    * Returns the color property. This element is required.
    * 
-   * @return Color property or undefined for none.
+   * @return Color property.
    */
   public final native ColorProperty getColor() /*-{
     return this.getColor();
@@ -88,7 +82,7 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
   /**
    * Returns the eventFeed event feed link.
    * 
-   * @return EventFeed event feed link or undefined for none.
+   * @return EventFeed event feed link.
    */
   public final native EventFeedLink getEventFeedLink() /*-{
     return this.getEventFeedLink();
@@ -97,7 +91,7 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
   /**
    * Returns the hidden property. This element is required.
    * 
-   * @return Hidden property or undefined for none.
+   * @return Hidden property.
    */
   public final native HiddenProperty getHidden() /*-{
     return this.getHidden();
@@ -108,14 +102,14 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
    * 
    * @return Calendar locations.
    */
-  public final native JsArray<Where> getLocations() /*-{
-    return this.getLocations();
+  public final native Where[] getLocations() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getLocations());
   }-*/;
 
   /**
    * Returns the override name property. This element is optional.
    * 
-   * @return Override name property or undefined for none.
+   * @return Override name property.
    */
   public final native OverrideNameProperty getOverrideName() /*-{
     return this.getOverrideName();
@@ -124,7 +118,7 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
   /**
    * Returns the link that provides the URI of a related link to the entry.
    * 
-   * @return Link that provides the URI of a related link to the entry or undefined for none.
+   * @return Link that provides the URI of a related link to the entry.
    */
   public final native CalendarLink getRelatedLink() /*-{
     return this.getRelatedLink();
@@ -133,7 +127,7 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
   /**
    * Returns the selected property. This element is required.
    * 
-   * @return Selected property or undefined for none.
+   * @return Selected property.
    */
   public final native SelectedProperty getSelected() /*-{
     return this.getSelected();
@@ -142,7 +136,7 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
   /**
    * Returns the times cleaned property. This element is optional.
    * 
-   * @return Times cleaned property or undefined for none.
+   * @return Times cleaned property.
    */
   public final native TimesCleanedProperty getTimesCleaned() /*-{
     return this.getTimesCleaned();
@@ -151,7 +145,7 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
   /**
    * Returns the time zone property. This element is optional.
    * 
-   * @return Time zone property or undefined for none.
+   * @return Time zone property.
    */
   public final native TimeZoneProperty getTimeZone() /*-{
     return this.getTimeZone();
@@ -159,146 +153,76 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
 
   /**
    * Sets the access level property. This element is required.
-   */
-  public final native void setAccessLevel() /*-{
-    this.setAccessLevel();
-  }-*/;
-
-  /**
-   * Sets the access level property. This element is required.
    * 
-   * @param accessLevel Access level property, or object to use as a parameter to the google.gdata.calendar.AccessLevelProperty constructor, or undefined for none.
+   * @param accessLevel Access level property.
    */
   public final native void setAccessLevel(AccessLevelProperty accessLevel) /*-{
-    this.setAccessLevel(
-      accessLevel
-    );
-  }-*/;
-
-  /**
-   * Sets the color property. This element is required.
-   */
-  public final native void setColor() /*-{
-    this.setColor();
+    this.setAccessLevel(accessLevel);
   }-*/;
 
   /**
    * Sets the color property. This element is required.
    * 
-   * @param color Color property, or object to use as a parameter to the google.gdata.calendar.ColorProperty constructor, or undefined for none.
+   * @param color Color property.
    */
   public final native void setColor(ColorProperty color) /*-{
-    this.setColor(
-      color
-    );
-  }-*/;
-
-  /**
-   * Sets the hidden property. This element is required.
-   */
-  public final native void setHidden() /*-{
-    this.setHidden();
+    this.setColor(color);
   }-*/;
 
   /**
    * Sets the hidden property. This element is required.
    * 
-   * @param hidden Hidden property, or object to use as a parameter to the google.gdata.calendar.HiddenProperty constructor, or undefined for none.
+   * @param hidden Hidden property.
    */
   public final native void setHidden(HiddenProperty hidden) /*-{
-    this.setHidden(
-      hidden
-    );
-  }-*/;
-
-  /**
-   * Sets the calendar locations.
-   */
-  public final native void setLocations() /*-{
-    this.setLocations();
+    this.setHidden(hidden);
   }-*/;
 
   /**
    * Sets the calendar locations.
    * 
-   * @param locations Calendar locations, where each calendar location is added using the addLocation() function, or undefined to clear the calendar locations.
+   * @param locations Calendar locations, where each calendar location is added using addLocation().
    */
-  public final native void setLocations(JsArray<Where> locations) /*-{
+  public final native void setLocations(Where[] locations) /*-{
     this.setLocations(
-      locations
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(locations)
     );
   }-*/;
 
   /**
    * Sets the override name property. This element is optional.
-   */
-  public final native void setOverrideName() /*-{
-    this.setOverrideName();
-  }-*/;
-
-  /**
-   * Sets the override name property. This element is optional.
    * 
-   * @param overrideName Override name property, or object to use as a parameter to the google.gdata.calendar.OverrideNameProperty constructor, or undefined for none.
+   * @param overrideName Override name property.
    */
   public final native void setOverrideName(OverrideNameProperty overrideName) /*-{
-    this.setOverrideName(
-      overrideName
-    );
-  }-*/;
-
-  /**
-   * Sets the selected property. This element is required.
-   */
-  public final native void setSelected() /*-{
-    this.setSelected();
+    this.setOverrideName(overrideName);
   }-*/;
 
   /**
    * Sets the selected property. This element is required.
    * 
-   * @param selected Selected property, or object to use as a parameter to the google.gdata.calendar.SelectedProperty constructor, or undefined for none.
+   * @param selected Selected property.
    */
   public final native void setSelected(SelectedProperty selected) /*-{
-    this.setSelected(
-      selected
-    );
-  }-*/;
-
-  /**
-   * Sets the times cleaned property. This element is optional.
-   */
-  public final native void setTimesCleaned() /*-{
-    this.setTimesCleaned();
+    this.setSelected(selected);
   }-*/;
 
   /**
    * Sets the times cleaned property. This element is optional.
    * 
-   * @param timesCleaned Times cleaned property, or object to use as a parameter to the google.gdata.calendar.TimesCleanedProperty constructor, or undefined for none.
+   * @param timesCleaned Times cleaned property.
    */
   public final native void setTimesCleaned(TimesCleanedProperty timesCleaned) /*-{
-    this.setTimesCleaned(
-      timesCleaned
-    );
-  }-*/;
-
-  /**
-   * Sets the time zone property. This element is optional.
-   */
-  public final native void setTimeZone() /*-{
-    this.setTimeZone();
+    this.setTimesCleaned(timesCleaned);
   }-*/;
 
   /**
    * Sets the time zone property. This element is optional.
    * 
-   * @param timeZone Time zone property, or object to use as a parameter to the google.gdata.calendar.TimeZoneProperty constructor, or undefined for none.
+   * @param timeZone Time zone property.
    */
   public final native void setTimeZone(TimeZoneProperty timeZone) /*-{
-    this.setTimeZone(
-      timeZone
-    );
+    this.setTimeZone(timeZone);
   }-*/;
 
 }

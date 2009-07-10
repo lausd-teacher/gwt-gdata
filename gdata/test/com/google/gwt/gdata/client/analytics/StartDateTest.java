@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class StartDateTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", StartDate.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", StartDate.newInstance());
   }
 
   public void testProperties() {
-    StartDate obj = StartDate.newInstance(JavaScriptObject.createObject());
+    StartDate obj = StartDate.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

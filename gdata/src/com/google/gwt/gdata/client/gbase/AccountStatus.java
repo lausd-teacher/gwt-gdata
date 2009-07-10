@@ -34,14 +34,11 @@ public class AccountStatus extends JavaScriptObject {
   public static final String VALUE_DISAPPROVED = getConstant("VALUE_DISAPPROVED");
 
   /**
-   * Constructs an Account Status using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs an Account Status.
+   * @return An AccountStatus object.
    */
-  public static native AccountStatus newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.AccountStatus(
-      params
-    );
+  public static native AccountStatus newInstance() /*-{
+    return new $wnd.google.gdata.gbase.AccountStatus();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -53,7 +50,7 @@ public class AccountStatus extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -61,20 +58,11 @@ public class AccountStatus extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }
