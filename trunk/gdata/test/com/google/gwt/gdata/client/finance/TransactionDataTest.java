@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -32,7 +31,7 @@ public class TransactionDataTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", TransactionData.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", TransactionData.newInstance());
   }
 
   public void testOther() {
@@ -40,11 +39,11 @@ public class TransactionDataTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    TransactionData obj = TransactionData.newInstance(JavaScriptObject.createObject());
+    TransactionData obj = TransactionData.newInstance();
     DateTime date = DateTime.newInstance(new Date(), false);
     obj.setDate(date);
     assertEquals("date", obj.getDate().getDate(), date.getDate());
-    Price price = Price.newInstance(JavaScriptObject.createObject());
+    Price price = Price.newInstance();
     obj.setPrice(price);
     assertSame("price", obj.getPrice(), price);
     String type = "myValue";
@@ -53,7 +52,7 @@ public class TransactionDataTest extends GWTTestCase {
     double shares = 600813;
     obj.setShares(shares);
     assertEquals("shares", obj.getShares(), shares);
-    Commission commission = Commission.newInstance(JavaScriptObject.createObject());
+    Commission commission = Commission.newInstance();
     obj.setCommission(commission);
     assertSame("commission", obj.getCommission(), commission);
     String notes = "myValue";

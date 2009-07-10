@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.finance;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Money;
 
 /**
@@ -26,14 +25,10 @@ import com.google.gwt.gdata.client.Money;
 public class MarketValue extends JavaScriptObject {
 
   /**
-   * Constructs a market value using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: money.
+   * Constructs a market value.
    */
-  public static native MarketValue newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.finance.MarketValue(
-      params
-    );
+  public static native MarketValue newInstance() /*-{
+    return new $wnd.google.gdata.finance.MarketValue();
   }-*/;
 
   protected MarketValue() { }
@@ -41,12 +36,10 @@ public class MarketValue extends JavaScriptObject {
   /**
    * Adds a new monetary value of the market value.
    * 
-   * @param money Monetary value of the market value to add, or object to use as a parameter to the google.gdata.Money constructor.
+   * @param money Monetary value of the market value to add.
    */
   public final native void addMoney(Money money) /*-{
-    this.addMoney(
-      money
-    );
+    this.addMoney(money);
   }-*/;
 
   /**
@@ -54,25 +47,18 @@ public class MarketValue extends JavaScriptObject {
    * 
    * @return Monetary value of the market value.
    */
-  public final native JsArray<Money> getMoney() /*-{
-    return this.getMoney();
-  }-*/;
-
-  /**
-   * Sets the monetary value of the market value.
-   */
-  public final native void setMoney() /*-{
-    this.setMoney();
+  public final native Money[] getMoney() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getMoney());
   }-*/;
 
   /**
    * Sets the monetary value of the market value.
    * 
-   * @param money Monetary value of the market value, where each monetary value of the market value is added using the addMoney() function, or undefined to clear the monetary value of the market value.
+   * @param money Monetary value of the market value, where each monetary value of the market value is added using addMoney().
    */
-  public final native void setMoney(JsArray<Money> money) /*-{
+  public final native void setMoney(Money[] money) /*-{
     this.setMoney(
-      money
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(money)
     );
   }-*/;
 

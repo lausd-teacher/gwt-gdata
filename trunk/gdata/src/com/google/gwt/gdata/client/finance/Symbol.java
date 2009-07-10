@@ -24,14 +24,10 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Symbol extends JavaScriptObject {
 
   /**
-   * Constructs a stock symbol using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: exchange, fullName, and symbol.
+   * Constructs a stock symbol.
    */
-  public static native Symbol newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.finance.Symbol(
-      params
-    );
+  public static native Symbol newInstance() /*-{
+    return new $wnd.google.gdata.finance.Symbol();
   }-*/;
 
   protected Symbol() { }
@@ -39,7 +35,7 @@ public class Symbol extends JavaScriptObject {
   /**
    * Returns the exchange symbol for the company or mutual fund. This attribute is required.
    * 
-   * @return Exchange symbol for the company or mutual fund or undefined for none.
+   * @return Exchange symbol for the company or mutual fund.
    */
   public final native String getExchange() /*-{
     return this.getExchange();
@@ -48,7 +44,7 @@ public class Symbol extends JavaScriptObject {
   /**
    * Returns the full name for the company or mutual fund. This attribute is required.
    * 
-   * @return Full name for the company or mutual fund or undefined for none.
+   * @return Full name for the company or mutual fund.
    */
   public final native String getFullName() /*-{
     return this.getFullName();
@@ -57,7 +53,7 @@ public class Symbol extends JavaScriptObject {
   /**
    * Returns the stock symbol for the company or mutual fund. This attribute is required.
    * 
-   * @return Stock symbol for the company or mutual fund or undefined for none.
+   * @return Stock symbol for the company or mutual fund.
    */
   public final native String getSymbol() /*-{
     return this.getSymbol();
@@ -65,56 +61,29 @@ public class Symbol extends JavaScriptObject {
 
   /**
    * Sets the exchange symbol for the company or mutual fund. This attribute is required.
-   */
-  public final native void setExchange() /*-{
-    this.setExchange();
-  }-*/;
-
-  /**
-   * Sets the exchange symbol for the company or mutual fund. This attribute is required.
    * 
-   * @param exchange Exchange symbol for the company or mutual fund or undefined for none.
+   * @param exchange Exchange symbol for the company or mutual fund.
    */
   public final native void setExchange(String exchange) /*-{
-    this.setExchange(
-      exchange
-    );
-  }-*/;
-
-  /**
-   * Sets the full name for the company or mutual fund. This attribute is required.
-   */
-  public final native void setFullName() /*-{
-    this.setFullName();
+    this.setExchange(exchange);
   }-*/;
 
   /**
    * Sets the full name for the company or mutual fund. This attribute is required.
    * 
-   * @param fullName Full name for the company or mutual fund or undefined for none.
+   * @param fullName Full name for the company or mutual fund.
    */
   public final native void setFullName(String fullName) /*-{
-    this.setFullName(
-      fullName
-    );
-  }-*/;
-
-  /**
-   * Sets the stock symbol for the company or mutual fund. This attribute is required.
-   */
-  public final native void setSymbol() /*-{
-    this.setSymbol();
+    this.setFullName(fullName);
   }-*/;
 
   /**
    * Sets the stock symbol for the company or mutual fund. This attribute is required.
    * 
-   * @param symbol Stock symbol for the company or mutual fund or undefined for none.
+   * @param symbol Stock symbol for the company or mutual fund.
    */
   public final native void setSymbol(String symbol) /*-{
-    this.setSymbol(
-      symbol
-    );
+    this.setSymbol(symbol);
   }-*/;
 
 }

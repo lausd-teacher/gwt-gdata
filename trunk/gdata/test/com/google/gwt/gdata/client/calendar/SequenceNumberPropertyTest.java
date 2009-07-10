@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class SequenceNumberPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SequenceNumberProperty.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", SequenceNumberProperty.newInstance());
   }
 
   public void testProperties() {
-    SequenceNumberProperty obj = SequenceNumberProperty.newInstance(JavaScriptObject.createObject());
+    SequenceNumberProperty obj = SequenceNumberProperty.newInstance();
     double value = 600813;
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

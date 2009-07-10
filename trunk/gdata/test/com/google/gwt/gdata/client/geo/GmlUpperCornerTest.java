@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.geo;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class GmlUpperCornerTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GmlUpperCorner.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", GmlUpperCorner.newInstance());
   }
 
   public void testProperties() {
-    GmlUpperCorner obj = GmlUpperCorner.newInstance(JavaScriptObject.createObject());
+    GmlUpperCorner obj = GmlUpperCorner.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

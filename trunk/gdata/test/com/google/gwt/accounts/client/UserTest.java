@@ -22,7 +22,7 @@ import com.google.gwt.junit.client.GWTTestCase;
  * Tests for the AttendeeStatus class.
  */
 public class UserTest extends GWTTestCase {
-  public static final String TEST_SCOPE = "http://www.google.com/calendar/feeds/";
+  public static final String TEST_SCOPE = "";
   public static final String AUTH_COOKIE_NAME = "g314-scope-0";
   public static final String AUTH_COOKIE_VALUE = "scope=http://www.google.com/calendar/feeds/&token=2/POEfcUwqkbSIiyj4CaiQ6A";
   
@@ -55,7 +55,7 @@ public class UserTest extends GWTTestCase {
     login(AUTH_COOKIE_NAME, AUTH_COOKIE_VALUE);
     assertEquals("getStatus", User.getStatus(), AuthSubStatus.LOGGED_IN);
     assertFalse("checkLogin", User.checkLogin(TEST_SCOPE).equals(""));
-    assertEquals("getScopes", User.getScopes().get(0), TEST_SCOPE);
+    assertEquals("getScopes", User.getScopes()[0], TEST_SCOPE);
     assertTrue("getInfo", User.getInfo(new Runnable() {
       public void run() {
         finishTest();
@@ -77,6 +77,6 @@ public class UserTest extends GWTTestCase {
     assertFalse("getInfo", User.getInfo(new Runnable() {
       public void run() { }
     }));
-    assertEquals("getScopes", User.getScopes().length(), 0);
+    assertEquals("getScopes", User.getScopes().length, 0);
   }
 }

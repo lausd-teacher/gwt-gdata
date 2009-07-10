@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.finance;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Money;
 
 /**
@@ -26,14 +25,11 @@ import com.google.gwt.gdata.client.Money;
 public class DaysGain extends JavaScriptObject {
 
   /**
-   * Constructs a day's gain using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: money.
+   * Constructs a day's gain.
+   * @return A DaysGain object.
    */
-  public static native DaysGain newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.finance.DaysGain(
-      params
-    );
+  public static native DaysGain newInstance() /*-{
+    return new $wnd.google.gdata.finance.DaysGain();
   }-*/;
 
   protected DaysGain() { }
@@ -41,12 +37,10 @@ public class DaysGain extends JavaScriptObject {
   /**
    * Adds a new monetary value of day's gain.
    * 
-   * @param money Monetary value of day's gain to add, or object to use as a parameter to the google.gdata.Money constructor.
+   * @param money Monetary value of day's gain to add.
    */
   public final native void addMoney(Money money) /*-{
-    this.addMoney(
-      money
-    );
+    this.addMoney(money);
   }-*/;
 
   /**
@@ -54,25 +48,18 @@ public class DaysGain extends JavaScriptObject {
    * 
    * @return Monetary value of day's gain.
    */
-  public final native JsArray<Money> getMoney() /*-{
-    return this.getMoney();
-  }-*/;
-
-  /**
-   * Sets the monetary value of day's gain.
-   */
-  public final native void setMoney() /*-{
-    this.setMoney();
+  public final native Money[] getMoney() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getMoney());
   }-*/;
 
   /**
    * Sets the monetary value of day's gain.
    * 
-   * @param money Monetary value of day's gain, where each monetary value of day's gain is added using the addMoney() function, or undefined to clear the monetary value of day's gain.
+   * @param money Monetary value of day's gain, where each monetary value of day's gain is added using addMoney().
    */
-  public final native void setMoney(JsArray<Money> money) /*-{
+  public final native void setMoney(Money[] money) /*-{
     this.setMoney(
-      money
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(money)
     );
   }-*/;
 

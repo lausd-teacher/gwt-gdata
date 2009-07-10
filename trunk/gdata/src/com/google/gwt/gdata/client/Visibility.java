@@ -44,14 +44,11 @@ public class Visibility extends JavaScriptObject {
   public static final String VALUE_PUBLIC = getConstant("VALUE_PUBLIC");
 
   /**
-   * Constructs an event visibility using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs an event visibility.
+   * @return A Visibility object.
    */
-  public static native Visibility newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Visibility(
-      params
-    );
+  public static native Visibility newInstance() /*-{
+    return new $wnd.google.gdata.Visibility();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -63,7 +60,7 @@ public class Visibility extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -71,20 +68,11 @@ public class Visibility extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

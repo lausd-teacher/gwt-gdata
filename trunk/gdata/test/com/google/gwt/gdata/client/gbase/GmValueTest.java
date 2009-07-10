@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class GmValueTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GmValue.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", GmValue.newInstance());
   }
 
   public void testProperties() {
-    GmValue obj = GmValue.newInstance(JavaScriptObject.createObject());
+    GmValue obj = GmValue.newInstance();
     double count = 600813;
     obj.setCount(count);
     assertEquals("count", obj.getCount(), count);

@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class RecurrenceException extends JavaScriptObject {
 
   /**
-   * Constructs a recurrence exception using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: entryLink and specialized.
+   * Constructs a recurrence exception.
+   * @return A RecurrenceException object.
    */
-  public static native RecurrenceException newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.RecurrenceException(
-      params
-    );
+  public static native RecurrenceException newInstance() /*-{
+    return new $wnd.google.gdata.RecurrenceException();
   }-*/;
 
   protected RecurrenceException() { }
@@ -39,7 +36,7 @@ public class RecurrenceException extends JavaScriptObject {
   /**
    * Returns the nested entry providing the details about the exception. This element is required.
    * 
-   * @return Nested entry providing the details about the exception or undefined for none.
+   * @return Nested entry providing the details about the exception.
    */
   public final native RecurrenceExceptionEntryLink getEntryLink() /*-{
     return this.getEntryLink();
@@ -48,7 +45,7 @@ public class RecurrenceException extends JavaScriptObject {
   /**
    * Returns whether the exception is specialized. This attribute is required.
    * 
-   * @return Whether the exception is specialized or undefined for none.
+   * @return Whether the exception is specialized.
    */
   public final native boolean getSpecialized() /*-{
     return this.getSpecialized();
@@ -56,38 +53,20 @@ public class RecurrenceException extends JavaScriptObject {
 
   /**
    * Sets the nested entry providing the details about the exception. This element is required.
-   */
-  public final native void setEntryLink() /*-{
-    this.setEntryLink();
-  }-*/;
-
-  /**
-   * Sets the nested entry providing the details about the exception. This element is required.
    * 
-   * @param entryLink Nested entry providing the details about the exception, or object to use as a parameter to the google.gdata.RecurrenceExceptionEntryLink constructor, or undefined for none.
+   * @param entryLink Nested entry providing the details about the exception.
    */
   public final native void setEntryLink(RecurrenceExceptionEntryLink entryLink) /*-{
-    this.setEntryLink(
-      entryLink
-    );
-  }-*/;
-
-  /**
-   * Sets whether the exception is specialized. This attribute is required.
-   */
-  public final native void setSpecialized() /*-{
-    this.setSpecialized();
+    this.setEntryLink(entryLink);
   }-*/;
 
   /**
    * Sets whether the exception is specialized. This attribute is required.
    * 
-   * @param specialized Whether the exception is specialized or undefined for none.
+   * @param specialized Whether the exception is specialized.
    */
   public final native void setSpecialized(boolean specialized) /*-{
-    this.setSpecialized(
-      specialized
-    );
+    this.setSpecialized(specialized);
   }-*/;
 
 }

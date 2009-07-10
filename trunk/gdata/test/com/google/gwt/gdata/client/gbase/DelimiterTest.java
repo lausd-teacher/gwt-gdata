@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -35,11 +34,11 @@ public class DelimiterTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Delimiter.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Delimiter.newInstance());
   }
 
   public void testProperties() {
-    Delimiter obj = Delimiter.newInstance(JavaScriptObject.createObject());
+    Delimiter obj = Delimiter.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

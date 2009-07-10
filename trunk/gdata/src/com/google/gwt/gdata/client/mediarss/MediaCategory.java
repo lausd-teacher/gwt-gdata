@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class MediaCategory extends JavaScriptObject {
 
   /**
-   * Constructs a media category using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content, label, and scheme.
+   * Constructs a media category.
+   * @return A MediaCategory object.
    */
-  public static native MediaCategory newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.mediarss.MediaCategory(
-      params
-    );
+  public static native MediaCategory newInstance() /*-{
+    return new $wnd.google.gdata.mediarss.MediaCategory();
   }-*/;
 
   protected MediaCategory() { }
@@ -39,7 +36,7 @@ public class MediaCategory extends JavaScriptObject {
   /**
    * Returns the text of the category. This attribute is optional.
    * 
-   * @return Text of the category or undefined for none.
+   * @return Text of the category.
    */
   public final native String getContent() /*-{
     return this.getContent();
@@ -48,7 +45,7 @@ public class MediaCategory extends JavaScriptObject {
   /**
    * Returns the human readable label. This attribute is optional.
    * 
-   * @return Human readable label or undefined for none.
+   * @return Human readable label.
    */
   public final native String getLabel() /*-{
     return this.getLabel();
@@ -57,64 +54,38 @@ public class MediaCategory extends JavaScriptObject {
   /**
    * Returns the URI that identifies the categorization scheme. This attribute is optional.
    * 
-   * @return URI that identifies the categorization scheme or undefined for none.
+   * @return URI that identifies the categorization scheme.
    */
   public final native String getScheme() /*-{
     return this.getScheme();
   }-*/;
-
-  /**
-   * Sets the text of the category. This attribute is optional.
-   */
-  public final native void setContent() /*-{
-    this.setContent();
-  }-*/;
-
+  
   /**
    * Sets the text of the category. This attribute is optional.
    * 
-   * @param content Text of the category or undefined for none.
+   * @param content Text of the category.
    */
   public final native void setContent(String content) /*-{
-    this.setContent(
-      content
-    );
-  }-*/;
-
-  /**
-   * Sets the human readable label. This attribute is optional.
-   */
-  public final native void setLabel() /*-{
-    this.setLabel();
+    this.setContent(content);
   }-*/;
 
   /**
    * Sets the human readable label. This attribute is optional.
    * 
-   * @param label Human readable label or undefined for none.
+   * @param label Human readable label.
    */
   public final native void setLabel(String label) /*-{
-    this.setLabel(
-      label
-    );
+    this.setLabel(label);
   }-*/;
 
-  /**
-   * Sets the URI that identifies the categorization scheme. This attribute is optional.
-   */
-  public final native void setScheme() /*-{
-    this.setScheme();
-  }-*/;
 
   /**
    * Sets the URI that identifies the categorization scheme. This attribute is optional.
    * 
-   * @param scheme URI that identifies the categorization scheme or undefined for none.
+   * @param scheme URI that identifies the categorization scheme.
    */
   public final native void setScheme(String scheme) /*-{
-    this.setScheme(
-      scheme
-    );
+    this.setScheme(scheme);
   }-*/;
 
 }

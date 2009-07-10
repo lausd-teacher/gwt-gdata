@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class ResourceProperty extends JavaScriptObject {
 
   /**
-   * Constructs a resource property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: id and value.
+   * Constructs a resource property.
+   * @return A ResourceProperty object.
    */
-  public static native ResourceProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.ResourceProperty(
-      params
-    );
+  public static native ResourceProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.ResourceProperty();
   }-*/;
 
   protected ResourceProperty() { }
@@ -39,7 +36,7 @@ public class ResourceProperty extends JavaScriptObject {
   /**
    * Returns the resource ID. This attribute is optional.
    * 
-   * @return Resource ID or undefined for none.
+   * @return Resource ID.
    */
   public final native String getId() /*-{
     return this.getId();
@@ -48,7 +45,7 @@ public class ResourceProperty extends JavaScriptObject {
   /**
    * Returns whether gd:who describes a resource. This attribute is optional.
    * 
-   * @return Whether gd:who describes a resource or undefined for none.
+   * @return Whether gd:who describes a resource.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
@@ -64,30 +61,19 @@ public class ResourceProperty extends JavaScriptObject {
   /**
    * Sets the resource ID. This attribute is optional.
    * 
-   * @param id Resource ID or undefined for none.
+   * @param id Resource ID.
    */
   public final native void setId(String id) /*-{
-    this.setId(
-      id
-    );
-  }-*/;
-
-  /**
-   * Sets whether gd:who describes a resource. This attribute is optional.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
+    this.setId(id);
   }-*/;
 
   /**
    * Sets whether gd:who describes a resource. This attribute is optional.
    * 
-   * @param value Whether gd:who describes a resource or undefined for none.
+   * @param value Whether gd:who describes a resource.
    */
   public final native void setValue(boolean value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

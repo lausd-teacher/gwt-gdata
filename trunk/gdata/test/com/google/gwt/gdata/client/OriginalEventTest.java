@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,12 +28,12 @@ public class OriginalEventTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", OriginalEvent.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", OriginalEvent.newInstance());
   }
 
   public void testProperties() {
-    OriginalEvent obj = OriginalEvent.newInstance(JavaScriptObject.createObject());
-    When originalstarttime = When.newInstance(JavaScriptObject.createObject());
+    OriginalEvent obj = OriginalEvent.newInstance();
+    When originalstarttime = When.newInstance();
     obj.setOriginalStartTime(originalstarttime);
     assertSame("originalstarttime", obj.getOriginalStartTime(), originalstarttime);
     String originalid = "myValue";

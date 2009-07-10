@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class GmValue extends JavaScriptObject {
 
   /**
-   * Constructs a gm value using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: count and value.
+   * Constructs a gm value.
+   * @return A GmValue object.
    */
-  public static native GmValue newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.GmValue(
-      params
-    );
+  public static native GmValue newInstance() /*-{
+    return new $wnd.google.gdata.gbase.GmValue();
   }-*/;
 
   protected GmValue() { }
@@ -39,7 +36,7 @@ public class GmValue extends JavaScriptObject {
   /**
    * Returns the count. This attribute is optional.
    * 
-   * @return Count or undefined for none.
+   * @return Count.
    */
   public final native double getCount() /*-{
     return this.getCount();
@@ -48,7 +45,7 @@ public class GmValue extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -56,38 +53,20 @@ public class GmValue extends JavaScriptObject {
 
   /**
    * Sets the count. This attribute is optional.
-   */
-  public final native void setCount() /*-{
-    this.setCount();
-  }-*/;
-
-  /**
-   * Sets the count. This attribute is optional.
    * 
-   * @param count Count or undefined for none.
+   * @param count Count.
    */
   public final native void setCount(double count) /*-{
-    this.setCount(
-      count
-    );
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
+    this.setCount(count);
   }-*/;
 
   /**
    * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

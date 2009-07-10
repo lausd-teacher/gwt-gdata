@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -34,11 +33,11 @@ public class EncodingTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Encoding.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Encoding.newInstance());
   }
 
   public void testProperties() {
-    Encoding obj = Encoding.newInstance(JavaScriptObject.createObject());
+    Encoding obj = Encoding.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

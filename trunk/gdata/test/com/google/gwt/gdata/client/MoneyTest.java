@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class MoneyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Money.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Money.newInstance());
   }
 
   public void testProperties() {
-    Money obj = Money.newInstance(JavaScriptObject.createObject());
+    Money obj = Money.newInstance();
     String currencycode = "myValue";
     obj.setCurrencyCode(currencycode);
     assertEquals("currencycode", obj.getCurrencyCode(), currencycode);

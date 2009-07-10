@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.mediarss;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class MediaCopyrightTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaCopyright.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", MediaCopyright.newInstance());
   }
 
   public void testProperties() {
-    MediaCopyright obj = MediaCopyright.newInstance(JavaScriptObject.createObject());
+    MediaCopyright obj = MediaCopyright.newInstance();
     String content = "myValue";
     obj.setContent(content);
     assertEquals("content", obj.getContent(), content);

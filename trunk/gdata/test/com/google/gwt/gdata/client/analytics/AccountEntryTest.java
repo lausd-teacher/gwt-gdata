@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,21 +28,20 @@ public class AccountEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AccountEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", AccountEntry.newInstance());
   }
 
   public void testOther() {
-    AccountEntry obj = AccountEntry.newInstance(JavaScriptObject.createObject());
     // Unit Test for addProperty(Property property)
-    // Unit Test for getProperties()
-    assertEquals("getProperties", obj.getProperties(), null);
     // Unit Test for getPropertyValue(String name)
-    // Unit Test for setProperties(JsArray properties)
   }
 
   public void testProperties() {
-    AccountEntry obj = AccountEntry.newInstance(JavaScriptObject.createObject());
-    TableId tableid = TableId.newInstance(JavaScriptObject.createObject());
+    AccountEntry obj = AccountEntry.newInstance();
+    Property[] properties = new Property[]{ Property.newInstance() };
+    obj.setProperties(properties);
+    assertEquals("properties", obj.getProperties().length, properties.length);
+    TableId tableid = TableId.newInstance();
     obj.setTableId(tableid);
     assertSame("tableid", obj.getTableId(), tableid);
   }

@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 
 /**
  * Describes a list of attribute for an item type.
@@ -40,14 +39,11 @@ public class GmAttribute extends JavaScriptObject {
   public static final String IMPORTANCE_REQUIRED = getConstant("IMPORTANCE_REQUIRED");
 
   /**
-   * Constructs a list of attribute for an item type using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: count, importance, name, type, and values.
+   * Constructs a list of attribute for an item type.
+   * A GmAttribute object.
    */
-  public static native GmAttribute newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.GmAttribute(
-      params
-    );
+  public static native GmAttribute newInstance() /*-{
+    return new $wnd.google.gdata.gbase.GmAttribute();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -59,18 +55,16 @@ public class GmAttribute extends JavaScriptObject {
   /**
    * Adds a new gm value.
    * 
-   * @param value Gm value to add, or object to use as a parameter to the google.gdata.gbase.GmValue constructor.
+   * @param value Gm value to add.
    */
   public final native void addValue(GmValue value) /*-{
-    this.addValue(
-      value
-    );
+    this.addValue(value);
   }-*/;
 
   /**
    * Returns the count. This attribute is optional.
    * 
-   * @return Count or undefined for none.
+   * @return Count.
    */
   public final native double getCount() /*-{
     return this.getCount();
@@ -79,7 +73,7 @@ public class GmAttribute extends JavaScriptObject {
   /**
    * Returns the importance. This attribute is optional.
    * 
-   * @return Importance or undefined for none.
+   * @return Importance.
    */
   public final native String getImportance() /*-{
     return this.getImportance();
@@ -88,7 +82,7 @@ public class GmAttribute extends JavaScriptObject {
   /**
    * Returns the name. This attribute is required.
    * 
-   * @return Name or undefined for none.
+   * @return Name.
    */
   public final native String getName() /*-{
     return this.getName();
@@ -97,7 +91,7 @@ public class GmAttribute extends JavaScriptObject {
   /**
    * Returns the type. This attribute is required.
    * 
-   * @return Type or undefined for none.
+   * @return Type.
    */
   public final native String getType() /*-{
     return this.getType();
@@ -108,97 +102,54 @@ public class GmAttribute extends JavaScriptObject {
    * 
    * @return Gm values.
    */
-  public final native JsArray<GmValue> getValues() /*-{
-    return this.getValues();
-  }-*/;
-
-  /**
-   * Sets the count. This attribute is optional.
-   */
-  public final native void setCount() /*-{
-    this.setCount();
+  public final native GmValue[] getValues() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getValues());
   }-*/;
 
   /**
    * Sets the count. This attribute is optional.
    * 
-   * @param count Count or undefined for none.
+   * @param count Count.
    */
   public final native void setCount(double count) /*-{
-    this.setCount(
-      count
-    );
-  }-*/;
-
-  /**
-   * Sets the importance. This attribute is optional.
-   */
-  public final native void setImportance() /*-{
-    this.setImportance();
+    this.setCount(count);
   }-*/;
 
   /**
    * Sets the importance. This attribute is optional.
    * 
-   * @param importance Importance or undefined for none.
+   * @param importance Importance.
    */
   public final native void setImportance(String importance) /*-{
-    this.setImportance(
-      importance
-    );
-  }-*/;
-
-  /**
-   * Sets the name. This attribute is required.
-   */
-  public final native void setName() /*-{
-    this.setName();
+    this.setImportance(importance);
   }-*/;
 
   /**
    * Sets the name. This attribute is required.
    * 
-   * @param name Name or undefined for none.
+   * @param name Name.
    */
   public final native void setName(String name) /*-{
-    this.setName(
-      name
-    );
-  }-*/;
-
-  /**
-   * Sets the type. This attribute is required.
-   */
-  public final native void setType() /*-{
-    this.setType();
+    this.setName(name);
   }-*/;
 
   /**
    * Sets the type. This attribute is required.
    * 
-   * @param type Type or undefined for none.
+   * @param type Type.
    */
   public final native void setType(String type) /*-{
-    this.setType(
-      type
-    );
-  }-*/;
-
-  /**
-   * Sets the gm values.
-   */
-  public final native void setValues() /*-{
-    this.setValues();
+    this.setType(type);
   }-*/;
 
   /**
    * Sets the gm values.
    * 
-   * @param values Gm values, where each gm value is added using the addValue() function, or undefined to clear the gm values.
+   * @param values Gm values, where each gm value is added using addValue().
    */
-  public final native void setValues(JsArray<GmValue> values) /*-{
+  public final native void setValues(GmValue[] values) /*-{
     this.setValues(
-      values
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(values)
     );
   }-*/;
 

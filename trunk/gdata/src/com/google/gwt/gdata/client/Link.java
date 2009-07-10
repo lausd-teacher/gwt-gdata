@@ -16,8 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Extends the base Link class with GData extensions.
  */
@@ -39,14 +37,11 @@ public class Link extends com.google.gwt.gdata.client.atom.Link {
   public static final String REL_FEED_BATCH = getConstant("REL_FEED_BATCH");
 
   /**
-   * Constructs a GData Link class using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: href, hrefLang, length, rel, title, titleLang, and type.
+   * Constructs a GData Link.
+   * @return A Link object.
    */
-  public static native Link newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Link(
-      params
-    );
+  public static native Link newInstance() /*-{
+    return new $wnd.google.gdata.Link();
   }-*/;
 
   private static native String getConstant(String name) /*-{

@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 
 /**
  * Describes a gm attributes.
@@ -25,14 +24,11 @@ import com.google.gwt.core.client.JsArray;
 public class GmAttributes extends JavaScriptObject {
 
   /**
-   * Constructs a gm attributes using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: attributes.
+   * Constructs a gm attributes.
+   * @return A GmAttributes object.
    */
-  public static native GmAttributes newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.GmAttributes(
-      params
-    );
+  public static native GmAttributes newInstance() /*-{
+    return new $wnd.google.gdata.gbase.GmAttributes();
   }-*/;
 
   protected GmAttributes() { }
@@ -40,12 +36,10 @@ public class GmAttributes extends JavaScriptObject {
   /**
    * Adds a new list of attribute for an item type.
    * 
-   * @param attribute List of attribute for an item type to add, or object to use as a parameter to the google.gdata.gbase.GmAttribute constructor.
+   * @param attribute List of attribute for an item type to add.
    */
   public final native void addAttribute(GmAttribute attribute) /*-{
-    this.addAttribute(
-      attribute
-    );
+    this.addAttribute(attribute);
   }-*/;
 
   /**
@@ -53,25 +47,18 @@ public class GmAttributes extends JavaScriptObject {
    * 
    * @return List of attribute for an item types.
    */
-  public final native JsArray<GmAttribute> getAttributes() /*-{
-    return this.getAttributes();
-  }-*/;
-
-  /**
-   * Sets the list of attribute for an item types.
-   */
-  public final native void setAttributes() /*-{
-    this.setAttributes();
+  public final native GmAttribute[] getAttributes() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getAttributes());
   }-*/;
 
   /**
    * Sets the list of attribute for an item types.
    * 
-   * @param attributes List of attribute for an item types, where each list of attribute for an item type is added using the addAttribute() function, or undefined to clear the list of attribute for an item types.
+   * @param attributes List of attribute for an item types, where each list of attribute for an item type is added using addAttribute().
    */
-  public final native void setAttributes(JsArray<GmAttribute> attributes) /*-{
+  public final native void setAttributes(GmAttribute[] attributes) /*-{
     this.setAttributes(
-      attributes
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(attributes)
     );
   }-*/;
 

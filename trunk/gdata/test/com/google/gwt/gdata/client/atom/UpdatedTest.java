@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.atom;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -32,11 +31,11 @@ public class UpdatedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Updated.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Updated.newInstance());
   }
 
   public void testOther() {
-    Updated obj = Updated.newInstance(JavaScriptObject.createObject());
+    Updated obj = Updated.newInstance();
     // Unit Test for setValue(Date value)
     Date value = new Date();
     obj.setValue(value);
@@ -44,7 +43,7 @@ public class UpdatedTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    Updated obj = Updated.newInstance(JavaScriptObject.createObject());
+    Updated obj = Updated.newInstance();
     DateTime value = DateTime.newInstance(new Date(), false);
     obj.setValue(value);
     assertEquals("value", obj.getValue().getDate(), value.getDate());

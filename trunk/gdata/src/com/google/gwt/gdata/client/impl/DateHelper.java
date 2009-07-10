@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.impl;
 import java.util.Date;
 
 /**
- * Comment unavailable.
+ * Provides utility methods for interacting with Date objects in GWT.
  */
 public class DateHelper {
   

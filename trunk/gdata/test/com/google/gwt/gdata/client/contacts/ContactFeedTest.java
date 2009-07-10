@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class ContactFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ContactFeed.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", ContactFeed.newInstance());
   }
 
   public void testOther() {
-    ContactFeed obj = ContactFeed.newInstance(JavaScriptObject.createObject());
+    ContactFeed obj = ContactFeed.newInstance();
     // Unit Test for getFeedBatchLink()
     assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
     // Unit Test for getNextLink()

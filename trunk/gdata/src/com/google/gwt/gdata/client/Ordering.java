@@ -39,14 +39,11 @@ public class Ordering extends JavaScriptObject {
   public static final String REL_LAST = getConstant("REL_LAST");
 
   /**
-   * Constructs an ordering using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: next, orderId, prev, ref, and rel.
+   * Constructs an ordering
+   * @return An Ordering object.
    */
-  public static native Ordering newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Ordering(
-      params
-    );
+  public static native Ordering newInstance() /*-{
+    return new $wnd.google.gdata.Ordering();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -67,7 +64,7 @@ public class Ordering extends JavaScriptObject {
   /**
    * Returns the ordered feed id. This attribute is optional.
    * 
-   * @return Ordered feed id or undefined for none.
+   * @return Ordered feed id.
    */
   public final native String getOrderId() /*-{
     return this.getOrderId();
@@ -76,7 +73,7 @@ public class Ordering extends JavaScriptObject {
   /**
    * Returns the previous element. This attribute is optional.
    * 
-   * @return Previous element or undefined for none.
+   * @return Previous element.
    */
   public final native String getPrev() /*-{
     return this.getPrev();
@@ -85,7 +82,7 @@ public class Ordering extends JavaScriptObject {
   /**
    * Returns the other entry id. This attribute is optional.
    * 
-   * @return Other entry id or undefined for none.
+   * @return Other entry id.
    */
   public final native String getRef() /*-{
     return this.getRef();
@@ -94,7 +91,7 @@ public class Ordering extends JavaScriptObject {
   /**
    * Returns the order type. This attribute is optional.
    * 
-   * @return Order type or undefined for none.
+   * @return Order type.
    */
   public final native String getRel() /*-{
     return this.getRel();
@@ -102,92 +99,47 @@ public class Ordering extends JavaScriptObject {
 
   /**
    * Sets the next element. This attribute is optional.
-   */
-  public final native void setNext() /*-{
-    this.setNext();
-  }-*/;
-
-  /**
-   * Sets the next element. This attribute is optional.
    * 
-   * @param next Next element or undefined for none.
+   * @param next Next element.
    */
   public final native void setNext(String next) /*-{
-    this.setNext(
-      next
-    );
-  }-*/;
-
-  /**
-   * Sets the ordered feed id. This attribute is optional.
-   */
-  public final native void setOrderId() /*-{
-    this.setOrderId();
+    this.setNext(next);
   }-*/;
 
   /**
    * Sets the ordered feed id. This attribute is optional.
    * 
-   * @param orderId Ordered feed id or undefined for none.
+   * @param orderId Ordered feed id.
    */
   public final native void setOrderId(String orderId) /*-{
-    this.setOrderId(
-      orderId
-    );
-  }-*/;
-
-  /**
-   * Sets the previous element. This attribute is optional.
-   */
-  public final native void setPrev() /*-{
-    this.setPrev();
+    this.setOrderId(orderId);
   }-*/;
 
   /**
    * Sets the previous element. This attribute is optional.
    * 
-   * @param prev Previous element or undefined for none.
+   * @param prev Previous element.
    */
   public final native void setPrev(String prev) /*-{
-    this.setPrev(
-      prev
-    );
-  }-*/;
-
-  /**
-   * Sets the other entry id. This attribute is optional.
-   */
-  public final native void setRef() /*-{
-    this.setRef();
+    this.setPrev(prev);
   }-*/;
 
   /**
    * Sets the other entry id. This attribute is optional.
    * 
-   * @param ref Other entry id or undefined for none.
+   * @param ref Other entry id.
    */
   public final native void setRef(String ref) /*-{
-    this.setRef(
-      ref
-    );
-  }-*/;
-
-  /**
-   * Sets the order type. This attribute is optional.
-   */
-  public final native void setRel() /*-{
-    this.setRel();
+    this.setRef(ref);
   }-*/;
 
   /**
    * Sets the order type. This attribute is optional.
    * 
-   * @param rel Order type or undefined for none.
+   * @param rel Order type.
    */
   public final native void setRel(String rel) /*-{
-    this.setRel(
-      rel
-    );
+    this.setRel(rel);
   }-*/;
 
 }

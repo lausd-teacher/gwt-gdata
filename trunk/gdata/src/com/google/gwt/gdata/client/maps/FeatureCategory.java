@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.maps;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Kind;
 
 /**
@@ -30,14 +29,11 @@ public class FeatureCategory extends Kind {
   public static final String TERM_FEATURE = getConstant("TERM_FEATURE");
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: scheme and term.
+   * Constructs a feature category.
+   * @return A FeatureCategory object.
    */
-  public static native FeatureCategory newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.maps.FeatureCategory(
-      params
-    );
+  public static native FeatureCategory newInstance() /*-{
+    return new $wnd.google.gdata.maps.FeatureCategory();
   }-*/;
 
   private static native String getConstant(String name) /*-{

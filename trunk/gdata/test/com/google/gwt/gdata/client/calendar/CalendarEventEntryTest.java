@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.geo.GeoRssWhere;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -30,61 +29,58 @@ public class CalendarEventEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarEventEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", CalendarEventEntry.newInstance());
   }
 
   public void testOther() {
-    CalendarEventEntry obj = CalendarEventEntry.newInstance(JavaScriptObject.createObject());
+    CalendarEventEntry obj = CalendarEventEntry.newInstance();
     // Unit Test for addExtendedProperty(CalendarExtendedProperty extendedProperty)
-    // Unit Test for getExtendedProperties()
-    assertEquals("getExtendedProperties", obj.getExtendedProperties(), null);
     // Unit Test for getHtmlLink()
     assertEquals("getHtmlLink", obj.getHtmlLink(), null);
     // Unit Test for getWebContent()
     assertEquals("getWebContent", obj.getWebContent(), null);
     // Unit Test for removeWebContent()
-    // Unit Test for setExtendedProperties(JsArray extendedProperties)
   }
 
   public void testProperties() {
-    CalendarEventEntry obj = CalendarEventEntry.newInstance(JavaScriptObject.createObject());
-    SequenceNumberProperty sequence = SequenceNumberProperty.newInstance(JavaScriptObject.createObject());
+    CalendarEventEntry obj = CalendarEventEntry.newInstance();
+    SequenceNumberProperty sequence = SequenceNumberProperty.newInstance();
     obj.setSequence(sequence);
     assertSame("sequence", obj.getSequence(), sequence);
-    SyncEventProperty syncevent = SyncEventProperty.newInstance(JavaScriptObject.createObject());
+    SyncEventProperty syncevent = SyncEventProperty.newInstance();
     obj.setSyncEvent(syncevent);
     assertSame("syncevent", obj.getSyncEvent(), syncevent);
-    GuestsCanInviteOthersProperty guestscaninviteothers = GuestsCanInviteOthersProperty.newInstance(JavaScriptObject.createObject());
+    GuestsCanInviteOthersProperty guestscaninviteothers = GuestsCanInviteOthersProperty.newInstance();
     obj.setGuestsCanInviteOthers(guestscaninviteothers);
     assertSame("guestscaninviteothers", obj.getGuestsCanInviteOthers(), guestscaninviteothers);
-    AnyoneCanAddSelfProperty anyonecanaddself = AnyoneCanAddSelfProperty.newInstance(JavaScriptObject.createObject());
+    AnyoneCanAddSelfProperty anyonecanaddself = AnyoneCanAddSelfProperty.newInstance();
     obj.setAnyoneCanAddSelf(anyonecanaddself);
     assertSame("anyonecanaddself", obj.getAnyoneCanAddSelf(), anyonecanaddself);
-    SuppressReplyNotificationsProperty suppressreplynotifications = SuppressReplyNotificationsProperty.newInstance(JavaScriptObject.createObject());
+    SuppressReplyNotificationsProperty suppressreplynotifications = SuppressReplyNotificationsProperty.newInstance();
     obj.setSuppressReplyNotifications(suppressreplynotifications);
     assertSame("suppressreplynotifications", obj.getSuppressReplyNotifications(), suppressreplynotifications);
-    GuestsCanModifyProperty guestscanmodify = GuestsCanModifyProperty.newInstance(JavaScriptObject.createObject());
+    GuestsCanModifyProperty guestscanmodify = GuestsCanModifyProperty.newInstance();
     obj.setGuestsCanModify(guestscanmodify);
     assertSame("guestscanmodify", obj.getGuestsCanModify(), guestscanmodify);
-    GuestsCanSeeGuestsProperty guestscanseeguests = GuestsCanSeeGuestsProperty.newInstance(JavaScriptObject.createObject());
+    GuestsCanSeeGuestsProperty guestscanseeguests = GuestsCanSeeGuestsProperty.newInstance();
     obj.setGuestsCanSeeGuests(guestscanseeguests);
     assertSame("guestscanseeguests", obj.getGuestsCanSeeGuests(), guestscanseeguests);
-    GeoRssWhere geolocation = GeoRssWhere.newInstance(JavaScriptObject.createObject());
+    GeoRssWhere geolocation = GeoRssWhere.newInstance();
     obj.setGeoLocation(geolocation);
     assertSame("geolocation", obj.getGeoLocation(), geolocation);
-    IcalUIDProperty uid = IcalUIDProperty.newInstance(JavaScriptObject.createObject());
+    CalendarExtendedProperty[] extendedproperties = new CalendarExtendedProperty[]{ CalendarExtendedProperty.newInstance() };
+    obj.setExtendedProperties(extendedproperties);
+    assertEquals("extendedproperties", obj.getExtendedProperties().length, extendedproperties.length);
+    IcalUIDProperty uid = IcalUIDProperty.newInstance();
     obj.setUid(uid);
     assertSame("uid", obj.getUid(), uid);
-    SendEventNotificationsProperty sendeventnotifications = SendEventNotificationsProperty.newInstance(JavaScriptObject.createObject());
+    SendEventNotificationsProperty sendeventnotifications = SendEventNotificationsProperty.newInstance();
     obj.setSendEventNotifications(sendeventnotifications);
     assertSame("sendeventnotifications", obj.getSendEventNotifications(), sendeventnotifications);
-    QuickAddProperty quickadd = QuickAddProperty.newInstance(JavaScriptObject.createObject());
+    QuickAddProperty quickadd = QuickAddProperty.newInstance();
     obj.setQuickAdd(quickadd);
     assertSame("quickadd", obj.getQuickAdd(), quickadd);
-    CalendarLink webcontentlink = CalendarLink.newInstance(JavaScriptObject.createObject());
-    obj.setWebContentLink(webcontentlink);
-    assertSame("webcontentlink", obj.getWebContentLink(), webcontentlink);
-    PrivateCopyProperty privatecopy = PrivateCopyProperty.newInstance(JavaScriptObject.createObject());
+    PrivateCopyProperty privatecopy = PrivateCopyProperty.newInstance();
     obj.setPrivateCopy(privatecopy);
     assertSame("privatecopy", obj.getPrivateCopy(), privatecopy);
   }

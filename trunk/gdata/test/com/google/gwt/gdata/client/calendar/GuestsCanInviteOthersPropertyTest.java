@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class GuestsCanInviteOthersPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GuestsCanInviteOthersProperty.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", GuestsCanInviteOthersProperty.newInstance());
   }
 
   public void testProperties() {
-    GuestsCanInviteOthersProperty obj = GuestsCanInviteOthersProperty.newInstance(JavaScriptObject.createObject());
+    GuestsCanInviteOthersProperty obj = GuestsCanInviteOthersProperty.newInstance();
     boolean value = true;
     obj.setValue(value);
     assertSame("value", obj.getValue(), value);

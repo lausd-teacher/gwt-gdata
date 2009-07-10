@@ -16,23 +16,18 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-
 /**
  * Describes an entry used by a recurrence exception entry link.
  */
 public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry<RecurrenceExceptionEntry> {
 
   /**
-   * Constructs a recurrence exception entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, comments, content, contributors, eventStatus, id, links, originalEvent, published, title, transparency, updated, visibility, when, where, and who.
+   * Constructs a recurrence exception entry.
+   * @return A RecurrenceExceptionEntry object.
    */
-  public static native RecurrenceExceptionEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.RecurrenceExceptionEntry(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native RecurrenceExceptionEntry newInstance() /*-{
+    return new $wnd.google.gdata.RecurrenceExceptionEntry();
   }-*/;
 
   protected RecurrenceExceptionEntry() { }
@@ -40,40 +35,34 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry<
   /**
    * Adds a new time period description.
    * 
-   * @param when Time period description to add, or object to use as a parameter to the google.gdata.When constructor.
+   * @param when Time period description to add.
    */
   public final native void addWhen(When when) /*-{
-    this.addWhen(
-      when
-    );
+    this.addWhen(when);
   }-*/;
 
   /**
    * Adds a new place description.
    * 
-   * @param where Place description to add, or object to use as a parameter to the google.gdata.Where constructor.
+   * @param where Place description to add.
    */
   public final native void addWhere(Where where) /*-{
-    this.addWhere(
-      where
-    );
+    this.addWhere(where);
   }-*/;
 
   /**
    * Adds a new person description.
    * 
-   * @param who Person description to add, or object to use as a parameter to the google.gdata.Who constructor.
+   * @param who Person description to add.
    */
   public final native void addWho(Who who) /*-{
-    this.addWho(
-      who
-    );
+    this.addWho(who);
   }-*/;
 
   /**
    * Returns the Comments class. This element is optional.
    * 
-   * @return Comments class or undefined for none.
+   * @return Comments.
    */
   public final native Comments getComments() /*-{
     return this.getComments();
@@ -82,7 +71,7 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry<
   /**
    * Returns the event status. This element is optional.
    * 
-   * @return Event status or undefined for none.
+   * @return Event status.
    */
   public final native EventStatus getEventStatus() /*-{
     return this.getEventStatus();
@@ -91,7 +80,7 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry<
   /**
    * Returns the original event. This element is optional.
    * 
-   * @return Original event or undefined for none.
+   * @return Original event.
    */
   public final native OriginalEvent getOriginalEvent() /*-{
     return this.getOriginalEvent();
@@ -100,7 +89,7 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry<
   /**
    * Returns the event transparency. This element is optional.
    * 
-   * @return Event transparency or undefined for none.
+   * @return Event transparency.
    */
   public final native Transparency getTransparency() /*-{
     return this.getTransparency();
@@ -109,7 +98,7 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry<
   /**
    * Returns the event visibility. This element is optional.
    * 
-   * @return Event visibility or undefined for none.
+   * @return Event visibility.
    */
   public final native Visibility getVisibility() /*-{
     return this.getVisibility();
@@ -120,8 +109,8 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry<
    * 
    * @return Time period descriptions.
    */
-  public final native JsArray<When> getWhen() /*-{
-    return this.getWhen();
+  public final native When[] getWhen() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getWhen());
   }-*/;
 
   /**
@@ -129,8 +118,8 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry<
    * 
    * @return Place descriptions.
    */
-  public final native JsArray<Where> getWhere() /*-{
-    return this.getWhere();
+  public final native Where[] getWhere() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getWhere());
   }-*/;
 
   /**
@@ -138,151 +127,85 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry<
    * 
    * @return Person descriptions.
    */
-  public final native JsArray<Who> getWho() /*-{
-    return this.getWho();
-  }-*/;
-
-  /**
-   * Sets the Comments class. This element is optional.
-   */
-  public final native void setComments() /*-{
-    this.setComments();
+  public final native Who[] getWho() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getWho());
   }-*/;
 
   /**
    * Sets the Comments class. This element is optional.
    * 
-   * @param comments Comments class, or object to use as a parameter to the google.gdata.Comments constructor, or undefined for none.
+   * @param comments Comments class.
    */
   public final native void setComments(Comments comments) /*-{
-    this.setComments(
-      comments
-    );
-  }-*/;
-
-  /**
-   * Sets the event status. This element is optional.
-   */
-  public final native void setEventStatus() /*-{
-    this.setEventStatus();
+    this.setComments(comments);
   }-*/;
 
   /**
    * Sets the event status. This element is optional.
    * 
-   * @param eventStatus Event status, or object to use as a parameter to the google.gdata.EventStatus constructor, or undefined for none.
+   * @param eventStatus Event status.
    */
   public final native void setEventStatus(EventStatus eventStatus) /*-{
-    this.setEventStatus(
-      eventStatus
-    );
-  }-*/;
-
-  /**
-   * Sets the original event. This element is optional.
-   */
-  public final native void setOriginalEvent() /*-{
-    this.setOriginalEvent();
+    this.setEventStatus(eventStatus);
   }-*/;
 
   /**
    * Sets the original event. This element is optional.
    * 
-   * @param originalEvent Original event, or object to use as a parameter to the google.gdata.OriginalEvent constructor, or undefined for none.
+   * @param originalEvent Original event.
    */
   public final native void setOriginalEvent(OriginalEvent originalEvent) /*-{
-    this.setOriginalEvent(
-      originalEvent
-    );
-  }-*/;
-
-  /**
-   * Sets the event transparency. This element is optional.
-   */
-  public final native void setTransparency() /*-{
-    this.setTransparency();
+    this.setOriginalEvent(originalEvent);
   }-*/;
 
   /**
    * Sets the event transparency. This element is optional.
    * 
-   * @param transparency Event transparency, or object to use as a parameter to the google.gdata.Transparency constructor, or undefined for none.
+   * @param transparency Event transparency.
    */
   public final native void setTransparency(Transparency transparency) /*-{
-    this.setTransparency(
-      transparency
-    );
-  }-*/;
-
-  /**
-   * Sets the event visibility. This element is optional.
-   */
-  public final native void setVisibility() /*-{
-    this.setVisibility();
+    this.setTransparency(transparency);
   }-*/;
 
   /**
    * Sets the event visibility. This element is optional.
    * 
-   * @param visibility Event visibility, or object to use as a parameter to the google.gdata.Visibility constructor, or undefined for none.
+   * @param visibility Event visibility.
    */
   public final native void setVisibility(Visibility visibility) /*-{
-    this.setVisibility(
-      visibility
-    );
-  }-*/;
-
-  /**
-   * Sets the time period descriptions.
-   */
-  public final native void setWhen() /*-{
-    this.setWhen();
+    this.setVisibility(visibility);
   }-*/;
 
   /**
    * Sets the time period descriptions.
    * 
-   * @param when Time period descriptions, where each time period description is added using the addWhen() function, or undefined to clear the time period descriptions.
+   * @param when Time period descriptions, where each time period description is added using addWhen().
    */
-  public final native void setWhen(JsArray<When> when) /*-{
+  public final native void setWhen(When[] when) /*-{
     this.setWhen(
-      when
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(when)
     );
   }-*/;
 
   /**
    * Sets the place descriptions.
-   */
-  public final native void setWhere() /*-{
-    this.setWhere();
-  }-*/;
-
-  /**
-   * Sets the place descriptions.
    * 
-   * @param where Place descriptions, where each place description is added using the addWhere() function, or undefined to clear the place descriptions.
+   * @param where Place descriptions, where each place description is added using addWhere().
    */
-  public final native void setWhere(JsArray<Where> where) /*-{
+  public final native void setWhere(Where[] where) /*-{
     this.setWhere(
-      where
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(where)
     );
   }-*/;
 
   /**
    * Sets the person descriptions.
-   */
-  public final native void setWho() /*-{
-    this.setWho();
-  }-*/;
-
-  /**
-   * Sets the person descriptions.
    * 
-   * @param who Person descriptions, where each person description is added using the addWho() function, or undefined to clear the person descriptions.
+   * @param who Person descriptions, where each person description is added using addWho().
    */
-  public final native void setWho(JsArray<Who> who) /*-{
+  public final native void setWho(Who[] who) /*-{
     this.setWho(
-      who
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(who)
     );
   }-*/;
 

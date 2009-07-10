@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Country extends JavaScriptObject {
 
   /**
-   * Constructs a country using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: code and value.
+   * Constructs a country object.
+   * @return A country object.
    */
-  public static native Country newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Country(
-      params
-    );
+  public static native Country newInstance() /*-{
+    return new $wnd.google.gdata.Country();
   }-*/;
 
   protected Country() { }
@@ -39,7 +36,7 @@ public class Country extends JavaScriptObject {
   /**
    * Returns the The 3166-1 alpha-2 country code. This attribute is optional.
    * 
-   * @return The 3166-1 alpha-2 country code or undefined for none.
+   * @return The 3166-1 alpha-2 country code.
    */
   public final native String getCode() /*-{
     return this.getCode();
@@ -48,7 +45,7 @@ public class Country extends JavaScriptObject {
   /**
    * Returns the value. This attribute is optional.
    * 
-   * @return Value or undefined for none.
+   * @return The value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -56,38 +53,20 @@ public class Country extends JavaScriptObject {
 
   /**
    * Sets the The 3166-1 alpha-2 country code. This attribute is optional.
-   */
-  public final native void setCode() /*-{
-    this.setCode();
-  }-*/;
-
-  /**
-   * Sets the The 3166-1 alpha-2 country code. This attribute is optional.
    * 
-   * @param code The 3166-1 alpha-2 country code or undefined for none.
+   * @param code The 3166-1 alpha-2 country code.
    */
   public final native void setCode(String code) /*-{
-    this.setCode(
-      code
-    );
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is optional.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
+    this.setCode(code);
   }-*/;
 
   /**
    * Sets the value. This attribute is optional.
    * 
-   * @param value Value or undefined for none.
+   * @param value The value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

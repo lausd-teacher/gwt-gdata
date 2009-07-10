@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.geo;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,15 +28,15 @@ public class GeoRssWhereTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GeoRssWhere.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", GeoRssWhere.newInstance());
   }
 
   public void testProperties() {
-    GeoRssWhere obj = GeoRssWhere.newInstance(JavaScriptObject.createObject());
-    GmlPoint point = GmlPoint.newInstance(JavaScriptObject.createObject());
+    GeoRssWhere obj = GeoRssWhere.newInstance();
+    GmlPoint point = GmlPoint.newInstance();
     obj.setPoint(point);
     assertSame("point", obj.getPoint(), point);
-    GmlEnvelope envelope = GmlEnvelope.newInstance(JavaScriptObject.createObject());
+    GmlEnvelope envelope = GmlEnvelope.newInstance();
     obj.setEnvelope(envelope);
     assertSame("envelope", obj.getEnvelope(), envelope);
   }

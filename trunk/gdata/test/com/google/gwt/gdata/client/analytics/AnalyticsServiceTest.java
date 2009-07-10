@@ -16,7 +16,10 @@
 
 package com.google.gwt.gdata.client.analytics;
 
+import com.google.gwt.accounts.client.UserTest;
+import com.google.gwt.gdata.client.GDataTestScripts;
 import com.google.gwt.junit.client.GWTTestCase;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Tests for the AnalyticsService class.
@@ -27,20 +30,35 @@ public class AnalyticsServiceTest extends GWTTestCase {
     return "com.google.gwt.gdata.GDataTest";
   }
 
+  public void test1AccountGet() {
+    UserTest.login(GDataTestScripts.Analytics.testCookie_Name, GDataTestScripts.Analytics.testCookie_Value);
+    AnalyticsService svc = AnalyticsService.newInstance("test");
+    svc.getAccountFeed(GDataTestScripts.Analytics.testAccounts_FeedLink,
+        new AsyncCallback<AccountFeed>() {
+          public void onFailure(Throwable caught) {
+            fail("Get Failed: " + caught.getMessage());
+          }
+          public void onSuccess(AccountFeed result) {
+            if (result.getEntries().length == 0) {
+              fail("Get Failed");
+            }
+            if (!result.getTitle().getText().equals(GDataTestScripts.Analytics.testAccounts_FeedTitle) ||
+              !result.getId().getValue().equals(GDataTestScripts.Analytics.testAccounts_FeedId)) {
+              fail("Get Failed");
+            }
+            GDataTestScripts.Analytics.testAccounts_Feed = result;
+            GDataTestScripts.Analytics.testAccount_Entry_Original = result.getEntries()[0];
+            finishTest();
+          }
+    });
+    this.delayTestFinish(4000);
+  }
+
   public void testConstants() {
     assertNotNull("SERVICE_NAME", AnalyticsService.SERVICE_NAME);
   }
 
   public void testConstructors() {
     assertNotNull("newInstance()", AnalyticsService.newInstance("myValue"));
-  }
-
-  public void testOther() {
-    // Unit Test for getAccountEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
-    // Unit Test for getAccountFeed(AccountQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
-    // Unit Test for getAccountFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
-    // Unit Test for getDataEntry(String uri, function(Object) continuation, function(Error) opt_errorHandler)
-    // Unit Test for getDataFeed(DataQuery uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
-    // Unit Test for getDataFeed(String uriOrQuery, function(Object) continuation, function(Error) opt_errorHandler)
   }
 }

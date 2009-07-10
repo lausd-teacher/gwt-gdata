@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.atom;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class IdTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Id.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Id.newInstance());
   }
 
   public void testProperties() {
-    Id obj = Id.newInstance(JavaScriptObject.createObject());
+    Id obj = Id.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

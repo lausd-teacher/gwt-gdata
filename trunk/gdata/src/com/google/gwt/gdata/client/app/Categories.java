@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.app;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.atom.Category;
 
 /**
@@ -36,14 +35,11 @@ public class Categories extends JavaScriptObject {
   public static final String FIXED_YES = getConstant("FIXED_YES");
 
   /**
-   * Constructs an app categories document using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, fixed, href, and scheme.
+   * Constructs an app categories document.
+   * @return A Categories object.
    */
-  public static native Categories newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.app.Categories(
-      params
-    );
+  public static native Categories newInstance() /*-{
+    return new $wnd.google.gdata.app.Categories();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -55,12 +51,10 @@ public class Categories extends JavaScriptObject {
   /**
    * Adds a new category.
    * 
-   * @param category Category to add, or object to use as a parameter to the google.gdata.atom.Category constructor.
+   * @param category Category to add.
    */
   public final native void addCategory(Category category) /*-{
-    this.addCategory(
-      category
-    );
+    this.addCategory(category);
   }-*/;
 
   /**
@@ -68,14 +62,14 @@ public class Categories extends JavaScriptObject {
    * 
    * @return Categories.
    */
-  public final native JsArray<Category> getCategories() /*-{
-    return this.getCategories();
+  public final native Category[] getCategories() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getCategories());
   }-*/;
 
   /**
    * Returns the indicates whether the list of categories is a fixed or an open set. This attribute is optional.
    * 
-   * @return Indicates whether the list of categories is a fixed or an open set or undefined for none.
+   * @return Indicates whether the list of categories is a fixed or an open set.
    */
   public final native String getFixed() /*-{
     return this.getFixed();
@@ -84,7 +78,7 @@ public class Categories extends JavaScriptObject {
   /**
    * Returns the an IRI reference to a Category Document. This attribute is optional.
    * 
-   * @return An IRI reference to a Category Document or undefined for none.
+   * @return An IRI reference to a Category Document.
    */
   public final native String getHref() /*-{
     return this.getHref();
@@ -93,7 +87,7 @@ public class Categories extends JavaScriptObject {
   /**
    * Returns the default scheme of the contained category elements. This attribute is optional.
    * 
-   * @return Default scheme of the contained category elements or undefined for none.
+   * @return Default scheme of the contained category elements.
    */
   public final native String getScheme() /*-{
     return this.getScheme();
@@ -101,74 +95,40 @@ public class Categories extends JavaScriptObject {
 
   /**
    * Sets the categories.
-   */
-  public final native void setCategories() /*-{
-    this.setCategories();
-  }-*/;
-
-  /**
-   * Sets the categories.
    * 
-   * @param categories Categories, where each category is added using the addCategory() function, or undefined to clear the categories.
+   * @param categories Categories, where each category is added using addCategory().
    */
-  public final native void setCategories(JsArray<Category> categories) /*-{
+  public final native void setCategories(Category[] categories) /*-{
     this.setCategories(
-      categories
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(categories)
     );
   }-*/;
 
   /**
    * Sets the indicates whether the list of categories is a fixed or an open set. This attribute is optional.
-   */
-  public final native void setFixed() /*-{
-    this.setFixed();
-  }-*/;
-
-  /**
-   * Sets the indicates whether the list of categories is a fixed or an open set. This attribute is optional.
    * 
-   * @param fixed Indicates whether the list of categories is a fixed or an open set or undefined for none.
+   * @param fixed Indicates whether the list of categories is a fixed or an open set.
    */
   public final native void setFixed(String fixed) /*-{
-    this.setFixed(
-      fixed
-    );
-  }-*/;
-
-  /**
-   * Sets the an IRI reference to a Category Document. This attribute is optional.
-   */
-  public final native void setHref() /*-{
-    this.setHref();
+    this.setFixed(fixed);
   }-*/;
 
   /**
    * Sets the an IRI reference to a Category Document. This attribute is optional.
    * 
-   * @param href An IRI reference to a Category Document or undefined for none.
+   * @param href An IRI reference to a Category Document.
    */
   public final native void setHref(String href) /*-{
-    this.setHref(
-      href
-    );
-  }-*/;
-
-  /**
-   * Sets the default scheme of the contained category elements. This attribute is optional.
-   */
-  public final native void setScheme() /*-{
-    this.setScheme();
+    this.setHref(href);
   }-*/;
 
   /**
    * Sets the default scheme of the contained category elements. This attribute is optional.
    * 
-   * @param scheme Default scheme of the contained category elements or undefined for none.
+   * @param scheme Default scheme of the contained category elements.
    */
   public final native void setScheme(String scheme) /*-{
-    this.setScheme(
-      scheme
-    );
+    this.setScheme(scheme);
   }-*/;
 
 }

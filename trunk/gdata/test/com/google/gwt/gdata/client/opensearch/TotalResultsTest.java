@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.opensearch;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class TotalResultsTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", TotalResults.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", TotalResults.newInstance());
   }
 
   public void testProperties() {
-    TotalResults obj = TotalResults.newInstance(JavaScriptObject.createObject());
+    TotalResults obj = TotalResults.newInstance();
     double value = 600813;
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

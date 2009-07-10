@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class SystemGroupTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SystemGroup.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", SystemGroup.newInstance());
   }
 
   public void testProperties() {
-    SystemGroup obj = SystemGroup.newInstance(JavaScriptObject.createObject());
+    SystemGroup obj = SystemGroup.newInstance();
     String id = "myValue";
     obj.setId(id);
     assertEquals("id", obj.getId(), id);

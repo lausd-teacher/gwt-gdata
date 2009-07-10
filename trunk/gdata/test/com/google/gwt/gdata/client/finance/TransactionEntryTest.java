@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,12 +28,12 @@ public class TransactionEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", TransactionEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", TransactionEntry.newInstance());
   }
 
   public void testProperties() {
-    TransactionEntry obj = TransactionEntry.newInstance(JavaScriptObject.createObject());
-    TransactionData transactiondata = TransactionData.newInstance(JavaScriptObject.createObject());
+    TransactionEntry obj = TransactionEntry.newInstance();
+    TransactionData transactiondata = TransactionData.newInstance();
     obj.setTransactionData(transactiondata);
     assertSame("transactiondata", obj.getTransactionData(), transactiondata);
   }

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -41,45 +40,45 @@ public class StructuredPostalAddressTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", StructuredPostalAddress.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", StructuredPostalAddress.newInstance());
   }
 
   public void testProperties() {
-    StructuredPostalAddress obj = StructuredPostalAddress.newInstance(JavaScriptObject.createObject());
-    Neighborhood neighborhood = Neighborhood.newInstance(JavaScriptObject.createObject());
+    StructuredPostalAddress obj = StructuredPostalAddress.newInstance();
+    Neighborhood neighborhood = Neighborhood.newInstance();
     obj.setNeighborhood(neighborhood);
     assertSame("neighborhood", obj.getNeighborhood(), neighborhood);
-    Agent agent = Agent.newInstance(JavaScriptObject.createObject());
+    Agent agent = Agent.newInstance();
     obj.setAgent(agent);
     assertSame("agent", obj.getAgent(), agent);
-    PostCode postcode = PostCode.newInstance(JavaScriptObject.createObject());
+    PostCode postcode = PostCode.newInstance();
     obj.setPostcode(postcode);
     assertSame("postcode", obj.getPostcode(), postcode);
-    HouseName housename = HouseName.newInstance(JavaScriptObject.createObject());
+    HouseName housename = HouseName.newInstance();
     obj.setHousename(housename);
     assertSame("housename", obj.getHousename(), housename);
-    FormattedAddress formattedaddress = FormattedAddress.newInstance(JavaScriptObject.createObject());
+    FormattedAddress formattedaddress = FormattedAddress.newInstance();
     obj.setFormattedAddress(formattedaddress);
     assertSame("formattedaddress", obj.getFormattedAddress(), formattedaddress);
     String usage = "myValue";
     obj.setUsage(usage);
     assertEquals("usage", obj.getUsage(), usage);
-    Street street = Street.newInstance(JavaScriptObject.createObject());
+    Street street = Street.newInstance();
     obj.setStreet(street);
     assertSame("street", obj.getStreet(), street);
-    PoBox pobox = PoBox.newInstance(JavaScriptObject.createObject());
+    PoBox pobox = PoBox.newInstance();
     obj.setPobox(pobox);
     assertSame("pobox", obj.getPobox(), pobox);
     String label = "myValue";
     obj.setLabel(label);
     assertEquals("label", obj.getLabel(), label);
-    City city = City.newInstance(JavaScriptObject.createObject());
+    City city = City.newInstance();
     obj.setCity(city);
     assertSame("city", obj.getCity(), city);
-    Subregion subregion = Subregion.newInstance(JavaScriptObject.createObject());
+    Subregion subregion = Subregion.newInstance();
     obj.setSubregion(subregion);
     assertSame("subregion", obj.getSubregion(), subregion);
-    Country country = Country.newInstance(JavaScriptObject.createObject());
+    Country country = Country.newInstance();
     obj.setCountry(country);
     assertSame("country", obj.getCountry(), country);
     boolean primary = true;
@@ -88,7 +87,7 @@ public class StructuredPostalAddressTest extends GWTTestCase {
     String rel = "myValue";
     obj.setRel(rel);
     assertEquals("rel", obj.getRel(), rel);
-    Region region = Region.newInstance(JavaScriptObject.createObject());
+    Region region = Region.newInstance();
     obj.setRegion(region);
     assertSame("region", obj.getRegion(), region);
     String mailclass = "myValue";

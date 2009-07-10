@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,24 +28,23 @@ public class DataSourceTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", DataSource.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", DataSource.newInstance());
   }
 
   public void testOther() {
-    DataSource obj = DataSource.newInstance(JavaScriptObject.createObject());
     // Unit Test for addProperty(Property property)
-    // Unit Test for getProperties()
-    assertEquals("getProperties", obj.getProperties(), null);
     // Unit Test for getPropertyValue(String name)
-    // Unit Test for setProperties(JsArray properties)
   }
 
   public void testProperties() {
-    DataSource obj = DataSource.newInstance(JavaScriptObject.createObject());
-    TableName tablename = TableName.newInstance(JavaScriptObject.createObject());
+    DataSource obj = DataSource.newInstance();
+    Property[] properties = new Property[]{ Property.newInstance() };
+    obj.setProperties(properties);
+    assertEquals("properties", obj.getProperties().length, properties.length);
+    TableName tablename = TableName.newInstance();
     obj.setTableName(tablename);
     assertSame("tablename", obj.getTableName(), tablename);
-    TableId tableid = TableId.newInstance(JavaScriptObject.createObject());
+    TableId tableid = TableId.newInstance();
     obj.setTableId(tableid);
     assertSame("tableid", obj.getTableId(), tableid);
   }

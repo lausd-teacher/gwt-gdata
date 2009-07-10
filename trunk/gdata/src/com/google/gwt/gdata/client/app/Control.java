@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Control extends JavaScriptObject {
 
   /**
-   * Constructs a control status using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: draft.
+   * Constructs a control status.
+   * @return A Control object.
    */
-  public static native Control newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.app.Control(
-      params
-    );
+  public static native Control newInstance() /*-{
+    return new $wnd.google.gdata.app.Control();
   }-*/;
 
   protected Control() { }
@@ -39,7 +36,7 @@ public class Control extends JavaScriptObject {
   /**
    * Returns the draft tag. This element is optional.
    * 
-   * @return Draft tag or undefined for none.
+   * @return Draft tag.
    */
   public final native Draft getDraft() /*-{
     return this.getDraft();
@@ -47,20 +44,11 @@ public class Control extends JavaScriptObject {
 
   /**
    * Sets the draft tag. This element is optional.
-   */
-  public final native void setDraft() /*-{
-    this.setDraft();
-  }-*/;
-
-  /**
-   * Sets the draft tag. This element is optional.
    * 
-   * @param draft Draft tag, or object to use as a parameter to the google.gdata.app.Draft constructor, or undefined for none.
+   * @param draft Draft tag.
    */
   public final native void setDraft(Draft draft) /*-{
-    this.setDraft(
-      draft
-    );
+    this.setDraft(draft);
   }-*/;
 
 }

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.acl.AclRole;
 
 /**
@@ -50,14 +49,11 @@ public class CalendarAclRole extends AclRole {
   public static final String VALUE_ROOT = getConstant("VALUE_ROOT");
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a Calendar role.
+   * @return A CalendarAclRole object.
    */
-  public static native CalendarAclRole newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.CalendarAclRole(
-      params
-    );
+  public static native CalendarAclRole newInstance() /*-{
+    return new $wnd.google.gdata.calendar.CalendarAclRole();
   }-*/;
 
   private static native String getConstant(String name) /*-{

@@ -24,22 +24,19 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class CustomProperty extends JavaScriptObject {
 
   /**
-   * Constructs a custom property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: name, type, unit, and value.
+   * Constructs a custom property object.
+   * @return A CustomProperty object.
    */
-  public static native CustomProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.CustomProperty(
-      params
-    );
+  public static native CustomProperty newInstance() /*-{
+    return new $wnd.google.gdata.CustomProperty();
   }-*/;
 
   protected CustomProperty() { }
 
   /**
-   * Returns the can be a URI to indicate a specific ontology. This attribute is required.
+   * Returns a URI to indicate a specific ontology. This attribute is required.
    * 
-   * @return Can be a URI to indicate a specific ontology or undefined for none.
+   * @return A URI to indicate a specific ontology.
    */
   public final native String getName() /*-{
     return this.getName();
@@ -48,7 +45,7 @@ public class CustomProperty extends JavaScriptObject {
   /**
    * Returns the datatype such as string, integer, and date, or an ontology-specific URI. This attribute is optional.
    * 
-   * @return Datatype such as string, integer, and date, or an ontology-specific URI or undefined for none.
+   * @return Datatype such as string, integer, and date, or an ontology-specific URI.
    */
   public final native String getType() /*-{
     return this.getType();
@@ -57,7 +54,7 @@ public class CustomProperty extends JavaScriptObject {
   /**
    * Returns the units of data - can also be a URI to indicate a specific ontology. This attribute is optional.
    * 
-   * @return Units of data - can also be a URI to indicate a specific ontology or undefined for none.
+   * @return Units of data - can also be a URI to indicate a specific ontology.
    */
   public final native String getUnit() /*-{
     return this.getUnit();
@@ -66,7 +63,7 @@ public class CustomProperty extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return The value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -74,74 +71,38 @@ public class CustomProperty extends JavaScriptObject {
 
   /**
    * Sets the can be a URI to indicate a specific ontology. This attribute is required.
-   */
-  public final native void setName() /*-{
-    this.setName();
-  }-*/;
-
-  /**
-   * Sets the can be a URI to indicate a specific ontology. This attribute is required.
    * 
-   * @param name Can be a URI to indicate a specific ontology or undefined for none.
+   * @param name A URI to indicate a specific ontology.
    */
   public final native void setName(String name) /*-{
-    this.setName(
-      name
-    );
-  }-*/;
-
-  /**
-   * Sets the datatype such as string, integer, and date, or an ontology-specific URI. This attribute is optional.
-   */
-  public final native void setType() /*-{
-    this.setType();
+    this.setName(name);
   }-*/;
 
   /**
    * Sets the datatype such as string, integer, and date, or an ontology-specific URI. This attribute is optional.
    * 
-   * @param type Datatype such as string, integer, and date, or an ontology-specific URI or undefined for none.
+   * @param type Datatype such as string, integer, and date, or an ontology-specific URI.
    */
   public final native void setType(String type) /*-{
-    this.setType(
-      type
-    );
-  }-*/;
-
-  /**
-   * Sets the units of data - can also be a URI to indicate a specific ontology. This attribute is optional.
-   */
-  public final native void setUnit() /*-{
-    this.setUnit();
+    this.setType(type);
   }-*/;
 
   /**
    * Sets the units of data - can also be a URI to indicate a specific ontology. This attribute is optional.
    * 
-   * @param unit Units of data - can also be a URI to indicate a specific ontology or undefined for none.
+   * @param unit Units of data - can also be a URI to indicate a specific ontology.
    */
   public final native void setUnit(String unit) /*-{
-    this.setUnit(
-      unit
-    );
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
+    this.setUnit(unit);
   }-*/;
 
   /**
    * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value The value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

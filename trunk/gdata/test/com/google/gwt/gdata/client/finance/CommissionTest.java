@@ -16,7 +16,7 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.gdata.client.Money;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,14 +29,17 @@ public class CommissionTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Commission.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Commission.newInstance());
   }
 
   public void testOther() {
-    Commission obj = Commission.newInstance(JavaScriptObject.createObject());
     // Unit Test for addMoney(Money money)
-    // Unit Test for getMoney()
-    assertEquals("getMoney", obj.getMoney(), null);
-    // Unit Test for setMoney(JsArray money)
+  }
+
+  public void testProperties() {
+    Commission obj = Commission.newInstance();
+    Money[] money = new Money[]{ Money.newInstance() };
+    obj.setMoney(money);
+    assertEquals("money", obj.getMoney().length, money.length);
   }
 }

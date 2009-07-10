@@ -19,18 +19,18 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Comment unavailable.
+ * GData Service.
  */
 public class GoogleService extends Service {
 
   /**
    * Creates a service that supports all alt formats: atom, atom-in-script, json, json-in-script, rss and rss-in-script.
+   * @param serviceName Name of GData service.
+   * @param applicationName Name of application.
+   * @return A GoogleService object.
    */
   public static native GoogleService newInstance(String serviceName, String applicationName) /*-{
-    return new $wnd.google.gdata.client.GoogleService(
-      serviceName,
-      applicationName
-    );
+    return new $wnd.google.gdata.client.GoogleService(serviceName, applicationName);
   }-*/;
 
   protected GoogleService() { }
@@ -38,109 +38,81 @@ public class GoogleService extends Service {
   /**
    * Sets the authentication to be used when running inside a Shindig (OpenSocial) container.
    * 
-   * @param authType
-   * @param opt_params
+   * @param authType one of the three valid Shindig authentication types.
+   * @param params other parameters to pass through the request.
    */
-  public final native void setGadgetsAuthentication(String authType, JavaScriptObject params) /*-{
-    this.setGadgetsAuthentication(
-      authType,
-      params
-    );
+  public final native void setGadgetsAuthentication(ShindigAuthenticationType authType, JavaScriptObject params) /*-{
+    this.setGadgetsAuthentication(authType.@com.google.gwt.gdata.client.ShindigAuthenticationType::name()(), params);
   }-*/;
+
 
   /**
    * Sets the authentication to be used when running inside a Shindig (OpenSocial) container.
    * 
-   * @param authType
-   * @param opt_params
+   * @param authType one of the three valid Shindig authentication types.
    */
   public final native void setGadgetsAuthentication(String authType) /*-{
-    this.setGadgetsAuthentication(
-      authType,
-      undefined
-    );
+    this.setGadgetsAuthentication(authType.@com.google.gwt.gdata.client.ShindigAuthenticationType::name()());
   }-*/;
 
   /**
    * Sets user credentials.
    * 
-   * @param username
-   * @param password
-   * @param opt_accountType
+   * @param username User name.
+   * @param password Password.
+   * @param accountType The account type.
    */
   public final native void setUserCredentials(String username, String password, ClientLoginAccountType accountType) /*-{
     this.setUserCredentials(
       username,
       password,
-      accountType
+      accountType.@com.google.gwt.gdata.client.ClientLoginAccountType::name()()
     );
   }-*/;
 
   /**
    * Sets user credentials.
    * 
-   * @param username
-   * @param password
-   * @param opt_accountType
+   * @param username User name.
+   * @param password Password.
    */
   public final native void setUserCredentials(String username, String password) /*-{
-    this.setUserCredentials(
-      username,
-      password,
-      undefined
-    );
+    this.setUserCredentials(username, password);
   }-*/;
 
   /**
    * Sets the authentication type to the OAuth Proxy.
    * 
-   * @param opt_serviceName
-   * @param opt_params
+   * @param serviceName The service whose credentials to use.
+   * @param params Optional OAuth related parameters.
    */
   public final native void useOAuth(String serviceName, JavaScriptObject params) /*-{
-    this.useOAuth(
-      serviceName,
-      params
-    );
+    this.useOAuth(serviceName, params);
   }-*/;
 
   /**
    * Sets the authentication type to the OAuth Proxy.
    * 
-   * @param opt_serviceName
-   * @param opt_params
+   * @param params Optional OAuth related parameters.
    */
   public final native void useOAuth(JavaScriptObject params) /*-{
-    this.useOAuth(
-      undefined,
-      params
-    );
+    this.useOAuth(undefined, params);
   }-*/;
 
   /**
    * Sets the authentication type to the OAuth Proxy.
    * 
-   * @param opt_serviceName
-   * @param opt_params
+   * @param serviceName The service whose credentials to use.
    */
   public final native void useOAuth(String serviceName) /*-{
-    this.useOAuth(
-      serviceName,
-      undefined
-    );
+    this.useOAuth(serviceName);
   }-*/;
 
   /**
    * Sets the authentication type to the OAuth Proxy.
-   * 
-   * @param opt_serviceName
-   * @param opt_params
    */
   public final native void useOAuth() /*-{
-    this.useOAuth(
-      undefined,
-      undefined
-    );
+    this.useOAuth();
   }-*/;
 
 }

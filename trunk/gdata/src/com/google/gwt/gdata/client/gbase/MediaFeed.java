@@ -16,22 +16,18 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Describes a media feed used for managing the media attachments for one Google Base Item.
  */
 public class MediaFeed extends com.google.gwt.gdata.client.Feed<MediaEntry> {
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, entries, generator, id, itemsPerPage, links, startIndex, title, totalResults, and updated.
+   * Constructs a Google Base media feed.
+   * @return A MediaFeed object.
    */
-  public static native MediaFeed newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.gbase.MediaFeed(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native MediaFeed newInstance() /*-{
+    return new $wnd.google.gdata.gbase.MediaFeed();
   }-*/;
 
   protected MediaFeed() { }

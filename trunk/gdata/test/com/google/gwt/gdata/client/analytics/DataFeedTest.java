@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,30 +28,30 @@ public class DataFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", DataFeed.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", DataFeed.newInstance());
   }
 
   public void testOther() {
-    DataFeed obj = DataFeed.newInstance(JavaScriptObject.createObject());
+    DataFeed obj = DataFeed.newInstance();
     // Unit Test for addDataSource(DataSource dataSource)
-    // Unit Test for getDataSources()
-    assertEquals("getDataSources", obj.getDataSources(), null);
     // Unit Test for getNextLink()
     assertEquals("getNextLink", obj.getNextLink(), null);
     // Unit Test for getPreviousLink()
     assertEquals("getPreviousLink", obj.getPreviousLink(), null);
-    // Unit Test for setDataSources(JsArray dataSources)
   }
 
   public void testProperties() {
-    DataFeed obj = DataFeed.newInstance(JavaScriptObject.createObject());
-    EndDate enddate = EndDate.newInstance(JavaScriptObject.createObject());
+    DataFeed obj = DataFeed.newInstance();
+    DataSource[] datasources = new DataSource[]{ DataSource.newInstance() };
+    obj.setDataSources(datasources);
+    assertEquals("datasources", obj.getDataSources().length, datasources.length);
+    EndDate enddate = EndDate.newInstance();
     obj.setEndDate(enddate);
     assertSame("enddate", obj.getEndDate(), enddate);
-    Aggregates aggregates = Aggregates.newInstance(JavaScriptObject.createObject());
+    Aggregates aggregates = Aggregates.newInstance();
     obj.setAggregates(aggregates);
     assertSame("aggregates", obj.getAggregates(), aggregates);
-    StartDate startdate = StartDate.newInstance(JavaScriptObject.createObject());
+    StartDate startdate = StartDate.newInstance();
     obj.setStartDate(startdate);
     assertSame("startdate", obj.getStartDate(), startdate);
   }

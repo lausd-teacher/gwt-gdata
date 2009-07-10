@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.acl;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,15 +28,15 @@ public class AclEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AclEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", AclEntry.newInstance());
   }
 
   public void testProperties() {
-    AclEntry obj = AclEntry.newInstance(JavaScriptObject.createObject());
-    AclScope scope = AclScope.newInstance(JavaScriptObject.createObject());
+    AclEntry obj = AclEntry.newInstance();
+    AclScope scope = AclScope.newInstance();
     obj.setScope(scope);
     assertSame("scope", obj.getScope(), scope);
-    AclRole role = AclRole.newInstance(JavaScriptObject.createObject());
+    AclRole role = AclRole.newInstance();
     obj.setRole(role);
     assertSame("role", obj.getRole(), role);
   }

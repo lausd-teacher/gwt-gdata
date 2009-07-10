@@ -36,7 +36,7 @@ public class QueryTest extends GWTTestCase {
     // Unit Test for getPath()
     assertEquals("getPath", obj.getPath(), "");
     // Unit Test for getUri()
-    assertEquals("getUri", obj.getUri(), "");
+    assertEquals("getUri", obj.getUri(), "myValue");
     // Unit Test for setParam(String name, JavaScriptObject value)
     // Unit Test for setParamDef(String name, JavaScriptObject paramDef)
   }

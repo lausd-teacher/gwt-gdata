@@ -24,14 +24,10 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class QuickAddProperty extends JavaScriptObject {
 
   /**
-   * Constructs a quick-add property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a quick-add property.
    */
-  public static native QuickAddProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.QuickAddProperty(
-      params
-    );
+  public static native QuickAddProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.QuickAddProperty();
   }-*/;
 
   protected QuickAddProperty() { }
@@ -39,7 +35,7 @@ public class QuickAddProperty extends JavaScriptObject {
   /**
    * Returns whether gd:content is for quick-add processing. This attribute is required.
    * 
-   * @return Whether gd:content is for quick-add processing or undefined for none.
+   * @return Whether gd:content is for quick-add processing.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
@@ -47,20 +43,11 @@ public class QuickAddProperty extends JavaScriptObject {
 
   /**
    * Sets whether gd:content is for quick-add processing. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets whether gd:content is for quick-add processing. This attribute is required.
    * 
-   * @param value Whether gd:content is for quick-add processing or undefined for none.
+   * @param value Whether gd:content is for quick-add processing.
    */
   public final native void setValue(boolean value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

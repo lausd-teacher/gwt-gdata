@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class AnyoneCanAddSelfProperty extends JavaScriptObject {
 
   /**
-   * Constructs an anyone can add self property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs an anyone can add self property.
+   * @return An AnyoneCanAddSelfProperty object.
    */
-  public static native AnyoneCanAddSelfProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.AnyoneCanAddSelfProperty(
-      params
-    );
+  public static native AnyoneCanAddSelfProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.AnyoneCanAddSelfProperty();
   }-*/;
 
   protected AnyoneCanAddSelfProperty() { }
@@ -39,7 +36,7 @@ public class AnyoneCanAddSelfProperty extends JavaScriptObject {
   /**
    * Returns value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class AnyoneCanAddSelfProperty extends JavaScriptObject {
 
   /**
    * Sets value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(boolean value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

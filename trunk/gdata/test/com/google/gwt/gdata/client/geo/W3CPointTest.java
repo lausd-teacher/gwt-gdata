@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.geo;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,15 +28,15 @@ public class W3CPointTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", W3CPoint.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", W3CPoint.newInstance());
   }
 
   public void testProperties() {
-    W3CPoint obj = W3CPoint.newInstance(JavaScriptObject.createObject());
-    GeoLat geolatitude = GeoLat.newInstance(JavaScriptObject.createObject());
+    W3CPoint obj = W3CPoint.newInstance();
+    GeoLat geolatitude = GeoLat.newInstance();
     obj.setGeoLatitude(geolatitude);
     assertSame("geolatitude", obj.getGeoLatitude(), geolatitude);
-    GeoLong geolongitude = GeoLong.newInstance(JavaScriptObject.createObject());
+    GeoLong geolongitude = GeoLong.newInstance();
     obj.setGeoLongitude(geolongitude);
     assertSame("geolongitude", obj.getGeoLongitude(), geolongitude);
   }

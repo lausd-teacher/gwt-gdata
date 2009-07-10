@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class LocalesFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", LocalesFeed.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", LocalesFeed.newInstance());
   }
 
   public void testOther() {
-    LocalesFeed obj = LocalesFeed.newInstance(JavaScriptObject.createObject());
+    LocalesFeed obj = LocalesFeed.newInstance();
     // Unit Test for getFeedBatchLink()
     assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
   }

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.acl;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -33,6 +32,6 @@ public class AclKindTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AclKind.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", AclKind.newInstance());
   }
 }

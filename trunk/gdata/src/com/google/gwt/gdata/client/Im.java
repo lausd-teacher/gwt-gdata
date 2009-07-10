@@ -79,14 +79,11 @@ public class Im extends JavaScriptObject {
   public static final String REL_WORK = getConstant("REL_WORK");
 
   /**
-   * Constructs an instant messaging address using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: address, label, primary, protocol, and rel.
+   * Constructs an instant messaging address.
+   * @return An Im object.
    */
-  public static native Im newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Im(
-      params
-    );
+  public static native Im newInstance() /*-{
+    return new $wnd.google.gdata.Im();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -98,7 +95,7 @@ public class Im extends JavaScriptObject {
   /**
    * Returns the IM address. This attribute is required.
    * 
-   * @return IM address or undefined for none.
+   * @return IM address.
    */
   public final native String getAddress() /*-{
     return this.getAddress();
@@ -107,7 +104,7 @@ public class Im extends JavaScriptObject {
   /**
    * Returns the label. This attribute is optional.
    * 
-   * @return Label or undefined for none.
+   * @return Label.
    */
   public final native String getLabel() /*-{
     return this.getLabel();
@@ -116,7 +113,7 @@ public class Im extends JavaScriptObject {
   /**
    * Returns whether this is the primary instant messaging address. This attribute is optional.
    * 
-   * @return Whether this is the primary instant messaging address or undefined for none.
+   * @return Whether this is the primary instant messaging address.
    */
   public final native boolean getPrimary() /*-{
     return this.getPrimary();
@@ -125,7 +122,7 @@ public class Im extends JavaScriptObject {
   /**
    * Returns the im protocol. This attribute is optional.
    * 
-   * @return Im protocol or undefined for none.
+   * @return Im protocol.
    */
   public final native String getProtocol() /*-{
     return this.getProtocol();
@@ -134,7 +131,7 @@ public class Im extends JavaScriptObject {
   /**
    * Returns the im type. This attribute is optional.
    * 
-   * @return Im type or undefined for none.
+   * @return Im type.
    */
   public final native String getRel() /*-{
     return this.getRel();
@@ -142,92 +139,47 @@ public class Im extends JavaScriptObject {
 
   /**
    * Sets the IM address. This attribute is required.
-   */
-  public final native void setAddress() /*-{
-    this.setAddress();
-  }-*/;
-
-  /**
-   * Sets the IM address. This attribute is required.
    * 
-   * @param address IM address or undefined for none.
+   * @param address IM address.
    */
   public final native void setAddress(String address) /*-{
-    this.setAddress(
-      address
-    );
-  }-*/;
-
-  /**
-   * Sets the label. This attribute is optional.
-   */
-  public final native void setLabel() /*-{
-    this.setLabel();
+    this.setAddress(address);
   }-*/;
 
   /**
    * Sets the label. This attribute is optional.
    * 
-   * @param label Label or undefined for none.
+   * @param label Label.
    */
   public final native void setLabel(String label) /*-{
-    this.setLabel(
-      label
-    );
-  }-*/;
-
-  /**
-   * Sets whether this is the primary instant messaging address. This attribute is optional.
-   */
-  public final native void setPrimary() /*-{
-    this.setPrimary();
+    this.setLabel(label);
   }-*/;
 
   /**
    * Sets whether this is the primary instant messaging address. This attribute is optional.
    * 
-   * @param primary Whether this is the primary instant messaging address or undefined for none.
+   * @param primary Whether this is the primary instant messaging address.
    */
   public final native void setPrimary(boolean primary) /*-{
-    this.setPrimary(
-      primary
-    );
-  }-*/;
-
-  /**
-   * Sets the im protocol. This attribute is optional.
-   */
-  public final native void setProtocol() /*-{
-    this.setProtocol();
+    this.setPrimary(primary);
   }-*/;
 
   /**
    * Sets the im protocol. This attribute is optional.
    * 
-   * @param protocol Im protocol or undefined for none.
+   * @param protocol Im protocol.
    */
   public final native void setProtocol(String protocol) /*-{
-    this.setProtocol(
-      protocol
-    );
-  }-*/;
-
-  /**
-   * Sets the im type. This attribute is optional.
-   */
-  public final native void setRel() /*-{
-    this.setRel();
+    this.setProtocol(protocol);
   }-*/;
 
   /**
    * Sets the im type. This attribute is optional.
    * 
-   * @param rel Im type or undefined for none.
+   * @param rel Im type.
    */
   public final native void setRel(String rel) /*-{
-    this.setRel(
-      rel
-    );
+    this.setRel(rel);
   }-*/;
 
 }

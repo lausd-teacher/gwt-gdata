@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.mediarss;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -34,11 +33,11 @@ public class MediaTextTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaText.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", MediaText.newInstance());
   }
 
   public void testProperties() {
-    MediaText obj = MediaText.newInstance(JavaScriptObject.createObject());
+    MediaText obj = MediaText.newInstance();
     String type = "myValue";
     obj.setType(type);
     assertEquals("type", obj.getType(), type);

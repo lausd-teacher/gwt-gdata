@@ -17,25 +17,16 @@
 package com.google.gwt.gdata.client.atom;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 
 /**
- * Comment unavailable.
+ * Describes the base class for a GData feed.
  * @param <E> The entry type for this feed.
  */
 public class Feed<E extends Entry> extends JavaScriptObject {
 
   /**
-   * Constructs a feed using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native <E extends Entry> Feed<E> newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.atom.Feed(
-      params
-    );
-  }-*/;
-
-  /**
-   * Constructs a feed using an object parameter whose property names match the setter method to use for each property.
+   * Constructs a feed.
+   * @return A Feed object.
    */
   public static native <E extends Entry> Feed<E> newInstance() /*-{
     return new $wnd.google.gdata.atom.Feed();
@@ -46,71 +37,61 @@ public class Feed<E extends Entry> extends JavaScriptObject {
   /**
    * Adds a new author.
    * 
-   * @param author
+   * @param author Author to add.
    */
   public final native void addAuthor(Person author) /*-{
-    this.addAuthor(
-      author
-    );
+    this.addAuthor(author);
   }-*/;
 
   /**
    * Adds a new category.
    * 
-   * @param category
+   * @param category Category to add.
    */
   public final native void addCategory(Category category) /*-{
-    this.addCategory(
-      category
-    );
+    this.addCategory(category);
   }-*/;
 
   /**
    * Adds a new contributor.
    * 
-   * @param contributor
+   * @param contributor Contributor to add.
    */
   public final native void addContributor(Person contributor) /*-{
-    this.addContributor(
-      contributor
-    );
+    this.addContributor(contributor);
   }-*/;
 
   /**
    * Adds a new entry.
    * 
-   * @param entry
+   * @param entry Entry to add.
    */
   public final native void addEntry(E entry) /*-{
-    this.addEntry(
-      entry
-    );
+    this.addEntry(entry);
   }-*/;
 
   /**
    * Adds a new link.
    * 
-   * @param link
+   * @param link Link to add.
    */
   public final native void addLink(Link link) /*-{
-    this.addLink(
-      link
-    );
+    this.addLink(link);
   }-*/;
 
   /**
    * Returns the authors.
    * 
-   * @return
+   * @return Authors.
    */
-  public final native JsArray<Person> getAuthors() /*-{
-    return this.getAuthors();
+  public final native Person[] getAuthors() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getAuthors());
   }-*/;
 
   /**
-   * Returns the base.
+   * Returns the base. This attribute is optional.
    * 
-   * @return
+   * @return Base.
    */
   public final native String getBase() /*-{
     return this.getBase();
@@ -119,43 +100,43 @@ public class Feed<E extends Entry> extends JavaScriptObject {
   /**
    * Returns the categories.
    * 
-   * @return
+   * @return Categories.
    */
-  public final native JsArray<Category> getCategories() /*-{
-    return this.getCategories();
+  public final native Category[] getCategories() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getCategories());
   }-*/;
 
   /**
    * Returns the contributors.
    * 
-   * @return
+   * @return Contributors.
    */
-  public final native JsArray<Person> getContributors() /*-{
-    return this.getContributors();
+  public final native Person[] getContributors() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getContributors());
   }-*/;
 
   /**
    * Returns the entries.
    * 
-   * @return
+   * @return Entries.
    */
-  public final native JsArray<E> getEntries() /*-{
-    return this.getEntries();
+  public final native E[] getEntries() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getEntries());
   }-*/;
 
   /**
-   * Returns the generator.
+   * Returns the generator. This element is optional.
    * 
-   * @return
+   * @return Generator.
    */
   public final native Generator getGenerator() /*-{
     return this.getGenerator();
   }-*/;
 
   /**
-   * Returns the feed identifier.
+   * Returns the feed identifier. This element is required.
    * 
-   * @return
+   * @return Feed identifier.
    */
   public final native Id getId() /*-{
     return this.getId();
@@ -164,25 +145,25 @@ public class Feed<E extends Entry> extends JavaScriptObject {
   /**
    * Returns the links.
    * 
-   * @return
+   * @return Links.
    */
-  public final native JsArray<com.google.gwt.gdata.client.atom.Link> getLinks() /*-{
-    return this.getLinks();
+  public final native com.google.gwt.gdata.client.atom.Link[] getLinks() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getLinks());
   }-*/;
 
   /**
-   * Returns the logo.
+   * Returns the logo. This element is optional.
    * 
-   * @return
+   * @return Logo.
    */
   public final native Logo getLogo() /*-{
     return this.getLogo();
   }-*/;
 
   /**
-   * Returns the rights.
+   * Returns the rights. This element is optional.
    * 
-   * @return
+   * @return Rights.
    */
   public final native Text getRights() /*-{
     return this.getRights();
@@ -191,25 +172,25 @@ public class Feed<E extends Entry> extends JavaScriptObject {
   /**
    * Returns the subtitle.
    * 
-   * @return
+   * @return Subtitle.
    */
   public final native Text getSubtitle() /*-{
     return this.getSubtitle();
   }-*/;
 
   /**
-   * Returns the title.
+   * Returns the title. This element is required.
    * 
-   * @return
+   * @return Title.
    */
   public final native Text getTitle() /*-{
     return this.getTitle();
   }-*/;
 
   /**
-   * Returns the updated timestamp.
+   * Returns the updated timestamp. This element is required.
    * 
-   * @return
+   * @return Updated timestamp.
    */
   public final native Updated getUpdated() /*-{
     return this.getUpdated();
@@ -218,201 +199,101 @@ public class Feed<E extends Entry> extends JavaScriptObject {
   /**
    * Sets the authors.
    * 
-   * @param authors
+   * @param authors Authors, where each author is added using addAuthor().
    */
-  public final native void setAuthors(JsArray<Person> authors) /*-{
+  public final native void setAuthors(Person[] authors) /*-{
     this.setAuthors(
-      authors
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(authors)
     );
   }-*/;
 
   /**
-   * Sets the authors.
+   * Sets the base. This attribute is optional.
    * 
-   * @param authors
-   */
-  public final native void setAuthors() /*-{
-    this.setAuthors();
-  }-*/;
-
-  /**
-   * Sets the base.
-   * 
-   * @param base
+   * @param base Base.
    */
   public final native void setBase(String base) /*-{
-    this.setBase(
-      base
-    );
-  }-*/;
-
-  /**
-   * Sets the base.
-   * 
-   * @param base
-   */
-  public final native void setBase() /*-{
-    this.setBase();
+    this.setBase(base);
   }-*/;
 
   /**
    * Sets the categories.
    * 
-   * @param categories
+   * @param categories Categories, where each category is added using addCategory().
    */
-  public final native void setCategories(JsArray<Category> categories) /*-{
+  public final native void setCategories(Category[] categories) /*-{
     this.setCategories(
-      categories
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(categories)
     );
-  }-*/;
-
-  /**
-   * Sets the categories.
-   * 
-   * @param categories
-   */
-  public final native void setCategories() /*-{
-    this.setCategories();
   }-*/;
 
   /**
    * Sets the contributors.
    * 
-   * @param contributors
+   * @param contributors Contributors, where each contributor is added using addContributor().
    */
-  public final native void setContributors(JsArray<Person> contributors) /*-{
+  public final native void setContributors(Person[] contributors) /*-{
     this.setContributors(
-      contributors
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(contributors)
     );
-  }-*/;
-
-  /**
-   * Sets the contributors.
-   * 
-   * @param contributors
-   */
-  public final native void setContributors() /*-{
-    this.setContributors();
   }-*/;
 
   /**
    * Sets the entries.
    * 
-   * @param entries
+   * @param entries Entries, where each entry is added using addEntry().
    */
-  public final native void setEntries(JsArray<E> entries) /*-{
+  public final native void setEntries(E[] entries) /*-{
     this.setEntries(
-      entries
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(entries)
     );
   }-*/;
 
   /**
-   * Sets the entries.
+   * Sets the generator. This element is optional.
    * 
-   * @param entries
-   */
-  public final native void setEntries() /*-{
-    this.setEntries();
-  }-*/;
-
-  /**
-   * Sets the generator.
-   * 
-   * @param generator
+   * @param generator Generator.
    */
   public final native void setGenerator(Generator generator) /*-{
-    this.setGenerator(
-      generator
-    );
+    this.setGenerator(generator);
   }-*/;
 
   /**
-   * Sets the generator.
+   * Sets the feed identifier. This element is required.
    * 
-   * @param generator
-   */
-  public final native void setGenerator() /*-{
-    this.setGenerator();
-  }-*/;
-
-  /**
-   * Sets the feed identifier.
-   * 
-   * @param id
+   * @param id Feed identifier.
    */
   public final native void setId(Id id) /*-{
-    this.setId(
-      id
-    );
-  }-*/;
-
-  /**
-   * Sets the feed identifier.
-   * 
-   * @param id
-   */
-  public final native void setId() /*-{
-    this.setId();
+    this.setId(id);
   }-*/;
 
   /**
    * Sets the links.
    * 
-   * @param links
+   * @param links Links, where each link is added using addLink().
    */
-  public final native void setLinks(JsArray<Link> links) /*-{
+  public final native void setLinks(Link[] links) /*-{
     this.setLinks(
-      links
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(links)
     );
   }-*/;
 
   /**
-   * Sets the links.
+   * Sets the logo. This element is optional.
    * 
-   * @param links
-   */
-  public final native void setLinks() /*-{
-    this.setLinks();
-  }-*/;
-
-  /**
-   * Sets the logo.
-   * 
-   * @param logo
+   * @param logo Logo.
    */
   public final native void setLogo(Logo logo) /*-{
-    this.setLogo(
-      logo
-    );
+    this.setLogo(logo);
   }-*/;
 
   /**
-   * Sets the logo.
+   * Sets the rights. This element is optional.
    * 
-   * @param logo
-   */
-  public final native void setLogo() /*-{
-    this.setLogo();
-  }-*/;
-
-  /**
-   * Sets the rights.
-   * 
-   * @param rights
+   * @param rights Rights.
    */
   public final native void setRights(Text rights) /*-{
-    this.setRights(
-      rights
-    );
-  }-*/;
-
-  /**
-   * Sets the rights.
-   * 
-   * @param rights
-   */
-  public final native void setRights() /*-{
-    this.setRights();
+    this.setRights(rights);
   }-*/;
 
   /**
@@ -421,58 +302,25 @@ public class Feed<E extends Entry> extends JavaScriptObject {
    * @param subtitle
    */
   public final native void setSubtitle(Text subtitle) /*-{
-    this.setSubtitle(
-      subtitle
-    );
+    this.setSubtitle(subtitle);
   }-*/;
 
   /**
-   * Sets the subtitle.
+   * Sets the title. This element is required.
    * 
-   * @param subtitle
-   */
-  public final native void setSubtitle() /*-{
-    this.setSubtitle();
-  }-*/;
-
-  /**
-   * Sets the title.
-   * 
-   * @param title
+   * @param title Title.
    */
   public final native void setTitle(Text title) /*-{
-    this.setTitle(
-      title
-    );
+    this.setTitle(title);
   }-*/;
 
   /**
-   * Sets the title.
+   * Sets the updated timestamp. This element is required.
    * 
-   * @param title
-   */
-  public final native void setTitle() /*-{
-    this.setTitle();
-  }-*/;
-
-  /**
-   * Sets the updated timestamp.
-   * 
-   * @param updated
+   * @param updated Updated timestamp.
    */
   public final native void setUpdated(Updated updated) /*-{
-    this.setUpdated(
-      updated
-    );
-  }-*/;
-
-  /**
-   * Sets the updated timestamp.
-   * 
-   * @param updated
-   */
-  public final native void setUpdated() /*-{
-    this.setUpdated();
+    this.setUpdated(updated);
   }-*/;
 
 }

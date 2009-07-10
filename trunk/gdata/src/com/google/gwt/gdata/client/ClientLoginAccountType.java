@@ -17,7 +17,7 @@
 package com.google.gwt.gdata.client;
 
 /**
- * Comment unavailable.
+ * Represents a client login account type.
  */
 public enum ClientLoginAccountType {
   HOSTED, GOOGLE, HOSTED_OR_GOOGLE

@@ -16,8 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Describes an event kind.
  */
@@ -29,14 +27,11 @@ public class EventKind extends Kind {
   public static final String TERM_EVENT = getConstant("TERM_EVENT");
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: scheme and term.
+   * Describes an event kind.
+   * @return An EventKind object.
    */
-  public static native EventKind newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.EventKind(
-      params
-    );
+  public static native EventKind newInstance() /*-{
+    return new $wnd.google.gdata.EventKind();
   }-*/;
 
   private static native String getConstant(String name) /*-{

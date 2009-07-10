@@ -16,7 +16,7 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.gdata.client.Where;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +29,11 @@ public class CalendarEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", CalendarEntry.newInstance());
   }
 
   public void testOther() {
-    CalendarEntry obj = CalendarEntry.newInstance(JavaScriptObject.createObject());
+    CalendarEntry obj = CalendarEntry.newInstance();
     // Unit Test for addLocation(Where location)
     // Unit Test for getAccessControlListLink()
     assertEquals("getAccessControlListLink", obj.getAccessControlListLink(), null);
@@ -41,34 +41,34 @@ public class CalendarEntryTest extends GWTTestCase {
     assertEquals("getAtomAlternateLink", obj.getAtomAlternateLink(), null);
     // Unit Test for getEventFeedLink()
     assertEquals("getEventFeedLink", obj.getEventFeedLink(), null);
-    // Unit Test for getLocations()
-    assertEquals("getLocations", obj.getLocations(), null);
     // Unit Test for getRelatedLink()
     assertEquals("getRelatedLink", obj.getRelatedLink(), null);
-    // Unit Test for setLocations(JsArray locations)
   }
 
   public void testProperties() {
-    CalendarEntry obj = CalendarEntry.newInstance(JavaScriptObject.createObject());
-    SelectedProperty selected = SelectedProperty.newInstance(JavaScriptObject.createObject());
+    CalendarEntry obj = CalendarEntry.newInstance();
+    SelectedProperty selected = SelectedProperty.newInstance();
     obj.setSelected(selected);
     assertSame("selected", obj.getSelected(), selected);
-    ColorProperty color = ColorProperty.newInstance(JavaScriptObject.createObject());
+    ColorProperty color = ColorProperty.newInstance();
     obj.setColor(color);
     assertSame("color", obj.getColor(), color);
-    TimesCleanedProperty timescleaned = TimesCleanedProperty.newInstance(JavaScriptObject.createObject());
+    TimesCleanedProperty timescleaned = TimesCleanedProperty.newInstance();
     obj.setTimesCleaned(timescleaned);
     assertSame("timescleaned", obj.getTimesCleaned(), timescleaned);
-    TimeZoneProperty timezone = TimeZoneProperty.newInstance(JavaScriptObject.createObject());
+    TimeZoneProperty timezone = TimeZoneProperty.newInstance();
     obj.setTimeZone(timezone);
     assertSame("timezone", obj.getTimeZone(), timezone);
-    HiddenProperty hidden = HiddenProperty.newInstance(JavaScriptObject.createObject());
+    HiddenProperty hidden = HiddenProperty.newInstance();
     obj.setHidden(hidden);
     assertSame("hidden", obj.getHidden(), hidden);
-    OverrideNameProperty overridename = OverrideNameProperty.newInstance(JavaScriptObject.createObject());
+    OverrideNameProperty overridename = OverrideNameProperty.newInstance();
     obj.setOverrideName(overridename);
     assertSame("overridename", obj.getOverrideName(), overridename);
-    AccessLevelProperty accesslevel = AccessLevelProperty.newInstance(JavaScriptObject.createObject());
+    Where[] locations = new Where[]{ Where.newInstance() };
+    obj.setLocations(locations);
+    assertEquals("locations", obj.getLocations().length, locations.length);
+    AccessLevelProperty accesslevel = AccessLevelProperty.newInstance();
     obj.setAccessLevel(accesslevel);
     assertSame("accesslevel", obj.getAccessLevel(), accesslevel);
   }

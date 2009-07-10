@@ -16,22 +16,18 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Describes a feed of a blog post's comments.
  */
 public class PostCommentFeed extends com.google.gwt.gdata.client.Feed<CommentEntry> {
 
   /**
-   * Constructs a blog post comment feed using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, entries, generator, id, itemsPerPage, links, startIndex, subtitle, title, totalResults, and updated.
+   * Constructs a blog post comment feed.
+   * @return A PostCommentFeed object.
    */
-  public static native PostCommentFeed newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.blogger.PostCommentFeed(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native PostCommentFeed newInstance() /*-{
+    return new $wnd.google.gdata.blogger.PostCommentFeed();
   }-*/;
 
   protected PostCommentFeed() { }
@@ -39,7 +35,7 @@ public class PostCommentFeed extends com.google.gwt.gdata.client.Feed<CommentEnt
   /**
    * Returns the link that provides the URI of next page in a paged feed.
    * 
-   * @return Link that provides the URI of next page in a paged feed or undefined for none.
+   * @return Link that provides the URI of next page in a paged feed.
    */
   public final native BloggerLink getNextLink() /*-{
     return this.getNextLink();
@@ -48,7 +44,7 @@ public class PostCommentFeed extends com.google.gwt.gdata.client.Feed<CommentEnt
   /**
    * Returns the link that provides the URI of previous page in a paged feed.
    * 
-   * @return Link that provides the URI of previous page in a paged feed or undefined for none.
+   * @return Link that provides the URI of previous page in a paged feed.
    */
   public final native BloggerLink getPreviousLink() /*-{
     return this.getPreviousLink();

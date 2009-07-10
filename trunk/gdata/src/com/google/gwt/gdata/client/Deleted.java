@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Deleted extends JavaScriptObject {
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method.
+   * Constructs a marker for deleted entries.
+   * @return A Deleted object.
    */
-  public static native Deleted newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Deleted(
-      params
-    );
+  public static native Deleted newInstance() /*-{
+    return new $wnd.google.gdata.Deleted();
   }-*/;
 
   protected Deleted() { }

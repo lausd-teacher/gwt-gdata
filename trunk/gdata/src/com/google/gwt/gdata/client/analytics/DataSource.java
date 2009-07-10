@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.analytics;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 
 /**
  * Describes a data source.
@@ -25,14 +24,11 @@ import com.google.gwt.core.client.JsArray;
 public class DataSource extends JavaScriptObject {
 
   /**
-   * Constructs a data source using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: properties, tableId, and tableName.
+   * Constructs a data source.
+   * @return A DataSource object.
    */
-  public static native DataSource newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.analytics.DataSource(
-      params
-    );
+  public static native DataSource newInstance() /*-{
+    return new $wnd.google.gdata.analytics.DataSource();
   }-*/;
 
   protected DataSource() { }
@@ -40,12 +36,10 @@ public class DataSource extends JavaScriptObject {
   /**
    * Adds a new property.
    * 
-   * @param property Property to add, or object to use as a parameter to the google.gdata.analytics.Property constructor.
+   * @param property Property to add.
    */
   public final native void addProperty(Property property) /*-{
-    this.addProperty(
-      property
-    );
+    this.addProperty(property);
   }-*/;
 
   /**
@@ -53,8 +47,8 @@ public class DataSource extends JavaScriptObject {
    * 
    * @return Properties.
    */
-  public final native JsArray<Property> getProperties() /*-{
-    return this.getProperties();
+  public final native Property[] getProperties() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getProperties());
   }-*/;
 
   /**
@@ -62,18 +56,16 @@ public class DataSource extends JavaScriptObject {
    * 
    * @param name The name of the property to retrieve
    * 
-   * @return The value of the named property, or null if the named property is not present in this data source
+   * @return The value of the named property.
    */
   public final native String getPropertyValue(String name) /*-{
-    return this.getPropertyValue(
-      name
-    );
+    return this.getPropertyValue(name);
   }-*/;
 
   /**
    * Returns the data source ID. This element is required.
    * 
-   * @return Data source ID or undefined for none.
+   * @return Data source ID.
    */
   public final native TableId getTableId() /*-{
     return this.getTableId();
@@ -82,7 +74,7 @@ public class DataSource extends JavaScriptObject {
   /**
    * Returns the table name. This element is required.
    * 
-   * @return Table name or undefined for none.
+   * @return Table name.
    */
   public final native TableName getTableName() /*-{
     return this.getTableName();
@@ -90,56 +82,31 @@ public class DataSource extends JavaScriptObject {
 
   /**
    * Sets the properties.
-   */
-  public final native void setProperties() /*-{
-    this.setProperties();
-  }-*/;
-
-  /**
-   * Sets the properties.
    * 
-   * @param properties Properties, where each property is added using the addProperty() function, or undefined to clear the properties.
+   * @param properties Properties, where each property is added using addProperty().
    */
-  public final native void setProperties(JsArray<Property> properties) /*-{
+  public final native void setProperties(Property[] properties) /*-{
     this.setProperties(
-      properties
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(properties)
     );
   }-*/;
-
-  /**
-   * Sets the data source ID. This element is required.
-   */
-  public final native void setTableId() /*-{
-    this.setTableId();
-  }-*/;
-
+  
   /**
    * Sets the data source ID. This element is required.
    * 
-   * @param tableId Data source ID, or object to use as a parameter to the google.gdata.analytics.TableId constructor, or undefined for none.
+   * @param tableId Data source ID.
    */
   public final native void setTableId(TableId tableId) /*-{
-    this.setTableId(
-      tableId
-    );
-  }-*/;
-
-  /**
-   * Sets the table name. This element is required.
-   */
-  public final native void setTableName() /*-{
-    this.setTableName();
+    this.setTableId(tableId);
   }-*/;
 
   /**
    * Sets the table name. This element is required.
    * 
-   * @param tableName Table name, or object to use as a parameter to the google.gdata.analytics.TableName constructor, or undefined for none.
+   * @param tableName Table name.
    */
   public final native void setTableName(TableName tableName) /*-{
-    this.setTableName(
-      tableName
-    );
+    this.setTableName(tableName);
   }-*/;
 
 }

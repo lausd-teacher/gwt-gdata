@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.maps;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.FeedLink;
 import com.google.gwt.gdata.client.ResourceId;
@@ -32,11 +31,11 @@ public class MapEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MapEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", MapEntry.newInstance());
   }
 
   public void testOther() {
-    MapEntry obj = MapEntry.newInstance(JavaScriptObject.createObject());
+    MapEntry obj = MapEntry.newInstance();
     // Unit Test for getAtomAlternateLink()
     assertEquals("getAtomAlternateLink", obj.getAtomAlternateLink(), null);
     // Unit Test for getAtomFeedLink()
@@ -44,14 +43,14 @@ public class MapEntryTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    MapEntry obj = MapEntry.newInstance(JavaScriptObject.createObject());
-    FeedLink feedlink = FeedLink.newInstance(JavaScriptObject.createObject());
+    MapEntry obj = MapEntry.newInstance();
+    FeedLink feedlink = FeedLink.newInstance();
     obj.setFeedLink(feedlink);
     assertSame("feedlink", obj.getFeedLink(), feedlink);
-    ResourceId resourceid = ResourceId.newInstance(JavaScriptObject.createObject());
+    ResourceId resourceid = ResourceId.newInstance();
     obj.setResourceId(resourceid);
     assertSame("resourceid", obj.getResourceId(), resourceid);
-    Deleted deleted = Deleted.newInstance(JavaScriptObject.createObject());
+    Deleted deleted = Deleted.newInstance();
     obj.setDeleted(deleted);
     assertSame("deleted", obj.getDeleted(), deleted);
   }

@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Money extends JavaScriptObject {
 
   /**
-   * Constructs a money using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: amount and currencyCode.
+   * Constructs a money.
+   * @return A Money object.
    */
-  public static native Money newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Money(
-      params
-    );
+  public static native Money newInstance() /*-{
+    return new $wnd.google.gdata.Money();
   }-*/;
 
   protected Money() { }
@@ -39,7 +36,7 @@ public class Money extends JavaScriptObject {
   /**
    * Returns the amount. This attribute is required.
    * 
-   * @return Amount or undefined for none.
+   * @return Amount.
    */
   public final native double getAmount() /*-{
     return this.getAmount();
@@ -48,7 +45,7 @@ public class Money extends JavaScriptObject {
   /**
    * Returns the ISO4217 currency code. This attribute is required.
    * 
-   * @return ISO4217 currency code or undefined for none.
+   * @return ISO4217 currency code.
    */
   public final native String getCurrencyCode() /*-{
     return this.getCurrencyCode();
@@ -56,38 +53,20 @@ public class Money extends JavaScriptObject {
 
   /**
    * Sets the amount. This attribute is required.
-   */
-  public final native void setAmount() /*-{
-    this.setAmount();
-  }-*/;
-
-  /**
-   * Sets the amount. This attribute is required.
    * 
-   * @param amount Amount or undefined for none.
+   * @param amount Amount.
    */
   public final native void setAmount(double amount) /*-{
-    this.setAmount(
-      amount
-    );
-  }-*/;
-
-  /**
-   * Sets the ISO4217 currency code. This attribute is required.
-   */
-  public final native void setCurrencyCode() /*-{
-    this.setCurrencyCode();
+    this.setAmount(amount);
   }-*/;
 
   /**
    * Sets the ISO4217 currency code. This attribute is required.
    * 
-   * @param currencyCode ISO4217 currency code or undefined for none.
+   * @param currencyCode ISO4217 currency code.
    */
   public final native void setCurrencyCode(String currencyCode) /*-{
-    this.setCurrencyCode(
-      currencyCode
-    );
+    this.setCurrencyCode(currencyCode);
   }-*/;
 
 }

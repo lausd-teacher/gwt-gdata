@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.mediarss;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class MediaPlayerTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaPlayer.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", MediaPlayer.newInstance());
   }
 
   public void testProperties() {
-    MediaPlayer obj = MediaPlayer.newInstance(JavaScriptObject.createObject());
+    MediaPlayer obj = MediaPlayer.newInstance();
     double width = 600813;
     obj.setWidth(width);
     assertEquals("width", obj.getWidth(), width);

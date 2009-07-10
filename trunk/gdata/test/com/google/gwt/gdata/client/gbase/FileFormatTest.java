@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -35,21 +34,21 @@ public class FileFormatTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", FileFormat.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", FileFormat.newInstance());
   }
 
   public void testProperties() {
-    FileFormat obj = FileFormat.newInstance(JavaScriptObject.createObject());
-    Delimiter delimiter = Delimiter.newInstance(JavaScriptObject.createObject());
+    FileFormat obj = FileFormat.newInstance();
+    Delimiter delimiter = Delimiter.newInstance();
     obj.setDelimiter(delimiter);
     assertSame("delimiter", obj.getDelimiter(), delimiter);
     String format = "myValue";
     obj.setFormat(format);
     assertEquals("format", obj.getFormat(), format);
-    Encoding encoding = Encoding.newInstance(JavaScriptObject.createObject());
+    Encoding encoding = Encoding.newInstance();
     obj.setEncoding(encoding);
     assertSame("encoding", obj.getEncoding(), encoding);
-    UseQuotedFields usequotedfields = UseQuotedFields.newInstance(JavaScriptObject.createObject());
+    UseQuotedFields usequotedfields = UseQuotedFields.newInstance();
     obj.setUseQuotedFields(usequotedfields);
     assertSame("usequotedfields", obj.getUseQuotedFields(), usequotedfields);
   }

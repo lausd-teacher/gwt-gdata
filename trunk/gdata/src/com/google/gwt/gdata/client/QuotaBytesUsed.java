@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class QuotaBytesUsed extends JavaScriptObject {
 
   /**
-   * Constructs a quota bytes used using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a quota bytes used.
+   * @return A QuotaBytesUsed object.
    */
-  public static native QuotaBytesUsed newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.QuotaBytesUsed(
-      params
-    );
+  public static native QuotaBytesUsed newInstance() /*-{
+    return new $wnd.google.gdata.QuotaBytesUsed();
   }-*/;
 
   protected QuotaBytesUsed() { }
@@ -39,7 +36,7 @@ public class QuotaBytesUsed extends JavaScriptObject {
   /**
    * Returns the value. This attribute is optional.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native double getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class QuotaBytesUsed extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is optional.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is optional.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(double value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

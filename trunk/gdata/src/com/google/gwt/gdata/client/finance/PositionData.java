@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class PositionData extends JavaScriptObject {
 
   /**
-   * Constructs a position data using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: costBasis, daysGain, gain, gainPercentage, marketValue, return1w, return1y, return3m, return3y, return4w, return5y, returnOverall, returnYTD, and shares.
+   * Constructs a position data.
+   * @return A PositionData object.
    */
-  public static native PositionData newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.finance.PositionData(
-      params
-    );
+  public static native PositionData newInstance() /*-{
+    return new $wnd.google.gdata.finance.PositionData();
   }-*/;
 
   protected PositionData() { }
@@ -39,7 +36,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the cost basis of the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
    * 
-   * @return Cost basis of the position in the portfolio default currency (and exchange currency if it differs) or undefined for none.
+   * @return Cost basis of the position in the portfolio default currency (and exchange currency if it differs).
    */
   public final native CostBasis getCostBasis() /*-{
     return this.getCostBasis();
@@ -48,7 +45,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the today's gain for the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
    * 
-   * @return Today's gain for the position in the portfolio default currency (and exchange currency if it differs) or undefined for none.
+   * @return Today's gain for the position in the portfolio default currency (and exchange currency if it differs).
    */
   public final native DaysGain getDaysGain() /*-{
     return this.getDaysGain();
@@ -57,7 +54,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the gain for the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
    * 
-   * @return Gain for the position in the portfolio default currency (and exchange currency if it differs) or undefined for none.
+   * @return Gain for the position in the portfolio default currency (and exchange currency if it differs).
    */
   public final native Gain getGain() /*-{
     return this.getGain();
@@ -66,7 +63,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the percentage gain. This attribute is optional.
    * 
-   * @return Percentage gain or undefined for none.
+   * @return Percentage gain.
    */
   public final native double getGainPercentage() /*-{
     return this.getGainPercentage();
@@ -75,7 +72,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the market value of the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
    * 
-   * @return Market value of the position in the portfolio default currency (and exchange currency if it differs) or undefined for none.
+   * @return Market value of the position in the portfolio default currency (and exchange currency if it differs).
    */
   public final native MarketValue getMarketValue() /*-{
     return this.getMarketValue();
@@ -84,7 +81,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the 1 week return (percentage). This attribute is optional.
    * 
-   * @return 1 week return (percentage) or undefined for none.
+   * @return 1 week return (percentage).
    */
   public final native double getReturn1w() /*-{
     return this.getReturn1w();
@@ -93,7 +90,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the 1 year return (percentage). This attribute is optional.
    * 
-   * @return 1 year return (percentage) or undefined for none.
+   * @return 1 year return (percentage).
    */
   public final native double getReturn1y() /*-{
     return this.getReturn1y();
@@ -102,7 +99,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the 3 month return (percentage). This attribute is optional.
    * 
-   * @return 3 month return (percentage) or undefined for none.
+   * @return 3 month return (percentage).
    */
   public final native double getReturn3m() /*-{
     return this.getReturn3m();
@@ -111,7 +108,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the 3 year return (percentage). This attribute is optional.
    * 
-   * @return 3 year return (percentage) or undefined for none.
+   * @return 3 year return (percentage).
    */
   public final native double getReturn3y() /*-{
     return this.getReturn3y();
@@ -120,7 +117,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the 4 week return (percentage). This attribute is optional.
    * 
-   * @return 4 week return (percentage) or undefined for none.
+   * @return 4 week return (percentage).
    */
   public final native double getReturn4w() /*-{
     return this.getReturn4w();
@@ -129,7 +126,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the 5 year return (percentage). This attribute is optional.
    * 
-   * @return 5 year return (percentage) or undefined for none.
+   * @return 5 year return (percentage).
    */
   public final native double getReturn5y() /*-{
     return this.getReturn5y();
@@ -138,7 +135,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the overall return (percentage). This attribute is optional.
    * 
-   * @return Overall return (percentage) or undefined for none.
+   * @return Overall return (percentage).
    */
   public final native double getReturnOverall() /*-{
     return this.getReturnOverall();
@@ -147,7 +144,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the Year-to-date return (percentage). This attribute is optional.
    * 
-   * @return Year-to-date return (percentage) or undefined for none.
+   * @return Year-to-date return (percentage).
    */
   public final native double getReturnYTD() /*-{
     return this.getReturnYTD();
@@ -156,7 +153,7 @@ public class PositionData extends JavaScriptObject {
   /**
    * Returns the number of shares belonging to the position. This attribute is optional.
    * 
-   * @return Number of shares belonging to the position or undefined for none.
+   * @return Number of shares belonging to the position.
    */
   public final native double getShares() /*-{
     return this.getShares();
@@ -164,63 +161,29 @@ public class PositionData extends JavaScriptObject {
 
   /**
    * Sets the cost basis of the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
-   */
-  public final native void setCostBasis() /*-{
-    this.setCostBasis();
-  }-*/;
-
-  /**
-   * Sets the cost basis of the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
    * 
-   * @param costBasis Cost basis of the position in the portfolio default currency (and exchange currency if it differs), or object to use as a parameter to the google.gdata.finance.CostBasis constructor, or undefined for none.
+   * @param costBasis Cost basis of the position in the portfolio default currency (and exchange currency if it differs), or object to use as a parameter to the google.gdata.finance.CostBasis constructor.
    */
   public final native void setCostBasis(CostBasis costBasis) /*-{
-    this.setCostBasis(
-      costBasis
-    );
-  }-*/;
-
-  /**
-   * Sets the today's gain for the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
-   */
-  public final native void setDaysGain() /*-{
-    this.setDaysGain();
+    this.setCostBasis(costBasis);
   }-*/;
 
   /**
    * Sets the today's gain for the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
    * 
-   * @param daysGain Today's gain for the position in the portfolio default currency (and exchange currency if it differs), or object to use as a parameter to the google.gdata.finance.DaysGain constructor, or undefined for none.
+   * @param daysGain Today's gain for the position in the portfolio default currency (and exchange currency if it differs).
    */
   public final native void setDaysGain(DaysGain daysGain) /*-{
-    this.setDaysGain(
-      daysGain
-    );
-  }-*/;
-
-  /**
-   * Sets the gain for the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
-   */
-  public final native void setGain() /*-{
-    this.setGain();
+    this.setDaysGain(daysGain);
   }-*/;
 
   /**
    * Sets the gain for the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
    * 
-   * @param gain Gain for the position in the portfolio default currency (and exchange currency if it differs), or object to use as a parameter to the google.gdata.finance.Gain constructor, or undefined for none.
+   * @param gain Gain for the position in the portfolio default currency (and exchange currency if it differs).
    */
   public final native void setGain(Gain gain) /*-{
-    this.setGain(
-      gain
-    );
-  }-*/;
-
-  /**
-   * Sets the percentage gain. This attribute is optional.
-   */
-  public final native void setGainPercentage() /*-{
-    this.setGainPercentage();
+    this.setGain(gain);
   }-*/;
 
   /**
@@ -229,189 +192,98 @@ public class PositionData extends JavaScriptObject {
    * @param gainPercentage Percentage gain or undefined for none.
    */
   public final native void setGainPercentage(double gainPercentage) /*-{
-    this.setGainPercentage(
-      gainPercentage
-    );
-  }-*/;
-
-  /**
-   * Sets the market value of the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
-   */
-  public final native void setMarketValue() /*-{
-    this.setMarketValue();
+    this.setGainPercentage(gainPercentage);
   }-*/;
 
   /**
    * Sets the market value of the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
    * 
-   * @param marketValue Market value of the position in the portfolio default currency (and exchange currency if it differs), or object to use as a parameter to the google.gdata.finance.MarketValue constructor, or undefined for none.
+   * @param marketValue Market value of the position in the portfolio default currency (and exchange currency if it differs).
    */
   public final native void setMarketValue(MarketValue marketValue) /*-{
-    this.setMarketValue(
-      marketValue
-    );
-  }-*/;
-
-  /**
-   * Sets the 1 week return (percentage). This attribute is optional.
-   */
-  public final native void setReturn1w() /*-{
-    this.setReturn1w();
+    this.setMarketValue(marketValue);
   }-*/;
 
   /**
    * Sets the 1 week return (percentage). This attribute is optional.
    * 
-   * @param return1w 1 week return (percentage) or undefined for none.
+   * @param return1w 1 week return (percentage).
    */
   public final native void setReturn1w(double return1w) /*-{
-    this.setReturn1w(
-      return1w
-    );
-  }-*/;
-
-  /**
-   * Sets the 1 year return (percentage). This attribute is optional.
-   */
-  public final native void setReturn1y() /*-{
-    this.setReturn1y();
+    this.setReturn1w(return1w);
   }-*/;
 
   /**
    * Sets the 1 year return (percentage). This attribute is optional.
    * 
-   * @param return1y 1 year return (percentage) or undefined for none.
+   * @param return1y 1 year return (percentage).
    */
   public final native void setReturn1y(double return1y) /*-{
-    this.setReturn1y(
-      return1y
-    );
-  }-*/;
-
-  /**
-   * Sets the 3 month return (percentage). This attribute is optional.
-   */
-  public final native void setReturn3m() /*-{
-    this.setReturn3m();
+    this.setReturn1y(return1y);
   }-*/;
 
   /**
    * Sets the 3 month return (percentage). This attribute is optional.
    * 
-   * @param return3m 3 month return (percentage) or undefined for none.
+   * @param return3m 3 month return (percentage).
    */
   public final native void setReturn3m(double return3m) /*-{
-    this.setReturn3m(
-      return3m
-    );
-  }-*/;
-
-  /**
-   * Sets the 3 year return (percentage). This attribute is optional.
-   */
-  public final native void setReturn3y() /*-{
-    this.setReturn3y();
+    this.setReturn3m(return3m);
   }-*/;
 
   /**
    * Sets the 3 year return (percentage). This attribute is optional.
    * 
-   * @param return3y 3 year return (percentage) or undefined for none.
+   * @param return3y 3 year return (percentage).
    */
   public final native void setReturn3y(double return3y) /*-{
-    this.setReturn3y(
-      return3y
-    );
-  }-*/;
-
-  /**
-   * Sets the 4 week return (percentage). This attribute is optional.
-   */
-  public final native void setReturn4w() /*-{
-    this.setReturn4w();
+    this.setReturn3y(return3y);
   }-*/;
 
   /**
    * Sets the 4 week return (percentage). This attribute is optional.
    * 
-   * @param return4w 4 week return (percentage) or undefined for none.
+   * @param return4w 4 week return (percentage).
    */
   public final native void setReturn4w(double return4w) /*-{
-    this.setReturn4w(
-      return4w
-    );
-  }-*/;
-
-  /**
-   * Sets the 5 year return (percentage). This attribute is optional.
-   */
-  public final native void setReturn5y() /*-{
-    this.setReturn5y();
+    this.setReturn4w(return4w);
   }-*/;
 
   /**
    * Sets the 5 year return (percentage). This attribute is optional.
    * 
-   * @param return5y 5 year return (percentage) or undefined for none.
+   * @param return5y 5 year return (percentage).
    */
   public final native void setReturn5y(double return5y) /*-{
-    this.setReturn5y(
-      return5y
-    );
+    this.setReturn5y(return5y);
   }-*/;
-
-  /**
-   * Sets the overall return (percentage). This attribute is optional.
-   */
-  public final native void setReturnOverall() /*-{
-    this.setReturnOverall();
-  }-*/;
-
+  
   /**
    * Sets the overall return (percentage). This attribute is optional.
    * 
-   * @param returnOverall Overall return (percentage) or undefined for none.
+   * @param returnOverall Overall return (percentage).
    */
   public final native void setReturnOverall(double returnOverall) /*-{
-    this.setReturnOverall(
-      returnOverall
-    );
+    this.setReturnOverall(returnOverall);
   }-*/;
 
-  /**
-   * Sets the Year-to-date return (percentage). This attribute is optional.
-   */
-  public final native void setReturnYTD() /*-{
-    this.setReturnYTD();
-  }-*/;
 
   /**
    * Sets the Year-to-date return (percentage). This attribute is optional.
    * 
-   * @param returnYTD Year-to-date return (percentage) or undefined for none.
+   * @param returnYTD Year-to-date return (percentage).
    */
   public final native void setReturnYTD(double returnYTD) /*-{
-    this.setReturnYTD(
-      returnYTD
-    );
-  }-*/;
-
-  /**
-   * Sets the number of shares belonging to the position. This attribute is optional.
-   */
-  public final native void setShares() /*-{
-    this.setShares();
+    this.setReturnYTD(returnYTD);
   }-*/;
 
   /**
    * Sets the number of shares belonging to the position. This attribute is optional.
    * 
-   * @param shares Number of shares belonging to the position or undefined for none.
+   * @param shares Number of shares belonging to the position.
    */
   public final native void setShares(double shares) /*-{
-    this.setShares(
-      shares
-    );
+    this.setShares(shares);
   }-*/;
 
 }

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,15 +28,15 @@ public class PortfolioEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PortfolioEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", PortfolioEntry.newInstance());
   }
 
   public void testProperties() {
-    PortfolioEntry obj = PortfolioEntry.newInstance(JavaScriptObject.createObject());
-    PortfolioFeedLink feedlink = PortfolioFeedLink.newInstance(JavaScriptObject.createObject());
+    PortfolioEntry obj = PortfolioEntry.newInstance();
+    PortfolioFeedLink feedlink = PortfolioFeedLink.newInstance();
     obj.setFeedLink(feedlink);
     assertSame("feedlink", obj.getFeedLink(), feedlink);
-    PortfolioData portfoliodata = PortfolioData.newInstance(JavaScriptObject.createObject());
+    PortfolioData portfoliodata = PortfolioData.newInstance();
     obj.setPortfolioData(portfoliodata);
     assertSame("portfoliodata", obj.getPortfolioData(), portfoliodata);
   }

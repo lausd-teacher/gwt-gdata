@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.app;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.atom.Text;
 
 /**
@@ -26,14 +25,11 @@ import com.google.gwt.gdata.client.atom.Text;
 public class Workspace extends JavaScriptObject {
 
   /**
-   * Constructs a workspace using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: collections and title.
+   * Constructs a workspace.
+   * @return A Workspace object.
    */
-  public static native Workspace newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.app.Workspace(
-      params
-    );
+  public static native Workspace newInstance() /*-{
+    return new $wnd.google.gdata.app.Workspace();
   }-*/;
 
   protected Workspace() { }
@@ -41,12 +37,10 @@ public class Workspace extends JavaScriptObject {
   /**
    * Adds a new collection.
    * 
-   * @param collection Collection to add, or object to use as a parameter to the google.gdata.app.Collection constructor.
+   * @param collection Collection to add.
    */
   public final native void addCollection(Collection collection) /*-{
-    this.addCollection(
-      collection
-    );
+    this.addCollection(collection);
   }-*/;
 
   /**
@@ -54,14 +48,14 @@ public class Workspace extends JavaScriptObject {
    * 
    * @return Collections.
    */
-  public final native JsArray<Collection> getCollections() /*-{
-    return this.getCollections();
+  public final native Collection[] getCollections() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getCollections());
   }-*/;
 
   /**
    * Returns the title. This element is required.
    * 
-   * @return Title or undefined for none.
+   * @return Title.
    */
   public final native Text getTitle() /*-{
     return this.getTitle();
@@ -69,38 +63,22 @@ public class Workspace extends JavaScriptObject {
 
   /**
    * Sets the collections.
-   */
-  public final native void setCollections() /*-{
-    this.setCollections();
-  }-*/;
-
-  /**
-   * Sets the collections.
    * 
-   * @param collections Collections, where each collection is added using the addCollection() function, or undefined to clear the collections.
+   * @param collections Collections, where each collection is added using addCollection().
    */
-  public final native void setCollections(JsArray<Collection> collections) /*-{
+  public final native void setCollections(Collection[] collections) /*-{
     this.setCollections(
-      collections
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(collections)
     );
   }-*/;
 
   /**
    * Sets the title. This element is required.
-   */
-  public final native void setTitle() /*-{
-    this.setTitle();
-  }-*/;
-
-  /**
-   * Sets the title. This element is required.
    * 
-   * @param title Title, or object to use as a parameter to the google.gdata.atom.Text constructor, or undefined for none.
+   * @param title Title.
    */
   public final native void setTitle(Text title) /*-{
-    this.setTitle(
-      title
-    );
+    this.setTitle(title);
   }-*/;
 
 }

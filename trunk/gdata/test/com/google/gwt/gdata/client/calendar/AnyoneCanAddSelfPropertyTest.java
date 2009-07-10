@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class AnyoneCanAddSelfPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AnyoneCanAddSelfProperty.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", AnyoneCanAddSelfProperty.newInstance());
   }
 
   public void testProperties() {
-    AnyoneCanAddSelfProperty obj = AnyoneCanAddSelfProperty.newInstance(JavaScriptObject.createObject());
+    AnyoneCanAddSelfProperty obj = AnyoneCanAddSelfProperty.newInstance();
     boolean value = true;
     obj.setValue(value);
     assertSame("value", obj.getValue(), value);

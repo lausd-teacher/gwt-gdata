@@ -16,22 +16,18 @@
 
 package com.google.gwt.gdata.client.acl;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Describes a feed of an access control list (ACL).
  */
 public class AclFeed extends com.google.gwt.gdata.client.Feed<AclEntry> {
 
   /**
-   * Constructs an ACL feed using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, contributors, entries, generator, id, links, startIndex, title, totalResults, and updated.
+   * Constructs an ACL feed.
+   * @return An AclFeed object.
    */
-  public static native AclFeed newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.acl.AclFeed(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native AclFeed newInstance() /*-{
+    return new $wnd.google.gdata.acl.AclFeed();
   }-*/;
 
   protected AclFeed() { }

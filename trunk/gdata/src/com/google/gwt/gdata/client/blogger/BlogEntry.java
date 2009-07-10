@@ -16,22 +16,18 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Describes a blog entry in the feed of a user's blogs.
  */
 public class BlogEntry extends com.google.gwt.gdata.client.Entry<BlogEntry> {
 
   /**
-   * Constructs a blog entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, edited, id, links, published, summary, title, and updated.
+   * Constructs a blog entry.
+   * @return A BlogEntry object.
    */
-  public static native BlogEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.blogger.BlogEntry(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native BlogEntry newInstance() /*-{
+    return new $wnd.google.gdata.blogger.BlogEntry();
   }-*/;
 
   protected BlogEntry() { }
@@ -39,7 +35,7 @@ public class BlogEntry extends com.google.gwt.gdata.client.Entry<BlogEntry> {
   /**
    * Returns the link that provides the URI that can be used to post new entries to the feed.
    * 
-   * @return Link that provides the URI that can be used to post new entries to the feed or undefined for none.
+   * @return Link that provides the URI that can be used to post new entries to the feed.
    */
   public final native BloggerLink getEntryPostLink() /*-{
     return this.getEntryPostLink();
@@ -48,7 +44,7 @@ public class BlogEntry extends com.google.gwt.gdata.client.Entry<BlogEntry> {
   /**
    * Returns the link that provides the URI of the full feed (without any query parameters).
    * 
-   * @return Link that provides the URI of the full feed (without any query parameters) or undefined for none.
+   * @return Link that provides the URI of the full feed (without any query parameters).
    */
   public final native BloggerLink getFeedLink() /*-{
     return this.getFeedLink();
@@ -57,7 +53,7 @@ public class BlogEntry extends com.google.gwt.gdata.client.Entry<BlogEntry> {
   /**
    * Returns the link that provides the URI of an alternate format of the entry's or feed's contents.
    * 
-   * @return Link that provides the URI of an alternate format of the entry's or feed's contents or undefined for none.
+   * @return Link that provides the URI of an alternate format of the entry's or feed's contents.
    */
   public final native BloggerLink getHtmlLink() /*-{
     return this.getHtmlLink();
@@ -66,7 +62,7 @@ public class BlogEntry extends com.google.gwt.gdata.client.Entry<BlogEntry> {
   /**
    * Returns the link that provides the URI of the web content.
    * 
-   * @return Link that provides the URI of the web content or undefined for none.
+   * @return Link that provides the URI of the web content.
    */
   public final native BloggerLink getRepliesLink() /*-{
     return this.getRepliesLink();
@@ -75,7 +71,7 @@ public class BlogEntry extends com.google.gwt.gdata.client.Entry<BlogEntry> {
   /**
    * Returns the link to blog settings feed.
    * 
-   * @return Link to blog settings feed or undefined for none.
+   * @return Link to blog settings feed.
    */
   public final native BloggerLink getSettingsLink() /*-{
     return this.getSettingsLink();
@@ -84,7 +80,7 @@ public class BlogEntry extends com.google.gwt.gdata.client.Entry<BlogEntry> {
   /**
    * Returns the link to blog templates feed.
    * 
-   * @return Link to blog templates feed or undefined for none.
+   * @return Link to blog templates feed.
    */
   public final native BloggerLink getTemplateLink() /*-{
     return this.getTemplateLink();

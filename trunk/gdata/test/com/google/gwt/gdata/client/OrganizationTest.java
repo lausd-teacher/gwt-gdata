@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -34,21 +33,21 @@ public class OrganizationTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Organization.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Organization.newInstance());
   }
 
   public void testProperties() {
-    Organization obj = Organization.newInstance(JavaScriptObject.createObject());
+    Organization obj = Organization.newInstance();
     boolean primary = true;
     obj.setPrimary(primary);
     assertSame("primary", obj.getPrimary(), primary);
-    OrgName orgname = OrgName.newInstance(JavaScriptObject.createObject());
+    OrgName orgname = OrgName.newInstance();
     obj.setOrgName(orgname);
     assertSame("orgname", obj.getOrgName(), orgname);
     String rel = "myValue";
     obj.setRel(rel);
     assertEquals("rel", obj.getRel(), rel);
-    OrgTitle orgtitle = OrgTitle.newInstance(JavaScriptObject.createObject());
+    OrgTitle orgtitle = OrgTitle.newInstance();
     obj.setOrgTitle(orgtitle);
     assertSame("orgtitle", obj.getOrgTitle(), orgtitle);
     String label = "myValue";

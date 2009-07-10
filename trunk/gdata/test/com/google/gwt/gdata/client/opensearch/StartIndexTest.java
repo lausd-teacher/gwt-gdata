@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.opensearch;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class StartIndexTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", StartIndex.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", StartIndex.newInstance());
   }
 
   public void testProperties() {
-    StartIndex obj = StartIndex.newInstance(JavaScriptObject.createObject());
+    StartIndex obj = StartIndex.newInstance();
     double value = 600813;
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

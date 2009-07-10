@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -40,11 +39,11 @@ public class PhoneNumberTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PhoneNumber.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", PhoneNumber.newInstance());
   }
 
   public void testProperties() {
-    PhoneNumber obj = PhoneNumber.newInstance(JavaScriptObject.createObject());
+    PhoneNumber obj = PhoneNumber.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

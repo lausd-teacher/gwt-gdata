@@ -44,14 +44,11 @@ public class MediaRestriction extends JavaScriptObject {
   public static final String TYPE_URI = getConstant("TYPE_URI");
 
   /**
-   * Constructs a media restriction using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content, relationship, and type.
+   * Constructs a media restriction.
+   * @return A MediaRestriction object.
    */
-  public static native MediaRestriction newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.mediarss.MediaRestriction(
-      params
-    );
+  public static native MediaRestriction newInstance() /*-{
+    return new $wnd.google.gdata.mediarss.MediaRestriction();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -63,7 +60,7 @@ public class MediaRestriction extends JavaScriptObject {
   /**
    * Returns the distributor URIs or country codes. This attribute is optional.
    * 
-   * @return Distributor URIs or country codes or undefined for none.
+   * @return Distributor URIs or country codes.
    */
   public final native String getContent() /*-{
     return this.getContent();
@@ -72,7 +69,7 @@ public class MediaRestriction extends JavaScriptObject {
   /**
    * Returns the type of relationship, either 'allow' or 'deny'. This attribute is required.
    * 
-   * @return Type of relationship, either 'allow' or 'deny' or undefined for none.
+   * @return Type of relationship, either 'allow' or 'deny'.
    */
   public final native String getRelationship() /*-{
     return this.getRelationship();
@@ -81,7 +78,7 @@ public class MediaRestriction extends JavaScriptObject {
   /**
    * Returns the type of restriction, either 'country' or 'uri'. This attribute is optional.
    * 
-   * @return Type of restriction, either 'country' or 'uri' or undefined for none.
+   * @return Type of restriction, either 'country' or 'uri'.
    */
   public final native String getType() /*-{
     return this.getType();
@@ -89,56 +86,29 @@ public class MediaRestriction extends JavaScriptObject {
 
   /**
    * Sets the distributor URIs or country codes. This attribute is optional.
-   */
-  public final native void setContent() /*-{
-    this.setContent();
-  }-*/;
-
-  /**
-   * Sets the distributor URIs or country codes. This attribute is optional.
    * 
-   * @param content Distributor URIs or country codes or undefined for none.
+   * @param content Distributor URIs or country codes.
    */
   public final native void setContent(String content) /*-{
-    this.setContent(
-      content
-    );
-  }-*/;
-
-  /**
-   * Sets the type of relationship, either 'allow' or 'deny'. This attribute is required.
-   */
-  public final native void setRelationship() /*-{
-    this.setRelationship();
+    this.setContent(content);
   }-*/;
 
   /**
    * Sets the type of relationship, either 'allow' or 'deny'. This attribute is required.
    * 
-   * @param relationship Type of relationship, either 'allow' or 'deny' or undefined for none.
+   * @param relationship Type of relationship, either 'allow' or 'deny'.
    */
   public final native void setRelationship(String relationship) /*-{
-    this.setRelationship(
-      relationship
-    );
-  }-*/;
-
-  /**
-   * Sets the type of restriction, either 'country' or 'uri'. This attribute is optional.
-   */
-  public final native void setType() /*-{
-    this.setType();
+    this.setRelationship(relationship);
   }-*/;
 
   /**
    * Sets the type of restriction, either 'country' or 'uri'. This attribute is optional.
    * 
-   * @param type Type of restriction, either 'country' or 'uri' or undefined for none.
+   * @param type Type of restriction, either 'country' or 'uri'.
    */
   public final native void setType(String type) /*-{
-    this.setType(
-      type
-    );
+    this.setType(type);
   }-*/;
 
 }

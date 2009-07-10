@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class PoBoxTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PoBox.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", PoBox.newInstance());
   }
 
   public void testProperties() {
-    PoBox obj = PoBox.newInstance(JavaScriptObject.createObject());
+    PoBox obj = PoBox.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

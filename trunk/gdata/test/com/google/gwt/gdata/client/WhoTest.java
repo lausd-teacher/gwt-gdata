@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -42,15 +41,15 @@ public class WhoTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Who.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Who.newInstance());
   }
 
   public void testProperties() {
-    Who obj = Who.newInstance(JavaScriptObject.createObject());
-    AttendeeType attendeetype = AttendeeType.newInstance(JavaScriptObject.createObject());
+    Who obj = Who.newInstance();
+    AttendeeType attendeetype = AttendeeType.newInstance();
     obj.setAttendeeType(attendeetype);
     assertSame("attendeetype", obj.getAttendeeType(), attendeetype);
-    AttendeeStatus attendeestatus = AttendeeStatus.newInstance(JavaScriptObject.createObject());
+    AttendeeStatus attendeestatus = AttendeeStatus.newInstance();
     obj.setAttendeeStatus(attendeestatus);
     assertSame("attendeestatus", obj.getAttendeeStatus(), attendeestatus);
     String valuestring = "myValue";
@@ -59,7 +58,7 @@ public class WhoTest extends GWTTestCase {
     String rel = "myValue";
     obj.setRel(rel);
     assertEquals("rel", obj.getRel(), rel);
-    EntryLink entrylink = EntryLink.newInstance(JavaScriptObject.createObject());
+    EntryLink entrylink = EntryLink.newInstance();
     obj.setEntryLink(entrylink);
     assertSame("entrylink", obj.getEntryLink(), entrylink);
     String email = "myValue";

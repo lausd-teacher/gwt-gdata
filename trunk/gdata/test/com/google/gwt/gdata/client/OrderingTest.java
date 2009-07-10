@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -35,11 +34,11 @@ public class OrderingTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Ordering.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Ordering.newInstance());
   }
 
   public void testProperties() {
-    Ordering obj = Ordering.newInstance(JavaScriptObject.createObject());
+    Ordering obj = Ordering.newInstance();
     String ref = "myValue";
     obj.setRef(ref);
     assertEquals("ref", obj.getRef(), ref);

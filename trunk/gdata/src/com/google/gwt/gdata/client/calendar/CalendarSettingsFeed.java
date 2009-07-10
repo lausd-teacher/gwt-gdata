@@ -16,22 +16,18 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Personal settings for Calendar application.
  */
 public class CalendarSettingsFeed extends com.google.gwt.gdata.client.Feed<SettingsEntry> {
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: authors, categories, contributors, entries, generator, id, links, title, and updated.
+   * Constructs a calendar settings feed.
+   * @return A CalendarSettingsFeed object.
    */
-  public static native CalendarSettingsFeed newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.CalendarSettingsFeed(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native CalendarSettingsFeed newInstance() /*-{
+    return new $wnd.google.gdata.calendar.CalendarSettingsFeed();
   }-*/;
 
   protected CalendarSettingsFeed() { }

@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Generator extends JavaScriptObject {
 
   /**
-   * Constructs a generator using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: name, uri, and version.
+   * Constructs a generator.
+   * @return A Generator object.
    */
-  public static native Generator newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.atom.Generator(
-      params
-    );
+  public static native Generator newInstance() /*-{
+    return new $wnd.google.gdata.atom.Generator();
   }-*/;
 
   protected Generator() { }
@@ -39,7 +36,7 @@ public class Generator extends JavaScriptObject {
   /**
    * Returns the name. This attribute is required.
    * 
-   * @return Name or undefined for none.
+   * @return Name.
    */
   public final native String getName() /*-{
     return this.getName();
@@ -48,7 +45,7 @@ public class Generator extends JavaScriptObject {
   /**
    * Returns the URI. This attribute is optional.
    * 
-   * @return URI or undefined for none.
+   * @return URI.
    */
   public final native String getUri() /*-{
     return this.getUri();
@@ -57,7 +54,7 @@ public class Generator extends JavaScriptObject {
   /**
    * Returns the version. This attribute is optional.
    * 
-   * @return Version or undefined for none.
+   * @return Version.
    */
   public final native String getVersion() /*-{
     return this.getVersion();
@@ -65,56 +62,29 @@ public class Generator extends JavaScriptObject {
 
   /**
    * Sets the name. This attribute is required.
-   */
-  public final native void setName() /*-{
-    this.setName();
-  }-*/;
-
-  /**
-   * Sets the name. This attribute is required.
    * 
-   * @param name Name or undefined for none.
+   * @param name Name.
    */
   public final native void setName(String name) /*-{
-    this.setName(
-      name
-    );
-  }-*/;
-
-  /**
-   * Sets the URI. This attribute is optional.
-   */
-  public final native void setUri() /*-{
-    this.setUri();
+    this.setName(name);
   }-*/;
 
   /**
    * Sets the URI. This attribute is optional.
    * 
-   * @param uri URI or undefined for none.
+   * @param uri URI.
    */
   public final native void setUri(String uri) /*-{
-    this.setUri(
-      uri
-    );
-  }-*/;
-
-  /**
-   * Sets the version. This attribute is optional.
-   */
-  public final native void setVersion() /*-{
-    this.setVersion();
+    this.setUri(uri);
   }-*/;
 
   /**
    * Sets the version. This attribute is optional.
    * 
-   * @param version Version or undefined for none.
+   * @param version Version.
    */
   public final native void setVersion(String version) /*-{
-    this.setVersion(
-      version
-    );
+    this.setVersion(version);
   }-*/;
 
 }

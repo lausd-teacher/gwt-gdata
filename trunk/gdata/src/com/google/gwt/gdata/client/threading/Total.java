@@ -19,19 +19,15 @@ package com.google.gwt.gdata.client.threading;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Indicates total number of unique responses to an entry.
+ * Indicates total number of unique responses to an entry. Defined in gdata.js
  */
 public class Total extends JavaScriptObject {
 
   /**
    * Constructs a total using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
    */
-  public static native Total newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.threading.Total(
-      params
-    );
+  public static native Total newInstance() /*-{
+    return new $wnd.google.gdata.threading.Total();
   }-*/;
 
   protected Total() { }

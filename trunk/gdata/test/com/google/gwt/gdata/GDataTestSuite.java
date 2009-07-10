@@ -146,17 +146,14 @@ public class GDataTestSuite extends GWTTestSuite {
     suite.addTestSuite(com.google.gwt.gdata.client.contacts.ContactQueryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.contacts.ContactsServiceTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.contacts.GroupMembershipInfoTest.class);
-    suite.addTestSuite(com.google.gwt.gdata.client.contacts.PersonEntryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.contacts.SystemGroupTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.CountryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.CustomPropertyTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.DeletedTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.EmailTest.class);
-    suite.addTestSuite(com.google.gwt.gdata.client.EntryLinkTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.EventKindTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.EventStatusTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.ExtendedPropertyTest.class);
-    suite.addTestSuite(com.google.gwt.gdata.client.FeedLinkTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.finance.CommissionTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.finance.CostBasisTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.finance.DaysGainTest.class);

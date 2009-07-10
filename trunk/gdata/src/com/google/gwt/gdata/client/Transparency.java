@@ -35,13 +35,10 @@ public class Transparency extends JavaScriptObject {
 
   /**
    * Constructs an event transparency using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * @return A Transparency object.
    */
-  public static native Transparency newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.Transparency(
-      params
-    );
+  public static native Transparency newInstance() /*-{
+    return new $wnd.google.gdata.Transparency();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -53,7 +50,7 @@ public class Transparency extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -61,20 +58,11 @@ public class Transparency extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

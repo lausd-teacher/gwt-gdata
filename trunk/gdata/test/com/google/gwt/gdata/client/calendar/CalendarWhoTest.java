@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,12 +28,12 @@ public class CalendarWhoTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarWho.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", CalendarWho.newInstance());
   }
 
   public void testProperties() {
-    CalendarWho obj = CalendarWho.newInstance(JavaScriptObject.createObject());
-    ResourceProperty resource = ResourceProperty.newInstance(JavaScriptObject.createObject());
+    CalendarWho obj = CalendarWho.newInstance();
+    ResourceProperty resource = ResourceProperty.newInstance();
     obj.setResource(resource);
     assertSame("resource", obj.getResource(), resource);
   }

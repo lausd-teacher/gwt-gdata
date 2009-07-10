@@ -24,14 +24,10 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class SendEventNotificationsProperty extends JavaScriptObject {
 
   /**
-   * Constructs a send event notifications property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a send event notifications property.
    */
-  public static native SendEventNotificationsProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.SendEventNotificationsProperty(
-      params
-    );
+  public static native SendEventNotificationsProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.SendEventNotificationsProperty();
   }-*/;
 
   protected SendEventNotificationsProperty() { }
@@ -39,7 +35,7 @@ public class SendEventNotificationsProperty extends JavaScriptObject {
   /**
    * Returns whether to send event notifications to other participants of the event. This attribute is required.
    * 
-   * @return Whether to send event notifications to other participants of the event or undefined for none.
+   * @return Whether to send event notifications to other participants of the event.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
@@ -47,20 +43,11 @@ public class SendEventNotificationsProperty extends JavaScriptObject {
 
   /**
    * Sets whether to send event notifications to other participants of the event. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets whether to send event notifications to other participants of the event. This attribute is required.
    * 
-   * @param value Whether to send event notifications to other participants of the event or undefined for none.
+   * @param value Whether to send event notifications to other participants of the event.
    */
   public final native void setValue(boolean value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

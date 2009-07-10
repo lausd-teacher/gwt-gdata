@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,18 +28,18 @@ public class PortfolioDataTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PortfolioData.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", PortfolioData.newInstance());
   }
 
   public void testProperties() {
-    PortfolioData obj = PortfolioData.newInstance(JavaScriptObject.createObject());
+    PortfolioData obj = PortfolioData.newInstance();
     double gainpercentage = 600813;
     obj.setGainPercentage(gainpercentage);
     assertEquals("gainpercentage", obj.getGainPercentage(), gainpercentage);
     double return3m = 600813;
     obj.setReturn3m(return3m);
     assertEquals("return3m", obj.getReturn3m(), return3m);
-    Gain gain = Gain.newInstance(JavaScriptObject.createObject());
+    Gain gain = Gain.newInstance();
     obj.setGain(gain);
     assertSame("gain", obj.getGain(), gain);
     double return1y = 600813;
@@ -55,16 +54,16 @@ public class PortfolioDataTest extends GWTTestCase {
     double return1w = 600813;
     obj.setReturn1w(return1w);
     assertEquals("return1w", obj.getReturn1w(), return1w);
-    CostBasis costbasis = CostBasis.newInstance(JavaScriptObject.createObject());
+    CostBasis costbasis = CostBasis.newInstance();
     obj.setCostBasis(costbasis);
     assertSame("costbasis", obj.getCostBasis(), costbasis);
     double return3y = 600813;
     obj.setReturn3y(return3y);
     assertEquals("return3y", obj.getReturn3y(), return3y);
-    DaysGain daysgain = DaysGain.newInstance(JavaScriptObject.createObject());
+    DaysGain daysgain = DaysGain.newInstance();
     obj.setDaysGain(daysgain);
     assertSame("daysgain", obj.getDaysGain(), daysgain);
-    MarketValue marketvalue = MarketValue.newInstance(JavaScriptObject.createObject());
+    MarketValue marketvalue = MarketValue.newInstance();
     obj.setMarketValue(marketvalue);
     assertSame("marketvalue", obj.getMarketValue(), marketvalue);
     String currencycode = "myValue";

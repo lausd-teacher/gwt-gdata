@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class SyncEventPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SyncEventProperty.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", SyncEventProperty.newInstance());
   }
 
   public void testProperties() {
-    SyncEventProperty obj = SyncEventProperty.newInstance(JavaScriptObject.createObject());
+    SyncEventProperty obj = SyncEventProperty.newInstance();
     boolean value = true;
     obj.setValue(value);
     assertSame("value", obj.getValue(), value);

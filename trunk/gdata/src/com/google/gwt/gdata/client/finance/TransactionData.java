@@ -27,14 +27,11 @@ import java.util.Date;
 public class TransactionData extends JavaScriptObject {
 
   /**
-   * Constructs a transaction data using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: commission, date, notes, price, shares, and type.
+   * Constructs a transaction data.
+   * @return A TransactionData object.
    */
-  public static native TransactionData newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.finance.TransactionData(
-      params
-    );
+  public static native TransactionData newInstance() /*-{
+    return new $wnd.google.gdata.finance.TransactionData();
   }-*/;
 
   protected TransactionData() { }
@@ -42,7 +39,7 @@ public class TransactionData extends JavaScriptObject {
   /**
    * Returns the commission for the transaction. This element is optional.
    * 
-   * @return Commission for the transaction or undefined for none.
+   * @return Commission for the transaction.
    */
   public final native Commission getCommission() /*-{
     return this.getCommission();
@@ -51,7 +48,7 @@ public class TransactionData extends JavaScriptObject {
   /**
    * Returns the date at which the transaction occurred. This attribute is optional.
    * 
-   * @return Date at which the transaction occurred or undefined for none.
+   * @return Date at which the transaction occurred.
    */
   public final native DateTime getDate() /*-{
     return this.getDate();
@@ -60,7 +57,7 @@ public class TransactionData extends JavaScriptObject {
   /**
    * Returns the notes. This attribute is optional.
    * 
-   * @return Notes or undefined for none.
+   * @return Notes.
    */
   public final native String getNotes() /*-{
     return this.getNotes();
@@ -69,7 +66,7 @@ public class TransactionData extends JavaScriptObject {
   /**
    * Returns the price of the transaction. This element is optional.
    * 
-   * @return Price of the transaction or undefined for none.
+   * @return Price of the transaction.
    */
   public final native Price getPrice() /*-{
     return this.getPrice();
@@ -78,7 +75,7 @@ public class TransactionData extends JavaScriptObject {
   /**
    * Returns the number of shares involved in the transaction. This attribute is optional.
    * 
-   * @return Number of shares involved in the transaction or undefined for none.
+   * @return Number of shares involved in the transaction.
    */
   public final native double getShares() /*-{
     return this.getShares();
@@ -87,7 +84,7 @@ public class TransactionData extends JavaScriptObject {
   /**
    * Returns the type for the transaction (can be "Buy", "Sell", "Buy to Cover" or "Sell Short"). This attribute is required.
    * 
-   * @return Type for the transaction (can be "Buy", "Sell", "Buy to Cover" or "Sell Short") or undefined for none.
+   * @return Type for the transaction (can be "Buy", "Sell", "Buy to Cover" or "Sell Short").
    */
   public final native String getType() /*-{
     return this.getType();
@@ -95,33 +92,17 @@ public class TransactionData extends JavaScriptObject {
 
   /**
    * Sets the commission for the transaction. This element is optional.
-   */
-  public final native void setCommission() /*-{
-    this.setCommission();
-  }-*/;
-
-  /**
-   * Sets the commission for the transaction. This element is optional.
    * 
-   * @param commission Commission for the transaction, or object to use as a parameter to the google.gdata.finance.Commission constructor, or undefined for none.
+   * @param commission Commission for the transaction.
    */
   public final native void setCommission(Commission commission) /*-{
-    this.setCommission(
-      commission
-    );
-  }-*/;
-
-  /**
-   * Sets the date at which the transaction occurred. This attribute is optional.
-   */
-  public final native void setDate() /*-{
-    this.setDate();
+    this.setCommission(commission);
   }-*/;
 
   /**
    * Sets the date at which the transaction occurred. This attribute is optional.
    * 
-   * @param date Date at which the transaction occurred or undefined for none.
+   * @param date Date at which the transaction occurred.
    */
   public final native void setDate(Date date) /*-{
     this.setDate(
@@ -132,84 +113,46 @@ public class TransactionData extends JavaScriptObject {
   /**
    * Sets the date at which the transaction occurred. This attribute is optional.
    * 
-   * @param date Date at which the transaction occurred or undefined for none.
+   * @param date Date at which the transaction occurred.
    */
   public final native void setDate(DateTime date) /*-{
-    this.setDate(
-      date
-    );
-  }-*/;
-
-  /**
-   * Sets the notes. This attribute is optional.
-   */
-  public final native void setNotes() /*-{
-    this.setNotes();
+    this.setDate(date);
   }-*/;
 
   /**
    * Sets the notes. This attribute is optional.
    * 
-   * @param notes Notes or undefined for none.
+   * @param notes Notes.
    */
   public final native void setNotes(String notes) /*-{
-    this.setNotes(
-      notes
-    );
-  }-*/;
-
-  /**
-   * Sets the price of the transaction. This element is optional.
-   */
-  public final native void setPrice() /*-{
-    this.setPrice();
+    this.setNotes(notes);
   }-*/;
 
   /**
    * Sets the price of the transaction. This element is optional.
    * 
-   * @param price Price of the transaction, or object to use as a parameter to the google.gdata.finance.Price constructor, or undefined for none.
+   * @param price Price of the transaction.
    */
   public final native void setPrice(Price price) /*-{
-    this.setPrice(
-      price
-    );
-  }-*/;
-
-  /**
-   * Sets the number of shares involved in the transaction. This attribute is optional.
-   */
-  public final native void setShares() /*-{
-    this.setShares();
+    this.setPrice(price);
   }-*/;
 
   /**
    * Sets the number of shares involved in the transaction. This attribute is optional.
    * 
-   * @param shares Number of shares involved in the transaction or undefined for none.
+   * @param shares Number of shares involved in the transaction.
    */
   public final native void setShares(double shares) /*-{
-    this.setShares(
-      shares
-    );
-  }-*/;
-
-  /**
-   * Sets the type for the transaction (can be "Buy", "Sell", "Buy to Cover" or "Sell Short"). This attribute is required.
-   */
-  public final native void setType() /*-{
-    this.setType();
+    this.setShares(shares);
   }-*/;
 
   /**
    * Sets the type for the transaction (can be "Buy", "Sell", "Buy to Cover" or "Sell Short"). This attribute is required.
    * 
-   * @param type Type for the transaction (can be "Buy", "Sell", "Buy to Cover" or "Sell Short") or undefined for none.
+   * @param type Type for the transaction (can be "Buy", "Sell", "Buy to Cover" or "Sell Short").
    */
   public final native void setType(String type) /*-{
-    this.setType(
-      type
-    );
+    this.setType(type);
   }-*/;
 
 }

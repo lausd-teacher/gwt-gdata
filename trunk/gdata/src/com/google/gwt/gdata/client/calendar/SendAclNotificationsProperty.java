@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class SendAclNotificationsProperty extends JavaScriptObject {
 
   /**
-   * Constructs a send acl notifications property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a send acl notifications property.
+   * @return A SendAclNotificationsProperty object.
    */
-  public static native SendAclNotificationsProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.SendAclNotificationsProperty(
-      params
-    );
+  public static native SendAclNotificationsProperty newInstance() /*-{
+    return new $wnd.google.gdata.calendar.SendAclNotificationsProperty();
   }-*/;
 
   protected SendAclNotificationsProperty() { }
@@ -39,7 +36,7 @@ public class SendAclNotificationsProperty extends JavaScriptObject {
   /**
    * Returns whether to send ACL notifications to grantees. This attribute is optional.
    * 
-   * @return Whether to send ACL notifications to grantees or undefined for none.
+   * @return Whether to send ACL notifications to grantees.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
@@ -47,20 +44,11 @@ public class SendAclNotificationsProperty extends JavaScriptObject {
 
   /**
    * Sets whether to send ACL notifications to grantees. This attribute is optional.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets whether to send ACL notifications to grantees. This attribute is optional.
    * 
-   * @param value Whether to send ACL notifications to grantees or undefined for none.
+   * @param value Whether to send ACL notifications to grantees.
    */
   public final native void setValue(boolean value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

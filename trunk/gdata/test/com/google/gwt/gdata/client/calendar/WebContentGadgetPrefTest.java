@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class WebContentGadgetPrefTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", WebContentGadgetPref.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", WebContentGadgetPref.newInstance());
   }
 
   public void testProperties() {
-    WebContentGadgetPref obj = WebContentGadgetPref.newInstance(JavaScriptObject.createObject());
+    WebContentGadgetPref obj = WebContentGadgetPref.newInstance();
     String name = "myValue";
     obj.setName(name);
     assertEquals("name", obj.getName(), name);

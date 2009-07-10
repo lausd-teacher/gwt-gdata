@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.FeedLink;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -30,13 +29,13 @@ public class ItemsEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ItemsEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", ItemsEntry.newInstance());
   }
 
   public void testOther() {
-    ItemsEntry obj = ItemsEntry.newInstance(JavaScriptObject.createObject());
+    ItemsEntry obj = ItemsEntry.newInstance();
     // Unit Test for getAttributes()
-    assertEquals("getAttributes", obj.getAttributes(), null);
+    assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
     // Unit Test for getHtmlLink()
     assertEquals("getHtmlLink", obj.getHtmlLink(), null);
     // Unit Test for setAttribute(String name, Attribute attribute)
@@ -44,8 +43,8 @@ public class ItemsEntryTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    ItemsEntry obj = ItemsEntry.newInstance(JavaScriptObject.createObject());
-    FeedLink feedlink = FeedLink.newInstance(JavaScriptObject.createObject());
+    ItemsEntry obj = ItemsEntry.newInstance();
+    FeedLink feedlink = FeedLink.newInstance();
     obj.setFeedLink(feedlink);
     assertSame("feedlink", obj.getFeedLink(), feedlink);
   }

@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class OverrideNamePropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", OverrideNameProperty.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", OverrideNameProperty.newInstance());
   }
 
   public void testProperties() {
-    OverrideNameProperty obj = OverrideNameProperty.newInstance(JavaScriptObject.createObject());
+    OverrideNameProperty obj = OverrideNameProperty.newInstance();
     String value = "myValue";
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

@@ -29,14 +29,11 @@ public class ExtendedProperty extends JavaScriptObject {
   public static final String REALM_SHARED = getConstant("REALM_SHARED");
 
   /**
-   * Constructs an extended property using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: name, realm, and value.
+   * Constructs an extended property.
+   * @return An ExtendedProperty object.
    */
-  public static native ExtendedProperty newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.ExtendedProperty(
-      params
-    );
+  public static native ExtendedProperty newInstance() /*-{
+    return new $wnd.google.gdata.ExtendedProperty();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -48,7 +45,7 @@ public class ExtendedProperty extends JavaScriptObject {
   /**
    * Returns the name of the property expressed as a URI. This attribute is required.
    * 
-   * @return Name of the property expressed as a URI or undefined for none.
+   * @return Name of the property expressed as a URI.
    */
   public final native String getName() /*-{
     return this.getName();
@@ -57,7 +54,7 @@ public class ExtendedProperty extends JavaScriptObject {
   /**
    * Returns the limit on who may see and modify this extended property. This attribute is optional.
    * 
-   * @return Limit on who may see and modify this extended property or undefined for none.
+   * @return Limit on who may see and modify this extended property.
    */
   public final native String getRealm() /*-{
     return this.getRealm();
@@ -66,7 +63,7 @@ public class ExtendedProperty extends JavaScriptObject {
   /**
    * Returns the property value. This attribute is optional.
    * 
-   * @return Property value or undefined for none.
+   * @return Property value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -74,56 +71,29 @@ public class ExtendedProperty extends JavaScriptObject {
 
   /**
    * Sets the name of the property expressed as a URI. This attribute is required.
-   */
-  public final native void setName() /*-{
-    this.setName();
-  }-*/;
-
-  /**
-   * Sets the name of the property expressed as a URI. This attribute is required.
    * 
-   * @param name Name of the property expressed as a URI or undefined for none.
+   * @param name Name of the property expressed as a URI.
    */
   public final native void setName(String name) /*-{
-    this.setName(
-      name
-    );
-  }-*/;
-
-  /**
-   * Sets the limit on who may see and modify this extended property. This attribute is optional.
-   */
-  public final native void setRealm() /*-{
-    this.setRealm();
+    this.setName(name);
   }-*/;
 
   /**
    * Sets the limit on who may see and modify this extended property. This attribute is optional.
    * 
-   * @param realm Limit on who may see and modify this extended property or undefined for none.
+   * @param realm Limit on who may see and modify this extended property.
    */
   public final native void setRealm(String realm) /*-{
-    this.setRealm(
-      realm
-    );
-  }-*/;
-
-  /**
-   * Sets the property value. This attribute is optional.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
+    this.setRealm(realm);
   }-*/;
 
   /**
    * Sets the property value. This attribute is optional.
    * 
-   * @param value Property value or undefined for none.
+   * @param value Property value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

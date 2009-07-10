@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,21 +28,24 @@ public class DataEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", DataEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", DataEntry.newInstance());
   }
 
   public void testOther() {
-    DataEntry obj = DataEntry.newInstance(JavaScriptObject.createObject());
     // Unit Test for addDimension(Dimension dimension)
     // Unit Test for addMetric(Metric metric)
     // Unit Test for getDimension(String name)
-    // Unit Test for getDimensions()
-    assertEquals("getDimensions", obj.getDimensions(), null);
     // Unit Test for getMetric(String name)
-    // Unit Test for getMetrics()
-    assertEquals("getMetrics", obj.getMetrics(), null);
     // Unit Test for getValueOf(String name)
-    // Unit Test for setDimensions(JsArray dimensions)
-    // Unit Test for setMetrics(JsArray metrics)
+  }
+
+  public void testProperties() {
+    DataEntry obj = DataEntry.newInstance();
+    Dimension[] dimensions = new Dimension[]{ Dimension.newInstance() };
+    obj.setDimensions(dimensions);
+    assertEquals("dimensions", obj.getDimensions().length, dimensions.length);
+    Metric[] metrics = new Metric[]{ Metric.newInstance() };
+    obj.setMetrics(metrics);
+    assertEquals("metrics", obj.getMetrics().length, metrics.length);
   }
 }

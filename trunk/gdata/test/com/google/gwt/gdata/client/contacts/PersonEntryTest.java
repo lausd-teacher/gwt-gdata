@@ -16,10 +16,12 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.ajaxloader.client.ArrayHelper;
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Email;
+import com.google.gwt.gdata.client.ExtendedProperty;
+import com.google.gwt.gdata.client.Im;
+import com.google.gwt.gdata.client.Organization;
+import com.google.gwt.gdata.client.PhoneNumber;
+import com.google.gwt.gdata.client.PostalAddress;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -32,11 +34,12 @@ public class PersonEntryTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PersonEntry.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", PersonEntry.newInstance());
   }
 
   public void testOther() {
-    PersonEntry obj = PersonEntry.newInstance(JavaScriptObject.createObject());
+    PersonEntry obj = PersonEntry.newInstance();
+    // Unit Test for addEmailAddress(Email emailAddress)
     // Unit Test for addExtendedProperty(ExtendedProperty extendedProperty)
     // Unit Test for addImAddress(Im imAddress)
     // Unit Test for addOrganization(Organization organization)
@@ -46,30 +49,27 @@ public class PersonEntryTest extends GWTTestCase {
     assertEquals("getContactEditPhotoLink", obj.getContactEditPhotoLink(), null);
     // Unit Test for getContactPhotoLink()
     assertEquals("getContactPhotoLink", obj.getContactPhotoLink(), null);
-    // Unit Test for getExtendedProperties()
-    assertEquals("getExtendedProperties", obj.getExtendedProperties(), null);
-    // Unit Test for getImAddresses()
-    assertEquals("getImAddresses", obj.getImAddresses(), null);
-    // Unit Test for getOrganizations()
-    assertEquals("getOrganizations", obj.getOrganizations(), null);
-    // Unit Test for getPhoneNumbers()
-    assertEquals("getPhoneNumbers", obj.getPhoneNumbers(), null);
-    // Unit Test for getPostalAddresses()
-    assertEquals("getPostalAddresses", obj.getPostalAddresses(), null);
-    // Unit Test for setExtendedProperties(JsArray extendedProperties)
-    // Unit Test for setImAddresses(JsArray imAddresses)
-    // Unit Test for setOrganizations(JsArray organizations)
-    // Unit Test for setPhoneNumbers(JsArray phoneNumbers)
-    // Unit Test for setPostalAddresses(JsArray postalAddresses)
   }
 
   public void testProperties() {
-    PersonEntry obj = PersonEntry.newInstance(JavaScriptObject.createObject());
-    JsArray<Email> emailaddresses = ArrayHelper.toJsArray(Email.newInstance(JavaScriptObject.createObject()));
+    PersonEntry obj = PersonEntry.newInstance();
+    PostalAddress[] postaladdresses = new PostalAddress[]{ PostalAddress.newInstance() };
+    obj.setPostalAddresses(postaladdresses);
+    assertEquals("postaladdresses", obj.getPostalAddresses().length, postaladdresses.length);
+    Im[] imaddresses = new Im[]{ Im.newInstance() };
+    obj.setImAddresses(imaddresses);
+    assertEquals("imaddresses", obj.getImAddresses().length, imaddresses.length);
+    PhoneNumber[] phonenumbers = new PhoneNumber[]{ PhoneNumber.newInstance() };
+    obj.setPhoneNumbers(phonenumbers);
+    assertEquals("phonenumbers", obj.getPhoneNumbers().length, phonenumbers.length);
+    Organization[] organizations = new Organization[]{ Organization.newInstance() };
+    obj.setOrganizations(organizations);
+    assertEquals("organizations", obj.getOrganizations().length, organizations.length);
+    Email[] emailaddresses = new Email[]{ Email.newInstance() };
     obj.setEmailAddresses(emailaddresses);
-    assertEquals("emailaddresses", obj.getEmailAddresses().length(), emailaddresses.length());
-    int lenEmailAddresses = obj.getEmailAddresses().length();
-    obj.addEmailAddress(Email.newInstance(JavaScriptObject.createObject()));
-    assertEquals("emailaddresses", obj.getEmailAddresses().length(), lenEmailAddresses + 1);
+    assertEquals("emailaddresses", obj.getEmailAddresses().length, emailaddresses.length);
+    ExtendedProperty[] extendedproperties = new ExtendedProperty[]{ ExtendedProperty.newInstance() };
+    obj.setExtendedProperties(extendedproperties);
+    assertEquals("extendedproperties", obj.getExtendedProperties().length, extendedproperties.length);
   }
 }

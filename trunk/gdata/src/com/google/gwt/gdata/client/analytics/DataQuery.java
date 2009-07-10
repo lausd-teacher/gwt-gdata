@@ -24,9 +24,10 @@ import com.google.gwt.gdata.client.Query;
 public class DataQuery extends Query {
 
   /**
-   * Constructor.
+   * Constructs a data query.
    * 
    * @param feedUri URI of feed.
+   * @return A DataQuery object.
    */
   public static native DataQuery newInstance(String feedUri) /*-{
     return new $wnd.google.gdata.analytics.DataQuery(
@@ -39,7 +40,7 @@ public class DataQuery extends Query {
   /**
    * Returns the row keys.
    * 
-   * @return Row keys or null to indicate that the parameter is disabled.
+   * @return Row keys.
    */
   public final native String getDimensions() /*-{
     return this.getDimensions();
@@ -48,7 +49,7 @@ public class DataQuery extends Query {
   /**
    * Returns the last day for which to retrieve data in form YYYY-MM-DD.
    * 
-   * @return Last day for which to retrieve data in form YYYY-MM-DD or null to indicate that the parameter is disabled.
+   * @return Last day for which to retrieve data in form YYYY-MM-DD.
    */
   public final native String getEndDate() /*-{
     return this.getEndDate();
@@ -57,7 +58,7 @@ public class DataQuery extends Query {
   /**
    * Returns the dimension value filters.
    * 
-   * @return Dimension value filters or null to indicate that the parameter is disabled.
+   * @return Dimension value filters.
    */
   public final native String getFilters() /*-{
     return this.getFilters();
@@ -66,7 +67,7 @@ public class DataQuery extends Query {
   /**
    * Returns the Google Analytics profile ID, prefixed by 'ga:'.
    * 
-   * @return Google Analytics profile ID, prefixed by 'ga:' or null to indicate that the parameter is disabled.
+   * @return Google Analytics profile ID, prefixed by 'ga:'.
    */
   public final native String getIds() /*-{
     return this.getIds();
@@ -75,7 +76,7 @@ public class DataQuery extends Query {
   /**
    * Returns the maximum number of results to be retrieved.
    * 
-   * @return Maximum number of results to be retrieved or null to indicate that the parameter is disabled.
+   * @return Maximum number of results to be retrieved.
    */
   public final native double getMaxResults() /*-{
     return this.getMaxResults();
@@ -84,7 +85,7 @@ public class DataQuery extends Query {
   /**
    * Returns the comma separated list of numeric value fields.
    * 
-   * @return Comma separated list of numeric value fields or null to indicate that the parameter is disabled.
+   * @return Comma separated list of numeric value fields.
    */
   public final native String getMetrics() /*-{
     return this.getMetrics();
@@ -93,7 +94,7 @@ public class DataQuery extends Query {
   /**
    * Returns the whether to indent the elements.
    * 
-   * @return Whether to indent the elements or null to indicate that the parameter is disabled.
+   * @return Whether to indent the elements.
    */
   public final native boolean getPrettyprint() /*-{
     return this.getPrettyprint();
@@ -102,7 +103,7 @@ public class DataQuery extends Query {
   /**
    * Returns the comma separated list of sort keys in order of importance.
    * 
-   * @return Comma separated list of sort keys in order of importance or null to indicate that the parameter is disabled.
+   * @return Comma separated list of sort keys in order of importance.
    */
   public final native String getSort() /*-{
     return this.getSort();
@@ -111,7 +112,7 @@ public class DataQuery extends Query {
   /**
    * Returns the first day for which to retrieve data in form YYYY-MM-DD.
    * 
-   * @return First day for which to retrieve data in form YYYY-MM-DD or null to indicate that the parameter is disabled.
+   * @return First day for which to retrieve data in form YYYY-MM-DD.
    */
   public final native String getStartDate() /*-{
     return this.getStartDate();
@@ -120,7 +121,7 @@ public class DataQuery extends Query {
   /**
    * Returns the 1-based index of the first result to be retrieved.
    * 
-   * @return 1-based index of the first result to be retrieved or null to indicate that the parameter is disabled.
+   * @return 1-based index of the first result to be retrieved.
    */
   public final native double getStartIndex() /*-{
     return this.getStartIndex();
@@ -129,29 +130,25 @@ public class DataQuery extends Query {
   /**
    * Sets the row keys.
    * 
-   * @param dimensions Row keys or null to disable this parameter.
+   * @param dimensions Row keys.
    */
   public final native void setDimensions(String dimensions) /*-{
-    this.setDimensions(
-      dimensions
-    );
+    this.setDimensions(dimensions);
   }-*/;
 
   /**
    * Sets the last day for which to retrieve data in form YYYY-MM-DD.
    * 
-   * @param endDate Last day for which to retrieve data in form YYYY-MM-DD or null to disable this parameter.
+   * @param endDate Last day for which to retrieve data in form YYYY-MM-DD.
    */
   public final native void setEndDate(String endDate) /*-{
-    this.setEndDate(
-      endDate
-    );
+    this.setEndDate(endDate);
   }-*/;
 
   /**
    * Sets the dimension value filters.
    * 
-   * @param filters Dimension value filters or null to disable this parameter.
+   * @param filters Dimension value filters.
    */
   public final native void setFilters(String filters) /*-{
     this.setFilters(
@@ -162,111 +159,64 @@ public class DataQuery extends Query {
   /**
    * Sets the Google Analytics profile ID, prefixed by 'ga:'.
    * 
-   * @param ids Google Analytics profile ID, prefixed by 'ga:' or null to disable this parameter.
+   * @param ids Google Analytics profile ID, prefixed by 'ga:'.
    */
   public final native void setIds(String ids) /*-{
-    this.setIds(
-      ids
-    );
+    this.setIds(ids);
   }-*/;
 
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param maxResults Maximum number of results to be retrieved.
    */
   public final native void setMaxResults(double maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
-  }-*/;
-
-  /**
-   * Sets the maximum number of results to be retrieved.
-   * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setMaxResults(String maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
+    this.setMaxResults(maxResults);
   }-*/;
 
   /**
    * Sets the comma separated list of numeric value fields.
    * 
-   * @param metrics Comma separated list of numeric value fields or null to disable this parameter.
+   * @param metrics Comma separated list of numeric value fields.
    */
   public final native void setMetrics(String metrics) /*-{
-    this.setMetrics(
-      metrics
-    );
+    this.setMetrics(metrics);
   }-*/;
 
   /**
    * Sets the whether to indent the elements. The default value is false.
    * 
-   * @param prettyprint Whether to indent the elements or an equivalent string value or null to disable this parameter.
+   * @param prettyprint Whether to indent the elements.
    */
   public final native void setPrettyprint(boolean prettyprint) /*-{
-    this.setPrettyprint(
-      prettyprint
-    );
-  }-*/;
-
-  /**
-   * Sets the whether to indent the elements. The default value is false.
-   * 
-   * @param prettyprint Whether to indent the elements or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setPrettyprint(String prettyprint) /*-{
-    this.setPrettyprint(
-      prettyprint
-    );
+    this.setPrettyprint(prettyprint);
   }-*/;
 
   /**
    * Sets the comma separated list of sort keys in order of importance.
    * 
-   * @param sort Comma separated list of sort keys in order of importance or null to disable this parameter.
+   * @param sort Comma separated list of sort keys in order of importance.
    */
   public final native void setSort(String sort) /*-{
-    this.setSort(
-      sort
-    );
+    this.setSort(sort);
   }-*/;
 
   /**
    * Sets the first day for which to retrieve data in form YYYY-MM-DD.
    * 
-   * @param startDate First day for which to retrieve data in form YYYY-MM-DD or null to disable this parameter.
+   * @param startDate First day for which to retrieve data in form YYYY-MM-DD.
    */
   public final native void setStartDate(String startDate) /*-{
-    this.setStartDate(
-      startDate
-    );
+    this.setStartDate(startDate);
   }-*/;
 
   /**
    * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param startIndex 1-based index of the first result to be retrieved.
    */
   public final native void setStartIndex(double startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
+    this.setStartIndex(startIndex);
   }-*/;
-
-  /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
-   * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setStartIndex(String startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
-  }-*/;
-
+  
 }

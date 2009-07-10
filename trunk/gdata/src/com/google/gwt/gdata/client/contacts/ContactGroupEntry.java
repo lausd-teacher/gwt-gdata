@@ -16,8 +16,6 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.ExtendedProperty;
 
@@ -27,14 +25,12 @@ import com.google.gwt.gdata.client.ExtendedProperty;
 public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry<ContactGroupEntry> {
 
   /**
-   * Constructs a contact group entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, content, deleted, edited, extendedProperties, id, links, systemGroup, title, and updated.
+   * Constructs a contact group entry.
+   * @return A ContactGroupEntry object.
    */
-  public static native ContactGroupEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.contacts.ContactGroupEntry(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native ContactGroupEntry newInstance() /*-{
+    return new $wnd.google.gdata.contacts.ContactGroupEntry();
   }-*/;
 
   protected ContactGroupEntry() { }
@@ -42,18 +38,16 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry<Contact
   /**
    * Adds a new extended property.
    * 
-   * @param extendedProperty Extended property to add, or object to use as a parameter to the google.gdata.ExtendedProperty constructor.
+   * @param extendedProperty Extended property to add.
    */
   public final native void addExtendedProperty(ExtendedProperty extendedProperty) /*-{
-    this.addExtendedProperty(
-      extendedProperty
-    );
+    this.addExtendedProperty(extendedProperty);
   }-*/;
 
   /**
    * Returns the marker for deleted entries. This element is optional.
    * 
-   * @return Marker for deleted entries or undefined for none.
+   * @return Marker for deleted entries.
    */
   public final native Deleted getDeleted() /*-{
     return this.getDeleted();
@@ -64,14 +58,14 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry<Contact
    * 
    * @return Extended properties.
    */
-  public final native JsArray<ExtendedProperty> getExtendedProperties() /*-{
-    return this.getExtendedProperties();
+  public final native ExtendedProperty[] getExtendedProperties() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getExtendedProperties());
   }-*/;
 
   /**
    * Returns the system group. This element is optional.
    * 
-   * @return System group or undefined for none.
+   * @return System group.
    */
   public final native SystemGroup getSystemGroup() /*-{
     return this.getSystemGroup();
@@ -79,56 +73,31 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry<Contact
 
   /**
    * Sets the marker for deleted entries. This element is optional.
-   */
-  public final native void setDeleted() /*-{
-    this.setDeleted();
-  }-*/;
-
-  /**
-   * Sets the marker for deleted entries. This element is optional.
    * 
-   * @param deleted Marker for deleted entries, or object to use as a parameter to the google.gdata.Deleted constructor, or undefined for none.
+   * @param deleted Marker for deleted entries.
    */
   public final native void setDeleted(Deleted deleted) /*-{
-    this.setDeleted(
-      deleted
-    );
-  }-*/;
-
-  /**
-   * Sets the extended properties.
-   */
-  public final native void setExtendedProperties() /*-{
-    this.setExtendedProperties();
+    this.setDeleted(deleted);
   }-*/;
 
   /**
    * Sets the extended properties.
    * 
-   * @param extendedProperties Extended properties, where each extended property is added using the addExtendedProperty() function, or undefined to clear the extended properties.
+   * @param extendedProperties Extended properties, where each extended property is added using addExtendedProperty().
    */
-  public final native void setExtendedProperties(JsArray<ExtendedProperty> extendedProperties) /*-{
+  public final native void setExtendedProperties(ExtendedProperty[] extendedProperties) /*-{
     this.setExtendedProperties(
-      extendedProperties
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(extendedProperties)
     );
   }-*/;
 
   /**
    * Sets the system group. This element is optional.
-   */
-  public final native void setSystemGroup() /*-{
-    this.setSystemGroup();
-  }-*/;
-
-  /**
-   * Sets the system group. This element is optional.
    * 
-   * @param systemGroup System group, or object to use as a parameter to the google.gdata.contacts.SystemGroup constructor, or undefined for none.
+   * @param systemGroup System group.
    */
   public final native void setSystemGroup(SystemGroup systemGroup) /*-{
-    this.setSystemGroup(
-      systemGroup
-    );
+    this.setSystemGroup(systemGroup);
   }-*/;
 
 }

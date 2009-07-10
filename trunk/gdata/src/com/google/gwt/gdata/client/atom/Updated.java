@@ -27,14 +27,11 @@ import java.util.Date;
 public class Updated extends JavaScriptObject {
 
   /**
-   * Constructs an updated timestamp using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs an updated timestamp.
+   * @return An Updated object.
    */
-  public static native Updated newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.atom.Updated(
-      params
-    );
+  public static native Updated newInstance() /*-{
+    return new $wnd.google.gdata.atom.Updated();
   }-*/;
 
   protected Updated() { }
@@ -42,7 +39,7 @@ public class Updated extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native DateTime getValue() /*-{
     return this.getValue();
@@ -50,15 +47,8 @@ public class Updated extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(Date value) /*-{
     this.setValue(
@@ -69,12 +59,10 @@ public class Updated extends JavaScriptObject {
   /**
    * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(DateTime value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

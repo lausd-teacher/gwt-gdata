@@ -16,25 +16,15 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
- * Comment unavailable.
- * @param <E>
+ * Describes an event feed.
+ * @param <E> The Entry type.
  */
 public class EventFeed<E extends EventEntry> extends com.google.gwt.gdata.client.Feed<E> {
 
   /**
-   * Constructs an event feed using an object parameter whose property names match the setter method to use for each property.
-   */
-  public static native <E extends EventEntry> EventFeed<E> newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.EventFeed(
-      params
-    );
-  }-*/;
-
-  /**
-   * Constructs an event feed using an object parameter whose property names match the setter method to use for each property.
+   * Constructs an event feed.
+   * @return An EventFeed object.
    */
   public static native <E extends EventEntry> EventFeed<E> newInstance() /*-{
     return new $wnd.google.gdata.EventFeed();

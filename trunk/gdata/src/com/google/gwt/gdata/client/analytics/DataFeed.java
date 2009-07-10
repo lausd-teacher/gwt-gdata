@@ -16,23 +16,17 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-
 /**
  * Feed element in data feed.
  */
 public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
 
   /**
-   * Constructs a data feed using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: aggregates, authors, dataSources, endDate, entries, generator, id, itemsPerPage, links, startDate, startIndex, title, totalResults, and updated.
+   * Constructs a data feed.
    */
-  public static native DataFeed newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.analytics.DataFeed(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native DataFeed newInstance() /*-{
+    return new $wnd.google.gdata.analytics.DataFeed();
   }-*/;
 
   protected DataFeed() { }
@@ -40,18 +34,16 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
   /**
    * Adds a new data source.
    * 
-   * @param dataSource Data source to add, or object to use as a parameter to the google.gdata.analytics.DataSource constructor.
+   * @param dataSource Data source to add.
    */
   public final native void addDataSource(DataSource dataSource) /*-{
-    this.addDataSource(
-      dataSource
-    );
+    this.addDataSource(dataSource);
   }-*/;
 
   /**
    * Returns the aggregates. This element is optional.
    * 
-   * @return Aggregates or undefined for none.
+   * @return Aggregates.
    */
   public final native Aggregates getAggregates() /*-{
     return this.getAggregates();
@@ -62,14 +54,14 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
    * 
    * @return Data sources.
    */
-  public final native JsArray<DataSource> getDataSources() /*-{
-    return this.getDataSources();
+  public final native DataSource[] getDataSources() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getDataSources());
   }-*/;
 
   /**
    * Returns the end date. This element is required.
    * 
-   * @return End date or undefined for none.
+   * @return End date.
    */
   public final native EndDate getEndDate() /*-{
     return this.getEndDate();
@@ -78,7 +70,7 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
   /**
    * Returns the link that provides the URI of next page in a paged feed.
    * 
-   * @return Link that provides the URI of next page in a paged feed or undefined for none.
+   * @return Link that provides the URI of next page in a paged feed.
    */
   public final native com.google.gwt.gdata.client.Link getNextLink() /*-{
     return this.getNextLink();
@@ -87,7 +79,7 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
   /**
    * Returns the link that provides the URI of previous page in a paged feed.
    * 
-   * @return Link that provides the URI of previous page in a paged feed or undefined for none.
+   * @return Link that provides the URI of previous page in a paged feed.
    */
   public final native com.google.gwt.gdata.client.Link getPreviousLink() /*-{
     return this.getPreviousLink();
@@ -96,7 +88,7 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
   /**
    * Returns the start date. This element is required.
    * 
-   * @return Start date or undefined for none.
+   * @return Start date.
    */
   public final native StartDate getStartDate() /*-{
     return this.getStartDate();
@@ -104,27 +96,11 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
 
   /**
    * Sets the aggregates. This element is optional.
-   */
-  public final native void setAggregates() /*-{
-    this.setAggregates();
-  }-*/;
-
-  /**
-   * Sets the aggregates. This element is optional.
    * 
-   * @param aggregates Aggregates, or object to use as a parameter to the google.gdata.analytics.Aggregates constructor, or undefined for none.
+   * @param aggregates Aggregates.
    */
   public final native void setAggregates(Aggregates aggregates) /*-{
-    this.setAggregates(
-      aggregates
-    );
-  }-*/;
-
-  /**
-   * Sets the data sources.
-   */
-  public final native void setDataSources() /*-{
-    this.setDataSources();
+    this.setAggregates(aggregates);
   }-*/;
 
   /**
@@ -132,35 +108,19 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
    * 
    * @param dataSources Data sources, where each data source is added using the addDataSource() function, or undefined to clear the data sources.
    */
-  public final native void setDataSources(JsArray<DataSource> dataSources) /*-{
+  public final native void setDataSources(DataSource[] dataSources) /*-{
     this.setDataSources(
-      dataSources
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(dataSources)
     );
-  }-*/;
-
-  /**
-   * Sets the end date. This element is required.
-   */
-  public final native void setEndDate() /*-{
-    this.setEndDate();
   }-*/;
 
   /**
    * Sets the end date. This element is required.
    * 
-   * @param endDate End date, or object to use as a parameter to the google.gdata.analytics.EndDate constructor, or undefined for none.
+   * @param endDate End date.
    */
   public final native void setEndDate(EndDate endDate) /*-{
-    this.setEndDate(
-      endDate
-    );
-  }-*/;
-
-  /**
-   * Sets the start date. This element is required.
-   */
-  public final native void setStartDate() /*-{
-    this.setStartDate();
+    this.setEndDate(endDate);
   }-*/;
 
   /**
@@ -169,9 +129,7 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
    * @param startDate Start date, or object to use as a parameter to the google.gdata.analytics.StartDate constructor, or undefined for none.
    */
   public final native void setStartDate(StartDate startDate) /*-{
-    this.setStartDate(
-      startDate
-    );
+    this.setStartDate(startDate);
   }-*/;
 
 }

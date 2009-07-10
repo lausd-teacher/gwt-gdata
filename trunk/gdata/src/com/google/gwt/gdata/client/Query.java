@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Query. Sample usage:
+ * Describes a GData Query.
  */
 public class Query extends JavaScriptObject {
 
@@ -27,11 +27,10 @@ public class Query extends JavaScriptObject {
    * Creates a Query instance.
    * 
    * @param feedUri URI of feed.
+   * @return A Query object.
    */
   public static native Query newInstance(String feedUri) /*-{
-    return new $wnd.google.gdata.client.Query(
-      feedUri
-    );
+    return new $wnd.google.gdata.client.Query(feedUri);
   }-*/;
 
   protected Query() { }
@@ -61,10 +60,7 @@ public class Query extends JavaScriptObject {
    * @param value Value of the parameter.
    */
   public final native void setParam(String name, JavaScriptObject value) /*-{
-    this.setParam(
-      name,
-      value
-    );
+    this.setParam(name, value);
   }-*/;
 
   /**
@@ -74,10 +70,7 @@ public class Query extends JavaScriptObject {
    * @param paramDef Definition of the parameter which can have any of the following properties: decorator {Function}: Optional value decorator. defaultValue {any}: Optional default value; if parameter value is the same as default value, parameter is not included in query string.
    */
   public final native void setParamDef(String name, JavaScriptObject paramDef) /*-{
-    this.setParamDef(
-      name,
-      paramDef
-    );
+    this.setParamDef(name, paramDef);
   }-*/;
 
 }

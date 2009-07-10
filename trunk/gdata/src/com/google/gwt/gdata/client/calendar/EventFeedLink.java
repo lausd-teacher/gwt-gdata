@@ -16,8 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Describes an event feed link.
  */
@@ -29,14 +27,11 @@ public class EventFeedLink extends CalendarLink {
   public static final String REL_EVENT_FEED = getConstant("REL_EVENT_FEED");
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 1.10  
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: href, rel, and type.
+   * Constructs an event feed link.
+   * @return An EventFeedLink object.
    */
-  public static native EventFeedLink newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.EventFeedLink(
-      params
-    );
+  public static native EventFeedLink newInstance() /*-{
+    return new $wnd.google.gdata.calendar.EventFeedLink();
   }-*/;
 
   private static native String getConstant(String name) /*-{

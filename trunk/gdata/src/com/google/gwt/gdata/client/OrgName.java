@@ -19,19 +19,16 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Name of organization.
+ * Name of organization. Defined in gdata.js
  */
 public class OrgName extends JavaScriptObject {
 
   /**
-   * Constructs an org name using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs an org name.
+   * @return An OrgName object.
    */
-  public static native OrgName newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.OrgName(
-      params
-    );
+  public static native OrgName newInstance() /*-{
+    return new $wnd.google.gdata.OrgName();
   }-*/;
 
   protected OrgName() { }
@@ -39,28 +36,19 @@ public class OrgName extends JavaScriptObject {
   /**
    * Returns the value. This attribute is optional.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
-
-  /**
-   * Sets the value. This attribute is optional.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
+  
   /**
    * Sets the value. This attribute is optional.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

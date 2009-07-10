@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Who;
 
 /**
@@ -25,14 +24,11 @@ import com.google.gwt.gdata.client.Who;
 public class CalendarWho extends Who {
 
   /**
-   * Constructs a Calendar Who class using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: attendeeStatus, email, rel, resource, and valueString.
+   * Constructs a Calendar Who class.
+   * @return A CalendarWho object.
    */
-  public static native CalendarWho newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.CalendarWho(
-      params
-    );
+  public static native CalendarWho newInstance() /*-{
+    return new $wnd.google.gdata.calendar.CalendarWho();
   }-*/;
 
   protected CalendarWho() { }
@@ -40,7 +36,7 @@ public class CalendarWho extends Who {
   /**
    * Returns the resource property. This element is optional.
    * 
-   * @return Resource property or undefined for none.
+   * @return Resource property.
    */
   public final native ResourceProperty getResource() /*-{
     return this.getResource();
@@ -48,20 +44,11 @@ public class CalendarWho extends Who {
 
   /**
    * Sets the resource property. This element is optional.
-   */
-  public final native void setResource() /*-{
-    this.setResource();
-  }-*/;
-
-  /**
-   * Sets the resource property. This element is optional.
    * 
-   * @param resource Resource property, or object to use as a parameter to the google.gdata.calendar.ResourceProperty constructor, or undefined for none.
+   * @param resource Resource property.
    */
   public final native void setResource(ResourceProperty resource) /*-{
-    this.setResource(
-      resource
-    );
+    this.setResource(resource);
   }-*/;
 
 }

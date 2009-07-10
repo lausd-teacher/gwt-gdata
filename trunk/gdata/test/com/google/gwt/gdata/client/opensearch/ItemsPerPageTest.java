@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.opensearch;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class ItemsPerPageTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ItemsPerPage.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", ItemsPerPage.newInstance());
   }
 
   public void testProperties() {
-    ItemsPerPage obj = ItemsPerPage.newInstance(JavaScriptObject.createObject());
+    ItemsPerPage obj = ItemsPerPage.newInstance();
     double value = 600813;
     obj.setValue(value);
     assertEquals("value", obj.getValue(), value);

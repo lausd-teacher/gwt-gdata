@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -38,11 +37,11 @@ public class MetricTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Metric.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Metric.newInstance());
   }
 
   public void testProperties() {
-    Metric obj = Metric.newInstance(JavaScriptObject.createObject());
+    Metric obj = Metric.newInstance();
     String name = "myValue";
     obj.setName(name);
     assertEquals("name", obj.getName(), name);

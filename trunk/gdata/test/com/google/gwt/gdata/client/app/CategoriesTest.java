@@ -16,7 +16,7 @@
 
 package com.google.gwt.gdata.client.app;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.gdata.client.atom.Category;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -34,25 +34,24 @@ public class CategoriesTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Categories.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Categories.newInstance());
   }
 
   public void testOther() {
-    Categories obj = Categories.newInstance(JavaScriptObject.createObject());
     // Unit Test for addCategory(Category category)
-    // Unit Test for getCategories()
-    assertEquals("getCategories", obj.getCategories(), null);
-    // Unit Test for setCategories(JsArray categories)
   }
 
   public void testProperties() {
-    Categories obj = Categories.newInstance(JavaScriptObject.createObject());
+    Categories obj = Categories.newInstance();
     String scheme = "myValue";
     obj.setScheme(scheme);
     assertEquals("scheme", obj.getScheme(), scheme);
     String fixed = "myValue";
     obj.setFixed(fixed);
     assertEquals("fixed", obj.getFixed(), fixed);
+    Category[] categories = new Category[]{ Category.newInstance() };
+    obj.setCategories(categories);
+    assertEquals("categories", obj.getCategories().length, categories.length);
     String href = "myValue";
     obj.setHref(href);
     assertEquals("href", obj.getHref(), href);

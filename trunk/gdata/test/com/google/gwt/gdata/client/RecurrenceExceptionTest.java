@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,15 +28,15 @@ public class RecurrenceExceptionTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", RecurrenceException.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", RecurrenceException.newInstance());
   }
 
   public void testProperties() {
-    RecurrenceException obj = RecurrenceException.newInstance(JavaScriptObject.createObject());
+    RecurrenceException obj = RecurrenceException.newInstance();
     boolean specialized = true;
     obj.setSpecialized(specialized);
     assertSame("specialized", obj.getSpecialized(), specialized);
-    RecurrenceExceptionEntryLink entrylink = RecurrenceExceptionEntryLink.newInstance(JavaScriptObject.createObject());
+    RecurrenceExceptionEntryLink entrylink = RecurrenceExceptionEntryLink.newInstance();
     obj.setEntryLink(entrylink);
     assertSame("entrylink", obj.getEntryLink(), entrylink);
   }

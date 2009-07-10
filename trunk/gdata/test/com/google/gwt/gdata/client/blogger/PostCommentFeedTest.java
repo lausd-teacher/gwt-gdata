@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class PostCommentFeedTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PostCommentFeed.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", PostCommentFeed.newInstance());
   }
 
   public void testOther() {
-    PostCommentFeed obj = PostCommentFeed.newInstance(JavaScriptObject.createObject());
+    PostCommentFeed obj = PostCommentFeed.newInstance();
     // Unit Test for getNextLink()
     assertEquals("getNextLink", obj.getNextLink(), null);
     // Unit Test for getPreviousLink()

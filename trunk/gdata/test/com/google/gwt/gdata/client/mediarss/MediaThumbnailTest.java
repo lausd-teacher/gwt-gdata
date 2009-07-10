@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.mediarss;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class MediaThumbnailTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaThumbnail.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", MediaThumbnail.newInstance());
   }
 
   public void testProperties() {
-    MediaThumbnail obj = MediaThumbnail.newInstance(JavaScriptObject.createObject());
+    MediaThumbnail obj = MediaThumbnail.newInstance();
     double width = 600813;
     obj.setWidth(width);
     assertEquals("width", obj.getWidth(), width);

@@ -49,14 +49,11 @@ public class AclRole extends JavaScriptObject {
   public static final String VALUE_WRITER = getConstant("VALUE_WRITER");
 
   /**
-   * Constructs a role using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a role.
+   * @return An AclRole object.
    */
-  public static native AclRole newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.acl.AclRole(
-      params
-    );
+  public static native AclRole newInstance() /*-{
+    return new $wnd.google.gdata.acl.AclRole();
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -68,7 +65,7 @@ public class AclRole extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native String getValue() /*-{
     return this.getValue();
@@ -76,20 +73,11 @@ public class AclRole extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(String value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

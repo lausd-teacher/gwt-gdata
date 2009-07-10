@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.calendar;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 
 /**
  * Describes a "web content" extension. For example: <atom:link rel"http://schemas.google.com/gCal/2005/webContent" title"World Cup" href"http://www.google.com/calendar/images/google-holiday.gif" type"image/gif"> <gCal:webContent width"276" height"120" url"http://www.google.com/logos/worldcup06.gif"/> </atom:link>
@@ -25,14 +24,11 @@ import com.google.gwt.core.client.JsArray;
 public class WebContent extends JavaScriptObject {
 
   /**
-   * Constructs a web content using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: gadgetPrefs, height, url, and width.
+   * Constructs a web content.
+   * @return A WebContent object.
    */
-  public static native WebContent newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.calendar.WebContent(
-      params
-    );
+  public static native WebContent newInstance() /*-{
+    return new $wnd.google.gdata.calendar.WebContent();
   }-*/;
 
   protected WebContent() { }
@@ -40,12 +36,10 @@ public class WebContent extends JavaScriptObject {
   /**
    * Adds a new web content gadget preference.
    * 
-   * @param gadgetPref Web content gadget preference to add, or object to use as a parameter to the google.gdata.calendar.WebContentGadgetPref constructor.
+   * @param gadgetPref Web content gadget preference to add.
    */
   public final native void addGadgetPref(WebContentGadgetPref gadgetPref) /*-{
-    this.addGadgetPref(
-      gadgetPref
-    );
+    this.addGadgetPref(gadgetPref);
   }-*/;
 
   /**
@@ -53,12 +47,10 @@ public class WebContent extends JavaScriptObject {
    * 
    * @param name Preference name.
    * 
-   * @return First web content gadget preference whose name is a match or undefined for none.
+   * @return First web content gadget preference whose name is a match.
    */
   public final native WebContentGadgetPref getGadgetPref(String name) /*-{
-    return this.getGadgetPref(
-      name
-    );
+    return this.getGadgetPref(name);
   }-*/;
 
   /**
@@ -66,14 +58,14 @@ public class WebContent extends JavaScriptObject {
    * 
    * @return Web content gadget preferences.
    */
-  public final native JsArray<WebContentGadgetPref> getGadgetPrefs() /*-{
-    return this.getGadgetPrefs();
+  public final native WebContentGadgetPref[] getGadgetPrefs() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getGadgetPrefs());
   }-*/;
 
   /**
    * Returns the height (in pixels) of the <iframe> or <img> element. This attribute is required.
    * 
-   * @return Height (in pixels) of the <iframe> or <img> element or undefined for none.
+   * @return Height (in pixels) of the <iframe> or <img> element.
    */
   public final native double getHeight() /*-{
     return this.getHeight();
@@ -91,7 +83,7 @@ public class WebContent extends JavaScriptObject {
   /**
    * Returns the width (in pixels) of the <iframe> or <img> element. This attribute is required.
    * 
-   * @return Width (in pixels) of the <iframe> or <img> element or undefined for none.
+   * @return Width (in pixels) of the <iframe> or <img> element.
    */
   public final native double getWidth() /*-{
     return this.getWidth();
@@ -99,74 +91,39 @@ public class WebContent extends JavaScriptObject {
 
   /**
    * Sets the web content gadget preferences.
-   */
-  public final native void setGadgetPrefs() /*-{
-    this.setGadgetPrefs();
-  }-*/;
-
-  /**
-   * Sets the web content gadget preferences.
    * 
-   * @param gadgetPrefs Web content gadget preferences, where each web content gadget preference is added using the addGadgetPref() function, or undefined to clear the web content gadget preferences.
+   * @param gadgetPrefs Web content gadget preferences, where each web content gadget preference is added using addGadgetPref().
    */
-  public final native void setGadgetPrefs(JsArray<WebContentGadgetPref> gadgetPrefs) /*-{
+  public final native void setGadgetPrefs(WebContentGadgetPref[] gadgetPrefs) /*-{
     this.setGadgetPrefs(
-      gadgetPrefs
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(gadgetPrefs)
     );
   }-*/;
 
   /**
    * Sets the height (in pixels) of the <iframe> or <img> element. This attribute is required.
-   */
-  public final native void setHeight() /*-{
-    this.setHeight();
-  }-*/;
-
-  /**
-   * Sets the height (in pixels) of the <iframe> or <img> element. This attribute is required.
    * 
-   * @param height Height (in pixels) of the <iframe> or <img> element or undefined for none.
+   * @param height Height (in pixels) of the <iframe> or <img> element.
    */
   public final native void setHeight(double height) /*-{
-    this.setHeight(
-      height
-    );
-  }-*/;
-
-  /**
-   * Sets the URL of the content to display in the pop-up window. This attribute is required.
-   */
-  public final native void setUrl() /*-{
-    this.setUrl();
+    this.setHeight(height);
   }-*/;
 
   /**
    * Sets the URL of the content to display in the pop-up window. This attribute is required.
    * 
-   * @param url URL of the content to display in the pop-up window or undefined for none.
+   * @param url URL of the content to display in the pop-up window.
    */
   public final native void setUrl(String url) /*-{
-    this.setUrl(
-      url
-    );
+    this.setUrl(url);
   }-*/;
-
-  /**
-   * Sets the width (in pixels) of the <iframe> or <img> element. This attribute is required.
-   */
-  public final native void setWidth() /*-{
-    this.setWidth();
-  }-*/;
-
   /**
    * Sets the width (in pixels) of the <iframe> or <img> element. This attribute is required.
    * 
-   * @param width Width (in pixels) of the <iframe> or <img> element or undefined for none.
+   * @param width Width (in pixels) of the <iframe> or <img> element.
    */
   public final native void setWidth(double width) /*-{
-    this.setWidth(
-      width
-    );
+    this.setWidth(width);
   }-*/;
 
 }

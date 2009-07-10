@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -35,11 +34,11 @@ public class WhereTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Where.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", Where.newInstance());
   }
 
   public void testProperties() {
-    Where obj = Where.newInstance(JavaScriptObject.createObject());
+    Where obj = Where.newInstance();
     String valuestring = "myValue";
     obj.setValueString(valuestring);
     assertEquals("valuestring", obj.getValueString(), valuestring);
@@ -49,7 +48,7 @@ public class WhereTest extends GWTTestCase {
     String label = "myValue";
     obj.setLabel(label);
     assertEquals("label", obj.getLabel(), label);
-    EntryLink entrylink = EntryLink.newInstance(JavaScriptObject.createObject());
+    EntryLink entrylink = EntryLink.newInstance();
     obj.setEntryLink(entrylink);
     assertSame("entrylink", obj.getEntryLink(), entrylink);
   }

@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class MediaCopyright extends JavaScriptObject {
 
   /**
-   * Constructs a media copyright using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: content and url.
+   * Constructs a media copyright.
+   * @return A MediaCopyright object.
    */
-  public static native MediaCopyright newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.mediarss.MediaCopyright(
-      params
-    );
+  public static native MediaCopyright newInstance() /*-{
+    return new $wnd.google.gdata.mediarss.MediaCopyright();
   }-*/;
 
   protected MediaCopyright() { }
@@ -39,7 +36,7 @@ public class MediaCopyright extends JavaScriptObject {
   /**
    * Returns the text of the copyright. This attribute is optional.
    * 
-   * @return Text of the copyright or undefined for none.
+   * @return Text of the copyright.
    */
   public final native String getContent() /*-{
     return this.getContent();
@@ -48,7 +45,7 @@ public class MediaCopyright extends JavaScriptObject {
   /**
    * Returns the url to the terms of usage page or copyright information. This attribute is optional.
    * 
-   * @return Url to the terms of usage page or copyright information or undefined for none.
+   * @return Url to the terms of usage page or copyright information.
    */
   public final native String getUrl() /*-{
     return this.getUrl();
@@ -56,38 +53,20 @@ public class MediaCopyright extends JavaScriptObject {
 
   /**
    * Sets the text of the copyright. This attribute is optional.
-   */
-  public final native void setContent() /*-{
-    this.setContent();
-  }-*/;
-
-  /**
-   * Sets the text of the copyright. This attribute is optional.
    * 
-   * @param content Text of the copyright or undefined for none.
+   * @param content Text of the copyright.
    */
   public final native void setContent(String content) /*-{
-    this.setContent(
-      content
-    );
-  }-*/;
-
-  /**
-   * Sets the url to the terms of usage page or copyright information. This attribute is optional.
-   */
-  public final native void setUrl() /*-{
-    this.setUrl();
+    this.setContent(content);
   }-*/;
 
   /**
    * Sets the url to the terms of usage page or copyright information. This attribute is optional.
    * 
-   * @param url Url to the terms of usage page or copyright information or undefined for none.
+   * @param url Url to the terms of usage page or copyright information.
    */
   public final native void setUrl(String url) /*-{
-    this.setUrl(
-      url
-    );
+    this.setUrl(url);
   }-*/;
 
 }

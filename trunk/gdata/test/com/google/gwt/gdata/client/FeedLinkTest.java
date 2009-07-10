@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,18 +28,18 @@ public class FeedLinkTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", FeedLink.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", FeedLink.newInstance());
   }
 
   public void testOther() {
-    FeedLink obj = FeedLink.newInstance(JavaScriptObject.createObject());
+    FeedLink obj = FeedLink.newInstance();
     // Unit Test for getFeed()
     assertEquals("getFeed", obj.getFeed(), null);
     // Unit Test for setFeed(Feed feed)
   }
 
   public void testProperties() {
-    FeedLink obj = FeedLink.newInstance(JavaScriptObject.createObject());
+    FeedLink obj = FeedLink.newInstance();
     boolean readonly = true;
     obj.setReadOnly(readonly);
     assertSame("readonly", obj.getReadOnly(), readonly);

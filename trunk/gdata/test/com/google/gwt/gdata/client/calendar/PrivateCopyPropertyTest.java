@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -29,11 +28,11 @@ public class PrivateCopyPropertyTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PrivateCopyProperty.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", PrivateCopyProperty.newInstance());
   }
 
   public void testProperties() {
-    PrivateCopyProperty obj = PrivateCopyProperty.newInstance(JavaScriptObject.createObject());
+    PrivateCopyProperty obj = PrivateCopyProperty.newInstance();
     boolean value = true;
     obj.setValue(value);
     assertSame("value", obj.getValue(), value);

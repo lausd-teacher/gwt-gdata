@@ -80,14 +80,13 @@ public class ItemsQuery extends Query {
   public static final String SORTORDER_DESCENDING = getConstant("SORTORDER_DESCENDING");
 
   /**
-   * Constructor.
+   * Constructs an Items query.
    * 
    * @param feedUri URI of feed.
+   * @return An ItemsQuery object.
    */
   public static native ItemsQuery newInstance(String feedUri) /*-{
-    return new $wnd.google.gdata.gbase.ItemsQuery(
-      feedUri
-    );
+    return new $wnd.google.gdata.gbase.ItemsQuery(feedUri);
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -99,7 +98,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the whether adjusted query results should contain the gm:adjusted_name and gm:adjusted_value tags.
    * 
-   * @return Whether adjusted query results should contain the gm:adjusted_name and gm:adjusted_value tags or null to indicate that the parameter is disabled.
+   * @return Whether adjusted query results should contain the gm:adjusted_name and gm:adjusted_value tags.
    */
   public final native boolean getAdjust() /*-{
     return this.getAdjust();
@@ -108,7 +107,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the author name or email address.
    * 
-   * @return Author name or email address or null to indicate that the parameter is disabled.
+   * @return Author name or email address.
    */
   public final native String getAuthor() /*-{
     return this.getAuthor();
@@ -117,7 +116,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the query string that conforms to the Query Language Specification.
    * 
-   * @return Query string that conforms to the Query Language Specification or null to indicate that the parameter is disabled.
+   * @return Query string that conforms to the Query Language Specification.
    */
   public final native String getBq() /*-{
     return this.getBq();
@@ -126,7 +125,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the parameter that controls the content returned for each entry in a query request.
    * 
-   * @return Parameter that controls the content returned for each entry in a query request or null to indicate that the parameter is disabled.
+   * @return Parameter that controls the content returned for each entry in a query request.
    */
   public final native String getContent() /*-{
     return this.getContent();
@@ -135,7 +134,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the crowding criteria for queries.
    * 
-   * @return Crowding criteria for queries or null to indicate that the parameter is disabled.
+   * @return Crowding criteria for queries.
    */
   public final native String getCrowdby() /*-{
     return this.getCrowdby();
@@ -144,7 +143,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the full-text query string.
    * 
-   * @return Full-text query string or null to indicate that the parameter is disabled.
+   * @return Full-text query string.
    */
   public final native String getFullTextQuery() /*-{
     return this.getFullTextQuery();
@@ -153,7 +152,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the maximum number of results to be retrieved.
    * 
-   * @return Maximum number of results to be retrieved or null to indicate that the parameter is disabled.
+   * @return Maximum number of results to be retrieved.
    */
   public final native double getMaxResults() /*-{
     return this.getMaxResults();
@@ -162,7 +161,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the ranking order for sorted queries.
    * 
-   * @return Ranking order for sorted queries or null to indicate that the parameter is disabled.
+   * @return Ranking order for sorted queries.
    */
   public final native String getOrderby() /*-{
     return this.getOrderby();
@@ -171,7 +170,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the maximum published date.
    * 
-   * @return Maximum published date or null to indicate that the parameter is disabled.
+   * @return Maximum published date.
    */
   public final native DateTime getPublishedMax() /*-{
     return this.getPublishedMax();
@@ -180,7 +179,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the minimum published date.
    * 
-   * @return Minimum published date or null to indicate that the parameter is disabled.
+   * @return Minimum published date.
    */
   public final native DateTime getPublishedMin() /*-{
     return this.getPublishedMin();
@@ -189,7 +188,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the whether to refine the query results.
    * 
-   * @return Whether to refine the query results or null to indicate that the parameter is disabled.
+   * @return Whether to refine the query results.
    */
   public final native boolean getRefine() /*-{
     return this.getRefine();
@@ -198,7 +197,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the whether sorted query results are returned in increasing or decreasing order.
    * 
-   * @return Whether sorted query results are returned in increasing or decreasing order or null to indicate that the parameter is disabled.
+   * @return Whether sorted query results are returned in increasing or decreasing order.
    */
   public final native String getSortorder() /*-{
     return this.getSortorder();
@@ -207,7 +206,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the 1-based index of the first result to be retrieved.
    * 
-   * @return 1-based index of the first result to be retrieved or null to indicate that the parameter is disabled.
+   * @return 1-based index of the first result to be retrieved.
    */
   public final native double getStartIndex() /*-{
     return this.getStartIndex();
@@ -216,7 +215,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the maximum updated date.
    * 
-   * @return Maximum updated date or null to indicate that the parameter is disabled.
+   * @return Maximum updated date.
    */
   public final native DateTime getUpdatedMax() /*-{
     return this.getUpdatedMax();
@@ -225,7 +224,7 @@ public class ItemsQuery extends Query {
   /**
    * Returns the minimum updated date.
    * 
-   * @return Minimum updated date or null to indicate that the parameter is disabled.
+   * @return Minimum updated date.
    */
   public final native DateTime getUpdatedMin() /*-{
     return this.getUpdatedMin();
@@ -234,254 +233,137 @@ public class ItemsQuery extends Query {
   /**
    * Sets the whether adjusted query results should contain the gm:adjusted_name and gm:adjusted_value tags. The default value is false.
    * 
-   * @param adjust Whether adjusted query results should contain the gm:adjusted_name and gm:adjusted_value tags or an equivalent string value or null to disable this parameter.
+   * @param adjust Whether adjusted query results should contain the gm:adjusted_name and gm:adjusted_value tags.
    */
   public final native void setAdjust(boolean adjust) /*-{
-    this.setAdjust(
-      adjust
-    );
-  }-*/;
-
-  /**
-   * Sets the whether adjusted query results should contain the gm:adjusted_name and gm:adjusted_value tags. The default value is false.
-   * 
-   * @param adjust Whether adjusted query results should contain the gm:adjusted_name and gm:adjusted_value tags or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setAdjust(String adjust) /*-{
-    this.setAdjust(
-      adjust
-    );
+    this.setAdjust(adjust);
   }-*/;
 
   /**
    * Sets the author name or email address.
    * 
-   * @param author Author name or email address or null to disable this parameter.
+   * @param author Author name or email address.
    */
   public final native void setAuthor(String author) /*-{
-    this.setAuthor(
-      author
-    );
+    this.setAuthor(author);
   }-*/;
 
   /**
    * Sets the query string that conforms to the Query Language Specification.
    * 
-   * @param bq Query string that conforms to the Query Language Specification or null to disable this parameter.
+   * @param bq Query string that conforms to the Query Language Specification.
    */
   public final native void setBq(String bq) /*-{
-    this.setBq(
-      bq
-    );
+    this.setBq(bq);
   }-*/;
 
   /**
    * Sets the parameter that controls the content returned for each entry in a query request. The default value is 'attributes'.
    * 
-   * @param content Parameter that controls the content returned for each entry in a query request or null to disable this parameter.
+   * @param content Parameter that controls the content returned for each entry in a query request.
    */
   public final native void setContent(String content) /*-{
-    this.setContent(
-      content
-    );
+    this.setContent(content);
   }-*/;
 
   /**
    * Sets the crowding criteria for queries.
    * 
-   * @param crowdby Crowding criteria for queries or null to disable this parameter.
+   * @param crowdby Crowding criteria for queries.
    */
   public final native void setCrowdby(String crowdby) /*-{
-    this.setCrowdby(
-      crowdby
-    );
+    this.setCrowdby(crowdby);
   }-*/;
 
   /**
    * Sets the full-text query string.
    * 
-   * @param fullTextQuery Full-text query string or null to disable this parameter.
+   * @param fullTextQuery Full-text query string.
    */
   public final native void setFullTextQuery(String fullTextQuery) /*-{
-    this.setFullTextQuery(
-      fullTextQuery
-    );
+    this.setFullTextQuery(fullTextQuery);
   }-*/;
 
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param maxResults Maximum number of results to be retrieved.
    */
   public final native void setMaxResults(double maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
-  }-*/;
-
-  /**
-   * Sets the maximum number of results to be retrieved.
-   * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setMaxResults(String maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
+    this.setMaxResults(maxResults);
   }-*/;
 
   /**
    * Sets the ranking order for sorted queries. The default value is 'relevancy'.
    * 
-   * @param orderby Ranking order for sorted queries or null to disable this parameter.
+   * @param orderby Ranking order for sorted queries.
    */
   public final native void setOrderby(String orderby) /*-{
-    this.setOrderby(
-      orderby
-    );
+    this.setOrderby(orderby);
   }-*/;
 
   /**
    * Sets the maximum published date.
    * 
-   * @param publishedMax Maximum published date or an equivalent string value or null to disable this parameter.
+   * @param publishedMax Maximum published date.
    */
   public final native void setPublishedMax(DateTime publishedMax) /*-{
-    this.setPublishedMax(
-      publishedMax
-    );
-  }-*/;
-
-  /**
-   * Sets the maximum published date.
-   * 
-   * @param publishedMax Maximum published date or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setPublishedMax(String publishedMax) /*-{
-    this.setPublishedMax(
-      publishedMax
-    );
+    this.setPublishedMax(publishedMax);
   }-*/;
 
   /**
    * Sets the minimum published date.
    * 
-   * @param publishedMin Minimum published date or an equivalent string value or null to disable this parameter.
+   * @param publishedMin Minimum published date.
    */
   public final native void setPublishedMin(DateTime publishedMin) /*-{
-    this.setPublishedMin(
-      publishedMin
-    );
-  }-*/;
-
-  /**
-   * Sets the minimum published date.
-   * 
-   * @param publishedMin Minimum published date or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setPublishedMin(String publishedMin) /*-{
-    this.setPublishedMin(
-      publishedMin
-    );
+    this.setPublishedMin(publishedMin);
   }-*/;
 
   /**
    * Sets the whether to refine the query results. The default value is false.
    * 
-   * @param refine Whether to refine the query results or an equivalent string value or null to disable this parameter.
+   * @param refine Whether to refine the query results.
    */
   public final native void setRefine(boolean refine) /*-{
-    this.setRefine(
-      refine
-    );
+    this.setRefine(refine);
   }-*/;
 
-  /**
-   * Sets the whether to refine the query results. The default value is false.
-   * 
-   * @param refine Whether to refine the query results or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setRefine(String refine) /*-{
-    this.setRefine(
-      refine
-    );
-  }-*/;
 
   /**
    * Sets the whether sorted query results are returned in increasing or decreasing order. The default value is 'descending'.
    * 
-   * @param sortorder Whether sorted query results are returned in increasing or decreasing order or null to disable this parameter.
+   * @param sortorder Whether sorted query results are returned in increasing or decreasing order.
    */
   public final native void setSortorder(String sortorder) /*-{
-    this.setSortorder(
-      sortorder
-    );
+    this.setSortorder(sortorder);
   }-*/;
 
   /**
    * Sets the 1-based index of the first result to be retrieved. The default value is 1.
    * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param startIndex 1-based index of the first result to be retrieved.
    */
   public final native void setStartIndex(double startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
-  }-*/;
-
-  /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
-   * 
-   * @param startIndex 1-based index of the first result to be retrieved or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setStartIndex(String startIndex) /*-{
-    this.setStartIndex(
-      startIndex
-    );
+    this.setStartIndex(startIndex);
   }-*/;
 
   /**
    * Sets the maximum updated date.
    * 
-   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
+   * @param updatedMax Maximum updated date.
    */
   public final native void setUpdatedMax(DateTime updatedMax) /*-{
-    this.setUpdatedMax(
-      updatedMax
-    );
-  }-*/;
-
-  /**
-   * Sets the maximum updated date.
-   * 
-   * @param updatedMax Maximum updated date or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setUpdatedMax(String updatedMax) /*-{
-    this.setUpdatedMax(
-      updatedMax
-    );
+    this.setUpdatedMax(updatedMax);
   }-*/;
 
   /**
    * Sets the minimum updated date.
    * 
-   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
+   * @param updatedMin Minimum updated date.
    */
   public final native void setUpdatedMin(DateTime updatedMin) /*-{
-    this.setUpdatedMin(
-      updatedMin
-    );
-  }-*/;
-
-  /**
-   * Sets the minimum updated date.
-   * 
-   * @param updatedMin Minimum updated date or an equivalent string value or null to disable this parameter.
-   */
-  public final native void setUpdatedMin(String updatedMin) /*-{
-    this.setUpdatedMin(
-      updatedMin
-    );
+    this.setUpdatedMin(updatedMin);
   }-*/;
 
 }

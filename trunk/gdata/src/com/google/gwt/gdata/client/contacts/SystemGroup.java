@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class SystemGroup extends JavaScriptObject {
 
   /**
-   * Constructs a system group using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: id.
+   * Constructs a system group.
+   * @return A SystemGroup object.
    */
-  public static native SystemGroup newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.contacts.SystemGroup(
-      params
-    );
+  public static native SystemGroup newInstance() /*-{
+    return new $wnd.google.gdata.contacts.SystemGroup();
   }-*/;
 
   protected SystemGroup() { }
@@ -39,7 +36,7 @@ public class SystemGroup extends JavaScriptObject {
   /**
    * Returns the identifier for distinguishing various system groups. This attribute is required.
    * 
-   * @return Identifier for distinguishing various system groups or undefined for none.
+   * @return Identifier for distinguishing various system groups.
    */
   public final native String getId() /*-{
     return this.getId();
@@ -47,20 +44,11 @@ public class SystemGroup extends JavaScriptObject {
 
   /**
    * Sets the identifier for distinguishing various system groups. This attribute is required.
-   */
-  public final native void setId() /*-{
-    this.setId();
-  }-*/;
-
-  /**
-   * Sets the identifier for distinguishing various system groups. This attribute is required.
    * 
-   * @param id Identifier for distinguishing various system groups or undefined for none.
+   * @param id Identifier for distinguishing various system groups.
    */
   public final native void setId(String id) /*-{
-    this.setId(
-      id
-    );
+    this.setId(id);
   }-*/;
 
 }

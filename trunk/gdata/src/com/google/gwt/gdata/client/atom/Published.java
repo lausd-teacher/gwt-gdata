@@ -27,14 +27,11 @@ import java.util.Date;
 public class Published extends JavaScriptObject {
 
   /**
-   * Constructs a creation timestamp using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: value.
+   * Constructs a creation timestamp.
+   * @return A Published object.
    */
-  public static native Published newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.atom.Published(
-      params
-    );
+  public static native Published newInstance() /*-{
+    return new $wnd.google.gdata.atom.Published();
   }-*/;
 
   protected Published() { }
@@ -42,7 +39,7 @@ public class Published extends JavaScriptObject {
   /**
    * Returns the value. This attribute is required.
    * 
-   * @return Value or undefined for none.
+   * @return Value.
    */
   public final native DateTime getValue() /*-{
     return this.getValue();
@@ -50,15 +47,8 @@ public class Published extends JavaScriptObject {
 
   /**
    * Sets the value. This attribute is required.
-   */
-  public final native void setValue() /*-{
-    this.setValue();
-  }-*/;
-
-  /**
-   * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(Date value) /*-{
     this.setValue(
@@ -69,12 +59,10 @@ public class Published extends JavaScriptObject {
   /**
    * Sets the value. This attribute is required.
    * 
-   * @param value Value or undefined for none.
+   * @param value Value.
    */
   public final native void setValue(DateTime value) /*-{
-    this.setValue(
-      value
-    );
+    this.setValue(value);
   }-*/;
 
 }

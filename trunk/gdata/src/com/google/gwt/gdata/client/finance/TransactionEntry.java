@@ -16,22 +16,18 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Describes an entry in a feed of Finance transactions.
  */
 public class TransactionEntry extends com.google.gwt.gdata.client.Entry<TransactionEntry> {
 
   /**
-   * Constructs a Finance transaction entry using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: categories, id, links, title, transactionData, and updated.
+   * Constructs a Finance transaction entry.
+   * @return A TransactionEntry object.
    */
-  public static native TransactionEntry newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.finance.TransactionEntry(
-      params
-    );
+  @SuppressWarnings("unchecked")
+  public static native TransactionEntry newInstance() /*-{
+    return new $wnd.google.gdata.finance.TransactionEntry();
   }-*/;
 
   protected TransactionEntry() { }
@@ -39,28 +35,19 @@ public class TransactionEntry extends com.google.gwt.gdata.client.Entry<Transact
   /**
    * Returns the data for the transaction. This element is required.
    * 
-   * @return Data for the transaction or undefined for none.
+   * @return Data for the transaction.
    */
   public final native TransactionData getTransactionData() /*-{
     return this.getTransactionData();
   }-*/;
-
-  /**
-   * Sets the data for the transaction. This element is required.
-   */
-  public final native void setTransactionData() /*-{
-    this.setTransactionData();
-  }-*/;
-
+  
   /**
    * Sets the data for the transaction. This element is required.
    * 
-   * @param transactionData Data for the transaction, or object to use as a parameter to the google.gdata.finance.TransactionData constructor, or undefined for none.
+   * @param transactionData Data for the transaction.
    */
   public final native void setTransactionData(TransactionData transactionData) /*-{
-    this.setTransactionData(
-      transactionData
-    );
+    this.setTransactionData(transactionData);
   }-*/;
 
 }

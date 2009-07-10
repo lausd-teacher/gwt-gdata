@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
 
 import java.util.Date;
@@ -31,24 +30,23 @@ public class WhenTest extends GWTTestCase {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", When.newInstance(JavaScriptObject.createObject()));
+    assertNotNull("newInstance()", When.newInstance());
   }
 
   public void testOther() {
-    When obj = When.newInstance(JavaScriptObject.createObject());
     // Unit Test for addReminder(Reminder reminder)
-    // Unit Test for getReminder()
-    assertEquals("getReminder", obj.getReminder(), null);
     // Unit Test for setEndTime(Date endTime)
-    // Unit Test for setReminder(JsArray reminder)
     // Unit Test for setStartTime(Date startTime)
   }
 
   public void testProperties() {
-    When obj = When.newInstance(JavaScriptObject.createObject());
+    When obj = When.newInstance();
     DateTime endtime = DateTime.newInstance(new Date(), false);
     obj.setEndTime(endtime);
     assertEquals("endtime", obj.getEndTime().getDate(), endtime.getDate());
+    Reminder[] reminder = new Reminder[]{ Reminder.newInstance() };
+    obj.setReminder(reminder);
+    assertEquals("reminder", obj.getReminder().length, reminder.length);
     DateTime starttime = DateTime.newInstance(new Date(), false);
     obj.setStartTime(starttime);
     assertEquals("starttime", obj.getStartTime().getDate(), starttime.getDate());

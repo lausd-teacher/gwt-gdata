@@ -24,14 +24,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class GeoRssWhere extends JavaScriptObject {
 
   /**
-   * Constructs a geographical location or region using an object parameter whose property names match the setter method to use for each property.
-   * 
-   * @param params Optional parameters, each of which is used as the sole parameter to the associated setter method: envelope and point.
+   * Constructs a geographical location or region.
+   * @return A GeoRssWhere object.
    */
-  public static native GeoRssWhere newInstance(JavaScriptObject params) /*-{
-    return new $wnd.google.gdata.geo.GeoRssWhere(
-      params
-    );
+  public static native GeoRssWhere newInstance() /*-{
+    return new $wnd.google.gdata.geo.GeoRssWhere();
   }-*/;
 
   protected GeoRssWhere() { }
@@ -39,7 +36,7 @@ public class GeoRssWhere extends JavaScriptObject {
   /**
    * Returns the Gml geographical region. This element is optional.
    * 
-   * @return Gml geographical region or undefined for none.
+   * @return Gml geographical region.
    */
   public final native GmlEnvelope getEnvelope() /*-{
     return this.getEnvelope();
@@ -48,7 +45,7 @@ public class GeoRssWhere extends JavaScriptObject {
   /**
    * Returns the particular geographical point. This element is optional.
    * 
-   * @return Particular geographical point or undefined for none.
+   * @return Particular geographical point.
    */
   public final native GmlPoint getPoint() /*-{
     return this.getPoint();
@@ -56,38 +53,20 @@ public class GeoRssWhere extends JavaScriptObject {
 
   /**
    * Sets the Gml geographical region. This element is optional.
-   */
-  public final native void setEnvelope() /*-{
-    this.setEnvelope();
-  }-*/;
-
-  /**
-   * Sets the Gml geographical region. This element is optional.
    * 
-   * @param envelope Gml geographical region, or object to use as a parameter to the google.gdata.geo.GmlEnvelope constructor, or undefined for none.
+   * @param envelope Gml geographical region.
    */
   public final native void setEnvelope(GmlEnvelope envelope) /*-{
-    this.setEnvelope(
-      envelope
-    );
-  }-*/;
-
-  /**
-   * Sets the particular geographical point. This element is optional.
-   */
-  public final native void setPoint() /*-{
-    this.setPoint();
+    this.setEnvelope(envelope);
   }-*/;
 
   /**
    * Sets the particular geographical point. This element is optional.
    * 
-   * @param point Particular geographical point, or object to use as a parameter to the google.gdata.geo.GmlPoint constructor, or undefined for none.
+   * @param point Particular geographical point.
    */
   public final native void setPoint(GmlPoint point) /*-{
-    this.setPoint(
-      point
-    );
+    this.setPoint(point);
   }-*/;
 
 }
