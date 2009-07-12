@@ -16,5 +16,5 @@
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='com.google.gwt.ajaxloader.AjaxLoader'/>
     <inherits name='com.google.gwt.accounts.GoogleAccounts'/>
-  	<script src="http://www.google.com/jsapi" />
+  	<!-- <script src="http://www.google.com/jsapi" /> -->
 </module>

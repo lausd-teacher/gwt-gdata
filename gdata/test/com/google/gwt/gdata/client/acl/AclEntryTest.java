@@ -26,7 +26,7 @@ public class AclEntryTest extends GWTTestCase {
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
-
+  
   public void testConstructors() {
     assertNotNull("newInstance()", AclEntry.newInstance());
   }

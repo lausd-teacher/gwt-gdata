@@ -27,6 +27,15 @@ import junit.framework.TestSuite;
 public class GDataTestSuite extends GWTTestSuite {
   public static Test suite() {
     TestSuite suite = new TestSuite("TestSuite for the GDataTest.");
+    /*
+    suite.addTestSuite(com.google.gwt.gdata.client.analytics.AnalyticsServiceTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.blogger.BloggerServiceTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.calendar.CalendarServiceTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.contacts.ContactsServiceTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.finance.FinanceServiceTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.gbase.GoogleBaseServiceTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.maps.MapsServiceTest.class);
+    */
     suite.addTestSuite(com.google.gwt.gdata.client.acl.AclEntryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.acl.AclFeedTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.acl.AclKindTest.class);

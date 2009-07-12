@@ -23,28 +23,39 @@ import com.google.gwt.ajaxloader.client.AjaxLoader.AjaxLoaderOptions;
  * A collection of static methods and API wide constants.
  */
 public class GData {
-
+  
+  static String targetGDataJsApiVersion = "1.10";
+  
   /**
-   * Check for the availability of the gdata API. If it is not loaded, throws a
-   * RuntimeException.
-   */
-  public static void assertLoaded() {
-    if (!isLoaded()) {
-      throw new RuntimeException("The GData API has not been loaded.\n"
-          + "Is a <script> tag missing from your host HTML or module file?"
-          + "  Is the GData key missing or invalid?");
-    }
-  }
-
-  /**
-   * Check for the availability of the GData API. This means that the  API
+   * Check for the availability of the GData API. This means that the API
    * script is loaded and has successfully initialized.
    * 
    * @return <code>true</code> if the GData API is loaded.
    */
   public static native boolean isLoaded() /*-{
-    return $wnd.google.gdata !== undefined;
+    if($wnd.google === undefined) return false;
+    if($wnd.google.gdata === undefined) return false;
+    return true;
   }-*/;
+
+  /**
+   * Check for the availability of the specified GData packages. This means that the API
+   * script for the specified packages is loaded and has successfully initialized.
+   * 
+   * @param packages the GData packages to check for.
+   * @return <code>true</code> if the GData packages are loaded.
+   */
+  public static boolean isLoaded(String[] packages) {
+    if (!isLoaded()) {
+      return false;
+    }
+    for (String p : packages) {
+      if (!isLoaded(p.toLowerCase())) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   /**
    * Initializes the GData API using the AjaxLoader. This is in lieu of
@@ -55,21 +66,15 @@ public class GData {
    * 
    * @param key GData API key. See http://code.google.com/apis/gdata/signup.html
    * @param version The version of the gdata API to load. For example, "2.x"
-   * @param usingSensor Use of the Google GData API now requires that you
-   *          indicate whether your application is using a sensor (such as a GPS
-   *          locator) to determine the user's location. This is especially
-   *          important for mobile devices.
+   *        Note that not all GData versions may be compatible with a given version
+   *        of the GWT-GData API.
    * @param settings other AjaxLoader settings for the GData API. This parameter
    *          must not be <code>null</code>.
    * @param onLoad callback to be invoked when the library is loaded.
    */
-  public static void loadGDataApi(String key, String version,
-      boolean usingSensor, AjaxLoaderOptions settings, Runnable onLoad) {
+  public static void loadGDataApi(String key, String version, AjaxLoaderOptions settings, Runnable onLoad) {
     assert settings != null;
     AjaxLoader.init(key);
-    if (usingSensor) {
-      settings.setOtherParms("sensor=true");
-    }
     AjaxLoader.loadApi("gdata", version, onLoad, settings);
   }
 
@@ -81,19 +86,57 @@ public class GData {
    * @see "http://code.google.com/apis/gdata/documentation/#AJAX_Loader"
    * 
    * @param key GData API key. See http://code.google.com/apis/gdata/signup.html
-   * @param version The version of the gdata API to load. For example, "2.x"
-   * @param usingSensor Use of the Google GData API now requires that you
-   *          indicate whether your application is using a sensor (such as a GPS
-   *          locator) to determine the user's location. This is especially
-   *          important for mobile devices.
+   * @param version The version of the gdata API to load. For example, "2.x".
+   *        Note that not all GData versions may be compatible with a given version
+   *        of the GWT-GData API.
    * @param onLoad callback to be invoked when the library is loaded.
    */
-  public static void loadGDataApi(String key, String version,
-      boolean usingSensor, Runnable onLoad) {
-    loadGDataApi(key, version, usingSensor, AjaxLoaderOptions.newInstance(),
-        onLoad);
+  public static void loadGDataApi(String key, String version, Runnable onLoad) {
+    loadGDataApi(key, version, AjaxLoaderOptions.newInstance(), onLoad);
   }
-
+  
+  /**
+   * Initializes the target version of the GData API using the AjaxLoader. This is in lieu of
+   * specifying the &lt;script&gt; tag for gdata.google.com in your hosted HTML
+   * page or project's GWT module specification.
+   * 
+   * @see "http://code.google.com/apis/gdata/documentation/#AJAX_Loader"
+   * 
+   * @param key GData API key. See http://code.google.com/apis/gdata/signup.html
+   * @param packages the GData packages that should be loaded (e.g. Calendar, Blogger, etc.)
+   * @param onLoad callback to be invoked when the library is loaded.
+   */
+  public static void loadGDataApi(String key, String[] packages, Runnable onLoad) {
+    AjaxLoaderOptions options = AjaxLoaderOptions.newInstance();
+    options.setPackages(packages);
+    loadGDataApi(key, targetGDataJsApiVersion, options, onLoad);
+  }
+  
+  /**
+   * Initializes the target version of the GData API using the AjaxLoader. This is in lieu of
+   * specifying the &lt;script&gt; tag for gdata.google.com in your hosted HTML
+   * page or project's GWT module specification.
+   * 
+   * @see "http://code.google.com/apis/gdata/documentation/#AJAX_Loader"
+   * 
+   * @param key GData API key. See http://code.google.com/apis/gdata/signup.html
+   * @param onLoad callback to be invoked when the library is loaded.
+   */
+  public static void loadGDataApi(String key, Runnable onLoad) {
+    loadGDataApi(key, targetGDataJsApiVersion, AjaxLoaderOptions.newInstance(), onLoad);
+  }
+  
+  /**
+   * Check for the availability of the specified GData package. This means that the API
+   * script for the specified packages is loaded and has successfully initialized.
+   * 
+   * @param packageName the GData package to check for.
+   * @return <code>true</code> if the GData package is loaded.
+   */
+  private static native boolean isLoaded(String packageName) /*-{
+    return $wnd.google.gdata[packageName] !== undefined;
+  }-*/; 
+  
   /**
    * Use private constructor so this class can't be instantiated.
    */
