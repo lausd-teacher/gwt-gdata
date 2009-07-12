@@ -30,10 +30,18 @@ public class AnalyticsServiceTest extends GWTTestCase {
     return "com.google.gwt.gdata.GDataTest";
   }
 
-  public void test1AccountGet() {
+  public void testConstants() {
+    assertNotNull("SERVICE_NAME", AnalyticsService.SERVICE_NAME);
+  }
+
+  public void testConstructors() {
+    assertNotNull("newInstance()", AnalyticsService.newInstance("myValue"));
+  }
+  
+  public void testGetAccounts() {
     UserTest.login(GDataTestScripts.Analytics.testCookie_Name, GDataTestScripts.Analytics.testCookie_Value);
-    AnalyticsService svc = AnalyticsService.newInstance("test");
-    svc.getAccountFeed(GDataTestScripts.Analytics.testAccounts_FeedLink,
+    AnalyticsService svc = AnalyticsService.newInstance(AnalyticsService.SERVICE_NAME);
+    svc.getAccountFeed(GDataTestScripts.Analytics.testAccounts_Feed_Link,
         new AsyncCallback<AccountFeed>() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
@@ -42,23 +50,12 @@ public class AnalyticsServiceTest extends GWTTestCase {
             if (result.getEntries().length == 0) {
               fail("Get Failed");
             }
-            if (!result.getTitle().getText().equals(GDataTestScripts.Analytics.testAccounts_FeedTitle) ||
-              !result.getId().getValue().equals(GDataTestScripts.Analytics.testAccounts_FeedId)) {
+            if (!result.getTitle().getText().equals(GDataTestScripts.Analytics.testAccounts_Feed_Title)) {
               fail("Get Failed");
             }
-            GDataTestScripts.Analytics.testAccounts_Feed = result;
-            GDataTestScripts.Analytics.testAccount_Entry_Original = result.getEntries()[0];
             finishTest();
           }
     });
     this.delayTestFinish(4000);
-  }
-
-  public void testConstants() {
-    assertNotNull("SERVICE_NAME", AnalyticsService.SERVICE_NAME);
-  }
-
-  public void testConstructors() {
-    assertNotNull("newInstance()", AnalyticsService.newInstance("myValue"));
   }
 }

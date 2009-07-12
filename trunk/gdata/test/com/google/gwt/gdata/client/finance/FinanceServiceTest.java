@@ -31,10 +31,70 @@ public class FinanceServiceTest extends GWTTestCase {
     return "com.google.gwt.gdata.GDataTest";
   }
 
-  public void test1PortfoliosGet() {
+  public void testConstants() {
+    assertNotNull("SERVICE_NAME", FinanceService.SERVICE_NAME);
+  }
+
+  public void testConstructors() {
+    assertNotNull("newInstance()", FinanceService.newInstance("myValue"));
+  }
+  
+  public void testCreateAndDeletePortfolio() {
     UserTest.login(GDataTestScripts.Finance.testCookie_Name, GDataTestScripts.Finance.testCookie_Value);
     FinanceService svc = FinanceService.newInstance("test");
-    svc.getPortfolioFeed(GDataTestScripts.Finance.testPortfolios_FeedLink,
+    PortfolioEntry newEntry = PortfolioEntry.newInstance();
+    newEntry.setTitle(Text.newInstance());
+    newEntry.getTitle().setText(GDataTestScripts.Finance.testPortfolio_Entry_Title_Created);
+    newEntry.setPortfolioData(PortfolioData.newInstance());
+    newEntry.getPortfolioData().setCurrencyCode(GDataTestScripts.Finance.testPortfolio_Entry_Currency_Created);
+    svc.insertEntry(GDataTestScripts.Finance.testPortfolios_Feed_Link, newEntry, new AsyncCallback<PortfolioEntry>() {
+      public void onFailure(Throwable caught) {
+        fail("Create Failed: " + caught.getMessage());
+      }
+      public void onSuccess(PortfolioEntry result) {
+        if (!result.getTitle().getText().equals(GDataTestScripts.Finance.testPortfolio_Entry_Title_Created) ||
+            !result.getPortfolioData().getCurrencyCode().equals(GDataTestScripts.Finance.testPortfolio_Entry_Currency_Created)) {
+          fail("Create Failed");
+        }
+        result.deleteEntry(new AsyncCallback<PortfolioEntry>() {
+          public void onFailure(Throwable caught) {
+            fail("Delete Failed: " + caught.getMessage());
+          }
+          public void onSuccess(PortfolioEntry result) {
+          }
+        });
+        finishTest();
+      }
+    });
+    delayTestFinish(10000);
+  }
+  
+  public void testGetPortfolio() {
+    UserTest.login(GDataTestScripts.Finance.testCookie_Name, GDataTestScripts.Finance.testCookie_Value);
+    FinanceService svc = FinanceService.newInstance("test");
+    svc.getPortfolioEntry(GDataTestScripts.Finance.testPortfolio_Entry_Link,
+        new AsyncCallback<PortfolioEntry>() {
+          public void onFailure(Throwable caught) {
+            fail("Get Failed: " + caught.getMessage());
+          }
+          public void onSuccess(PortfolioEntry result) {
+            if (!GDataTestScripts.Finance.testPortfolio_Entry_Title.equals(result.getTitle().getText()) ||
+                !GDataTestScripts.Finance.testPortfolio_Entry_Currency.equals(result.getPortfolioData().getCurrencyCode()) ||
+                GDataTestScripts.Finance.testPortfolio_Entry_GainPercentage != result.getPortfolioData().getGainPercentage() ||
+                GDataTestScripts.Finance.testPortfolio_Entry_ReturnOverall != result.getPortfolioData().getReturnOverall() ||
+                GDataTestScripts.Finance.testPortfolio_Entry_ReturnYTD != result.getPortfolioData().getReturnYTD()) {
+              fail("Get Failed");
+            }
+            finishTest();
+          }
+    });
+    this.delayTestFinish(10000);
+  }
+
+  public void testGetPortfolios() {
+    UserTest.login(GDataTestScripts.Finance.testCookie_Name, GDataTestScripts.Finance.testCookie_Value);
+    FinanceService svc = FinanceService.newInstance("test");
+    svc.getPortfolioFeed(GDataTestScripts.Finance.testPortfolios_Feed_Link,
         new AsyncCallback<PortfolioFeed>() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
@@ -43,107 +103,54 @@ public class FinanceServiceTest extends GWTTestCase {
             if (result.getEntries().length == 0) {
               fail("Get Failed");
             }
-            if (!result.getTitle().getText().equals(GDataTestScripts.Finance.testPortfolios_FeedTitle) ||
-              !result.getId().getValue().equals(GDataTestScripts.Finance.testPortfolios_FeedId)) {
+            if (!result.getTitle().getText().equals(GDataTestScripts.Finance.testPortfolios_Feed_Title)) {
               fail("Get Failed");
             }
-            GDataTestScripts.Finance.testPortfolios_Feed = result;
-            GDataTestScripts.Finance.testPortfolio_Entry_Original = result.getEntries()[0];
             finishTest();
           }
     });
     this.delayTestFinish(10000);
   }
-  public void test2PortfolioGet() {
-    assertEquals(GDataTestScripts.Finance.testPortfolio_Title_Original, GDataTestScripts.Finance.testPortfolio_Entry_Original.getTitle().getText());
-    assertEquals(GDataTestScripts.Finance.testPortfolio_Currency_Original, GDataTestScripts.Finance.testPortfolio_Entry_Original.getPortfolioData().getCurrencyCode());
-    assertEquals(GDataTestScripts.Finance.testPortfolio_GainPercentage_Original, GDataTestScripts.Finance.testPortfolio_Entry_Original.getPortfolioData().getGainPercentage());
-    assertEquals(GDataTestScripts.Finance.testPortfolio_ReturnOverall_Original, GDataTestScripts.Finance.testPortfolio_Entry_Original.getPortfolioData().getReturnOverall());
-    assertEquals(GDataTestScripts.Finance.testPortfolio_ReturnYTD_Original, GDataTestScripts.Finance.testPortfolio_Entry_Original.getPortfolioData().getReturnYTD());
-  }
-  public void test3PortfolioUpdate() {
-    GDataTestScripts.Finance.testPortfolio_Entry_Original.getTitle().setText(GDataTestScripts.Finance.testPortfolio_Title_Updated);
-    GDataTestScripts.Finance.testPortfolio_Entry_Original.getPortfolioData().setCurrencyCode(GDataTestScripts.Finance.testPortfolio_Currency_Updated);
-    GDataTestScripts.Finance.testPortfolio_Entry_Original.updateEntry(new AsyncCallback<PortfolioEntry>() {
-      public void onFailure(Throwable caught) {
-        fail("Update Failed: " + caught.getMessage());
-      }
-      public void onSuccess(PortfolioEntry result) {
-        if (result.getTitle().getText().equals(GDataTestScripts.Finance.testPortfolio_Title_Updated) &&
-            result.getPortfolioData().getCurrencyCode().equals(GDataTestScripts.Finance.testPortfolio_Currency_Updated)) {
-          GDataTestScripts.Finance.testPortfolio_Entry_Original.getTitle().setText(GDataTestScripts.Finance.testPortfolio_Title_Original);
-          GDataTestScripts.Finance.testPortfolio_Entry_Original.getPortfolioData().setCurrencyCode(GDataTestScripts.Finance.testPortfolio_Currency_Original);
-          GDataTestScripts.Finance.testPortfolio_Entry_Original.updateEntry(new AsyncCallback<PortfolioEntry>() {
-            public void onFailure(Throwable caught) {
-              fail("Revert Failed: " + caught.getMessage());
-            }
-            public void onSuccess(PortfolioEntry result) {
-              if (result.getTitle().getText().equals(GDataTestScripts.Finance.testPortfolio_Title_Original) &&
-                  result.getPortfolioData().getCurrencyCode().equals(GDataTestScripts.Finance.testPortfolio_Currency_Original)) {
-                finishTest();
-              } else { 
-                fail("Revert Failed");
-              }
-            }
-          });
-          finishTest();
-        } else { 
-          fail("Update Failed");
-        }
-      }
-    });
-    delayTestFinish(4000);
-  }
-  public void test4PortfolioCreate() {
+  
+  public void testUpdatePortfolio() {
+    UserTest.login(GDataTestScripts.Finance.testCookie_Name, GDataTestScripts.Finance.testCookie_Value);
     FinanceService svc = FinanceService.newInstance("test");
-    PortfolioEntry newEntry = PortfolioEntry.newInstance();
-    newEntry.setTitle(Text.newInstance());
-    newEntry.getTitle().setText(GDataTestScripts.Finance.testPortfolio_Title_Created);
-    newEntry.setPortfolioData(PortfolioData.newInstance());
-    newEntry.getPortfolioData().setCurrencyCode(GDataTestScripts.Finance.testPortfolio_Currency_Created);
-    svc.insertEntry(GDataTestScripts.Finance.testPortfolios_FeedLink, newEntry, new AsyncCallback<PortfolioEntry>() {
-      public void onFailure(Throwable caught) {
-        fail("Create Failed: " + caught.getMessage());
-      }
-      public void onSuccess(PortfolioEntry result) {
-        if (result.getTitle().getText().equals(GDataTestScripts.Finance.testPortfolio_Title_Created) &&
-            result.getPortfolioData().getCurrencyCode().equals(GDataTestScripts.Finance.testPortfolio_Currency_Created)) {
-          GDataTestScripts.Finance.testPortfolio_Entry_Created = result;
-          finishTest();
-        } else { 
-          fail("Create Failed");
-        }
-      }
-    });
-    delayTestFinish(4000);
-  }
-  public void test5PortfolioDelete() {
-    GDataTestScripts.Finance.testPortfolio_Entry_Created.deleteEntry(new AsyncCallback<PortfolioEntry>() {
-      public void onFailure(Throwable caught) {
-        fail("Delete Failed: " + caught.getMessage());
-      }
-      public void onSuccess(PortfolioEntry result) {
-        FinanceService svc = FinanceService.newInstance("test");
-        svc.getPortfolioFeed(GDataTestScripts.Finance.testPortfolios_FeedLink,
-          new AsyncCallback<PortfolioFeed>() {
-            public void onFailure(Throwable caught) {
-              fail("Delete Failed: " + caught.getMessage());
-            }
-            public void onSuccess(PortfolioFeed result) {
-              if (result.getEntries().length != 1) {
-                fail("Delete Failed");
+    svc.getPortfolioEntry(GDataTestScripts.Finance.testPortfolio_Entry_Link,
+        new AsyncCallback<PortfolioEntry>() {
+          public void onFailure(Throwable caught) {
+            fail("Get Failed: " + caught.getMessage());
+          }
+          public void onSuccess(PortfolioEntry result) {
+            result.getTitle().setText(GDataTestScripts.Finance.testPortfolio_Entry_Title_Updated);
+            result.getPortfolioData().setCurrencyCode(GDataTestScripts.Finance.testPortfolio_Entry_Currency_Updated);
+            result.updateEntry(new AsyncCallback<PortfolioEntry>() {
+              public void onFailure(Throwable caught) {
+                fail("Update Failed: " + caught.getMessage());
               }
-              finishTest();
-            }
-        });
-      }
+              public void onSuccess(PortfolioEntry result) {
+                if (!result.getTitle().getText().equals(GDataTestScripts.Finance.testPortfolio_Entry_Title_Updated) ||
+                    !result.getPortfolioData().getCurrencyCode().equals(GDataTestScripts.Finance.testPortfolio_Entry_Currency_Updated)) {
+                  fail("Update Failed");
+                }
+                result.getTitle().setText(GDataTestScripts.Finance.testPortfolio_Entry_Title);
+                result.getPortfolioData().setCurrencyCode(GDataTestScripts.Finance.testPortfolio_Entry_Currency);
+                result.updateEntry(new AsyncCallback<PortfolioEntry>() {
+                  public void onFailure(Throwable caught) {
+                    fail("Revert Failed: " + caught.getMessage());
+                  }
+                  public void onSuccess(PortfolioEntry result) {
+                    if (!result.getTitle().getText().equals(GDataTestScripts.Finance.testPortfolio_Entry_Title) ||
+                        !result.getPortfolioData().getCurrencyCode().equals(GDataTestScripts.Finance.testPortfolio_Entry_Currency)) {
+                      fail("Revert Failed");
+                    }
+                    finishTest();
+                  }
+                });
+                finishTest();
+              }
+            });
+          }
     });
-  }
-  public void testConstants() {
-    assertNotNull("SERVICE_NAME", FinanceService.SERVICE_NAME);
-  }
-
-  public void testConstructors() {
-    assertNotNull("newInstance()", FinanceService.newInstance("myValue"));
+    this.delayTestFinish(10000);
   }
 }
