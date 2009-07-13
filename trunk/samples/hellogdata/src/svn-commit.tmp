@@ -1,0 +1,15 @@
+For the default build to work.
+--This line, and those below, will be ignored--
+
+A    com
+A    com/google
+A    com/google/gdata
+A    com/google/gdata/gwt
+A    com/google/gdata/gwt/sample
+A    com/google/gdata/gwt/sample/gdata
+A    com/google/gdata/gwt/sample/gdata/client
+A    com/google/gdata/gwt/sample/gdata/client/HelloGData.java
+A    com/google/gdata/gwt/sample/gdata/HelloGData.gwt.xml
+A    com/google/gdata/gwt/sample/gdata/public
+A    com/google/gdata/gwt/sample/gdata/public/HelloGData.html
+A    com/google/gdata/gwt/sample/gdata/public/HelloGData.css

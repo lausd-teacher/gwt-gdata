@@ -1,0 +1,6 @@
+<project name="database" default="build" basedir=".">
+	<property name="sample.api" value="gdata" />
+	<property name="sample.root" value="hellogdata" />
+	<property name="sample.module" value="HelloGData" />
+	<import file="../common.ant.xml" />
+</project>
