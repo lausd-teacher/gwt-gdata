@@ -44,6 +44,7 @@ public class WhoTest extends GWTTestCase {
     assertNotNull("newInstance()", Who.newInstance());
   }
 
+  @SuppressWarnings("unchecked")
   public void testProperties() {
     Who obj = Who.newInstance();
     AttendeeType attendeetype = AttendeeType.newInstance();

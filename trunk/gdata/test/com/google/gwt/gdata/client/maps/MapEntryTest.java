@@ -42,6 +42,7 @@ public class MapEntryTest extends GWTTestCase {
     assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
   }
 
+  @SuppressWarnings("unchecked")
   public void testProperties() {
     MapEntry obj = MapEntry.newInstance();
     FeedLink feedlink = FeedLink.newInstance();

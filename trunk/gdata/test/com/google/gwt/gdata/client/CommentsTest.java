@@ -31,6 +31,7 @@ public class CommentsTest extends GWTTestCase {
     assertNotNull("newInstance()", Comments.newInstance());
   }
 
+  @SuppressWarnings("unchecked")
   public void testProperties() {
     Comments obj = Comments.newInstance();
     FeedLink feedlink = FeedLink.newInstance();

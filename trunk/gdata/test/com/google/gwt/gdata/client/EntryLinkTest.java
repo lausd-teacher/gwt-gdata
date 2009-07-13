@@ -31,6 +31,7 @@ public class EntryLinkTest extends GWTTestCase {
     assertNotNull("newInstance()", EntryLink.newInstance());
   }
 
+  @SuppressWarnings("unchecked")
   public void testOther() {
     EntryLink obj = EntryLink.newInstance();
     // Unit Test for getEntry()
@@ -38,6 +39,7 @@ public class EntryLinkTest extends GWTTestCase {
     // Unit Test for setEntry(Entry entry)
   }
 
+  @SuppressWarnings("unchecked")
   public void testProperties() {
     EntryLink obj = EntryLink.newInstance();
     boolean readonly = true;

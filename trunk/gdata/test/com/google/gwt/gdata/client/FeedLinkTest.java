@@ -31,6 +31,7 @@ public class FeedLinkTest extends GWTTestCase {
     assertNotNull("newInstance()", FeedLink.newInstance());
   }
 
+  @SuppressWarnings("unchecked")
   public void testOther() {
     FeedLink obj = FeedLink.newInstance();
     // Unit Test for getFeed()
@@ -38,6 +39,7 @@ public class FeedLinkTest extends GWTTestCase {
     // Unit Test for setFeed(Feed feed)
   }
 
+  @SuppressWarnings("unchecked")
   public void testProperties() {
     FeedLink obj = FeedLink.newInstance();
     boolean readonly = true;

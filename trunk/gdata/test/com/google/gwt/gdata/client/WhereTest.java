@@ -37,6 +37,7 @@ public class WhereTest extends GWTTestCase {
     assertNotNull("newInstance()", Where.newInstance());
   }
 
+  @SuppressWarnings("unchecked")
   public void testProperties() {
     Where obj = Where.newInstance();
     String valuestring = "myValue";
