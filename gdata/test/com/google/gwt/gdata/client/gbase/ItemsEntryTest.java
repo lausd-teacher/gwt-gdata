@@ -42,6 +42,7 @@ public class ItemsEntryTest extends GWTTestCase {
     // Unit Test for setAttributes(JavaScriptObject attributes)
   }
 
+  @SuppressWarnings("unchecked")
   public void testProperties() {
     ItemsEntry obj = ItemsEntry.newInstance();
     FeedLink feedlink = FeedLink.newInstance();

@@ -37,6 +37,7 @@ public class PersonEntryTest extends GWTTestCase {
     assertNotNull("newInstance()", PersonEntry.newInstance());
   }
 
+  @SuppressWarnings("unchecked")
   public void testOther() {
     PersonEntry obj = PersonEntry.newInstance();
     // Unit Test for addEmailAddress(Email emailAddress)
@@ -51,6 +52,7 @@ public class PersonEntryTest extends GWTTestCase {
     assertEquals("getContactPhotoLink", obj.getContactPhotoLink(), null);
   }
 
+  @SuppressWarnings("unchecked")
   public void testProperties() {
     PersonEntry obj = PersonEntry.newInstance();
     PostalAddress[] postaladdresses = new PostalAddress[]{ PostalAddress.newInstance() };
