@@ -186,7 +186,7 @@ public class HelloGData implements EntryPoint, HistoryListener {
     }
 
     outerPanel.setWidget(4, 0, new HTML("<h5> See source in "
-        + strippedClassName + "</h5><h5>GData API version: 1.10" /*+ GData.getVersion()*/
+        + strippedClassName + "</h5><h5>GData API version: " + GData.getVersion()
         + "</h5>"));
 
     curGDataDemo.onShow();
