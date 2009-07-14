@@ -1,13 +1,30 @@
-/** Add css rules here for your application. */
-button {
-  display: block;
-  font-size: 16pt
+/* Add some space between the outside browser window and the blue border */
+h2 {
+ font-stretch: narrower;
+  font-weight: 500;
+  margin: 4px;
 }
 
-.widePanel {
-  width: 100%
+#hm-map {
+  margin: 10px;
 }
 
-img {
-  margin-top: 20px;
+/* Add some space between the blue border and the interior stuff */
+.hm-outerpanel {
+	margin: 10px;
+}
+
+.hm-tableheader {
+	background-color: #E5ECF9;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.hm-description div {
+	background-color: #DEEFBD;
+	padding: 2px;
+}
+
+.hm-description strong {
+	font-weight: bold;
 }

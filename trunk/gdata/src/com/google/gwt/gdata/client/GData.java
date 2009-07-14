@@ -25,6 +25,15 @@ import com.google.gwt.ajaxloader.client.AjaxLoader.AjaxLoaderOptions;
 public class GData {
   
   static String targetGDataJsApiVersion = "1.10";
+
+  /**
+   * Return the GData API Version currently loaded.
+   * 
+   * @return the GData API Version currently loaded.
+   */
+  public static String getVersion() {
+    return targetGDataJsApiVersion;
+  }
   
   /**
    * Check for the availability of the GData API. This means that the API
@@ -37,7 +46,7 @@ public class GData {
     if($wnd.google.gdata === undefined) return false;
     return true;
   }-*/;
-
+  
   /**
    * Check for the availability of the specified GData packages. This means that the API
    * script for the specified packages is loaded and has successfully initialized.

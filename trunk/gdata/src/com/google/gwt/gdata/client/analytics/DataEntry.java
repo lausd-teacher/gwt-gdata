@@ -87,6 +87,16 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry<DataEntry> {
   public final native Metric[] getMetrics() /*-{
     return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getMetrics());
   }-*/;
+  
+  /**
+   * Returns the value of the dimension or metric with the given name in this entry.
+   * 
+   * @param name The name of the dimension or metric to retrieve.
+   * @return The value of the named dimension or metric.
+   */
+  public final native double getNumericValueOf(String name) /*-{
+    return this.getValueOf(name);
+  }-*/;
 
   /**
    * Returns the value of the dimension or metric with the given name in this entry.
@@ -94,10 +104,10 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry<DataEntry> {
    * @param name The name of the dimension or metric to retrieve.
    * @return The value of the named dimension or metric.
    */
-  public final native String getValueOf(String name) /*-{
+  public final native String getStringValueOf(String name) /*-{
     return this.getValueOf(name);
   }-*/;
-
+  
   /**
    * Sets the dimensions.
    * 
