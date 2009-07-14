@@ -19,12 +19,14 @@ h2 {
 	font-weight: bold;
 	font-size: 16px;
 }
-
 .hm-description div {
 	background-color: #DEEFBD;
 	padding: 2px;
 }
-
 .hm-description strong {
+	font-weight: bold;
+}
+.hm-error {
+	color: #AD2010;
 	font-weight: bold;
 }

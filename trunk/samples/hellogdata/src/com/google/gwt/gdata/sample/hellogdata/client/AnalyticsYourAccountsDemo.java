@@ -70,25 +70,33 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
         Window.alert("An error occurred while retrieving the accounts, see details below:\n" + caught.getMessage());
       }
       public void onSuccess(AccountFeed result) {
-        String[] labels = new String[] { "Account Name", "Profile Name", "Profile Id", "Table Id" };
-        mainPanel.insertRow(0);
-        for (int i = 0; i < labels.length; i++) {
-          mainPanel.addCell(0);
-          mainPanel.setWidget(0, i, new Label(labels[i]));
-          mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
-        }
         AccountEntry[] entries = result.getEntries();
-        for (int i = 0; i < entries.length; i++) {
-          AccountEntry entry = entries[i];
-          int row = mainPanel.insertRow(i + 1);
-          mainPanel.addCell(row);
-          mainPanel.setWidget(row, 0, new Label(entry.getPropertyValue("ga:AccountName")));
-          mainPanel.addCell(row);
-          mainPanel.setWidget(row, 1, new Label(entry.getTitle().getText()));
-          mainPanel.addCell(row);
-          mainPanel.setWidget(row, 2, new Label(entry.getPropertyValue("ga:ProfileId")));
-          mainPanel.addCell(row);
-          mainPanel.setWidget(row, 3, new Label(entry.getTableId().getValue()));
+        if (entries.length == 0) {
+          Label msg = new Label("You have no analytics accounts.");
+          msg.setStylePrimaryName("hm-error");
+          mainPanel.insertRow(0);
+          mainPanel.addCell(0);
+          mainPanel.setWidget(0, 0, msg);
+        } else {
+          String[] labels = new String[] { "Account Name", "Profile Name", "Profile Id", "Table Id" };
+          mainPanel.insertRow(0);
+          for (int i = 0; i < labels.length; i++) {
+            mainPanel.addCell(0);
+            mainPanel.setWidget(0, i, new Label(labels[i]));
+            mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
+          }
+          for (int i = 0; i < entries.length; i++) {
+            AccountEntry entry = entries[i];
+            int row = mainPanel.insertRow(i + 1);
+            mainPanel.addCell(row);
+            mainPanel.setWidget(row, 0, new Label(entry.getPropertyValue("ga:AccountName")));
+            mainPanel.addCell(row);
+            mainPanel.setWidget(row, 1, new Label(entry.getTitle().getText()));
+            mainPanel.addCell(row);
+            mainPanel.setWidget(row, 2, new Label(entry.getPropertyValue("ga:ProfileId")));
+            mainPanel.addCell(row);
+            mainPanel.setWidget(row, 3, new Label(entry.getTableId().getValue()));
+          }
         }
       }
     });

@@ -16,6 +16,8 @@
 
 package com.google.gwt.gdata.sample.hellogdata.client;
 
+import com.google.gwt.gdata.client.analytics.AccountEntry;
+import com.google.gwt.gdata.client.analytics.AccountFeed;
 import com.google.gwt.gdata.client.analytics.AnalyticsService;
 import com.google.gwt.gdata.client.analytics.DataEntry;
 import com.google.gwt.gdata.client.analytics.DataFeed;
@@ -63,42 +65,58 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
   public AnalyticsBounceRateDemo() {
     mainPanel = new FlexTable();
     service = AnalyticsService.newInstance("HelloGData_Analytics_AccountsSample_v1.0");
-    String dataFeedUri = "https://www.google.com/analytics/feeds/data" +
-    "?start-date=2009-07-01" +
-    "&end-date=2009-07-31" +
-    "&dimensions=ga:source,ga:medium" +
-    "&metrics=ga:entrances,ga:bounces" +
-    "&sort=-ga:entrances" +
-    "&max-results=10" +
-    "&ids=" + "ga:19165962";
-    service.getDataFeed(dataFeedUri, new AsyncCallback<DataFeed>() {
+    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AsyncCallback<AccountFeed>() {
       public void onFailure(Throwable caught) {
       }
-      public void onSuccess(DataFeed result) {
-        String[] labels = new String[] { "Source", "Medium", "Visits", "Entrances", "Bounce Rate" };
-        mainPanel.insertRow(0);
-        for (int i = 0; i < labels.length; i++) {
+      public void onSuccess(AccountFeed result) {
+        AccountEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          Label msg = new Label("You have no analytics accounts.");
+          msg.setStylePrimaryName("hm-error");
+          mainPanel.insertRow(0);
           mainPanel.addCell(0);
-          mainPanel.setWidget(0, i, new Label(labels[i]));
-          mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
-        }
-        DataEntry[] entries = result.getEntries();
-        for (int i = 0; i < entries.length; i++) {
-          DataEntry entry = entries[i];
-          int row = mainPanel.insertRow(i + 1);
-          double entrances = entry.getNumericValueOf("ga:entrances");
-          double bounces = entry.getNumericValueOf("ga:bounces");
-          int bounceRate = (int) Math.round(100 * bounces / entrances);
-          mainPanel.addCell(row);
-          mainPanel.setWidget(row, 0, new Label(entry.getStringValueOf("ga:source")));
-          mainPanel.addCell(row);
-          mainPanel.setWidget(row, 1, new Label(entry.getStringValueOf("ga:medium")));
-          mainPanel.addCell(row);
-          mainPanel.setWidget(row, 2, new Label(new Double(entrances).toString()));
-          mainPanel.addCell(row);
-          mainPanel.setWidget(row, 3, new Label(new Double(bounces).toString()));
-          mainPanel.addCell(row);
-          mainPanel.setWidget(row, 4, new Label(bounceRate + "%"));
+          mainPanel.setWidget(0, 0, msg);
+        } else {
+          String tableId = entries[0].getTableId().getValue();
+          String dataFeedUri = "https://www.google.com/analytics/feeds/data" +
+          "?start-date=2009-07-01" +
+          "&end-date=2009-07-31" +
+          "&dimensions=ga:source,ga:medium" +
+          "&metrics=ga:entrances,ga:bounces" +
+          "&sort=-ga:entrances" +
+          "&max-results=10" +
+          "&ids=" + tableId;
+          service.getDataFeed(dataFeedUri, new AsyncCallback<DataFeed>() {
+            public void onFailure(Throwable caught) {
+            }
+            public void onSuccess(DataFeed result) {
+              String[] labels = new String[] { "Source", "Medium", "Visits", "Entrances", "Bounce Rate" };
+              mainPanel.insertRow(0);
+              for (int i = 0; i < labels.length; i++) {
+                mainPanel.addCell(0);
+                mainPanel.setWidget(0, i, new Label(labels[i]));
+                mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
+              }
+              DataEntry[] entries = result.getEntries();
+              for (int i = 0; i < entries.length; i++) {
+                DataEntry entry = entries[i];
+                int row = mainPanel.insertRow(i + 1);
+                double entrances = entry.getNumericValueOf("ga:entrances");
+                double bounces = entry.getNumericValueOf("ga:bounces");
+                int bounceRate = (int) Math.round(100 * bounces / entrances);
+                mainPanel.addCell(row);
+                mainPanel.setWidget(row, 0, new Label(entry.getStringValueOf("ga:source")));
+                mainPanel.addCell(row);
+                mainPanel.setWidget(row, 1, new Label(entry.getStringValueOf("ga:medium")));
+                mainPanel.addCell(row);
+                mainPanel.setWidget(row, 2, new Label(new Double(entrances).toString()));
+                mainPanel.addCell(row);
+                mainPanel.setWidget(row, 3, new Label(new Double(bounces).toString()));
+                mainPanel.addCell(row);
+                mainPanel.setWidget(row, 4, new Label(bounceRate + "%"));
+              }
+            }
+          });
         }
       }
     });
