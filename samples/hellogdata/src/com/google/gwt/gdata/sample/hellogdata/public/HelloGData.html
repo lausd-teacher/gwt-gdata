@@ -1,41 +1,29 @@
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
-"http://www.w3.org/TR/html4/loose.dtd">
-
-<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
-<!-- above set at the top of the file will set     -->
-<!-- the browser's rendering engine into           -->
-<!-- "Standards Mode", which gives better cross    -->
-<!-- browser compatibility to the application.     -->
-<!-- Omitting this line leaves most browsers in    -->
-<!-- "Quirks mode", emulating the bugs in older    -->
-<!-- browser versions.                             -->
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <!--                                           -->
-    <!-- Any title is fine                         -->
-    <!--                                           -->
-    <title>HelloGData</title>
-    
-    <!--                                           -->
-    <!-- This script loads your compiled module.   -->
-    <!-- If you add any GWT meta tags, they must   -->
-    <!-- be added before this line.                -->
-    <!--                                           -->
-    <script type="text/javascript" language="javascript" src="com.google.gwt.gdata.sample.hellogdata.HelloGData.nocache.js"></script>
+    <title>HelloGData, built with GWT</title>
+    <style type="text/css"> v\:* { behavior: url("#default#VML"); } </style>
+<style>
+.hm-title {
+  font-size: 1.5em; 
+  font-family: sans-serif;
+  display: inline;	
+}
+</style>
   </head>
-
-  <!--                                           -->
-  <!-- The body can have arbitrary html, or      -->
-  <!-- you can leave the body empty if you want  -->
-  <!-- to create a completely dynamic UI.        -->
-  <!--                                           -->
   <body>
+    <!-- A blue bar with rounded corners drawn across the top of the screen.-->
+    <div>
+      <img src="logo-small.png" alt="gwt logo">
+	  <span class="hm-title">Google GData API Library for GWT Demo</span>
+    </div>
 
-    <!-- OPTIONAL: include this if you want history support -->
-    <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
-
+    <div id="hm-map"></div>
+    
+    <script src="com.google.gwt.gdata.sample.hellogdata.HelloGData.nocache.js" type="text/javascript"></script>
+    <iframe src="javascript:''" id='__gwt_historyFrame' style='width: 0; height: 0; border: 0'></iframe>
   </body>
 </html>
+
