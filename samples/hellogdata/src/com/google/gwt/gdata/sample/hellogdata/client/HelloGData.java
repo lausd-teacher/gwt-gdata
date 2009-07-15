@@ -16,16 +16,12 @@
 
 package com.google.gwt.gdata.sample.hellogdata.client;
 
-import com.google.gwt.accounts.client.AuthSubStatus;
-import com.google.gwt.accounts.client.User;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.sample.hellogdata.client.GDataDemo.GDataDemoInfo;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.HistoryListener;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
@@ -34,7 +30,6 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * Main class for implementing the HelloGData gwt-google-apis demo.
@@ -64,6 +59,8 @@ public class HelloGData implements EntryPoint, HistoryListener {
 
     HorizontalPanel horizPanel = new HorizontalPanel();
     list.setStylePrimaryName("hm-demolistbox");
+    
+    description.setStylePrimaryName("hm-description");
     
     innerPanel.add(horizPanel);
     innerPanel.add(description);
@@ -99,20 +96,9 @@ public class HelloGData implements EntryPoint, HistoryListener {
 
     RootPanel.get("hm-map").add(decorator);
 
-    if (User.getStatus() == AuthSubStatus.LOGGED_IN) {
-      horizPanel.add(new Label("Select Demo: "));
-      horizPanel.add(list);
-      showInfo();
-    } else {
-      Button loginButton = new Button();
-      loginButton.setText("Login to start demo...");
-      loginButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
-          User.login("https://www.google.com/analytics/feeds/");
-        }
-      });
-      horizPanel.add(loginButton);
-    }
+    horizPanel.add(new Label("Select Demo: "));
+    horizPanel.add(list);
+    showInfo();
   }
 
   public void onHistoryChanged(String token) {
@@ -137,21 +123,21 @@ public class HelloGData implements EntryPoint, HistoryListener {
   }
   
   public void show(GDataDemoInfo info, boolean affectHistory) {
-    // Don't bother re-displaying the existing MapsDemo. This can be an issue
+    // Don't bother re-displaying the existing GDataDemo. This can be an issue
     // in practice, because when the history context is set, our
     // onHistoryChanged() handler will attempt to show the currently-visible
-    // MapsDemo.
+    // GDataDemo.
     if (info == curInfo) {
       return;
     }
     curInfo = info;
 
-    // Remove the old MapsDemo from the display area.
+    // Remove the old GDataDemo from the display area.
     if (curGDataDemo != null) {
       innerPanel.remove(curGDataDemo);
     }
 
-    // Get the new MapsDemo instance, and display its description in the
+    // Get the new GDataDemo instance, and display its description in the
     // MapsDemo list.
     curGDataDemo = info.getInstance();
     list.setGDataDemoSelection(info.getName());
@@ -159,20 +145,21 @@ public class HelloGData implements EntryPoint, HistoryListener {
     // If affectHistory is set, create a new item on the history stack. This
     // will ultimately result in onHistoryChanged() being called. It will call
     // show() again, but nothing will happen because it will request the exact
-    // same MapsDemo we're already showing.
+    // same GDataDemo we're already showing.
     if (affectHistory) {
       History.newItem(info.getName());
     }
 
-    // Display the new MapsDemo and update the description panel.
+    // Display the new GDataDemo and update the description panel.
     innerPanel.add(curGDataDemo);
-    outerPanel.setWidget(2, 0, info.getDescriptionHTML());
+    description.setHTML(info.getDescription());
+    // outerPanel.setWidget(2, 0, info.getDescriptionHTML());
 
     outerPanel.setWidget(
         3,
         0,
         new HTML(
-            "These concepts behind these demos"
+            "The concepts behind these demos"
                 + " are explained in the "
                 + "<a href=\"http://www.google.com/apis/gdata/documentation/index.html\">"
                 + "Google GData API Concepts</a> document."));
