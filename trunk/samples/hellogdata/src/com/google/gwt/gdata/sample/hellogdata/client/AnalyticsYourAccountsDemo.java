@@ -16,24 +16,22 @@
 
 package com.google.gwt.gdata.sample.hellogdata.client;
 
+import com.google.gwt.accounts.client.AuthSubStatus;
+import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.analytics.AccountEntry;
 import com.google.gwt.gdata.client.analytics.AccountFeed;
 import com.google.gwt.gdata.client.analytics.AnalyticsService;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The following example creates a map with default values.
  */
 public class AnalyticsYourAccountsDemo extends GDataDemo {
-
-  private static HTML descHTML = null;
-  private static final String descString = "<p>This sample demonstrates how to access 50 of " +
-    "the account names, profile names, profile ids and table ids to which your " +
-    "login has access.</p>\n";
 
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
@@ -44,12 +42,10 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
       }
 
       @Override
-      public HTML getDescriptionHTML() {
-        if (descHTML == null) {
-          descHTML = new HTML(descString);
-        }
-        descHTML.setStylePrimaryName("hm-description");
-        return descHTML;
+      public String getDescription() {
+        return "<p>This sample demonstrates how to access 50 of " +
+        "the account names, profile names, profile ids and table ids to which your " +
+        "login has access.</p>\n";
       }
 
       @Override
@@ -61,45 +57,79 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
 
   private AnalyticsService service;
   private FlexTable mainPanel;
+  private final String scope = "https://www.google.com/analytics/feeds/";
 
   public AnalyticsYourAccountsDemo() {
+    service = AnalyticsService.newInstance("HelloGData_Analytics_YourAccountsDemo_v1.0");
     mainPanel = new FlexTable();
-    service = AnalyticsService.newInstance("HelloGData_Analytics_AccountsSample_v1.0");
+    initWidget(mainPanel);
+    login();
+  }
+  public void login() {
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      startDemo();
+    } else {
+      Button loginButton = new Button();
+      loginButton.setText("Login to Analytics to start demo...");
+      loginButton.addClickListener(new ClickListener() {
+        public void onClick(Widget sender) {
+          User.login(scope);
+        }
+      });
+      mainPanel.setWidget(0, 0, loginButton);
+    }
+  }
+  public void showData(AccountEntry[] entries) {
+    mainPanel.clear();
+    String[] labels = new String[] { "Account Name", "Profile Name", "Profile Id", "Table Id" };
+    mainPanel.insertRow(0);
+    for (int i = 0; i < labels.length; i++) {
+      mainPanel.addCell(0);
+      mainPanel.setWidget(0, i, new Label(labels[i]));
+      mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
+    }
+    for (int i = 0; i < entries.length; i++) {
+      AccountEntry entry = entries[i];
+      int row = mainPanel.insertRow(i + 1);
+      mainPanel.addCell(row);
+      mainPanel.setWidget(row, 0, new Label(entry.getPropertyValue("ga:AccountName")));
+      mainPanel.addCell(row);
+      mainPanel.setWidget(row, 1, new Label(entry.getTitle().getText()));
+      mainPanel.addCell(row);
+      mainPanel.setWidget(row, 2, new Label(entry.getPropertyValue("ga:ProfileId")));
+      mainPanel.addCell(row);
+      mainPanel.setWidget(row, 3, new Label(entry.getTableId().getValue()));
+    }
+  }
+  public void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
+  }
+  public void startDemo() {
+    showStatus("Loading Analytics accounts feed...", false);
     service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AsyncCallback<AccountFeed>() {
       public void onFailure(Throwable caught) {
-        Window.alert("An error occurred while retrieving the accounts, see details below:\n" + caught.getMessage());
+        String message = caught.getMessage();
+        if (message.contains("No Analytics account was found for the currently logged-in user")) {
+          showStatus("No Analytics account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the Analytics Accounts feed, see details below:\n" + message, true);
+        }
       }
       public void onSuccess(AccountFeed result) {
         AccountEntry[] entries = result.getEntries();
         if (entries.length == 0) {
-          Label msg = new Label("You have no analytics accounts.");
-          msg.setStylePrimaryName("hm-error");
-          mainPanel.insertRow(0);
-          mainPanel.addCell(0);
-          mainPanel.setWidget(0, 0, msg);
+          showStatus("You have no Analytics accounts.", false);
         } else {
-          String[] labels = new String[] { "Account Name", "Profile Name", "Profile Id", "Table Id" };
-          mainPanel.insertRow(0);
-          for (int i = 0; i < labels.length; i++) {
-            mainPanel.addCell(0);
-            mainPanel.setWidget(0, i, new Label(labels[i]));
-            mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
-          }
-          for (int i = 0; i < entries.length; i++) {
-            AccountEntry entry = entries[i];
-            int row = mainPanel.insertRow(i + 1);
-            mainPanel.addCell(row);
-            mainPanel.setWidget(row, 0, new Label(entry.getPropertyValue("ga:AccountName")));
-            mainPanel.addCell(row);
-            mainPanel.setWidget(row, 1, new Label(entry.getTitle().getText()));
-            mainPanel.addCell(row);
-            mainPanel.setWidget(row, 2, new Label(entry.getPropertyValue("ga:ProfileId")));
-            mainPanel.addCell(row);
-            mainPanel.setWidget(row, 3, new Label(entry.getTableId().getValue()));
-          }
+          showData(result.getEntries());
         }
       }
     });
-    initWidget(mainPanel);
   }
 }

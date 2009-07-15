@@ -16,17 +16,24 @@ h2 {
 
 .hm-tableheader {
 	background-color: #E5ECF9;
+	padding: 6px;
 	font-weight: bold;
-	font-size: 16px;
 }
 .hm-description div {
-	background-color: #DEEFBD;
-	padding: 2px;
+    background-color: #DEF4D5;
+    border: solid 1px #C0DF86;
+    padding: 4px;
 }
 .hm-description strong {
-	font-weight: bold;
+    font-weight: bold;
+    color: green;
 }
 .hm-error {
-	color: #AD2010;
-	font-weight: bold;
+    background-color: #E1C2B9;
+    border: solid 1px #B53812;
+    padding: 3px;
+}
+.hm-error strong {
+    font-weight: bold;
+    color: #B53812;
 }

@@ -16,7 +16,6 @@
 package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HTML;
 
 /**
  * All HelloMaps demos extend this class.
@@ -37,12 +36,12 @@ public abstract class GDataDemo extends Composite {
     public abstract GDataDemo createInstance();
 
     /**
-     * @return an HTML description of this demo
+     * @return a description of this demo.
      */
-    public HTML getDescriptionHTML() {
-      return new HTML("<p><i>Description not provided.</i></p>\n"
+    public String getDescription() {
+      return "<p><i>Description not provided.</i></p>\n"
           + "<p>(Add an implementation of <code>getDescriptionHTML()</code> "
-          + "for this demo)</p>");
+          + "for this demo)</p>";
     }
 
     /**
