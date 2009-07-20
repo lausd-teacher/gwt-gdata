@@ -15,7 +15,6 @@
 <module>
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.google.gwt.gdata.GData" />
-  <inherits name="com.google.gwt.json.JSON" />\
-  <!-- NOTE: below we're using 1.x because the auto-load for 1.10 doesn't seem to work properly -->
-  <script src="http://www.google.com/jsapi?autoload=%7Bmodules%3A%5B%7Bname%3Agdata%2Cversion%3A1.x%7D%5D%7D" />
+  <inherits name="com.google.gwt.json.JSON" />
+  <script src="http://www.google.com/jsapi?autoload=%7Bmodules%3A%5B%7Bname%3Agdata%2Cversion%3A%221.10%22%7D%5D%7D" />
 </module>

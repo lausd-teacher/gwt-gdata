@@ -58,9 +58,9 @@ public class MapsServiceTest extends GWTTestCase {
             fail("Delete Failed: " + caught.getMessage());
           }
           public void onSuccess(MapEntry result) {
+            finishTest();
           }
         });
-        finishTest();
       }
     });
     delayTestFinish(10000);

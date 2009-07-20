@@ -76,9 +76,9 @@ public class BloggerServiceTest extends GWTTestCase {
                 fail("Delete Failed: " + caught.getMessage());
               }
               public void onSuccess(PostEntry result) {
+                finishTest();
               }
             });
-            finishTest();
           }
         });
       }
@@ -154,9 +154,6 @@ public class BloggerServiceTest extends GWTTestCase {
         fail("Get Failed: " + caught.getMessage());
       }
       public void onSuccess(BlogPostFeed result) {
-        if (result.getEntries().length != 1) {
-          fail("Get Failed");
-        }
         if (!result.getTitle().getText().equals(GDataTestScripts.Blogger.testPosts_Feed_Title)) {
           fail("Get Failed");
         }
