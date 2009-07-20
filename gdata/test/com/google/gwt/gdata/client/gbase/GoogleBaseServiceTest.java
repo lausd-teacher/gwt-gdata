@@ -90,9 +90,9 @@ public class GoogleBaseServiceTest extends GWTTestCase {
             fail("Create Failed: " + caught.getMessage());
           }
           public void onSuccess(ItemsEntry result) {
+            finishTest();
           }
         });
-        finishTest();
       }
     });
     delayTestFinish(4000);

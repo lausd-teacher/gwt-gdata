@@ -18,50 +18,50 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
-import com.google.gwt.gdata.client.analytics.AccountEntry;
-import com.google.gwt.gdata.client.analytics.AccountFeed;
-import com.google.gwt.gdata.client.analytics.AnalyticsService;
+import com.google.gwt.gdata.client.blogger.BlogEntry;
+import com.google.gwt.gdata.client.blogger.BlogFeed;
+import com.google.gwt.gdata.client.blogger.BloggerService;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * The following example demonstrates how to access 50 of the account names,
- * profile names, profile ids and table ids to which your login has access.
+ * The following example demonstrates how to retrieve a list of a user's blogs.
  */
-public class AnalyticsYourAccountsDemo extends GDataDemo {
+public class BloggerRetrieveBlogsDemo extends GDataDemo {
 
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
       @Override
       public GDataDemo createInstance() {
-        return new AnalyticsYourAccountsDemo();
+        return new BloggerRetrieveBlogsDemo();
       }
 
       @Override
       public String getDescription() {
-        return "<p>This sample demonstrates how to access 50 of " +
-        "the account names, profile names, profile ids and table ids to which your " +
-        "login has access.</p>\n";
+        return "<p>This sample uses the \"metafeed\" feed to retrieve the " +
+          "authenticated user's list of blogs. Each blog is listed as a link to " +
+          "the actual blog.</p>\n";
       }
 
       @Override
       public String getName() {
-        return "Analytics - Your Accounts";
+        return "Blogger - Retrieve a list of blogs";
       }
     };
   }
 
-  private AnalyticsService service;
+  private BloggerService service;
   private FlexTable mainPanel;
-  private final String scope = "https://www.google.com/analytics/feeds/";
+  private final String scope = "http://www.blogger.com/feeds/";
 
-  public AnalyticsYourAccountsDemo() {
-    service = AnalyticsService.newInstance("HelloGData_Analytics_YourAccountsDemo_v1.0");
+  public BloggerRetrieveBlogsDemo() {
+    service = BloggerService.newInstance("HelloGData_Blogger_RetrieveBlogsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     login();
@@ -71,7 +71,7 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
       startDemo();
     } else {
       Button loginButton = new Button();
-      loginButton.setText("Login to Analytics to start demo...");
+      loginButton.setText("Login to Blogger to start demo...");
       loginButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
           User.login(scope);
@@ -80,9 +80,9 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
       mainPanel.setWidget(0, 0, loginButton);
     }
   }
-  public void showData(AccountEntry[] entries) {
+  public void showData(BlogEntry[] entries) {
     mainPanel.clear();
-    String[] labels = new String[] { "Account Name", "Profile Name", "Profile Id", "Table Id" };
+    String[] labels = new String[] { "Title", "URL", "Updated" };
     mainPanel.insertRow(0);
     for (int i = 0; i < labels.length; i++) {
       mainPanel.addCell(0);
@@ -90,16 +90,15 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
       mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
     }
     for (int i = 0; i < entries.length; i++) {
-      AccountEntry entry = entries[i];
+      BlogEntry entry = entries[i];
       int row = mainPanel.insertRow(i + 1);
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 0, new Label(entry.getPropertyValue("ga:AccountName")));
+      mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 1, new Label(entry.getTitle().getText()));
+      String link = entry.getHtmlLink().getHref();
+      mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + "\" target=\"_blank\">" + link +  "</a>"));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getPropertyValue("ga:ProfileId")));
-      mainPanel.addCell(row);
-      mainPanel.setWidget(row, 3, new Label(entry.getTableId().getValue()));
+      mainPanel.setWidget(row, 2, new Label(entry.getUpdated().getValue().getDate().toString()));
     }
   }
   public void showStatus(String message, boolean isError) {
@@ -113,20 +112,20 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
     mainPanel.setWidget(0, 0, msg);
   }
   public void startDemo() {
-    showStatus("Loading Analytics accounts feed...", false);
-    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AsyncCallback<AccountFeed>() {
+    showStatus("Loading Blogger blog feed...", false);
+    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new AsyncCallback<BlogFeed>() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
-        if (message.contains("No Analytics account was found for the currently logged-in user")) {
-          showStatus("No Analytics account was found for the currently logged-in user.", true);
+        if (message.contains("No Blogger account was found for the currently logged-in user")) {
+          showStatus("No Blogger account was found for the currently logged-in user.", true);
         } else {
-          showStatus("An error occurred while retrieving the Analytics Accounts feed, see details below:\n" + message, true);
+          showStatus("An error occurred while retrieving the Blogger Blog feed, see details below:\n" + message, true);
         }
       }
-      public void onSuccess(AccountFeed result) {
-        AccountEntry[] entries = result.getEntries();
+      public void onSuccess(BlogFeed result) {
+        BlogEntry[] entries = result.getEntries();
         if (entries.length == 0) {
-          showStatus("You have no Analytics accounts.", false);
+          showStatus("You have no Blogger accounts.", false);
         } else {
           showData(result.getEntries());
         }

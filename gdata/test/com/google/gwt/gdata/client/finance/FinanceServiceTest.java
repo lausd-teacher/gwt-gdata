@@ -61,9 +61,9 @@ public class FinanceServiceTest extends GWTTestCase {
             fail("Delete Failed: " + caught.getMessage());
           }
           public void onSuccess(PortfolioEntry result) {
+            finishTest();
           }
         });
-        finishTest();
       }
     });
     delayTestFinish(10000);

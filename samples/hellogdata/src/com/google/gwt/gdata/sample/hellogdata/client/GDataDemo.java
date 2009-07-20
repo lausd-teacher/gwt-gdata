@@ -50,9 +50,8 @@ public abstract class GDataDemo extends Composite {
      * @return an instance of this GDataDemo class
      */
     public GDataDemo getInstance() {
-      if (instance == null) {
-        instance = createInstance();
-      }
+      // always create a new instance, we want the GData output to be "live" always
+      instance = createInstance();
       return instance;
     }
 

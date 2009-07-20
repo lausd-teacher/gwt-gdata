@@ -191,6 +191,16 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(AnalyticsLanguagesDemo.init());
     list.addGDataDemo(AnalyticsTopSearchesDemo.init());
     list.addGDataDemo(AnalyticsVisitsDemo.init());
+    list.addGDataDemo(BloggerRetrieveBlogsDemo.init());
+    list.addGDataDemo(BloggerRetrieveBlogPostsDemo.init());
+    list.addGDataDemo(BloggerCreateBlogPostDemo.init());
+    list.addGDataDemo(BloggerRetrieveSpecificBlogPostDemo.init());
+    list.addGDataDemo(BloggerUpdateBlogPostDemo.init());
+    list.addGDataDemo(BloggerDeleteBlogPostDemo.init());
+    list.addGDataDemo(BloggerQueryBlogPostsDemo.init());
+    list.addGDataDemo(BloggerRetrieveBlogPostCommentsDemo.init());
+    list.addGDataDemo(BloggerCreateBlogPostCommentDemo.init());
+    list.addGDataDemo(BloggerDeleteBlogPostCommentDemo.init());
   }
   
   private void showInfo() {
