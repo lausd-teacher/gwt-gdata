@@ -20,6 +20,7 @@ package com.google.gwt.gdata.client;
  * Describes an event feed.
  * @param <E> The Entry type.
  */
+@SuppressWarnings("unchecked")
 public class EventFeed<E extends EventEntry> extends com.google.gwt.gdata.client.Feed<E> {
 
   /**
