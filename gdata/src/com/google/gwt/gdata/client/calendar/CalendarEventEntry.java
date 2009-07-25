@@ -22,12 +22,13 @@ import com.google.gwt.gdata.client.geo.GeoRssWhere;
 /**
  * Describes a Calendar event entry.
  */
-public class CalendarEventEntry extends EventEntry {
+public class CalendarEventEntry extends EventEntry<CalendarEventEntry> {
 
   /**
    * Constructs a Calendar event entry.
    * @return A CalendarEventEntry object.
    */
+  @SuppressWarnings("unchecked")
   public static native CalendarEventEntry newInstance() /*-{
     return new $wnd.google.gdata.calendar.CalendarEventEntry();
   }-*/;

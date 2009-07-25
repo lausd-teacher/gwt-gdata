@@ -201,6 +201,24 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(BloggerRetrieveBlogPostCommentsDemo.init());
     list.addGDataDemo(BloggerCreateBlogPostCommentDemo.init());
     list.addGDataDemo(BloggerDeleteBlogPostCommentDemo.init());
+    list.addGDataDemo(CalendarRetrieveCalendarsDemo.init());
+    list.addGDataDemo(CalendarCreateCalendarDemo.init());
+    list.addGDataDemo(CalendarUpdateCalendarDemo.init());
+    list.addGDataDemo(CalendarDeleteCalendarDemo.init());
+    list.addGDataDemo(CalendarRetrieveEventsDemo.init());
+    list.addGDataDemo(CalendarQueryEventsFullTextDemo.init());
+    list.addGDataDemo(CalendarQueryEventsByDateDemo.init());
+    list.addGDataDemo(CalendarCreateSingleEventDemo.init());
+    list.addGDataDemo(CalendarCreateRecurringEventDemo.init());
+    list.addGDataDemo(CalendarUpdateEventDemo.init());
+    list.addGDataDemo(CalendarDeleteEventDemo.init());
+    list.addGDataDemo(CalendarCreateEventReminderDemo.init());
+    list.addGDataDemo(CalendarAddExtendedPropertyDemo.init());
+    list.addGDataDemo(ContactsRetrieveContactsDemo.init());
+    list.addGDataDemo(ContactsCreateContactDemo.init());
+    list.addGDataDemo(ContactsRetrieveContactsUsingQueryDemo.init());
+    list.addGDataDemo(ContactsUpdateContactDemo.init());
+    list.addGDataDemo(ContactsDeleteContactDemo.init());
   }
   
   private void showInfo() {
