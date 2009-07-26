@@ -18,9 +18,9 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
-import com.google.gwt.gdata.client.Email;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
+import com.google.gwt.gdata.client.contacts.ContactFeed;
 import com.google.gwt.gdata.client.contacts.ContactsService;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -30,26 +30,28 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * The following example demonstrates how to create a contact.
+ * The following example demonstrates how to update a contact group.
  */
-public class ContactsCreateContactDemo extends GDataDemo {
+public class ContactsUpdateContactGroupDemo extends GDataDemo {
 
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
       @Override
       public GDataDemo createInstance() {
-        return new ContactsCreateContactDemo();
+        return new ContactsUpdateContactGroupDemo();
       }
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create a new contact entry.</p>\n";
+        return "<p>This sample code demonstrate how to update a contact group entry. It locates the " +
+          "contact group that has a title that starts with 'GWT-Contacts-Client' and update its title " +
+          "with 'GWT-Contacts-Client: Update Group'.</p>\n";
       }
 
       @Override
       public String getName() {
-        return "Contacts - Creating contacts";
+        return "Contacts - Updating contact groups";
       }
     };
   }
@@ -58,15 +60,15 @@ public class ContactsCreateContactDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/m8/feeds/";
 
-  public ContactsCreateContactDemo() {
-    service = ContactsService.newInstance("HelloGData_Contacts_CreateContactDemo_v1.0");
+  public ContactsUpdateContactGroupDemo() {
+    service = ContactsService.newInstance("HelloGData_Contacts_UpdateContactGroupDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     login();
   }
   public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Create a contact");
+      Button startButton = new Button("Update a contact group");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
           startDemo();
@@ -95,28 +97,41 @@ public class ContactsCreateContactDemo extends GDataDemo {
     mainPanel.setWidget(0, 0, msg);
   }
   public void startDemo() {
-    showStatus("Creating contact...", false);
-    ContactEntry entry = ContactEntry.newInstance();
-    entry.setTitle(Text.newInstance());
-    entry.getTitle().setText("GWT-Contacts-Client: Create Contact");
-    entry.setContent(Text.newInstance());
-    entry.getContent().setText("content info here");
-    Email email = Email.newInstance();
-    email.setAddress("GWT-Contacts-Client@domain.com");
-    email.setPrimary(true);
-    email.setRel(Email.REL_HOME);
-    entry.setEmailAddresses(new Email[] { email });
-    service.insertEntry("http://www.google.com/m8/feeds/contacts/default/full", entry, new AsyncCallback<ContactEntry>() {
+    showStatus("Loading contact groups feed...", false);
+    service.getContactFeed("http://www.google.com/m8/feeds/groups/default/full", new AsyncCallback<ContactFeed>() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Contacts account was found for the currently logged-in user")) {
           showStatus("No Contacts account was found for the currently logged-in user.", true);
         } else {
-          showStatus("An error occurred while creating a contact, see details below:\n" + message, true);
+          showStatus("An error occurred while retrieving the contact groups feed, see details below:\n" + message, true);
         }
       }
-      public void onSuccess(ContactEntry result) {
-        showStatus("Created a contact.", false);
+      public void onSuccess(ContactFeed result) {
+        ContactEntry[] entries = result.getEntries();
+        ContactEntry targetEntry = null;
+        for (ContactEntry contact : entries) {
+          String title = contact.getTitle().getText();
+          if (title.startsWith("GWT-Contacts-Client")) {
+            targetEntry = contact;
+            break;
+          }
+        }
+        if (targetEntry == null) {
+          showStatus("No contacts were found with a title starting with 'GWT-Contacts-Client'.", false);
+        } else {
+          targetEntry.setTitle(Text.newInstance());
+          targetEntry.getTitle().setText("GWT-Contacts-Client: Update Group");
+          showStatus("Updating a contact group...", false);
+          targetEntry.updateEntry(new AsyncCallback<ContactEntry>() {
+            public void onFailure(Throwable caught) {
+              showStatus("An error occurred while updating a contact group, see details below:\n" + caught.getMessage(), true);
+            }
+            public void onSuccess(ContactEntry result) {
+              showStatus("Updated a contact group.", false);
+            }
+          });
+        }
       }
     });
   }

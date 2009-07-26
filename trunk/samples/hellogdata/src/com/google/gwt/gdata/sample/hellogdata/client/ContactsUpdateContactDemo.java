@@ -50,7 +50,7 @@ public class ContactsUpdateContactDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample code demonstrate how to update a contact entry. It queries for the most " +
-          "recently modified contact entry of today from the authenicated user and update that " +
+          "recently modified contact entry of today from the authenticated user and update that " +
           "entry with a phone number.</p>\n";
       }
 
@@ -136,7 +136,7 @@ public class ContactsUpdateContactDemo extends GDataDemo {
           phoneNumber.setValue("123-456-7890");
           phoneNumber.setRel(PhoneNumber.REL_WORK);
           targetEntry.setPhoneNumbers(new PhoneNumber[] { phoneNumber });
-          showStatus("Updating a Calendar event...", false);
+          showStatus("Updating a contact event...", false);
           targetEntry.updateEntry(new AsyncCallback<ContactEntry>() {
             public void onFailure(Throwable caught) {
               showStatus("An error occurred while updating a contact, see details below:\n" + caught.getMessage(), true);

@@ -62,6 +62,16 @@ public class Query extends JavaScriptObject {
   public final native void setParam(String name, JavaScriptObject value) /*-{
     this.setParam(name, value);
   }-*/;
+  
+  /**
+   * Sets a parameter of the query. If a parameter definition does not already exist for the parameter, we create a default for it before setting the parameter. The default definition is no value decoration and no default value.
+   * 
+   * @param name Name of the parameter.
+   * @param value Value of the parameter.
+   */
+  public final native void setParam(String name, String value) /*-{
+    this.setParam(name, value);
+  }-*/;
 
   /**
    * Sets the definition of a parameter.
