@@ -185,6 +185,7 @@ public class HelloGData implements EntryPoint, HistoryListener {
    * a significant difference in startup time.
    */
   protected void loadGDataDemos() {
+    list.addGDataDemo(BlankDemo.init());
     list.addGDataDemo(AnalyticsYourAccountsDemo.init());
     list.addGDataDemo(AnalyticsTopPagesDemo.init());
     list.addGDataDemo(AnalyticsBounceRateDemo.init());
@@ -224,9 +225,16 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(ContactsCreateContactGroupDemo.init());
     list.addGDataDemo(ContactsUpdateContactGroupDemo.init());
     list.addGDataDemo(ContactsDeleteContactGroupDemo.init());
+    list.addGDataDemo(FinanceRetrievePortfoliosDemo.init());
+    list.addGDataDemo(FinanceRetrievePortfolioDemo.init());
+    list.addGDataDemo(FinanceRetrieveTransactionsDemo.init());
+    list.addGDataDemo(FinanceRetrievePositionsDemo.init());
+    list.addGDataDemo(FinanceCreatePortfolioDemo.init());
+    list.addGDataDemo(FinanceUpdatePortfolioDemo.init());
+    list.addGDataDemo(FinanceDeletePortfolioDemo.init());
   }
   
   private void showInfo() {
-    show(list.find("Analytics - Your Accounts"), false);
+    show(list.find(""), false);
   }
 }
