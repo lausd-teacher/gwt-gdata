@@ -219,6 +219,11 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(ContactsRetrieveContactsUsingQueryDemo.init());
     list.addGDataDemo(ContactsUpdateContactDemo.init());
     list.addGDataDemo(ContactsDeleteContactDemo.init());
+    list.addGDataDemo(ContactsRetrieveContactGroupsDemo.init());
+    list.addGDataDemo(ContactsRetrieveContactGroupMembersDemo.init());
+    list.addGDataDemo(ContactsCreateContactGroupDemo.init());
+    list.addGDataDemo(ContactsUpdateContactGroupDemo.init());
+    list.addGDataDemo(ContactsDeleteContactGroupDemo.init());
   }
   
   private void showInfo() {

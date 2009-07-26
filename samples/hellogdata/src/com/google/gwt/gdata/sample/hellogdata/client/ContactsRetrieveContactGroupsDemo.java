@@ -18,9 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
-import com.google.gwt.gdata.client.Email;
-import com.google.gwt.gdata.client.atom.Text;
-import com.google.gwt.gdata.client.contacts.ContactEntry;
+import com.google.gwt.gdata.client.contacts.ContactGroupEntry;
+import com.google.gwt.gdata.client.contacts.ContactGroupFeed;
 import com.google.gwt.gdata.client.contacts.ContactsService;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -30,26 +29,26 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * The following example demonstrates how to create a contact.
+ * The following example demonstrates how to retrieve a list of a user's contact groups.
  */
-public class ContactsCreateContactDemo extends GDataDemo {
+public class ContactsRetrieveContactGroupsDemo extends GDataDemo {
 
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
       @Override
       public GDataDemo createInstance() {
-        return new ContactsCreateContactDemo();
+        return new ContactsRetrieveContactGroupsDemo();
       }
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create a new contact entry.</p>\n";
+        return "<p>This sample code retrieves all the contact groups of the authenticated user.</p>\n";
       }
 
       @Override
       public String getName() {
-        return "Contacts - Creating contacts";
+        return "Contacts - Retrieving all contacts groups";
       }
     };
   }
@@ -58,21 +57,15 @@ public class ContactsCreateContactDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/m8/feeds/";
 
-  public ContactsCreateContactDemo() {
-    service = ContactsService.newInstance("HelloGData_Contacts_CreateContactDemo_v1.0");
+  public ContactsRetrieveContactGroupsDemo() {
+    service = ContactsService.newInstance("HelloGData_Contacts_RetrieveContactGroupsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     login();
   }
   public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Create a contact");
-      startButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
-          startDemo();
-        }
-      });
-      mainPanel.setWidget(0, 0, startButton);
+      startDemo();
     } else {
       Button loginButton = new Button();
       loginButton.setText("Login to Contacts to start demo...");
@@ -82,6 +75,24 @@ public class ContactsCreateContactDemo extends GDataDemo {
         }
       });
       mainPanel.setWidget(0, 0, loginButton);
+    }
+  }
+  public void showData(ContactGroupEntry[] entries) {
+    mainPanel.clear();
+    String[] labels = new String[] { "Title", "Id" };
+    mainPanel.insertRow(0);
+    for (int i = 0; i < labels.length; i++) {
+      mainPanel.addCell(0);
+      mainPanel.setWidget(0, i, new Label(labels[i]));
+      mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
+    }
+    for (int i = 0; i < entries.length; i++) {
+      ContactGroupEntry entry = entries[i];
+      int row = mainPanel.insertRow(i + 1);
+      mainPanel.addCell(row);
+      mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
+      mainPanel.addCell(row);
+      mainPanel.setWidget(row, 1, new Label(entry.getId().getValue()));
     }
   }
   public void showStatus(String message, boolean isError) {
@@ -95,28 +106,23 @@ public class ContactsCreateContactDemo extends GDataDemo {
     mainPanel.setWidget(0, 0, msg);
   }
   public void startDemo() {
-    showStatus("Creating contact...", false);
-    ContactEntry entry = ContactEntry.newInstance();
-    entry.setTitle(Text.newInstance());
-    entry.getTitle().setText("GWT-Contacts-Client: Create Contact");
-    entry.setContent(Text.newInstance());
-    entry.getContent().setText("content info here");
-    Email email = Email.newInstance();
-    email.setAddress("GWT-Contacts-Client@domain.com");
-    email.setPrimary(true);
-    email.setRel(Email.REL_HOME);
-    entry.setEmailAddresses(new Email[] { email });
-    service.insertEntry("http://www.google.com/m8/feeds/contacts/default/full", entry, new AsyncCallback<ContactEntry>() {
+    showStatus("Loading contact groups feed...", false);
+    service.getContactGroupFeed("http://www.google.com/m8/feeds/groups/default/full", new AsyncCallback<ContactGroupFeed>() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Contacts account was found for the currently logged-in user")) {
           showStatus("No Contacts account was found for the currently logged-in user.", true);
         } else {
-          showStatus("An error occurred while creating a contact, see details below:\n" + message, true);
+          showStatus("An error occurred while retrieving the contact groups feed, see details below:\n" + message, true);
         }
       }
-      public void onSuccess(ContactEntry result) {
-        showStatus("Created a contact.", false);
+      public void onSuccess(ContactGroupFeed result) {
+        ContactGroupEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("You have no contact groups.", false);
+        } else {
+          showData(entries);
+        }
       }
     });
   }
