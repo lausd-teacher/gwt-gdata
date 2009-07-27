@@ -1,12 +1,16 @@
 /* Add some space between the outside browser window and the blue border */
 h2 {
- font-stretch: narrower;
-  font-weight: 500;
-  margin: 4px;
+	font-stretch: narrower;
+	font-weight: 500;
+	margin: 4px;
 }
 
 #hm-map {
-  margin: 10px;
+	margin: 10px;
+}
+.gwt-Hyperlink * {
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 /* Add some space between the blue border and the interior stuff */
