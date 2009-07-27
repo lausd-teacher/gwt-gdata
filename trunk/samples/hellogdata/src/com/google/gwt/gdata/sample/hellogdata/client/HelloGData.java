@@ -185,7 +185,7 @@ public class HelloGData implements EntryPoint, HistoryListener {
    * a significant difference in startup time.
    */
   protected void loadGDataDemos() {
-    list.addGDataDemo(BlankDemo.init());
+    list.addGDataDemo(AccountsAuthSubAuthenticationDemo.init());
     list.addGDataDemo(AnalyticsYourAccountsDemo.init());
     list.addGDataDemo(AnalyticsTopPagesDemo.init());
     list.addGDataDemo(AnalyticsBounceRateDemo.init());
@@ -235,6 +235,6 @@ public class HelloGData implements EntryPoint, HistoryListener {
   }
   
   private void showInfo() {
-    show(list.find(""), false);
+    show(list.find("Accounts - Authsub Authentication"), false);
   }
 }
