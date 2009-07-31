@@ -76,14 +76,7 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
       });
       mainPanel.setWidget(0, 0, startButton);
     } else {
-      Button loginButton = new Button();
-      loginButton.setText("Login to Calendar to start demo...");
-      loginButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
-          User.login(scope);
-        }
-      });
-      mainPanel.setWidget(0, 0, loginButton);
+      showStatus("You are not logged on to Google Calendar.", true);
     }
   }
   public void showStatus(String message, boolean isError) {

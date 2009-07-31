@@ -24,12 +24,9 @@ import com.google.gwt.gdata.client.blogger.BlogPostFeed;
 import com.google.gwt.gdata.client.blogger.BloggerService;
 import com.google.gwt.gdata.client.blogger.PostEntry;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The following example demonstrates how to retrieve a list of blog posts.
@@ -71,14 +68,7 @@ public class BloggerRetrieveBlogPostsDemo extends GDataDemo {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       startDemo();
     } else {
-      Button loginButton = new Button();
-      loginButton.setText("Login to Blogger to start demo...");
-      loginButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
-          User.login(scope);
-        }
-      });
-      mainPanel.setWidget(0, 0, loginButton);
+      showStatus("You are not logged on to Blogger.", true);
     }
   }
   public void showData(PostEntry[] entries) {
