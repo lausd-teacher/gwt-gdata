@@ -232,6 +232,9 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(FinanceCreatePortfolioDemo.init());
     list.addGDataDemo(FinanceUpdatePortfolioDemo.init());
     list.addGDataDemo(FinanceDeletePortfolioDemo.init());
+    list.addGDataDemo(FinanceCreateTransactionDemo.init());
+    list.addGDataDemo(FinanceUpdateTransactionDemo.init());
+    list.addGDataDemo(FinanceDeleteTransactionDemo.init());
   }
   
   private void showInfo() {

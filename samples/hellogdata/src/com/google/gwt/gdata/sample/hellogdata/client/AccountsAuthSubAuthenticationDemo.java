@@ -88,7 +88,7 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
       mainPanel.addCell(i);
       Image icon = new Image(sys[2]);
       mainPanel.setWidget(i, 0, icon);
-      Label name = new HTML("<a href=\"\">" + sys[3] + "</a>");
+      Label name = new HTML("<a href=\"" + sys[3] + "\">" + sys[0] + "</a>");
       mainPanel.setWidget(i, 1, name);
       Label statusLabel = new Label();
       Hyperlink actionLink = new Hyperlink();

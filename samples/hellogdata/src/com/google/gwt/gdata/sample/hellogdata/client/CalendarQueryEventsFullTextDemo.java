@@ -23,12 +23,9 @@ import com.google.gwt.gdata.client.calendar.CalendarEventFeed;
 import com.google.gwt.gdata.client.calendar.CalendarEventQuery;
 import com.google.gwt.gdata.client.calendar.CalendarService;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The following example demonstrates how to perform a full text query for events.
@@ -72,14 +69,7 @@ public class CalendarQueryEventsFullTextDemo extends GDataDemo {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       startDemo();
     } else {
-      Button loginButton = new Button();
-      loginButton.setText("Login to Calendar to start demo...");
-      loginButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
-          User.login(scope);
-        }
-      });
-      mainPanel.setWidget(0, 0, loginButton);
+      showStatus("You are not logged on to Google Calendar.", true);
     }
   }
   public void showData(CalendarEventEntry[] entries) {

@@ -21,6 +21,7 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.finance.FinanceService;
 import com.google.gwt.gdata.client.finance.PortfolioEntry;
 import com.google.gwt.gdata.client.finance.PortfolioFeed;
+import com.google.gwt.gdata.client.finance.TransactionEntry;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
@@ -29,28 +30,29 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * The following example demonstrates how to delete a portfolio.
+ * The following example demonstrates how to update a transaction.
  */
-public class FinanceDeletePortfolioDemo extends GDataDemo {
+public class FinanceUpdateTransactionDemo extends GDataDemo {
 
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
       @Override
       public GDataDemo createInstance() {
-        return new FinanceDeletePortfolioDemo();
+        return new FinanceUpdateTransactionDemo();
       }
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to delete an existing portfolio of the " +
-          "authenticated user. It retrieves a list of the user's portfolios, and delete the " +
-          "first portfolio with title that starts with 'GWT-Finance-Client'.</p>\n";
+        return "<p>This sample code demonstrates how to update an existing transaction within " +
+          "the portfolio of the authenticated user. It retrieves and updates the first " +
+          "NASDAQ:GOOG transaction with the 'GWT-Finance-Client' portfolio (Note: The transaction " +
+          "must exist before it can be updated; otherwise an error is generated.)</p>\n";
       }
 
       @Override
       public String getName() {
-        return "Finance - Deleting a Portfolio";
+        return "Finance - Updating a Transaction";
       }
     };
   }
@@ -59,15 +61,15 @@ public class FinanceDeletePortfolioDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://finance.google.com/finance/feeds/";
 
-  public FinanceDeletePortfolioDemo() {
-    service = FinanceService.newInstance("HelloGData_Finance_DeletePortfolioDemo_v1.0");
+  public FinanceUpdateTransactionDemo() {
+    service = FinanceService.newInstance("HelloGData_Finance_UpdateTransactionDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     login();
   }
   public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Delete a portfolio");
+      Button startButton = new Button("Update a transaction");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
           startDemo();
@@ -101,29 +103,45 @@ public class FinanceDeletePortfolioDemo extends GDataDemo {
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
-        PortfolioEntry targetEntry = null;
+        PortfolioEntry targetPortfolio = null;
         for (PortfolioEntry entry : entries) {
           if (entry.getTitle().getText().startsWith("")) {
-            targetEntry = entry;
+            targetPortfolio = entry;
             break;
           }
         }
-        if (targetEntry == null) {
+        if (targetPortfolio == null) {
           showStatus("No portfolio found that contains 'GWT-Finance-Client' in the title.", false);
         } else {
-          deletePortfolio(targetEntry);
+          final String ticker = "NASDAQ:GOOG";
+          int transactionId = 1;
+          String transactionFeedUri = targetPortfolio.getEditLink().getHref() + "/positions/" + ticker + "/transactions/" + transactionId;
+          showStatus("Retrieving transaction...", false);
+          service.getTransactionEntry(transactionFeedUri, new AsyncCallback<TransactionEntry>() {
+            public void onFailure(Throwable caught) {
+              showStatus("An error occurred while retrieving a transaction, see details below:\n" + caught.getMessage(), true);
+            }
+            public void onSuccess(TransactionEntry result) {
+              if (result == null) {
+                showStatus("No transaction found with the ticker " + ticker, false);
+              } else {
+                updateTransaction(result);
+              }
+            }
+          });
         }
       }
     });
   }
-  public void deletePortfolio(PortfolioEntry entry) {
-    showStatus("Deleting portfolio...", false);
-    entry.deleteEntry(new AsyncCallback<PortfolioEntry>() {
+  public void updateTransaction(TransactionEntry transactionEntry) {
+    showStatus("Updating transaction...", false);
+    transactionEntry.getTransactionData().setShares(271.82);
+    transactionEntry.updateEntry(new AsyncCallback<TransactionEntry>() {
       public void onFailure(Throwable caught) {
-        showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + caught.getMessage(), true);
+        showStatus("An error occurred while updating a transaction, see details below:\n" + caught.getMessage(), true);
       }
-      public void onSuccess(PortfolioEntry result) {
-        showStatus("Deleted a portfolio.", false);
+      public void onSuccess(TransactionEntry result) {
+        showStatus("Updated a transaction.", false);
       }
     });
   }

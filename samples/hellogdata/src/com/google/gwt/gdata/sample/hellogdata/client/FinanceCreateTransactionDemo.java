@@ -21,6 +21,8 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.finance.FinanceService;
 import com.google.gwt.gdata.client.finance.PortfolioEntry;
 import com.google.gwt.gdata.client.finance.PortfolioFeed;
+import com.google.gwt.gdata.client.finance.TransactionData;
+import com.google.gwt.gdata.client.finance.TransactionEntry;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
@@ -29,28 +31,33 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * The following example demonstrates how to delete a portfolio.
+ * The following example demonstrates how to create a transaction.
  */
-public class FinanceDeletePortfolioDemo extends GDataDemo {
+public class FinanceCreateTransactionDemo extends GDataDemo {
 
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
       @Override
       public GDataDemo createInstance() {
-        return new FinanceDeletePortfolioDemo();
+        return new FinanceCreateTransactionDemo();
       }
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to delete an existing portfolio of the " +
-          "authenticated user. It retrieves a list of the user's portfolios, and delete the " +
-          "first portfolio with title that starts with 'GWT-Finance-Client'.</p>\n";
+        return "<p>A new transaction is created in a user's Google Finance portfolio by " +
+          "posting a transaction entry to the appropriate Post URL. The target portfolio " +
+          "and ticker symbol for the transaction are specified in this URL: h" +
+          "ttp://finance.google.com/finance/feeds/portfolios/PORTFOLIO_ID/positions/TICKER/transactions." +
+          "In this example, a transaction entry object is created and its properities " +
+          "(transaction type, etc.) are set, then the portfolio feed is queried for a list of " +
+          "the user's portfolios. The entry is inserted into the portfolio whose title " +
+          "starts with 'GWT-Finance-Client'.</p>\n";
       }
 
       @Override
       public String getName() {
-        return "Finance - Deleting a Portfolio";
+        return "Finance - Creating a Transaction";
       }
     };
   }
@@ -59,15 +66,15 @@ public class FinanceDeletePortfolioDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://finance.google.com/finance/feeds/";
 
-  public FinanceDeletePortfolioDemo() {
-    service = FinanceService.newInstance("HelloGData_Finance_DeletePortfolioDemo_v1.0");
+  public FinanceCreateTransactionDemo() {
+    service = FinanceService.newInstance("HelloGData_Finance_CreateTransactionDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     login();
   }
   public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Delete a portfolio");
+      Button startButton = new Button("Create a transaction");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
           startDemo();
@@ -111,19 +118,27 @@ public class FinanceDeletePortfolioDemo extends GDataDemo {
         if (targetEntry == null) {
           showStatus("No portfolio found that contains 'GWT-Finance-Client' in the title.", false);
         } else {
-          deletePortfolio(targetEntry);
+          createTransaction(targetEntry);
         }
       }
     });
   }
-  public void deletePortfolio(PortfolioEntry entry) {
-    showStatus("Deleting portfolio...", false);
-    entry.deleteEntry(new AsyncCallback<PortfolioEntry>() {
+  public void createTransaction(PortfolioEntry portfolio) {
+    showStatus("Creating transaction...", false);
+    TransactionEntry entry = TransactionEntry.newInstance();
+    TransactionData data = TransactionData.newInstance();
+    data.setType("Buy");
+    data.setShares(141.42);
+    data.setNotes("GWT-Finance-Client sample transaction");
+    entry.setTransactionData(data);
+    String ticker = "NASDAQ:GOOG";
+    String transactionPostUri = portfolio.getEditLink().getHref() + "/positions/" + ticker + "/transactions";
+    service.insertEntry(transactionPostUri, entry, new AsyncCallback<TransactionEntry>() {
       public void onFailure(Throwable caught) {
-        showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + caught.getMessage(), true);
+        showStatus("An error occurred while creating a transaction, see details below:\n" + caught.getMessage(), true);
       }
-      public void onSuccess(PortfolioEntry result) {
-        showStatus("Deleted a portfolio.", false);
+      public void onSuccess(TransactionEntry result) {
+        showStatus("Created a transaction.", false);
       }
     });
   }

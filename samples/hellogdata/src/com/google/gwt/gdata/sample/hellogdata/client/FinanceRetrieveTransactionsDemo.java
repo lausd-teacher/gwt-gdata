@@ -25,11 +25,8 @@ import com.google.gwt.gdata.client.finance.TransactionData;
 import com.google.gwt.gdata.client.finance.TransactionEntry;
 import com.google.gwt.gdata.client.finance.TransactionFeed;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The following example demonstrates how to retrieve a list of transactions.
@@ -92,14 +89,7 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       startDemo();
     } else {
-      Button loginButton = new Button();
-      loginButton.setText("Login to Finance to start demo...");
-      loginButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
-          User.login(scope);
-        }
-      });
-      mainPanel.setWidget(0, 0, loginButton);
+      showStatus("You are not logged on to Google Finance.", true);
     }
   }
   public void showData(TransactionEntry[] entries) {
