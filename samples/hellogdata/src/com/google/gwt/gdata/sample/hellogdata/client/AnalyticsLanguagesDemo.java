@@ -20,11 +20,12 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.analytics.AccountEntry;
 import com.google.gwt.gdata.client.analytics.AccountFeed;
+import com.google.gwt.gdata.client.analytics.AccountFeedCallback;
 import com.google.gwt.gdata.client.analytics.AnalyticsService;
 import com.google.gwt.gdata.client.analytics.DataEntry;
 import com.google.gwt.gdata.client.analytics.DataFeed;
+import com.google.gwt.gdata.client.analytics.DataFeedCallback;
 import com.google.gwt.http.client.URL;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -105,7 +106,7 @@ public class AnalyticsLanguagesDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading Analytics accounts feed...", false);
-    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AsyncCallback<AccountFeed>() {
+    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AccountFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Analytics account was found for the currently logged-in user")) {
@@ -130,7 +131,7 @@ public class AnalyticsLanguagesDemo extends GDataDemo {
             "&filters=" + URL.encodeComponent("ga:country==United States") +
             "&ids=" + tableId;
           showStatus("Loading data feed...", false);
-          service.getDataFeed(dataFeedUri, new AsyncCallback<DataFeed>() {
+          service.getDataFeed(dataFeedUri, new DataFeedCallback() {
             public void onFailure(Throwable caught) {
               showStatus("An error occurred while retrieving the Analytics Data feed, see details below:\n" + caught.getMessage(), true);
             }
