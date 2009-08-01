@@ -19,7 +19,6 @@ package com.google.gwt.gdata.client.analytics;
 import com.google.gwt.accounts.client.UserTest;
 import com.google.gwt.gdata.client.GDataTestScripts;
 import com.google.gwt.junit.client.GWTTestCase;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Tests for the AnalyticsService class.
@@ -42,7 +41,7 @@ public class AnalyticsServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Analytics.testCookie_Name, GDataTestScripts.Analytics.testCookie_Value);
     AnalyticsService svc = AnalyticsService.newInstance(AnalyticsService.SERVICE_NAME);
     svc.getAccountFeed(GDataTestScripts.Analytics.testAccounts_Feed_Link,
-        new AsyncCallback<AccountFeed>() {
+        new AccountFeedCallback() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
           }

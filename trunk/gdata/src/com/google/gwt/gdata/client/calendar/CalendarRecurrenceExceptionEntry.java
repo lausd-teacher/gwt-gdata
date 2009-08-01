@@ -19,12 +19,13 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.gdata.client.RecurrenceExceptionEntry;
 
 /**
- * Describes an entry used by a Calendar recurrence exception entry link. Defined in gdata.js
+ * Describes an entry used by a Calendar recurrence exception entry link.
  */
 public class CalendarRecurrenceExceptionEntry extends RecurrenceExceptionEntry {
 
   /**
    * Constructs a Calendar recurrence exception entry.
+   * 
    * @return A CalendarRecurrenceExceptionEntry object.
    */
   public static native CalendarRecurrenceExceptionEntry newInstance() /*-{

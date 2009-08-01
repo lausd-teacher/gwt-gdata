@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.analytics;
 
 import com.google.gwt.gdata.client.GoogleService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Analytics service.
@@ -46,12 +45,32 @@ public class AnalyticsService extends GoogleService {
   protected AnalyticsService() { }
 
   /**
+   * Deletes an account entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteAccountEntry(String uri, AccountEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+  /**
+   * Deletes a data entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteDataEntry(String uri, DataEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+  /**
    * Retrieves an account entry.
    * 
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getAccountEntry(String uri, AsyncCallback<AccountEntry> callback) /*-{
+  public final native void getAccountEntry(String uri, AccountEntryCallback callback) /*-{
     this.getAccountEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -65,7 +84,7 @@ public class AnalyticsService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getAccountFeed(AccountQuery query, AsyncCallback<AccountFeed> callback) /*-{
+  public final native void getAccountFeed(AccountQuery query, AccountFeedCallback callback) /*-{
     this.getAccountFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -79,7 +98,7 @@ public class AnalyticsService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getAccountFeed(String uri, AsyncCallback<AccountFeed> callback) /*-{
+  public final native void getAccountFeed(String uri, AccountFeedCallback callback) /*-{
     this.getAccountFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -93,7 +112,7 @@ public class AnalyticsService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getDataEntry(String uri, AsyncCallback<DataEntry> callback) /*-{
+  public final native void getDataEntry(String uri, DataEntryCallback callback) /*-{
     this.getDataEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -107,7 +126,7 @@ public class AnalyticsService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getDataFeed(DataQuery query, AsyncCallback<DataFeed> callback) /*-{
+  public final native void getDataFeed(DataQuery query, DataFeedCallback callback) /*-{
     this.getDataFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -121,7 +140,7 @@ public class AnalyticsService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getDataFeed(String uri, AsyncCallback<DataFeed> callback) /*-{
+  public final native void getDataFeed(String uri, DataFeedCallback callback) /*-{
     this.getDataFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -129,4 +148,47 @@ public class AnalyticsService extends GoogleService {
     );
   }-*/;
 
+  /**
+   * Inserts a new account entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertAccountEntry(String uri, AccountEntry entry, AccountEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+
+  /**
+   * Inserts a new data entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertDataEntry(String uri, DataEntry entry, DataEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+  
+  /**
+   * Updates an account entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateAccountEntry(String uri, AccountEntry entry, AccountEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
+
+  /**
+   * Updates a data entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateDataEntry(String uri, DataEntry entry, DataEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
 }

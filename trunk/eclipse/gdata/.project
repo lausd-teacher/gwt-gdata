@@ -23,11 +23,6 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>samples</name>
-			<type>2</type>
-			<location>C:/Program Files/SlikSvn/bin/gwt-gdata/samples/hellogdata/src</location>
-		</link>
-		<link>
 			<name>src</name>
 			<type>2</type>
 			<locationURI>GDATA_API_ROOT/gdata/src</locationURI>
