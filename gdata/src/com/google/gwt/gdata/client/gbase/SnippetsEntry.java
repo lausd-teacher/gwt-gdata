@@ -21,18 +21,26 @@ import com.google.gwt.gdata.client.impl.Map;
 /**
  * Describes an entry in the feed of snippets of public items.
  */
-public class SnippetsEntry extends com.google.gwt.gdata.client.Entry<SnippetsEntry> {
+public class SnippetsEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a Google Base snippet entry.
    * @return A SnippetsEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native SnippetsEntry newInstance() /*-{
     return new $wnd.google.gdata.gbase.SnippetsEntry();
   }-*/;
 
   protected SnippetsEntry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(SnippetsEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the attributes. The returned object is a map from attribute name to the associated Attribute class.
@@ -53,6 +61,16 @@ public class SnippetsEntry extends com.google.gwt.gdata.client.Entry<SnippetsEnt
   }-*/;
 
   /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final SnippetsEntry getSelf(SnippetsEntryCallback callback) {
+    return this.get(callback);
+  }
+
+  /**
    * Sets the attribute.
    * 
    * @param name name of attribute.
@@ -70,5 +88,14 @@ public class SnippetsEntry extends com.google.gwt.gdata.client.Entry<SnippetsEnt
   public final native void setAttributes(Map<Attribute> attributes) /*-{
     this.setAttributes(attributes);
   }-*/;
+
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(SnippetsEntryCallback callback) {
+    this.update(callback);
+  }
 
 }

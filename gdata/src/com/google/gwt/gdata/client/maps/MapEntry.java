@@ -23,18 +23,26 @@ import com.google.gwt.gdata.client.ResourceId;
 /**
  * Describes a map entry.
  */
-public class MapEntry extends com.google.gwt.gdata.client.Entry<MapEntry> {
+public class MapEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a map entry.
    * @return A MapEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native MapEntry newInstance() /*-{
     return new $wnd.google.gdata.maps.MapEntry();
   }-*/;
 
   protected MapEntry() { }
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  
+  public final void deleteEntry(MapEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the link that provides the URI of an alternate format of the entry's or feed's contents.
@@ -81,6 +89,16 @@ public class MapEntry extends com.google.gwt.gdata.client.Entry<MapEntry> {
   public final native ResourceId getResourceId() /*-{
     return this.getResourceId();
   }-*/;
+  
+  /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final MapEntry getSelf(MapEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Sets the marker for deleted entries. This element is optional.
@@ -109,5 +127,14 @@ public class MapEntry extends com.google.gwt.gdata.client.Entry<MapEntry> {
   public final native void setResourceId(ResourceId resourceId) /*-{
     this.setResourceId(resourceId);
   }-*/;
+
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(MapEntryCallback callback) {
+    this.update(callback);
+  }
 
 }

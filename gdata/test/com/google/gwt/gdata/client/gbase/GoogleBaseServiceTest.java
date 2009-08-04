@@ -21,7 +21,6 @@ import com.google.gwt.gdata.client.GDataTestScripts;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.impl.Map;
 import com.google.gwt.junit.client.GWTTestCase;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Tests for the GoogleBaseService class.
@@ -66,7 +65,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
     newEntry.setAttribute("item_language", Attribute.newInstance());
     newEntry.getAttributes().get("item_language").setValue(GDataTestScripts.GoogleBase.testItem_Entry_ItemLanguage_Created);
     
-    svc.insertEntry(GDataTestScripts.GoogleBase.testItems_Feed_Link, newEntry, new AsyncCallback<ItemsEntry>() {
+    svc.insertItemsEntry(GDataTestScripts.GoogleBase.testItems_Feed_Link, newEntry, new ItemsEntryCallback() {
       public void onFailure(Throwable caught) {
         fail("Create Failed: " + caught.getMessage());
       }
@@ -85,7 +84,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
             !result.getContent().getText().equals(GDataTestScripts.GoogleBase.testItem_Entry_Content_Created)) {
           fail("Create Failed");
         }
-        result.deleteEntry(new AsyncCallback<ItemsEntry>() {
+        result.deleteEntry(new ItemsEntryCallback() {
           public void onFailure(Throwable caught) {
             fail("Create Failed: " + caught.getMessage());
           }
@@ -102,7 +101,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.GoogleBase.testCookie_Name, GDataTestScripts.GoogleBase.testCookie_Value);
     GoogleBaseService svc = GoogleBaseService.newInstance("test");
     svc.getItemsEntry(GDataTestScripts.GoogleBase.testItem_Entry_Link,
-        new AsyncCallback<ItemsEntry>() {
+        new ItemsEntryCallback() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
           }
@@ -132,7 +131,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.GoogleBase.testCookie_Name, GDataTestScripts.GoogleBase.testCookie_Value);
     GoogleBaseService svc = GoogleBaseService.newInstance("test");
     svc.getItemsFeed(GDataTestScripts.GoogleBase.testItems_Feed_Link,
-        new AsyncCallback<ItemsFeed>() {
+        new ItemsFeedCallback() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
           }
@@ -153,7 +152,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.GoogleBase.testCookie_Name, GDataTestScripts.GoogleBase.testCookie_Value);
     GoogleBaseService svc = GoogleBaseService.newInstance("test");
     svc.getItemsEntry(GDataTestScripts.GoogleBase.testItem_Entry_Link,
-        new AsyncCallback<ItemsEntry>() {
+        new ItemsEntryCallback() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
           }
@@ -161,7 +160,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
             result.getTitle().setText(GDataTestScripts.GoogleBase.testItem_Entry_Title_Updated);
             result.getContent().setText(GDataTestScripts.GoogleBase.testItem_Entry_Content_Updated);
             result.getAttributes().get("target_country").setValue(GDataTestScripts.GoogleBase.testItem_Entry_TargetCountry_Updated);
-            result.updateEntry(new AsyncCallback<ItemsEntry>() {
+            result.updateEntry(new ItemsEntryCallback() {
               public void onFailure(Throwable caught) {
                 fail("Update Failed: " + caught.getMessage());
               }
@@ -174,7 +173,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
                 result.getTitle().setText(GDataTestScripts.GoogleBase.testItem_Entry_Title);
                 result.getContent().setText(GDataTestScripts.GoogleBase.testItem_Entry_Content);
                 result.getAttributes().get("target_country").setValue(GDataTestScripts.GoogleBase.testItem_Entry_TargetCountry);
-                result.updateEntry(new AsyncCallback<ItemsEntry>() {
+                result.updateEntry(new ItemsEntryCallback() {
                   public void onFailure(Throwable caught) {
                     fail("Revert Failed: " + caught.getMessage());
                   }

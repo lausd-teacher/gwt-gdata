@@ -22,13 +22,12 @@ import com.google.gwt.gdata.client.geo.GeoRssWhere;
 /**
  * Describes a Calendar event entry.
  */
-public class CalendarEventEntry extends EventEntry<CalendarEventEntry> {
+public class CalendarEventEntry extends EventEntry {
 
   /**
    * Constructs a Calendar event entry.
    * @return A CalendarEventEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native CalendarEventEntry newInstance() /*-{
     return new $wnd.google.gdata.calendar.CalendarEventEntry();
   }-*/;
@@ -43,6 +42,15 @@ public class CalendarEventEntry extends EventEntry<CalendarEventEntry> {
   public final native void addExtendedProperty(CalendarExtendedProperty extendedProperty) /*-{
     this.addExtendedProperty(extendedProperty);
   }-*/;
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(CalendarEventEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the anyone can add self property. This element is optional.
@@ -124,6 +132,16 @@ public class CalendarEventEntry extends EventEntry<CalendarEventEntry> {
   public final native QuickAddProperty getQuickAdd() /*-{
     return this.getQuickAdd();
   }-*/;
+
+  /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final CalendarEventEntry getSelf(CalendarEventEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Returns the send event notifications property. This element is optional.
@@ -324,4 +342,13 @@ public class CalendarEventEntry extends EventEntry<CalendarEventEntry> {
     this.setWebContentLink(webContentLink);
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(CalendarEventEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

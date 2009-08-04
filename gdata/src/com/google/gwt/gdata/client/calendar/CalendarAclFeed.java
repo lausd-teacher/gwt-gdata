@@ -21,12 +21,13 @@ import com.google.gwt.gdata.client.acl.AclFeed;
 /**
  * Describes a Calendar access control list (ACL) feed.
  */
-public class CalendarAclFeed extends AclFeed {
+public class CalendarAclFeed extends AclFeed<CalendarAclEntry> {
 
   /**
    * Constructs a Calendar ACL feed.
    * @return A CalendarAclFeed object.
    */
+  @SuppressWarnings("unchecked")
   public static native CalendarAclFeed newInstance() /*-{
     return new $wnd.google.gdata.calendar.CalendarAclFeed();
   }-*/;
@@ -41,5 +42,15 @@ public class CalendarAclFeed extends AclFeed {
   public final native CalendarLink getControlledObjectLink() /*-{
     return this.getControlledObjectLink();
   }-*/;
+
+  /**
+   * Inserts a new calendar acl entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertCalendarAclEntry(CalendarAclEntry entry, CalendarAclEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
 
 }

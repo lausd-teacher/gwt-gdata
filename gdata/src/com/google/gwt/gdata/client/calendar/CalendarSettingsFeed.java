@@ -32,4 +32,14 @@ public class CalendarSettingsFeed extends com.google.gwt.gdata.client.Feed<Setti
 
   protected CalendarSettingsFeed() { }
 
+  /**
+   * Inserts a new settings entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertSettingsEntry(SettingsEntry entry, SettingsEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

@@ -21,13 +21,12 @@ import com.google.gwt.gdata.client.Where;
 /**
  * Describes a Calendar entry in the feed of a user's calendars.
  */
-public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEntry> {
+public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a Calendar entry.
    * @return A CalendarEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native CalendarEntry newInstance() /*-{
     return new $wnd.google.gdata.calendar.CalendarEntry();
   }-*/;
@@ -42,6 +41,15 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
   public final native void addLocation(Where location) /*-{
     this.addLocation(location);
   }-*/;
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(CalendarEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the link that provides the URI of the feed for the access control list for the entry.
@@ -132,6 +140,16 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
   public final native SelectedProperty getSelected() /*-{
     return this.getSelected();
   }-*/;
+
+  /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final CalendarEntry getSelf(CalendarEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Returns the times cleaned property. This element is optional.
@@ -225,4 +243,13 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry<CalendarEnt
     this.setTimeZone(timeZone);
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(CalendarEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

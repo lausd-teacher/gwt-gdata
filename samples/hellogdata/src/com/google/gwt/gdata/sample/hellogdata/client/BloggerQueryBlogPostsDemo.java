@@ -21,11 +21,12 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.blogger.BlogEntry;
 import com.google.gwt.gdata.client.blogger.BlogFeed;
+import com.google.gwt.gdata.client.blogger.BlogFeedCallback;
 import com.google.gwt.gdata.client.blogger.BlogPostFeed;
+import com.google.gwt.gdata.client.blogger.BlogPostFeedCallback;
 import com.google.gwt.gdata.client.blogger.BlogPostQuery;
 import com.google.gwt.gdata.client.blogger.BloggerService;
 import com.google.gwt.gdata.client.blogger.PostEntry;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
@@ -112,7 +113,7 @@ public class BloggerQueryBlogPostsDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading Blogger accounts feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new AsyncCallback<BlogFeed>() {
+    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Blogger account was found for the currently logged-in user")) {
@@ -135,7 +136,7 @@ public class BloggerQueryBlogPostsDemo extends GDataDemo {
           query.setPublishedMin(DateTime.newInstance(minDate));
           query.setPublishedMax(DateTime.newInstance(new Date()));
           showStatus("Querying Blogger for blog posts...", false);
-          service.getBlogPostFeed(query, new AsyncCallback<BlogPostFeed>() {
+          service.getBlogPostFeed(query, new BlogPostFeedCallback() {
           public void onFailure(Throwable caught) {
             showStatus("An error occurred while querying Blogger for Posts, see details below:\n" + caught.getMessage(), true);
           }

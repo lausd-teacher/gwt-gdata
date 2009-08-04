@@ -19,18 +19,36 @@ package com.google.gwt.gdata.client.finance;
 /**
  * Describes an entry in a feed of Finance transactions.
  */
-public class TransactionEntry extends com.google.gwt.gdata.client.Entry<TransactionEntry> {
+public class TransactionEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a Finance transaction entry.
    * @return A TransactionEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native TransactionEntry newInstance() /*-{
     return new $wnd.google.gdata.finance.TransactionEntry();
   }-*/;
 
   protected TransactionEntry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(TransactionEntryCallback callback) {
+    this.delete(callback);
+  }
+
+  /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final TransactionEntry getSelf(TransactionEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Returns the data for the transaction. This element is required.
@@ -50,4 +68,13 @@ public class TransactionEntry extends com.google.gwt.gdata.client.Entry<Transact
     this.setTransactionData(transactionData);
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(TransactionEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

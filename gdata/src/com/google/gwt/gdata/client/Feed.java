@@ -25,8 +25,15 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  * Describes a feed for the Google Data API.
  * @param <E> The Entry type.
  */
-@SuppressWarnings("unchecked")
 public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed<E> {
+  
+  /**
+   * Constructs a feed.
+   * @return A Feed object.
+   */
+  public static native <E extends Entry> Feed<E> newInstance() /*-{
+    return new $wnd.google.gdata.Feed();
+  }-*/;
 
   protected Feed() { }
 
@@ -128,20 +135,6 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   }-*/;
 
   /**
-   * Inserts a new entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
-   */
-  public final native void insertEntry(E entry, AsyncCallback<E> callback) /*-{
-    return this.insertEntry(
-      entry,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
-
-  /**
    * Sets the items-per-page count.
    * 
    * @param itemsPerPage Sets the items-per-page count. This element is optional.
@@ -166,6 +159,20 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
    */
   public final native void setTotalResults(TotalResults totalResults) /*-{
     this.setTotalResults(totalResults);
+  }-*/;
+
+  /**
+   * Inserts a new entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  protected final native void insertEntry(E entry, AsyncCallback<E> callback) /*-{
+    return this.insertEntry(
+      entry,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+    );
   }-*/;
 
 }

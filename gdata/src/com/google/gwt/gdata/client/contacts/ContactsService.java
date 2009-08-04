@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.contacts;
 
 import com.google.gwt.gdata.client.GoogleService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Google Contacts service.
@@ -46,12 +45,34 @@ public class ContactsService extends GoogleService {
   protected ContactsService() { }
 
   /**
+   * Deletes a contact entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteContactEntry(String uri, ContactEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+
+  /**
+   * Deletes a contact group entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteContactGroupEntry(String uri, ContactGroupEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+
+  /**
    * Retrieves a contact entry.
    * 
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getContactEntry(String uri, AsyncCallback<ContactEntry> callback) /*-{
+  public final native void getContactEntry(String uri, ContactEntryCallback callback) /*-{
     this.getContactEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -65,7 +86,7 @@ public class ContactsService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getContactFeed(ContactQuery query, AsyncCallback<ContactFeed> callback) /*-{
+  public final native void getContactFeed(ContactQuery query, ContactFeedCallback callback) /*-{
     this.getContactFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -79,7 +100,7 @@ public class ContactsService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getContactFeed(String uri, AsyncCallback<ContactFeed> callback) /*-{
+  public final native void getContactFeed(String uri, ContactFeedCallback callback) /*-{
     this.getContactFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -93,7 +114,7 @@ public class ContactsService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getContactGroupEntry(String uri, AsyncCallback<ContactGroupEntry> callback) /*-{
+  public final native void getContactGroupEntry(String uri, ContactGroupEntryCallback callback) /*-{
     this.getContactGroupEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -107,7 +128,7 @@ public class ContactsService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getContactGroupFeed(ContactQuery query, AsyncCallback<ContactGroupFeed> callback) /*-{
+  public final native void getContactGroupFeed(ContactQuery query, ContactGroupFeedCallback callback) /*-{
     this.getContactGroupFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -121,12 +142,56 @@ public class ContactsService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getContactGroupFeed(String uri, AsyncCallback<ContactGroupFeed> callback) /*-{
+  public final native void getContactGroupFeed(String uri, ContactGroupFeedCallback callback) /*-{
     this.getContactGroupFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
     );
   }-*/;
+
+  /**
+   * Inserts a new contact entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertContactEntry(String uri, ContactEntry entry, ContactEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+
+  /**
+   * Inserts a new contact group entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertContactGroupEntry(String uri, ContactGroupEntry entry, ContactGroupEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+  
+  /**
+   * Updates a contact entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateContactEntry(String uri, ContactEntry entry, ContactEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
+  
+  /**
+   * Updates a contact group entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateContactGroupEntry(String uri, ContactGroupEntry entry, ContactGroupEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
 
 }

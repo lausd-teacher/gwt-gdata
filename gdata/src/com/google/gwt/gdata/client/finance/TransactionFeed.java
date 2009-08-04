@@ -32,4 +32,14 @@ public class TransactionFeed extends com.google.gwt.gdata.client.Feed<Transactio
 
   protected TransactionFeed() { }
 
+  /**
+   * Inserts a new transaction entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertTransactionEntry(TransactionEntry entry, TransactionEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

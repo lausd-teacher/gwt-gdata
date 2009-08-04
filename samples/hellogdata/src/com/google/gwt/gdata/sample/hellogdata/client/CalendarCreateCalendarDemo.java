@@ -21,11 +21,11 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.Where;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.calendar.CalendarEntry;
+import com.google.gwt.gdata.client.calendar.CalendarEntryCallback;
 import com.google.gwt.gdata.client.calendar.CalendarService;
 import com.google.gwt.gdata.client.calendar.ColorProperty;
 import com.google.gwt.gdata.client.calendar.HiddenProperty;
 import com.google.gwt.gdata.client.calendar.TimeZoneProperty;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -110,7 +110,7 @@ public class CalendarCreateCalendarDemo extends GDataDemo {
     entry.setColor(ColorProperty.newInstance());
     entry.getColor().setValue(ColorProperty.VALUE_RGB_2952A3);
     showStatus("Creating calendar...", false);
-    service.insertEntry(feedUri, entry, new AsyncCallback<CalendarEntry>() {
+    service.insertCalendarEntry(feedUri, entry, new CalendarEntryCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Calendar account was found for the currently logged-in user")) {

@@ -89,6 +89,16 @@ public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
   }-*/;
 
   /**
+   * Inserts a new calendar event entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertCalendarEventEntry(CalendarEventEntry entry, CalendarEventEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
+  /**
    * Sets the whether the user is permitted to use Google Apps Sync. This element is optional.
    * 
    * @param allowGSync Whether the user is permitted to use Google Apps Sync.

@@ -21,9 +21,9 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
 import com.google.gwt.gdata.client.contacts.ContactFeed;
+import com.google.gwt.gdata.client.contacts.ContactFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactQuery;
 import com.google.gwt.gdata.client.contacts.ContactsService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -115,7 +115,7 @@ public class ContactsRetrieveContactsUsingQueryDemo extends GDataDemo {
     DateTime updatedMin = DateTime.newInstance(today, true);
     query.setUpdatedMin(updatedMin);
     query.setSortOrder(ContactQuery.SORTORDER_DESCENDING);
-    service.getContactFeed(query, new AsyncCallback<ContactFeed>() {
+    service.getContactFeed(query, new ContactFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Contacts account was found for the currently logged-in user")) {

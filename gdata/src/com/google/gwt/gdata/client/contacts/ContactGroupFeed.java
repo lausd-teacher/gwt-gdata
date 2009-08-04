@@ -59,4 +59,14 @@ public class ContactGroupFeed extends com.google.gwt.gdata.client.Feed<ContactGr
     return this.getPreviousLink();
   }-*/;
 
+  /**
+   * Inserts a new contact group entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertAccountEntry(ContactGroupEntry entry, ContactGroupEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

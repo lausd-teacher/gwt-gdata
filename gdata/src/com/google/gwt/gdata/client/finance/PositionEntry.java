@@ -19,17 +19,25 @@ package com.google.gwt.gdata.client.finance;
 /**
  * Describes an entry in a feed of Finance positions.
  */
-public class PositionEntry extends com.google.gwt.gdata.client.Entry<PositionEntry> {
+public class PositionEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a Finance position entry.
    */
-  @SuppressWarnings("unchecked")
   public static native PositionEntry newInstance() /*-{
     return new $wnd.google.gdata.finance.PositionEntry();
   }-*/;
 
   protected PositionEntry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(PositionEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the transaction feed for the position. This element is optional.
@@ -48,6 +56,16 @@ public class PositionEntry extends com.google.gwt.gdata.client.Entry<PositionEnt
   public final native PositionData getPositionData() /*-{
     return this.getPositionData();
   }-*/;
+
+  /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final PositionEntry getSelf(PositionEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Returns the stock symbol for the position. This element is required.
@@ -85,4 +103,13 @@ public class PositionEntry extends com.google.gwt.gdata.client.Entry<PositionEnt
     this.setSymbol(symbol);
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(PositionEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

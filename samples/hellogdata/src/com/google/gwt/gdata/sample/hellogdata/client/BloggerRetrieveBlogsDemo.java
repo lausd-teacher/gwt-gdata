@@ -20,8 +20,8 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.blogger.BlogEntry;
 import com.google.gwt.gdata.client.blogger.BlogFeed;
+import com.google.gwt.gdata.client.blogger.BlogFeedCallback;
 import com.google.gwt.gdata.client.blogger.BloggerService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
@@ -103,7 +103,7 @@ public class BloggerRetrieveBlogsDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading Blogger blog feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new AsyncCallback<BlogFeed>() {
+    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Blogger account was found for the currently logged-in user")) {

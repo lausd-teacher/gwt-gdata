@@ -21,8 +21,9 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.finance.FinanceService;
 import com.google.gwt.gdata.client.finance.PortfolioEntry;
 import com.google.gwt.gdata.client.finance.PortfolioFeed;
+import com.google.gwt.gdata.client.finance.PortfolioFeedCallback;
 import com.google.gwt.gdata.client.finance.TransactionEntry;
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.finance.TransactionEntryCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -92,7 +93,7 @@ public class FinanceUpdateTransactionDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new AsyncCallback<PortfolioFeed>() {
+    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Finance account was found for the currently logged-in user")) {
@@ -117,7 +118,7 @@ public class FinanceUpdateTransactionDemo extends GDataDemo {
           int transactionId = 1;
           String transactionFeedUri = targetPortfolio.getEditLink().getHref() + "/positions/" + ticker + "/transactions/" + transactionId;
           showStatus("Retrieving transaction...", false);
-          service.getTransactionEntry(transactionFeedUri, new AsyncCallback<TransactionEntry>() {
+          service.getTransactionEntry(transactionFeedUri, new TransactionEntryCallback() {
             public void onFailure(Throwable caught) {
               showStatus("An error occurred while retrieving a transaction, see details below:\n" + caught.getMessage(), true);
             }
@@ -136,7 +137,7 @@ public class FinanceUpdateTransactionDemo extends GDataDemo {
   public void updateTransaction(TransactionEntry transactionEntry) {
     showStatus("Updating transaction...", false);
     transactionEntry.getTransactionData().setShares(271.82);
-    transactionEntry.updateEntry(new AsyncCallback<TransactionEntry>() {
+    transactionEntry.updateEntry(new TransactionEntryCallback() {
       public void onFailure(Throwable caught) {
         showStatus("An error occurred while updating a transaction, see details below:\n" + caught.getMessage(), true);
       }

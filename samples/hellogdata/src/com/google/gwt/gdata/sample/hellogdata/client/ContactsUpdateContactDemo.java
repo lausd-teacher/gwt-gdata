@@ -22,10 +22,11 @@ import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.PhoneNumber;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
+import com.google.gwt.gdata.client.contacts.ContactEntryCallback;
 import com.google.gwt.gdata.client.contacts.ContactFeed;
+import com.google.gwt.gdata.client.contacts.ContactFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactQuery;
 import com.google.gwt.gdata.client.contacts.ContactsService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -101,7 +102,7 @@ public class ContactsUpdateContactDemo extends GDataDemo {
     DateTime updatedMin = DateTime.newInstance(today, true);
     query.setUpdatedMin(updatedMin);
     query.setSortOrder(ContactQuery.SORTORDER_DESCENDING);
-    service.getContactFeed(query, new AsyncCallback<ContactFeed>() {
+    service.getContactFeed(query, new ContactFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Contacts account was found for the currently logged-in user")) {
@@ -130,7 +131,7 @@ public class ContactsUpdateContactDemo extends GDataDemo {
           phoneNumber.setRel(PhoneNumber.REL_WORK);
           targetEntry.setPhoneNumbers(new PhoneNumber[] { phoneNumber });
           showStatus("Updating a contact event...", false);
-          targetEntry.updateEntry(new AsyncCallback<ContactEntry>() {
+          targetEntry.updateEntry(new ContactEntryCallback() {
             public void onFailure(Throwable caught) {
               showStatus("An error occurred while updating a contact, see details below:\n" + caught.getMessage(), true);
             }

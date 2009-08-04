@@ -25,10 +25,8 @@ import com.google.gwt.gdata.client.PostalAddress;
 
 /**
  * Describes a person entry.
- * @param <E> The Entry type.
  */
-@SuppressWarnings("unchecked")
-public class PersonEntry<E extends PersonEntry> extends com.google.gwt.gdata.client.Entry<E> {
+public class PersonEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a person entry.

@@ -21,7 +21,7 @@ import com.google.gwt.gdata.client.Deleted;
 /**
  * Describes a contact entry.
  */
-public class ContactEntry extends PersonEntry<ContactEntry> {
+public class ContactEntry extends PersonEntry {
 
   /**
    * Constructs a contact entry.
@@ -43,6 +43,15 @@ public class ContactEntry extends PersonEntry<ContactEntry> {
   }-*/;
 
   /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(ContactEntryCallback callback) {
+    this.delete(callback);
+  }
+
+  /**
    * Returns the marker for deleted entries. This element is optional.
    * 
    * @return Marker for deleted entries.
@@ -59,6 +68,16 @@ public class ContactEntry extends PersonEntry<ContactEntry> {
   public final native GroupMembershipInfo[] getGroupMembershipInfos() /*-{
     return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getGroupMembershipInfos());
   }-*/;
+
+  /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final ContactEntry getSelf(ContactEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Sets the marker for deleted entries. This element is optional.
@@ -87,4 +106,13 @@ public class ContactEntry extends PersonEntry<ContactEntry> {
     );
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(ContactEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

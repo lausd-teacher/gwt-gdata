@@ -22,6 +22,14 @@ import com.google.gwt.core.client.JavaScriptObject;
  * Represents a GData error.
  */
 public class Error extends JavaScriptObject {
+  
+  /**
+   * Constructs an error.
+   * @return An Error object.
+   */
+  public static native Error newInstance() /*-{
+    return {};
+  }-*/;
 
   protected Error() { }
   

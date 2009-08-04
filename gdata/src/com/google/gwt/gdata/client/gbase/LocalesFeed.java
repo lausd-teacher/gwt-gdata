@@ -41,4 +41,14 @@ public class LocalesFeed extends com.google.gwt.gdata.client.Feed<LocalesEntry> 
     return this.getFeedBatchLink();
   }-*/;
 
+  /**
+   * Inserts a new locales entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertLocalesEntry(LocalesEntry entry, LocalesEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

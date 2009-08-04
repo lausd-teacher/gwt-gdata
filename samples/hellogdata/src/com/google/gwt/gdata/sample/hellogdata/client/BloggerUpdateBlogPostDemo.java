@@ -22,10 +22,12 @@ import com.google.gwt.gdata.client.atom.Category;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.blogger.BlogEntry;
 import com.google.gwt.gdata.client.blogger.BlogFeed;
+import com.google.gwt.gdata.client.blogger.BlogFeedCallback;
 import com.google.gwt.gdata.client.blogger.BlogPostFeed;
+import com.google.gwt.gdata.client.blogger.BlogPostFeedCallback;
 import com.google.gwt.gdata.client.blogger.BloggerService;
 import com.google.gwt.gdata.client.blogger.PostEntry;
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.blogger.PostEntryCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -93,7 +95,7 @@ public class BloggerUpdateBlogPostDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading Blogger accounts feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new AsyncCallback<BlogFeed>() {
+    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Blogger account was found for the currently logged-in user")) {
@@ -110,7 +112,7 @@ public class BloggerUpdateBlogPostDemo extends GDataDemo {
           BlogEntry blog = entries[0];
           String postsFeedUri = blog.getEntryPostLink().getHref();
           showStatus("Loading Blogger blog posts feed...", false);
-          service.getBlogPostFeed(postsFeedUri, new AsyncCallback<BlogPostFeed>() {
+          service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
           public void onFailure(Throwable caught) {
             showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
           }
@@ -126,7 +128,7 @@ public class BloggerUpdateBlogPostDemo extends GDataDemo {
             if (postEntry == null) {
               showStatus("Did not find a post entry whose title starts with the prefix 'GWT-Blogger-Client'.", false);
             } else {
-              postEntry.getSelf(new AsyncCallback<PostEntry>() {
+              postEntry.getSelf(new PostEntryCallback() {
                 public void onFailure(Throwable caught) {
                   showStatus("An error occurred while retrieving a Blogger Post entry, see details below:\n" + caught.getMessage(), true);
                 }
@@ -152,7 +154,7 @@ public class BloggerUpdateBlogPostDemo extends GDataDemo {
         category.setTerm("Label1-updated");
       }
     }
-    postEntry.updateEntry(new AsyncCallback<PostEntry>() {
+    postEntry.updateEntry(new PostEntryCallback() {
       public void onFailure(Throwable caught) {
         showStatus("An error occurred while updating a blog post, see details below:\n" + caught.getMessage(), true);
       }

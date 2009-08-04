@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.finance;
 
 import com.google.gwt.gdata.client.GoogleService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Google Finance service.
@@ -46,12 +45,32 @@ public class FinanceService extends GoogleService {
   protected FinanceService() { }
 
   /**
+   * Deletes a portfolio entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deletePortfolioEntry(String uri, PortfolioEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+  /**
+   * Deletes a transaction entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteTransactionEntry(String uri, TransactionEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+  /**
    * Retrieves a Finance portfolio entry.
    * 
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getPortfolioEntry(String uri, AsyncCallback<PortfolioEntry> callback) /*-{
+  public final native void getPortfolioEntry(String uri, PortfolioEntryCallback callback) /*-{
     this.getPortfolioEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -65,7 +84,7 @@ public class FinanceService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getPortfolioFeed(PortfolioQuery query, AsyncCallback<PortfolioFeed> callback) /*-{
+  public final native void getPortfolioFeed(PortfolioQuery query, PortfolioFeedCallback callback) /*-{
     this.getPortfolioFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -79,7 +98,7 @@ public class FinanceService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getPortfolioFeed(String uri, AsyncCallback<PortfolioFeed> callback) /*-{
+  public final native void getPortfolioFeed(String uri, PortfolioFeedCallback callback) /*-{
     this.getPortfolioFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -93,7 +112,7 @@ public class FinanceService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getPositionEntry(String uri, AsyncCallback<PositionEntry> callback) /*-{
+  public final native void getPositionEntry(String uri, PositionEntryCallback callback) /*-{
     this.getPositionEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -107,7 +126,7 @@ public class FinanceService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getPositionFeed(PositionQuery query, AsyncCallback<PositionFeed> callback) /*-{
+  public final native void getPositionFeed(PositionQuery query, PositionFeedCallback callback) /*-{
     this.getPositionFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -121,7 +140,7 @@ public class FinanceService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getPositionFeed(String uri, AsyncCallback<PositionFeed> callback) /*-{
+  public final native void getPositionFeed(String uri, PositionFeedCallback callback) /*-{
     this.getPositionFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -135,7 +154,7 @@ public class FinanceService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getTransactionEntry(String uri, AsyncCallback<TransactionEntry> callback) /*-{
+  public final native void getTransactionEntry(String uri, TransactionEntryCallback callback) /*-{
     this.getTransactionEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -149,12 +168,56 @@ public class FinanceService extends GoogleService {
    * @param uri URI of feed.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getTransactionFeed(String uri, AsyncCallback<TransactionFeed> callback) /*-{
+  public final native void getTransactionFeed(String uri, TransactionFeedCallback callback) /*-{
     this.getTransactionFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
     );
   }-*/;
+
+  /**
+   * Inserts a new portfolio entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertPortfolioEntry(String uri, PortfolioEntry entry, PortfolioEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+
+  /**
+   * Inserts a new transaction entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertTransactionEntry(String uri, TransactionEntry entry, TransactionEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+
+  /**
+   * Updates a portfolio entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updatePortfolioEntry(String uri, PortfolioEntry entry, PortfolioEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
+
+  /**
+   * Updates a transaction entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateTransactionEntry(String uri, TransactionEntry entry, TransactionEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
 
 }

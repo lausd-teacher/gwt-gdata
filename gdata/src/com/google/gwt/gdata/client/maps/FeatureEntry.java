@@ -25,13 +25,12 @@ import com.google.gwt.gdata.client.StructuredPostalAddress;
 /**
  * Describes a feature entry.
  */
-public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry> {
+public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a feature entry.
    * @return A FeatureEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native FeatureEntry newInstance() /*-{
     return new $wnd.google.gdata.maps.FeatureEntry();
   }-*/;
@@ -46,6 +45,15 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry
   public final native void addCustomProperty(CustomProperty customProperty) /*-{
     this.addCustomProperty(customProperty);
   }-*/;
+  
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(FeatureEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the link that provides the URI of the full feed (without any query parameters).
@@ -91,6 +99,16 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry
   public final native ResourceId getResourceId() /*-{
     return this.getResourceId();
   }-*/;
+
+  /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final FeatureEntry getSelf(FeatureEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Returns the structured postal address. This element is optional.
@@ -147,5 +165,14 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry<FeatureEntry
   public final native void setStructuredPostalAddress(StructuredPostalAddress structuredPostalAddress) /*-{
     this.setStructuredPostalAddress(structuredPostalAddress);
   }-*/;
+
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(FeatureEntryCallback callback) {
+    this.update(callback);
+  }
 
 }

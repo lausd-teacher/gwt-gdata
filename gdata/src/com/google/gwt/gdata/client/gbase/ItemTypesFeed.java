@@ -41,4 +41,14 @@ public class ItemTypesFeed extends com.google.gwt.gdata.client.Feed<ItemTypesEnt
     return this.getFeedBatchLink();
   }-*/;
 
+  /**
+   * Inserts a new item types entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertItemTypesEntry(ItemTypesEntry entry, ItemTypesEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

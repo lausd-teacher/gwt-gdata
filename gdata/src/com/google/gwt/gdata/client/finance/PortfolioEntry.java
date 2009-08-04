@@ -19,17 +19,25 @@ package com.google.gwt.gdata.client.finance;
 /**
  * Describes an entry in a feed of Finance portfolios.
  */
-public class PortfolioEntry extends com.google.gwt.gdata.client.Entry<PortfolioEntry> {
+public class PortfolioEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a Finance portfolio entry.
    */
-  @SuppressWarnings("unchecked")
   public static native PortfolioEntry newInstance() /*-{
     return new $wnd.google.gdata.finance.PortfolioEntry();
   }-*/;
 
   protected PortfolioEntry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(PortfolioEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the position feed for the portfolio. This element is optional.
@@ -50,6 +58,16 @@ public class PortfolioEntry extends com.google.gwt.gdata.client.Entry<PortfolioE
   }-*/;
 
   /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final PortfolioEntry getSelf(PortfolioEntryCallback callback) {
+    return this.get(callback);
+  }
+
+  /**
    * Sets the position feed for the portfolio. This element is optional.
    * 
    * @param feedLink Position feed for the portfolio.
@@ -67,4 +85,13 @@ public class PortfolioEntry extends com.google.gwt.gdata.client.Entry<PortfolioE
     this.setPortfolioData(portfolioData);
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(PortfolioEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

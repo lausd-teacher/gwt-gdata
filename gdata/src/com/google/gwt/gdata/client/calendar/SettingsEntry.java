@@ -19,18 +19,36 @@ package com.google.gwt.gdata.client.calendar;
 /**
  * Describes a Calendar Settings property entry.
  */
-public class SettingsEntry extends com.google.gwt.gdata.client.Entry<SettingsEntry> {
+public class SettingsEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a Calendar Settings property entry.
    * @return A SettingsEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native SettingsEntry newInstance() /*-{
     return new $wnd.google.gdata.calendar.SettingsEntry();
   }-*/;
 
   protected SettingsEntry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(SettingsEntryCallback callback) {
+    this.delete(callback);
+  }
+
+  /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final SettingsEntry getSelf(SettingsEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Returns the settings property. This element is required.
@@ -49,5 +67,14 @@ public class SettingsEntry extends com.google.gwt.gdata.client.Entry<SettingsEnt
   public final native void setSettingsProperty(SettingsProperty settingsProperty) /*-{
     this.setSettingsProperty(settingsProperty);
   }-*/;
+
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(SettingsEntryCallback callback) {
+    this.update(callback);
+  }
 
 }

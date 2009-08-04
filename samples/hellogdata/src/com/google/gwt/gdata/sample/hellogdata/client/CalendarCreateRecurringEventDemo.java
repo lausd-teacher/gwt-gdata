@@ -21,8 +21,8 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.Recurrence;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.calendar.CalendarEventEntry;
+import com.google.gwt.gdata.client.calendar.CalendarEventEntryCallback;
 import com.google.gwt.gdata.client.calendar.CalendarService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -104,7 +104,7 @@ public class CalendarCreateRecurringEventDemo extends GDataDemo {
     recurrence.setValue(recurrenceString);
     eventEntry.setRecurrence(recurrence);
     
-    service.insertEntry("http://www.google.com/calendar/feeds/default/private/full", eventEntry, new AsyncCallback<CalendarEventEntry>() {
+    service.insertCalendarEventEntry("http://www.google.com/calendar/feeds/default/private/full", eventEntry, new CalendarEventEntryCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Calendar account was found for the currently logged-in user")) {

@@ -32,4 +32,14 @@ public class PositionFeed extends com.google.gwt.gdata.client.Feed<PositionEntry
 
   protected PositionFeed() { }
 
+  /**
+   * Inserts a new position entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertPositionEntry(PositionEntry entry, PositionEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

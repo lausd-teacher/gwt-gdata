@@ -50,4 +50,14 @@ public class BlogPostFeed extends com.google.gwt.gdata.client.Feed<PostEntry> {
     return this.getPreviousLink();
   }-*/;
 
+  /**
+   * Inserts a new post entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertPostEntry(PostEntry entry, PostEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

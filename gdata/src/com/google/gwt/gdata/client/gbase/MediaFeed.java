@@ -32,4 +32,14 @@ public class MediaFeed extends com.google.gwt.gdata.client.Feed<MediaEntry> {
 
   protected MediaFeed() { }
 
+  /**
+   * Inserts a new media entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertMediaEntry(MediaEntry entry, MediaEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

@@ -50,4 +50,14 @@ public class VersionFeed extends com.google.gwt.gdata.client.Feed<VersionEntry> 
     return this.getNextLink();
   }-*/;
 
+  /**
+   * Inserts a new version entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertVersionEntry(VersionEntry entry, VersionEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

@@ -22,7 +22,6 @@ import com.google.gwt.core.client.JavaScriptObject;
  * Describes a nested entry.
  * @param <E> The Entry type.
  */
-@SuppressWarnings("unchecked")
 public class EntryLink<E extends Entry> extends JavaScriptObject {
 
   /**

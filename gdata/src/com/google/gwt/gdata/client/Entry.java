@@ -21,34 +21,20 @@ import com.google.gwt.gdata.client.app.Edited;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
- * Comment unavailable.
- * @param <E> The Entry type.
+ * Describes a Google Data API Entry.
  */
-@SuppressWarnings("unchecked")
-public class Entry<E extends Entry> extends com.google.gwt.gdata.client.atom.Entry {
-
+public class Entry extends com.google.gwt.gdata.client.atom.Entry {
+  
   /**
-   * Constructs a GData entry.
+   * Constructs an entry.
    * @return An Entry object.
    */
-  public static native <E extends Entry> Entry<E> newInstance() /*-{
+  public static native Entry newInstance() /*-{
     return new $wnd.google.gdata.Entry();
   }-*/;
 
   protected Entry() { }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this command.
-   */
-  public final native void deleteEntry(AsyncCallback<E> callback) /*-{
-    return this.deleteEntry(
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
-
+  
   /**
    * Returns the Atom publication control status. This element is optional.
    * 
@@ -98,19 +84,6 @@ public class Entry<E extends Entry> extends com.google.gwt.gdata.client.atom.Ent
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this command.
-   * @return current representation of the entry.
-   */
-  public final native E getSelf(AsyncCallback<E> callback) /*-{
-    return this.getSelf(
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
-
-  /**
    * Returns the link that provides the URI of the feed or entry.
    * 
    * @return Link that provides the URI of the feed or entry.
@@ -138,11 +111,36 @@ public class Entry<E extends Entry> extends com.google.gwt.gdata.client.atom.Ent
   }-*/;
 
   /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  protected final native <E extends Entry> void delete(AsyncCallback<E> callback) /*-{
+    return this.deleteEntry(
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+    );
+  }-*/;
+
+  /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  protected final native <E extends Entry> E get(AsyncCallback<E> callback) /*-{
+    return this.getSelf(
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+    );
+  }-*/;
+
+  /**
    * Updated the entry in the feed by sending the representation of this entry.
    * 
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void updateEntry(AsyncCallback<E> callback) /*-{
+  protected final native<E extends Entry> void update(AsyncCallback<E> callback) /*-{
     return this.updateEntry(
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }

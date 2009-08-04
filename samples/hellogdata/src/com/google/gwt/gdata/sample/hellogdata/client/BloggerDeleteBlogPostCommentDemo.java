@@ -19,13 +19,16 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.blogger.BlogCommentFeed;
+import com.google.gwt.gdata.client.blogger.BlogCommentFeedCallback;
 import com.google.gwt.gdata.client.blogger.BlogEntry;
 import com.google.gwt.gdata.client.blogger.BlogFeed;
+import com.google.gwt.gdata.client.blogger.BlogFeedCallback;
 import com.google.gwt.gdata.client.blogger.BlogPostFeed;
+import com.google.gwt.gdata.client.blogger.BlogPostFeedCallback;
 import com.google.gwt.gdata.client.blogger.BloggerService;
 import com.google.gwt.gdata.client.blogger.CommentEntry;
+import com.google.gwt.gdata.client.blogger.CommentEntryCallback;
 import com.google.gwt.gdata.client.blogger.PostEntry;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -92,7 +95,7 @@ public class BloggerDeleteBlogPostCommentDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading Blogger accounts feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new AsyncCallback<BlogFeed>() {
+    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Blogger account was found for the currently logged-in user")) {
@@ -109,7 +112,7 @@ public class BloggerDeleteBlogPostCommentDemo extends GDataDemo {
           BlogEntry blog = entries[0];
           String postsFeedUri = blog.getEntryPostLink().getHref();
           showStatus("Loading Blogger blog posts feed...", false);
-          service.getBlogPostFeed(postsFeedUri, new AsyncCallback<BlogPostFeed>() {
+          service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
           public void onFailure(Throwable caught) {
             showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
           }
@@ -127,7 +130,7 @@ public class BloggerDeleteBlogPostCommentDemo extends GDataDemo {
             } else {
               String commentsFeedUri = postEntry.getRepliesLink().getHref();
               showStatus("Loading Blogger post comments feed...", false);
-              service.getBlogCommentFeed(commentsFeedUri, new AsyncCallback<BlogCommentFeed>() {
+              service.getBlogCommentFeed(commentsFeedUri, new BlogCommentFeedCallback() {
                 public void onFailure(Throwable caught) {
                   showStatus("An error occurred while retrieving the Blogger Comments feed, see details below:\n" + caught.getMessage(), true);
                 }
@@ -147,7 +150,7 @@ public class BloggerDeleteBlogPostCommentDemo extends GDataDemo {
                     if (commentEntry == null) {
                       showStatus("Did not find a comment entry whose title starts with the prefix 'GWT-Blogger-Client'.", false);
                     } else {
-                      commentEntry.deleteEntry(new AsyncCallback<CommentEntry>() {
+                      commentEntry.deleteEntry(new CommentEntryCallback() {
                         public void onFailure(Throwable caught) {
                           showStatus("An error occurred while deleting a Blogger blog comment, see details below:\n" + caught.getMessage(), true);
                         }

@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.maps;
 
 import com.google.gwt.gdata.client.GoogleService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Maps service.
@@ -46,12 +45,34 @@ public class MapsService extends GoogleService {
   protected MapsService() { }
 
   /**
+   * Deletes a feature entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteFeatureEntry(String uri, FeatureEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+
+  /**
+   * Deletes a map entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteMapEntry(String uri, MapEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+
+  /**
    * Retrieves a feature entry.
    * 
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getFeatureEntry(String uri, AsyncCallback<FeatureEntry> callback) /*-{
+  public final native void getFeatureEntry(String uri, FeatureEntryCallback callback) /*-{
     this.getFeatureEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -65,7 +86,7 @@ public class MapsService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getFeatureFeed(FeatureQuery query, AsyncCallback<FeatureFeed> callback) /*-{
+  public final native void getFeatureFeed(FeatureQuery query, FeatureFeedCallback callback) /*-{
     this.getFeatureFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -79,7 +100,7 @@ public class MapsService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getFeatureFeed(String uri, AsyncCallback<FeatureFeed> callback) /*-{
+  public final native void getFeatureFeed(String uri, FeatureFeedCallback callback) /*-{
     this.getFeatureFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -93,7 +114,7 @@ public class MapsService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getMapEntry(String uri, AsyncCallback<MapEntry> callback) /*-{
+  public final native void getMapEntry(String uri, MapEntryCallback callback) /*-{
     this.getMapEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -107,7 +128,7 @@ public class MapsService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getMapFeed(MapQuery query, AsyncCallback<MapFeed> callback) /*-{
+  public final native void getMapFeed(MapQuery query, MapFeedCallback callback) /*-{
     this.getMapFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -121,12 +142,56 @@ public class MapsService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getMapFeed(String uri, AsyncCallback<MapFeed> callback) /*-{
+  public final native void getMapFeed(String uri, MapFeedCallback callback) /*-{
     this.getMapFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
     );
   }-*/;
+
+  /**
+   * Inserts a new feature entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertFeatureEntry(String uri, FeatureEntry entry, FeatureEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+
+  /**
+   * Inserts a new map entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertMapEntry(String uri, MapEntry entry, MapEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+
+  /**
+   * Updates a feature entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateFeatureEntry(String uri, FeatureEntry entry, FeatureEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
+
+  /**
+   * Updates a map entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateMapEntry(String uri, MapEntry entry, MapEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
 
 }

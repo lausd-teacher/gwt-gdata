@@ -19,18 +19,26 @@ package com.google.gwt.gdata.client.maps;
 /**
  * Describes a version entry.
  */
-public class VersionEntry extends com.google.gwt.gdata.client.Entry<VersionEntry> {
+public class VersionEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a version entry.
    * @return A VersionEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native VersionEntry newInstance() /*-{
     return new $wnd.google.gdata.maps.VersionEntry();
   }-*/;
 
   protected VersionEntry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(VersionEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the link that provides the URI of the full feed (without any query parameters).
@@ -41,4 +49,23 @@ public class VersionEntry extends com.google.gwt.gdata.client.Entry<VersionEntry
     return this.getAtomFeedLink();
   }-*/;
 
+  /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final VersionEntry getSelf(VersionEntryCallback callback) {
+    return this.get(callback);
+  }
+
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(VersionEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

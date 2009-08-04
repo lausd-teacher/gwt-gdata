@@ -41,4 +41,14 @@ public class AttributesFeed extends com.google.gwt.gdata.client.Feed<AttributesE
     return this.getFeedBatchLink();
   }-*/;
 
+  /**
+   * Inserts a new attributes entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertAttributesEntry(AttributesEntry entry, AttributesEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }
