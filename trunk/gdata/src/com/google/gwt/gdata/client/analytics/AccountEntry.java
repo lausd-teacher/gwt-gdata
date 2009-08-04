@@ -19,13 +19,12 @@ package com.google.gwt.gdata.client.analytics;
 /**
  * Entry element for account feed.
  */
-public class AccountEntry extends com.google.gwt.gdata.client.Entry<AccountEntry> {
+public class AccountEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs an account entry.
    * @return An AccountEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native AccountEntry newInstance() /*-{
     return new $wnd.google.gdata.analytics.AccountEntry();
   }-*/;
@@ -40,6 +39,15 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry<AccountEntry
   public final native void addProperty(Property property) /*-{
     this.addProperty(property);
   }-*/;
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(AccountEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the properties.
@@ -60,6 +68,16 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry<AccountEntry
   public final native String getPropertyValue(String name) /*-{
     return this.getPropertyValue(name);
   }-*/;
+  
+  /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final AccountEntry getSelf(AccountEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Returns the data source ID. This element is required.
@@ -90,4 +108,13 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry<AccountEntry
     this.setTableId(tableId);
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(AccountEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

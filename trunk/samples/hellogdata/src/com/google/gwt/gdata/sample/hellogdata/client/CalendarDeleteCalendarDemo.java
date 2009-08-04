@@ -19,9 +19,10 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.calendar.CalendarEntry;
+import com.google.gwt.gdata.client.calendar.CalendarEntryCallback;
 import com.google.gwt.gdata.client.calendar.CalendarFeed;
+import com.google.gwt.gdata.client.calendar.CalendarFeedCallback;
 import com.google.gwt.gdata.client.calendar.CalendarService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -91,7 +92,7 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading calendars...", false);
-    service.getOwnCalendarsFeed("http://www.google.com/calendar/feeds/default/owncalendars/full", new AsyncCallback<CalendarFeed>() {
+    service.getOwnCalendarsFeed("http://www.google.com/calendar/feeds/default/owncalendars/full", new CalendarFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Calendar account was found for the currently logged-in user")) {
@@ -117,7 +118,7 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
             showStatus("Did not find a calendar entry whose title starts with the prefix 'GWT-Calendar-Client'.", false);
           } else {
             showStatus("Deleting calendar...", false);
-            calendarEntry.deleteEntry(new AsyncCallback<CalendarEntry>() {
+            calendarEntry.deleteEntry(new CalendarEntryCallback() {
               public void onFailure(Throwable caught) {
                 showStatus("An error occurred while deleting a calendar, see details below:\n" + caught.getMessage(), true);
               }

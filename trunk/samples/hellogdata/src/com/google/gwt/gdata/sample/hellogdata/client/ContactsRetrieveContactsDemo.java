@@ -20,9 +20,9 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
 import com.google.gwt.gdata.client.contacts.ContactFeed;
+import com.google.gwt.gdata.client.contacts.ContactFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactQuery;
 import com.google.gwt.gdata.client.contacts.ContactsService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -106,7 +106,7 @@ public class ContactsRetrieveContactsDemo extends GDataDemo {
     showStatus("Loading Contacts feed...", false);
     ContactQuery query = ContactQuery.newInstance("http://www.google.com/m8/feeds/contacts/default/full");
     query.setMaxResults(50);
-    service.getContactFeed(query, new AsyncCallback<ContactFeed>() {
+    service.getContactFeed(query, new ContactFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Contacts account was found for the currently logged-in user")) {

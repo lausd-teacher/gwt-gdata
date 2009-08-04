@@ -20,10 +20,11 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
+import com.google.gwt.gdata.client.contacts.ContactEntryCallback;
 import com.google.gwt.gdata.client.contacts.ContactFeed;
+import com.google.gwt.gdata.client.contacts.ContactFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactQuery;
 import com.google.gwt.gdata.client.contacts.ContactsService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -99,7 +100,7 @@ public class ContactsDeleteContactDemo extends GDataDemo {
     DateTime updatedMin = DateTime.newInstance(today, true);
     query.setUpdatedMin(updatedMin);
     query.setSortOrder(ContactQuery.SORTORDER_DESCENDING);
-    service.getContactFeed(query, new AsyncCallback<ContactFeed>() {
+    service.getContactFeed(query, new ContactFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Contacts account was found for the currently logged-in user")) {
@@ -122,7 +123,7 @@ public class ContactsDeleteContactDemo extends GDataDemo {
           showStatus("No contacts were found that were modified today and contained 'GWT-Contacts-Client' in the title.", false);
         } else {
           showStatus("Deleting a Calendar event...", false);
-          targetEntry.deleteEntry(new AsyncCallback<ContactEntry>() {
+          targetEntry.deleteEntry(new ContactEntryCallback() {
             public void onFailure(Throwable caught) {
               showStatus("An error occurred while deleting a contact, see details below:\n" + caught.getMessage(), true);
             }

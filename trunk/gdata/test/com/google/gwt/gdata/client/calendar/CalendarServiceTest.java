@@ -23,7 +23,6 @@ import com.google.gwt.gdata.client.atom.Category;
 import com.google.gwt.gdata.client.atom.Person;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.junit.client.GWTTestCase;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Tests for the CalendarService class.
@@ -56,7 +55,7 @@ public class CalendarServiceTest extends GWTTestCase {
     newEntry.getHidden().setValue(false);
     newEntry.setColor(ColorProperty.newInstance());
     newEntry.getColor().setValue(ColorProperty.VALUE_RGB_4E5D6C);
-    svc.insertEntry(GDataTestScripts.Calendar.testCalendars_Feed_InsertLink, newEntry, new AsyncCallback<CalendarEntry>() {
+    svc.insertCalendarEntry(GDataTestScripts.Calendar.testCalendars_Feed_InsertLink, newEntry, new CalendarEntryCallback() {
       public void onFailure(Throwable caught) {
         fail("Create Failed: " + caught.getMessage());
       }
@@ -68,7 +67,7 @@ public class CalendarServiceTest extends GWTTestCase {
             result.getHidden().getValue() == true) {
           fail("Create Failed");
         }
-        result.deleteEntry(new AsyncCallback<CalendarEntry>() {
+        result.deleteEntry(new CalendarEntryCallback() {
           public void onFailure(Throwable caught) {
             fail("Delete Failed: " + caught.getMessage());
           }
@@ -85,7 +84,7 @@ public class CalendarServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Calendar.testCookie_Name, GDataTestScripts.Calendar.testCookie_Value);
     CalendarService svc = CalendarService.newInstance("test");
     svc.getCalendarEntry(GDataTestScripts.Calendar.testCalendar_Entry_Link,
-        new AsyncCallback<CalendarEntry>() {
+        new CalendarEntryCallback() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
           }
@@ -123,7 +122,7 @@ public class CalendarServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Calendar.testCookie_Name, GDataTestScripts.Calendar.testCookie_Value);
     CalendarService svc = CalendarService.newInstance("test");
     svc.getOwnCalendarsFeed(GDataTestScripts.Calendar.testCalendars_Feed_Link,
-        new AsyncCallback<CalendarFeed>() {
+        new CalendarFeedCallback() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
           }
@@ -144,14 +143,14 @@ public class CalendarServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Calendar.testCookie_Name, GDataTestScripts.Calendar.testCookie_Value);
     CalendarService svc = CalendarService.newInstance("test");
     svc.getCalendarEntry(GDataTestScripts.Calendar.testCalendar_Entry_Link,
-        new AsyncCallback<CalendarEntry>() {
+        new CalendarEntryCallback() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(CalendarEntry result) {
             result.getTitle().setText(GDataTestScripts.Calendar.testCalendar_Entry_Title_Updated);
             result.getSummary().setText(GDataTestScripts.Calendar.testCalendar_Entry_Summary_Updated);
-            result.updateEntry(new AsyncCallback<CalendarEntry>() {
+            result.updateEntry(new CalendarEntryCallback() {
               public void onFailure(Throwable caught) {
                 fail("Update Failed: " + caught.getMessage());
               }
@@ -160,7 +159,7 @@ public class CalendarServiceTest extends GWTTestCase {
                     result.getSummary().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Summary_Updated)) {
                   result.getTitle().setText(GDataTestScripts.Calendar.testCalendar_Entry_Title);
                   result.getSummary().setText(GDataTestScripts.Calendar.testCalendar_Entry_Summary);
-                  result.updateEntry(new AsyncCallback<CalendarEntry>() {
+                  result.updateEntry(new CalendarEntryCallback() {
                     public void onFailure(Throwable caught) {
                       fail("Revert Failed: " + caught.getMessage());
                     }

@@ -22,13 +22,12 @@ import com.google.gwt.gdata.client.ExtendedProperty;
 /**
  * Describes a contact group entry.
  */
-public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry<ContactGroupEntry> {
+public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a contact group entry.
    * @return A ContactGroupEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native ContactGroupEntry newInstance() /*-{
     return new $wnd.google.gdata.contacts.ContactGroupEntry();
   }-*/;
@@ -43,6 +42,15 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry<Contact
   public final native void addExtendedProperty(ExtendedProperty extendedProperty) /*-{
     this.addExtendedProperty(extendedProperty);
   }-*/;
+  
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(ContactGroupEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the marker for deleted entries. This element is optional.
@@ -61,6 +69,16 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry<Contact
   public final native ExtendedProperty[] getExtendedProperties() /*-{
     return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getExtendedProperties());
   }-*/;
+
+  /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final ContactGroupEntry getSelf(ContactGroupEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Returns the system group. This element is optional.
@@ -99,5 +117,14 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry<Contact
   public final native void setSystemGroup(SystemGroup systemGroup) /*-{
     this.setSystemGroup(systemGroup);
   }-*/;
+
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(ContactGroupEntryCallback callback) {
+    this.update(callback);
+  }
 
 }

@@ -22,18 +22,26 @@ import com.google.gwt.gdata.client.impl.Map;
 /**
  * Describes an entry in the feed of a user's private items.
  */
-public class ItemsEntry extends com.google.gwt.gdata.client.Entry<ItemsEntry> {
+public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a Google Base item entry.
    * @return An ItemsEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native ItemsEntry newInstance() /*-{
     return new $wnd.google.gdata.gbase.ItemsEntry();
   }-*/;
 
   protected ItemsEntry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(ItemsEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the attributes. The returned object is a map from attribute name to the associated Attribute class.
@@ -64,6 +72,16 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry<ItemsEntry> {
   }-*/;
 
   /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final ItemsEntry getSelf(ItemsEntryCallback callback) {
+    return this.get(callback);
+  }
+
+  /**
    * Sets the attribute.
    * 
    * @param name name of attribute.
@@ -92,4 +110,12 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry<ItemsEntry> {
     this.setFeedLink(feedLink);
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(ItemsEntryCallback callback) {
+    this.update(callback);
+  }
 }

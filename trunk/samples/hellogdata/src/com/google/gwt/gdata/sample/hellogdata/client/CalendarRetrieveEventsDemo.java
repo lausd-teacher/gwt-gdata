@@ -20,8 +20,8 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.calendar.CalendarEventEntry;
 import com.google.gwt.gdata.client.calendar.CalendarEventFeed;
+import com.google.gwt.gdata.client.calendar.CalendarEventFeedCallback;
 import com.google.gwt.gdata.client.calendar.CalendarService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
@@ -104,7 +104,7 @@ public class CalendarRetrieveEventsDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading Calendar events feed...", false);
-    service.getEventsFeed("http://www.google.com/calendar/feeds/default/private/full", new AsyncCallback<CalendarEventFeed>() {
+    service.getEventsFeed("http://www.google.com/calendar/feeds/default/private/full", new CalendarEventFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Calendar account was found for the currently logged-in user")) {

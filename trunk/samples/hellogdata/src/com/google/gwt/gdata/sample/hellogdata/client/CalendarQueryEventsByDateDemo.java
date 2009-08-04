@@ -21,9 +21,9 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.calendar.CalendarEventEntry;
 import com.google.gwt.gdata.client.calendar.CalendarEventFeed;
+import com.google.gwt.gdata.client.calendar.CalendarEventFeedCallback;
 import com.google.gwt.gdata.client.calendar.CalendarEventQuery;
 import com.google.gwt.gdata.client.calendar.CalendarService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
@@ -114,7 +114,7 @@ public class CalendarQueryEventsByDateDemo extends GDataDemo {
     Date endDate = new Date();
     query.setMinimumStartTime(DateTime.newInstance(startDate));
     query.setMaximumStartTime(DateTime.newInstance(endDate));
-    service.getEventsFeed(query, new AsyncCallback<CalendarEventFeed>() {
+    service.getEventsFeed(query, new CalendarEventFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Calendar account was found for the currently logged-in user")) {

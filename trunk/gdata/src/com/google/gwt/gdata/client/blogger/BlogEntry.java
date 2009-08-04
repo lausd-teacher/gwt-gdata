@@ -19,18 +19,26 @@ package com.google.gwt.gdata.client.blogger;
 /**
  * Describes a blog entry in the feed of a user's blogs.
  */
-public class BlogEntry extends com.google.gwt.gdata.client.Entry<BlogEntry> {
+public class BlogEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a blog entry.
    * @return A BlogEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native BlogEntry newInstance() /*-{
     return new $wnd.google.gdata.blogger.BlogEntry();
   }-*/;
 
   protected BlogEntry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(BlogEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the link that provides the URI that can be used to post new entries to the feed.
@@ -69,6 +77,16 @@ public class BlogEntry extends com.google.gwt.gdata.client.Entry<BlogEntry> {
   }-*/;
 
   /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final BlogEntry getSelf(BlogEntryCallback callback) {
+    return this.get(callback);
+  }
+
+  /**
    * Returns the link to blog settings feed.
    * 
    * @return Link to blog settings feed.
@@ -86,4 +104,13 @@ public class BlogEntry extends com.google.gwt.gdata.client.Entry<BlogEntry> {
     return this.getTemplateLink();
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(BlogEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

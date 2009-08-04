@@ -16,17 +16,19 @@
 
 package com.google.gwt.gdata.client;
 
+
 /**
  * Describes an event entry.
- * @param <E> The Event type.
  */
-@SuppressWarnings("unchecked")
-public class EventEntry<E extends EventEntry> extends com.google.gwt.gdata.client.Entry<E> {
-
+public class EventEntry extends com.google.gwt.gdata.client.Entry {
+  
   /**
-   * Constructs an event entry.
+   * Constructs an event.
    * @return An EventEntry object.
    */
+  public static native EventEntry newInstance() /*-{
+    return new $wnd.google.gdata.EventEntry();
+  }-*/;
 
   protected EventEntry() { }
 

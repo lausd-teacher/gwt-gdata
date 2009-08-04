@@ -20,8 +20,8 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.contacts.ContactGroupEntry;
 import com.google.gwt.gdata.client.contacts.ContactGroupFeed;
+import com.google.gwt.gdata.client.contacts.ContactGroupFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactsService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -97,7 +97,7 @@ public class ContactsRetrieveContactGroupsDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading contact groups feed...", false);
-    service.getContactGroupFeed("http://www.google.com/m8/feeds/groups/default/full", new AsyncCallback<ContactGroupFeed>() {
+    service.getContactGroupFeed("http://www.google.com/m8/feeds/groups/default/full", new ContactGroupFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Contacts account was found for the currently logged-in user")) {

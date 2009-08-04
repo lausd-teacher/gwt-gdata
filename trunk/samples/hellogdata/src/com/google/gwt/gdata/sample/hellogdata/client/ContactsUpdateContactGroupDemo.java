@@ -20,9 +20,10 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
+import com.google.gwt.gdata.client.contacts.ContactEntryCallback;
 import com.google.gwt.gdata.client.contacts.ContactFeed;
+import com.google.gwt.gdata.client.contacts.ContactFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactsService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -91,7 +92,7 @@ public class ContactsUpdateContactGroupDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading contact groups feed...", false);
-    service.getContactFeed("http://www.google.com/m8/feeds/groups/default/full", new AsyncCallback<ContactFeed>() {
+    service.getContactFeed("http://www.google.com/m8/feeds/groups/default/full", new ContactFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Contacts account was found for the currently logged-in user")) {
@@ -116,7 +117,7 @@ public class ContactsUpdateContactGroupDemo extends GDataDemo {
           targetEntry.setTitle(Text.newInstance());
           targetEntry.getTitle().setText("GWT-Contacts-Client: Update Group");
           showStatus("Updating a contact group...", false);
-          targetEntry.updateEntry(new AsyncCallback<ContactEntry>() {
+          targetEntry.updateEntry(new ContactEntryCallback() {
             public void onFailure(Throwable caught) {
               showStatus("An error occurred while updating a contact group, see details below:\n" + caught.getMessage(), true);
             }

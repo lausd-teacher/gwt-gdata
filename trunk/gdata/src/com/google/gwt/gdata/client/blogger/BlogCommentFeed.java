@@ -50,4 +50,14 @@ public class BlogCommentFeed extends com.google.gwt.gdata.client.Feed<CommentEnt
     return this.getPreviousLink();
   }-*/;
 
+  /**
+   * Inserts a new comment entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertBlogCommentEntry(CommentEntry entry, CommentEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

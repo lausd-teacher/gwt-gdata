@@ -19,13 +19,12 @@ package com.google.gwt.gdata.client.acl;
 /**
  * Describes an entry in a feed of an access control list (ACL).
  */
-public class AclEntry extends com.google.gwt.gdata.client.Entry<AclEntry> {
+public class AclEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs an ACL entry.
    * @return An AclEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native AclEntry newInstance() /*-{
     return new $wnd.google.gdata.acl.AclEntry();
   }-*/;

@@ -19,17 +19,26 @@ package com.google.gwt.gdata.client.gbase;
 /**
  * Describes an entry in the feed of public attributes.
  */
-public class AttributesEntry extends com.google.gwt.gdata.client.Entry<AttributesEntry> {
+public class AttributesEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a Google Base attribute entry.
+   * @return An AttributesEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native AttributesEntry newInstance() /*-{
     return new $wnd.google.gdata.gbase.AttributesEntry();
   }-*/;
 
   protected AttributesEntry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(AttributesEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the list of attribute for an item type. This element is required.
@@ -41,6 +50,16 @@ public class AttributesEntry extends com.google.gwt.gdata.client.Entry<Attribute
   }-*/;
 
   /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final AttributesEntry getSelf(AttributesEntryCallback callback) {
+    return this.get(callback);
+  }
+
+  /**
    * Sets the list of attribute for an item type. This element is required.
    * 
    * @param attribute List of attribute for an item type.
@@ -48,5 +67,14 @@ public class AttributesEntry extends com.google.gwt.gdata.client.Entry<Attribute
   public final native void setAttribute(GmAttribute attribute) /*-{
     this.setAttribute(attribute);
   }-*/;
+
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(AttributesEntryCallback callback) {
+    this.update(callback);
+  }
 
 }

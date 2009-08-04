@@ -22,18 +22,26 @@ import com.google.gwt.gdata.client.threading.Total;
 /**
  * Describes a blog post entry.
  */
-public class PostEntry extends com.google.gwt.gdata.client.Entry<PostEntry> {
+public class PostEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a post entry.
    * @return A PostEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native PostEntry newInstance() /*-{
     return new $wnd.google.gdata.blogger.PostEntry();
   }-*/;
 
   protected PostEntry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(PostEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the link that identifies a resource related to the entry.
@@ -90,6 +98,16 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry<PostEntry> {
   }-*/;
 
   /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final PostEntry getSelf(PostEntryCallback callback) {
+    return this.get(callback);
+  }
+
+  /**
    * Returns the media thumbnail. This element is optional.
    * 
    * @return Media thumbnail.
@@ -125,4 +143,13 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry<PostEntry> {
     this.setTotal(total);
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(PostEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

@@ -35,39 +35,6 @@ public class Service extends JavaScriptObject {
   protected Service() { }
 
   /**
-   * Deletes an entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
-   */
-  @SuppressWarnings("unchecked")
-  public final native <E extends com.google.gwt.gdata.client.Entry> void deleteEntry(String uri, AsyncCallback<E> callback) /*-{
-    this.deleteEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
-
-  /**
-   * Inserts a new entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
-   */
-  @SuppressWarnings("unchecked")
-  public final native <E extends com.google.gwt.gdata.client.Entry> void insertEntry(String uri, E entry, AsyncCallback<E> callback) /*-{
-    this.insertEntry(
-      uri,
-      entry,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
-      undefined
-    );
-  }-*/;
-
-  /**
    * Tests whether XD2 transport is supported by this service.
    * 
    * @return Whether XD2 transport is supported.
@@ -123,6 +90,36 @@ public class Service extends JavaScriptObject {
     return this.supportsAlt(alt);
   }-*/;
 
+  /**
+   * Deletes an entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  protected final native <E extends com.google.gwt.gdata.client.Entry> void deleteEntry(String uri, AsyncCallback<E> callback) /*-{
+    this.deleteEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+    );
+  }-*/;
+
+  /**
+   * Inserts a new entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  protected final native <E extends com.google.gwt.gdata.client.Entry> void insertEntry(String uri, E entry, AsyncCallback<E> callback) /*-{
+    this.insertEntry(
+      uri,
+      entry,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      undefined
+    );
+  }-*/;
 
   /**
    * Updates an entry.
@@ -131,8 +128,7 @@ public class Service extends JavaScriptObject {
    * @param entry Entry to update.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  @SuppressWarnings("unchecked")
-  public final native <E extends com.google.gwt.gdata.client.Entry> void updateEntry(String uri, E entry, AsyncCallback<E> callback) /*-{
+  protected final native <E extends com.google.gwt.gdata.client.Entry> void updateEntry(String uri, E entry, AsyncCallback<E> callback) /*-{
     this.updateEntry(
       uri,
       entry,

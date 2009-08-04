@@ -18,18 +18,17 @@ package com.google.gwt.gdata.client.acl;
 
 /**
  * Describes a feed of an access control list (ACL).
+ * @param <E> The Entry type.
  */
-public class AclFeed extends com.google.gwt.gdata.client.Feed<AclEntry> {
-
+public class AclFeed<E extends AclEntry> extends com.google.gwt.gdata.client.Feed<E> {
+  
   /**
    * Constructs an ACL feed.
    * @return An AclFeed object.
    */
-  @SuppressWarnings("unchecked")
-  public static native AclFeed newInstance() /*-{
+  public static native <E extends AclEntry> AclFeed<E> newInstance() /*-{
     return new $wnd.google.gdata.acl.AclFeed();
   }-*/;
 
   protected AclFeed() { }
-
 }

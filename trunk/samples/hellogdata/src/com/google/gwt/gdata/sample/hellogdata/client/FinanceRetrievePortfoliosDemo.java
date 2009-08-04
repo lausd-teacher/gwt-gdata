@@ -21,7 +21,7 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.finance.FinanceService;
 import com.google.gwt.gdata.client.finance.PortfolioEntry;
 import com.google.gwt.gdata.client.finance.PortfolioFeed;
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.finance.PortfolioFeedCallback;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -96,7 +96,7 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new AsyncCallback<PortfolioFeed>() {
+    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Finance account was found for the currently logged-in user")) {

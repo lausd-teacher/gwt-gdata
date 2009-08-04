@@ -54,6 +54,16 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
   }-*/;
 
   /**
+   * Inserts a new items entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertItemsEntry(ItemsEntry entry, ItemsEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
+  /**
    * Sets the attribute.
    * 
    * @param name name of attribute.

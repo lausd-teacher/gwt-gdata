@@ -19,18 +19,26 @@ package com.google.gwt.gdata.client.gbase;
 /**
  * Describes an entry in the feed of public item types.
  */
-public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry<ItemTypesEntry> {
+public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a Google Base item type entry.
    * @return An ItemTypesEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native ItemTypesEntry newInstance() /*-{
     return new $wnd.google.gdata.gbase.ItemTypesEntry();
   }-*/;
 
   protected ItemTypesEntry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(ItemTypesEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the gm attributes. This element is optional.
@@ -60,6 +68,16 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry<ItemTypesE
   }-*/;
 
   /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final ItemTypesEntry getSelf(ItemTypesEntryCallback callback) {
+    return this.get(callback);
+  }
+
+  /**
    * Sets the gm attributes. This element is optional.
    * 
    * @param attributes Gm attributes.
@@ -77,4 +95,13 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry<ItemTypesE
     this.setItemType(itemType);
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(ItemTypesEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

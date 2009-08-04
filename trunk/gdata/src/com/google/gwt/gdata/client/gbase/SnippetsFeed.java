@@ -58,4 +58,14 @@ public class SnippetsFeed extends com.google.gwt.gdata.client.Feed<SnippetsEntry
     return this.getPreviousLink();
   }-*/;
 
+  /**
+   * Inserts a new snippets entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertSnippetsEntry(SnippetsEntry entry, SnippetsEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

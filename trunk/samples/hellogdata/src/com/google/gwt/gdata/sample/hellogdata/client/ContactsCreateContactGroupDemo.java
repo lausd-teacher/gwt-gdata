@@ -20,8 +20,8 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.contacts.ContactGroupEntry;
+import com.google.gwt.gdata.client.contacts.ContactGroupEntryCallback;
 import com.google.gwt.gdata.client.contacts.ContactsService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -91,7 +91,7 @@ public class ContactsCreateContactGroupDemo extends GDataDemo {
     ContactGroupEntry entry = ContactGroupEntry.newInstance();
     entry.setTitle(Text.newInstance());
     entry.getTitle().setText("GWT-Contacts-Client: Create Group");
-    service.insertEntry("http://www.google.com/m8/feeds/groups/default/full", entry, new AsyncCallback<ContactGroupEntry>() {
+    service.insertContactGroupEntry("http://www.google.com/m8/feeds/groups/default/full", entry, new ContactGroupEntryCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Contacts account was found for the currently logged-in user")) {

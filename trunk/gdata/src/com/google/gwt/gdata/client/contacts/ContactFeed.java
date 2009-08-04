@@ -59,4 +59,14 @@ public class ContactFeed extends com.google.gwt.gdata.client.Feed<ContactEntry> 
     return this.getPreviousLink();
   }-*/;
 
+  /**
+   * Inserts a new contact entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertContactEntry(ContactEntry entry, ContactEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

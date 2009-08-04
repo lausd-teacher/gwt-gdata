@@ -55,16 +55,6 @@ public class AnalyticsService extends GoogleService {
   }
 
   /**
-   * Deletes a data entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
-   */
-  public final void deleteDataEntry(String uri, DataEntryCallback callback) {
-    this.deleteEntry(uri, callback);
-  }
-
-  /**
    * Retrieves an account entry.
    * 
    * @param uri URI of entry.
@@ -158,17 +148,6 @@ public class AnalyticsService extends GoogleService {
   public final void insertAccountEntry(String uri, AccountEntry entry, AccountEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
-
-  /**
-   * Inserts a new data entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
-   */
-  public final void insertDataEntry(String uri, DataEntry entry, DataEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
   
   /**
    * Updates an account entry.
@@ -178,17 +157,6 @@ public class AnalyticsService extends GoogleService {
    * @param callback Callback defining success and failure handlers for this command.
    */
   public final void updateAccountEntry(String uri, AccountEntry entry, AccountEntryCallback callback) {
-    this.updateEntry(uri, entry, callback);
-  }
-
-  /**
-   * Updates a data entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
-   */
-  public final void updateDataEntry(String uri, DataEntry entry, DataEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 }

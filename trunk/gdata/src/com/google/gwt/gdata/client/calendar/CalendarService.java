@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.calendar;
 
 import com.google.gwt.gdata.client.GoogleService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Google Calendar service.
@@ -46,12 +45,62 @@ public class CalendarService extends GoogleService {
   protected CalendarService() { }
 
   /**
+   * Deletes a calendar acl entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteCalendarAclEntry(String uri, CalendarAclEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+  /**
+   * Deletes a calendar comment entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteCalendarCommentEntry(String uri, CalendarCommentEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+  /**
+   * Deletes a calendar entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteCalendarEntry(String uri, CalendarEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+  /**
+   * Deletes a calendar event entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteCalendarEventEntry(String uri, CalendarEventEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+  /**
+   * Deletes a settings entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteSettingsEntry(String uri, SettingsEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+  /**
    * Retrieves the feed of a calendar's Access Control List (ACL).
    * 
    * @param uri URI of feed.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getAclFeed(String uri, AsyncCallback<CalendarAclFeed> callback) /*-{
+  public final native void getAclFeed(String uri, CalendarAclFeedCallback callback) /*-{
     this.getAclFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -65,7 +114,7 @@ public class CalendarService extends GoogleService {
    * @param uri URI of feed.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getAllCalendarsFeed(String uri, AsyncCallback<CalendarFeed> callback) /*-{
+  public final native void getAllCalendarsFeed(String uri, CalendarFeedCallback callback) /*-{
     this.getAllCalendarsFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -79,7 +128,7 @@ public class CalendarService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getCalendarAclEntry(String uri, AsyncCallback<CalendarAclEntry> callback) /*-{
+  public final native void getCalendarAclEntry(String uri, CalendarAclEntryCallback callback) /*-{
     this.getCalendarAclEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -93,7 +142,7 @@ public class CalendarService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getCalendarCommentEntry(String uri, AsyncCallback<CalendarCommentEntry> callback) /*-{
+  public final native void getCalendarCommentEntry(String uri, CalendarCommentEntryCallback callback) /*-{
     this.getCalendarCommentEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -107,7 +156,7 @@ public class CalendarService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getCalendarEntry(String uri, AsyncCallback<CalendarEntry> callback) /*-{
+  public final native void getCalendarEntry(String uri, CalendarEntryCallback callback) /*-{
     this.getCalendarEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -121,7 +170,7 @@ public class CalendarService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getCalendarEventEntry(String uri, AsyncCallback<CalendarEventEntry> callback) /*-{
+  public final native void getCalendarEventEntry(String uri, CalendarEventEntryCallback callback) /*-{
     this.getCalendarEventEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -135,7 +184,7 @@ public class CalendarService extends GoogleService {
    * @param uri URI of feed.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getCalendarsFeed(String uri, AsyncCallback<CalendarFeed> callback) /*-{
+  public final native void getCalendarsFeed(String uri, CalendarFeedCallback callback) /*-{
     this.getCalendarsFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -149,7 +198,7 @@ public class CalendarService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getCommentsFeed(CalendarCommentQuery query, AsyncCallback<CalendarCommentFeed> callback) /*-{
+  public final native void getCommentsFeed(CalendarCommentQuery query, CalendarCommentFeedCallback callback) /*-{
     this.getCommentsFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -163,7 +212,7 @@ public class CalendarService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getCommentsFeed(String uri, AsyncCallback<CalendarCommentFeed> callback) /*-{
+  public final native void getCommentsFeed(String uri, CalendarCommentFeedCallback callback) /*-{
     this.getCommentsFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -177,7 +226,7 @@ public class CalendarService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getEventsFeed(CalendarEventQuery query, AsyncCallback<CalendarEventFeed> callback) /*-{
+  public final native void getEventsFeed(CalendarEventQuery query, CalendarEventFeedCallback callback) /*-{
     this.getEventsFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -191,7 +240,7 @@ public class CalendarService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getEventsFeed(String uri, AsyncCallback<CalendarEventFeed> callback) /*-{
+  public final native void getEventsFeed(String uri, CalendarEventFeedCallback callback) /*-{
     this.getEventsFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -205,7 +254,7 @@ public class CalendarService extends GoogleService {
    * @param uri URI of feed.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getOwnCalendarsFeed(String uri, AsyncCallback<CalendarFeed> callback) /*-{
+  public final native void getOwnCalendarsFeed(String uri, CalendarFeedCallback callback) /*-{
     this.getOwnCalendarsFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
@@ -219,7 +268,7 @@ public class CalendarService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getSettingsEntry(String uri, AsyncCallback<SettingsEntry> callback) /*-{
+  public final native void getSettingsEntry(String uri, SettingsEntryCallback callback) /*-{
     this.getSettingsEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
@@ -233,12 +282,122 @@ public class CalendarService extends GoogleService {
    * @param uri URI of feed.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getSettingsFeed(String uri, AsyncCallback<CalendarSettingsFeed> callback) /*-{
+  public final native void getSettingsFeed(String uri, CalendarSettingsFeedCallback callback) /*-{
     this.getSettingsFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
     );
   }-*/;
+
+  /**
+   * Inserts a new calendar acl entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertCalendarAclEntry(String uri, CalendarAclEntry entry, CalendarAclEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+
+  /**
+   * Inserts a new calendar comment entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertCalendarCommentEntry(String uri, CalendarCommentEntry entry, CalendarCommentEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+
+  /**
+   * Inserts a new calendar entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertCalendarEntry(String uri, CalendarEntry entry, CalendarEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+
+  /**
+   * Inserts a new calendar event entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertCalendarEventEntry(String uri, CalendarEventEntry entry, CalendarEventEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+
+  /**
+   * Inserts a new settings entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertSettingsEntry(String uri, SettingsEntry entry, SettingsEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+  
+  /**
+   * Updates a calendar acl entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateCalendarAclEntry(String uri, CalendarAclEntry entry, CalendarAclEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
+  
+  /**
+   * Updates a calendar comment entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateCalendarCommentEntry(String uri, CalendarCommentEntry entry, CalendarCommentEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
+  
+  /**
+   * Updates a calendar entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateCalendarEntry(String uri, CalendarEntry entry, CalendarEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
+  
+  /**
+   * Updates a calendar event entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateCalendarEventEntry(String uri, CalendarEventEntry entry, CalendarEventEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
+  
+  /**
+   * Updates a settings entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateSettingsEntry(String uri, SettingsEntry entry, SettingsEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
 
 }

@@ -22,9 +22,9 @@ import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.When;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.calendar.CalendarEventEntry;
+import com.google.gwt.gdata.client.calendar.CalendarEventEntryCallback;
 import com.google.gwt.gdata.client.calendar.CalendarExtendedProperty;
 import com.google.gwt.gdata.client.calendar.CalendarService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -110,7 +110,7 @@ public class CalendarAddExtendedPropertyDemo extends GDataDemo {
     extendedProp.setName("mydata");
     extendedProp.setValue("xyz");
     entry.addExtendedProperty(extendedProp);
-    service.insertEntry("http://www.google.com/calendar/feeds/default/private/full", entry, new AsyncCallback<CalendarEventEntry>() {
+    service.insertCalendarEventEntry("http://www.google.com/calendar/feeds/default/private/full", entry, new CalendarEventEntryCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Calendar account was found for the currently logged-in user")) {

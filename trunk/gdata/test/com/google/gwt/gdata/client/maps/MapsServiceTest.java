@@ -20,7 +20,6 @@ import com.google.gwt.accounts.client.UserTest;
 import com.google.gwt.gdata.client.GDataTestScripts;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.junit.client.GWTTestCase;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Tests for the MapsService class.
@@ -45,7 +44,7 @@ public class MapsServiceTest extends GWTTestCase {
     MapEntry newEntry = MapEntry.newInstance();
     newEntry.setTitle(Text.newInstance());
     newEntry.getTitle().setText(GDataTestScripts.Maps.testMap_Entry_Title_Created);
-    svc.insertEntry(GDataTestScripts.Maps.testMaps_Feed_Link, newEntry, new AsyncCallback<MapEntry>() {
+    svc.insertMapEntry(GDataTestScripts.Maps.testMaps_Feed_Link, newEntry, new MapEntryCallback() {
       public void onFailure(Throwable caught) {
         fail("Create Failed: " + caught.getMessage());
       }
@@ -53,7 +52,7 @@ public class MapsServiceTest extends GWTTestCase {
         if (!result.getTitle().getText().equals(GDataTestScripts.Maps.testMap_Entry_Title_Created)) {
           fail("Create Failed");
         }
-        result.deleteEntry(new AsyncCallback<MapEntry>() {
+        result.deleteEntry(new MapEntryCallback() {
           public void onFailure(Throwable caught) {
             fail("Delete Failed: " + caught.getMessage());
           }
@@ -70,7 +69,7 @@ public class MapsServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Maps.testCookie_Name, GDataTestScripts.Maps.testCookie_Value);
     MapsService svc = MapsService.newInstance("test");
     svc.getFeatureEntry(GDataTestScripts.Maps.testFeature_Entry_Link,
-        new AsyncCallback<FeatureEntry>() {
+        new FeatureEntryCallback() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
           }
@@ -89,7 +88,7 @@ public class MapsServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Maps.testCookie_Name, GDataTestScripts.Maps.testCookie_Value);
     MapsService svc = MapsService.newInstance("test");
     svc.getFeatureFeed(GDataTestScripts.Maps.testFeatures_Feed_Link,
-        new AsyncCallback<FeatureFeed>() {
+        new FeatureFeedCallback() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
           }
@@ -109,7 +108,7 @@ public class MapsServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Maps.testCookie_Name, GDataTestScripts.Maps.testCookie_Value);
     MapsService svc = MapsService.newInstance("test");
     svc.getMapEntry(GDataTestScripts.Maps.testMap_Entry_Link,
-        new AsyncCallback<MapEntry>() {
+        new MapEntryCallback() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
           }
@@ -127,7 +126,7 @@ public class MapsServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Maps.testCookie_Name, GDataTestScripts.Maps.testCookie_Value);
     MapsService svc = MapsService.newInstance("test");
     svc.getMapFeed(GDataTestScripts.Maps.testMaps_Feed_Link,
-        new AsyncCallback<MapFeed>() {
+        new MapFeedCallback() {
           public void onFailure(Throwable caught) {
             fail("Get Failed: " + caught.getMessage());
           }
@@ -147,13 +146,13 @@ public class MapsServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Maps.testCookie_Name, GDataTestScripts.Maps.testCookie_Value);
     MapsService svc = MapsService.newInstance("test");
     svc.getMapEntry(GDataTestScripts.Maps.testMap_Entry_Link,
-      new AsyncCallback<MapEntry>() {
+      new MapEntryCallback() {
         public void onFailure(Throwable caught) {
           fail("Get Failed: " + caught.getMessage());
         }
         public void onSuccess(MapEntry result) {
           result.getTitle().setText(GDataTestScripts.Maps.testMap_Entry_Title_Updated);
-          result.updateEntry(new AsyncCallback<MapEntry>() {
+          result.updateEntry(new MapEntryCallback() {
             public void onFailure(Throwable caught) {
               fail("Update Failed: " + caught.getMessage());
             }
@@ -162,7 +161,7 @@ public class MapsServiceTest extends GWTTestCase {
                 fail("Update Failed");
               }
               result.getTitle().setText(GDataTestScripts.Maps.testMap_Entry_Title);
-              result.updateEntry(new AsyncCallback<MapEntry>() {
+              result.updateEntry(new MapEntryCallback() {
                 public void onFailure(Throwable caught) {
                   fail("Revert Failed: " + caught.getMessage());
                 }

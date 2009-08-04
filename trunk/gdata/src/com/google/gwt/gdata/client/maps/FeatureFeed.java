@@ -50,4 +50,14 @@ public class FeatureFeed extends com.google.gwt.gdata.client.Feed<FeatureEntry> 
     return this.getNextLink();
   }-*/;
 
+  /**
+   * Inserts a new feature entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertFeatureEntry(FeatureEntry entry, FeatureEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

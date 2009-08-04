@@ -21,18 +21,26 @@ import com.google.gwt.gdata.client.mediarss.MediaContent;
 /**
  * Describes an entry in the media feed used for managing the media attachments for one Google Base Item..
  */
-public class MediaEntry extends com.google.gwt.gdata.client.Entry<MediaEntry> {
+public class MediaEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a Google Base media entry.
    * @return A MediaEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native MediaEntry newInstance() /*-{
     return new $wnd.google.gdata.gbase.MediaEntry();
   }-*/;
 
   protected MediaEntry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(MediaEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the media content. This element is optional.
@@ -44,6 +52,16 @@ public class MediaEntry extends com.google.gwt.gdata.client.Entry<MediaEntry> {
   }-*/;
 
   /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final MediaEntry getSelf(MediaEntryCallback callback) {
+    return this.get(callback);
+  }
+
+  /**
    * Sets the media content. This element is optional.
    * 
    * @param mediaContent Media content.
@@ -52,4 +70,13 @@ public class MediaEntry extends com.google.gwt.gdata.client.Entry<MediaEntry> {
     this.setMediaContent(mediaContent);
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(MediaEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

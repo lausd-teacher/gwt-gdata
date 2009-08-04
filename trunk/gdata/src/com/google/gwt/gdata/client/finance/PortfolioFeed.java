@@ -32,4 +32,14 @@ public class PortfolioFeed extends com.google.gwt.gdata.client.Feed<PortfolioEnt
 
   protected PortfolioFeed() { }
 
+  /**
+   * Inserts a new portfolio entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertPortfolioEntry(PortfolioEntry entry, PortfolioEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

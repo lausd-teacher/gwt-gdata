@@ -19,9 +19,10 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
+import com.google.gwt.gdata.client.contacts.ContactEntryCallback;
 import com.google.gwt.gdata.client.contacts.ContactFeed;
+import com.google.gwt.gdata.client.contacts.ContactFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactsService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -89,7 +90,7 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading contact groups feed...", false);
-    service.getContactFeed("http://www.google.com/m8/feeds/groups/default/full", new AsyncCallback<ContactFeed>() {
+    service.getContactFeed("http://www.google.com/m8/feeds/groups/default/full", new ContactFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Contacts account was found for the currently logged-in user")) {
@@ -112,7 +113,7 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
           showStatus("No contacts were found with a title starting with 'GWT-Contacts-Client'.", false);
         } else {
           showStatus("Deleting a contact group...", false);
-          targetEntry.deleteEntry(new AsyncCallback<ContactEntry>() {
+          targetEntry.deleteEntry(new ContactEntryCallback() {
             public void onFailure(Throwable caught) {
               showStatus("An error occurred while deleting a contact group, see details below:\n" + caught.getMessage(), true);
             }

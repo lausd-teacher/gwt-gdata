@@ -19,13 +19,12 @@ package com.google.gwt.gdata.client.analytics;
 /**
  * Entry element for data feed.
  */
-public class DataEntry extends com.google.gwt.gdata.client.Entry<DataEntry> {
+public class DataEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a data entry.
    * @return A DataEntry object.
    */
-  @SuppressWarnings("unchecked")
   public static native DataEntry newInstance() /*-{
     return new $wnd.google.gdata.analytics.DataEntry();
   }-*/;
@@ -49,6 +48,15 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry<DataEntry> {
   public final native void addMetric(Metric metric) /*-{
     this.addMetric(metric);
   }-*/;
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void deleteEntry(DataEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the dimension with the given name in this entry.
@@ -99,6 +107,16 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry<DataEntry> {
   }-*/;
 
   /**
+   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   * @return current representation of the entry.
+   */
+  public final DataEntry getSelf(DataEntryCallback callback) {
+    return this.get(callback);
+  }
+
+  /**
    * Returns the value of the dimension or metric with the given name in this entry.
    * 
    * @param name The name of the dimension or metric to retrieve.
@@ -130,4 +148,13 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry<DataEntry> {
     );
   }-*/;
 
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void updateEntry(DataEntryCallback callback) {
+    this.update(callback);
+  }
+  
 }

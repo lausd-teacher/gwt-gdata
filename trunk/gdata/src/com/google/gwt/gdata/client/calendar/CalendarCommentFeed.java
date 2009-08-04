@@ -32,4 +32,14 @@ public class CalendarCommentFeed extends com.google.gwt.gdata.client.Feed<Calend
 
   protected CalendarCommentFeed() { }
 
+  /**
+   * Inserts a new calendar comment entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertCommentEntry(CalendarCommentEntry entry, CalendarCommentEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
 }

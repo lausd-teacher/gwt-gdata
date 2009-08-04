@@ -25,7 +25,6 @@ import com.google.gwt.gdata.client.PhoneNumber;
 import com.google.gwt.gdata.client.PostalAddress;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.junit.client.GWTTestCase;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Tests for the ContactsService class.
@@ -67,7 +66,7 @@ public class ContactsServiceTest extends GWTTestCase {
     newEntry.getPostalAddresses()[0].setPrimary(true);
     newEntry.getPostalAddresses()[0].setRel(PostalAddress.REL_OTHER);
     newEntry.getPostalAddresses()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Address_Created);
-    svc.insertEntry(GDataTestScripts.Contacts.testContacts_Feed_Link, newEntry, new AsyncCallback<ContactEntry>() {
+    svc.insertContactEntry(GDataTestScripts.Contacts.testContacts_Feed_Link, newEntry, new ContactEntryCallback() {
       public void onFailure(Throwable caught) {
         fail("Create Failed: " + caught.getMessage());
       }
@@ -79,7 +78,7 @@ public class ContactsServiceTest extends GWTTestCase {
             !result.getPostalAddresses()[0].getValue().equals(GDataTestScripts.Contacts.testContact_Entry_Address_Created)) {
           fail("Create Failed");
         }
-        result.deleteEntry(new AsyncCallback<ContactEntry>() {
+        result.deleteEntry(new ContactEntryCallback() {
           public void onFailure(Throwable caught) {
             fail("Delete Failed: " + caught.getMessage());
           }
@@ -95,7 +94,7 @@ public class ContactsServiceTest extends GWTTestCase {
   public void testGetContact() {
     UserTest.login(GDataTestScripts.Contacts.testCookie_Name, GDataTestScripts.Contacts.testCookie_Value);
     ContactsService svc = ContactsService.newInstance("test");
-    svc.getContactEntry(GDataTestScripts.Contacts.testContact_Entry_Link, new AsyncCallback<ContactEntry>() {
+    svc.getContactEntry(GDataTestScripts.Contacts.testContact_Entry_Link, new ContactEntryCallback() {
       public void onFailure(Throwable caught) {
         fail("Get Failed: " + caught.getMessage());
       }
@@ -123,7 +122,7 @@ public class ContactsServiceTest extends GWTTestCase {
     ContactsService svc = ContactsService.newInstance("test");
     ContactQuery query = ContactQuery.newInstance(GDataTestScripts.Contacts.testContacts_Feed_Link);
     query.setMaxResults(50);
-    svc.getContactFeed(query, new AsyncCallback<ContactFeed>() {
+    svc.getContactFeed(query, new ContactFeedCallback() {
       public void onFailure(Throwable caught) {
         fail("Get Failed: " + caught.getMessage());
       }
@@ -143,7 +142,7 @@ public class ContactsServiceTest extends GWTTestCase {
   public void testUpdateContact() {
     UserTest.login(GDataTestScripts.Contacts.testCookie_Name, GDataTestScripts.Contacts.testCookie_Value);
     ContactsService svc = ContactsService.newInstance("test");
-    svc.getContactEntry(GDataTestScripts.Contacts.testContact_Entry_Link, new AsyncCallback<ContactEntry>() {
+    svc.getContactEntry(GDataTestScripts.Contacts.testContact_Entry_Link, new ContactEntryCallback() {
       public void onFailure(Throwable caught) {
         fail("Get Failed: " + caught.getMessage());
       }
@@ -153,7 +152,7 @@ public class ContactsServiceTest extends GWTTestCase {
         result.getOrganizations()[0].getOrgTitle().setValue(GDataTestScripts.Contacts.testContact_Entry_Company_Updated);
         result.getPhoneNumbers()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Phone_Updated);
         result.getPostalAddresses()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Address_Updated);
-        result.updateEntry(new AsyncCallback<ContactEntry>() {
+        result.updateEntry(new ContactEntryCallback() {
           public void onFailure(Throwable caught) {
             fail("Update Failed: " + caught.getMessage());
           }
@@ -170,7 +169,7 @@ public class ContactsServiceTest extends GWTTestCase {
             result.getOrganizations()[0].getOrgTitle().setValue(GDataTestScripts.Contacts.testContact_Entry_Company);
             result.getPhoneNumbers()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Phone);
             result.getPostalAddresses()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Address);
-            result.updateEntry(new AsyncCallback<ContactEntry>() {
+            result.updateEntry(new ContactEntryCallback() {
               public void onFailure(Throwable caught) {
                 fail("Revert Failed: " + caught.getMessage());
               }

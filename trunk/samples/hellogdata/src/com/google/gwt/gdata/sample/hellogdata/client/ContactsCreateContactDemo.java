@@ -21,8 +21,8 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.Email;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
+import com.google.gwt.gdata.client.contacts.ContactEntryCallback;
 import com.google.gwt.gdata.client.contacts.ContactsService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -99,7 +99,7 @@ public class ContactsCreateContactDemo extends GDataDemo {
     email.setPrimary(true);
     email.setRel(Email.REL_HOME);
     entry.setEmailAddresses(new Email[] { email });
-    service.insertEntry("http://www.google.com/m8/feeds/contacts/default/full", entry, new AsyncCallback<ContactEntry>() {
+    service.insertContactEntry("http://www.google.com/m8/feeds/contacts/default/full", entry, new ContactEntryCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Contacts account was found for the currently logged-in user")) {

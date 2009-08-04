@@ -20,8 +20,9 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.finance.FinanceService;
 import com.google.gwt.gdata.client.finance.PortfolioEntry;
+import com.google.gwt.gdata.client.finance.PortfolioEntryCallback;
 import com.google.gwt.gdata.client.finance.PortfolioFeed;
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.finance.PortfolioFeedCallback;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -95,7 +96,7 @@ public class FinanceRetrievePortfolioDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new AsyncCallback<PortfolioFeed>() {
+    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Finance account was found for the currently logged-in user")) {
@@ -118,7 +119,7 @@ public class FinanceRetrievePortfolioDemo extends GDataDemo {
   }
   public void getPortfolio(String portfolioId) {
     showStatus("Loading portfolio entry...", false);
-    service.getPortfolioEntry("http://finance.google.com/finance/feeds/default/portfolios/" + portfolioId, new AsyncCallback<PortfolioEntry>() {
+    service.getPortfolioEntry("http://finance.google.com/finance/feeds/default/portfolios/" + portfolioId, new PortfolioEntryCallback() {
       public void onFailure(Throwable caught) {
         showStatus("An error occurred while retrieving a portfolio entry, see details below:\n" + caught.getMessage(), true);
       }

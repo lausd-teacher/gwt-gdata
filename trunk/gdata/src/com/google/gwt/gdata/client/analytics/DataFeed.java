@@ -95,6 +95,16 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
   }-*/;
 
   /**
+   * Inserts a new data entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void insertDataEntry(DataEntry entry, DataEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+
+  /**
    * Sets the aggregates. This element is optional.
    * 
    * @param aggregates Aggregates.
