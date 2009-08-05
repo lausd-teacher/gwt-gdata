@@ -105,7 +105,7 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
         PortfolioEntry[] entries = result.getEntries();
         PortfolioEntry targetEntry = null;
         for (PortfolioEntry entry : entries) {
-          if (entry.getTitle().getText().startsWith("")) {
+          if (entry.getTitle().getText().startsWith("GWT-Finance-Client")) {
             targetEntry = entry;
             break;
           }
@@ -124,7 +124,7 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
     entry.getTitle().setText("GWT-Finance-Client: updated title");
     entry.updateEntry(new PortfolioEntryCallback() {
       public void onFailure(Throwable caught) {
-        showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + caught.getMessage(), true);
+        showStatus("An error occurred while updating a portfolio, see details below:\n" + caught.getMessage(), true);
       }
       public void onSuccess(PortfolioEntry result) {
         showStatus("Updated a portfolio.", false);

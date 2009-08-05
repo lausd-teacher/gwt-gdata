@@ -108,7 +108,6 @@ public class HelloGData implements EntryPoint, HistoryListener {
     GDataDemoInfo info = list.find(token);
     if (info == null) {
       showInfo();
-      Window.alert("Couldn't find " + token);
       return;
     }
     show(info, false);
@@ -235,6 +234,10 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(FinanceCreateTransactionDemo.init());
     list.addGDataDemo(FinanceUpdateTransactionDemo.init());
     list.addGDataDemo(FinanceDeleteTransactionDemo.init());
+    list.addGDataDemo(GoogleBaseRetrieveItemsDemo.init());
+    list.addGDataDemo(GoogleBaseCreateItemDemo.init());
+    list.addGDataDemo(GoogleBaseUpdateItemDemo.init());
+    list.addGDataDemo(GoogleBaseDeleteItemDemo.init());
   }
   
   private void showInfo() {
