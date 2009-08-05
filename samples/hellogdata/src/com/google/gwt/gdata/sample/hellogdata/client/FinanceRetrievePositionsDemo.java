@@ -18,6 +18,7 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.gdata.client.finance.FinanceService;
 import com.google.gwt.gdata.client.finance.PortfolioEntry;
 import com.google.gwt.gdata.client.finance.PortfolioFeed;
@@ -74,9 +75,15 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
   }
   public void getPositions(PortfolioEntry entry) {
     String portfolioId = entry.getId().getValue();
-    String portfolioFeedUri = "http://finance.google.com/finance/feeds/default/" +
+    JsArrayString match = regExpMatch("\\/(\\d+)$", portfolioId);
+    if (match.length() > 1) {
+      portfolioId = match.get(1);
+    } else {
+      showStatus("Error parsing the portfolio id.", true);
+    }
+    String positionsFeedUri = "http://finance.google.com/finance/feeds/default/" +
       "portfolios/" + portfolioId + "/positions";
-    service.getPositionFeed(portfolioFeedUri, new PositionFeedCallback() {
+    service.getPositionFeed(positionsFeedUri, new PositionFeedCallback() {
       public void onFailure(Throwable caught) {
         showStatus("An error occurred while retrieving the positions feed, see details below:\n" + caught.getMessage(), true);
       }
@@ -97,6 +104,10 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
+  public native JsArrayString regExpMatch(String regEx, String target) /*-{
+    var re = new RegExp();
+    return re.compile(regEx).exec(target);
+  }-*/;
   public void showData(PositionEntry[] entries) {
     mainPanel.clear();
     String[] labels = new String[] { "Title", "Shares" };
@@ -113,7 +124,7 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
       mainPanel.addCell(row);
       mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label("" + data.getShares()));
+      mainPanel.setWidget(row, 1, new Label("" + data.getShares()));
     }
   }
   public void showStatus(String message, boolean isError) {

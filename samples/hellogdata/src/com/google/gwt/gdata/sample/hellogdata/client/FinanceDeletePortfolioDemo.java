@@ -104,7 +104,7 @@ public class FinanceDeletePortfolioDemo extends GDataDemo {
         PortfolioEntry[] entries = result.getEntries();
         PortfolioEntry targetEntry = null;
         for (PortfolioEntry entry : entries) {
-          if (entry.getTitle().getText().startsWith("")) {
+          if (entry.getTitle().getText().startsWith("GWT-Finance-Client")) {
             targetEntry = entry;
             break;
           }

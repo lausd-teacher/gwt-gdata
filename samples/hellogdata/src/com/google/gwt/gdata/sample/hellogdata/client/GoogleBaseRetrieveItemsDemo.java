@@ -18,45 +18,46 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
-import com.google.gwt.gdata.client.finance.FinanceService;
-import com.google.gwt.gdata.client.finance.PortfolioEntry;
-import com.google.gwt.gdata.client.finance.PortfolioFeed;
-import com.google.gwt.gdata.client.finance.PortfolioFeedCallback;
+import com.google.gwt.gdata.client.gbase.GoogleBaseService;
+import com.google.gwt.gdata.client.gbase.ItemsEntry;
+import com.google.gwt.gdata.client.gbase.ItemsFeed;
+import com.google.gwt.gdata.client.gbase.ItemsFeedCallback;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example demonstrates how to retrieve a list of a user's portfolios.
+ * The following example demonstrates how to retrieve a list of a user's items.
  */
-public class FinanceRetrievePortfoliosDemo extends GDataDemo {
+public class GoogleBaseRetrieveItemsDemo extends GDataDemo {
 
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
       @Override
       public GDataDemo createInstance() {
-        return new FinanceRetrievePortfoliosDemo();
+        return new GoogleBaseRetrieveItemsDemo();
       }
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses the portfolio feed to retrieve a list of all of an " +
-          "authenticated user's portfolios. The title of each portfolio entry is printed.</p>\n";
+        return "<p>This sample code uses the items feed to retrieve a list of all of an " +
+          "authenticated user's items. The title of each item entry is printed.</p>\n";
       }
 
       @Override
       public String getName() {
-        return "Finance - Retrieving all Portfolios";
+        return "Google Base - Retrieving all Items";
       }
     };
   }
 
-  private FinanceService service;
+  private GoogleBaseService service;
   private FlexTable mainPanel;
-  private final String scope = "http://finance.google.com/finance/feeds/";
+  private final String scope = "http://www.google.com/base/feeds/";
 
-  public FinanceRetrievePortfoliosDemo() {
-    service = FinanceService.newInstance("HelloGData_Finance_RetrievePortfoliosDemo_v1.0");
+  public GoogleBaseRetrieveItemsDemo() {
+    service = GoogleBaseService.newInstance("HelloGData_GoogleBase_RetrieveItemsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     login();
@@ -65,12 +66,12 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       startDemo();
     } else {
-      showStatus("You are not logged on to Google Finance.", true);
+      showStatus("You are not logged on to Google Base.", true);
     }
   }
-  public void showData(PortfolioEntry[] entries) {
+  public void showData(ItemsEntry[] entries) {
     mainPanel.clear();
-    String[] labels = new String[] { "Title", "Id" };
+    String[] labels = new String[] { "Title", "Url", "Published" };
     mainPanel.insertRow(0);
     for (int i = 0; i < labels.length; i++) {
       mainPanel.addCell(0);
@@ -78,12 +79,19 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
       mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
     }
     for (int i = 0; i < entries.length; i++) {
-      PortfolioEntry entry = entries[i];
+      ItemsEntry entry = entries[i];
       int row = mainPanel.insertRow(i + 1);
       mainPanel.addCell(row);
       mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 1, new Label(entry.getId().getValue()));
+      if (entry.getHtmlLink() == null) {
+        mainPanel.setWidget(row, 1, new Label("Not available"));
+      } else {
+        String link = entry.getHtmlLink().getHref();
+        mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + "\" target=\"_blank\">" + link +  "</a>"));
+        mainPanel.addCell(row);
+        mainPanel.setWidget(row, 2, new Label(entry.getPublished().getValue().getDate().toString()));
+      }
     }
   }
   public void showStatus(String message, boolean isError) {
@@ -97,20 +105,20 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
     mainPanel.setWidget(0, 0, msg);
   }
   public void startDemo() {
-    showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
+    showStatus("Loading items feed...", false);
+    service.getItemsFeed("http://www.google.com/base/feeds/items", new ItemsFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
-        if (message.contains("No Finance account was found for the currently logged-in user")) {
-          showStatus("No Finance account was found for the currently logged-in user.", true);
+        if (message.contains("Terms of Service acceptance required")) {
+          showStatus("No Google Base account was found for the currently logged-in user.", true);
         } else {
-          showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + message, true);
+          showStatus("An error occurred while retrieving the items feed, see details below:\n" + message, true);
         }
       }
-      public void onSuccess(PortfolioFeed result) {
-        PortfolioEntry[] entries = result.getEntries();
+      public void onSuccess(ItemsFeed result) {
+        ItemsEntry[] entries = result.getEntries();
         if (entries.length == 0) {
-          showStatus("You have no portfolios.", false);
+          showStatus("You have no items.", false);
         } else {
           showData(entries);
         }

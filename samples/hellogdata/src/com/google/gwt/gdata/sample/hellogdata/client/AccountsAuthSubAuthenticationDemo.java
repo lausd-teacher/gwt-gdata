@@ -71,12 +71,12 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
   public void startDemo() {
     String[][] systems = new String[][] {
         new String[] { "Google Analytics", "https://www.google.com/analytics/feeds/", "http://code.google.com/apis/gdata/images/service_icons/analytics.gif", "http://code.google.com/apis/analytics/" },
-        new String[] { "Google Base", "http://www.google.com/base", "http://code.google.com/apis/gdata/images/service_icons/base.gif", "http://code.google.com/apis/base/" },
+        new String[] { "Google Base", "http://www.google.com/base/feeds/", "http://code.google.com/apis/gdata/images/service_icons/base.gif", "http://code.google.com/apis/base/" },
         new String[] { "Google Blogger", "http://www.blogger.com/feeds/", "http://code.google.com/apis/gdata/images/service_icons/blogger.gif", "http://code.google.com/apis/blogger/" },
         new String[] { "Google Calendar", "http://www.google.com/calendar/feeds/", "http://code.google.com/apis/gdata/images/service_icons/calendar.gif", "http://code.google.com/apis/calendar/" },
         new String[] { "Google Contacts", "http://www.google.com/m8/feeds/", "http://code.google.com/apis/gdata/images/service_icons/contacts.gif", "http://code.google.com/apis/contacts/" },
         new String[] { "Google Finance", "http://finance.google.com/finance/feeds/", "http://code.google.com/apis/gdata/images/service_icons/finance.gif", "http://code.google.com/apis/finance/" },
-        new String[] { "Google Maps", "http://maps.google.com/maps/feeds", "http://code.google.com/apis/gdata/images/service_icons/maps.gif", "http://code.google.com/apis/maps/documentation/mapsdata/" }
+        new String[] { "Google Maps", "http://maps.google.com/maps/feeds/", "http://code.google.com/apis/gdata/images/service_icons/maps.gif", "http://code.google.com/apis/maps/documentation/mapsdata/" }
     };
     for (int i = 0; i < systems.length; i++) {
       String[] sys = systems[i];
