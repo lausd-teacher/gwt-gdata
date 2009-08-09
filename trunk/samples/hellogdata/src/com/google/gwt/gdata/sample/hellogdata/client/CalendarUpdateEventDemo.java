@@ -134,7 +134,7 @@ public class CalendarUpdateEventDemo extends GDataDemo {
         } else {
           CalendarEventEntry eventEntry = entries[0];
           eventEntry.setTitle(Text.newInstance());
-          eventEntry.getTitle().setText("GWT-Calendar-Client: update event");
+          eventEntry.getTitle().setText("GWT-Calendar-Client - updated event");
           showStatus("Updating a Calendar event...", false);
           eventEntry.updateEntry(new CalendarEventEntryCallback() {
             public void onFailure(Throwable caught) {

@@ -19,11 +19,11 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.atom.Text;
-import com.google.gwt.gdata.client.gbase.GoogleBaseService;
-import com.google.gwt.gdata.client.gbase.ItemsEntry;
-import com.google.gwt.gdata.client.gbase.ItemsEntryCallback;
-import com.google.gwt.gdata.client.gbase.ItemsFeed;
-import com.google.gwt.gdata.client.gbase.ItemsFeedCallback;
+import com.google.gwt.gdata.client.maps.MapEntry;
+import com.google.gwt.gdata.client.maps.MapEntryCallback;
+import com.google.gwt.gdata.client.maps.MapFeed;
+import com.google.gwt.gdata.client.maps.MapFeedCallback;
+import com.google.gwt.gdata.client.maps.MapsService;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -31,46 +31,45 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * The following example demonstrates how to update an item.
+ * The following example demonstrates how to update a map.
  */
-public class GoogleBaseUpdateItemDemo extends GDataDemo {
+public class MapsUpdateMapDemo extends GDataDemo {
 
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
       @Override
       public GDataDemo createInstance() {
-        return new GoogleBaseUpdateItemDemo();
+        return new MapsUpdateMapDemo();
       }
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update an existing item of the " +
-          "authenticated user. It retrieves a list of the user's items, and updates " +
-          "the first item with a title that starts with 'GWT-GoogleBase-Client' with a " +
-          "new title and target country.</p>\n";
+        return "<p>This sample code demonstrates how to update an existing map of the " +
+          "authenticated user. It retrieves a list of the user's maps, and updates " +
+          "the first map with a title that starts with 'GWT-Maps-Client' with a new title.</p>\n";
       }
 
       @Override
       public String getName() {
-        return "Google Base - Updating an Item";
+        return "Maps - Updating a map";
       }
     };
   }
 
-  private GoogleBaseService service;
+  private MapsService service;
   private FlexTable mainPanel;
-  private final String scope = "http://www.google.com/base/feeds/";
+  private final String scope = "http://maps.google.com/maps/feeds/maps/";
 
-  public GoogleBaseUpdateItemDemo() {
-    service = GoogleBaseService.newInstance("HelloGData_GoogleBase_UpdateItemDemo_v1.0");
+  public MapsUpdateMapDemo() {
+    service = MapsService.newInstance("HelloGData_Maps_UpdateMapDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     login();
   }
   public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Update an item");
+      Button startButton = new Button("Update a map");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
           startDemo();
@@ -78,7 +77,7 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
       });
       mainPanel.setWidget(0, 0, startButton);
     } else {
-      showStatus("You are not logged on to Google Base.", true);
+      showStatus("You are not logged on to Google Maps.", true);
     }
   }
   public void showStatus(String message, boolean isError) {
@@ -92,44 +91,43 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
     mainPanel.setWidget(0, 0, msg);
   }
   public void startDemo() {
-    showStatus("Loading items feed...", false);
-    service.getItemsFeed("http://www.google.com/base/feeds/items/", new ItemsFeedCallback() {
+    showStatus("Loading maps feed...", false);
+    service.getMapFeed("http://maps.google.com/maps/feeds/maps/default/full", new MapFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
-        if (message.contains("Terms of Service acceptance required")) {
-          showStatus("No Google Base account was found for the currently logged-in user.", true);
+        if (message.contains("No Maps account was found for the currently logged-in user")) {
+          showStatus("No Maps account was found for the currently logged-in user.", true);
         } else {
-          showStatus("An error occurred while retrieving the items feed, see details below:\n" + message, true);
+          showStatus("An error occurred while retrieving the maps feed, see details below:\n" + message, true);
         }
       }
-      public void onSuccess(ItemsFeed result) {
-        ItemsEntry[] entries = result.getEntries();
-        ItemsEntry targetEntry = null;
-        for (ItemsEntry entry : entries) {
-          if (entry.getTitle().getText().startsWith("GWT-GoogleBase-Client")) {
+      public void onSuccess(MapFeed result) {
+        MapEntry[] entries = result.getEntries();
+        MapEntry targetEntry = null;
+        for (MapEntry entry : entries) {
+          if (entry.getTitle().getText().startsWith("GWT-Maps-Client")) {
             targetEntry = entry;
             break;
           }
         }
         if (targetEntry == null) {
-          showStatus("No item found that contains 'GWT-GoogleBase-Client' in the title.", false);
+          showStatus("No map found that contains 'GWT-Maps-Client' in the title.", false);
         } else {
-          updateItem(targetEntry);
+          updateMap(targetEntry);
         }
       }
     });
   }
-  public void updateItem(ItemsEntry entry) {
-    showStatus("Updating item...", false);
+  public void updateMap(MapEntry entry) {
+    showStatus("Updating map...", false);
     entry.setTitle(Text.newInstance());
-    entry.getTitle().setText("GWT-GoogleBase-Client - updated item");
-    entry.getAttributes().get("target_country").setValue("UK");
-    entry.updateEntry(new ItemsEntryCallback() {
+    entry.getTitle().setText("GWT-Maps-Client - updated map");
+    entry.updateEntry(new MapEntryCallback() {
       public void onFailure(Throwable caught) {
-        showStatus("An error occurred while updating an item, see details below:\n" + caught.getMessage(), true);
+        showStatus("An error occurred while updating a map, see details below:\n" + caught.getMessage(), true);
       }
-      public void onSuccess(ItemsEntry result) {
-        showStatus("Updated an item.", false);
+      public void onSuccess(MapEntry result) {
+        showStatus("Updated a map.", false);
       }
     });
   }

@@ -115,7 +115,7 @@ public class ContactsUpdateContactGroupDemo extends GDataDemo {
           showStatus("No contacts were found with a title starting with 'GWT-Contacts-Client'.", false);
         } else {
           targetEntry.setTitle(Text.newInstance());
-          targetEntry.getTitle().setText("GWT-Contacts-Client: Update Group");
+          targetEntry.getTitle().setText("GWT-Contacts-Client - updated group");
           showStatus("Updating a contact group...", false);
           targetEntry.updateEntry(new ContactEntryCallback() {
             public void onFailure(Throwable caught) {

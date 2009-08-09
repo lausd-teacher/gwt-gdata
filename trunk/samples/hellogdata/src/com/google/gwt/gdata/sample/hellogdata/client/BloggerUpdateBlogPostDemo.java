@@ -145,7 +145,7 @@ public class BloggerUpdateBlogPostDemo extends GDataDemo {
   }
   public void updatePost(PostEntry postEntry) {
     showStatus("Updating blog post entry...", false);
-    postEntry.getTitle().setText("GWT-Blogger-Client: updated title");
+    postEntry.getTitle().setText("GWT-Blogger-Client - updated post");
     postEntry.setContent(Text.newInstance());
     postEntry.getContent().setText("My updated post");
     Category[] categories = postEntry.getCategories();

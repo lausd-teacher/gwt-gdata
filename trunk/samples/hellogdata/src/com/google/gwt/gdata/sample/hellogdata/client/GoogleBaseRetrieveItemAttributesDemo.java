@@ -18,42 +18,37 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
-import com.google.gwt.gdata.client.atom.Text;
+import com.google.gwt.gdata.client.gbase.Attribute;
 import com.google.gwt.gdata.client.gbase.GoogleBaseService;
 import com.google.gwt.gdata.client.gbase.ItemsEntry;
-import com.google.gwt.gdata.client.gbase.ItemsEntryCallback;
 import com.google.gwt.gdata.client.gbase.ItemsFeed;
 import com.google.gwt.gdata.client.gbase.ItemsFeedCallback;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
+import com.google.gwt.gdata.client.impl.Map;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
- * The following example demonstrates how to update an item.
+ * The following example demonstrates how to retrieve a list of an item's attributes.
  */
-public class GoogleBaseUpdateItemDemo extends GDataDemo {
+public class GoogleBaseRetrieveItemAttributesDemo extends GDataDemo {
 
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
       @Override
       public GDataDemo createInstance() {
-        return new GoogleBaseUpdateItemDemo();
+        return new GoogleBaseRetrieveItemAttributesDemo();
       }
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update an existing item of the " +
-          "authenticated user. It retrieves a list of the user's items, and updates " +
-          "the first item with a title that starts with 'GWT-GoogleBase-Client' with a " +
-          "new title and target country.</p>\n";
+        return "<p>This sample code uses the items feed to find an item with a " +
+          "title starting with 'GWT-GoogleBase-Client' and displays its attributes.</p>\n";
       }
 
       @Override
       public String getName() {
-        return "Google Base - Updating an Item";
+        return "Google Base - Retrieving item attributes";
       }
     };
   }
@@ -62,23 +57,39 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/base/feeds/";
 
-  public GoogleBaseUpdateItemDemo() {
-    service = GoogleBaseService.newInstance("HelloGData_GoogleBase_UpdateItemDemo_v1.0");
+  public GoogleBaseRetrieveItemAttributesDemo() {
+    service = GoogleBaseService.newInstance("HelloGData_GoogleBase_RetrieveItemAttributesDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     login();
   }
   public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Update an item");
-      startButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
-          startDemo();
-        }
-      });
-      mainPanel.setWidget(0, 0, startButton);
+      startDemo();
     } else {
       showStatus("You are not logged on to Google Base.", true);
+    }
+  }
+  public void showData(Map<Attribute> attributes) {
+    mainPanel.clear();
+    String[] labels = new String[] { "Name", "Type", "Value" };
+    mainPanel.insertRow(0);
+    for (int i = 0; i < labels.length; i++) {
+      mainPanel.addCell(0);
+      mainPanel.setWidget(0, i, new Label(labels[i]));
+      mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
+    }
+    String[] attributeNames = attributes.keys();
+    for (int i = 0; i < attributeNames.length; i++) {
+      String attributeName = attributeNames[i];
+      Attribute attribute = attributes.get(attributeName);
+      int row = mainPanel.insertRow(i + 1);
+      mainPanel.addCell(row);
+      mainPanel.setWidget(row, 0, new Label(attributeName));
+      mainPanel.addCell(row);
+      mainPanel.setWidget(row, 1, new Label(attribute.getType()));
+      mainPanel.addCell(row);
+      mainPanel.setWidget(row, 2, new Label(attribute.getValue()));
     }
   }
   public void showStatus(String message, boolean isError) {
@@ -93,7 +104,7 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
   }
   public void startDemo() {
     showStatus("Loading items feed...", false);
-    service.getItemsFeed("http://www.google.com/base/feeds/items/", new ItemsFeedCallback() {
+    service.getItemsFeed("http://www.google.com/base/feeds/items", new ItemsFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("Terms of Service acceptance required")) {
@@ -104,32 +115,23 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
       }
       public void onSuccess(ItemsFeed result) {
         ItemsEntry[] entries = result.getEntries();
-        ItemsEntry targetEntry = null;
-        for (ItemsEntry entry : entries) {
-          if (entry.getTitle().getText().startsWith("GWT-GoogleBase-Client")) {
-            targetEntry = entry;
-            break;
+        if (entries.length == 0) {
+          showStatus("You have no items.", false);
+        } else {
+          ItemsEntry targetEntry = null;
+          for (ItemsEntry entry : entries) {
+            String title = entry.getTitle().getText();
+            if (title.startsWith("GWT-GoogleBase-Client")) {
+              targetEntry = entry;
+              break;
+            }
+          }
+          if (targetEntry == null) {
+            showStatus("No item found that contains 'GWT-GoogleBase-Client' in the title.", false);
+          } else {
+            showData(targetEntry.getAttributes());
           }
         }
-        if (targetEntry == null) {
-          showStatus("No item found that contains 'GWT-GoogleBase-Client' in the title.", false);
-        } else {
-          updateItem(targetEntry);
-        }
-      }
-    });
-  }
-  public void updateItem(ItemsEntry entry) {
-    showStatus("Updating item...", false);
-    entry.setTitle(Text.newInstance());
-    entry.getTitle().setText("GWT-GoogleBase-Client - updated item");
-    entry.getAttributes().get("target_country").setValue("UK");
-    entry.updateEntry(new ItemsEntryCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while updating an item, see details below:\n" + caught.getMessage(), true);
-      }
-      public void onSuccess(ItemsEntry result) {
-        showStatus("Updated an item.", false);
       }
     });
   }
