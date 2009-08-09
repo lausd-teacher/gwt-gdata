@@ -121,7 +121,7 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
   public void updatePortfolio(PortfolioEntry entry) {
     showStatus("Updating portfolio...", false);
     entry.setTitle(Text.newInstance());
-    entry.getTitle().setText("GWT-Finance-Client: updated title");
+    entry.getTitle().setText("GWT-Finance-Client - updated portfolio");
     entry.updateEntry(new PortfolioEntryCallback() {
       public void onFailure(Throwable caught) {
         showStatus("An error occurred while updating a portfolio, see details below:\n" + caught.getMessage(), true);

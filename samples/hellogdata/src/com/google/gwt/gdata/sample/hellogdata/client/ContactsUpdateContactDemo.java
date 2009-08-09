@@ -125,7 +125,7 @@ public class ContactsUpdateContactDemo extends GDataDemo {
           showStatus("No contacts were found that were modified today and contained 'GWT-Contacts-Client' in the title.", false);
         } else {
           targetEntry.setTitle(Text.newInstance());
-          targetEntry.getTitle().setText("GWT-Contacts-Client: update event");
+          targetEntry.getTitle().setText("GWT-Contacts-Client - updated contact");
           PhoneNumber phoneNumber = PhoneNumber.newInstance();
           phoneNumber.setValue("123-456-7890");
           phoneNumber.setRel(PhoneNumber.REL_WORK);

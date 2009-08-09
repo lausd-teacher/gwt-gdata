@@ -238,6 +238,17 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(GoogleBaseCreateItemDemo.init());
     list.addGDataDemo(GoogleBaseUpdateItemDemo.init());
     list.addGDataDemo(GoogleBaseDeleteItemDemo.init());
+    list.addGDataDemo(GoogleBaseRetrieveItemAttributesDemo.init());
+    list.addGDataDemo(GoogleBaseRetrieveItemTypeAttributesDemo.init());
+    list.addGDataDemo(GoogleBaseQuerySnippetsForCamerasDemo.init());
+    list.addGDataDemo(GoogleBaseQuerySnippetsForJobsDemo.init());
+    list.addGDataDemo(GoogleBaseQuerySnippetsForConvertiblesDemo.init());
+    list.addGDataDemo(GoogleBaseQuerySnippetsForRecipesDemo.init());
+    list.addGDataDemo(GoogleBaseQuerySnippetsForHousingDemo.init());
+    list.addGDataDemo(MapsRetrieveMapsDemo.init());
+    list.addGDataDemo(MapsCreateMapDemo.init());
+    list.addGDataDemo(MapsUpdateMapDemo.init());
+    list.addGDataDemo(MapsDeleteMapDemo.init());
   }
   
   private void showInfo() {

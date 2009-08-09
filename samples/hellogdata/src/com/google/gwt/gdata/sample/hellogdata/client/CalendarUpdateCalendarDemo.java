@@ -118,7 +118,7 @@ public class CalendarUpdateCalendarDemo extends GDataDemo {
             showStatus("Did not find a calendar entry whose title starts with the prefix 'GWT-Calendar-Client'.", false);
           } else {
             calendarEntry.setTitle(Text.newInstance());
-            calendarEntry.getTitle().setText("GWT-Calendar-Client: update calendar");
+            calendarEntry.getTitle().setText("GWT-Calendar-Client - updated calendar");
             showStatus("Updating calendar...", false);
             calendarEntry.updateEntry(new CalendarEntryCallback() {
               public void onFailure(Throwable caught) {
