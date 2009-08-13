@@ -95,19 +95,6 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this command.
-   * @return current representation of the feed.
-   */
-  public final native Feed<E> getSelf(AsyncCallback<Feed<E>> callback) /*-{
-    return this.getSelf(
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
-
-  /**
    * Returns the link that provides the URI of the feed or entry.
    * 
    * @return Link that provides the URI of the feed or entry.
@@ -162,6 +149,18 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   }-*/;
 
   /**
+   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  protected final native <F extends Feed<E>> void get(AsyncCallback<F> callback) /*-{
+    return this.getSelf(
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+    );
+  }-*/;
+
+  /**
    * Inserts a new entry into the feed.
    * 
    * @param entry Entry to insert.
@@ -170,7 +169,7 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   protected final native void insertEntry(E entry, AsyncCallback<E> callback) /*-{
     return this.insertEntry(
       entry,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
     );
   }-*/;

@@ -33,6 +33,15 @@ public class PortfolioFeed extends com.google.gwt.gdata.client.Feed<PortfolioEnt
   protected PortfolioFeed() { }
 
   /**
+   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void getSelf(PortfolioFeedCallback callback) {
+    this.get(callback);
+  }
+
+  /**
    * Inserts a new portfolio entry into the feed.
    * 
    * @param entry Entry to insert.

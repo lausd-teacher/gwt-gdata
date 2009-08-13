@@ -86,6 +86,15 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
   }-*/;
 
   /**
+   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void getSelf(DataFeedCallback callback) {
+    this.get(callback);
+  }
+
+  /**
    * Returns the start date. This element is required.
    * 
    * @return Start date.

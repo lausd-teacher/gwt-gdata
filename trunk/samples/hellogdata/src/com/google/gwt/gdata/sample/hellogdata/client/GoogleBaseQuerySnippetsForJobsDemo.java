@@ -16,8 +16,6 @@
 
 package com.google.gwt.gdata.sample.hellogdata.client;
 
-import com.google.gwt.accounts.client.AuthSubStatus;
-import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.gbase.GoogleBaseService;
 import com.google.gwt.gdata.client.gbase.SnippetsEntry;
 import com.google.gwt.gdata.client.gbase.SnippetsFeed;
@@ -33,6 +31,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class GoogleBaseQuerySnippetsForJobsDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -56,22 +60,51 @@ public class GoogleBaseQuerySnippetsForJobsDemo extends GDataDemo {
 
   private GoogleBaseService service;
   private FlexTable mainPanel;
-  private final String scope = "http://www.google.com/base/feeds/";
 
+  /**
+   * Setup the Google Base service and create the main content panel.
+   * Start the demo by querying Google Base snippets.
+   */
   public GoogleBaseQuerySnippetsForJobsDemo() {
     service = GoogleBaseService.newInstance("HelloGData_GoogleBase_QuerySnippetsForJobsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
+    querySnippets();
   }
-  public void login() {
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
-    } else {
-      showStatus("You are not logged on to Google Base.", true);
-    }
+  
+  private void querySnippets() {
+    showStatus("Loading snippets feed...", false);
+    SnippetsQuery query = SnippetsQuery.newInstance("http://www.google.com/base/feeds/snippets/");
+    query.setMaxResults(25);
+    query.setBq("[employer: Google][job type:full-time][job function:Marketing]");
+    service.getSnippetsFeed(query, new SnippetsFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("Terms of Service acceptance required")) {
+          showStatus("No Google Base account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the snippets feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(SnippetsFeed result) {
+        SnippetsEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("No snippets matched the search criteria.", false);
+        } else {
+          showData(entries);
+        }
+      }
+    });
   }
-  public void showData(SnippetsEntry[] snippets) {
+
+  /**
+  * Displays a set of Google Base snippet entries in a tabular 
+  * fashion with the help of a GWT FlexTable widget. The data fields 
+  * Name, Type and Value are displayed.
+  * 
+  * @param entries The Google Base snippet entries to display.
+  */
+  private void showData(SnippetsEntry[] snippets) {
     mainPanel.clear();
     String[] labels = new String[] { "Name", "Type", "Value" };
     mainPanel.insertRow(0);
@@ -96,7 +129,14 @@ public class GoogleBaseQuerySnippetsForJobsDemo extends GDataDemo {
       mainPanel.setWidget(row, 2, new Label(snippet.getPublished().getValue().getDate().toString()));
     }
   }
-  public void showStatus(String message, boolean isError) {
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -105,29 +145,5 @@ public class GoogleBaseQuerySnippetsForJobsDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading snippets feed...", false);
-    SnippetsQuery query = SnippetsQuery.newInstance("http://www.google.com/base/feeds/snippets/");
-    query.setMaxResults(25);
-    query.setBq("[employer: Google][job type:full-time][job function:Marketing]");
-    service.getSnippetsFeed(query, new SnippetsFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("Terms of Service acceptance required")) {
-          showStatus("No Google Base account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the snippets feed, see details below:\n" + message, true);
-        }
-      }
-      public void onSuccess(SnippetsFeed result) {
-        SnippetsEntry[] entries = result.getEntries();
-        if (entries.length == 0) {
-          showStatus("No snippets matched the search criteria.", false);
-        } else {
-          showData(entries);
-        }
-      }
-    });
   }
 }

@@ -35,6 +35,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class FinanceUpdatePortfolioDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -52,7 +58,7 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Finance - Updating a Portfolio";
+        return "Finance - Updating a portfolio";
       }
     };
   }
@@ -61,18 +67,20 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://finance.google.com/finance/feeds/";
 
+  /**
+   * Setup the Finance service and create the main content panel.
+   * If the user is not logged on to Finance display a message,
+   * otherwise start the demo by retrieving the user's portfolios.
+   */
   public FinanceUpdatePortfolioDemo() {
     service = FinanceService.newInstance("HelloGData_Finance_UpdatePortfolioDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Update a portfolio");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          getPortfolios();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -80,17 +88,8 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
+  
+  private void getPortfolios() {
     showStatus("Loading portfolios feed...", false);
     service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
       public void onFailure(Throwable caught) {
@@ -103,22 +102,40 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
-        PortfolioEntry targetEntry = null;
+        PortfolioEntry targetPortfolio = null;
         for (PortfolioEntry entry : entries) {
           if (entry.getTitle().getText().startsWith("GWT-Finance-Client")) {
-            targetEntry = entry;
+            targetPortfolio = entry;
             break;
           }
         }
-        if (targetEntry == null) {
+        if (targetPortfolio == null) {
           showStatus("No portfolio found that contains 'GWT-Finance-Client' in the title.", false);
         } else {
-          updatePortfolio(targetEntry);
+          updatePortfolio(targetPortfolio);
         }
       }
     });
   }
-  public void updatePortfolio(PortfolioEntry entry) {
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
+  }
+  
+  private void updatePortfolio(PortfolioEntry entry) {
     showStatus("Updating portfolio...", false);
     entry.setTitle(Text.newInstance());
     entry.getTitle().setText("GWT-Finance-Client - updated portfolio");

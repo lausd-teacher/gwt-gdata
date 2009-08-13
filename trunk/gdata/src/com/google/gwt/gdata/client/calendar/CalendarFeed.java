@@ -33,6 +33,15 @@ public class CalendarFeed extends com.google.gwt.gdata.client.Feed<CalendarEntry
   protected CalendarFeed() { }
 
   /**
+   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void getSelf(CalendarFeedCallback callback) {
+    this.get(callback);
+  }
+
+  /**
    * Inserts a new calendar entry into the feed.
    * 
    * @param entry Entry to insert.

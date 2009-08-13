@@ -34,6 +34,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class FinanceCreatePortfolioDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -51,7 +57,7 @@ public class FinanceCreatePortfolioDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Finance - Creating a Portfolio";
+        return "Finance - Creating a portfolio";
       }
     };
   }
@@ -60,18 +66,20 @@ public class FinanceCreatePortfolioDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://finance.google.com/finance/feeds/";
 
-  public FinanceCreatePortfolioDemo() {
+  /**
+   * Setup the Finance service and create the main content panel.
+   * If the user is not logged on to Finance display a message,
+   * otherwise start the demo by creating a portfolio.
+   */
+  private FinanceCreatePortfolioDemo() {
     service = FinanceService.newInstance("HelloGData_Finance_CreatePortfolioDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a portfolio");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          createPortfolio();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -79,17 +87,8 @@ public class FinanceCreatePortfolioDemo extends GDataDemo {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
+  
+  private void createPortfolio() {
     showStatus("Creating portfolio...", false);
     PortfolioEntry entry = PortfolioEntry.newInstance();
     entry.setTitle(Text.newInstance());
@@ -110,5 +109,22 @@ public class FinanceCreatePortfolioDemo extends GDataDemo {
         showStatus("Created a portfolio.", false);
       }
     });
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

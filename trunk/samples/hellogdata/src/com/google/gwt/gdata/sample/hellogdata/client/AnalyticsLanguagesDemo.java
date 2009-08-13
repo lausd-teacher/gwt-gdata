@@ -34,6 +34,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class AnalyticsLanguagesDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -45,14 +51,14 @@ public class AnalyticsLanguagesDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample demonstrates how to get " +
-        "the top browser languages in the United States.</p>" +
-        "<div><strong>Note:</strong>if you have no visitors to your site from the " +
-        "United States, you will see no data.</div>\n";
+          "the top browser languages in the United States.</p>" +
+          "<div><strong>Note:</strong>if you have no visitors to your site from the " +
+          "United States, you will see no data.</div>\n";
       }
 
       @Override
       public String getName() {
-        return "Analytics - Languages By Country";
+        return "Analytics - Languages by country";
       }
     };
   }
@@ -61,20 +67,74 @@ public class AnalyticsLanguagesDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "https://www.google.com/analytics/feeds/";
 
+  /**
+   * Setup the Analytics service and create the main content panel.
+   * If the user is not logged on to Analytics display a message,
+   * otherwise start the demo by retrieving the Analytics accounts.
+   */
   public AnalyticsLanguagesDemo() {
     service = AnalyticsService.newInstance("HelloGData_Analytics_LanguagesDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
+      getAccounts();
     } else {
       showStatus("You are not logged on to Google Analytics.", true);
     }
   }
-  public void showData(DataEntry[] entries) {
+  
+  private void getAccounts() {
+    showStatus("Loading Analytics accounts feed...", false);
+    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AccountFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("No Analytics account was found for the currently logged-in user")) {
+          showStatus("No Analytics account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the Analytics Accounts feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(AccountFeed result) {
+        AccountEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("You have no Analytics accounts.", false);
+        } else {
+          AccountEntry targetEntry = entries[0];
+          getData(targetEntry.getTableId().getValue());
+        }
+      }
+    });
+  }
+  
+  private void getData(String tableId) {
+    String dataFeedUri = "https://www.google.com/analytics/feeds/data" +
+      "?start-date=2009-07-01" +
+      "&end-date=2009-07-31" +
+      "&dimensions=ga:country,ga:language" +
+      "&metrics=ga:visits" +
+      "&sort=ga:country,-ga:visits" +
+      "&max-results=30" +
+      "&filters=" + URL.encodeComponent("ga:country==United States") +
+      "&ids=" + tableId;
+    showStatus("Loading data feed...", false);
+    service.getDataFeed(dataFeedUri, new DataFeedCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while retrieving the Analytics Data feed, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(DataFeed result) {
+        showData(result.getEntries());
+      }
+    });
+  }
+  
+   /**
+   * Displays a set of Analytics data entries in a tabular fashion with
+   * the help of a GWT FlexTable widget. The data fields Country, Language 
+   * and Visits are displayed.
+   * 
+   * @param entries The Analytics data entries to display.
+   */
+  private void showData(DataEntry[] entries) {
     mainPanel.clear();
     String[] labels = new String[] { "Country", "Language", "Visits" };
     mainPanel.insertRow(0);
@@ -94,7 +154,14 @@ public class AnalyticsLanguagesDemo extends GDataDemo {
       mainPanel.setWidget(row, 2, new Label(new Double(entry.getNumericValueOf("ga:visits")).toString()));
     }
   }
-  public void showStatus(String message, boolean isError) {
+  
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -103,44 +170,5 @@ public class AnalyticsLanguagesDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading Analytics accounts feed...", false);
-    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AccountFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Analytics account was found for the currently logged-in user")) {
-          showStatus("No Analytics account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Analytics Accounts feed, see details below:\n" + message, true);
-        }
-      }
-      public void onSuccess(AccountFeed result) {
-        AccountEntry[] entries = result.getEntries();
-        if (entries.length == 0) {
-          showStatus("You have no Analytics accounts.", false);
-        } else {
-          String tableId = entries[0].getTableId().getValue();
-          String dataFeedUri = "https://www.google.com/analytics/feeds/data" +
-            "?start-date=2009-07-01" +
-            "&end-date=2009-07-31" +
-            "&dimensions=ga:country,ga:language" +
-            "&metrics=ga:visits" +
-            "&sort=ga:country,-ga:visits" +
-            "&max-results=30" +
-            "&filters=" + URL.encodeComponent("ga:country==United States") +
-            "&ids=" + tableId;
-          showStatus("Loading data feed...", false);
-          service.getDataFeed(dataFeedUri, new DataFeedCallback() {
-            public void onFailure(Throwable caught) {
-              showStatus("An error occurred while retrieving the Analytics Data feed, see details below:\n" + caught.getMessage(), true);
-            }
-            public void onSuccess(DataFeed result) {
-              showData(result.getEntries());
-            }
-          });
-        }
-      }
-    });
   }
 }

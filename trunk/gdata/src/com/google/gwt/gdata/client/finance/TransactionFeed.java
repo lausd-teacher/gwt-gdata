@@ -33,6 +33,15 @@ public class TransactionFeed extends com.google.gwt.gdata.client.Feed<Transactio
   protected TransactionFeed() { }
 
   /**
+   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void getSelf(TransactionFeedCallback callback) {
+    this.get(callback);
+  }
+
+  /**
    * Inserts a new transaction entry into the feed.
    * 
    * @param entry Entry to insert.

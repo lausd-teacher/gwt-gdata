@@ -36,8 +36,5 @@ public class RecurrenceExceptionTest extends GWTTestCase {
     boolean specialized = true;
     obj.setSpecialized(specialized);
     assertSame("specialized", obj.getSpecialized(), specialized);
-    RecurrenceExceptionEntryLink entrylink = RecurrenceExceptionEntryLink.newInstance();
-    obj.setEntryLink(entrylink);
-    assertSame("entrylink", obj.getEntryLink(), entrylink);
   }
 }

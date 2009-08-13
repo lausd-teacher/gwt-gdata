@@ -34,6 +34,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class CalendarDeleteCalendarDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -61,18 +67,20 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/calendar/feeds/";
 
+  /**
+   * Setup the Calendar service and create the main content panel.
+   * If the user is not logged on to Calendar display a message,
+   * otherwise start the demo by retrieving the user's calendars.
+   */
   public CalendarDeleteCalendarDemo() {
     service = CalendarService.newInstance("HelloGData_Calendar_DeleteCalendarDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a calendar");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          getCalendars();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -80,17 +88,20 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
+  
+  private void deleteCalendar(String calendarEntryUri) {
+    showStatus("Deleting calendar...", false);
+    service.deleteCalendarEntry(calendarEntryUri, new CalendarEntryCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while deleting a calendar, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(CalendarEntry result) {
+        showStatus("Deleted a calendar.", false);
+      }
+    });
   }
-  public void startDemo() {
+  
+  private void getCalendars() {
     showStatus("Loading calendars...", false);
     service.getOwnCalendarsFeed("http://www.google.com/calendar/feeds/default/owncalendars/full", new CalendarFeedCallback() {
       public void onFailure(Throwable caught) {
@@ -106,29 +117,39 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
         if (entries.length == 0) {
           showStatus("You have no calendars.", false);
         } else {
-          CalendarEntry calendarEntry = null;
+          CalendarEntry targetCalendar = null;
           for (CalendarEntry entry : entries) {
             String title = entry.getTitle().getText();
             if (title.startsWith("GWT-Calendar-Client")) {
-              calendarEntry = entry;
+              targetCalendar = entry;
               break;
             }
           }
-          if (calendarEntry == null) {
+          if (targetCalendar == null) {
             showStatus("Did not find a calendar entry whose title starts with the prefix 'GWT-Calendar-Client'.", false);
           } else {
-            showStatus("Deleting calendar...", false);
-            calendarEntry.deleteEntry(new CalendarEntryCallback() {
-              public void onFailure(Throwable caught) {
-                showStatus("An error occurred while deleting a calendar, see details below:\n" + caught.getMessage(), true);
-              }
-              public void onSuccess(CalendarEntry result) {
-                showStatus("Deleted a calendar.", false);
-              }
-            });
+            String calendarEntryUri = targetCalendar.getSelfLink().getHref();
+            deleteCalendar(calendarEntryUri);
           }
         }
       }
     });
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

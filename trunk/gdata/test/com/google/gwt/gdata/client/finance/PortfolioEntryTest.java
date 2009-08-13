@@ -33,9 +33,9 @@ public class PortfolioEntryTest extends GWTTestCase {
 
   public void testProperties() {
     PortfolioEntry obj = PortfolioEntry.newInstance();
-    PortfolioFeedLink feedlink = PortfolioFeedLink.newInstance();
-    obj.setFeedLink(feedlink);
-    assertSame("feedlink", obj.getFeedLink(), feedlink);
+    PositionFeedLink feedlink = PositionFeedLink.newInstance();
+    obj.setPositionFeedLink(feedlink);
+    assertSame("feedlink", obj.getPositionFeedLink(), feedlink);
     PortfolioData portfoliodata = PortfolioData.newInstance();
     obj.setPortfolioData(portfoliodata);
     assertSame("portfoliodata", obj.getPortfolioData(), portfoliodata);

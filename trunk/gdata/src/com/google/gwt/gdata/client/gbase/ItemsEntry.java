@@ -16,9 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.gdata.client.FeedLink;
-import com.google.gwt.gdata.client.impl.Map;
-
 /**
  * Describes an entry in the feed of a user's private items.
  */
@@ -48,18 +45,8 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @return Attributes.
    */
-  public final native Map<Attribute> getAttributes() /*-{
+  public final native MapAttribute getAttributes() /*-{
     return this.getAttributes();
-  }-*/;
-
-  /**
-   * Returns the nested feed link. This element is optional.
-   * 
-   * @return Nested feed link.
-   */
-  @SuppressWarnings("unchecked")
-  public final native FeedLink getFeedLink() /*-{
-    return this.getFeedLink();
   }-*/;
 
   /**
@@ -69,6 +56,15 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native com.google.gwt.gdata.client.atom.Link getHtmlLink() /*-{
     return this.getHtmlLink();
+  }-*/;
+
+  /**
+   * Returns the nested feed link. This element is optional.
+   * 
+   * @return Nested feed link.
+   */
+  public final native MediaFeedLink getMediaFeedLink() /*-{
+    return this.getFeedLink();
   }-*/;
 
   /**
@@ -96,7 +92,7 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param attributes Attributes, where each attribute is added using setAttribute().
    */
-  public final native void setAttributes(Map<Attribute> attributes) /*-{
+  public final native void setAttributes(MapAttribute attributes) /*-{
     this.setAttributes(attributes);
   }-*/;
 
@@ -105,8 +101,7 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param feedLink Nested feed link.
    */
-  @SuppressWarnings("unchecked")
-  public final native void setFeedLink(FeedLink feedLink) /*-{
+  public final native void setMediaFeedLink(MediaFeedLink feedLink) /*-{
     this.setFeedLink(feedLink);
   }-*/;
 

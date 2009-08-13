@@ -21,12 +21,13 @@ import com.google.gwt.gdata.client.RecurrenceExceptionEntryLink;
 /**
  * Describes an entry link used by a Calendar recurrence exception.
  */
-public class CalendarRecurrenceExceptionEntryLink extends RecurrenceExceptionEntryLink {
+public class CalendarRecurrenceExceptionEntryLink extends RecurrenceExceptionEntryLink<CalendarRecurrenceExceptionEntry> {
 
   /**
    * Constructs a Calendar recurrence exception entry link.
    * @return A CalendarRecurrenceExceptionEntryLink object.
    */
+  @SuppressWarnings("unchecked")
   public static native CalendarRecurrenceExceptionEntryLink newInstance() /*-{
     return new $wnd.google.gdata.calendar.CalendarRecurrenceExceptionEntryLink();
   }-*/;

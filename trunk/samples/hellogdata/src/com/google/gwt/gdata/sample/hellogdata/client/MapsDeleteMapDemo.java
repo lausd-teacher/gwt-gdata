@@ -34,6 +34,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class MapsDeleteMapDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -60,18 +66,20 @@ public class MapsDeleteMapDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://maps.google.com/maps/feeds/maps/";
 
+  /**
+   * Setup the Google Maps service and create the main content panel.
+   * If the user is not logged on to Google Maps display a message,
+   * otherwise start the demo by retrieving the user's maps.
+   */
   public MapsDeleteMapDemo() {
     service = MapsService.newInstance("HelloGData_Maps_DeleteMapDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a map");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          getMaps();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -79,17 +87,20 @@ public class MapsDeleteMapDemo extends GDataDemo {
       showStatus("You are not logged on to Google Maps.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
+  
+  private void deleteMap(String mapEntryUri) {
+    showStatus("Deleting map...", false);
+    service.deleteMapEntry(mapEntryUri, new MapEntryCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while retrieving the maps feed, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(MapEntry result) {
+        showStatus("Deleted a map.", false);
+      }
+    });
   }
-  public void startDemo() {
+  
+  private void getMaps() {
     showStatus("Loading maps feed...", false);
     service.getMapFeed("http://maps.google.com/maps/feeds/maps/default/full", new MapFeedCallback() {
       public void onFailure(Throwable caught) {
@@ -102,30 +113,37 @@ public class MapsDeleteMapDemo extends GDataDemo {
       }
       public void onSuccess(MapFeed result) {
         MapEntry[] entries = result.getEntries();
-        MapEntry targetEntry = null;
+        MapEntry targetMap = null;
         for (MapEntry entry : entries) {
           if (entry.getTitle().getText().startsWith("GWT-Maps-Client")) {
-            targetEntry = entry;
+            targetMap = entry;
             break;
           }
         }
-        if (targetEntry == null) {
+        if (targetMap == null) {
           showStatus("No map found that contains 'GWT-Maps-Client' in the title.", false);
         } else {
-          deleteMap(targetEntry);
+          String mapEntryUri = targetMap.getSelfLink().getHref();
+          deleteMap(mapEntryUri);
         }
       }
     });
   }
-  public void deleteMap(MapEntry entry) {
-    showStatus("Deleting map...", false);
-    entry.deleteEntry(new MapEntryCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while retrieving the maps feed, see details below:\n" + caught.getMessage(), true);
-      }
-      public void onSuccess(MapEntry result) {
-        showStatus("Deleted a map.", false);
-      }
-    });
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

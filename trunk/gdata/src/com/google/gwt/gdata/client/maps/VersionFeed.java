@@ -51,6 +51,15 @@ public class VersionFeed extends com.google.gwt.gdata.client.Feed<VersionEntry> 
   }-*/;
 
   /**
+   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void getSelf(VersionFeedCallback callback) {
+    this.get(callback);
+  }
+
+  /**
    * Inserts a new version entry into the feed.
    * 
    * @param entry Entry to insert.

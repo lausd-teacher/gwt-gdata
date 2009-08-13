@@ -72,13 +72,9 @@ public class MapsService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getFeatureEntry(String uri, FeatureEntryCallback callback) /*-{
-    this.getFeatureEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getFeatureEntry(String uri, FeatureEntryCallback callback) {
+    this.getEntry(uri, callback, "getFeatureEntry");
+  }
 
   /**
    * Retrieves the feed of map features.
@@ -86,13 +82,9 @@ public class MapsService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getFeatureFeed(FeatureQuery query, FeatureFeedCallback callback) /*-{
-    this.getFeatureFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getFeatureFeed(FeatureQuery query, FeatureFeedCallback callback) {
+    this.getFeed(query, callback, "getFeatureFeed");
+  }
 
   /**
    * Retrieves the feed of map features.
@@ -100,13 +92,9 @@ public class MapsService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getFeatureFeed(String uri, FeatureFeedCallback callback) /*-{
-    this.getFeatureFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getFeatureFeed(String uri, FeatureFeedCallback callback) {
+    this.getFeed(uri, callback, "getFeatureFeed");
+  }
 
   /**
    * Retrieves a map entry.
@@ -114,13 +102,9 @@ public class MapsService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getMapEntry(String uri, MapEntryCallback callback) /*-{
-    this.getMapEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getMapEntry(String uri, MapEntryCallback callback) {
+    this.getEntry(uri, callback, "getMapEntry");
+  }
 
   /**
    * Retrieves the feed of user-created maps.
@@ -128,13 +112,9 @@ public class MapsService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getMapFeed(MapQuery query, MapFeedCallback callback) /*-{
-    this.getMapFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getMapFeed(MapQuery query, MapFeedCallback callback) {
+    this.getFeed(query, callback, "getMapFeed");
+  }
 
   /**
    * Retrieves the feed of user-created maps.
@@ -142,14 +122,10 @@ public class MapsService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getMapFeed(String uri, MapFeedCallback callback) /*-{
-    this.getMapFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
-
+  public final void getMapFeed(String uri, MapFeedCallback callback) {
+    this.getFeed(uri, callback, "getMapFeed");
+  }
+  
   /**
    * Inserts a new feature entry.
    * 

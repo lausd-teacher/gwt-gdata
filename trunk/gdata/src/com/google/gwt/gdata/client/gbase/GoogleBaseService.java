@@ -90,13 +90,9 @@ public class GoogleBaseService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getAttributesEntry(String uri, AttributesEntryCallback callback) /*-{
-    this.getAttributesEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getAttributesEntry(String uri, AttributesEntryCallback callback) {
+    this.getEntry(uri, callback, "getAttributesEntry");
+  }
 
   /**
    * Retrieves the feed of public attributes.
@@ -104,13 +100,9 @@ public class GoogleBaseService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getAttributesFeed(AttributesQuery query, AttributesFeedCallback callback) /*-{
-    this.getAttributesFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getAttributesFeed(AttributesQuery query, AttributesFeedCallback callback) {
+    this.getFeed(query, callback, "getAttributesFeed");
+  }
 
   /**
    * Retrieves the feed of public attributes.
@@ -118,13 +110,9 @@ public class GoogleBaseService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getAttributesFeed(String uri, AttributesFeedCallback callback) /*-{
-    this.getAttributesFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getAttributesFeed(String uri, AttributesFeedCallback callback) {
+    this.getFeed(uri, callback, "getAttributesFeed");
+  }
 
   /**
    * Retrieves a Google Base item entry.
@@ -132,13 +120,9 @@ public class GoogleBaseService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getItemsEntry(String uri, ItemsEntryCallback callback) /*-{
-    this.getItemsEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getItemsEntry(String uri, ItemsEntryCallback callback) {
+    this.getEntry(uri, callback, "getItemsEntry");
+  }
 
   /**
    * Retrieves the feed of a user's private items.
@@ -146,13 +130,9 @@ public class GoogleBaseService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getItemsFeed(ItemsQuery query, ItemsFeedCallback callback) /*-{
-    this.getItemsFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getItemsFeed(ItemsQuery query, ItemsFeedCallback callback) {
+    this.getFeed(query, callback, "getItemsFeed");
+  }
 
   /**
    * Retrieves the feed of a user's private items.
@@ -160,13 +140,9 @@ public class GoogleBaseService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getItemsFeed(String uri, ItemsFeedCallback callback) /*-{
-    this.getItemsFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getItemsFeed(String uri, ItemsFeedCallback callback) {
+    this.getFeed(uri, callback, "getItemsFeed");
+  }
 
   /**
    * Retrieves a Google Base item type entry.
@@ -174,13 +150,9 @@ public class GoogleBaseService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getItemTypesEntry(String uri, ItemTypesEntryCallback callback) /*-{
-    this.getItemTypesEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getItemTypesEntry(String uri, ItemTypesEntryCallback callback) {
+    this.getEntry(uri, callback, "getItemTypesEntry");
+  }
 
   /**
    * Retrieves the feed of public item types.
@@ -188,13 +160,9 @@ public class GoogleBaseService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getItemTypesFeed(ItemTypesQuery query, ItemTypesFeedCallback callback) /*-{
-    this.getItemTypesFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getItemTypesFeed(ItemTypesQuery query, ItemTypesFeedCallback callback) {
+    this.getFeed(query, callback, "getItemTypesFeed");
+  }
 
   /**
    * Retrieves the feed of public item types.
@@ -202,13 +170,9 @@ public class GoogleBaseService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getItemTypesFeed(String uri, ItemTypesFeedCallback callback) /*-{
-    this.getItemTypesFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getItemTypesFeed(String uri, ItemTypesFeedCallback callback) {
+    this.getFeed(uri, callback, "getItemTypesFeed");
+  }
 
   /**
    * Retrieves a Google Base locale entry.
@@ -216,13 +180,9 @@ public class GoogleBaseService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getLocalesEntry(String uri, LocalesEntryCallback callback) /*-{
-    this.getLocalesEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getLocalesEntry(String uri, LocalesEntryCallback callback) {
+    this.getEntry(uri, callback, "getLocalesEntry");
+  }
 
   /**
    * Retrieves the feed of locales.
@@ -230,13 +190,9 @@ public class GoogleBaseService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getLocalesFeed(LocalesQuery query, LocalesFeedCallback callback) /*-{
-    this.getLocalesFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getLocalesFeed(LocalesQuery query, LocalesFeedCallback callback) {
+    this.getFeed(query, callback, "getLocalesFeed");
+  }
 
   /**
    * Retrieves the feed of locales.
@@ -244,13 +200,9 @@ public class GoogleBaseService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getLocalesFeed(String uri, LocalesFeedCallback callback) /*-{
-    this.getLocalesFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getLocalesFeed(String uri, LocalesFeedCallback callback) {
+    this.getFeed(uri, callback, "getLocalesFeed");
+  }
 
   /**
    * Retrieves a Google Base media entry.
@@ -258,13 +210,9 @@ public class GoogleBaseService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getMediaEntry(String uri, MediaEntryCallback callback) /*-{
-    this.getMediaEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getMediaEntry(String uri, MediaEntryCallback callback) {
+    this.getEntry(uri, callback, "getMediaEntry");
+  }
 
   /**
    * Retrieves the media feed used for managing the media attachments for one Google Base Item.
@@ -272,13 +220,9 @@ public class GoogleBaseService extends GoogleService {
    * @param uri URI of feed.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getMediaFeed(String uri, MediaFeedCallback callback) /*-{
-    this.getMediaFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getMediaFeed(String uri, MediaFeedCallback callback) {
+    this.getFeed(uri, callback, "getMediaFeed");
+  }
 
   /**
    * Retrieves a Google Base snippet entry.
@@ -286,13 +230,9 @@ public class GoogleBaseService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getSnippetsEntry(String uri, SnippetsEntryCallback callback) /*-{
-    this.getSnippetsEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getSnippetsEntry(String uri, SnippetsEntryCallback callback) {
+    this.getEntry(uri, callback, "getSnippetsEntry");
+  }
 
   /**
    * Retrieves the feed of snippets of public items.
@@ -300,13 +240,9 @@ public class GoogleBaseService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getSnippetsFeed(SnippetsQuery query, SnippetsFeedCallback callback) /*-{
-    this.getSnippetsFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getSnippetsFeed(SnippetsQuery query, SnippetsFeedCallback callback) {
+    this.getFeed(query, callback, "getSnippetsFeed");
+  }
 
   /**
    * Retrieves the feed of snippets of public items.
@@ -314,13 +250,9 @@ public class GoogleBaseService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getSnippetsFeed(String uri, SnippetsFeedCallback callback) /*-{
-    this.getSnippetsFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getSnippetsFeed(String uri, SnippetsFeedCallback callback) {
+    this.getFeed(uri, callback, "getSnippetsFeed");
+  }
 
   /**
    * Inserts a new attributes entry.

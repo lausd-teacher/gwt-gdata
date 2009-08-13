@@ -31,6 +31,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class GoogleBaseRetrieveItemsDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -47,7 +53,7 @@ public class GoogleBaseRetrieveItemsDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Google Base - Retrieving all Items";
+        return "Google Base - Retrieving all items";
       }
     };
   }
@@ -56,22 +62,54 @@ public class GoogleBaseRetrieveItemsDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/base/feeds/";
 
+  /**
+   * Setup the Google Base service and create the main content panel.
+   * If the user is not logged on to Google Base display a message,
+   * otherwise start the demo by retrieving the user's items.
+   */
   public GoogleBaseRetrieveItemsDemo() {
     service = GoogleBaseService.newInstance("HelloGData_GoogleBase_RetrieveItemsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
+      getItems();
     } else {
       showStatus("You are not logged on to Google Base.", true);
     }
   }
-  public void showData(ItemsEntry[] entries) {
+  
+  private void getItems() {
+    showStatus("Loading items feed...", false);
+    service.getItemsFeed("http://www.google.com/base/feeds/items", new ItemsFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("Terms of Service acceptance required")) {
+          showStatus("No Google Base account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the items feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(ItemsFeed result) {
+        ItemsEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("You have no items.", false);
+        } else {
+          showData(entries);
+        }
+      }
+    });
+  }
+
+  /**
+  * Displays a set of Google Base item entries in a tabular 
+  * fashion with the help of a GWT FlexTable widget. The data fields 
+  * Title, URL and Published are displayed.
+  * 
+  * @param entries The Google Base item entries to display.
+  */
+  private void showData(ItemsEntry[] entries) {
     mainPanel.clear();
-    String[] labels = new String[] { "Title", "Url", "Published" };
+    String[] labels = new String[] { "Title", "URL", "Published" };
     mainPanel.insertRow(0);
     for (int i = 0; i < labels.length; i++) {
       mainPanel.addCell(0);
@@ -94,7 +132,14 @@ public class GoogleBaseRetrieveItemsDemo extends GDataDemo {
       }
     }
   }
-  public void showStatus(String message, boolean isError) {
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -103,26 +148,5 @@ public class GoogleBaseRetrieveItemsDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading items feed...", false);
-    service.getItemsFeed("http://www.google.com/base/feeds/items", new ItemsFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("Terms of Service acceptance required")) {
-          showStatus("No Google Base account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the items feed, see details below:\n" + message, true);
-        }
-      }
-      public void onSuccess(ItemsFeed result) {
-        ItemsEntry[] entries = result.getEntries();
-        if (entries.length == 0) {
-          showStatus("You have no items.", false);
-        } else {
-          showData(entries);
-        }
-      }
-    });
   }
 }

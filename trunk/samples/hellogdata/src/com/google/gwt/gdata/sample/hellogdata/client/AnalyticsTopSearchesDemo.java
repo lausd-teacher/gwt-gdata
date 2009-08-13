@@ -35,6 +35,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class AnalyticsTopSearchesDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -54,7 +60,7 @@ public class AnalyticsTopSearchesDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Analytics - Top Search Refinements";
+        return "Analytics - Top search refinements";
       }
     };
   }
@@ -63,20 +69,73 @@ public class AnalyticsTopSearchesDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "https://www.google.com/analytics/feeds/";
 
+  /**
+   * Setup the Analytics service and create the main content panel.
+   * If the user is not logged on to Analytics display a message,
+   * otherwise start the demo by retrieving the Analytics accounts.
+   */
   public AnalyticsTopSearchesDemo() {
     service = AnalyticsService.newInstance("HelloGData_Analytics_TopSearchesDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
+      getAccounts();
     } else {
       showStatus("You are not logged on to Google Analytics.", true);
     }
   }
-  public void showData(DataEntry[] entries) {
+  
+  private void getAccounts() {
+    showStatus("Loading Analytics accounts feed...", false);
+    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AccountFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("No Analytics account was found for the currently logged-in user")) {
+          showStatus("No Analytics account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the Analytics Accounts feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(AccountFeed result) {
+        AccountEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("You have no Analytics accounts.", false);
+        } else {
+          AccountEntry targetEntry = entries[0];
+          getData(targetEntry.getTableId().getValue());
+        }
+      }
+    });
+  }
+  
+  private void getData(String tableId) {
+    String dataFeedUri = "https://www.google.com/analytics/feeds/data" +
+      "?start-date=2009-07-01" +
+      "&end-date=2009-07-31" +
+      "&dimensions=ga:searchKeyword,ga:searchKeywordRefinement,ga:searchDestinationPage" +
+      "&metrics=ga:searchRefinements" +
+      "&sort=-ga:searchRefinements" +
+      "&max-results=20" +
+      "&ids=" + tableId;
+    showStatus("Loading data feed...", false);
+    service.getDataFeed(dataFeedUri, new DataFeedCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while retrieving the Analytics Data feed, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(DataFeed result) {
+        showData(result.getEntries());
+      }
+    });
+  }
+
+  /**
+  * Displays a set of Analytics data entries in a tabular fashion with
+  * the help of a GWT FlexTable widget. The Site Search data fields Keywords,
+  * Refinements Keywords, Destination Page and Refinements are displayed.
+  * 
+  * @param entries The Analytics data entries to display.
+  */
+  private void showData(DataEntry[] entries) {
     mainPanel.clear();
     String[] labels = new String[] { "Site Search Keywords", "Site Search Refinements Keywords", "Site Search Destination Page", "Site Search Refinements" };
     mainPanel.insertRow(0);
@@ -98,7 +157,14 @@ public class AnalyticsTopSearchesDemo extends GDataDemo {
       mainPanel.setWidget(row, 3, new Label(entry.getStringValueOf("ga:searchRefinements")));
     }
   }
-  public void showStatus(String message, boolean isError) {
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -107,43 +173,5 @@ public class AnalyticsTopSearchesDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading Analytics accounts feed...", false);
-    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AccountFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Analytics account was found for the currently logged-in user")) {
-          showStatus("No Analytics account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Analytics Accounts feed, see details below:\n" + message, true);
-        }
-      }
-      public void onSuccess(AccountFeed result) {
-        AccountEntry[] entries = result.getEntries();
-        if (entries.length == 0) {
-          showStatus("You have no Analytics accounts.", false);
-        } else {
-          String tableId = entries[0].getTableId().getValue();
-          String dataFeedUri = "https://www.google.com/analytics/feeds/data" +
-            "?start-date=2009-07-01" +
-            "&end-date=2009-07-31" +
-            "&dimensions=ga:searchKeyword,ga:searchKeywordRefinement,ga:searchDestinationPage" +
-            "&metrics=ga:searchRefinements" +
-            "&sort=-ga:searchRefinements" +
-            "&max-results=20" +
-            "&ids=" + tableId;
-          showStatus("Loading data feed...", false);
-          service.getDataFeed(dataFeedUri, new DataFeedCallback() {
-            public void onFailure(Throwable caught) {
-              showStatus("An error occurred while retrieving the Analytics Data feed, see details below:\n" + caught.getMessage(), true);
-            }
-            public void onSuccess(DataFeed result) {
-              showData(result.getEntries());
-            }
-          });
-        }
-      }
-    });
   }
 }

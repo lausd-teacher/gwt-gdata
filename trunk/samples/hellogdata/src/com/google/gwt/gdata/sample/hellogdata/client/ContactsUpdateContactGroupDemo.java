@@ -19,10 +19,10 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.atom.Text;
-import com.google.gwt.gdata.client.contacts.ContactEntry;
-import com.google.gwt.gdata.client.contacts.ContactEntryCallback;
-import com.google.gwt.gdata.client.contacts.ContactFeed;
-import com.google.gwt.gdata.client.contacts.ContactFeedCallback;
+import com.google.gwt.gdata.client.contacts.ContactGroupEntry;
+import com.google.gwt.gdata.client.contacts.ContactGroupEntryCallback;
+import com.google.gwt.gdata.client.contacts.ContactGroupFeed;
+import com.google.gwt.gdata.client.contacts.ContactGroupFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactsService;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
@@ -35,6 +35,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class ContactsUpdateContactGroupDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -61,18 +67,20 @@ public class ContactsUpdateContactGroupDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/m8/feeds/";
 
+  /**
+   * Setup the Contacts service and create the main content panel.
+   * If the user is not logged on to Contacts display a message,
+   * otherwise start the demo by retrieving the user's contact groups.
+   */
   public ContactsUpdateContactGroupDemo() {
     service = ContactsService.newInstance("HelloGData_Contacts_UpdateContactGroupDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Update a contact group");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          getContactGroups();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -80,7 +88,44 @@ public class ContactsUpdateContactGroupDemo extends GDataDemo {
       showStatus("You are not logged on to Google Contacts.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
+  
+  private void getContactGroups() {
+    showStatus("Loading contact groups feed...", false);
+    service.getContactGroupFeed("http://www.google.com/m8/feeds/groups/default/full", new ContactGroupFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("No Contacts account was found for the currently logged-in user")) {
+          showStatus("No Contacts account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the contact groups feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(ContactGroupFeed result) {
+        ContactGroupEntry[] entries = result.getEntries();
+        ContactGroupEntry targetGroup = null;
+        for (ContactGroupEntry contact : entries) {
+          String title = contact.getTitle().getText();
+          if (title.startsWith("GWT-Contacts-Client")) {
+            targetGroup = contact;
+            break;
+          }
+        }
+        if (targetGroup == null) {
+          showStatus("No contacts groups were found with a title starting with 'GWT-Contacts-Client'.", false);
+        } else {
+          updateContactGroup(targetGroup);
+        }
+      }
+    });
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -90,42 +135,17 @@ public class ContactsUpdateContactGroupDemo extends GDataDemo {
     }
     mainPanel.setWidget(0, 0, msg);
   }
-  public void startDemo() {
-    showStatus("Loading contact groups feed...", false);
-    service.getContactFeed("http://www.google.com/m8/feeds/groups/default/full", new ContactFeedCallback() {
+  
+  private void updateContactGroup(ContactGroupEntry targetGroup) {
+    showStatus("Updating a contact group...", false);
+    targetGroup.setTitle(Text.newInstance());
+    targetGroup.getTitle().setText("GWT-Contacts-Client - updated group");
+    targetGroup.updateEntry(new ContactGroupEntryCallback() {
       public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Contacts account was found for the currently logged-in user")) {
-          showStatus("No Contacts account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the contact groups feed, see details below:\n" + message, true);
-        }
+        showStatus("An error occurred while updating a contact group, see details below:\n" + caught.getMessage(), true);
       }
-      public void onSuccess(ContactFeed result) {
-        ContactEntry[] entries = result.getEntries();
-        ContactEntry targetEntry = null;
-        for (ContactEntry contact : entries) {
-          String title = contact.getTitle().getText();
-          if (title.startsWith("GWT-Contacts-Client")) {
-            targetEntry = contact;
-            break;
-          }
-        }
-        if (targetEntry == null) {
-          showStatus("No contacts were found with a title starting with 'GWT-Contacts-Client'.", false);
-        } else {
-          targetEntry.setTitle(Text.newInstance());
-          targetEntry.getTitle().setText("GWT-Contacts-Client - updated group");
-          showStatus("Updating a contact group...", false);
-          targetEntry.updateEntry(new ContactEntryCallback() {
-            public void onFailure(Throwable caught) {
-              showStatus("An error occurred while updating a contact group, see details below:\n" + caught.getMessage(), true);
-            }
-            public void onSuccess(ContactEntry result) {
-              showStatus("Updated a contact group.", false);
-            }
-          });
-        }
+      public void onSuccess(ContactGroupEntry result) {
+        showStatus("Updated a contact group.", false);
       }
     });
   }

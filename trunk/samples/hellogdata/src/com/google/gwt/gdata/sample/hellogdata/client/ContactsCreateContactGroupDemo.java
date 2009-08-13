@@ -33,6 +33,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class ContactsCreateContactGroupDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -57,18 +63,20 @@ public class ContactsCreateContactGroupDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/m8/feeds/";
 
-  public ContactsCreateContactGroupDemo() {
+  /**
+   * Setup the Contacts service and create the main content panel.
+   * If the user is not logged on to Contacts display a message,
+   * otherwise start the demo by creating a contact group.
+   */
+  private ContactsCreateContactGroupDemo() {
     service = ContactsService.newInstance("HelloGData_Contacts_CreateContactGroupDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a contact group");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          createContactGroup();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -76,21 +84,12 @@ public class ContactsCreateContactGroupDemo extends GDataDemo {
       showStatus("You are not logged on to Google Contacts.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
+  
+  private void createContactGroup() {
     showStatus("Creating contact group...", false);
     ContactGroupEntry entry = ContactGroupEntry.newInstance();
     entry.setTitle(Text.newInstance());
-    entry.getTitle().setText("GWT-Contacts-Client: Create Group");
+    entry.getTitle().setText("GWT-Contacts-Client - Create Group");
     service.insertContactGroupEntry("http://www.google.com/m8/feeds/groups/default/full", entry, new ContactGroupEntryCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
@@ -104,5 +103,22 @@ public class ContactsCreateContactGroupDemo extends GDataDemo {
         showStatus("Created a contact group.", false);
       }
     });
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

@@ -34,6 +34,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class CalendarCreateRecurringEventDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -62,18 +68,20 @@ public class CalendarCreateRecurringEventDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/calendar/feeds/";
 
+  /**
+   * Setup the Calendar service and create the main content panel.
+   * If the user is not logged on to Calendar display a message,
+   * otherwise start the demo by creating an event.
+   */
   public CalendarCreateRecurringEventDemo() {
     service = CalendarService.newInstance("HelloGData_Calendar_CreateRecurringEventDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create an event");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          createEvent();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -81,18 +89,9 @@ public class CalendarCreateRecurringEventDemo extends GDataDemo {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Creating Calendar event...", false);
+  
+  private void createEvent() {
+    showStatus("Creating event...", false);
     CalendarEventEntry eventEntry = CalendarEventEntry.newInstance();
     eventEntry.setTitle(Text.newInstance());
     eventEntry.getTitle().setText("GWT-Calendar-Client: insert recurring event");
@@ -103,7 +102,6 @@ public class CalendarCreateRecurringEventDemo extends GDataDemo {
         "RRULE:FREQ=WEEKLY;UNTIL=20090701T160000Z;";
     recurrence.setValue(recurrenceString);
     eventEntry.setRecurrence(recurrence);
-    
     service.insertCalendarEventEntry("http://www.google.com/calendar/feeds/default/private/full", eventEntry, new CalendarEventEntryCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
@@ -114,8 +112,25 @@ public class CalendarCreateRecurringEventDemo extends GDataDemo {
         }
       }
       public void onSuccess(CalendarEventEntry result) {
-        showStatus("Created a recurring Calendar event.", false);
+        showStatus("Created a recurring event.", false);
       }
     });
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

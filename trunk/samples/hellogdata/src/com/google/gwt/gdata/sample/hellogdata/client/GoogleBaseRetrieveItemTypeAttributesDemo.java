@@ -32,6 +32,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class GoogleBaseRetrieveItemTypeAttributesDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -59,20 +65,52 @@ public class GoogleBaseRetrieveItemTypeAttributesDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/base/feeds/";
 
+  /**
+   * Setup the Google Base service and create the main content panel.
+   * If the user is not logged on to Google Base display a message,
+   * otherwise start the demo by retrieving item type attributes.
+   */
   public GoogleBaseRetrieveItemTypeAttributesDemo() {
     service = GoogleBaseService.newInstance("HelloGData_GoogleBase_RetrieveAttributesDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
+      getAttributes();
     } else {
       showStatus("You are not logged on to Google Base.", true);
     }
   }
-  public void showData(AttributesEntry[] attributes) {
+  
+  private void getAttributes() {
+    showStatus("Loading attributes feed...", false);
+    service.getAttributesFeed("http://www.google.com/base/feeds/attributes/-/products", new AttributesFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("Terms of Service acceptance required")) {
+          showStatus("No Google Base account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the attributes feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(AttributesFeed result) {
+        AttributesEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("No attributes found.", false);
+        } else {
+          showData(entries);
+        }
+      }
+    });
+  }
+
+  /**
+  * Displays a set of Google Base attribute entries in a tabular 
+  * fashion with the help of a GWT FlexTable widget. The data fields 
+  * Name, Type and Common Values are displayed.
+  * 
+  * @param entries The Google Base attribute entries to display.
+  */
+  private void showData(AttributesEntry[] attributes) {
     mainPanel.clear();
     String[] labels = new String[] { "Name", "Type", "Common Values" };
     mainPanel.insertRow(0);
@@ -97,7 +135,14 @@ public class GoogleBaseRetrieveItemTypeAttributesDemo extends GDataDemo {
       mainPanel.setWidget(row, 2, new Label(commonValues));
     }
   }
-  public void showStatus(String message, boolean isError) {
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -106,26 +151,5 @@ public class GoogleBaseRetrieveItemTypeAttributesDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading attributes feed...", false);
-    service.getAttributesFeed("http://www.google.com/base/feeds/attributes/-/products", new AttributesFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("Terms of Service acceptance required")) {
-          showStatus("No Google Base account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the attributes feed, see details below:\n" + message, true);
-        }
-      }
-      public void onSuccess(AttributesFeed result) {
-        AttributesEntry[] entries = result.getEntries();
-        if (entries.length == 0) {
-          showStatus("No attributes found.", false);
-        } else {
-          showData(entries);
-        }
-      }
-    });
   }
 }

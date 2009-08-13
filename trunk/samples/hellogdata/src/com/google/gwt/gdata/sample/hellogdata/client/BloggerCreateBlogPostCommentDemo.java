@@ -40,6 +40,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -65,33 +71,20 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.blogger.com/feeds/";
 
+  /**
+   * Setup the Blogger service and create the main content panel.
+   * If the user is not logged on to Blogger display a message,
+   * otherwise start the demo by retrieving the user's blogs.
+   */
   public BloggerCreateBlogPostCommentDemo() {
     service = BloggerService.newInstance("HelloGData_Blogger_CreateBlogPostCommentDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void insertComment(String blogId, String postId) {
-    showStatus("Creating blog comment entry...", false);
-    CommentEntry comment = CommentEntry.newInstance();
-    comment.setContent(Text.newInstance());
-    comment.getContent().setText("GWT-Blogger-Client: Great post!");
-    String commentsFeedUri = "http://www.blogger.com/feeds/" + blogId + "/" + postId + "/comments/default";
-    service.insertCommentEntry(commentsFeedUri, comment, new CommentEntryCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while creating the Blogger post comment, see details below:\n" + caught.getMessage(), true);
-      }
-      public void onSuccess(CommentEntry result) {
-        showStatus("Created a comment.", false);
-      }
-    });
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a blog comment");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          getBlogs();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -99,22 +92,9 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
       showStatus("You are not logged on to Blogger.", true);
     }
   }
-  public native JsArrayString regExpMatch(String regEx, String target) /*-{
-    var re = new RegExp();
-    return re.compile(regEx).exec(target);
-  }-*/;
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading Blogger accounts feed...", false);
+  
+  private void getBlogs() {
+    showStatus("Loading blog feed...", false);
     service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
@@ -127,39 +107,81 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
         if (entries.length == 0) {
-          showStatus("You have no Blogger accounts.", false);
+          showStatus("You have no Blogger blogs.", false);
         } else {
-          BlogEntry blog = entries[0];
-          String postsFeedUri = blog.getEntryPostLink().getHref();
-          showStatus("Loading Blogger blog posts feed...", false);
-          service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
-          public void onFailure(Throwable caught) {
-            showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
-          }
-          public void onSuccess(BlogPostFeed result) {
-            PostEntry postEntry = null;
-            // get the first public post
-            for (PostEntry post : result.getEntries()) {
-              if (post.getRepliesLink() != null) {
-                postEntry = post;
-                break;
-              }
-            }
-            if (postEntry == null) {
-              showStatus("The target blog contains no public posts.", false);
-            } else {
-              String postEntryId = postEntry.getId().getValue();
-              JsArrayString match = regExpMatch("blog-(\\d+)\\.post-(\\d+)", postEntryId);
-              if (match.length() > 1) {
-                insertComment(match.get(1), match.get(2));
-              } else {
-                showStatus("Error parsing the blog post id.", true);
-              }
-            }
-          }
-        });
+          BlogEntry targetBlog = entries[0];
+          String postsFeedUri = targetBlog.getEntryPostLink().getHref();
+          getPosts(postsFeedUri);
         }
       }
     });
+  }
+  
+  private void getPosts(String postsFeedUri) {
+    showStatus("Loading posts feed...", false);
+    service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
+    public void onFailure(Throwable caught) {
+      showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
+    }
+    public void onSuccess(BlogPostFeed result) {
+      PostEntry targetPost = null;
+      // get the first public post
+      for (PostEntry post : result.getEntries()) {
+        if (post.getRepliesLink() != null) {
+          targetPost = post;
+          break;
+        }
+      }
+      if (targetPost == null) {
+        showStatus("The target blog contains no public posts.", false);
+      } else {
+        String postEntryId = targetPost.getId().getValue();
+        JsArrayString match = regExpMatch("blog-(\\d+)\\.post-(\\d+)", postEntryId);
+        if (match.length() > 1) {
+          insertComment(match.get(1), match.get(2));
+        } else {
+          showStatus("Error parsing the blog post id.", true);
+        }
+      }
+    }
+    });
+  }
+  
+  private void insertComment(String blogId, String postId) {
+    showStatus("Creating blog comment entry...", false);
+    CommentEntry comment = CommentEntry.newInstance();
+    comment.setContent(Text.newInstance());
+    comment.getContent().setText("GWT-Blogger-Client - Great post!");
+    String commentsFeedUri = "http://www.blogger.com/feeds/" + blogId + "/" + postId + "/comments/default";
+    service.insertCommentEntry(commentsFeedUri, comment, new CommentEntryCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while creating the Blogger post comment, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(CommentEntry result) {
+        showStatus("Created a comment.", false);
+      }
+    });
+  }
+  
+  private native JsArrayString regExpMatch(String regEx, String target) /*-{
+    var re = new RegExp();
+    return re.compile(regEx).exec(target);
+  }-*/;
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

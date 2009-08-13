@@ -31,6 +31,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class AnalyticsYourAccountsDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -48,7 +54,7 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Analytics - Your Accounts";
+        return "Analytics - Your accounts";
       }
     };
   }
@@ -57,20 +63,52 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "https://www.google.com/analytics/feeds/";
 
+  /**
+   * Setup the Analytics service and create the main content panel.
+   * If the user is not logged on to Analytics display a message,
+   * otherwise start the demo by retrieving the Analytics accounts.
+   */
   public AnalyticsYourAccountsDemo() {
     service = AnalyticsService.newInstance("HelloGData_Analytics_YourAccountsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
+      getAccounts();
     } else {
       showStatus("You are not logged on to Google Analytics.", true);
     }
   }
-  public void showData(AccountEntry[] entries) {
+  
+  private void getAccounts() {
+    showStatus("Loading Analytics accounts feed...", false);
+    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AccountFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("No Analytics account was found for the currently logged-in user")) {
+          showStatus("No Analytics account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the Analytics Accounts feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(AccountFeed result) {
+        AccountEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("You have no Analytics accounts.", false);
+        } else {
+          showData(result.getEntries());
+        }
+      }
+    });
+  }
+
+  /**
+  * Displays a set of Analytics data entries in a tabular fashion with
+  * the help of a GWT FlexTable widget. The data fields Account Name,
+  * Profile Name, Profile Id and Table Id are displayed.
+  * 
+  * @param entries The Analytics data entries to display.
+  */
+  private void showData(AccountEntry[] entries) {
     mainPanel.clear();
     String[] labels = new String[] { "Account Name", "Profile Name", "Profile Id", "Table Id" };
     mainPanel.insertRow(0);
@@ -92,7 +130,14 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
       mainPanel.setWidget(row, 3, new Label(entry.getTableId().getValue()));
     }
   }
-  public void showStatus(String message, boolean isError) {
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -101,26 +146,5 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading Analytics accounts feed...", false);
-    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AccountFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Analytics account was found for the currently logged-in user")) {
-          showStatus("No Analytics account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Analytics Accounts feed, see details below:\n" + message, true);
-        }
-      }
-      public void onSuccess(AccountFeed result) {
-        AccountEntry[] entries = result.getEntries();
-        if (entries.length == 0) {
-          showStatus("You have no Analytics accounts.", false);
-        } else {
-          showData(result.getEntries());
-        }
-      }
-    });
   }
 }

@@ -34,6 +34,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class GoogleBaseCreateItemDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -51,7 +57,7 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Google Base - Creating an Item";
+        return "Google Base - Creating an item";
       }
     };
   }
@@ -60,18 +66,20 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/base/feeds/";
 
+  /**
+   * Setup the Google Base service and create the main content panel.
+   * If the user is not logged on to Google Base display a message,
+   * otherwise start the demo by creating an item.
+   */
   public GoogleBaseCreateItemDemo() {
     service = GoogleBaseService.newInstance("HelloGData_GoogleBase_CreateItemDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create an item");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          createItem();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -79,17 +87,8 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
       showStatus("You are not logged on to Google Base.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
+  
+  private void createItem() {
     showStatus("Creating item...", false);
     ItemsEntry entry = ItemsEntry.newInstance();
     entry.setTitle(Text.newInstance());
@@ -126,5 +125,22 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
         showStatus("Created an item.", false);
       }
     });
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

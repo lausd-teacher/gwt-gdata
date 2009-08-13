@@ -37,6 +37,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class BloggerDeleteBlogPostDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -62,18 +68,20 @@ public class BloggerDeleteBlogPostDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.blogger.com/feeds/";
 
+  /**
+   * Setup the Blogger service and create the main content panel.
+   * If the user is not logged on to Blogger display a message,
+   * otherwise start the demo by retrieving the user's blogs.
+   */
   public BloggerDeleteBlogPostDemo() {
     service = BloggerService.newInstance("HelloGData_Blogger_DeleteBlogPostDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a blog post");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          getBlogs();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -81,18 +89,21 @@ public class BloggerDeleteBlogPostDemo extends GDataDemo {
       showStatus("You are not logged on to Blogger.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
+  
+  private void deletePost(String postEntryUri) {
+    showStatus("Deleting post entry...", false);
+    service.deletePostEntry(postEntryUri, new PostEntryCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while deleting a blog post, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(PostEntry result) {
+        showStatus("Deleted a blog post entry.", false);
+      }
+    });
   }
-  public void startDemo() {
-    showStatus("Loading Blogger accounts feed...", false);
+  
+  private void getBlogs() {
+    showStatus("Loading blog feed...", false);
     service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
@@ -105,48 +116,54 @@ public class BloggerDeleteBlogPostDemo extends GDataDemo {
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
         if (entries.length == 0) {
-          showStatus("You have no Blogger accounts.", false);
+          showStatus("You have no Blogger blogs.", false);
         } else {
-          BlogEntry blog = entries[0];
-          String postsFeedUri = blog.getEntryPostLink().getHref();
-          showStatus("Loading Blogger blog posts feed...", false);
-          service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
-          public void onFailure(Throwable caught) {
-            showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
-          }
-          public void onSuccess(BlogPostFeed result) {
-            PostEntry postEntry = null;
-            for (PostEntry entry : result.getEntries()) {
-              String title = entry.getTitle().getText();
-              if (title.startsWith("GWT-Blogger-Client")) {
-                postEntry = entry;
-                break;
-              }
-            }
-            if (postEntry == null) {
-              showStatus("Did not find a post entry whose title starts with the prefix 'GWT-Blogger-Client'.", false);
-            } else {
-              postEntry.getSelf(new PostEntryCallback() {
-                public void onFailure(Throwable caught) {
-                  showStatus("An error occurred while retrieving a Blogger Post entry, see details below:\n" + caught.getMessage(), true);
-                }
-                public void onSuccess(PostEntry result) {
-                  showStatus("Deleting Blogger blog post entry...", false);
-                  result.deleteEntry(new PostEntryCallback() {
-                    public void onFailure(Throwable caught) {
-                      showStatus("An error occurred while deleting a blog post, see details below:\n" + caught.getMessage(), true);
-                    }
-                    public void onSuccess(PostEntry result) {
-                      showStatus("Deleted a blog post entry.", false);
-                    }
-                  });
-                }
-              });
-            }
-          }
-        });
+          BlogEntry targetBlog = entries[0];
+          String postsFeedUri = targetBlog.getEntryPostLink().getHref();
+          getPosts(postsFeedUri);
         }
       }
     });
+  }
+  
+  private void getPosts(String postsFeedUri) {
+    showStatus("Loading posts feed...", false);
+    service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(BlogPostFeed result) {
+        PostEntry targetPost = null;
+        for (PostEntry entry : result.getEntries()) {
+          String title = entry.getTitle().getText();
+          if (title.startsWith("GWT-Blogger-Client")) {
+            targetPost = entry;
+            break;
+          }
+        }
+        if (targetPost == null) {
+          showStatus("Did not find a post entry whose title starts with the prefix 'GWT-Blogger-Client'.", false);
+        } else {
+          deletePost(targetPost.getSelfLink().getHref());
+        }
+      }
+    });
+  }
+  
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

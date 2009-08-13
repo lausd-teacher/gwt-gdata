@@ -34,6 +34,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class FinanceDeletePortfolioDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -51,7 +57,7 @@ public class FinanceDeletePortfolioDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Finance - Deleting a Portfolio";
+        return "Finance - Deleting a portfolio";
       }
     };
   }
@@ -60,18 +66,20 @@ public class FinanceDeletePortfolioDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://finance.google.com/finance/feeds/";
 
+  /**
+   * Setup the Finance service and create the main content panel.
+   * If the user is not logged on to Finance display a message,
+   * otherwise start the demo by retrieving the user's portfolios.
+   */
   public FinanceDeletePortfolioDemo() {
     service = FinanceService.newInstance("HelloGData_Finance_DeletePortfolioDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a portfolio");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          getPortfolios();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -79,17 +87,20 @@ public class FinanceDeletePortfolioDemo extends GDataDemo {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
+  
+  private void deletePortfolio(String portfolioEntryUri) {
+    showStatus("Deleting portfolio...", false);
+    service.deletePortfolioEntry(portfolioEntryUri, new PortfolioEntryCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(PortfolioEntry result) {
+        showStatus("Deleted a portfolio.", false);
+      }
+    });
   }
-  public void startDemo() {
+  
+  private void getPortfolios() {
     showStatus("Loading portfolios feed...", false);
     service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
       public void onFailure(Throwable caught) {
@@ -102,30 +113,37 @@ public class FinanceDeletePortfolioDemo extends GDataDemo {
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
-        PortfolioEntry targetEntry = null;
+        PortfolioEntry targetPortfolio = null;
         for (PortfolioEntry entry : entries) {
           if (entry.getTitle().getText().startsWith("GWT-Finance-Client")) {
-            targetEntry = entry;
+            targetPortfolio = entry;
             break;
           }
         }
-        if (targetEntry == null) {
+        if (targetPortfolio == null) {
           showStatus("No portfolio found that contains 'GWT-Finance-Client' in the title.", false);
         } else {
-          deletePortfolio(targetEntry);
+          String portfolioEntryUri = targetPortfolio.getSelfLink().getHref();
+          deletePortfolio(portfolioEntryUri);
         }
       }
     });
   }
-  public void deletePortfolio(PortfolioEntry entry) {
-    showStatus("Deleting portfolio...", false);
-    entry.deleteEntry(new PortfolioEntryCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + caught.getMessage(), true);
-      }
-      public void onSuccess(PortfolioEntry result) {
-        showStatus("Deleted a portfolio.", false);
-      }
-    });
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }
