@@ -18,15 +18,16 @@ package com.google.gwt.gdata.client;
 
 /**
  * Describes an entry link used by a recurrence exception.
+ * 
+ * @param <E> The recurrence exception entry type.
  */
-public class RecurrenceExceptionEntryLink extends EntryLink<RecurrenceExceptionEntry> {
+public class RecurrenceExceptionEntryLink<E extends RecurrenceExceptionEntry> extends EntryLink<E> {
 
   /**
    * Constructs a recurrence exception entry link.
    * @return A RecurrenceExceptionEntryLink object.
    */
-  @SuppressWarnings("unchecked")
-  public static native RecurrenceExceptionEntryLink newInstance() /*-{
+  public static native <E extends RecurrenceExceptionEntry> RecurrenceExceptionEntryLink<E> newInstance() /*-{
     return new $wnd.google.gdata.RecurrenceExceptionEntryLink();
   }-*/;
 

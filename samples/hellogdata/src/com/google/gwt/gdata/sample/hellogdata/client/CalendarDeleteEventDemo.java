@@ -27,7 +27,6 @@ import com.google.gwt.gdata.client.calendar.CalendarService;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -36,6 +35,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class CalendarDeleteEventDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -63,18 +68,20 @@ public class CalendarDeleteEventDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/calendar/feeds/";
 
+  /**
+   * Setup the Calendar service and create the main content panel.
+   * If the user is not logged on to Calendar display a message,
+   * otherwise start the demo by querying the user's calendars.
+   */
   public CalendarDeleteEventDemo() {
     service = CalendarService.newInstance("HelloGData_Calendar_DeleteEventDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete an event");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          queryCalendars();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -82,39 +89,21 @@ public class CalendarDeleteEventDemo extends GDataDemo {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  public void showData(CalendarEventEntry[] entries) {
-    mainPanel.clear();
-    String[] labels = new String[] { "Title", "Link", "Updated" };
-    mainPanel.insertRow(0);
-    for (int i = 0; i < labels.length; i++) {
-      mainPanel.addCell(0);
-      mainPanel.setWidget(0, i, new Label(labels[i]));
-      mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
-    }
-    for (int i = 0; i < entries.length; i++) {
-      CalendarEventEntry entry = entries[i];
-      int row = mainPanel.insertRow(i + 1);
-      mainPanel.addCell(row);
-      mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
-      mainPanel.addCell(row);
-      String link = entry.getHtmlLink().getHref();
-      mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + "\">" + link + "</a>"));
-      mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getUpdated().getValue().getDate().toString()));
-    }
+  
+  private void deleteEvent(String eventEntryUri) {
+    showStatus("Deleting event...", false);
+    service.deleteCalendarEventEntry(eventEntryUri, new CalendarEventEntryCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while deleting a Calendar event, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(CalendarEventEntry result) {
+        showStatus("Deleted a Calendar event.", false);
+      }
+    });
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Querying for Calendar events...", false);
+  
+  private void queryCalendars() {
+    showStatus("Querying for events...", false);
     CalendarEventQuery query = CalendarEventQuery.newInstance("http://www.google.com/calendar/feeds/default/private/full");
     query.setFullTextQuery("GWT-Calendar-Client");
     service.getEventsFeed(query, new CalendarEventFeedCallback() {
@@ -131,18 +120,28 @@ public class CalendarDeleteEventDemo extends GDataDemo {
         if (entries.length == 0) {
           showStatus("No events found containing the text 'GWT-Calendar-Client'.", false);
         } else {
-          CalendarEventEntry eventEntry = entries[0];
-          showStatus("Deleting a Calendar event...", false);
-          eventEntry.deleteEntry(new CalendarEventEntryCallback() {
-            public void onFailure(Throwable caught) {
-              showStatus("An error occurred while deleting a Calendar event, see details below:\n" + caught.getMessage(), true);
-            }
-            public void onSuccess(CalendarEventEntry result) {
-              showStatus("Deleted a Calendar event.", false);
-            }
-          });
+          CalendarEventEntry targetEvent = entries[0];
+          String eventEntryUri = targetEvent.getSelfLink().getHref();
+          deleteEvent(eventEntryUri);
         }
       }
     });
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

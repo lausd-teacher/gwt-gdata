@@ -37,6 +37,12 @@ import java.util.Date;
  */
 public class CalendarCreateSingleEventDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -63,18 +69,20 @@ public class CalendarCreateSingleEventDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/calendar/feeds/";
 
+  /**
+   * Setup the Calendar service and create the main content panel.
+   * If the user is not logged on to Calendar display a message,
+   * otherwise start the demo by creating an event.
+   */
   public CalendarCreateSingleEventDemo() {
     service = CalendarService.newInstance("HelloGData_Calendar_CreateSingleEventDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create an event");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          createEvent();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -82,18 +90,9 @@ public class CalendarCreateSingleEventDemo extends GDataDemo {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
+  
   @SuppressWarnings("deprecation")
-  public void startDemo() {
+  private void createEvent() {
     showStatus("Creating Calendar event...", false);
     CalendarEventEntry eventEntry = CalendarEventEntry.newInstance();
     eventEntry.setTitle(Text.newInstance());
@@ -118,5 +117,22 @@ public class CalendarCreateSingleEventDemo extends GDataDemo {
         showStatus("Created a Calendar event taking place in the next hour.", false);
       }
     });
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

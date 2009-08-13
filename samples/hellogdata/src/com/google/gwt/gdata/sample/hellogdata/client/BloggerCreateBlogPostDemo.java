@@ -41,6 +41,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class BloggerCreateBlogPostDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -66,17 +72,69 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.blogger.com/feeds/";
 
+  /**
+   * Setup the Blogger service and create the main content panel.
+   * If the user is not logged on to Blogger display a message,
+   * otherwise start the demo by retrieving the user's blogs.
+   */
   public BloggerCreateBlogPostDemo() {
     service = BloggerService.newInstance("HelloGData_Blogger_CreateBlogPostDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      Button startButton = new Button("Create a blog post");
+      startButton.addClickListener(new ClickListener() {
+        public void onClick(Widget sender) {
+          getBlogs();
+        }
+      });
+      mainPanel.setWidget(0, 0, startButton);
+    } else {
+      showStatus("You are not logged on to Blogger.", true);
+    }
   }
-  public void insertPost(BlogPostFeed postFeed) {
+  
+  private void getBlogs() {
+    showStatus("Loading blog feed...", false);
+    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("No Blogger account was found for the currently logged-in user")) {
+          showStatus("No Blogger account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the Blogger Blog feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(BlogFeed result) {
+        BlogEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("You have no Blogger blogs.", false);
+        } else {
+          BlogEntry targetBlog = entries[0];
+          String postsFeedUri = targetBlog.getEntryPostLink().getHref();
+          getPosts(postsFeedUri);
+        }
+      }
+    });
+  }
+  
+  private void getPosts(String postsFeedUri) {
+    showStatus("Loading posts feed...", false);
+    service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(BlogPostFeed result) {
+        insertPost(result);
+      }
+    });
+  }
+  
+  private void insertPost(BlogPostFeed postFeed) {
     showStatus("Creating blog post entry...", false);
     PostEntry newPost = PostEntry.newInstance();
     newPost.setTitle(Text.newInstance());
-    newPost.getTitle().setText("GWT-Blogger-Client: inserted post");
+    newPost.getTitle().setText("GWT-Blogger-Client - inserted post");
     newPost.setContent(Text.newInstance());
     newPost.getContent().setText("This is the body of the blog post.  I can include <b>HTML</b> tags.");
     newPost.setControl(Control.newInstance());
@@ -98,20 +156,14 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
       }
     });
   }
-  public void login() {
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Create a blog post");
-      startButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
-          startDemo();
-        }
-      });
-      mainPanel.setWidget(0, 0, startButton);
-    } else {
-      showStatus("You are not logged on to Blogger.", true);
-    }
-  }
-  public void showStatus(String message, boolean isError) {
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -120,36 +172,5 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading Blogger accounts feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Blogger account was found for the currently logged-in user")) {
-          showStatus("No Blogger account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Blogger Blog feed, see details below:\n" + message, true);
-        }
-      }
-      public void onSuccess(BlogFeed result) {
-        BlogEntry[] entries = result.getEntries();
-        if (entries.length == 0) {
-          showStatus("You have no Blogger accounts.", false);
-        } else {
-          BlogEntry blog = entries[0];
-          String postsFeedUri = blog.getEntryPostLink().getHref();
-          showStatus("Loading Blogger blog posts feed...", false);
-          service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
-          public void onFailure(Throwable caught) {
-            showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
-          }
-          public void onSuccess(BlogPostFeed result) {
-            insertPost(result);
-          }
-        });
-        }
-      }
-    });
   }
 }

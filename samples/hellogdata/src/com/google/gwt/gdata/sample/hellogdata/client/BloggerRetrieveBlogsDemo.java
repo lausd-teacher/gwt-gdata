@@ -31,6 +31,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class BloggerRetrieveBlogsDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -57,20 +63,52 @@ public class BloggerRetrieveBlogsDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.blogger.com/feeds/";
 
+  /**
+   * Setup the Blogger service and create the main content panel.
+   * If the user is not logged on to Blogger display a message,
+   * otherwise start the demo by retrieving the user's blogs.
+   */
   public BloggerRetrieveBlogsDemo() {
     service = BloggerService.newInstance("HelloGData_Blogger_RetrieveBlogsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
+      getBlogs();
     } else {
       showStatus("You are not logged on to Blogger.", true);
     }
   }
-  public void showData(BlogEntry[] entries) {
+  
+  private void getBlogs() {
+    showStatus("Loading blog feed...", false);
+    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("No Blogger account was found for the currently logged-in user")) {
+          showStatus("No Blogger account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the Blogger Blog feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(BlogFeed result) {
+        BlogEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("You have no Blogger blogs.", false);
+        } else {
+          showData(result.getEntries());
+        }
+      }
+    });
+  }
+
+  /**
+  * Displays a set of Blogger blog entries in a tabular fashion with
+  * the help of a GWT FlexTable widget. The data fields Title, URL 
+  * and Updated are displayed.
+  * 
+  * @param entries The Blogger blog entries to display.
+  */
+  private void showData(BlogEntry[] entries) {
     mainPanel.clear();
     String[] labels = new String[] { "Title", "URL", "Updated" };
     mainPanel.insertRow(0);
@@ -91,7 +129,14 @@ public class BloggerRetrieveBlogsDemo extends GDataDemo {
       mainPanel.setWidget(row, 2, new Label(entry.getUpdated().getValue().getDate().toString()));
     }
   }
-  public void showStatus(String message, boolean isError) {
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -101,25 +146,5 @@ public class BloggerRetrieveBlogsDemo extends GDataDemo {
     }
     mainPanel.setWidget(0, 0, msg);
   }
-  public void startDemo() {
-    showStatus("Loading Blogger blog feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Blogger account was found for the currently logged-in user")) {
-          showStatus("No Blogger account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Blogger Blog feed, see details below:\n" + message, true);
-        }
-      }
-      public void onSuccess(BlogFeed result) {
-        BlogEntry[] entries = result.getEntries();
-        if (entries.length == 0) {
-          showStatus("You have no Blogger accounts.", false);
-        } else {
-          showData(result.getEntries());
-        }
-      }
-    });
-  }
+  
 }

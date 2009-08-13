@@ -213,7 +213,7 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(CalendarUpdateEventDemo.init());
     list.addGDataDemo(CalendarDeleteEventDemo.init());
     list.addGDataDemo(CalendarCreateEventReminderDemo.init());
-    list.addGDataDemo(CalendarAddExtendedPropertyDemo.init());
+    list.addGDataDemo(CalendarCreateEventWithExtendedPropertyDemo.init());
     list.addGDataDemo(ContactsRetrieveContactsDemo.init());
     list.addGDataDemo(ContactsCreateContactDemo.init());
     list.addGDataDemo(ContactsRetrieveContactsUsingQueryDemo.init());
@@ -245,10 +245,15 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(GoogleBaseQuerySnippetsForConvertiblesDemo.init());
     list.addGDataDemo(GoogleBaseQuerySnippetsForRecipesDemo.init());
     list.addGDataDemo(GoogleBaseQuerySnippetsForHousingDemo.init());
+    list.addGDataDemo(GoogleBaseRetrieveMediaDemo.init());
     list.addGDataDemo(MapsRetrieveMapsDemo.init());
     list.addGDataDemo(MapsCreateMapDemo.init());
     list.addGDataDemo(MapsUpdateMapDemo.init());
     list.addGDataDemo(MapsDeleteMapDemo.init());
+    list.addGDataDemo(MapsRetrieveMapFeaturesDemo.init());
+    list.addGDataDemo(MapsCreateMapFeatureDemo.init());
+    list.addGDataDemo(MapsUpdateMapFeatureDemo.init());
+    list.addGDataDemo(MapsDeleteMapFeatureDemo.init());
   }
   
   private void showInfo() {

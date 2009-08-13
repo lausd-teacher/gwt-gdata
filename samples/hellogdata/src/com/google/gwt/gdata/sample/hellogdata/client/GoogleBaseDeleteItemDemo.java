@@ -34,6 +34,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class GoogleBaseDeleteItemDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -51,7 +57,7 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Google Base - Deleting an Item";
+        return "Google Base - Deleting an item";
       }
     };
   }
@@ -60,18 +66,20 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/base/feeds/";
 
+  /**
+   * Setup the Google Base service and create the main content panel.
+   * If the user is not logged on to Google Base display a message,
+   * otherwise start the demo by retrieving the user's items.
+   */
   public GoogleBaseDeleteItemDemo() {
     service = GoogleBaseService.newInstance("HelloGData_GoogleBase_DeleteItemDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete an item");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          getItems();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -79,17 +87,20 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
       showStatus("You are not logged on to Google Base.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
+  
+  private void deleteItem(String itemsEntryUri) {
+    showStatus("Updating item...", false);
+    service.deleteItemsEntry(itemsEntryUri, new ItemsEntryCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while deleting an item, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(ItemsEntry result) {
+        showStatus("Deleted an item.", false);
+      }
+    });
   }
-  public void startDemo() {
+  
+  private void getItems() {
     showStatus("Loading items feed...", false);
     service.getItemsFeed("http://www.google.com/base/feeds/items/", new ItemsFeedCallback() {
       public void onFailure(Throwable caught) {
@@ -102,30 +113,37 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
       }
       public void onSuccess(ItemsFeed result) {
         ItemsEntry[] entries = result.getEntries();
-        ItemsEntry targetEntry = null;
+        ItemsEntry targetItem = null;
         for (ItemsEntry entry : entries) {
           if (entry.getTitle().getText().startsWith("GWT-GoogleBase-Client")) {
-            targetEntry = entry;
+            targetItem = entry;
             break;
           }
         }
-        if (targetEntry == null) {
+        if (targetItem == null) {
           showStatus("No item found that contains 'GWT-GoogleBase-Client' in the title.", false);
         } else {
-          deleteItem(targetEntry);
+          String itemsEntryUri = targetItem.getSelfLink().getHref();
+          deleteItem(itemsEntryUri);
         }
       }
     });
   }
-  public void deleteItem(ItemsEntry entry) {
-    showStatus("Updating item...", false);
-    entry.deleteEntry(new ItemsEntryCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while deleting an item, see details below:\n" + caught.getMessage(), true);
-      }
-      public void onSuccess(ItemsEntry result) {
-        showStatus("Deleted an item.", false);
-      }
-    });
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

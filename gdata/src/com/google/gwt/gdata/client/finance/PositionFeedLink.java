@@ -24,7 +24,7 @@ import com.google.gwt.gdata.client.FeedLink;
 public class PositionFeedLink extends FeedLink<PositionFeed> {
 
   /**
-   * Constructs a portfolio feed.
+   * Constructs a position feed link.
    * @return A PositionFeedLink object.
    */
   @SuppressWarnings("unchecked")

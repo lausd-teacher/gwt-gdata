@@ -29,7 +29,9 @@ public class User {
    * @param scope URL identifying the service to be accessed.
    * @return A token, if one exists. If no token exists for the specified scope, this method returns an empty string.
    */
-  public static final native String checkLogin(String scope) /*-{ return $wnd.google.accounts.user.checkLogin(scope); }-*/;
+  public static final native String checkLogin(String scope) /*-{
+    return $wnd.google.accounts.user.checkLogin(scope);
+  }-*/;
   /**
    * Gets detailed information related to the current token, including target (the domain that originally requested the token) and scope.
    * This method is primarily intended for debugging purposes, because this information is not needed to verify authentication.
@@ -45,7 +47,11 @@ public class User {
    * @param scope A scope argument; if specified, the info for only that scope will be retrieved. If no scope is specified, the info for the first scope will be retrieved.
    * @return Returns true if the method succeeds, false otherwise. In addition, the input callback function is called once the token info is received.
    */
-  public static final native boolean getInfo(Runnable callback, String scope) /*-{ return $wnd.google.accounts.user.getInfo(function() { @com.google.gwt.ajaxloader.client.ExceptionHelper::runProtected(Ljava/lang/Runnable;)(callback); }, scope); }-*/;
+  public static final native boolean getInfo(Runnable callback, String scope) /*-{
+    return $wnd.google.accounts.user.getInfo(
+      function() { @com.google.gwt.ajaxloader.client.ExceptionHelper::runProtected(Ljava/lang/Runnable;)(callback); },
+      scope);
+    }-*/;
   /**
    * Gets detailed information related to the current token, including target (the domain that originally requested the token) and scope.
    * This method is primarily intended for debugging purposes, because this information is not needed to verify authentication.
@@ -61,7 +67,9 @@ public class User {
    * @return Returns true if the method succeeds, false otherwise. In addition, the input callback function is called once the token info is received.
    */
   public static final native boolean getInfo(Runnable callback) /*-{
-    return $wnd.google.accounts.user.getInfo(function() { @com.google.gwt.ajaxloader.client.ExceptionHelper::runProtected(Ljava/lang/Runnable;)(callback); });
+    return $wnd.google.accounts.user.getInfo(
+      function() { @com.google.gwt.ajaxloader.client.ExceptionHelper::runProtected(Ljava/lang/Runnable;)(callback);
+    });
   }-*/;
   /**
    * Returns an array of the scopes the user is currently logged into.
@@ -83,7 +91,9 @@ public class User {
    * Returns the current status of the AuthSubJS process.
    * @return The status of the AuthSubJS process.
    */
-  public static final native AuthSubStatus getStatus() /*-{ return @com.google.gwt.accounts.client.AuthSubStatus::valueOf(I)($wnd.google.accounts.user.getStatus()); }-*/;
+  public static final native AuthSubStatus getStatus() /*-{
+    return @com.google.gwt.accounts.client.AuthSubStatus::valueOf(I)($wnd.google.accounts.user.getStatus());
+  }-*/;
   /**
    * Retrieves a valid authentication token.
    * This method first checks whether or not a cookie for the specified scope is already stored in the browser.

@@ -35,6 +35,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class BloggerRetrieveSpecificBlogPostDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -60,43 +66,24 @@ public class BloggerRetrieveSpecificBlogPostDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.blogger.com/feeds/";
 
+  /**
+   * Setup the Blogger service and create the main content panel.
+   * If the user is not logged on to Blogger display a message,
+   * otherwise start the demo by retrieving the user's blogs.
+   */
   public BloggerRetrieveSpecificBlogPostDemo() {
     service = BloggerService.newInstance("HelloGData_Blogger_RetrieveSpecificBlogPostDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
+      getBlogs();
     } else {
       showStatus("You are not logged on to Blogger.", true);
     }
   }
-  public void showData(PostEntry entry) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    mainPanel.setWidget(0, 0, new HTML("<h2>" + entry.getTitle().getText() + "</h2>"));
-    mainPanel.insertRow(1);
-    mainPanel.addCell(1);
-    mainPanel.setWidget(1, 0, new HTML("<i>By " + entry.getAuthors()[0].getName().getValue() + " on " + entry.getPublished().getValue().getDate().toString() + "</i>"));
-    mainPanel.insertRow(2);
-    mainPanel.addCell(2);
-    mainPanel.setWidget(2, 0, new HTML(entry.getContent().getText()));
-  }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading Blogger accounts feed...", false);
+  
+  private void getBlogs() {
+    showStatus("Loading blog feed...", false);
     service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
@@ -109,35 +96,81 @@ public class BloggerRetrieveSpecificBlogPostDemo extends GDataDemo {
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
         if (entries.length == 0) {
-          showStatus("You have no Blogger accounts.", false);
+          showStatus("You have no Blogger blogs.", false);
         } else {
-          BlogEntry blog = entries[0];
-          String postsFeedUri = blog.getEntryPostLink().getHref();
-          showStatus("Loading Blogger blog posts feed...", false);
-          service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
-          public void onFailure(Throwable caught) {
-            showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
-          }
-          public void onSuccess(BlogPostFeed result) {
-            PostEntry[] entries = result.getEntries();
-            if (entries.length == 0) {
-              showStatus("No post entries found for the current blog.", false);
-            } else {
-              String postEntryUri = entries[0].getSelfLink().getHref();
-              showStatus("Loading Blogger blog post entry...", false);
-              service.getPostEntry(postEntryUri, new PostEntryCallback() {
-                public void onFailure(Throwable caught) {
-                  showStatus("An error occurred while retrieving the Blogger Post entry, see details below:\n" + caught.getMessage(), true);
-                }
-                public void onSuccess(PostEntry result) {
-                  showData(result);
-                }
-              });
-            }
-          }
-        });
+          BlogEntry targetBlog = entries[0];
+          String postsFeedUri = targetBlog.getEntryPostLink().getHref();
+          getPosts(postsFeedUri);
         }
       }
     });
+  }
+  
+  private void getPost(String postEntryUri) {
+    showStatus("Loading post entry...", false);
+    service.getPostEntry(postEntryUri, new PostEntryCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while retrieving the Blogger Post entry, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(PostEntry result) {
+        showData(result);
+      }
+    });
+  }
+  
+  private void getPosts(String postsFeedUri) {
+    showStatus("Loading posts feed...", false);
+    service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(BlogPostFeed result) {
+        PostEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("No post entries found for the current blog.", false);
+        } else {
+          PostEntry targetPost = entries[0];
+          String postEntryUri = targetPost.getSelfLink().getHref();
+          getPost(postEntryUri);
+        }
+      }
+    });
+  }
+
+  /**
+  * Displays a Blogger post entry in a tabular fashion with
+  * the help of a GWT FlexTable widget. The data fields Title, 
+  * Author, Published and Contents are displayed.
+  * 
+  * @param entries The Blogger post entry to display.
+  */
+  private void showData(PostEntry entry) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    mainPanel.setWidget(0, 0, new HTML("<h2>" + entry.getTitle().getText() + "</h2>"));
+    mainPanel.insertRow(1);
+    mainPanel.addCell(1);
+    mainPanel.setWidget(1, 0, new HTML("<i>By " + entry.getAuthors()[0].getName().getValue() + " on " + entry.getPublished().getValue().getDate().toString() + "</i>"));
+    mainPanel.insertRow(2);
+    mainPanel.addCell(2);
+    mainPanel.setWidget(2, 0, new Label(entry.getContent().getText()));
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

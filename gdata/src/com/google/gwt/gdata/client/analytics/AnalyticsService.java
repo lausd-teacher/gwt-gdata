@@ -60,13 +60,9 @@ public class AnalyticsService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getAccountEntry(String uri, AccountEntryCallback callback) /*-{
-    this.getAccountEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getAccountEntry(String uri, AccountEntryCallback callback) {
+    this.getEntry(uri, callback, "getAccountEntry");
+  }
 
   /**
    * Retrieves the feed of accounts and profiles to which a given user has access.
@@ -74,13 +70,9 @@ public class AnalyticsService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getAccountFeed(AccountQuery query, AccountFeedCallback callback) /*-{
-    this.getAccountFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getAccountFeed(AccountQuery query, AccountFeedCallback callback) {
+    this.getFeed(query, callback, "getAccountFeed");
+  }
 
   /**
    * Retrieves the feed of accounts and profiles to which a given user has access.
@@ -88,13 +80,9 @@ public class AnalyticsService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getAccountFeed(String uri, AccountFeedCallback callback) /*-{
-    this.getAccountFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getAccountFeed(String uri, AccountFeedCallback callback) {
+    this.getFeed(uri, callback, "getAccountFeed");
+  }
 
   /**
    * Retrieves a data entry.
@@ -102,27 +90,19 @@ public class AnalyticsService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getDataEntry(String uri, DataEntryCallback callback) /*-{
-    this.getDataEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
-
+  public final void getDataEntry(String uri, DataEntryCallback callback) {
+    this.getEntry(uri, callback, "getDataEntry");
+  }
+  
   /**
    * Retrieves the arbitrary data from an Analytics profile.
    * 
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getDataFeed(DataQuery query, DataFeedCallback callback) /*-{
-    this.getDataFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getDataFeed(DataQuery query, DataFeedCallback callback) {
+    this.getFeed(query, callback, "getDataFeed");
+  }
 
   /**
    * Retrieves the arbitrary data from an Analytics profile.
@@ -130,13 +110,9 @@ public class AnalyticsService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getDataFeed(String uri, DataFeedCallback callback) /*-{
-    this.getDataFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getDataFeed(String uri, DataFeedCallback callback) {
+    this.getFeed(uri, callback, "getDataFeed");
+  }
 
   /**
    * Inserts a new account entry.

@@ -35,6 +35,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class MapsUpdateMapDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -61,18 +67,20 @@ public class MapsUpdateMapDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://maps.google.com/maps/feeds/maps/";
 
+  /**
+   * Setup the Google Maps service and create the main content panel.
+   * If the user is not logged on to Google Maps display a message,
+   * otherwise start the demo by retrieving the user's maps.
+   */
   public MapsUpdateMapDemo() {
     service = MapsService.newInstance("HelloGData_Maps_UpdateMapDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Update a map");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          getMaps();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -80,17 +88,8 @@ public class MapsUpdateMapDemo extends GDataDemo {
       showStatus("You are not logged on to Google Maps.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
+  
+  private void getMaps() {
     showStatus("Loading maps feed...", false);
     service.getMapFeed("http://maps.google.com/maps/feeds/maps/default/full", new MapFeedCallback() {
       public void onFailure(Throwable caught) {
@@ -103,26 +102,44 @@ public class MapsUpdateMapDemo extends GDataDemo {
       }
       public void onSuccess(MapFeed result) {
         MapEntry[] entries = result.getEntries();
-        MapEntry targetEntry = null;
+        MapEntry targetMap = null;
         for (MapEntry entry : entries) {
           if (entry.getTitle().getText().startsWith("GWT-Maps-Client")) {
-            targetEntry = entry;
+            targetMap = entry;
             break;
           }
         }
-        if (targetEntry == null) {
+        if (targetMap == null) {
           showStatus("No map found that contains 'GWT-Maps-Client' in the title.", false);
         } else {
-          updateMap(targetEntry);
+          updateMap(targetMap);
         }
       }
     });
   }
-  public void updateMap(MapEntry entry) {
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
+  }
+  
+  private void updateMap(MapEntry targetMap) {
     showStatus("Updating map...", false);
-    entry.setTitle(Text.newInstance());
-    entry.getTitle().setText("GWT-Maps-Client - updated map");
-    entry.updateEntry(new MapEntryCallback() {
+    targetMap.setTitle(Text.newInstance());
+    targetMap.getTitle().setText("GWT-Maps-Client - updated map");
+    targetMap.updateEntry(new MapEntryCallback() {
       public void onFailure(Throwable caught) {
         showStatus("An error occurred while updating a map, see details below:\n" + caught.getMessage(), true);
       }

@@ -35,6 +35,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class FinanceRetrievePositionsDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -58,7 +64,7 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Finance - Retrieving Positions";
+        return "Finance - Retrieving positions";
       }
     };
   }
@@ -67,20 +73,54 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://finance.google.com/finance/feeds/";
 
+  /**
+   * Setup the Finance service and create the main content panel.
+   * If the user is not logged on to Finance display a message,
+   * otherwise start the demo by retrieving the user's portfolios.
+   */
   public FinanceRetrievePositionsDemo() {
     service = FinanceService.newInstance("HelloGData_Finance_RetrievePositionsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void getPositions(PortfolioEntry entry) {
-    String portfolioId = entry.getId().getValue();
-    JsArrayString match = regExpMatch("\\/(\\d+)$", portfolioId);
-    if (match.length() > 1) {
-      portfolioId = match.get(1);
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      getPortfolios();
     } else {
-      showStatus("Error parsing the portfolio id.", true);
+      showStatus("You are not logged on to Google Finance.", true);
     }
+  }
+  
+  private void getPortfolios() {
+    showStatus("Loading portfolios feed...", false);
+    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("No Finance account was found for the currently logged-in user")) {
+          showStatus("No Finance account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(PortfolioFeed result) {
+        PortfolioEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("You have no portfolios.", false);
+        } else {
+          PortfolioEntry targetPortfolio = entries[0];
+          String portfolioId = targetPortfolio.getId().getValue();
+          JsArrayString match = regExpMatch("\\/(\\d+)$", portfolioId);
+          if (match.length() > 1) {
+            portfolioId = match.get(1);
+          } else {
+            showStatus("Error parsing the portfolio id.", true);
+          }
+          getPositions(portfolioId);
+        }
+      }
+    });
+  }
+  
+  private void getPositions(String portfolioId) {
+    showStatus("Loading positions feed...", false);
     String positionsFeedUri = "http://finance.google.com/finance/feeds/default/" +
       "portfolios/" + portfolioId + "/positions";
     service.getPositionFeed(positionsFeedUri, new PositionFeedCallback() {
@@ -97,18 +137,20 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
       }
     });
   }
-  public void login() {
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
-    } else {
-      showStatus("You are not logged on to Google Finance.", true);
-    }
-  }
-  public native JsArrayString regExpMatch(String regEx, String target) /*-{
+  
+  private native JsArrayString regExpMatch(String regEx, String target) /*-{
     var re = new RegExp();
     return re.compile(regEx).exec(target);
   }-*/;
-  public void showData(PositionEntry[] entries) {
+
+  /**
+  * Displays a set of Finance position entries in a tabular 
+  * fashion with the help of a GWT FlexTable widget. The data fields 
+  * Title and Shares are displayed.
+  * 
+  * @param entries The Finance position entries to display.
+  */
+  private void showData(PositionEntry[] entries) {
     mainPanel.clear();
     String[] labels = new String[] { "Title", "Shares" };
     mainPanel.insertRow(0);
@@ -127,7 +169,14 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
       mainPanel.setWidget(row, 1, new Label("" + data.getShares()));
     }
   }
-  public void showStatus(String message, boolean isError) {
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -136,26 +185,5 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Finance account was found for the currently logged-in user")) {
-          showStatus("No Finance account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + message, true);
-        }
-      }
-      public void onSuccess(PortfolioFeed result) {
-        PortfolioEntry[] entries = result.getEntries();
-        if (entries.length == 0) {
-          showStatus("You have no portfolios.", false);
-        } else {
-          getPositions(entries[0]);
-        }
-      }
-    });
   }
 }

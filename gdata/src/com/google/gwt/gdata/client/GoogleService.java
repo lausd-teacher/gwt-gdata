@@ -25,6 +25,7 @@ public class GoogleService extends Service {
 
   /**
    * Creates a service that supports all alt formats: atom, atom-in-script, json, json-in-script, rss and rss-in-script.
+   * 
    * @param serviceName Name of GData service.
    * @param applicationName Name of application.
    * @return A GoogleService object.
@@ -36,6 +37,15 @@ public class GoogleService extends Service {
   protected GoogleService() { }
 
   /**
+   * Gets user credentials.
+   * 
+   * @return The user credentials.
+   */
+  public final native GoogleServiceUserCredentials getUserCredentials() /*-{
+    return this.getUserCredentials();
+  }-*/;
+  
+  /**
    * Sets the authentication to be used when running inside a Shindig (OpenSocial) container.
    * 
    * @param authType one of the three valid Shindig authentication types.
@@ -44,7 +54,6 @@ public class GoogleService extends Service {
   public final native void setGadgetsAuthentication(ShindigAuthenticationType authType, JavaScriptObject params) /*-{
     this.setGadgetsAuthentication(authType.@com.google.gwt.gdata.client.ShindigAuthenticationType::name()(), params);
   }-*/;
-
 
   /**
    * Sets the authentication to be used when running inside a Shindig (OpenSocial) container.

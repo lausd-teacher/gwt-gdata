@@ -30,6 +30,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class FinanceRetrievePortfoliosDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -46,7 +52,7 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Finance - Retrieving all Portfolios";
+        return "Finance - Retrieving all portfolios";
       }
     };
   }
@@ -55,48 +61,23 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://finance.google.com/finance/feeds/";
 
+  /**
+   * Setup the Finance service and create the main content panel.
+   * If the user is not logged on to Finance display a message,
+   * otherwise start the demo by retrieving the user's portfolios.
+   */
   public FinanceRetrievePortfoliosDemo() {
     service = FinanceService.newInstance("HelloGData_Finance_RetrievePortfoliosDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
+      getPortfolios();
     } else {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
-  public void showData(PortfolioEntry[] entries) {
-    mainPanel.clear();
-    String[] labels = new String[] { "Title", "Id" };
-    mainPanel.insertRow(0);
-    for (int i = 0; i < labels.length; i++) {
-      mainPanel.addCell(0);
-      mainPanel.setWidget(0, i, new Label(labels[i]));
-      mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
-    }
-    for (int i = 0; i < entries.length; i++) {
-      PortfolioEntry entry = entries[i];
-      int row = mainPanel.insertRow(i + 1);
-      mainPanel.addCell(row);
-      mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
-      mainPanel.addCell(row);
-      mainPanel.setWidget(row, 1, new Label(entry.getId().getValue()));
-    }
-  }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
+  
+  private void getPortfolios() {
     showStatus("Loading portfolios feed...", false);
     service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
       public void onFailure(Throwable caught) {
@@ -116,5 +97,48 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
         }
       }
     });
+  }
+
+  /**
+  * Displays a set of Finance portfolio entries in a tabular 
+  * fashion with the help of a GWT FlexTable widget. The data fields 
+  * Title, Email and Updated are displayed.
+  * 
+  * @param entries The Finance portfolio entries to display.
+  */
+  private void showData(PortfolioEntry[] entries) {
+    mainPanel.clear();
+    String[] labels = new String[] { "Title", "Id" };
+    mainPanel.insertRow(0);
+    for (int i = 0; i < labels.length; i++) {
+      mainPanel.addCell(0);
+      mainPanel.setWidget(0, i, new Label(labels[i]));
+      mainPanel.getFlexCellFormatter().setStyleName(0, i, "hm-tableheader");
+    }
+    for (int i = 0; i < entries.length; i++) {
+      PortfolioEntry entry = entries[i];
+      int row = mainPanel.insertRow(i + 1);
+      mainPanel.addCell(row);
+      mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
+      mainPanel.addCell(row);
+      mainPanel.setWidget(row, 1, new Label(entry.getId().getValue()));
+    }
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

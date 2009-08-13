@@ -38,6 +38,12 @@ import java.util.Date;
  */
 public class ContactsDeleteContactDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -64,18 +70,20 @@ public class ContactsDeleteContactDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/m8/feeds/";
 
+  /**
+   * Setup the Contacts service and create the main content panel.
+   * If the user is not logged on to Contacts display a message,
+   * otherwise start the demo by querying the user's contacts.
+   */
   public ContactsDeleteContactDemo() {
     service = ContactsService.newInstance("HelloGData_Contacts_DeleteContactDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a contact");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          queryContacts();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -83,17 +91,20 @@ public class ContactsDeleteContactDemo extends GDataDemo {
       showStatus("You are not logged on to Google Contacts.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
+  
+  private void deleteContact(String contactEntryUri) {
+    showStatus("Deleting a contact...", false);
+    service.deleteContactEntry(contactEntryUri, new ContactEntryCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while deleting a contact, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(ContactEntry result) {
+        showStatus("Deleted a contact.", false);
+      }
+    });
   }
-  public void startDemo() {
+  
+  private void queryContacts() {
     showStatus("Querying contacts...", false);
     ContactQuery query = ContactQuery.newInstance("http://www.google.com/m8/feeds/contacts/default/full");
     Date today = new Date();
@@ -111,28 +122,38 @@ public class ContactsDeleteContactDemo extends GDataDemo {
       }
       public void onSuccess(ContactFeed result) {
         ContactEntry[] entries = result.getEntries();
-        ContactEntry targetEntry = null;
+        ContactEntry targetContact = null;
         for (ContactEntry contact : entries) {
           String title = contact.getTitle().getText();
           if (title.startsWith("GWT-Contacts-Client")) {
-            targetEntry = contact;
+            targetContact = contact;
             break;
           }
         }
-        if (targetEntry == null) {
+        if (targetContact == null) {
           showStatus("No contacts were found that were modified today and contained 'GWT-Contacts-Client' in the title.", false);
         } else {
-          showStatus("Deleting a Calendar event...", false);
-          targetEntry.deleteEntry(new ContactEntryCallback() {
-            public void onFailure(Throwable caught) {
-              showStatus("An error occurred while deleting a contact, see details below:\n" + caught.getMessage(), true);
-            }
-            public void onSuccess(ContactEntry result) {
-              showStatus("Deleted a contact.", false);
-            }
-          });
+          String contactEntryUri = targetContact.getSelfLink().getHref();
+          deleteContact(contactEntryUri);
         }
       }
     });
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

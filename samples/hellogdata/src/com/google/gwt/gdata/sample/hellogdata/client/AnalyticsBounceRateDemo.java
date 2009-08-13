@@ -25,6 +25,7 @@ import com.google.gwt.gdata.client.analytics.AnalyticsService;
 import com.google.gwt.gdata.client.analytics.DataEntry;
 import com.google.gwt.gdata.client.analytics.DataFeed;
 import com.google.gwt.gdata.client.analytics.DataFeedCallback;
+import com.google.gwt.gdata.client.analytics.DataQuery;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -33,6 +34,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class AnalyticsBounceRateDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -44,12 +51,13 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample code demonstrates how to " +
-        "calculate the bounce rate for the top 10 sources of traffic to your website.</p>\n";
+          "calculate the bounce rate for the top 10 sources of traffic " +
+          "to your website.</p>\n";
       }
 
       @Override
       public String getName() {
-        return "Analytics - Calculate Bounce Rate By Source";
+        return "Analytics - Calculate bounce rate by source";
       }
     };
   }
@@ -58,20 +66,89 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "https://www.google.com/analytics/feeds/";
 
+  /**
+   * Setup the Analytics service and create the main content panel.
+   * If the user is not logged on to Analytics display a message,
+   * otherwise start the demo by retrieving the Analytics accounts.
+   */
   public AnalyticsBounceRateDemo() {
     service = AnalyticsService.newInstance("HelloGData_Analytics_BounceRateDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
+      getAccounts();
     } else {
       showStatus("You are not logged on to Google Analytics.", true);
     }
   }
-  public void showData(DataEntry[] entries) {
+  /**
+   * Retrieve the Analytics accounts feed using the Analytics service and
+   * the accounts feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler picks up the first Account entry and
+   * calls queryData to retrieve the data feed for that account.
+   */
+  private void getAccounts() {
+    showStatus("Loading Analytics accounts feed...", false);
+    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default", new AccountFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("No Analytics account was found for the currently logged-in user")) {
+          showStatus("No Analytics account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the Analytics Accounts feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(AccountFeed result) {
+        AccountEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("You have no Analytics accounts.", false);
+        } else {
+          AccountEntry targetEntry = entries[0];
+          queryData(targetEntry.getTableId().getValue());
+        }
+      }
+    });
+  }
+  /**
+   * Retrieves a data feed for an Analytics account using a Query object.
+   * In GData, feed URIs can contain query string parameters. The
+   * GData query objects aid in building parameterized feed URIs.
+   * Upon successfully receiving the data feed, the data entries are displayed to the user
+   * via the showData() method.
+   * 
+   * @param tableId The id of the account table for which to retrieve the Analytics data.
+   */
+  private void queryData(String tableId) {
+    DataQuery query = DataQuery.newInstance("https://www.google.com/analytics/feeds/data");
+    query.setStartDate("2009-07-01");
+    query.setEndDate("2009-07-31");
+    query.setDimensions("ga:source,ga:medium");
+    query.setMetrics("ga:entrances,ga:bounces");
+    query.setSort("-ga:entrances");
+    query.setMaxResults(10);
+    query.setIds(tableId);
+    showStatus("Loading data feed...", false);
+    service.getDataFeed(query, new DataFeedCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while retrieving the Analytics Data feed, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(DataFeed result) {
+        showData(result.getEntries());
+      }
+    });
+  }
+  /**
+   * Displays a set of Analytics data entries in a tabular fashion with
+   * the help of a GWT FlexTable widget. The data fields Source, Medium 
+   * Visits, Entrances and Bounce Rate are displayed.
+   * The bounce rate is computed from the entrances and bounces, multiplied 
+   * by 100 to yield a percentage.
+   * 
+   * @param entries The Analytics data entries to display.
+   */
+  private void showData(DataEntry[] entries) {
     mainPanel.clear();
     String[] labels = new String[] { "Source", "Medium", "Visits", "Entrances", "Bounce Rate" };
     mainPanel.insertRow(0);
@@ -98,7 +175,13 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
       mainPanel.setWidget(row, 4, new Label(bounceRate + "%"));
     }
   }
-  public void showStatus(String message, boolean isError) {
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -107,43 +190,5 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading Analytics accounts feed...", false);
-    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AccountFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Analytics account was found for the currently logged-in user")) {
-          showStatus("No Analytics account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Analytics Accounts feed, see details below:\n" + message, true);
-        }
-      }
-      public void onSuccess(AccountFeed result) {
-        AccountEntry[] entries = result.getEntries();
-        if (entries.length == 0) {
-          showStatus("You have no Analytics accounts.", false);
-        } else {
-          String tableId = entries[0].getTableId().getValue();
-          String dataFeedUri = "https://www.google.com/analytics/feeds/data" +
-            "?start-date=2009-07-01" +
-            "&end-date=2009-07-31" +
-            "&dimensions=ga:source,ga:medium" +
-            "&metrics=ga:entrances,ga:bounces" +
-            "&sort=-ga:entrances" +
-            "&max-results=10" +
-            "&ids=" + tableId;
-          showStatus("Loading data feed...", false);
-          service.getDataFeed(dataFeedUri, new DataFeedCallback() {
-            public void onFailure(Throwable caught) {
-              showStatus("An error occurred while retrieving the Analytics Data feed, see details below:\n" + caught.getMessage(), true);
-            }
-            public void onSuccess(DataFeed result) {
-              showData(result.getEntries());
-            }
-          });
-        }
-      }
-    });
   }
 }

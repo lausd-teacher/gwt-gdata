@@ -18,10 +18,10 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
-import com.google.gwt.gdata.client.contacts.ContactEntry;
-import com.google.gwt.gdata.client.contacts.ContactEntryCallback;
-import com.google.gwt.gdata.client.contacts.ContactFeed;
-import com.google.gwt.gdata.client.contacts.ContactFeedCallback;
+import com.google.gwt.gdata.client.contacts.ContactGroupEntry;
+import com.google.gwt.gdata.client.contacts.ContactGroupEntryCallback;
+import com.google.gwt.gdata.client.contacts.ContactGroupFeed;
+import com.google.gwt.gdata.client.contacts.ContactGroupFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactsService;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
@@ -34,6 +34,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class ContactsDeleteContactGroupDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -59,18 +65,20 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.google.com/m8/feeds/";
 
+  /**
+   * Setup the Contacts service and create the main content panel.
+   * If the user is not logged on to Contacts display a message,
+   * otherwise start the demo by retrieving the user's contact groups.
+   */
   public ContactsDeleteContactGroupDemo() {
     service = ContactsService.newInstance("HelloGData_Contacts_DeleteContactGroupDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a contact group");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          getContactGroups();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -78,19 +86,22 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
       showStatus("You are not logged on to Google Contacts.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
+  
+  private void deleteContactGroup(String contactGroupEntryUri) {
+    showStatus("Deleting a contact group...", false);
+    service.deleteContactGroupEntry(contactGroupEntryUri, new ContactGroupEntryCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while deleting a contact group, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(ContactGroupEntry result) {
+        showStatus("Deleted a contact group.", false);
+      }
+    });
   }
-  public void startDemo() {
+  
+  private void getContactGroups() {
     showStatus("Loading contact groups feed...", false);
-    service.getContactFeed("http://www.google.com/m8/feeds/groups/default/full", new ContactFeedCallback() {
+    service.getContactGroupFeed("http://www.google.com/m8/feeds/groups/default/full", new ContactGroupFeedCallback() {
       public void onFailure(Throwable caught) {
         String message = caught.getMessage();
         if (message.contains("No Contacts account was found for the currently logged-in user")) {
@@ -99,30 +110,40 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
           showStatus("An error occurred while retrieving the contact groups feed, see details below:\n" + message, true);
         }
       }
-      public void onSuccess(ContactFeed result) {
-        ContactEntry[] entries = result.getEntries();
-        ContactEntry targetEntry = null;
-        for (ContactEntry contact : entries) {
-          String title = contact.getTitle().getText();
+      public void onSuccess(ContactGroupFeed result) {
+        ContactGroupEntry[] entries = result.getEntries();
+        ContactGroupEntry targetGroup = null;
+        for (ContactGroupEntry group : entries) {
+          String title = group.getTitle().getText();
           if (title.startsWith("GWT-Contacts-Client")) {
-            targetEntry = contact;
+            targetGroup = group;
             break;
           }
         }
-        if (targetEntry == null) {
+        if (targetGroup == null) {
           showStatus("No contacts were found with a title starting with 'GWT-Contacts-Client'.", false);
         } else {
-          showStatus("Deleting a contact group...", false);
-          targetEntry.deleteEntry(new ContactEntryCallback() {
-            public void onFailure(Throwable caught) {
-              showStatus("An error occurred while deleting a contact group, see details below:\n" + caught.getMessage(), true);
-            }
-            public void onSuccess(ContactEntry result) {
-              showStatus("Deleted a contact group.", false);
-            }
-          });
+          String contactGroupEntryUri = targetGroup.getSelfLink().getHref();
+          deleteContactGroup(contactGroupEntryUri);
         }
       }
     });
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

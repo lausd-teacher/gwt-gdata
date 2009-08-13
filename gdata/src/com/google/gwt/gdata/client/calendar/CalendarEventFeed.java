@@ -71,6 +71,15 @@ public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
   }-*/;
 
   /**
+   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this command.
+   */
+  public final void getSelf(CalendarEventFeedCallback callback) {
+    this.get(callback);
+  }
+
+  /**
    * Returns the times cleaned property. This element is optional.
    * 
    * @return Times cleaned property.

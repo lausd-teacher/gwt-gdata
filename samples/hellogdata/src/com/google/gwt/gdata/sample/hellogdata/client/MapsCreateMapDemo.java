@@ -33,6 +33,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class MapsCreateMapDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -59,18 +65,20 @@ public class MapsCreateMapDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://maps.google.com/maps/feeds/maps/";
 
+  /**
+   * Setup the Google Maps service and create the main content panel.
+   * If the user is not logged on to Google Maps display a message,
+   * otherwise start the demo by creating a map.
+   */
   public MapsCreateMapDemo() {
     service = MapsService.newInstance("HelloGData_Maps_CreateMapDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a map");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          createMap();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -78,17 +86,8 @@ public class MapsCreateMapDemo extends GDataDemo {
       showStatus("You are not logged on to Google Maps.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
+  
+  private void createMap() {
     showStatus("Creating map...", false);
     MapEntry entry = MapEntry.newInstance();
     entry.setTitle(Text.newInstance());
@@ -106,5 +105,22 @@ public class MapsCreateMapDemo extends GDataDemo {
         showStatus("Created a map.", false);
       }
     });
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }

@@ -80,13 +80,9 @@ public class BloggerService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getBlogCommentFeed(BlogCommentQuery query, BlogCommentFeedCallback callback) /*-{
-    this.getBlogCommentFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getBlogCommentFeed(BlogCommentQuery query, BlogCommentFeedCallback callback) {
+    this.getFeed(query, callback, "getBlogCommentFeed");
+  }
 
   /**
    * Retrieves the feed of a blog's comments.
@@ -94,13 +90,9 @@ public class BloggerService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getBlogCommentFeed(String uri, BlogCommentFeedCallback callback) /*-{
-    this.getBlogCommentFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getBlogCommentFeed(String uri, BlogCommentFeedCallback callback) {
+    this.getFeed(uri, callback, "getBlogCommentFeed");
+  }
 
   /**
    * Retrieves a blog entry.
@@ -108,13 +100,9 @@ public class BloggerService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getBlogEntry(String uri, BlogEntryCallback callback) /*-{
-    this.getBlogEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getBlogEntry(String uri, BlogEntryCallback callback) {
+    this.getEntry(uri, callback, "getBlogEntry");
+  }
 
   /**
    * Retrieves the feed of a user's blogs.
@@ -122,13 +110,9 @@ public class BloggerService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getBlogFeed(BlogQuery query, BlogFeedCallback callback) /*-{
-    this.getBlogFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getBlogFeed(BlogQuery query, BlogFeedCallback callback) {
+    this.getFeed(query, callback, "getBlogFeed");
+  }
 
   /**
    * Retrieves the feed of a user's blogs.
@@ -136,13 +120,9 @@ public class BloggerService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getBlogFeed(String uri, BlogFeedCallback callback) /*-{
-    this.getBlogFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getBlogFeed(String uri, BlogFeedCallback callback) {
+    this.getFeed(uri, callback, "getBlogFeed");
+  }
 
   /**
    * Retrieves the feed of a blog's posts.
@@ -150,13 +130,9 @@ public class BloggerService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getBlogPostFeed(BlogPostQuery query, BlogPostFeedCallback callback) /*-{
-    this.getBlogPostFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getBlogPostFeed(BlogPostQuery query, BlogPostFeedCallback callback) {
+    this.getFeed(query, callback, "getBlogPostFeed");
+  }
 
   /**
    * Retrieves the feed of a blog's posts.
@@ -164,27 +140,19 @@ public class BloggerService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getBlogPostFeed(String uri, BlogPostFeedCallback callback) /*-{
-    this.getBlogPostFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
-
+  public final void getBlogPostFeed(String uri, BlogPostFeedCallback callback) {
+    this.getFeed(uri, callback, "getBlogPostFeed");
+  }
+  
   /**
    * Retrieves a comment entry.
    * 
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getCommentEntry(String uri, CommentEntryCallback callback) /*-{
-    this.getCommentEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getCommentEntry(String uri, CommentEntryCallback callback) {
+    this.getEntry(uri, callback, "getCommentEntry");
+  }
 
   /**
    * Retrieves the feed of a blog post's comments.
@@ -192,13 +160,9 @@ public class BloggerService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getPostCommentFeed(PostCommentQuery query, PostCommentFeedCallback callback) /*-{
-    this.getPostCommentFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getPostCommentFeed(PostCommentQuery query, PostCommentFeedCallback callback) {
+    this.getFeed(query, callback, "getPostCommentFeed");
+  }
 
   /**
    * Retrieves the feed of a blog post's comments.
@@ -206,13 +170,9 @@ public class BloggerService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getPostCommentFeed(String uri, PostCommentFeedCallback callback) /*-{
-    this.getPostCommentFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getPostCommentFeed(String uri, PostCommentFeedCallback callback) {
+    this.getFeed(uri, callback, "getPostCommentFeed");
+  }
 
   /**
    * Retrieves a post entry.
@@ -220,13 +180,9 @@ public class BloggerService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getPostEntry(String uri, PostEntryCallback callback) /*-{
-    this.getPostEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getPostEntry(String uri, PostEntryCallback callback) {
+    this.getEntry(uri, callback, "getPostEntry");
+  }
 
   /**
    * Inserts a new blog entry.

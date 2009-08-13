@@ -40,21 +40,21 @@ public class PortfolioEntry extends com.google.gwt.gdata.client.Entry {
   }
 
   /**
-   * Returns the position feed for the portfolio. This element is optional.
-   * 
-   * @return Position feed for the portfolio.
-   */
-  public final native PortfolioFeedLink getFeedLink() /*-{
-    return this.getFeedLink();
-  }-*/;
-
-  /**
    * Returns the data for the portfolio. This element is required.
    * 
    * @return Data for the portfolio.
    */
   public final native PortfolioData getPortfolioData() /*-{
     return this.getPortfolioData();
+  }-*/;
+
+  /**
+   * Returns the position feed for the portfolio. This element is optional.
+   * 
+   * @return Position feed for the portfolio.
+   */
+  public final native PositionFeedLink getPositionFeedLink() /*-{
+    return this.getFeedLink();
   }-*/;
 
   /**
@@ -68,21 +68,21 @@ public class PortfolioEntry extends com.google.gwt.gdata.client.Entry {
   }
 
   /**
-   * Sets the position feed for the portfolio. This element is optional.
-   * 
-   * @param feedLink Position feed for the portfolio.
-   */
-  public final native void setFeedLink(PortfolioFeedLink feedLink) /*-{
-    this.setFeedLink(feedLink);
-  }-*/;
-
-  /**
    * Sets the data for the portfolio. This element is required.
    * 
    * @param portfolioData Data for the portfolio.
    */
   public final native void setPortfolioData(PortfolioData portfolioData) /*-{
     this.setPortfolioData(portfolioData);
+  }-*/;
+
+  /**
+   * Sets the position feed for the portfolio. This element is optional.
+   * 
+   * @param feedLink Position feed for the portfolio.
+   */
+  public final native void setPositionFeedLink(PositionFeedLink feedLink) /*-{
+    this.setFeedLink(feedLink);
   }-*/;
 
   /**

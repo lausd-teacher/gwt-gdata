@@ -34,18 +34,38 @@ public class Query extends JavaScriptObject {
   }-*/;
 
   protected Query() { }
-
+  
   /**
-   * Gets path of URI
+   * Returns the value of a numeric parameter.
+   * 
+   * @param name Name of the parameter.
+   * @return Parameter value or null if not defined or if it is the same as the default value.
+   */
+  public final native double getNumericParam(String name) /*-{
+    return this.getParam(name, value);
+  }-*/;
+  
+  /**
+   * Gets path of URI.
    * 
    * @return Path of URI.
    */
   public final native String getPath() /*-{
     return this.getPath();
   }-*/;
+  
+  /**
+   * Returns the value of a string parameter.
+   * 
+   * @param name Name of the parameter.
+   * @return Parameter value or null if not defined or if it is the same as the default value.
+   */
+  public final native String getStringParam(String name) /*-{
+    return this.getParam(name, value);
+  }-*/;
 
   /**
-   * Gets URI of query
+   * Gets URI of query.
    * 
    * @return URI of query.
    */
@@ -59,8 +79,18 @@ public class Query extends JavaScriptObject {
    * @param name Name of the parameter.
    * @param value Value of the parameter.
    */
-  public final native void setParam(String name, JavaScriptObject value) /*-{
+  public final native void setNumericParam(String name, double value) /*-{
     this.setParam(name, value);
+  }-*/;
+
+  /**
+   * Sets the definition of a parameter.
+   * 
+   * @param name Name of the parameter.
+   * @param paramDef Definition of the parameter. If parameter value is the same as default value, parameter is not included in query string.
+   */
+  public final native void setParamDef(String name, QueryParameterDefinition paramDef) /*-{
+    this.setParamDef(name, paramDef);
   }-*/;
   
   /**
@@ -69,18 +99,8 @@ public class Query extends JavaScriptObject {
    * @param name Name of the parameter.
    * @param value Value of the parameter.
    */
-  public final native void setParam(String name, String value) /*-{
+  public final native void setStringParam(String name, String value) /*-{
     this.setParam(name, value);
-  }-*/;
-
-  /**
-   * Sets the definition of a parameter.
-   * 
-   * @param name Name of the parameter.
-   * @param paramDef Definition of the parameter which can have any of the following properties: decorator {Function}: Optional value decorator. defaultValue {any}: Optional default value; if parameter value is the same as default value, parameter is not included in query string.
-   */
-  public final native void setParamDef(String name, JavaScriptObject paramDef) /*-{
-    this.setParamDef(name, paramDef);
   }-*/;
 
 }

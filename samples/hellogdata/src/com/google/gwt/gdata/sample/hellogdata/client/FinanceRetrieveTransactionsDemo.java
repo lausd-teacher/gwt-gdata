@@ -34,6 +34,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class FinanceRetrieveTransactionsDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -54,7 +60,7 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Finance - Retrieving Transactions";
+        return "Finance - Retrieving transactions";
       }
     };
   }
@@ -63,15 +69,56 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://finance.google.com/finance/feeds/";
 
+  /**
+   * Setup the Finance service and create the main content panel.
+   * If the user is not logged on to Finance display a message,
+   * otherwise start the demo by retrieving the user's portfolios.
+   */
   public FinanceRetrieveTransactionsDemo() {
     service = FinanceService.newInstance("HelloGData_Finance_RetrieveTransactionsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      getPortfolios();
+    } else {
+      showStatus("You are not logged on to Google Finance.", true);
+    }
   }
-  public void getTransactions(PortfolioEntry entry, String ticker) {
-    String transactionFeedUri = entry.getEditLink().getHref() + "/positions/" 
-      + ticker + "/transactions";
+  
+  private void getPortfolios() {
+    showStatus("Loading portfolios feed...", false);
+    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("No Finance account was found for the currently logged-in user")) {
+          showStatus("No Finance account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(PortfolioFeed result) {
+        PortfolioEntry[] entries = result.getEntries();
+        PortfolioEntry targetPortfolio = null;
+        for (PortfolioEntry entry : entries) {
+          if (entry.getTitle().getText().startsWith("")) {
+            targetPortfolio = entry;
+            break;
+          }
+        }
+        if (targetPortfolio == null) {
+          showStatus("No portfolio found that contains 'GWT-Finance-Client' in the title.", false);
+        } else {
+          String ticker = "NASDAQ:GOOG";
+          String transactionFeedUri = targetPortfolio.getEditLink().getHref() + "/positions/" 
+            + ticker + "/transactions";
+          getTransactions(transactionFeedUri);
+        }
+      }
+    });
+  }
+  
+  private void getTransactions(String transactionFeedUri) {
+    showStatus("Loading transactions feed...", false);
     service.getTransactionFeed(transactionFeedUri, new TransactionFeedCallback() {
       public void onFailure(Throwable caught) {
         showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + caught.getMessage(), true);
@@ -86,14 +133,15 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
       }
     });
   }
-  public void login() {
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
-    } else {
-      showStatus("You are not logged on to Google Finance.", true);
-    }
-  }
-  public void showData(TransactionEntry[] entries) {
+
+  /**
+  * Displays a set of Finance transaction entries in a tabular 
+  * fashion with the help of a GWT FlexTable widget. The data fields 
+  * Title, Type and Shares are displayed.
+  * 
+  * @param entries The Finance transaction entries to display.
+  */
+  private void showData(TransactionEntry[] entries) {
     mainPanel.clear();
     String[] labels = new String[] { "Title", "Type", "Shares" };
     mainPanel.insertRow(0);
@@ -114,7 +162,14 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
       mainPanel.setWidget(row, 2, new Label("" + data.getShares()));
     }
   }
-  public void showStatus(String message, boolean isError) {
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -123,33 +178,5 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Finance account was found for the currently logged-in user")) {
-          showStatus("No Finance account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + message, true);
-        }
-      }
-      public void onSuccess(PortfolioFeed result) {
-        PortfolioEntry[] entries = result.getEntries();
-        PortfolioEntry targetEntry = null;
-        for (PortfolioEntry entry : entries) {
-          if (entry.getTitle().getText().startsWith("")) {
-            targetEntry = entry;
-            break;
-          }
-        }
-        if (targetEntry == null) {
-          showStatus("No portfolio found that contains 'GWT-Finance-Client' in the title.", false);
-        } else {
-          getTransactions(targetEntry, "NASDAQ:GOOG");
-        }
-      }
-    });
   }
 }

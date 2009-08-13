@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.gdata.client.FeedLink;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -42,11 +41,10 @@ public class ItemsEntryTest extends GWTTestCase {
     // Unit Test for setAttributes(JavaScriptObject attributes)
   }
 
-  @SuppressWarnings("unchecked")
   public void testProperties() {
     ItemsEntry obj = ItemsEntry.newInstance();
-    FeedLink feedlink = FeedLink.newInstance();
-    obj.setFeedLink(feedlink);
-    assertSame("feedlink", obj.getFeedLink(), feedlink);
+    MediaFeedLink feedlink = MediaFeedLink.newInstance();
+    obj.setMediaFeedLink(feedlink);
+    assertSame("feedlink", obj.getMediaFeedLink(), feedlink);
   }
 }

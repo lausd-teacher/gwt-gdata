@@ -38,6 +38,12 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class BloggerRetrieveBlogPostCommentsDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -62,20 +68,95 @@ public class BloggerRetrieveBlogPostCommentsDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://www.blogger.com/feeds/";
 
+  /**
+   * Setup the Blogger service and create the main content panel.
+   * If the user is not logged on to Blogger display a message,
+   * otherwise start the demo by retrieving the user's blogs.
+   */
   public BloggerRetrieveBlogPostCommentsDemo() {
     service = BloggerService.newInstance("HelloGData_Blogger_RetrieveBlogPostCommentsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      startDemo();
+      getBlogs();
     } else {
       showStatus("You are not logged on to Blogger.", true);
     }
   }
-  public void showData(CommentEntry[] entries) {
+  
+  private void getBlogs() {
+    showStatus("Loading blog feed...", false);
+    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
+      public void onFailure(Throwable caught) {
+        String message = caught.getMessage();
+        if (message.contains("No Blogger account was found for the currently logged-in user")) {
+          showStatus("No Blogger account was found for the currently logged-in user.", true);
+        } else {
+          showStatus("An error occurred while retrieving the Blogger Blog feed, see details below:\n" + message, true);
+        }
+      }
+      public void onSuccess(BlogFeed result) {
+        BlogEntry[] entries = result.getEntries();
+        if (entries.length == 0) {
+          showStatus("You have no Blogger blogs.", false);
+        } else {
+          BlogEntry targetBlog = entries[0];
+          String postsFeedUri = targetBlog.getEntryPostLink().getHref();
+          getPosts(postsFeedUri);
+        }
+      }
+    });
+  }
+  
+  private void getComments(String commentsFeedUri) {
+    showStatus("Loading comments feed...", false);
+    service.getBlogCommentFeed(commentsFeedUri, new BlogCommentFeedCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while retrieving the Blogger Comments feed, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(BlogCommentFeed result) {
+        if (result.getEntries().length == 0) {
+          showStatus("The target blog post has no comments.", false);
+        } else {
+          showData(result.getEntries());
+        }
+      }
+    });
+  }
+  
+  private void getPosts(String postsFeedUri) {
+    showStatus("Loading posts feed...", false);
+    service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(BlogPostFeed result) {
+        PostEntry targetPost = null;
+        // get the first public post
+        for (PostEntry post : result.getEntries()) {
+          if (post.getRepliesLink() != null) {
+            targetPost = post;
+            break;
+          }
+        }
+        if (targetPost == null) {
+          showStatus("The target blog contains no public posts.", false);
+        } else {
+          String commentsFeedUri = targetPost.getRepliesLink().getHref();
+          getComments(commentsFeedUri);
+        }
+      }
+    });
+  }
+
+  /**
+  * Displays a set of Blogger comment entries in a tabular fashion with
+  * the help of a GWT FlexTable widget. The data fields Title, URL 
+  * and Published are displayed.
+  * 
+  * @param entries The Blogger comment entries to display.
+  */
+  private void showData(CommentEntry[] entries) {
     mainPanel.clear();
     String[] labels = new String[] { "Title", "URL", "Published" };
     mainPanel.insertRow(0);
@@ -100,7 +181,14 @@ public class BloggerRetrieveBlogPostCommentsDemo extends GDataDemo {
       mainPanel.setWidget(row, 2, new Label(entry.getPublished().getValue().getDate().toString()));
     }
   }
-  public void showStatus(String message, boolean isError) {
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
@@ -109,61 +197,5 @@ public class BloggerRetrieveBlogPostCommentsDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
-  }
-  public void startDemo() {
-    showStatus("Loading Blogger accounts feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Blogger account was found for the currently logged-in user")) {
-          showStatus("No Blogger account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Blogger Blog feed, see details below:\n" + message, true);
-        }
-      }
-      public void onSuccess(BlogFeed result) {
-        BlogEntry[] entries = result.getEntries();
-        if (entries.length == 0) {
-          showStatus("You have no Blogger accounts.", false);
-        } else {
-          BlogEntry blog = entries[0];
-          String postsFeedUri = blog.getEntryPostLink().getHref();
-          showStatus("Loading Blogger blog posts feed...", false);
-          service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
-          public void onFailure(Throwable caught) {
-            showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
-          }
-          public void onSuccess(BlogPostFeed result) {
-            PostEntry postEntry = null;
-            // get the first public post
-            for (PostEntry post : result.getEntries()) {
-              if (post.getRepliesLink() != null) {
-                postEntry = post;
-                break;
-              }
-            }
-            if (postEntry == null) {
-              showStatus("The target blog contains no public posts.", false);
-            } else {
-              String commentsFeedUri = postEntry.getRepliesLink().getHref();
-              showStatus("Loading Blogger post comments feed...", false);
-              service.getBlogCommentFeed(commentsFeedUri, new BlogCommentFeedCallback() {
-                public void onFailure(Throwable caught) {
-                  showStatus("An error occurred while retrieving the Blogger Comments feed, see details below:\n" + caught.getMessage(), true);
-                }
-                public void onSuccess(BlogCommentFeed result) {
-                  if (result.getEntries().length == 0) {
-                    showStatus("The target blog post has no comments.", false);
-                  } else {
-                    showData(result.getEntries());
-                  }
-                }
-              });
-            }
-          }
-        });
-        }
-      }
-    });
   }
 }

@@ -35,6 +35,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class FinanceDeleteTransactionDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -62,18 +68,20 @@ public class FinanceDeleteTransactionDemo extends GDataDemo {
   private FlexTable mainPanel;
   private final String scope = "http://finance.google.com/finance/feeds/";
 
+  /**
+   * Setup the Finance service and create the main content panel.
+   * If the user is not logged on to Finance display a message,
+   * otherwise start the demo by retrieving the user's portfolios.
+   */
   public FinanceDeleteTransactionDemo() {
     service = FinanceService.newInstance("HelloGData_Finance_DeleteTransactionDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    login();
-  }
-  public void login() {
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a transaction");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          startDemo();
+          getPortfolios();
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -81,17 +89,20 @@ public class FinanceDeleteTransactionDemo extends GDataDemo {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
-  public void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
+  
+  private void deleteTransaction(String transactionEntryUri) {
+    showStatus("Deleting transaction...", false);
+    service.deleteTransactionEntry(transactionEntryUri, new TransactionEntryCallback() {
+      public void onFailure(Throwable caught) {
+        showStatus("An error occurred while deleting a transaction, see details below:\n" + caught.getMessage(), true);
+      }
+      public void onSuccess(TransactionEntry result) {
+        showStatus("Deleted a transaction.", false);
+      }
+    });
   }
-  public void startDemo() {
+  
+  private void getPortfolios() {
     showStatus("Loading portfolios feed...", false);
     service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
       public void onFailure(Throwable caught) {
@@ -116,33 +127,44 @@ public class FinanceDeleteTransactionDemo extends GDataDemo {
         } else {
           final String ticker = "NASDAQ:GOOG";
           int transactionId = 1;
-          String transactionFeedUri = targetPortfolio.getEditLink().getHref() + "/positions/" + ticker + "/transactions/" + transactionId;
-          showStatus("Retrieving transaction...", false);
-          service.getTransactionEntry(transactionFeedUri, new TransactionEntryCallback() {
-            public void onFailure(Throwable caught) {
-              showStatus("An error occurred while retrieving a transaction, see details below:\n" + caught.getMessage(), true);
-            }
-            public void onSuccess(TransactionEntry result) {
-              if (result == null) {
-                showStatus("No transaction found with the ticker " + ticker, false);
-              } else {
-                deleteTransaction(result);
-              }
-            }
-          });
+          String transactionEntryUri = targetPortfolio.getEditLink().getHref() + "/positions/" + ticker + "/transactions/" + transactionId;
+          getTransaction(transactionEntryUri);
         }
       }
     });
   }
-  public void deleteTransaction(TransactionEntry transactionEntry) {
-    showStatus("Deleting transaction...", false);
-    transactionEntry.deleteEntry(new TransactionEntryCallback() {
+  
+  private void getTransaction(String transactionEntryUri) {
+    showStatus("Retrieving transaction...", false);
+    service.getTransactionEntry(transactionEntryUri, new TransactionEntryCallback() {
       public void onFailure(Throwable caught) {
-        showStatus("An error occurred while deleting a transaction, see details below:\n" + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving a transaction, see details below:\n" + caught.getMessage(), true);
       }
       public void onSuccess(TransactionEntry result) {
-        showStatus("Deleted a transaction.", false);
+        if (result == null) {
+          showStatus("No transaction found.", false);
+        } else {
+          String transactionEntryUri = result.getSelfLink().getHref();
+          deleteTransaction(transactionEntryUri);
+        }
       }
     });
+  }
+
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }
