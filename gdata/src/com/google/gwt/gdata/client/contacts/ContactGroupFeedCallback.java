@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for contact group feed.
  */
-public interface ContactGroupFeedCallback extends AsyncCallback<ContactGroupFeed> {
+public interface ContactGroupFeedCallback extends Callback<ContactGroupFeed> {
 }

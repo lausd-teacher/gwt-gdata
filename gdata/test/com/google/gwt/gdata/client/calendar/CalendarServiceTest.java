@@ -22,6 +22,7 @@ import com.google.gwt.gdata.client.analytics.AnalyticsService;
 import com.google.gwt.gdata.client.atom.Category;
 import com.google.gwt.gdata.client.atom.Person;
 import com.google.gwt.gdata.client.atom.Text;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -56,7 +57,7 @@ public class CalendarServiceTest extends GWTTestCase {
     newEntry.setColor(ColorProperty.newInstance());
     newEntry.getColor().setValue(ColorProperty.VALUE_RGB_4E5D6C);
     svc.insertCalendarEntry(GDataTestScripts.Calendar.testCalendars_Feed_InsertLink, newEntry, new CalendarEntryCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         fail("Create Failed: " + caught.getMessage());
       }
       public void onSuccess(CalendarEntry result) {
@@ -68,7 +69,7 @@ public class CalendarServiceTest extends GWTTestCase {
           fail("Create Failed");
         }
         result.deleteEntry(new CalendarEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Delete Failed: " + caught.getMessage());
           }
           public void onSuccess(CalendarEntry result) {
@@ -85,7 +86,7 @@ public class CalendarServiceTest extends GWTTestCase {
     CalendarService svc = CalendarService.newInstance("test");
     svc.getCalendarEntry(GDataTestScripts.Calendar.testCalendar_Entry_Link,
         new CalendarEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(CalendarEntry result) {
@@ -123,7 +124,7 @@ public class CalendarServiceTest extends GWTTestCase {
     CalendarService svc = CalendarService.newInstance("test");
     svc.getOwnCalendarsFeed(GDataTestScripts.Calendar.testCalendars_Feed_Link,
         new CalendarFeedCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(CalendarFeed result) {
@@ -144,14 +145,14 @@ public class CalendarServiceTest extends GWTTestCase {
     CalendarService svc = CalendarService.newInstance("test");
     svc.getCalendarEntry(GDataTestScripts.Calendar.testCalendar_Entry_Link,
         new CalendarEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(CalendarEntry result) {
             result.getTitle().setText(GDataTestScripts.Calendar.testCalendar_Entry_Title_Updated);
             result.getSummary().setText(GDataTestScripts.Calendar.testCalendar_Entry_Summary_Updated);
             result.updateEntry(new CalendarEntryCallback() {
-              public void onFailure(Throwable caught) {
+              public void onFailure(CallErrorException caught) {
                 fail("Update Failed: " + caught.getMessage());
               }
               public void onSuccess(CalendarEntry result) {
@@ -160,7 +161,7 @@ public class CalendarServiceTest extends GWTTestCase {
                   result.getTitle().setText(GDataTestScripts.Calendar.testCalendar_Entry_Title);
                   result.getSummary().setText(GDataTestScripts.Calendar.testCalendar_Entry_Summary);
                   result.updateEntry(new CalendarEntryCallback() {
-                    public void onFailure(Throwable caught) {
+                    public void onFailure(CallErrorException caught) {
                       fail("Revert Failed: " + caught.getMessage());
                     }
                     public void onSuccess(CalendarEntry result) {

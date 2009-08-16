@@ -26,6 +26,7 @@ import com.google.gwt.gdata.client.gbase.MediaEntry;
 import com.google.gwt.gdata.client.gbase.MediaFeed;
 import com.google.gwt.gdata.client.gbase.MediaFeedCallback;
 import com.google.gwt.gdata.client.gbase.MediaFeedLink;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -87,13 +88,8 @@ public class GoogleBaseRetrieveMediaDemo extends GDataDemo {
   private void getItems() {
     showStatus("Loading items feed...", false);
     service.getItemsFeed("http://www.google.com/base/feeds/items", new ItemsFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("Terms of Service acceptance required")) {
-          showStatus("No Google Base account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the items feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the items feed: " + caught.getMessage(), true);
       }
       public void onSuccess(ItemsFeed result) {
         ItemsEntry[] entries = result.getEntries();
@@ -119,8 +115,8 @@ public class GoogleBaseRetrieveMediaDemo extends GDataDemo {
     showStatus("Loading media feed...", false);
     String mediaFeedUri = itemsEntryUri + "/media/";
     service.getMediaFeed(mediaFeedUri, new MediaFeedCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while retrieving the media feed, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the media feed: " + caught.getMessage(), true);
       }
       public void onSuccess(MediaFeed result) {
         MediaEntry[] entries = result.getEntries();

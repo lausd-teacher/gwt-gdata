@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for calendar acl feed.
  */
-public interface CalendarAclFeedCallback extends AsyncCallback<CalendarAclFeed> {
+public interface CalendarAclFeedCallback extends Callback<CalendarAclFeed> {
 }

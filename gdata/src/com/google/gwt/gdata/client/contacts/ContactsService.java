@@ -70,13 +70,9 @@ public class ContactsService extends GoogleService {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getContactEntry(String uri, ContactEntryCallback callback) /*-{
-    this.getContactEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getContactEntry(String uri, ContactEntryCallback callback) {
+    this.getEntry(uri, callback, "getContactEntry");
+  }
 
   /**
    * Retrieves the feed of contacts.
@@ -84,13 +80,9 @@ public class ContactsService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getContactFeed(ContactQuery query, ContactFeedCallback callback) /*-{
-    this.getContactFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getContactFeed(ContactQuery query, ContactFeedCallback callback) {
+    this.getFeed(query, callback, "getContactFeed");
+  }
 
   /**
    * Retrieves the feed of contacts.

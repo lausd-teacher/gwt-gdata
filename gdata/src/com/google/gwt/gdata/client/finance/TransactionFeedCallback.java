@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for transaction feed.
  */
-public interface TransactionFeedCallback extends AsyncCallback<TransactionFeed> {
+public interface TransactionFeedCallback extends Callback<TransactionFeed> {
 }

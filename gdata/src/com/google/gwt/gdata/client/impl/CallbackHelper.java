@@ -17,32 +17,42 @@
 package com.google.gwt.gdata.client.impl;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Provides utility methods for interacting with Callbacks in GWT.
  */
 public class CallbackHelper {
 
-  public static <T extends JavaScriptObject> void handleFailureCallback(AsyncCallback<T> cb, com.google.gwt.gdata.client.Error error) {
+  /**
+   * Performs a call to a failure callback, with the supplied error.
+   * @param <T> The callback's return type
+   * @param cb The callback object
+   * @param error The error object
+   */
+  public static <T extends JavaScriptObject> void handleFailureCallback(Callback<T> cb, com.google.gwt.gdata.client.Error error) {
     UncaughtExceptionHandler handler = GWT.getUncaughtExceptionHandler();
     if (handler != null) {
       try {
-        JavaScriptException exc = new JavaScriptException(error.getMessage());
+        CallErrorException exc = new CallErrorException(error);
         cb.onFailure(exc);
       } catch (Throwable e) {
         e.printStackTrace();
         handler.onUncaughtException(e);
       }
     } else {
-      cb.onFailure(new JavaScriptException(error));
+      cb.onFailure(new CallErrorException(error));
     }
   }
 
-  public static <T extends JavaScriptObject> void handleSuccessCallback(AsyncCallback<T> cb, T arg) {
+  /**
+   * Performs a call to a success callback, with the supplied return value.
+   * @param <T> The callback's return type
+   * @param cb The callback object
+   * @param arg The callback's return value
+   */
+  public static <T extends JavaScriptObject> void handleSuccessCallback(Callback<T> cb, T arg) {
     UncaughtExceptionHandler handler = GWT.getUncaughtExceptionHandler();
     if (handler != null) {
       try {

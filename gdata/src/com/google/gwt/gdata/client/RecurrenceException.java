@@ -38,7 +38,7 @@ public class RecurrenceException extends JavaScriptObject {
    * 
    * @return Nested entry providing the details about the exception.
    */
-  public final native RecurrenceExceptionEntryLink getEntryLink() /*-{
+  public final native <E extends RecurrenceExceptionEntry> RecurrenceExceptionEntryLink<E> getEntryLink() /*-{
     return this.getEntryLink();
   }-*/;
 
@@ -56,7 +56,7 @@ public class RecurrenceException extends JavaScriptObject {
    * 
    * @param entryLink Nested entry providing the details about the exception.
    */
-  public final native void setEntryLink(RecurrenceExceptionEntryLink entryLink) /*-{
+  public final native <E extends RecurrenceExceptionEntry> void setEntryLink(RecurrenceExceptionEntryLink<E> entryLink) /*-{
     this.setEntryLink(entryLink);
   }-*/;
 

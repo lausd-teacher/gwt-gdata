@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.maps;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for map feed.
  */
-public interface MapFeedCallback extends AsyncCallback<MapFeed> {
+public interface MapFeedCallback extends Callback<MapFeed> {
 }

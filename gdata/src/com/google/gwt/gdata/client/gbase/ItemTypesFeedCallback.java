@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for item types feed.
  */
-public interface ItemTypesFeedCallback extends AsyncCallback<ItemTypesFeed> {
+public interface ItemTypesFeedCallback extends Callback<ItemTypesFeed> {
 }

@@ -24,6 +24,7 @@ import com.google.gwt.gdata.client.contacts.ContactFeed;
 import com.google.gwt.gdata.client.contacts.ContactFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactQuery;
 import com.google.gwt.gdata.client.contacts.ContactsService;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -92,13 +93,8 @@ public class ContactsRetrieveContactsUsingQueryDemo extends GDataDemo {
     query.setUpdatedMin(updatedMin);
     query.setSortOrder(ContactQuery.SORTORDER_DESCENDING);
     service.getContactFeed(query, new ContactFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Contacts account was found for the currently logged-in user")) {
-          showStatus("No Contacts account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Contacts feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the Contacts feed: " + caught.getMessage(), true);
       }
       public void onSuccess(ContactFeed result) {
         ContactEntry[] entries = result.getEntries();

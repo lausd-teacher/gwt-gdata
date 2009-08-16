@@ -26,6 +26,7 @@ import com.google.gwt.gdata.client.finance.TransactionData;
 import com.google.gwt.gdata.client.finance.TransactionEntry;
 import com.google.gwt.gdata.client.finance.TransactionFeed;
 import com.google.gwt.gdata.client.finance.TransactionFeedCallback;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -88,13 +89,8 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
   private void getPortfolios() {
     showStatus("Loading portfolios feed...", false);
     service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Finance account was found for the currently logged-in user")) {
-          showStatus("No Finance account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
@@ -120,8 +116,8 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
   private void getTransactions(String transactionFeedUri) {
     showStatus("Loading transactions feed...", false);
     service.getTransactionFeed(transactionFeedUri, new TransactionFeedCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
       }
       public void onSuccess(TransactionFeed result) {
         TransactionEntry[] entries = result.getEntries();

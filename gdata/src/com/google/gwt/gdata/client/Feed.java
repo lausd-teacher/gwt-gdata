@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client;
 
+import com.google.gwt.gdata.client.impl.Callback;
 import com.google.gwt.gdata.client.opensearch.ItemsPerPage;
 import com.google.gwt.gdata.client.opensearch.StartIndex;
 import com.google.gwt.gdata.client.opensearch.TotalResults;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * Describes a feed for the Google Data API.
@@ -153,10 +153,10 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
    * 
    * @param callback Callback defining success and failure handlers for this command.
    */
-  protected final native <F extends Feed<E>> void get(AsyncCallback<F> callback) /*-{
+  protected final native <F extends Feed<E>> void get(Callback<F> callback) /*-{
     return this.getSelf(
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
     );
   }-*/;
 
@@ -166,11 +166,11 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
    * @param entry Entry to insert.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  protected final native void insertEntry(E entry, AsyncCallback<E> callback) /*-{
+  protected final native void insertEntry(E entry, Callback<E> callback) /*-{
     return this.insertEntry(
       entry,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
     );
   }-*/;
 

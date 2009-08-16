@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for portfolio entry.
  */
-public interface PortfolioEntryCallback extends AsyncCallback<PortfolioEntry> {
+public interface PortfolioEntryCallback extends Callback<PortfolioEntry> {
 }

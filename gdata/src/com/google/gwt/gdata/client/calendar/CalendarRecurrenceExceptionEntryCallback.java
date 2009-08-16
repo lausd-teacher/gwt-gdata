@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for calendar recurrence exception entry.
  */
-public interface CalendarRecurrenceExceptionEntryCallback extends AsyncCallback<CalendarRecurrenceExceptionEntry> {
+public interface CalendarRecurrenceExceptionEntryCallback extends Callback<CalendarRecurrenceExceptionEntry> {
 }

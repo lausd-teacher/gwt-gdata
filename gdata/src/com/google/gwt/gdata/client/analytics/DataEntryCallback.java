@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for data entry.
  */
-public interface DataEntryCallback extends AsyncCallback<DataEntry> {
+public interface DataEntryCallback extends Callback<DataEntry> {
 }

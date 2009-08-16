@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for calendar comment entry.
  */
-public interface CalendarCommentEntryCallback extends AsyncCallback<CalendarCommentEntry> {
+public interface CalendarCommentEntryCallback extends Callback<CalendarCommentEntry> {
 }

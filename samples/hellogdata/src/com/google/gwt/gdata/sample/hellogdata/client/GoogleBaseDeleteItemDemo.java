@@ -23,6 +23,7 @@ import com.google.gwt.gdata.client.gbase.ItemsEntry;
 import com.google.gwt.gdata.client.gbase.ItemsEntryCallback;
 import com.google.gwt.gdata.client.gbase.ItemsFeed;
 import com.google.gwt.gdata.client.gbase.ItemsFeedCallback;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -91,8 +92,8 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
   private void deleteItem(String itemsEntryUri) {
     showStatus("Updating item...", false);
     service.deleteItemsEntry(itemsEntryUri, new ItemsEntryCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while deleting an item, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while deleting an item: " + caught.getMessage(), true);
       }
       public void onSuccess(ItemsEntry result) {
         showStatus("Deleted an item.", false);
@@ -103,13 +104,8 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
   private void getItems() {
     showStatus("Loading items feed...", false);
     service.getItemsFeed("http://www.google.com/base/feeds/items/", new ItemsFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("Terms of Service acceptance required")) {
-          showStatus("No Google Base account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the items feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the items feed: " + caught.getMessage(), true);
       }
       public void onSuccess(ItemsFeed result) {
         ItemsEntry[] entries = result.getEntries();

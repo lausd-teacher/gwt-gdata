@@ -56,12 +56,6 @@ public class UserTest extends GWTTestCase {
     assertEquals("getStatus", User.getStatus(), AuthSubStatus.LOGGED_IN);
     assertFalse("checkLogin", User.checkLogin(TEST_SCOPE).equals(""));
     assertEquals("getScopes", User.getScopes()[0], TEST_SCOPE);
-    assertTrue("getInfo", User.getInfo(new Runnable() {
-      public void run() {
-        finishTest();
-      }
-    }));
-    delayTestFinish(2000);
     User.logout(new Runnable() {
       public void run() {
         finishTest();
@@ -74,9 +68,6 @@ public class UserTest extends GWTTestCase {
   public void testUnauthenticated() {
     assertEquals("getStatus", User.getStatus(), AuthSubStatus.LOGGED_OUT);
     assertEquals("checkLogin", User.checkLogin(TEST_SCOPE), "");
-    assertFalse("getInfo", User.getInfo(new Runnable() {
-      public void run() { }
-    }));
     assertEquals("getScopes", User.getScopes().length, 0);
   }
 }

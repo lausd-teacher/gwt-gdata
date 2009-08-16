@@ -18,6 +18,7 @@ package com.google.gwt.gdata.client.analytics;
 
 import com.google.gwt.accounts.client.UserTest;
 import com.google.gwt.gdata.client.GDataTestScripts;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -42,7 +43,7 @@ public class AnalyticsServiceTest extends GWTTestCase {
     AnalyticsService svc = AnalyticsService.newInstance(AnalyticsService.SERVICE_NAME);
     svc.getAccountFeed(GDataTestScripts.Analytics.testAccounts_Feed_Link,
         new AccountFeedCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(AccountFeed result) {

@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.gdata.client.AttendeeStatus;
 import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.sample.hellogdata.client.GDataDemo.GDataDemoInfo;
 import com.google.gwt.user.client.History;
@@ -44,26 +45,39 @@ public class HelloGData implements EntryPoint, HistoryListener {
   private FlexTable outerPanel = new FlexTable();
 
   public void onGDataLoad() {
-
     if (!GData.isLoaded()) {
       Window.alert("The GData API is not installed."
           + "  The GData API is unavailable or your GData key may be wrong.");
       return;
     }
-
-    // Load all the MapsDemos.
+    HorizontalPanel horizPanel = new HorizontalPanel();
+    list.setStylePrimaryName("hm-demolistbox");
+    description.setStylePrimaryName("hm-description");
+    innerPanel.clear();
+    innerPanel.add(horizPanel);
+    innerPanel.add(description);
+    horizPanel.add(new Label("Select Demo: "));
+    horizPanel.add(list);
     loadGDataDemos();
+    showInfo();
+  }
+
+  public void onHistoryChanged(String token) {
+    // Find the MapsDemoInfo associated with the history context. If one is
+    // found, show it (It may not be found, for example, when the user mis-
+    // types a URL, or on startup, when the first context will be "").
+    GDataDemoInfo info = list.find(token);
+    if (info == null) {
+      showInfo();
+      return;
+    }
+    show(info, false);
+  }
+  
+  public void onModuleLoad() {
 
     innerPanel.setStylePrimaryName("hm-mapinnerpanel");
     innerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
-
-    HorizontalPanel horizPanel = new HorizontalPanel();
-    list.setStylePrimaryName("hm-demolistbox");
-    
-    description.setStylePrimaryName("hm-description");
-    
-    innerPanel.add(horizPanel);
-    innerPanel.add(description);
     innerPanel.setSpacing(10);
 
     History.addHistoryListener(this);
@@ -95,30 +109,18 @@ public class HelloGData implements EntryPoint, HistoryListener {
     decorator.add(outerPanel);
 
     RootPanel.get("hm-map").add(decorator);
-
-    horizPanel.add(new Label("Select Demo: "));
-    horizPanel.add(list);
-    showInfo();
-  }
-
-  public void onHistoryChanged(String token) {
-    // Find the MapsDemoInfo associated with the history context. If one is
-    // found, show it (It may not be found, for example, when the user mis-
-    // types a URL, or on startup, when the first context will be "").
-    GDataDemoInfo info = list.find(token);
-    if (info == null) {
-      showInfo();
-      return;
+    
+    innerPanel.add(new Label("Loading the GData library..."));
+    
+    if (GData.isLoaded()) {
+      onGDataLoad();
+    } else {
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          onGDataLoad();
+        }
+      });
     }
-    show(info, false);
-  }
-  
-  public void onModuleLoad() {
-    GData.loadGDataApi(null, new Runnable() {
-      public void run() {
-        onGDataLoad();
-      }
-    });
   }
   
   public void show(GDataDemoInfo info, boolean affectHistory) {

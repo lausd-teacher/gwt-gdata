@@ -24,6 +24,7 @@ import com.google.gwt.gdata.client.Organization;
 import com.google.gwt.gdata.client.PhoneNumber;
 import com.google.gwt.gdata.client.PostalAddress;
 import com.google.gwt.gdata.client.atom.Text;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -67,7 +68,7 @@ public class ContactsServiceTest extends GWTTestCase {
     newEntry.getPostalAddresses()[0].setRel(PostalAddress.REL_OTHER);
     newEntry.getPostalAddresses()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Address_Created);
     svc.insertContactEntry(GDataTestScripts.Contacts.testContacts_Feed_Link, newEntry, new ContactEntryCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         fail("Create Failed: " + caught.getMessage());
       }
       public void onSuccess(ContactEntry result) {
@@ -79,7 +80,7 @@ public class ContactsServiceTest extends GWTTestCase {
           fail("Create Failed");
         }
         result.deleteEntry(new ContactEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Delete Failed: " + caught.getMessage());
           }
           public void onSuccess(ContactEntry result) {
@@ -95,7 +96,7 @@ public class ContactsServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Contacts.testCookie_Name, GDataTestScripts.Contacts.testCookie_Value);
     ContactsService svc = ContactsService.newInstance("test");
     svc.getContactEntry(GDataTestScripts.Contacts.testContact_Entry_Link, new ContactEntryCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         fail("Get Failed: " + caught.getMessage());
       }
       public void onSuccess(ContactEntry result) {
@@ -123,7 +124,7 @@ public class ContactsServiceTest extends GWTTestCase {
     ContactQuery query = ContactQuery.newInstance(GDataTestScripts.Contacts.testContacts_Feed_Link);
     query.setMaxResults(50);
     svc.getContactFeed(query, new ContactFeedCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         fail("Get Failed: " + caught.getMessage());
       }
       public void onSuccess(ContactFeed result) {
@@ -143,7 +144,7 @@ public class ContactsServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Contacts.testCookie_Name, GDataTestScripts.Contacts.testCookie_Value);
     ContactsService svc = ContactsService.newInstance("test");
     svc.getContactEntry(GDataTestScripts.Contacts.testContact_Entry_Link, new ContactEntryCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         fail("Get Failed: " + caught.getMessage());
       }
       public void onSuccess(ContactEntry result) {
@@ -153,7 +154,7 @@ public class ContactsServiceTest extends GWTTestCase {
         result.getPhoneNumbers()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Phone_Updated);
         result.getPostalAddresses()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Address_Updated);
         result.updateEntry(new ContactEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Update Failed: " + caught.getMessage());
           }
           public void onSuccess(ContactEntry result) {
@@ -170,7 +171,7 @@ public class ContactsServiceTest extends GWTTestCase {
             result.getPhoneNumbers()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Phone);
             result.getPostalAddresses()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Address);
             result.updateEntry(new ContactEntryCallback() {
-              public void onFailure(Throwable caught) {
+              public void onFailure(CallErrorException caught) {
                 fail("Revert Failed: " + caught.getMessage());
               }
               public void onSuccess(ContactEntry result) {

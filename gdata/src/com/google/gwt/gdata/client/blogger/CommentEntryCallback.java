@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for comment entry.
  */
-public interface CommentEntryCallback extends AsyncCallback<CommentEntry> {
+public interface CommentEntryCallback extends Callback<CommentEntry> {
 }

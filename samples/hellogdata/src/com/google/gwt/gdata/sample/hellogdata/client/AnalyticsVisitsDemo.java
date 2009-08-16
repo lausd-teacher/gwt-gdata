@@ -25,6 +25,7 @@ import com.google.gwt.gdata.client.analytics.AnalyticsService;
 import com.google.gwt.gdata.client.analytics.DataEntry;
 import com.google.gwt.gdata.client.analytics.DataFeed;
 import com.google.gwt.gdata.client.analytics.DataFeedCallback;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -84,13 +85,8 @@ public class AnalyticsVisitsDemo extends GDataDemo {
   private void getAccounts() {
     showStatus("Loading Analytics accounts feed...", false);
     service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AccountFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Analytics account was found for the currently logged-in user")) {
-          showStatus("No Analytics account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Analytics Accounts feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the Analytics Accounts feed: " + caught.getMessage(), true);
       }
       public void onSuccess(AccountFeed result) {
         AccountEntry[] entries = result.getEntries();
@@ -114,8 +110,8 @@ public class AnalyticsVisitsDemo extends GDataDemo {
     "&ids=" + tableId;
     showStatus("Loading data feed...", false);
     service.getDataFeed(dataFeedUri, new DataFeedCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while retrieving the Analytics Data feed, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the Analytics Data feed: " + caught.getMessage(), true);
       }
       public void onSuccess(DataFeed result) {
         showData(result.getEntries());

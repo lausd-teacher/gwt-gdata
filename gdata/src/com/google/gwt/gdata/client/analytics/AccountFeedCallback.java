@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for account feed.
  */
-public interface AccountFeedCallback extends AsyncCallback<AccountFeed> {
+public interface AccountFeedCallback extends Callback<AccountFeed> {
 }

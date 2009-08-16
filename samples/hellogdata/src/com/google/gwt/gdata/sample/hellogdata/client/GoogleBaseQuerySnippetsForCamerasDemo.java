@@ -21,6 +21,7 @@ import com.google.gwt.gdata.client.gbase.SnippetsEntry;
 import com.google.gwt.gdata.client.gbase.SnippetsFeed;
 import com.google.gwt.gdata.client.gbase.SnippetsFeedCallback;
 import com.google.gwt.gdata.client.gbase.SnippetsQuery;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
@@ -78,13 +79,8 @@ public class GoogleBaseQuerySnippetsForCamerasDemo extends GDataDemo {
     query.setMaxResults(25);
     query.setBq("digital camera [megapixels >= 4][price < 200.0][condition:new]");
     service.getSnippetsFeed(query, new SnippetsFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("Terms of Service acceptance required")) {
-          showStatus("No Google Base account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the snippets feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the snippets feed: " + caught.getMessage(), true);
       }
       public void onSuccess(SnippetsFeed result) {
         SnippetsEntry[] entries = result.getEntries();

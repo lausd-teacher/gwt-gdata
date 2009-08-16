@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for position feed.
  */
-public interface PositionFeedCallback extends AsyncCallback<PositionFeed> {
+public interface PositionFeedCallback extends Callback<PositionFeed> {
 }

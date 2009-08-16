@@ -25,7 +25,9 @@ import com.google.gwt.core.client.JsArrayNumber;
 import com.google.gwt.core.client.JsArrayString;
 
 /**
- * Note: Temporary implementation, code borrowed from http://code.google.com/p/gwt-in-the-air/source/browse/trunk/src/net/ltgt/gwt/jscollections/client/JsArrays.java.
+ * Code adapted from http://code.google.com/p/gwt-in-the-air/source/browse/trunk/
+ * src/net/ltgt/gwt/jscollections/client/JsArrays.java.
+ * 
  * Provides utility methods for interacting with Arrays in GWT.
  */
 public final class ArrayHelper {
@@ -156,8 +158,6 @@ public final class ArrayHelper {
   private static native <T extends JavaScriptObject> JsArray<T> reinterpretCast(T[] value) /*-{ return value; }-*/;
   private static native <T extends JavaScriptObject> T[] reinterpretCast(JsArray<T> value) /*-{ return value; }-*/; 
 
-  private ArrayHelper() {
-  }
+  private ArrayHelper() { }
+  
 }
-
-
