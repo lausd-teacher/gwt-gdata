@@ -25,6 +25,7 @@ import com.google.gwt.gdata.client.finance.PortfolioFeedCallback;
 import com.google.gwt.gdata.client.finance.TransactionData;
 import com.google.gwt.gdata.client.finance.TransactionEntry;
 import com.google.gwt.gdata.client.finance.TransactionEntryCallback;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -106,8 +107,8 @@ public class FinanceCreateTransactionDemo extends GDataDemo {
     String ticker = "NASDAQ:GOOG";
     String transactionPostUri = portfolioEditUri + "/positions/" + ticker + "/transactions";
     service.insertTransactionEntry(transactionPostUri, entry, new TransactionEntryCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while creating a transaction, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while creating a transaction: " + caught.getMessage(), true);
       }
       public void onSuccess(TransactionEntry result) {
         showStatus("Created a transaction.", false);
@@ -118,13 +119,8 @@ public class FinanceCreateTransactionDemo extends GDataDemo {
   private void getPortfolios() {
     showStatus("Loading portfolios feed...", false);
     service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Finance account was found for the currently logged-in user")) {
-          showStatus("No Finance account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();

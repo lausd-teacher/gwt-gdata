@@ -24,6 +24,7 @@ import com.google.gwt.gdata.client.contacts.ContactGroupEntryCallback;
 import com.google.gwt.gdata.client.contacts.ContactGroupFeed;
 import com.google.gwt.gdata.client.contacts.ContactGroupFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactsService;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -92,13 +93,8 @@ public class ContactsUpdateContactGroupDemo extends GDataDemo {
   private void getContactGroups() {
     showStatus("Loading contact groups feed...", false);
     service.getContactGroupFeed("http://www.google.com/m8/feeds/groups/default/full", new ContactGroupFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Contacts account was found for the currently logged-in user")) {
-          showStatus("No Contacts account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the contact groups feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the contact groups feed: " + caught.getMessage(), true);
       }
       public void onSuccess(ContactGroupFeed result) {
         ContactGroupEntry[] entries = result.getEntries();
@@ -141,8 +137,8 @@ public class ContactsUpdateContactGroupDemo extends GDataDemo {
     targetGroup.setTitle(Text.newInstance());
     targetGroup.getTitle().setText("GWT-Contacts-Client - updated group");
     targetGroup.updateEntry(new ContactGroupEntryCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while updating a contact group, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while updating a contact group: " + caught.getMessage(), true);
       }
       public void onSuccess(ContactGroupEntry result) {
         showStatus("Updated a contact group.", false);

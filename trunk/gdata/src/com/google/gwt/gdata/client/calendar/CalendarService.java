@@ -190,13 +190,9 @@ public class CalendarService extends GoogleService {
    * @param query URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getEventsFeed(CalendarEventQuery query, CalendarEventFeedCallback callback) /*-{
-    this.getEventsFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getEventsFeed(CalendarEventQuery query, CalendarEventFeedCallback callback) {
+    this.getFeed(query, callback, "getEventsFeed");
+  }
 
   /**
    * Retrieves the feed of a calendar's events.
@@ -204,13 +200,9 @@ public class CalendarService extends GoogleService {
    * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this command.
    */
-  public final native void getEventsFeed(String uri, CalendarEventFeedCallback callback) /*-{
-    this.getEventsFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getEventsFeed(String uri, CalendarEventFeedCallback callback) {
+    this.getFeed(uri, callback, "getEventsFeed");
+  }
 
   /**
    * Retrieves the feed of the calendars a user owns.

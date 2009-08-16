@@ -27,6 +27,7 @@ import com.google.gwt.gdata.client.finance.PositionData;
 import com.google.gwt.gdata.client.finance.PositionEntry;
 import com.google.gwt.gdata.client.finance.PositionFeed;
 import com.google.gwt.gdata.client.finance.PositionFeedCallback;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -92,13 +93,8 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
   private void getPortfolios() {
     showStatus("Loading portfolios feed...", false);
     service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Finance account was found for the currently logged-in user")) {
-          showStatus("No Finance account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
@@ -124,8 +120,8 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
     String positionsFeedUri = "http://finance.google.com/finance/feeds/default/" +
       "portfolios/" + portfolioId + "/positions";
     service.getPositionFeed(positionsFeedUri, new PositionFeedCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while retrieving the positions feed, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the positions feed: " + caught.getMessage(), true);
       }
       public void onSuccess(PositionFeed result) {
         PositionEntry[] entries = result.getEntries();

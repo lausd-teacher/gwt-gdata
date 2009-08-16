@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for snippets entry.
  */
-public interface SnippetsEntryCallback extends AsyncCallback<SnippetsEntry> {
+public interface SnippetsEntryCallback extends Callback<SnippetsEntry> {
 }

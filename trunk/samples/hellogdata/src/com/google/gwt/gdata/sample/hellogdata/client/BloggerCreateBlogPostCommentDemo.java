@@ -29,6 +29,7 @@ import com.google.gwt.gdata.client.blogger.BloggerService;
 import com.google.gwt.gdata.client.blogger.CommentEntry;
 import com.google.gwt.gdata.client.blogger.CommentEntryCallback;
 import com.google.gwt.gdata.client.blogger.PostEntry;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -96,13 +97,8 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
   private void getBlogs() {
     showStatus("Loading blog feed...", false);
     service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Blogger account was found for the currently logged-in user")) {
-          showStatus("No Blogger account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Blogger Blog feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the Blogger Blog feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
@@ -120,8 +116,8 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
   private void getPosts(String postsFeedUri) {
     showStatus("Loading posts feed...", false);
     service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
-    public void onFailure(Throwable caught) {
-      showStatus("An error occurred while retrieving the Blogger Posts feed, see details below:\n" + caught.getMessage(), true);
+    public void onFailure(CallErrorException caught) {
+      showStatus("An error occurred while retrieving the Blogger Posts feed: " + caught.getMessage(), true);
     }
     public void onSuccess(BlogPostFeed result) {
       PostEntry targetPost = null;
@@ -154,8 +150,8 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
     comment.getContent().setText("GWT-Blogger-Client - Great post!");
     String commentsFeedUri = "http://www.blogger.com/feeds/" + blogId + "/" + postId + "/comments/default";
     service.insertCommentEntry(commentsFeedUri, comment, new CommentEntryCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while creating the Blogger post comment, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while creating the Blogger post comment: " + caught.getMessage(), true);
       }
       public void onSuccess(CommentEntry result) {
         showStatus("Created a comment.", false);

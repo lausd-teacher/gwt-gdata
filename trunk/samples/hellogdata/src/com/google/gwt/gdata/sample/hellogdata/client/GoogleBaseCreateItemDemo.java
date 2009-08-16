@@ -23,6 +23,7 @@ import com.google.gwt.gdata.client.gbase.Attribute;
 import com.google.gwt.gdata.client.gbase.GoogleBaseService;
 import com.google.gwt.gdata.client.gbase.ItemsEntry;
 import com.google.gwt.gdata.client.gbase.ItemsEntryCallback;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -113,13 +114,8 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
     entry.getAttributes().get("item_language").setValue("en");
     
     service.insertItemsEntry("http://www.google.com/base/feeds/items", entry, new ItemsEntryCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("Terms of Service acceptance required")) {
-          showStatus("No Google Base account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while creating an item, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while creating an item: " + caught.getMessage(), true);
       }
       public void onSuccess(ItemsEntry result) {
         showStatus("Created an item.", false);

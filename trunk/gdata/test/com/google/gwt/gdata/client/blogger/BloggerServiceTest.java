@@ -20,6 +20,7 @@ import com.google.gwt.accounts.client.UserTest;
 import com.google.gwt.gdata.client.GDataTestScripts;
 import com.google.gwt.gdata.client.atom.Category;
 import com.google.gwt.gdata.client.atom.Text;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -45,7 +46,7 @@ public class BloggerServiceTest extends GWTTestCase {
     query.setMaxResults(25);
     BloggerService svc = BloggerService.newInstance("test");
     svc.getBlogPostFeed(query, new BlogPostFeedCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         fail("Get Failed: " + caught.getMessage());
       }
       public void onSuccess(BlogPostFeed result) {
@@ -59,7 +60,7 @@ public class BloggerServiceTest extends GWTTestCase {
         cat.setTerm(GDataTestScripts.Blogger.testPost_Entry_CategoryTerm_Created);
         post.setCategories(new Category[]{ cat });
         result.insertPostEntry(post, new PostEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Create Failed: " + caught.getMessage());
           }
           public void onSuccess(PostEntry result) {
@@ -71,7 +72,7 @@ public class BloggerServiceTest extends GWTTestCase {
               fail("Create Failed");
             }
             result.deleteEntry(new PostEntryCallback() {
-              public void onFailure(Throwable caught) {
+              public void onFailure(CallErrorException caught) {
                 fail("Delete Failed: " + caught.getMessage());
               }
               public void onSuccess(PostEntry result) {
@@ -90,7 +91,7 @@ public class BloggerServiceTest extends GWTTestCase {
     BloggerService svc = BloggerService.newInstance("test");
     svc.getBlogEntry(GDataTestScripts.Blogger.testBlog_Entry_Link,
         new BlogEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(BlogEntry result) {
@@ -108,7 +109,7 @@ public class BloggerServiceTest extends GWTTestCase {
     BloggerService svc = BloggerService.newInstance("test");
     svc.getBlogFeed(GDataTestScripts.Blogger.testBlogs_Feed_Link,
         new BlogFeedCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(BlogFeed result) {
@@ -128,7 +129,7 @@ public class BloggerServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Blogger.testCookie_Name, GDataTestScripts.Blogger.testCookie_Value);
     BloggerService svc = BloggerService.newInstance("test");
     svc.getPostEntry(GDataTestScripts.Blogger.testPost_Entry_Link, new PostEntryCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         fail("Get Failed: " + caught.getMessage());
       }
       public void onSuccess(PostEntry result) {
@@ -149,7 +150,7 @@ public class BloggerServiceTest extends GWTTestCase {
     query.setMaxResults(25);
     BloggerService svc = BloggerService.newInstance("test");
     svc.getBlogPostFeed(query, new BlogPostFeedCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         fail("Get Failed: " + caught.getMessage());
       }
       public void onSuccess(BlogPostFeed result) {
@@ -166,14 +167,14 @@ public class BloggerServiceTest extends GWTTestCase {
     UserTest.login(GDataTestScripts.Blogger.testCookie_Name, GDataTestScripts.Blogger.testCookie_Value);
     BloggerService svc = BloggerService.newInstance("test");
     svc.getPostEntry(GDataTestScripts.Blogger.testPost_Entry_Link, new PostEntryCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         fail("Get Failed: " + caught.getMessage());
       }
       public void onSuccess(PostEntry result) {
         result.getTitle().setText(GDataTestScripts.Blogger.testPost_Entry_Title_Updated);
         result.getContent().setText(GDataTestScripts.Blogger.testPost_Entry_Contents_Updated);
         result.updateEntry(new PostEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Update Failed: " + caught.getMessage());
           }
           public void onSuccess(PostEntry result) {
@@ -185,7 +186,7 @@ public class BloggerServiceTest extends GWTTestCase {
             result.getTitle().setText(GDataTestScripts.Blogger.testPost_Entry_Title);
             result.getContent().setText(GDataTestScripts.Blogger.testPost_Entry_Contents);
             result.updateEntry(new PostEntryCallback() {
-              public void onFailure(Throwable caught) {
+              public void onFailure(CallErrorException caught) {
                 fail("Revert Failed: " + caught.getMessage());
               }
               public void onSuccess(PostEntry result) {

@@ -19,6 +19,7 @@ package com.google.gwt.gdata.client.finance;
 import com.google.gwt.accounts.client.UserTest;
 import com.google.gwt.gdata.client.GDataTestScripts;
 import com.google.gwt.gdata.client.atom.Text;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -47,7 +48,7 @@ public class FinanceServiceTest extends GWTTestCase {
     newEntry.setPortfolioData(PortfolioData.newInstance());
     newEntry.getPortfolioData().setCurrencyCode(GDataTestScripts.Finance.testPortfolio_Entry_Currency_Created);
     svc.insertPortfolioEntry(GDataTestScripts.Finance.testPortfolios_Feed_Link, newEntry, new PortfolioEntryCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         fail("Create Failed: " + caught.getMessage());
       }
       public void onSuccess(PortfolioEntry result) {
@@ -56,7 +57,7 @@ public class FinanceServiceTest extends GWTTestCase {
           fail("Create Failed");
         }
         result.deleteEntry(new PortfolioEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Delete Failed: " + caught.getMessage());
           }
           public void onSuccess(PortfolioEntry result) {
@@ -73,7 +74,7 @@ public class FinanceServiceTest extends GWTTestCase {
     FinanceService svc = FinanceService.newInstance("test");
     svc.getPortfolioEntry(GDataTestScripts.Finance.testPortfolio_Entry_Link,
         new PortfolioEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(PortfolioEntry result) {
@@ -95,7 +96,7 @@ public class FinanceServiceTest extends GWTTestCase {
     FinanceService svc = FinanceService.newInstance("test");
     svc.getPortfolioFeed(GDataTestScripts.Finance.testPortfolios_Feed_Link,
         new PortfolioFeedCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(PortfolioFeed result) {
@@ -116,14 +117,14 @@ public class FinanceServiceTest extends GWTTestCase {
     FinanceService svc = FinanceService.newInstance("test");
     svc.getPortfolioEntry(GDataTestScripts.Finance.testPortfolio_Entry_Link,
         new PortfolioEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(PortfolioEntry result) {
             result.getTitle().setText(GDataTestScripts.Finance.testPortfolio_Entry_Title_Updated);
             result.getPortfolioData().setCurrencyCode(GDataTestScripts.Finance.testPortfolio_Entry_Currency_Updated);
             result.updateEntry(new PortfolioEntryCallback() {
-              public void onFailure(Throwable caught) {
+              public void onFailure(CallErrorException caught) {
                 fail("Update Failed: " + caught.getMessage());
               }
               public void onSuccess(PortfolioEntry result) {
@@ -134,7 +135,7 @@ public class FinanceServiceTest extends GWTTestCase {
                 result.getTitle().setText(GDataTestScripts.Finance.testPortfolio_Entry_Title);
                 result.getPortfolioData().setCurrencyCode(GDataTestScripts.Finance.testPortfolio_Entry_Currency);
                 result.updateEntry(new PortfolioEntryCallback() {
-                  public void onFailure(Throwable caught) {
+                  public void onFailure(CallErrorException caught) {
                     fail("Revert Failed: " + caught.getMessage());
                   }
                   public void onSuccess(PortfolioEntry result) {

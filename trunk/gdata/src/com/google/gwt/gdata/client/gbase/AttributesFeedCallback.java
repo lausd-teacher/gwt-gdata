@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for attributes feed.
  */
-public interface AttributesFeedCallback extends AsyncCallback<AttributesFeed> {
+public interface AttributesFeedCallback extends Callback<AttributesFeed> {
 }

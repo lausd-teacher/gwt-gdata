@@ -26,6 +26,7 @@ import com.google.gwt.gdata.client.calendar.CalendarService;
 import com.google.gwt.gdata.client.calendar.ColorProperty;
 import com.google.gwt.gdata.client.calendar.HiddenProperty;
 import com.google.gwt.gdata.client.calendar.TimeZoneProperty;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -110,13 +111,8 @@ public class CalendarCreateCalendarDemo extends GDataDemo {
     entry.getColor().setValue(ColorProperty.VALUE_RGB_2952A3);
     showStatus("Creating calendar...", false);
     service.insertCalendarEntry(feedUri, entry, new CalendarEntryCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Calendar account was found for the currently logged-in user")) {
-          showStatus("No Calendar account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Calendar feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the Calendar feed: " + caught.getMessage(), true);
       }
       public void onSuccess(CalendarEntry result) {
         showStatus("Created a Calendar entry titled '" + result.getTitle().getText() + "'", false);

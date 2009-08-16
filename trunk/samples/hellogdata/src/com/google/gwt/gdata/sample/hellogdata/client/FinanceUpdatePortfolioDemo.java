@@ -24,6 +24,7 @@ import com.google.gwt.gdata.client.finance.PortfolioEntry;
 import com.google.gwt.gdata.client.finance.PortfolioEntryCallback;
 import com.google.gwt.gdata.client.finance.PortfolioFeed;
 import com.google.gwt.gdata.client.finance.PortfolioFeedCallback;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -92,13 +93,8 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
   private void getPortfolios() {
     showStatus("Loading portfolios feed...", false);
     service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Finance account was found for the currently logged-in user")) {
-          showStatus("No Finance account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the portfolios feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
@@ -140,8 +136,8 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
     entry.setTitle(Text.newInstance());
     entry.getTitle().setText("GWT-Finance-Client - updated portfolio");
     entry.updateEntry(new PortfolioEntryCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while updating a portfolio, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while updating a portfolio: " + caught.getMessage(), true);
       }
       public void onSuccess(PortfolioEntry result) {
         showStatus("Updated a portfolio.", false);

@@ -24,6 +24,7 @@ import com.google.gwt.gdata.client.gbase.AttributesFeedCallback;
 import com.google.gwt.gdata.client.gbase.GmAttribute;
 import com.google.gwt.gdata.client.gbase.GmValue;
 import com.google.gwt.gdata.client.gbase.GoogleBaseService;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -84,13 +85,8 @@ public class GoogleBaseRetrieveItemTypeAttributesDemo extends GDataDemo {
   private void getAttributes() {
     showStatus("Loading attributes feed...", false);
     service.getAttributesFeed("http://www.google.com/base/feeds/attributes/-/products", new AttributesFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("Terms of Service acceptance required")) {
-          showStatus("No Google Base account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the attributes feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the attributes feed: " + caught.getMessage(), true);
       }
       public void onSuccess(AttributesFeed result) {
         AttributesEntry[] entries = result.getEntries();

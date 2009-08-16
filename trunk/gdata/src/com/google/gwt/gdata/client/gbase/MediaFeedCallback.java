@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for media feed.
  */
-public interface MediaFeedCallback extends AsyncCallback<MediaFeed> {
+public interface MediaFeedCallback extends Callback<MediaFeed> {
 }

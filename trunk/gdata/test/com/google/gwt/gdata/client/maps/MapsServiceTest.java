@@ -19,6 +19,7 @@ package com.google.gwt.gdata.client.maps;
 import com.google.gwt.accounts.client.UserTest;
 import com.google.gwt.gdata.client.GDataTestScripts;
 import com.google.gwt.gdata.client.atom.Text;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -45,7 +46,7 @@ public class MapsServiceTest extends GWTTestCase {
     newEntry.setTitle(Text.newInstance());
     newEntry.getTitle().setText(GDataTestScripts.Maps.testMap_Entry_Title_Created);
     svc.insertMapEntry(GDataTestScripts.Maps.testMaps_Feed_Link, newEntry, new MapEntryCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         fail("Create Failed: " + caught.getMessage());
       }
       public void onSuccess(MapEntry result) {
@@ -53,7 +54,7 @@ public class MapsServiceTest extends GWTTestCase {
           fail("Create Failed");
         }
         result.deleteEntry(new MapEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Delete Failed: " + caught.getMessage());
           }
           public void onSuccess(MapEntry result) {
@@ -70,7 +71,7 @@ public class MapsServiceTest extends GWTTestCase {
     MapsService svc = MapsService.newInstance("test");
     svc.getFeatureEntry(GDataTestScripts.Maps.testFeature_Entry_Link,
         new FeatureEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(FeatureEntry result) {
@@ -89,7 +90,7 @@ public class MapsServiceTest extends GWTTestCase {
     MapsService svc = MapsService.newInstance("test");
     svc.getFeatureFeed(GDataTestScripts.Maps.testFeatures_Feed_Link,
         new FeatureFeedCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(FeatureFeed result) {
@@ -109,7 +110,7 @@ public class MapsServiceTest extends GWTTestCase {
     MapsService svc = MapsService.newInstance("test");
     svc.getMapEntry(GDataTestScripts.Maps.testMap_Entry_Link,
         new MapEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(MapEntry result) {
@@ -127,7 +128,7 @@ public class MapsServiceTest extends GWTTestCase {
     MapsService svc = MapsService.newInstance("test");
     svc.getMapFeed(GDataTestScripts.Maps.testMaps_Feed_Link,
         new MapFeedCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(MapFeed result) {
@@ -147,13 +148,13 @@ public class MapsServiceTest extends GWTTestCase {
     MapsService svc = MapsService.newInstance("test");
     svc.getMapEntry(GDataTestScripts.Maps.testMap_Entry_Link,
       new MapEntryCallback() {
-        public void onFailure(Throwable caught) {
+        public void onFailure(CallErrorException caught) {
           fail("Get Failed: " + caught.getMessage());
         }
         public void onSuccess(MapEntry result) {
           result.getTitle().setText(GDataTestScripts.Maps.testMap_Entry_Title_Updated);
           result.updateEntry(new MapEntryCallback() {
-            public void onFailure(Throwable caught) {
+            public void onFailure(CallErrorException caught) {
               fail("Update Failed: " + caught.getMessage());
             }
             public void onSuccess(MapEntry result) {
@@ -162,7 +163,7 @@ public class MapsServiceTest extends GWTTestCase {
               }
               result.getTitle().setText(GDataTestScripts.Maps.testMap_Entry_Title);
               result.updateEntry(new MapEntryCallback() {
-                public void onFailure(Throwable caught) {
+                public void onFailure(CallErrorException caught) {
                   fail("Revert Failed: " + caught.getMessage());
                 }
                 public void onSuccess(MapEntry result) {

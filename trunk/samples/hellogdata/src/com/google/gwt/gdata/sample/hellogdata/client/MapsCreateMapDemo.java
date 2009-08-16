@@ -19,6 +19,7 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.atom.Text;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.gdata.client.maps.MapEntry;
 import com.google.gwt.gdata.client.maps.MapEntryCallback;
 import com.google.gwt.gdata.client.maps.MapsService;
@@ -93,13 +94,8 @@ public class MapsCreateMapDemo extends GDataDemo {
     entry.setTitle(Text.newInstance());
     entry.getTitle().setText("GWT-Maps-Client - inserted map");
     service.insertMapEntry("http://maps.google.com/maps/feeds/maps/default/full", entry, new MapEntryCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Maps account was found for the currently logged-in user")) {
-          showStatus("No Maps account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while creating a map, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while creating a map: " + caught.getMessage(), true);
       }
       public void onSuccess(MapEntry result) {
         showStatus("Created a map.", false);

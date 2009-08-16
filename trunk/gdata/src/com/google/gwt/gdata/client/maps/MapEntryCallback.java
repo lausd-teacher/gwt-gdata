@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.maps;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for map entry.
  */
-public interface MapEntryCallback extends AsyncCallback<MapEntry> {
+public interface MapEntryCallback extends Callback<MapEntry> {
 }

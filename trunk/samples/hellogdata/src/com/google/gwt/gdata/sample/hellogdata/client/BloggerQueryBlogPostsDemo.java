@@ -27,6 +27,7 @@ import com.google.gwt.gdata.client.blogger.BlogPostFeedCallback;
 import com.google.gwt.gdata.client.blogger.BlogPostQuery;
 import com.google.gwt.gdata.client.blogger.BloggerService;
 import com.google.gwt.gdata.client.blogger.PostEntry;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
@@ -88,13 +89,8 @@ public class BloggerQueryBlogPostsDemo extends GDataDemo {
   private void getBlogs() {
     showStatus("Loading blog feed...", false);
     service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Blogger account was found for the currently logged-in user")) {
-          showStatus("No Blogger account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Blogger Blog feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the Blogger Blog feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
@@ -118,8 +114,8 @@ public class BloggerQueryBlogPostsDemo extends GDataDemo {
     query.setPublishedMax(DateTime.newInstance(new Date()));
     showStatus("Querying Blogger for posts...", false);
     service.getBlogPostFeed(query, new BlogPostFeedCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while querying Blogger for Posts, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while querying Blogger for Posts: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogPostFeed result) {
         showData(result.getEntries());

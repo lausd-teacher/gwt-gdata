@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for locales feed.
  */
-public interface LocalesFeedCallback extends AsyncCallback<LocalesFeed> {
+public interface LocalesFeedCallback extends Callback<LocalesFeed> {
 }

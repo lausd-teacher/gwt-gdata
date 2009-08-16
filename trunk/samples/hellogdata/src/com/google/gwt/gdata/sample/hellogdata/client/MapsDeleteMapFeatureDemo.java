@@ -18,6 +18,7 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.gdata.client.maps.FeatureEntry;
 import com.google.gwt.gdata.client.maps.FeatureEntryCallback;
 import com.google.gwt.gdata.client.maps.FeatureFeed;
@@ -94,8 +95,8 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
   private void deleteFeature(String featureEntryUri) {
     showStatus("Deleting map feature...", false);
     service.deleteFeatureEntry(featureEntryUri, new FeatureEntryCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while deleting a map feature, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while deleting a map feature: " + caught.getMessage(), true);
       }
       public void onSuccess(FeatureEntry result) {
         showStatus("Deleted a map feature.", false);
@@ -107,8 +108,8 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
     String featuresFeedUri = mapEntryUri.replace("/feeds/maps/", "/feeds/features/") + "/full";
     showStatus("Loading features feed...", false);
     service.getFeatureFeed(featuresFeedUri, new FeatureFeedCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while retrieving the features feed, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the features feed: " + caught.getMessage(), true);
       }
       public void onSuccess(FeatureFeed result) {
         FeatureEntry[] entries = result.getEntries();
@@ -132,13 +133,8 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
   private void getMaps() {
     showStatus("Loading maps feed...", false);
     service.getMapFeed("http://maps.google.com/maps/feeds/maps/default/full", new MapFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Maps account was found for the currently logged-in user")) {
-          showStatus("No Maps account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the maps feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the maps feed: " + caught.getMessage(), true);
       }
       public void onSuccess(MapFeed result) {
         MapEntry[] entries = result.getEntries();

@@ -20,13 +20,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 
 /**
- * Note: Temporary implementation, code borrowed from http://code.google.com/p/gwt-in-the-air/source/browse/trunk/src/net/ltgt/gwt/jscollections/client/JsMapString.java.
- * A JavaScript Map implementation for GWT.
+ * Code adapted from http://code.google.com/p/gwt-in-the-air/source/browse/
+ * trunk/src/net/ltgt/gwt/jscollections/client/JsMapString.java.
+ * A JavaScript String Map implementation for GWT.
  */
 public class MapString extends JavaScriptObject {
   
   /**
-   * Constructs a Map.
+   * Constructs a String Map.
    */  
   public static MapString newInstance() {
     return JavaScriptObject.createObject().cast();
@@ -35,20 +36,58 @@ public class MapString extends JavaScriptObject {
   protected MapString() {
   }
   
+  /**
+   * Determines whether the specified key is contained in the map.
+   * @param key The key to search for.
+   */
   public final native void contains(String key) /*-{ return (key in this); }-*/;
   
+  /**
+   * Retrieves a value by the corresponding key.
+   * 
+   * @param key The key corresponding to the value which should be retrieved.
+   * @return The corresponding value or null if the key is not present.
+   */
   public final native String get(String key) /*-{ return this[key]; }-*/;
   
+  /**
+   * Retrieves a value by the corresponding key.
+   * 
+   * @param key The key corresponding to the value which should be retrieved.
+   * @param defaultValue The value to return if the key is not present.
+   * @return The corresponding value or the default value if the key is not present.
+   */
   public final native String get(String key, String defaultValue) /*-{ return this[key] || defaultValue; }-*/;
 
+  /**
+   * Retrieves the collection of keys for this map.
+   * 
+   * @return The map keys.
+   */
   public final String[] keys() {
     return ArrayHelper.toArray(getKeys());
   }
   
+  /**
+   * Removes the selected key/value pair from the map.
+   * 
+   * @param key The key which should be removed
+   */
   public final native void remove(String key) /*-{ delete this[key]; }-*/;
   
+  /**
+   * Adds a key/value pair to the map.
+   * 
+   * @param key The key.
+   * @param value The value.
+   */
   public final native void set(String key, String value) /*-{ this[key] = value; }-*/;
   
+  /**
+   * Retrieves the collection of values for this map.
+   * 
+   * @return The map values.
+   */
   public final String[] values() {
     return ArrayHelper.toArray(getValues());
   }

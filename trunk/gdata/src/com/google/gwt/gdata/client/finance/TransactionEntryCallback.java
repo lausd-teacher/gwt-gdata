@@ -16,10 +16,10 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Callback for transaction entry.
  */
-public interface TransactionEntryCallback extends AsyncCallback<TransactionEntry> {
+public interface TransactionEntryCallback extends Callback<TransactionEntry> {
 }

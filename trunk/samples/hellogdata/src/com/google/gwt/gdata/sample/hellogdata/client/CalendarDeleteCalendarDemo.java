@@ -23,6 +23,7 @@ import com.google.gwt.gdata.client.calendar.CalendarEntryCallback;
 import com.google.gwt.gdata.client.calendar.CalendarFeed;
 import com.google.gwt.gdata.client.calendar.CalendarFeedCallback;
 import com.google.gwt.gdata.client.calendar.CalendarService;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -92,8 +93,8 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
   private void deleteCalendar(String calendarEntryUri) {
     showStatus("Deleting calendar...", false);
     service.deleteCalendarEntry(calendarEntryUri, new CalendarEntryCallback() {
-      public void onFailure(Throwable caught) {
-        showStatus("An error occurred while deleting a calendar, see details below:\n" + caught.getMessage(), true);
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while deleting a calendar: " + caught.getMessage(), true);
       }
       public void onSuccess(CalendarEntry result) {
         showStatus("Deleted a calendar.", false);
@@ -104,12 +105,12 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
   private void getCalendars() {
     showStatus("Loading calendars...", false);
     service.getOwnCalendarsFeed("http://www.google.com/calendar/feeds/default/owncalendars/full", new CalendarFeedCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         String message = caught.getMessage();
         if (message.contains("No Calendar account was found for the currently logged-in user")) {
           showStatus("No Calendar account was found for the currently logged-in user.", true);
         } else {
-          showStatus("An error occurred while retrieving the Calendar feed, see details below:\n" + message, true);
+          showStatus("An error occurred while retrieving the Calendar feed: " + caught.getMessage(), true);
         }
       }
       public void onSuccess(CalendarFeed result) {

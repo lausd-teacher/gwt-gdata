@@ -23,10 +23,22 @@ import java.util.Date;
  */
 public class DateHelper {
   
+  /**
+   * Converts a Date object to a value in milliseconds.
+   * 
+   * @param value The value as a Date object.
+   * @return The value in milliseconds.
+   */
   public static double dateToMilliseconds(Date value) {
     return value.getTime();
   }
   
+  /**
+   * Converts a value in milliseconds to a Date object.
+   * 
+   * @param value The value in milliseconds.
+   * @return The value as a Date object.
+   */
   public static Date millisecondsToDate(double value) {
     return new Date((long) value);
   }

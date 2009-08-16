@@ -22,6 +22,7 @@ import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.contacts.ContactGroupEntry;
 import com.google.gwt.gdata.client.contacts.ContactGroupEntryCallback;
 import com.google.gwt.gdata.client.contacts.ContactsService;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -91,13 +92,8 @@ public class ContactsCreateContactGroupDemo extends GDataDemo {
     entry.setTitle(Text.newInstance());
     entry.getTitle().setText("GWT-Contacts-Client - Create Group");
     service.insertContactGroupEntry("http://www.google.com/m8/feeds/groups/default/full", entry, new ContactGroupEntryCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Contacts account was found for the currently logged-in user")) {
-          showStatus("No Contacts account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while creating a contact group, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while creating a contact group: " + caught.getMessage(), true);
       }
       public void onSuccess(ContactGroupEntry result) {
         showStatus("Created a contact group.", false);

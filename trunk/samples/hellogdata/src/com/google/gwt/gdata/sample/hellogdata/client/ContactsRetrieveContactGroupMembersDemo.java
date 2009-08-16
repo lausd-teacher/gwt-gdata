@@ -26,6 +26,7 @@ import com.google.gwt.gdata.client.contacts.ContactGroupFeed;
 import com.google.gwt.gdata.client.contacts.ContactGroupFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactQuery;
 import com.google.gwt.gdata.client.contacts.ContactsService;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -87,13 +88,8 @@ public class ContactsRetrieveContactGroupMembersDemo extends GDataDemo {
     ContactQuery query = ContactQuery.newInstance("http://www.google.com/m8/feeds/contacts/default/full");
     query.setStringParam("group", contactGroupId);
     service.getContactFeed(query, new ContactFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Contacts account was found for the currently logged-in user")) {
-          showStatus("No Contacts account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Contacts feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the Contacts feed: " + caught.getMessage(), true);
       }
       public void onSuccess(ContactFeed result) {
         ContactEntry[] entries = result.getEntries();
@@ -109,13 +105,8 @@ public class ContactsRetrieveContactGroupMembersDemo extends GDataDemo {
   private void getContactGroups() {
     showStatus("Loading contact groups feed...", false);
     service.getContactGroupFeed("http://www.google.com/m8/feeds/groups/default/full", new ContactGroupFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Contacts account was found for the currently logged-in user")) {
-          showStatus("No Contacts account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the contact groups feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the contact groups feed: " + caught.getMessage(), true);
       }
       public void onSuccess(ContactGroupFeed result) {
         ContactGroupEntry[] entries = result.getEntries();

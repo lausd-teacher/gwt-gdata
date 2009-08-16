@@ -22,6 +22,7 @@ import com.google.gwt.gdata.client.calendar.CalendarEntry;
 import com.google.gwt.gdata.client.calendar.CalendarFeed;
 import com.google.gwt.gdata.client.calendar.CalendarFeedCallback;
 import com.google.gwt.gdata.client.calendar.CalendarService;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -81,13 +82,8 @@ public class CalendarRetrieveCalendarsDemo extends GDataDemo {
   private void getCalendars() {
     showStatus("Loading calendars feed...", false);
     service.getAllCalendarsFeed("http://www.google.com/calendar/feeds/default/allcalendars/full", new CalendarFeedCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Calendar account was found for the currently logged-in user")) {
-          showStatus("No Calendar account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Calendar feed, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while retrieving the Calendar feed: " + caught.getMessage(), true);
       }
       public void onSuccess(CalendarFeed result) {
         CalendarEntry[] entries = result.getEntries();

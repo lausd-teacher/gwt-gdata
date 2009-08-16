@@ -23,6 +23,7 @@ import com.google.gwt.gdata.client.finance.FinanceService;
 import com.google.gwt.gdata.client.finance.PortfolioData;
 import com.google.gwt.gdata.client.finance.PortfolioEntry;
 import com.google.gwt.gdata.client.finance.PortfolioEntryCallback;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -97,13 +98,8 @@ public class FinanceCreatePortfolioDemo extends GDataDemo {
     data.setCurrencyCode("USD");
     entry.setPortfolioData(data);
     service.insertPortfolioEntry("http://finance.google.com/finance/feeds/default/portfolios", entry, new PortfolioEntryCallback() {
-      public void onFailure(Throwable caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Finance account was found for the currently logged-in user")) {
-          showStatus("No Finance account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while creating a portfolio, see details below:\n" + message, true);
-        }
+      public void onFailure(CallErrorException caught) {
+        showStatus("An error occurred while creating a portfolio: " + caught.getMessage(), true);
       }
       public void onSuccess(PortfolioEntry result) {
         showStatus("Created a portfolio.", false);

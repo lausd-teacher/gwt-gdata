@@ -19,6 +19,7 @@ package com.google.gwt.gdata.client.gbase;
 import com.google.gwt.accounts.client.UserTest;
 import com.google.gwt.gdata.client.GDataTestScripts;
 import com.google.gwt.gdata.client.atom.Text;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.gdata.client.impl.Map;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -66,7 +67,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
     newEntry.getAttributes().get("item_language").setValue(GDataTestScripts.GoogleBase.testItem_Entry_ItemLanguage_Created);
     
     svc.insertItemsEntry(GDataTestScripts.GoogleBase.testItems_Feed_Link, newEntry, new ItemsEntryCallback() {
-      public void onFailure(Throwable caught) {
+      public void onFailure(CallErrorException caught) {
         fail("Create Failed: " + caught.getMessage());
       }
       public void onSuccess(ItemsEntry result) {
@@ -85,7 +86,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
           fail("Create Failed");
         }
         result.deleteEntry(new ItemsEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Create Failed: " + caught.getMessage());
           }
           public void onSuccess(ItemsEntry result) {
@@ -102,7 +103,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
     GoogleBaseService svc = GoogleBaseService.newInstance("test");
     svc.getItemsEntry(GDataTestScripts.GoogleBase.testItem_Entry_Link,
         new ItemsEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(ItemsEntry result) {
@@ -132,7 +133,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
     GoogleBaseService svc = GoogleBaseService.newInstance("test");
     svc.getItemsFeed(GDataTestScripts.GoogleBase.testItems_Feed_Link,
         new ItemsFeedCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(ItemsFeed result) {
@@ -153,7 +154,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
     GoogleBaseService svc = GoogleBaseService.newInstance("test");
     svc.getItemsEntry(GDataTestScripts.GoogleBase.testItem_Entry_Link,
         new ItemsEntryCallback() {
-          public void onFailure(Throwable caught) {
+          public void onFailure(CallErrorException caught) {
             fail("Get Failed: " + caught.getMessage());
           }
           public void onSuccess(ItemsEntry result) {
@@ -161,7 +162,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
             result.getContent().setText(GDataTestScripts.GoogleBase.testItem_Entry_Content_Updated);
             result.getAttributes().get("target_country").setValue(GDataTestScripts.GoogleBase.testItem_Entry_TargetCountry_Updated);
             result.updateEntry(new ItemsEntryCallback() {
-              public void onFailure(Throwable caught) {
+              public void onFailure(CallErrorException caught) {
                 fail("Update Failed: " + caught.getMessage());
               }
               public void onSuccess(ItemsEntry result) {
@@ -174,7 +175,7 @@ public class GoogleBaseServiceTest extends GWTTestCase {
                 result.getContent().setText(GDataTestScripts.GoogleBase.testItem_Entry_Content);
                 result.getAttributes().get("target_country").setValue(GDataTestScripts.GoogleBase.testItem_Entry_TargetCountry);
                 result.updateEntry(new ItemsEntryCallback() {
-                  public void onFailure(Throwable caught) {
+                  public void onFailure(CallErrorException caught) {
                     fail("Revert Failed: " + caught.getMessage());
                   }
                   public void onSuccess(ItemsEntry result) {
