@@ -50,9 +50,10 @@ public class MapsCreateMapDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert a new map. " +
-          "The map feed post URL (http://maps.google.com/maps/feeds/maps/default/full) " +
-          "is used to insert a new map entry for the authenticated user.</p>\n";
+        return "<p>This sample code demonstrates how to create and insert " +
+            "a new map. The map feed post URL " +
+            "(http://maps.google.com/maps/feeds/maps/default/full) is used " +
+            "to insert a new map entry for the authenticated user.</p>";
       }
 
       @Override
@@ -79,7 +80,7 @@ public class MapsCreateMapDemo extends GDataDemo {
       Button startButton = new Button("Create a map");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          createMap();
+          createMap("http://maps.google.com/maps/feeds/maps/default/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -87,15 +88,27 @@ public class MapsCreateMapDemo extends GDataDemo {
       showStatus("You are not logged on to Google Maps.", true);
     }
   }
-  
-  private void createMap() {
+
+  /**
+   * Create a map by inserting a map entry into
+   * a maps feed.
+   * Set the map's title and contents to an arbitrary string. Here
+   * we prefix the title with 'GWT-Maps-Client' so that
+   * we can identify which maps were created by this demo.
+   * On success and failure, display a status message.
+   * 
+   * @param mapsFeedUri The uri of the maps feed into which to
+   * insert the new map entry
+   */
+  private void createMap(String mapsFeedUri) {
     showStatus("Creating map...", false);
     MapEntry entry = MapEntry.newInstance();
     entry.setTitle(Text.newInstance());
     entry.getTitle().setText("GWT-Maps-Client - inserted map");
-    service.insertMapEntry("http://maps.google.com/maps/feeds/maps/default/full", entry, new MapEntryCallback() {
+    service.insertMapEntry(mapsFeedUri, entry, new MapEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while creating a map: " + caught.getMessage(), true);
+        showStatus("An error occurred while creating a map: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(MapEntry result) {
         showStatus("Created a map.", false);

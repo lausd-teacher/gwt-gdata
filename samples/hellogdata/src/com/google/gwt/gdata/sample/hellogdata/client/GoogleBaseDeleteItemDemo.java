@@ -51,9 +51,10 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to delete an existing item of the " +
-          "authenticated user. It retrieves a list of the user's items, and deletes " +
-          "the first item with a title that starts with 'GWT-GoogleBase-Client'.</p>\n";
+        return "<p>This sample code demonstrates how to delete an existing " +
+            "item of the authenticated user. It retrieves a list of the " +
+            "user's items, and deletes the first item with a title that " +
+            "starts with 'GWT-GoogleBase-Client'.</p>\n";
       }
 
       @Override
@@ -73,14 +74,15 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's items.
    */
   public GoogleBaseDeleteItemDemo() {
-    service = GoogleBaseService.newInstance("HelloGData_GoogleBase_DeleteItemDemo_v1.0");
+    service = GoogleBaseService.newInstance(
+        "HelloGData_GoogleBase_DeleteItemDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete an item");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getItems();
+          getItems("http://www.google.com/base/feeds/items/");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -88,24 +90,47 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
       showStatus("You are not logged on to Google Base.", true);
     }
   }
-  
+
+  /**
+   * Delete an item entry using the Finance service and
+   * the item entry uri.
+   * On success and failure, display a status message.
+   * 
+   * @param itemsEntryUri The uri of the item entry to delete
+   */
   private void deleteItem(String itemsEntryUri) {
     showStatus("Updating item...", false);
     service.deleteItemsEntry(itemsEntryUri, new ItemsEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while deleting an item: " + caught.getMessage(), true);
+        showStatus("An error occurred while deleting an item: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ItemsEntry result) {
         showStatus("Deleted an item.", false);
       }
     });
   }
-  
-  private void getItems() {
+
+  /**
+   * Retrieve the items feed using the Google Base service and
+   * the items feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining success
+   * and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Item entry with a title
+   * starting with "GWT-GoogleBase-Client" and calls deleteItem
+   * to delete the item. Alternatively we could also have used
+   * targetItem.deleteEntry but the effect is the same.
+   * If no item is found a message is displayed.
+   * 
+   * @param itemsFeedUri The uri of the items feed
+   */
+  private void getItems(String itemsFeedUri) {
     showStatus("Loading items feed...", false);
-    service.getItemsFeed("http://www.google.com/base/feeds/items/", new ItemsFeedCallback() {
+    service.getItemsFeed(itemsFeedUri, new ItemsFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the items feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the items feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ItemsFeed result) {
         ItemsEntry[] entries = result.getEntries();
@@ -117,7 +142,8 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
           }
         }
         if (targetItem == null) {
-          showStatus("No item found that contains 'GWT-GoogleBase-Client' in the title.", false);
+          showStatus("No item found that contains 'GWT-GoogleBase-Client' " +
+              "in the title.", false);
         } else {
           String itemsEntryUri = targetItem.getSelfLink().getHref();
           deleteItem(itemsEntryUri);

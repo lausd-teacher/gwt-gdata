@@ -51,12 +51,15 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>In this example, all transactions for a particular ticker (e.g. NYSE:IBM) " +
-          "are retrieved for a portfolio. The user's portfolio feed is queried and searched for " +
-          "a portfolio starting with 'GWT-Finance-Client'. The transaction feed for NASDAQ:GOOG is " +
-          "then queried for this portfolio and basic information is displayed. (This portfolio and " +
-          "transaction were created in the examples above -- if no transactions for a given ticker " +
-          "exist, the transaction feed will not exist and an error will be generated).</p>\n";
+        return "<p>In this example, all transactions for a particular " +
+            "ticker (e.g. NYSE:IBM) are retrieved for a portfolio. The " +
+            "user's portfolio feed is queried and searched for a portfolio " +
+            "starting with 'GWT-Finance-Client'. The transaction feed for " +
+            "NASDAQ:GOOG is then queried for this portfolio and basic " +
+            "information is displayed. (This portfolio and transaction " +
+            "were created in the examples above -- if no transactions for " +
+            "a given ticker exist, the transaction feed will not exist and " +
+            "an error will be generated).</p>\n";
       }
 
       @Override
@@ -76,48 +79,76 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's portfolios.
    */
   public FinanceRetrieveTransactionsDemo() {
-    service = FinanceService.newInstance("HelloGData_Finance_RetrieveTransactionsDemo_v1.0");
+    service = FinanceService.newInstance(
+        "HelloGData_Finance_RetrieveTransactionsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getPortfolios();
+      getPortfolios(
+          "http://finance.google.com/finance/feeds/default/portfolios");
     } else {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
-  
-  private void getPortfolios() {
+
+  /**
+   * Retrieve the portfolios feed using the Finance service and
+   * the portfolios feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining
+   * success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first portfolio entry with a title
+   * starting with "GWT-Finance-Client" and retrieves all transactions
+   * with the ticker symbol "NASDAQ:GOOG".
+   * If no transactions exist with this symbol, the request will fail.
+   * If no portfolio is found, a message is displayed.
+   * 
+   * @param portfoliosFeedUri The uri of the portfolios feed
+   */
+  private void getPortfolios(String portfoliosFeedUri) {
     showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
+    service.getPortfolioFeed(portfoliosFeedUri, new PortfolioFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the portfolios feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
         PortfolioEntry targetPortfolio = null;
         for (PortfolioEntry entry : entries) {
-          if (entry.getTitle().getText().startsWith("")) {
+          if (entry.getTitle().getText().startsWith("GWT-Finance-Client")) {
             targetPortfolio = entry;
             break;
           }
         }
         if (targetPortfolio == null) {
-          showStatus("No portfolio found that contains 'GWT-Finance-Client' in the title.", false);
+          showStatus("No portfolio found that contains 'GWT-Finance-Client' " +
+              "in the title.", false);
         } else {
           String ticker = "NASDAQ:GOOG";
-          String transactionFeedUri = targetPortfolio.getEditLink().getHref() + "/positions/" 
-            + ticker + "/transactions";
+          String transactionFeedUri = targetPortfolio.getEditLink().getHref() +
+              "/positions/" + ticker + "/transactions";
           getTransactions(transactionFeedUri);
         }
       }
     });
   }
-  
+
+  /**
+   * Retrieve the transactions feed for a given portfolio using the
+   * Finance service and the transactions feed uri.
+   * The failure handler displays an error message while the
+   * success handler calls showData to display the transaction entries.
+   * 
+   * @param transactionFeedUri The transaction feed uri
+   */
   private void getTransactions(String transactionFeedUri) {
     showStatus("Loading transactions feed...", false);
-    service.getTransactionFeed(transactionFeedUri, new TransactionFeedCallback() {
+    service.getTransactionFeed(transactionFeedUri,
+        new TransactionFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the portfolios " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(TransactionFeed result) {
         TransactionEntry[] entries = result.getEntries();

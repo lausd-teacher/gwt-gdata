@@ -48,8 +48,8 @@ public class GoogleBaseQuerySnippetsForCamerasDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses a snippets query to find an items corresponding " +
-          "to digital cameras matching a set of criteria.</p>\n";
+        return "<p>This sample code uses a snippets query to find an items " +
+            "corresponding to digital cameras matching a set of criteria.</p>";
       }
 
       @Override
@@ -67,20 +67,33 @@ public class GoogleBaseQuerySnippetsForCamerasDemo extends GDataDemo {
    * Start the demo by querying Google Base snippets.
    */
   public GoogleBaseQuerySnippetsForCamerasDemo() {
-    service = GoogleBaseService.newInstance("HelloGData_GoogleBase_QuerySnippetsForCamerasDemo_v1.0");
+    service = GoogleBaseService.newInstance(
+        "HelloGData_GoogleBase_QuerySnippetsForCamerasDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    querySnippets();
+    querySnippets("http://www.google.com/base/feeds/snippets/");
   }
-  
-  private void querySnippets() {
+
+  /**
+   * Retrieves a snippets feed using a Query object.
+   * In GData, feed URIs can contain query string parameters. The
+   * GData query objects aid in building parameterized feed URIs.
+   * Upon successfully receiving the snippets feed, the snippet entries 
+   * are displayed to the user via the showData method.
+   * We set the BQ parameter to search for digital cameras.
+   * 
+   * @param itemsFeedUri The items feed uri.
+   */
+  private void querySnippets(String itemsFeedUri) {
     showStatus("Loading snippets feed...", false);
-    SnippetsQuery query = SnippetsQuery.newInstance("http://www.google.com/base/feeds/snippets/");
+    SnippetsQuery query = SnippetsQuery.newInstance(itemsFeedUri);
     query.setMaxResults(25);
-    query.setBq("digital camera [megapixels >= 4][price < 200.0][condition:new]");
+    query.setBq(
+        "digital camera [megapixels >= 4][price < 200.0][condition:new]");
     service.getSnippetsFeed(query, new SnippetsFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the snippets feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the snippets feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(SnippetsFeed result) {
         SnippetsEntry[] entries = result.getEntries();
@@ -119,10 +132,13 @@ public class GoogleBaseQuerySnippetsForCamerasDemo extends GDataDemo {
         mainPanel.setWidget(row, 1, new Label("Not available"));
       } else {
         String link = snippet.getHtmlLink().getHref();
-        mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + "\" target=\"_blank\">" + link +  "</a>"));
+        mainPanel.setWidget(row, 1,
+            new HTML("<a href=\"" + link + "\" target=\"_blank\">" + 
+                link +  "</a>"));
       }
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(snippet.getPublished().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 2,
+          new Label(snippet.getPublished().getValue().getDate().toString()));
     }
   }
 

@@ -51,10 +51,11 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to delete an existing calendar of the " +
-          "authenticated user. It retrieves a list of the user's own calendars, and delete " +
-          "the first calendar with title that starts with 'GWT-Calendar-Client'. The " +
-          "owncalendars feed is used for calendar deletion.</p>\n";
+        return "<p>This sample code demonstrates how to delete an existing " +
+            "calendar of the authenticated user. It retrieves a list of " +
+            "the user's own calendars, and delete the first calendar with " +
+            "title that starts with 'GWT-Calendar-Client'. The owncalendars " +
+            "feed is used for calendar deletion.</p>\n";
       }
 
       @Override
@@ -74,14 +75,17 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's calendars.
    */
   public CalendarDeleteCalendarDemo() {
-    service = CalendarService.newInstance("HelloGData_Calendar_DeleteCalendarDemo_v1.0");
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_DeleteCalendarDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a calendar");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getCalendars();
+          getCalendars(
+              "http://www.google.com/calendar/feeds/default/" +
+              "owncalendars/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -89,29 +93,46 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  
+
+  /**
+   * Delete a calendar entry using the Calendar service and
+   * the calendar entry uri.
+   * On success and failure, display a status message.
+   * 
+   * @param calendarEntryUri The uri of the calendar entry to delete
+   */
   private void deleteCalendar(String calendarEntryUri) {
     showStatus("Deleting calendar...", false);
     service.deleteCalendarEntry(calendarEntryUri, new CalendarEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while deleting a calendar: " + caught.getMessage(), true);
+        showStatus("An error occurred while deleting a calendar: " + 
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarEntry result) {
         showStatus("Deleted a calendar.", false);
       }
     });
   }
-  
-  private void getCalendars() {
+
+  /**
+   * Retrieve the calendars feed using the calendar service and
+   * the calendars feed uri.
+   * On success, identify the first calendar entry with a title starting
+   * with "GWT-Calendar-Client", this will be the calendar that will be
+   * deleted.
+   * If no calendar is found, display a message.
+   * Otherwise call deleteCalendar to delete the calendar. Alternatively
+   * we could also have used targetCalendar.deleteEntry to
+   * delete the calendar, but the effect is the same.
+   * 
+   * @param calendarsFeedUri The uri of the calendars feed
+   */
+  private void getCalendars(String calendarsFeedUri) {
     showStatus("Loading calendars...", false);
-    service.getOwnCalendarsFeed("http://www.google.com/calendar/feeds/default/owncalendars/full", new CalendarFeedCallback() {
+    service.getOwnCalendarsFeed(calendarsFeedUri, new CalendarFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        String message = caught.getMessage();
-        if (message.contains("No Calendar account was found for the currently logged-in user")) {
-          showStatus("No Calendar account was found for the currently logged-in user.", true);
-        } else {
-          showStatus("An error occurred while retrieving the Calendar feed: " + caught.getMessage(), true);
-        }
+        showStatus("An error occurred while retrieving the Calendar feed: " + 
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarFeed result) {
         CalendarEntry[] entries = result.getEntries();
@@ -127,7 +148,8 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
             }
           }
           if (targetCalendar == null) {
-            showStatus("Did not find a calendar entry whose title starts with the prefix 'GWT-Calendar-Client'.", false);
+            showStatus("Did not find a calendar entry whose title starts " +
+                "with the prefix 'GWT-Calendar-Client'.", false);
           } else {
             String calendarEntryUri = targetCalendar.getSelfLink().getHref();
             deleteCalendar(calendarEntryUri);

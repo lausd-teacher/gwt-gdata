@@ -31,7 +31,8 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example demonstrates how to retrieve a list of contact group members.
+ * The following example demonstrates how to retrieve a list of 
+ * contact group members.
  */
 public class ContactsRetrieveContactGroupMembersDemo extends GDataDemo {
 
@@ -51,9 +52,10 @@ public class ContactsRetrieveContactGroupMembersDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to retrieve all members of a " +
-          "particular group. It first retrieves the contact group ID and use it as " +
-          "the query parameter to retrieve all members of that group.</p>\n";
+        return "<p>This sample code demonstrates how to retrieve all " +
+            "members of a particular group. It first retrieves the " +
+            "contact group ID and use it as the query parameter to " +
+            "retrieve all members of that group.</p>\n";
       }
 
       @Override
@@ -73,23 +75,38 @@ public class ContactsRetrieveContactGroupMembersDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's contact groups.
    */
   public ContactsRetrieveContactGroupMembersDemo() {
-    service = ContactsService.newInstance("HelloGData_Contacts_RetrieveContactGroupMembersDemo_v1.0");
+    service = ContactsService.newInstance(
+        "HelloGData_Contacts_RetrieveContactGroupMembersDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getContactGroups();
+      getContactGroups("http://www.google.com/m8/feeds/groups/default/full");
     } else {
       showStatus("You are not logged on to Google Contacts.", true);
     }
   }
-  
+
+  /**
+   * Retrieves a contacts feed for a group using a Query object.
+   * In GData, feed URIs can contain query string parameters. The
+   * GData query objects aid in building parameterized feed URIs.
+   * Upon successfully receiving the contacts feed, the contact
+   * entries are displayed to the user via the showData method.
+   * A string parameter is used to indicate the ID of the group
+   * to query.
+   * 
+   * @param contactGroupId The id of the group for which to retrieve
+   * the contacts
+   */
   private void queryContacts(String contactGroupId) {
     showStatus("Loading contacts feed...", false);
-    ContactQuery query = ContactQuery.newInstance("http://www.google.com/m8/feeds/contacts/default/full");
+    ContactQuery query = ContactQuery.newInstance(
+        "http://www.google.com/m8/feeds/contacts/default/full");
     query.setStringParam("group", contactGroupId);
     service.getContactFeed(query, new ContactFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Contacts feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Contacts feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ContactFeed result) {
         ContactEntry[] entries = result.getEntries();
@@ -101,12 +118,24 @@ public class ContactsRetrieveContactGroupMembersDemo extends GDataDemo {
       }
     });
   }
-  
-  private void getContactGroups() {
+
+  /**
+   * Retrieve the contact groups feed using the Contacts service and
+   * the contacts feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first group entry and
+   * calls queryContacts to retrieve the contacts feed for that group.
+   * 
+   * @param contactGroupsFeedUri The contact groups feed uri
+   */
+  private void getContactGroups(String contactGroupsFeedUri) {
     showStatus("Loading contact groups feed...", false);
-    service.getContactGroupFeed("http://www.google.com/m8/feeds/groups/default/full", new ContactGroupFeedCallback() {
+    service.getContactGroupFeed(contactGroupsFeedUri,
+        new ContactGroupFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the contact groups feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the contact groups " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(ContactGroupFeed result) {
         ContactGroupEntry[] entries = result.getEntries();
@@ -149,7 +178,8 @@ public class ContactsRetrieveContactGroupMembersDemo extends GDataDemo {
       }
       mainPanel.setWidget(row, 1, new Label(email));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getUpdated().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 2,
+          new Label(entry.getUpdated().getValue().getDate().toString()));
     }
   }
 

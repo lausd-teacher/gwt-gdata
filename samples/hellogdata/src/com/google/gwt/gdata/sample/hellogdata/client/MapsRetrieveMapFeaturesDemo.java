@@ -52,8 +52,8 @@ public class MapsRetrieveMapFeaturesDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses the features feed to retrieve a list of features " +
-          "for a given map.</p>\n";
+        return "<p>This sample code uses the features feed to retrieve a " +
+            "list of features for a given map.</p>\n";
       }
 
       @Override
@@ -73,24 +73,38 @@ public class MapsRetrieveMapFeaturesDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's maps.
    */
   public MapsRetrieveMapFeaturesDemo() {
-    service = MapsService.newInstance("HelloGData_Maps_RetrieveMapFeaturesDemo_v1.0");
+    service = MapsService.newInstance(
+        "HelloGData_Maps_RetrieveMapFeaturesDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getMaps();
+      getMaps("http://maps.google.com/maps/feeds/maps/default/full");
     } else {
       showStatus("You are not logged on to Google Maps.", true);
     }
   }
-  
+
+  /**
+   * Retrieve the features feed for a given map using the
+   * Maps service and the features feed uri.
+   * In GData all get, insert, update and delete methods always
+   * receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler calls showData to display the feature entries.
+   * 
+   * @param mapEntryUri The uri of the map entry for which to
+   * retrieve the features feed
+   */
   private void getFeatures(String mapEntryUri) {
     Window.alert(mapEntryUri);
-    String featuresFeedUri = mapEntryUri.replace("/feeds/maps/", "/feeds/features/") + "/full";
+    String featuresFeedUri =
+      mapEntryUri.replace("/feeds/maps/", "/feeds/features/") + "/full";
     Window.alert(featuresFeedUri);
     showStatus("Loading features feed...", false);
     service.getFeatureFeed(featuresFeedUri, new FeatureFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the features feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the features feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(FeatureFeed result) {
         FeatureEntry[] entries = result.getEntries();
@@ -102,12 +116,24 @@ public class MapsRetrieveMapFeaturesDemo extends GDataDemo {
       }
     });
   }
-  
-  private void getMaps() {
+
+  /**
+   * Retrieve the maps feed using the Maps service and
+   * the maps feed uri.
+   * The failure handler displays an error message while the
+   * success handler obtains the first map entry with a title
+   * starting with "GWT-Maps-Client" and calls getFeatures to
+   * retrieve the map's features.
+   * If no map is found, a message is displayed.
+   * 
+   * @param mapsFeedUri The uri of the map feed
+   */
+  private void getMaps(String mapsFeedUri) {
     showStatus("Loading maps feed...", false);
-    service.getMapFeed("http://maps.google.com/maps/feeds/maps/default/full", new MapFeedCallback() {
+    service.getMapFeed(mapsFeedUri, new MapFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the maps feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the maps feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(MapFeed result) {
         MapEntry[] entries = result.getEntries();
@@ -119,7 +145,9 @@ public class MapsRetrieveMapFeaturesDemo extends GDataDemo {
           }
         }
         if (targetMap == null) {
-          showStatus("No map found that contains 'GWT-Maps-Client' in the title.", false);
+          showStatus(
+              "No map found that contains 'GWT-Maps-Client' in the title.",
+              false);
         } else {
           String mapEntryUri = targetMap.getId().getValue();
           getFeatures(mapEntryUri);
@@ -150,7 +178,8 @@ public class MapsRetrieveMapFeaturesDemo extends GDataDemo {
       mainPanel.addCell(row);
       mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 1, new Label(entry.getPostalAddress().getValue()));
+      mainPanel.setWidget(row, 1,
+          new Label(entry.getPostalAddress().getValue()));
     }
   }
 

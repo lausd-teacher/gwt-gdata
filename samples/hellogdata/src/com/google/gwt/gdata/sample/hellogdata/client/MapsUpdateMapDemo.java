@@ -52,9 +52,10 @@ public class MapsUpdateMapDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update an existing map of the " +
-          "authenticated user. It retrieves a list of the user's maps, and updates " +
-          "the first map with a title that starts with 'GWT-Maps-Client' with a new title.</p>\n";
+        return "<p>This sample code demonstrates how to update an existing " +
+            "map of the authenticated user. It retrieves a list of the " +
+            "user's maps, and updates the first map with a title that " +
+            "starts with 'GWT-Maps-Client' with a new title.</p>";
       }
 
       @Override
@@ -81,7 +82,7 @@ public class MapsUpdateMapDemo extends GDataDemo {
       Button startButton = new Button("Update a map");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getMaps();
+          getMaps("http://maps.google.com/maps/feeds/maps/default/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -89,12 +90,26 @@ public class MapsUpdateMapDemo extends GDataDemo {
       showStatus("You are not logged on to Google Maps.", true);
     }
   }
-  
-  private void getMaps() {
+
+  /**
+   * Retrieve the maps feed using the Maps service and
+   * the maps feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining
+   * success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first map entry with a title
+   * starting with "GWT-Maps-Client" and calls updateMap to
+   * update the map entry.
+   * If no map is found, a message is displayed.
+   * 
+   * @param mapsFeedUri The uri of the map feed
+   */
+  private void getMaps(String mapsFeedUri) {
     showStatus("Loading maps feed...", false);
-    service.getMapFeed("http://maps.google.com/maps/feeds/maps/default/full", new MapFeedCallback() {
+    service.getMapFeed(mapsFeedUri, new MapFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the maps feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the maps feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(MapFeed result) {
         MapEntry[] entries = result.getEntries();
@@ -106,7 +121,9 @@ public class MapsUpdateMapDemo extends GDataDemo {
           }
         }
         if (targetMap == null) {
-          showStatus("No map found that contains 'GWT-Maps-Client' in the title.", false);
+          showStatus(
+              "No map found that contains 'GWT-Maps-Client' in the title.",
+              false);
         } else {
           updateMap(targetMap);
         }
@@ -131,13 +148,24 @@ public class MapsUpdateMapDemo extends GDataDemo {
     mainPanel.setWidget(0, 0, msg);
   }
   
+  /**
+   * Update a map by making use of the updateEntry
+   * method of the Entry class.
+   * Set the map's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-Maps-Client' so that
+   * we can identify which maps were updated by this demo.
+   * On success and failure, display a status message.
+   * 
+   * @param targetMap The map entry which to update
+   */
   private void updateMap(MapEntry targetMap) {
     showStatus("Updating map...", false);
     targetMap.setTitle(Text.newInstance());
     targetMap.getTitle().setText("GWT-Maps-Client - updated map");
     targetMap.updateEntry(new MapEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while updating a map: " + caught.getMessage(), true);
+        showStatus("An error occurred while updating a map: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(MapEntry result) {
         showStatus("Updated a map.", false);

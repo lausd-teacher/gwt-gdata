@@ -47,8 +47,8 @@ public class MapsRetrieveMapsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses the maps feed to retrieve a list of all of an " +
-          "authenticated user's saved maps.</p>\n";
+        return "<p>This sample code uses the maps feed to retrieve a list " +
+            "of all of an authenticated user's saved maps.</p>\n";
       }
 
       @Override
@@ -72,17 +72,28 @@ public class MapsRetrieveMapsDemo extends GDataDemo {
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getMaps();
+      getMaps("http://maps.google.com/maps/feeds/maps/default/full");
     } else {
       showStatus("You are not logged on to Google Maps.", true);
     }
   }
-  
-  private void getMaps() {
+
+  /**
+   * Retrieve the maps feed using the Maps service and
+   * the maps feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining
+   * success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler calls showData to display the map entries.
+   * 
+   * @param mapsFeedUri The uri of the map feed
+   */
+  private void getMaps(String mapsFeedUri) {
     showStatus("Loading maps feed...", false);
-    service.getMapFeed("http://maps.google.com/maps/feeds/maps/default/full", new MapFeedCallback() {
+    service.getMapFeed(mapsFeedUri, new MapFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the maps feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the maps feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(MapFeed result) {
         MapEntry[] entries = result.getEntries();
@@ -117,7 +128,8 @@ public class MapsRetrieveMapsDemo extends GDataDemo {
       mainPanel.addCell(row);
       mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 1, new Label(entry.getPublished().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 1,
+          new Label(entry.getPublished().getValue().getDate().toString()));
     }
   }
 

@@ -25,6 +25,7 @@ import com.google.gwt.gdata.client.analytics.AnalyticsService;
 import com.google.gwt.gdata.client.analytics.DataEntry;
 import com.google.gwt.gdata.client.analytics.DataFeed;
 import com.google.gwt.gdata.client.analytics.DataFeedCallback;
+import com.google.gwt.gdata.client.analytics.DataQuery;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
@@ -51,8 +52,8 @@ public class AnalyticsTopPagesDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to " +
-        "access the top ten pages ordered by number of pageviews to your website.</p>\n";
+        return "<p>This sample code demonstrates how to access the top ten " +
+            "pages ordered by number of pageviews to your website.</p>\n";
       }
 
       @Override
@@ -72,21 +73,34 @@ public class AnalyticsTopPagesDemo extends GDataDemo {
    * otherwise start the demo by retrieving the Analytics accounts.
    */
   public AnalyticsTopPagesDemo() {
-    service = AnalyticsService.newInstance("HelloGData_Analytics_TopPagesDemo_v1.0");
+    service = AnalyticsService.newInstance(
+        "HelloGData_Analytics_TopPagesDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getAccounts();
+      getAccounts("https://www.google.com/analytics/feeds/accounts/" +
+          "default?max-results=50");
     } else {
       showStatus("You are not logged on to Google Analytics.", true);
     }
   }
-  
-  private void getAccounts() {
+
+  /**
+   * Retrieve the Analytics accounts feed using the Analytics service and
+   * the accounts feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Account entry and
+   * calls queryData to retrieve the data feed for that account.
+   * 
+   * @param accountsFeedUri The uri of the accounts feed
+   */
+  private void getAccounts(String accountsFeedUri) {
     showStatus("Loading Analytics accounts feed...", false);
-    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AccountFeedCallback() {
+    service.getAccountFeed(accountsFeedUri, new AccountFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Analytics Accounts feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Analytics " +
+            "Accounts feed: " + caught.getMessage(), true);
       }
       public void onSuccess(AccountFeed result) {
         AccountEntry[] entries = result.getEntries();
@@ -94,25 +108,40 @@ public class AnalyticsTopPagesDemo extends GDataDemo {
           showStatus("You have no Analytics accounts.", false);
         } else {
           AccountEntry targetEntry = entries[0];
-          getData(targetEntry.getTableId().getValue());
+          queryData(targetEntry.getTableId().getValue());
         }
       }
     });
   }
-  
-  private void getData(String tableId) {
-    String dataFeedUri = "https://www.google.com/analytics/feeds/data" +
-    "?start-date=2009-07-01" +
-    "&end-date=2009-07-31" +
-    "&dimensions=ga:pageTitle,ga:pagePath" +
-    "&metrics=ga:pageviews" +
-    "&sort=-ga:pageviews" +
-    "&max-results=10" +
-    "&ids=" + tableId;
+
+  /**
+   * Retrieves a data feed for an Analytics account using a Query object.
+   * In GData, feed URIs can contain querystring parameters. The
+   * GData query objects aid in building parameterized feed URIs.
+   * Upon successfully receiving the data feed, the data entries are displayed
+   * to the user via the showData method.
+   * Query parameters are specified for start and end dates, dimensions,
+   * metrics, sort field and direction, max results and the IDs of the
+   * account tables which should be queried.
+   * 
+   * @param tableId The id of the account table for which to retrieve the
+   * Analytics data.
+   */
+  private void queryData(String tableId) {
+    DataQuery query = DataQuery.newInstance(
+        "https://www.google.com/analytics/feeds/data");
+    query.setStartDate("2009-07-01");
+    query.setEndDate("2009-07-31");
+    query.setDimensions("ga:pageTitle,ga:pagePath");
+    query.setMetrics("ga:pageviews");
+    query.setSort("-ga:pageviews");
+    query.setMaxResults(10);
+    query.setIds(tableId);
     showStatus("Loading data feed...", false);
-    service.getDataFeed(dataFeedUri, new DataFeedCallback() {
+    service.getDataFeed(query, new DataFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Analytics Data feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Analytics Data " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(DataFeed result) {
         showData(result.getEntries());
@@ -122,7 +151,7 @@ public class AnalyticsTopPagesDemo extends GDataDemo {
 
   /**
   * Displays a set of Analytics data entries in a tabular fashion with
-  * the help of a GWT FlexTable widget. The data fields Page Title, Page Path 
+  * the help of a GWT FlexTable widget. The data fields Page Title, Page Path
   * and Pageviews are displayed.
   * 
   * @param entries The Analytics data entries to display.
@@ -140,11 +169,14 @@ public class AnalyticsTopPagesDemo extends GDataDemo {
       DataEntry entry = entries[i];
       int row = mainPanel.insertRow(i + 1);
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 0, new Label(entry.getStringValueOf("ga:pageTitle")));
+      mainPanel.setWidget(row, 0,
+          new Label(entry.getStringValueOf("ga:pageTitle")));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 1, new Label(entry.getStringValueOf("ga:pagePath")));
+      mainPanel.setWidget(row, 1,
+          new Label(entry.getStringValueOf("ga:pagePath")));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(new Double(entry.getNumericValueOf("ga:pageviews")).toString()));
+      mainPanel.setWidget(row, 2,
+          new Label("" + entry.getNumericValueOf("ga:pageviews")));
     }
   }
 

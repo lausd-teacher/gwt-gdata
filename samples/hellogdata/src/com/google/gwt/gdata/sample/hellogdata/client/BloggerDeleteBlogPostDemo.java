@@ -54,8 +54,8 @@ public class BloggerDeleteBlogPostDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample deletes the first blog post it finds that begins with " +
-          "the prefix 'GWT-Blogger-Client'.</p>\n";
+        return "<p>This sample deletes the first blog post it finds " +
+            "that begins with the prefix 'GWT-Blogger-Client'.</p>\n";
       }
 
       @Override
@@ -75,14 +75,15 @@ public class BloggerDeleteBlogPostDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's blogs.
    */
   public BloggerDeleteBlogPostDemo() {
-    service = BloggerService.newInstance("HelloGData_Blogger_DeleteBlogPostDemo_v1.0");
+    service = BloggerService.newInstance(
+        "HelloGData_Blogger_DeleteBlogPostDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a blog post");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getBlogs();
+          getBlogs("http://www.blogger.com/feeds/default/blogs");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -91,23 +92,42 @@ public class BloggerDeleteBlogPostDemo extends GDataDemo {
     }
   }
   
+  /**
+   * Delete a post entry using the Blogger service and
+   * the post entry uri.
+   * On success and failure, display a status message.
+   * 
+   * @param postEntryUri The uri of the post entry to delete
+   */
   private void deletePost(String postEntryUri) {
     showStatus("Deleting post entry...", false);
     service.deletePostEntry(postEntryUri, new PostEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while deleting a blog post: " + caught.getMessage(), true);
+        showStatus("An error occurred while deleting a blog post: " + 
+            caught.getMessage(), true);
       }
       public void onSuccess(PostEntry result) {
         showStatus("Deleted a blog post entry.", false);
       }
     });
   }
-  
-  private void getBlogs() {
+
+  /**
+   * Retrieve the Blogger blogs feed using the Blogger service and
+   * the blogs feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Blog entry and
+   * calls getPosts to retrieve the posts feed for that blog.
+   * 
+   * @param blogsFeedUri The uri of the blogs feed
+   */
+  private void getBlogs(String blogsFeedUri) {
     showStatus("Loading blog feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
+    service.getBlogFeed(blogsFeedUri, new BlogFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Blog feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Blog " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
@@ -121,12 +141,25 @@ public class BloggerDeleteBlogPostDemo extends GDataDemo {
       }
     });
   }
-  
+
+  /**
+   * Retrieve the Blogger posts feed using the Blogger service and
+   * the posts feed uri for a given blog.
+   * On success, identify the first post entry with a title starting
+   * with "GWT-Blogger-Client", this will be the post that will be deleted.
+   * If no post is found, display a message.
+   * Otherwise call deletePost to delete the post. Alternatively
+   * we could also have used targetPost.deleteEntry to
+   * delete the post, but the effect is the same.
+   * 
+   * @param postsFeedUri The posts feed uri for a given blog
+   */
   private void getPosts(String postsFeedUri) {
     showStatus("Loading posts feed...", false);
     service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Posts feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Posts " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogPostFeed result) {
         PostEntry targetPost = null;
@@ -138,7 +171,8 @@ public class BloggerDeleteBlogPostDemo extends GDataDemo {
           }
         }
         if (targetPost == null) {
-          showStatus("Did not find a post entry whose title starts with the prefix 'GWT-Blogger-Client'.", false);
+          showStatus("Did not find a post entry whose title starts with " +
+              "the prefix 'GWT-Blogger-Client'.", false);
         } else {
           deletePost(targetPost.getSelfLink().getHref());
         }

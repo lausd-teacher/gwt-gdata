@@ -32,6 +32,12 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
 
+  /**
+   * This method is used by the main sample app to obtain
+   * information on this sample and a sample instance.
+   * 
+   * @return An instance of this demo.
+   */
   public static GDataDemoInfo init() {
     return new GDataDemoInfo() {
 
@@ -42,8 +48,9 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>The following example demonstrates how to use AuthSub to authenticate " +
-          "and identify authentication status for the supported GData systems</p>\n";
+        return "<p>The following example demonstrates how to use AuthSub to " +
+            "authenticate and identify authentication status for the " +
+            "supported GData systems</p>\n";
       }
 
       @Override
@@ -55,28 +62,71 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
 
   private FlexTable mainPanel;
 
+  /**
+   * Create the main content panel for this demo and call
+   * showAuthSubStatus to display the authentication status
+   * for each GData system.
+   */
   public AccountsAuthSubAuthenticationDemo() {
     mainPanel = new FlexTable();
     mainPanel.setCellPadding(4);
     mainPanel.setCellSpacing(0);
     initWidget(mainPanel);
-    startDemo();
+    showAuthSubStatus();
   }
 
-  public void refreshDemo() {
+  /**
+   * Refreshes this demo by clearing the contents of
+   * the main panel and calling showAuthSubStatus to
+   * display the authentication status for each GData system.
+   */
+  private void refreshDemo() {
     mainPanel.clear();
-    startDemo();
+    showAuthSubStatus();
   }
   
-  public void startDemo() {
+  /**
+   * Display the AuthSub authentication statuses in a
+   * tabular fashion with the help of a GWT FlexTable widget.
+   * We initialize an array containing the name, scope, icon
+   * and url for each of the supported GData systems.
+   * For each system a table row is added displaying the name
+   * page link and icon, in addition to the AuthSub status
+   * and a hyperlink for logging in or logging, as appropriate.
+   * The User class contains the getStatus method which is used
+   * to retrieve the authentication status for the current user
+   * and for a given system (scope).
+   */
+  private void showAuthSubStatus() {
     String[][] systems = new String[][] {
-        new String[] { "Google Analytics", "https://www.google.com/analytics/feeds/", "gdata-analytics.png", "http://code.google.com/apis/analytics/" },
-        new String[] { "Google Base", "http://www.google.com/base/feeds/", "gdata-base.png", "http://code.google.com/apis/base/" },
-        new String[] { "Google Blogger", "http://www.blogger.com/feeds/", "gdata-blogger.png", "http://code.google.com/apis/blogger/" },
-        new String[] { "Google Calendar", "http://www.google.com/calendar/feeds/", "gdata-calendar.png", "http://code.google.com/apis/calendar/" },
-        new String[] { "Google Contacts", "http://www.google.com/m8/feeds/", "gdata-contacts.png", "http://code.google.com/apis/contacts/" },
-        new String[] { "Google Finance", "http://finance.google.com/finance/feeds/", "gdata-finance.png", "http://code.google.com/apis/finance/" },
-        new String[] { "Google Maps", "http://maps.google.com/maps/feeds/", "gdata-maps.png", "http://code.google.com/apis/maps/documentation/mapsdata/" }
+        new String[] { "Google Analytics",
+            "https://www.google.com/analytics/feeds/",
+            "gdata-analytics.png",
+            "http://code.google.com/apis/analytics/" },
+        new String[] { "Google Base",
+            "http://www.google.com/base/feeds/",
+            "gdata-base.png",
+            "http://code.google.com/apis/base/" },
+        new String[] { "Google Blogger",
+            "http://www.blogger.com/feeds/",
+            "gdata-blogger.png",
+            "http://code.google.com/apis/blogger/" },
+        new String[] { "Google Calendar",
+            "http://www.google.com/calendar/feeds/",
+            "gdata-calendar.png",
+            "http://code.google.com/apis/calendar/" },
+        new String[] { "Google Contacts",
+            "http://www.google.com/m8/feeds/",
+            "gdata-contacts.png",
+            "http://code.google.com/apis/contacts/" },
+        new String[] { "Google Finance",
+            "http://finance.google.com/finance/feeds/",
+            "gdata-finance.png",
+            "http://code.google.com/apis/finance/" },
+        new String[] { "Google Maps",
+            "http://maps.google.com/maps/feeds/",
+            "gdata-maps.png",
+            "http://code.google.com/apis/maps/documentation/mapsdata/" }
     };
     for (int i = 0; i < systems.length; i++) {
       String[] sys = systems[i];

@@ -54,9 +54,10 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to delete an existing map feature of the " +
-          "authenticated user. It retrieves a list of the user's maps and deletes " +
-          "the first map feature with a title that starts with 'GWT-Maps-Client'.</p>\n";
+        return "<p>This sample code demonstrates how to delete an existing " +
+            "map feature of the authenticated user. It retrieves a list of " +
+            "the user's maps and deletes the first map feature with a title " +
+            "that starts with 'GWT-Maps-Client'.</p>";
       }
 
       @Override
@@ -76,14 +77,15 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's maps.
    */
   public MapsDeleteMapFeatureDemo() {
-    service = MapsService.newInstance("HelloGData_Maps_DeleteMapFeatureDemo_v1.0");
+    service = MapsService.newInstance(
+        "HelloGData_Maps_DeleteMapFeatureDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Update a map feature");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getMaps();
+          getMaps("http://maps.google.com/maps/feeds/maps/default/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -91,25 +93,49 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
       showStatus("You are not logged on to Google Maps.", true);
     }
   }
-  
+
+  /**
+   * Delete a fature entry using the Maps service and
+   * the feature entry uri.
+   * On success and failure, display a status message.
+   * 
+   * @param featureEntryUri The uri of the feature entry to delete
+   */
   private void deleteFeature(String featureEntryUri) {
     showStatus("Deleting map feature...", false);
     service.deleteFeatureEntry(featureEntryUri, new FeatureEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while deleting a map feature: " + caught.getMessage(), true);
+        showStatus("An error occurred while deleting a map feature: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(FeatureEntry result) {
         showStatus("Deleted a map feature.", false);
       }
     });
   }
-  
+
+  /**
+   * Retrieve the features feed for a given map using the
+   * Maps service and the features feed uri.
+   * In GData all get, insert, update and delete methods always
+   * receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first feature entry with a title
+   * starting with "GWT-Maps-Client" and calls deleteFeature to
+   * delete the feature.
+   * If no feature is found, a message is displayed.
+   * 
+   * @param mapEntryUri The uri of the map entry for which to
+   * retrieve the features feed
+   */
   private void getFeatures(String mapEntryUri) {
-    String featuresFeedUri = mapEntryUri.replace("/feeds/maps/", "/feeds/features/") + "/full";
+    String featuresFeedUri =
+      mapEntryUri.replace("/feeds/maps/", "/feeds/features/") + "/full";
     showStatus("Loading features feed...", false);
     service.getFeatureFeed(featuresFeedUri, new FeatureFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the features feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the features feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(FeatureFeed result) {
         FeatureEntry[] entries = result.getEntries();
@@ -121,7 +147,8 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
           }
         }
         if (targetFeature == null) {
-          showStatus("No map feature found that contains 'GWT-Maps-Client' in the title.", false);
+          showStatus("No map feature found that contains 'GWT-Maps-Client' " +
+              "in the title.", false);
         } else {
           String featureEntryUri = targetFeature.getSelfLink().getHref();
           deleteFeature(featureEntryUri);
@@ -129,12 +156,24 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
       }
     });
   }
-  
-  private void getMaps() {
+
+  /**
+   * Retrieve the maps feed using the Maps service and
+   * the maps feed uri.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first map entry with a title
+   * starting with "GWT-Maps-Client" and calls getFeatures to
+   * retrieve the map's features.
+   * If no map is found, a message is displayed.
+   * 
+   * @param mapsFeedUri The uri of the map feed
+   */
+  private void getMaps(String mapsFeedUri) {
     showStatus("Loading maps feed...", false);
-    service.getMapFeed("http://maps.google.com/maps/feeds/maps/default/full", new MapFeedCallback() {
+    service.getMapFeed(mapsFeedUri, new MapFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the maps feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the maps feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(MapFeed result) {
         MapEntry[] entries = result.getEntries();
@@ -146,7 +185,9 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
           }
         }
         if (targetMap == null) {
-          showStatus("No map found that contains 'GWT-Maps-Client' in the title.", false);
+          showStatus(
+              "No map found that contains 'GWT-Maps-Client' in the title.",
+              false);
         } else {
           String mapEntryUri = targetMap.getId().getValue();
           getFeatures(mapEntryUri);

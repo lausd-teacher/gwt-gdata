@@ -51,8 +51,10 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrate how to delete a contact group entry. It locates the " +
-          "contact group that has a title that starts with 'GWT-Contacts-Client' and delete the group. </p>\n";
+        return "<p>This sample code demonstrate how to delete a contact " +
+            "group entry. It locates the contact group that has a title " +
+            "that starts with 'GWT-Contacts-Client' and delete the " +
+            "group. </p>\n";
       }
 
       @Override
@@ -72,14 +74,16 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's contact groups.
    */
   public ContactsDeleteContactGroupDemo() {
-    service = ContactsService.newInstance("HelloGData_Contacts_DeleteContactGroupDemo_v1.0");
+    service = ContactsService.newInstance(
+        "HelloGData_Contacts_DeleteContactGroupDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a contact group");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getContactGroups();
+          getContactGroups(
+              "http://www.google.com/m8/feeds/groups/default/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -87,24 +91,47 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
       showStatus("You are not logged on to Google Contacts.", true);
     }
   }
-  
+
+  /**
+   * Delete a contact group entry using the Contacts service and
+   * the contact group entry uri.
+   * On success and failure, display a status message.
+   * 
+   * @param contactGroupEntryUri The uri of the contact group entry to delete
+   */
   private void deleteContactGroup(String contactGroupEntryUri) {
     showStatus("Deleting a contact group...", false);
-    service.deleteContactGroupEntry(contactGroupEntryUri, new ContactGroupEntryCallback() {
+    service.deleteContactGroupEntry(contactGroupEntryUri,
+        new ContactGroupEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while deleting a contact group: " + caught.getMessage(), true);
+        showStatus("An error occurred while deleting a contact group: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ContactGroupEntry result) {
         showStatus("Deleted a contact group.", false);
       }
     });
   }
-  
-  private void getContactGroups() {
+
+  /**
+   * Retrieve the contact groups feed using the Contacts service and
+   * the contact groupd feed uri.
+   * On success, identify the first group entry with a title starting
+   * with "GWT-Contacts-Client", this is the group that will be deleted.
+   * If no contact group is found, display a message.
+   * Otherwise call deleteContactGroup to delete the group entry.
+   * Alternatively we could also have used deleteContactGroup.deleteEntry to
+   * delete the contact group, but the effect is the same.
+   * 
+   * @param contactGroupsFeedUri The contact groups feed uri
+   */
+  private void getContactGroups(String contactGroupsFeedUri) {
     showStatus("Loading contact groups feed...", false);
-    service.getContactGroupFeed("http://www.google.com/m8/feeds/groups/default/full", new ContactGroupFeedCallback() {
+    service.getContactGroupFeed(contactGroupsFeedUri,
+        new ContactGroupFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the contact groups feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the contact groups " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(ContactGroupFeed result) {
         ContactGroupEntry[] entries = result.getEntries();
@@ -117,7 +144,8 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
           }
         }
         if (targetGroup == null) {
-          showStatus("No contacts were found with a title starting with 'GWT-Contacts-Client'.", false);
+          showStatus("No contacts were found with a title starting with " +
+              "'GWT-Contacts-Client'.", false);
         } else {
           String contactGroupEntryUri = targetGroup.getSelfLink().getHref();
           deleteContactGroup(contactGroupEntryUri);

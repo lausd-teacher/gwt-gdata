@@ -53,9 +53,10 @@ public class ContactsRetrieveContactsUsingQueryDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates retrieve contact entries using query parameters. " +
-          "The list of acceptable query parameters for Contacts feed URI can be found here Contacts " +
-          "Data API Reference Guide.</p>\n";
+        return "<p>This sample code demonstrates retrieve contact entries " +
+            "using query parameters. The list of acceptable query " +
+            "parameters for Contacts feed URI can be found here Contacts " +
+            "Data API Reference Guide.</p>\n";
       }
 
       @Override
@@ -75,31 +76,47 @@ public class ContactsRetrieveContactsUsingQueryDemo extends GDataDemo {
    * otherwise start the demo by querying the user's contacts.
    */
   public ContactsRetrieveContactsUsingQueryDemo() {
-    service = ContactsService.newInstance("HelloGData_Contacts_RetrieveContactsUsingQueryDemo_v1.0");
+    service = ContactsService.newInstance(
+        "HelloGData_Contacts_RetrieveContactsUsingQueryDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      queryContacts();
+      queryContacts("http://www.google.com/m8/feeds/contacts/default/full");
     } else {
       showStatus("You are not logged on to Google Contacts.", true);
     }
   }
-  
-  private void queryContacts() {
+
+  /**
+   * Retrieves a contacts feed using a Query object.
+   * In GData, feed URIs can contain querystring parameters. The
+   * GData query objects aid in building parameterized feed URIs.
+   * We query for contacts updated today, sorted descending.
+   * Upon successfully receiving the contacts feed, the contact entries
+   * are displayed to the user via the showData method.
+   * The UpdatedMin and SortOrder parameters are used to limit
+   * the number of contact entries retrieved and to specify how they
+   * should sorted.
+   * 
+   * @param contactsFeedUri The contacts feed uri.
+   */
+  private void queryContacts(String contactsFeedUri) {
     showStatus("Querying contacts...", false);
-    ContactQuery query = ContactQuery.newInstance("http://www.google.com/m8/feeds/contacts/default/full");
+    ContactQuery query = ContactQuery.newInstance(contactsFeedUri);
     Date today = new Date();
     DateTime updatedMin = DateTime.newInstance(today, true);
     query.setUpdatedMin(updatedMin);
     query.setSortOrder(ContactQuery.SORTORDER_DESCENDING);
     service.getContactFeed(query, new ContactFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Contacts feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Contacts feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ContactFeed result) {
         ContactEntry[] entries = result.getEntries();
         if (entries.length == 0) {
-          showStatus("No contacts were found that were modified today.", false);
+          showStatus("No contacts were found that were modified today.",
+              false);
         } else {
           showData(entries);
         }
@@ -135,7 +152,8 @@ public class ContactsRetrieveContactsUsingQueryDemo extends GDataDemo {
       }
       mainPanel.setWidget(row, 1, new Label(email));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getUpdated().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 2,
+          new Label(entry.getUpdated().getValue().getDate().toString()));
     }
   }
 

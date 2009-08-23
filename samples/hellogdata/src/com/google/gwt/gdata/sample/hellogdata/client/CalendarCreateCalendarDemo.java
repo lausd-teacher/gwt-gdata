@@ -54,9 +54,9 @@ public class CalendarCreateCalendarDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert a new calendar. " +
-        "The owncalendars feed is used to insert the new calendar entry for the " +
-        "authenticated user. </p>\n";
+        return "<p>This sample code demonstrates how to create and insert " +
+            "a new calendar. The owncalendars feed is used to insert the " +
+            "new calendar entry for the authenticated user. </p>\n";
       }
 
       @Override
@@ -76,14 +76,16 @@ public class CalendarCreateCalendarDemo extends GDataDemo {
    * otherwise start the demo by creating a calendar.
    */
   public CalendarCreateCalendarDemo() {
-    service = CalendarService.newInstance("HelloGData_Calendar_CreateCalendarDemo_v1.0");
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_CreateCalendarDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a calendar");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          createCalendar();
+          createCalendar("http://www.google.com/calendar/feeds/default/" +
+              "owncalendars/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -91,14 +93,27 @@ public class CalendarCreateCalendarDemo extends GDataDemo {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  
-  private void createCalendar() {
-    String feedUri = "http://www.google.com/calendar/feeds/default/owncalendars/full";
+
+  /**
+   * Create a calendar by inserting a calendar entry into
+   * a calendar feed.
+   * Set the calendar's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-Calendar-Client' so that
+   * we can identify which calendars were created by this demo.
+   * We also specify values for summary, time zone, location
+   * and color.
+   * On success and failure, display a status message.
+   * 
+   * @param calendarsFeedUri The uri of the calendars feed into 
+   * which to insert the new calendar entry
+   */
+  private void createCalendar(String calendarsFeedUri) {
     CalendarEntry entry = CalendarEntry.newInstance();
     entry.setTitle(Text.newInstance());
     entry.getTitle().setText("GWT-Calendar-Client: insert calendar");
     entry.setSummary(Text.newInstance());
-    entry.getSummary().setText("This is a test calendar created by GWT Client");
+    entry.getSummary().setText(
+        "This is a test calendar created by GWT Client");
     entry.setTimeZone(TimeZoneProperty.newInstance());
     entry.getTimeZone().setValue("America/Los_Angeles");
     Where where = Where.newInstance();
@@ -110,12 +125,15 @@ public class CalendarCreateCalendarDemo extends GDataDemo {
     entry.setColor(ColorProperty.newInstance());
     entry.getColor().setValue(ColorProperty.VALUE_RGB_2952A3);
     showStatus("Creating calendar...", false);
-    service.insertCalendarEntry(feedUri, entry, new CalendarEntryCallback() {
+    service.insertCalendarEntry(calendarsFeedUri, entry,
+        new CalendarEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Calendar feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Calendar feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarEntry result) {
-        showStatus("Created a Calendar entry titled '" + result.getTitle().getText() + "'", false);
+        showStatus("Created a Calendar entry titled '" + 
+            result.getTitle().getText() + "'", false);
       }
     });
   }

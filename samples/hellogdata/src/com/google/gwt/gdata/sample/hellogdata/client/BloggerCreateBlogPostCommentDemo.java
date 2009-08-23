@@ -57,8 +57,8 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample adds a new comment to a blog post. The comment's contents " +
-          "contain the text 'GWT-Blogger-Client'.</p>\n";
+        return "<p>This sample adds a new comment to a blog post. The " +
+            "comment's contents contain the text 'GWT-Blogger-Client'.</p>\n";
       }
 
       @Override
@@ -78,14 +78,15 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's blogs.
    */
   public BloggerCreateBlogPostCommentDemo() {
-    service = BloggerService.newInstance("HelloGData_Blogger_CreateBlogPostCommentDemo_v1.0");
+    service = BloggerService.newInstance(
+        "HelloGData_Blogger_CreateBlogPostCommentDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a blog comment");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getBlogs();
+          getBlogs("http://www.blogger.com/feeds/default/blogs");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -93,12 +94,23 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
       showStatus("You are not logged on to Blogger.", true);
     }
   }
-  
-  private void getBlogs() {
+
+  /**
+   * Retrieve the Blogger blogs feed using the Blogger service and
+   * the blogs feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Blog entry and
+   * calls getPosts to retrieve the posts feed for that blog.
+   * 
+   * @param blogsFeedUri The uri of the blogs feed
+   */
+  private void getBlogs(String blogsFeedUri) {
     showStatus("Loading blog feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
+    service.getBlogFeed(blogsFeedUri, new BlogFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Blog feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Blog " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
@@ -113,11 +125,26 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
     });
   }
   
+  /**
+   * Retrieve the Blogger posts feed using the Blogger service and
+   * the posts feed uri for a given blog.
+   * On success, identify the first post entry that is available
+   * for commenting, this will be the post entry that we'll
+   * reply to.
+   * If no posts are available for commenting, display a message.
+   * Otherwise extract the blog and post ID and call insertComment
+   * to add a comment.
+   * If the regular expression parsing of the blog and post IDs
+   * fails, display a message.
+   * 
+   * @param postsFeedUri The posts feed uri for a given blog
+   */
   private void getPosts(String postsFeedUri) {
     showStatus("Loading posts feed...", false);
     service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
     public void onFailure(CallErrorException caught) {
-      showStatus("An error occurred while retrieving the Blogger Posts feed: " + caught.getMessage(), true);
+      showStatus("An error occurred while retrieving the Blogger Posts " +
+          "feed: " + caught.getMessage(), true);
     }
     public void onSuccess(BlogPostFeed result) {
       PostEntry targetPost = null;
@@ -132,7 +159,8 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
         showStatus("The target blog contains no public posts.", false);
       } else {
         String postEntryId = targetPost.getId().getValue();
-        JsArrayString match = regExpMatch("blog-(\\d+)\\.post-(\\d+)", postEntryId);
+        JsArrayString match = regExpMatch("blog-(\\d+)\\.post-(\\d+)", 
+            postEntryId);
         if (match.length() > 1) {
           insertComment(match.get(1), match.get(2));
         } else {
@@ -143,15 +171,29 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
     });
   }
   
+  /**
+   * Create a blog comment by inserting a comment entry into
+   * a blog comments feed.
+   * Set the comment's contents to an arbitrary string. Here
+   * we prefix the contents with 'GWT-Blogger-Client' so that
+   * we can identify which comments were created by this demo.
+   * On success and failure, display a status message.
+   * 
+   * @param blogId The ID of the blog containing the target post
+   * @param postId The ID of the post to which to reply
+   */
   private void insertComment(String blogId, String postId) {
     showStatus("Creating blog comment entry...", false);
     CommentEntry comment = CommentEntry.newInstance();
     comment.setContent(Text.newInstance());
     comment.getContent().setText("GWT-Blogger-Client - Great post!");
-    String commentsFeedUri = "http://www.blogger.com/feeds/" + blogId + "/" + postId + "/comments/default";
-    service.insertCommentEntry(commentsFeedUri, comment, new CommentEntryCallback() {
+    String commentsFeedUri = "http://www.blogger.com/feeds/" + blogId + "/" +
+        postId + "/comments/default";
+    service.insertCommentEntry(commentsFeedUri, comment,
+        new CommentEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while creating the Blogger post comment: " + caught.getMessage(), true);
+        showStatus("An error occurred while creating the Blogger post " +
+            "comment: " + caught.getMessage(), true);
       }
       public void onSuccess(CommentEntry result) {
         showStatus("Created a comment.", false);
@@ -159,6 +201,13 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
     });
   }
   
+  /**
+   * Expose the JavaScript regular expression parsing to GWT.
+   * 
+   * @param regEx The regular expression to use
+   * @param target The text string to parse
+   * @return A JavaScript string array containing any matches
+   */
   private native JsArrayString regExpMatch(String regEx, String target) /*-{
     var re = new RegExp();
     return re.compile(regEx).exec(target);

@@ -52,9 +52,11 @@ public class CalendarUpdateCalendarDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update an existing calendar of the authenticated user. " +
-          "It retrieves a list of the user's own calendars, and update the first calendar with a title " +
-          "that starts with 'GWT-Calendar-Client'. The owncalendars feed is used to update an existing calendar.</p>\n";
+        return "<p>This sample code demonstrates how to update an existing " +
+            "calendar of the authenticated user. It retrieves a list of " +
+            "the user's own calendars, and update the first calendar with " +
+            "a title that starts with 'GWT-Calendar-Client'. The " +
+            "owncalendars feed is used to update an existing calendar.</p>\n";
       }
 
       @Override
@@ -74,14 +76,17 @@ public class CalendarUpdateCalendarDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's calendars.
    */
   public CalendarUpdateCalendarDemo() {
-    service = CalendarService.newInstance("HelloGData_Calendar_UpdateCalendarDemo_v1.0");
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_UpdateCalendarDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Update a calendar");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getCalendars();
+          getCalendars(
+              "http://www.google.com/calendar/feeds/default/" +
+                  "owncalendars/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -89,12 +94,24 @@ public class CalendarUpdateCalendarDemo extends GDataDemo {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  
-  private void getCalendars() {
+
+  /**
+   * Retrieve the calendars feed using the Calendar service and
+   * the calendars feed uri.
+   * On success, identify the first calendar entry with a title 
+   * starting with "GWT-Calendar-Client", this will be the calendar
+   * that will be updated.
+   * If no calendar is found, display a message.
+   * Otherwise call updateCalendar to update the calendar.
+   * 
+   * @param calendarsFeedUri The uri of the calendars feed
+   */
+  private void getCalendars(String calendarsFeedUri) {
     showStatus("Loading calendars...", false);
-    service.getOwnCalendarsFeed("http://www.google.com/calendar/feeds/default/owncalendars/full", new CalendarFeedCallback() {
+    service.getOwnCalendarsFeed(calendarsFeedUri, new CalendarFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Calendar feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Calendar feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarFeed result) {
         CalendarEntry[] entries = result.getEntries();
@@ -110,7 +127,8 @@ public class CalendarUpdateCalendarDemo extends GDataDemo {
             }
           }
           if (targetCalendar == null) {
-            showStatus("Did not find a calendar entry whose title starts with the prefix 'GWT-Calendar-Client'.", false);
+            showStatus("Did not find a calendar entry whose title starts " +
+                "with the prefix 'GWT-Calendar-Client'.", false);
           } else {
             updateCalendar(targetCalendar);
           }
@@ -136,13 +154,25 @@ public class CalendarUpdateCalendarDemo extends GDataDemo {
     mainPanel.setWidget(0, 0, msg);
   }
   
+  /**
+   * Update a calendar by making use of the updateEntry
+   * method of the Entry class.
+   * Set the calendar's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-Calendar-Client' so that
+   * we can identify which calendars were updated by this demo.
+   * On success and failure, display a status message.
+   * 
+   * @param targetCalendar The calendar entry which to update
+   */
   private void updateCalendar(CalendarEntry targetCalendar) {
     targetCalendar.setTitle(Text.newInstance());
-    targetCalendar.getTitle().setText("GWT-Calendar-Client - updated calendar");
+    targetCalendar.getTitle().setText(
+        "GWT-Calendar-Client - updated calendar");
     showStatus("Updating calendar...", false);
     targetCalendar.updateEntry(new CalendarEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while updating a calendar: " + caught.getMessage(), true);
+        showStatus("An error occurred while updating a calendar: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarEntry result) {
         showStatus("Updated a calendar.", false);

@@ -53,10 +53,11 @@ public class CalendarUpdateEventDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update the title of an existing event. " +
-          "A full text query is used to locate those events with the specified text, " +
-          "and the first match will be updated with the new title. The private/full feed is " +
-          "used for event update.</p>\n";
+        return "<p>This sample code demonstrates how to update the title " +
+            "of an existing event. A full text query is used to locate " +
+            "those events with the specified text, and the first match " +
+            "will be updated with the new title. The private/full feed is " +
+            "used for event update.</p>\n";
       }
 
       @Override
@@ -76,14 +77,16 @@ public class CalendarUpdateEventDemo extends GDataDemo {
    * otherwise start the demo by querying the user's calendar events.
    */
   public CalendarUpdateEventDemo() {
-    service = CalendarService.newInstance("HelloGData_Calendar_UpdateEventDemo_v1.0");
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_UpdateEventDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Update an event");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          queryEvents();
+          queryEvents(
+              "http://www.google.com/calendar/feeds/default/private/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -91,22 +94,48 @@ public class CalendarUpdateEventDemo extends GDataDemo {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  
-  private void queryEvents() {
+
+  /**
+   * Retrieves a Calendar events feed using a Query object.
+   * In GData, feed URIs can contain querystring parameters. The
+   * GData query objects aid in building parameterized feed URIs.
+   * On success, identify the first event entry with a title starting
+   * with "GWT-Calendar-Client", this will be the event that will be updated.
+   * If no event is found, display a message.
+   * Otherwise call updateEvent to update the event.
+   * 
+   * @param eventsFeedUri The uri of the events feed
+   */
+  private void queryEvents(String eventsFeedUri) {
     showStatus("Querying for events...", false);
-    CalendarEventQuery query = CalendarEventQuery.newInstance("http://www.google.com/calendar/feeds/default/private/full");
+    CalendarEventQuery query = CalendarEventQuery.newInstance(eventsFeedUri);
     query.setFullTextQuery("GWT-Calendar-Client");
     service.getEventsFeed(query, new CalendarEventFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Event feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Event feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarEventFeed result) {
         CalendarEventEntry[] entries = result.getEntries();
         if (entries.length == 0) {
-          showStatus("No events found containing the text 'GWT-Calendar-Client'.", false);
+          showStatus(
+              "No events found containing the text 'GWT-Calendar-Client'.",
+              false);
         } else {
-          CalendarEventEntry targetEvent = entries[0];
-          updateEvent(targetEvent);
+          CalendarEventEntry targetEvent = null;
+          for (CalendarEventEntry entry : entries) {
+            String title = entry.getTitle().getText();
+            if (title.startsWith("GWT-Calendar-Client")) {
+              targetEvent = entry;
+              break;
+            }
+          }
+          if (targetEvent == null) {
+            showStatus("Did not find a event entry whose title starts with " +
+                "the prefix 'GWT-Calendar-Client'.", false);
+          } else {
+            updateEvent(targetEvent);
+          }
         }
       }
     });
@@ -129,13 +158,24 @@ public class CalendarUpdateEventDemo extends GDataDemo {
     mainPanel.setWidget(0, 0, msg);
   }
   
+  /**
+   * Update an event by making use of the updateEntry
+   * method of the Entry class.
+   * Set the event's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-Calendar-Client' so that
+   * we can identify which events were updated by this demo.
+   * On success and failure, display a status message.
+   * 
+   * @param targetEvent The event entry which to update
+   */
   private void updateEvent(CalendarEventEntry targetEvent) {
     targetEvent.setTitle(Text.newInstance());
     targetEvent.getTitle().setText("GWT-Calendar-Client - updated event");
     showStatus("Updating a Calendar event...", false);
     targetEvent.updateEntry(new CalendarEventEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while updating a Calendar event: " + caught.getMessage(), true);
+        showStatus("An error occurred while updating a Calendar event: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarEventEntry result) {
         showStatus("Updated a Calendar event.", false);

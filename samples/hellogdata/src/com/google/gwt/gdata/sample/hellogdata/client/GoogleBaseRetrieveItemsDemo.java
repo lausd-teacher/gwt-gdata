@@ -48,8 +48,9 @@ public class GoogleBaseRetrieveItemsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses the items feed to retrieve a list of all of an " +
-          "authenticated user's items. The title of each item entry is printed.</p>\n";
+        return "<p>This sample code uses the items feed to retrieve a list " +
+            "of all of an authenticated user's items. The title of each " +
+            "item entry is printed.</p>\n";
       }
 
       @Override
@@ -69,21 +70,33 @@ public class GoogleBaseRetrieveItemsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's items.
    */
   public GoogleBaseRetrieveItemsDemo() {
-    service = GoogleBaseService.newInstance("HelloGData_GoogleBase_RetrieveItemsDemo_v1.0");
+    service = GoogleBaseService.newInstance(
+        "HelloGData_GoogleBase_RetrieveItemsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getItems();
+      getItems("http://www.google.com/base/feeds/items");
     } else {
       showStatus("You are not logged on to Google Base.", true);
     }
   }
-  
-  private void getItems() {
+
+  /**
+   * Retrieve the items feed using the Google Base service and
+   * the items feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining success
+   * and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler calls showData to display the item entries.
+   * 
+   * @param itemsFeedUri The uri of the items feed
+   */
+  private void getItems(String itemsFeedUri) {
     showStatus("Loading items feed...", false);
-    service.getItemsFeed("http://www.google.com/base/feeds/items", new ItemsFeedCallback() {
+    service.getItemsFeed(itemsFeedUri, new ItemsFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the items feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the items feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ItemsFeed result) {
         ItemsEntry[] entries = result.getEntries();
@@ -122,9 +135,12 @@ public class GoogleBaseRetrieveItemsDemo extends GDataDemo {
         mainPanel.setWidget(row, 1, new Label("Not available"));
       } else {
         String link = entry.getHtmlLink().getHref();
-        mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + "\" target=\"_blank\">" + link +  "</a>"));
+        mainPanel.setWidget(row, 1,
+            new HTML("<a href=\"" + link + "\" target=\"_blank\">" + 
+                link +  "</a>"));
         mainPanel.addCell(row);
-        mainPanel.setWidget(row, 2, new Label(entry.getPublished().getValue().getDate().toString()));
+        mainPanel.setWidget(row, 2,
+            new Label(entry.getPublished().getValue().getDate().toString()));
       }
     }
   }

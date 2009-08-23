@@ -51,9 +51,10 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert a new item. " +
-          "The items feed post URL (http://www.google.com/base/feeds/items) " +
-          "is used to insert a new item entry for the authenticated user.</p>\n";
+        return "<p>This sample code demonstrates how to create and insert " +
+            "a new item. The items feed post URL " +
+            "(http://www.google.com/base/feeds/items) is used to insert a " +
+            "new item entry for the authenticated user.</p>\n";
       }
 
       @Override
@@ -73,14 +74,15 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
    * otherwise start the demo by creating an item.
    */
   public GoogleBaseCreateItemDemo() {
-    service = GoogleBaseService.newInstance("HelloGData_GoogleBase_CreateItemDemo_v1.0");
+    service = GoogleBaseService.newInstance(
+        "HelloGData_GoogleBase_CreateItemDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create an item");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          createItem();
+          createItem("http://www.google.com/base/feeds/items");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -88,8 +90,21 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
       showStatus("You are not logged on to Google Base.", true);
     }
   }
-  
-  private void createItem() {
+
+  /**
+   * Create an item by inserting an item entry into
+   * an items feed.
+   * Set the item's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-GoogleBase-Client' so that
+   * we can identify which items were created by this demo.
+   * The new item is created as a product review with values
+   * for the default product review attributes.
+   * On success and failure, display a status message.
+   * 
+   * @param itemsFeedUri The uri of the items feed into which
+   * to insert the new item entry
+   */
+  private void createItem(String itemsFeedUri) {
     showStatus("Creating item...", false);
     ItemsEntry entry = ItemsEntry.newInstance();
     entry.setTitle(Text.newInstance());
@@ -103,7 +118,8 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
     entry.setAttribute("name_of_item_reviewed", Attribute.newInstance());
     entry.getAttributes().get("name_of_item_reviewed").setValue("gwt-gdata");
     entry.setAttribute("expiration_date", Attribute.newInstance());
-    entry.getAttributes().get("expiration_date").setValue("2038-01-19T03:14:07Z");
+    entry.getAttributes().get("expiration_date").setValue(
+        "2038-01-19T03:14:07Z");
     entry.setAttribute("rating", Attribute.newInstance());
     entry.getAttributes().get("rating").setValue("5-Excellent");
     entry.setAttribute("customer_id", Attribute.newInstance());
@@ -113,9 +129,10 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
     entry.setAttribute("item_language", Attribute.newInstance());
     entry.getAttributes().get("item_language").setValue("en");
     
-    service.insertItemsEntry("http://www.google.com/base/feeds/items", entry, new ItemsEntryCallback() {
+    service.insertItemsEntry(itemsFeedUri, entry, new ItemsEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while creating an item: " + caught.getMessage(), true);
+        showStatus("An error occurred while creating an item: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ItemsEntry result) {
         showStatus("Created an item.", false);

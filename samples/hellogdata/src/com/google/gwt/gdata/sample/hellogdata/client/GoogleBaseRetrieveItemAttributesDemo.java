@@ -29,7 +29,8 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example demonstrates how to retrieve a list of an item's attributes.
+ * The following example demonstrates how to retrieve a list of an
+ * item's attributes.
  */
 public class GoogleBaseRetrieveItemAttributesDemo extends GDataDemo {
 
@@ -49,8 +50,9 @@ public class GoogleBaseRetrieveItemAttributesDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses the items feed to find an item with a " +
-          "title starting with 'GWT-GoogleBase-Client' and displays its attributes.</p>\n";
+        return "<p>This sample code uses the items feed to find an item " +
+            "with a title starting with 'GWT-GoogleBase-Client' and " +
+            "displays its attributes.</p>\n";
       }
 
       @Override
@@ -70,21 +72,35 @@ public class GoogleBaseRetrieveItemAttributesDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's items.
    */
   public GoogleBaseRetrieveItemAttributesDemo() {
-    service = GoogleBaseService.newInstance("HelloGData_GoogleBase_RetrieveItemAttributesDemo_v1.0");
+    service = GoogleBaseService.newInstance(
+        "HelloGData_GoogleBase_RetrieveItemAttributesDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getItems();
+      getItems("http://www.google.com/base/feeds/items");
     } else {
       showStatus("You are not logged on to Google Base.", true);
     }
   }
-  
-  private void getItems() {
+
+  /**
+   * Retrieve the items feed using the Google Base service and
+   * the items feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining success
+   * and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Item entry with a title
+   * starting with "GWT-GoogleBase-Client" and calls showData
+   * to display the item's attributes.
+   * 
+   * @param itemsFeedUri The uri of the items feed
+   */
+  private void getItems(String itemsFeedUri) {
     showStatus("Loading items feed...", false);
-    service.getItemsFeed("http://www.google.com/base/feeds/items", new ItemsFeedCallback() {
+    service.getItemsFeed(itemsFeedUri, new ItemsFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the items feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the items feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ItemsFeed result) {
         ItemsEntry[] entries = result.getEntries();
@@ -100,7 +116,8 @@ public class GoogleBaseRetrieveItemAttributesDemo extends GDataDemo {
             }
           }
           if (targetItem == null) {
-            showStatus("No item found that contains 'GWT-GoogleBase-Client' in the title.", false);
+            showStatus("No item found that contains 'GWT-GoogleBase-Client' " +
+                "in the title.", false);
           } else {
             showData(targetItem.getAttributes());
           }

@@ -82,7 +82,7 @@ public class CalendarDeleteEventDemo extends GDataDemo {
       Button startButton = new Button("Delete an event");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          queryCalendars();
+          queryCalendars("http://www.google.com/calendar/feeds/default/private/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -90,7 +90,13 @@ public class CalendarDeleteEventDemo extends GDataDemo {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  
+
+  /**
+   * Delete an event entry using the Calendar service and
+   * the event entry uri.
+   * On success and failure, display a status message.
+   * @param eventEntryUri The uri of the event entry to delete
+   */
   private void deleteEvent(String eventEntryUri) {
     showStatus("Deleting event...", false);
     service.deleteCalendarEventEntry(eventEntryUri, new CalendarEventEntryCallback() {
@@ -102,10 +108,23 @@ public class CalendarDeleteEventDemo extends GDataDemo {
       }
     });
   }
-  
-  private void queryCalendars() {
+
+  /**
+   * Retrieves a calendar feed using a Query object.
+   * In GData, feed URIs can contain querystring parameters. The
+   * GData query objects aid in building parameterized feed URIs.
+   * We query for events with a title starting with 
+   * "GWT-Blogger-Client", this will be the event that will be deleted.
+   * If no event is found, display a message.
+   * Otherwise call deleteEvent to delete the event. Alternatively
+   * we could also have used targetEvent.deleteEntry to
+   * delete the event, but the effect is the same.
+   * 
+   * @param calendarsFeedUri The uri of the calendars feed
+   */
+  private void queryCalendars(String calendarsFeedUri) {
     showStatus("Querying for events...", false);
-    CalendarEventQuery query = CalendarEventQuery.newInstance("http://www.google.com/calendar/feeds/default/private/full");
+    CalendarEventQuery query = CalendarEventQuery.newInstance(calendarsFeedUri);
     query.setFullTextQuery("GWT-Calendar-Client");
     service.getEventsFeed(query, new CalendarEventFeedCallback() {
       public void onFailure(CallErrorException caught) {

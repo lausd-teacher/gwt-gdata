@@ -40,7 +40,7 @@ public class MapString extends JavaScriptObject {
    * Determines whether the specified key is contained in the map.
    * @param key The key to search for.
    */
-  public final native void contains(String key) /*-{ return (key in this); }-*/;
+  public final native boolean contains(String key) /*-{ return (key in this); }-*/;
   
   /**
    * Retrieves a value by the corresponding key.

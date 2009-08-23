@@ -50,7 +50,8 @@ public abstract class GDataDemo extends Composite {
      * @return an instance of this GDataDemo class
      */
     public GDataDemo getInstance() {
-      // always create a new instance, we want the GData output to be "live" always
+      /* create a new instance every time. For the purposes of this demo
+       * we want the GData output to be "live" always and never cached. */
       instance = createInstance();
       return instance;
     }

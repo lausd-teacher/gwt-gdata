@@ -55,9 +55,10 @@ public class MapsUpdateMapFeatureDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update an existing map feature of the " +
-          "authenticated user. It retrieves a list of the user's maps and updates " +
-          "the first map feature with a title that starts with 'GWT-Maps-Client' with a new title.</p>\n";
+        return "<p>This sample code demonstrates how to update an existing " +
+            "map feature of the authenticated user. It retrieves a list of " +
+            "the user's maps and updates the first map feature with a title " +
+            "that starts with 'GWT-Maps-Client' with a new title.</p>";
       }
 
       @Override
@@ -77,14 +78,15 @@ public class MapsUpdateMapFeatureDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's maps.
    */
   public MapsUpdateMapFeatureDemo() {
-    service = MapsService.newInstance("HelloGData_Maps_UpdateMapFeatureDemo_v1.0");
+    service = MapsService.newInstance(
+        "HelloGData_Maps_UpdateMapFeatureDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Update a map feature");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getMaps();
+          getMaps("http://maps.google.com/maps/feeds/maps/default/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -92,13 +94,29 @@ public class MapsUpdateMapFeatureDemo extends GDataDemo {
       showStatus("You are not logged on to Google Maps.", true);
     }
   }
-  
+
+  /**
+   * Retrieve the features feed for a given map using the
+   * Maps service and the features feed uri.
+   * In GData all get, insert, update and delete methods always
+   * receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first feature entry with a title
+   * starting with "GWT-Maps-Client" and calls updateFeature to
+   * update the feature entry.
+   * If no feature is found, a message is displayed.
+   * 
+   * @param mapEntryUri The uri of the map entry for which to
+   * retrieve the features feed
+   */
   private void getFeatures(String mapEntryUri) {
-    String featuresFeedUri = mapEntryUri.replace("/feeds/maps/", "/feeds/features/") + "/full";
+    String featuresFeedUri =
+      mapEntryUri.replace("/feeds/maps/", "/feeds/features/") + "/full";
     showStatus("Loading features feed...", false);
     service.getFeatureFeed(featuresFeedUri, new FeatureFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the features feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the features feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(FeatureFeed result) {
         FeatureEntry[] entries = result.getEntries();
@@ -110,19 +128,32 @@ public class MapsUpdateMapFeatureDemo extends GDataDemo {
           }
         }
         if (targetFeature == null) {
-          showStatus("No map feature found that contains 'GWT-Maps-Client' in the title.", false);
+          showStatus("No map feature found that contains 'GWT-Maps-Client' " +
+              "in the title.", false);
         } else {
           updateFeature(targetFeature);
         }
       }
     });
   }
-  
-  private void getMaps() {
+
+  /**
+   * Retrieve the maps feed using the Maps service and
+   * the maps feed uri.
+   * The failure handler displays an error message while the
+   * success handler obtains the first map entry with a title
+   * starting with "GWT-Maps-Client" and calls getFeatures to
+   * retrieve the map's features.
+   * If no map is found, a message is displayed.
+   * 
+   * @param mapsFeedUri The uri of the map feed
+   */
+  private void getMaps(String mapsFeedUri) {
     showStatus("Loading maps feed...", false);
-    service.getMapFeed("http://maps.google.com/maps/feeds/maps/default/full", new MapFeedCallback() {
+    service.getMapFeed(mapsFeedUri, new MapFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the maps feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the maps feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(MapFeed result) {
         MapEntry[] entries = result.getEntries();
@@ -134,7 +165,9 @@ public class MapsUpdateMapFeatureDemo extends GDataDemo {
           }
         }
         if (targetMap == null) {
-          showStatus("No map found that contains 'GWT-Maps-Client' in the title.", false);
+          showStatus(
+              "No map found that contains 'GWT-Maps-Client' in the title.",
+              false);
         } else {
           String mapEntryUri = targetMap.getId().getValue();
           getFeatures(mapEntryUri);
@@ -160,13 +193,24 @@ public class MapsUpdateMapFeatureDemo extends GDataDemo {
     mainPanel.setWidget(0, 0, msg);
   }
   
-  private void updateFeature(FeatureEntry entry) {
+  /**
+   * Update a map feature by making use of the updateEntry
+   * method of the Entry class.
+   * Set the feature's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-Maps-Client' so that
+   * we can identify which features were updated by this demo.
+   * On success and failure, display a status message.
+   * 
+   * @param targetFeature The feature entry which to update
+   */
+  private void updateFeature(FeatureEntry targetFeature) {
     showStatus("Updating map feature...", false);
-    entry.setTitle(Text.newInstance());
-    entry.getTitle().setText("GWT-Maps-Client - updated feature");
-    entry.updateEntry(new FeatureEntryCallback() {
+    targetFeature.setTitle(Text.newInstance());
+    targetFeature.getTitle().setText("GWT-Maps-Client - updated feature");
+    targetFeature.updateEntry(new FeatureEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while updating a map feature: " + caught.getMessage(), true);
+        showStatus("An error occurred while updating a map feature: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(FeatureEntry result) {
         showStatus("Updated a map feature.", false);

@@ -29,7 +29,8 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example demonstrates how to retrieve a list of attributes for an item type.
+ * The following example demonstrates how to retrieve a list of attributes
+ * for an item type.
  */
 public class GoogleBaseRetrieveItemTypeAttributesDemo extends GDataDemo {
 
@@ -49,10 +50,11 @@ public class GoogleBaseRetrieveItemTypeAttributesDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses the attributes feed to query for metadata about product " +
-          "listed in Google Base. The attributes feed is useful for determining what kinds of " +
-          "attributes other users are using with certain item types. This example, looks at " +
-          "attributes related to the products vertical.</p>\n";
+        return "<p>This sample code uses the attributes feed to query for " +
+            "metadata about product listed in Google Base. The attributes " +
+            "feed is useful for determining what kinds of attributes other " +
+            "users are using with certain item types. This example, looks " +
+            "at attributes related to the products vertical.</p>\n";
       }
 
       @Override
@@ -72,21 +74,33 @@ public class GoogleBaseRetrieveItemTypeAttributesDemo extends GDataDemo {
    * otherwise start the demo by retrieving item type attributes.
    */
   public GoogleBaseRetrieveItemTypeAttributesDemo() {
-    service = GoogleBaseService.newInstance("HelloGData_GoogleBase_RetrieveAttributesDemo_v1.0");
+    service = GoogleBaseService.newInstance(
+        "HelloGData_GoogleBase_RetrieveAttributesDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getAttributes();
+      getAttributes("http://www.google.com/base/feeds/attributes/-/products");
     } else {
       showStatus("You are not logged on to Google Base.", true);
     }
   }
-  
-  private void getAttributes() {
+
+  /**
+   * Retrieve the attributes feed for the product type using the
+   * Google Base service and the attributes feed uri.
+   * In GData all get, insert, update and delete methods always
+   * receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler calls showData to display the attribute entries.
+   * 
+   * @param attributesFeedUri The uri of the items feed
+   */
+  private void getAttributes(String attributesFeedUri) {
     showStatus("Loading attributes feed...", false);
-    service.getAttributesFeed("http://www.google.com/base/feeds/attributes/-/products", new AttributesFeedCallback() {
+    service.getAttributesFeed(attributesFeedUri, new AttributesFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the attributes feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the attributes feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(AttributesFeed result) {
         AttributesEntry[] entries = result.getEntries();

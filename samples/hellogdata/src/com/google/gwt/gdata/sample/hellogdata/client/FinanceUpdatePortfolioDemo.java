@@ -52,9 +52,11 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update an existing portfolio of the " +
-          "authenticated user. It retrieves a list of the user's portfolios, and updates " +
-          "the first portfolio with a title that starts with 'GWT-Finance-Client' with a new title.</p>\n";
+        return "<p>This sample code demonstrates how to update an existing " +
+            "portfolio of the authenticated user. It retrieves a list of " +
+            "the user's portfolios, and updates the first portfolio with a " +
+            "title that starts with 'GWT-Finance-Client' with a new " +
+            "title.</p>\n";
       }
 
       @Override
@@ -74,14 +76,16 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's portfolios.
    */
   public FinanceUpdatePortfolioDemo() {
-    service = FinanceService.newInstance("HelloGData_Finance_UpdatePortfolioDemo_v1.0");
+    service = FinanceService.newInstance(
+        "HelloGData_Finance_UpdatePortfolioDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Update a portfolio");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getPortfolios();
+          getPortfolios(
+              "http://finance.google.com/finance/feeds/default/portfolios");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -89,12 +93,26 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
-  
-  private void getPortfolios() {
+
+  /**
+   * Retrieve the portfolios feed using the Finance service and
+   * the portfolios feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining
+   * success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first portfolio entry with a title
+   * starting with "GWT-Finance-Client" and calls updatePortfolio to
+   * update the portfolio.
+   * If no portfolio is found, a message is displayed.
+   * 
+   * @param portfoliosFeedUri The uri of the portfolios feed
+   */
+  private void getPortfolios(String portfoliosFeedUri) {
     showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
+    service.getPortfolioFeed(portfoliosFeedUri, new PortfolioFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the portfolios feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
@@ -106,7 +124,8 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
           }
         }
         if (targetPortfolio == null) {
-          showStatus("No portfolio found that contains 'GWT-Finance-Client' in the title.", false);
+          showStatus("No portfolio found that contains 'GWT-Finance-Client' " +
+              "in the title.", false);
         } else {
           updatePortfolio(targetPortfolio);
         }
@@ -131,13 +150,25 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
     mainPanel.setWidget(0, 0, msg);
   }
   
-  private void updatePortfolio(PortfolioEntry entry) {
+  /**
+   * Update a portfolio by making use of the updateEntry
+   * method of the Entry class.
+   * Set the portfolio title to an arbitrary string. Here
+   * we prefix the title with 'GWT-Finance-Client' so that
+   * we can identify which portfolios were updated by this demo.
+   * On success and failure, display a status message.
+   * 
+   * @param targetPortfolio The portfolio entry which to update
+   */
+  private void updatePortfolio(PortfolioEntry targetPortfolio) {
     showStatus("Updating portfolio...", false);
-    entry.setTitle(Text.newInstance());
-    entry.getTitle().setText("GWT-Finance-Client - updated portfolio");
-    entry.updateEntry(new PortfolioEntryCallback() {
+    targetPortfolio.setTitle(Text.newInstance());
+    targetPortfolio.getTitle().setText(
+        "GWT-Finance-Client - updated portfolio");
+    targetPortfolio.updateEntry(new PortfolioEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while updating a portfolio: " + caught.getMessage(), true);
+        showStatus("An error occurred while updating a portfolio: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(PortfolioEntry result) {
         showStatus("Updated a portfolio.", false);

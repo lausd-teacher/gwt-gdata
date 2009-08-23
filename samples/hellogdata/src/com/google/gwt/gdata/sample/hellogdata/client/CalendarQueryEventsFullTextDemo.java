@@ -29,7 +29,8 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example demonstrates how to perform a full text query for events.
+ * The following example demonstrates how to perform a full text
+ * query for events.
  */
 public class CalendarQueryEventsFullTextDemo extends GDataDemo {
 
@@ -49,10 +50,11 @@ public class CalendarQueryEventsFullTextDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to perform a full text query to " +
-          "retrieve events. The full text query serves as a filter against all event " +
-          "entries of the private/full feed and return those events that contain the " +
-          "specified text in the event title and/or description.</p>\n";
+        return "<p>This sample code demonstrates how to perform a full " +
+            "text query to retrieve events. The full text query serves as " +
+            "a filter against all event entries of the private/full feed " +
+            "and return those events that contain the specified text in " +
+            "the event title and/or description.</p>\n";
       }
 
       @Override
@@ -69,31 +71,47 @@ public class CalendarQueryEventsFullTextDemo extends GDataDemo {
   /**
    * Setup the Calendar service and create the main content panel.
    * If the user is not logged on to Calendar display a message,
-   * otherwise start the demo by querying the user's calendars.
+   * otherwise start the demo by querying the user's calendar events.
    */
   public CalendarQueryEventsFullTextDemo() {
-    service = CalendarService.newInstance("HelloGData_Calendar_QueryEventsFullTextDemo_v1.0");
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_QueryEventsFullTextDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      queryCalendars();
+      queryEvents(
+          "http://www.google.com/calendar/feeds/default/private/full");
     } else {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  
-  private void queryCalendars() {
+
+  /**
+   * Retrieves an events feed using a Query object.
+   * In GData, feed URIs can contain querystring parameters. The
+   * GData query objects aid in building parameterized feed URIs.
+   * Upon successfully receiving the events feed, the event entries 
+   * are displayed to the user via the showData method.
+   * The FullTextQuery parameter is used to search for events
+   * containing a specific text string.
+   * 
+   * @param eventsFeedUri The uri of the events feed
+   */
+  private void queryEvents(String eventsFeedUri) {
     showStatus("Querying for events...", false);
-    CalendarEventQuery query = CalendarEventQuery.newInstance("http://www.google.com/calendar/feeds/default/private/full");
+    CalendarEventQuery query = CalendarEventQuery.newInstance(eventsFeedUri);
     query.setFullTextQuery("GWT-Calendar-Client");
     service.getEventsFeed(query, new CalendarEventFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Event feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Event feed: " + 
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarEventFeed result) {
         CalendarEventEntry[] entries = result.getEntries();
         if (entries.length == 0) {
-          showStatus("No events found containing the text 'GWT-Calendar-Client'.", false);
+          showStatus(
+              "No events found containing the text 'GWT-Calendar-Client'.", 
+              false);
         } else {
           showData(result.getEntries());
         }
@@ -124,9 +142,11 @@ public class CalendarQueryEventsFullTextDemo extends GDataDemo {
       mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
       mainPanel.addCell(row);
       String link = entry.getHtmlLink().getHref();
-      mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + "\">" + link + "</a>"));
+      mainPanel.setWidget(row, 1,
+          new HTML("<a href=\"" + link + "\">" + link + "</a>"));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getUpdated().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 2,
+          new Label(entry.getUpdated().getValue().getDate().toString()));
     }
   }
 

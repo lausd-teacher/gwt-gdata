@@ -50,7 +50,8 @@ public class ContactsCreateContactGroupDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create a new contact group.</p>\n";
+        return "<p>This sample code demonstrates how to create a new " +
+            "contact group.</p>\n";
       }
 
       @Override
@@ -70,14 +71,16 @@ public class ContactsCreateContactGroupDemo extends GDataDemo {
    * otherwise start the demo by creating a contact group.
    */
   private ContactsCreateContactGroupDemo() {
-    service = ContactsService.newInstance("HelloGData_Contacts_CreateContactGroupDemo_v1.0");
+    service = ContactsService.newInstance(
+        "HelloGData_Contacts_CreateContactGroupDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a contact group");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          createContactGroup();
+          createContactGroup(
+              "http://www.google.com/m8/feeds/groups/default/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -86,14 +89,27 @@ public class ContactsCreateContactGroupDemo extends GDataDemo {
     }
   }
   
-  private void createContactGroup() {
+  /**
+   * Create a contact group by inserting a contact group entry into
+   * a contact groups feed.
+   * Set the contact group's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-Contacts-Client' so that
+   * we can identify which groups were created by this demo.
+   * On success and failure, display a status message.
+   * 
+   * @param contactGroupFeedUri The uri of the groups feed into which 
+   * to insert the new group entry
+   */
+  private void createContactGroup(String contactGroupFeedUri) {
     showStatus("Creating contact group...", false);
     ContactGroupEntry entry = ContactGroupEntry.newInstance();
     entry.setTitle(Text.newInstance());
     entry.getTitle().setText("GWT-Contacts-Client - Create Group");
-    service.insertContactGroupEntry("http://www.google.com/m8/feeds/groups/default/full", entry, new ContactGroupEntryCallback() {
+    service.insertContactGroupEntry(contactGroupFeedUri, entry,
+        new ContactGroupEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while creating a contact group: " + caught.getMessage(), true);
+        showStatus("An error occurred while creating a contact group: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ContactGroupEntry result) {
         showStatus("Created a contact group.", false);

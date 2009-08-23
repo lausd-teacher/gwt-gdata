@@ -51,8 +51,8 @@ public class BloggerRetrieveBlogPostsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample returns a list of blog posts for each of the user's blogs. Each post is a link to the " +
-          "actual post.</p>\n";
+        return "<p>This sample returns a list of blog posts for each of the " +
+            "user's blogs. Each post is a link to the actual post.</p>\n";
       }
 
       @Override
@@ -72,21 +72,33 @@ public class BloggerRetrieveBlogPostsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's blogs.
    */
   public BloggerRetrieveBlogPostsDemo() {
-    service = BloggerService.newInstance("HelloGData_Blogger_RetrieveBlogPostsDemo_v1.0");
+    service = BloggerService.newInstance(
+        "HelloGData_Blogger_RetrieveBlogPostsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getBlogs();
+      getBlogs("http://www.blogger.com/feeds/default/blogs");
     } else {
       showStatus("You are not logged on to Blogger.", true);
     }
   }
-  
-  private void getBlogs() {
+
+  /**
+   * Retrieve the Blogger blogs feed using the Blogger service and
+   * the blogs feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Blog entry and
+   * calls getPosts to retrieve the posts feed for that blog.
+   * 
+   * @param blogsFeedUri The uri of the blogs feed
+   */
+  private void getBlogs(String blogsFeedUri) {
     showStatus("Loading blog feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
+    service.getBlogFeed(blogsFeedUri, new BlogFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Blog feed:" + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Blog " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
@@ -100,12 +112,20 @@ public class BloggerRetrieveBlogPostsDemo extends GDataDemo {
       }
     });
   }
-  
+
+  /**
+   * Retrieve the Blogger posts feed using the Blogger service and
+   * the posts feed uri for a given blog.
+   * On success, call showData to display the post entries.
+   * 
+   * @param postsFeedUri The posts feed uri for a given blog
+   */
   private void getPosts(String postsFeedUri) {
     showStatus("Loading posts feed...", false);
     service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Posts feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Posts " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogPostFeed result) {
         showData(result.getEntries());
@@ -139,10 +159,12 @@ public class BloggerRetrieveBlogPostsDemo extends GDataDemo {
         mainPanel.setWidget(row, 1, new Label("Not available"));
       } else {
         String link = entry.getHtmlLink().getHref();
-        mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + "\" target=\"_blank\">" + link +  "</a>"));
+        mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + 
+            "\" target=\"_blank\">" + link +  "</a>"));
       }
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getPublished().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 2, 
+          new Label(entry.getPublished().getValue().getDate().toString()));
     }
   }
 

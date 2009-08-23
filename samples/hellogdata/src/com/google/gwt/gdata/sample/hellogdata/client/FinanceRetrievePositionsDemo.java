@@ -52,15 +52,17 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>As well as portfolio and transaction feeds, the Google Finance Portfolio " +
-          "Data API offers an intermediate, read-only feed know as the position feed. " +
-          "This is a summary of all of the contents of a particular portfolio, " +
-          "grouped by ticker symbol. Each entry in this feed, know as a position, " +
-          "is derived from the transactions entered for that symbol. " +
-          "Each position entry has position data that may include current number of " +
-          "shares of a particular stock or mutual fund if specified in the transactions " +
-          "as well as investment gain if requested and if " +
-          "purchase price and date have been specified.</p>\n";
+        return "<p>As well as portfolio and transaction feeds, the Google " +
+            "Finance Portfolio Data API offers an intermediate, read-only " +
+            "feed know as the position feed. This is a summary of all of " +
+            "the contents of a particular portfolio, grouped by ticker " +
+            "symbol. Each entry in this feed, know as a position, is " +
+            "derived from the transactions entered for that symbol. Each " +
+            "position entry has position data that may include current " +
+            "number of shares of a particular stock or mutual fund if " +
+            "specified in the transactions as well as investment gain if " +
+            "requested and if purchase price and date have been " +
+            "specified.</p>\n";
       }
 
       @Override
@@ -80,21 +82,36 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's portfolios.
    */
   public FinanceRetrievePositionsDemo() {
-    service = FinanceService.newInstance("HelloGData_Finance_RetrievePositionsDemo_v1.0");
+    service = FinanceService.newInstance(
+        "HelloGData_Finance_RetrievePositionsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getPortfolios();
+      getPortfolios(
+          "http://finance.google.com/finance/feeds/default/portfolios");
     } else {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
-  
-  private void getPortfolios() {
+
+  /**
+   * Retrieve the portfolios feed using the Finance service and
+   * the portfolios feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining
+   * success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first portfolio entry and its
+   * ID and calls getPositions to retrieve the corresponding
+   * positions feed.
+   * 
+   * @param portfoliosFeedUri The uri of the portfolios feed
+   */
+  private void getPortfolios(String portfoliosFeedUri) {
     showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
+    service.getPortfolioFeed(portfoliosFeedUri, new PortfolioFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the portfolios feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
@@ -114,14 +131,25 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
       }
     });
   }
-  
+
+  /**
+   * Retrieve the positions feed for a given portfolio using the
+   * Finance service and the positions feed uri.
+   * The failure handler displays an error message while the
+   * success handler calls showData to display the position entries.
+   * 
+   * @param portfolioId The id of the portfolio for which to
+   * retrieve position data
+   */
   private void getPositions(String portfolioId) {
     showStatus("Loading positions feed...", false);
-    String positionsFeedUri = "http://finance.google.com/finance/feeds/default/" +
+    String positionsFeedUri = 
+      "http://finance.google.com/finance/feeds/default/" +
       "portfolios/" + portfolioId + "/positions";
     service.getPositionFeed(positionsFeedUri, new PositionFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the positions feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the positions feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(PositionFeed result) {
         PositionEntry[] entries = result.getEntries();
@@ -133,7 +161,14 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
       }
     });
   }
-  
+
+  /**
+   * Expose the JavaScript regular expression parsing to GWT.
+   * 
+   * @param regEx The regular expression to use
+   * @param target The text string to parse
+   * @return A JavaScript string array containing any matches
+   */
   private native JsArrayString regExpMatch(String regEx, String target) /*-{
     var re = new RegExp();
     return re.compile(regEx).exec(target);
@@ -141,7 +176,7 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
 
   /**
   * Displays a set of Finance position entries in a tabular 
-  * fashion with the help of a GWT FlexTable widget. The data fields 
+  * fashion with the help of a GWT FlexTable widget. The data fields
   * Title and Shares are displayed.
   * 
   * @param entries The Finance position entries to display.

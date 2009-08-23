@@ -51,9 +51,10 @@ public class MapsDeleteMapDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to delete an existing map of the " +
-          "authenticated user. It retrieves a list of the user's maps, and deletes " +
-          "the first map with a title that starts with 'GWT-Maps-Client' with a new title.</p>\n";
+        return "<p>This sample code demonstrates how to delete an existing " +
+            "map of the authenticated user. It retrieves a list of the " +
+            "user's maps, and deletes the first map with a title that " +
+            "starts with 'GWT-Maps-Client' with a new title.</p>\n";
       }
 
       @Override
@@ -80,7 +81,7 @@ public class MapsDeleteMapDemo extends GDataDemo {
       Button startButton = new Button("Delete a map");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getMaps();
+          getMaps("http://maps.google.com/maps/feeds/maps/default/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -88,24 +89,46 @@ public class MapsDeleteMapDemo extends GDataDemo {
       showStatus("You are not logged on to Google Maps.", true);
     }
   }
-  
+
+  /**
+   * Delete a map entry using the Maps service and
+   * the map entry uri.
+   * On success and failure, display a status message.
+   * 
+   * @param mapEntryUri The uri of the map entry to delete
+   */
   private void deleteMap(String mapEntryUri) {
     showStatus("Deleting map...", false);
     service.deleteMapEntry(mapEntryUri, new MapEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the maps feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the maps feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(MapEntry result) {
         showStatus("Deleted a map.", false);
       }
     });
   }
-  
-  private void getMaps() {
+
+  /**
+   * Retrieve the maps feed using the Maps service and
+   * the maps feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining
+   * success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first map entry with a title
+   * starting with "GWT-Maps-Client" and calls deleteMap to
+   * delete the map.
+   * If no map is found, a message is displayed.
+   * 
+   * @param mapsFeedUri The uri of the map feed
+   */
+  private void getMaps(String mapsFeedUri) {
     showStatus("Loading maps feed...", false);
-    service.getMapFeed("http://maps.google.com/maps/feeds/maps/default/full", new MapFeedCallback() {
+    service.getMapFeed(mapsFeedUri, new MapFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the maps feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the maps feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(MapFeed result) {
         MapEntry[] entries = result.getEntries();
@@ -117,7 +140,9 @@ public class MapsDeleteMapDemo extends GDataDemo {
           }
         }
         if (targetMap == null) {
-          showStatus("No map found that contains 'GWT-Maps-Client' in the title.", false);
+          showStatus(
+              "No map found that contains 'GWT-Maps-Client' in the title.",
+              false);
         } else {
           String mapEntryUri = targetMap.getSelfLink().getHref();
           deleteMap(mapEntryUri);

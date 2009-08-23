@@ -55,9 +55,10 @@ public class MapsCreateMapFeatureDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert a new map feature. " +
-          "It retrieves a list of the user's maps and inserts a feature with a title " +
-          "that starts with 'GWT-Maps-Client'.</p>\n";
+        return "<p>This sample code demonstrates how to create and insert " +
+            "a new map feature. It retrieves a list of the user's maps and " +
+            "inserts a feature with a title that starts with " +
+            "'GWT-Maps-Client'.</p>\n";
       }
 
       @Override
@@ -77,14 +78,15 @@ public class MapsCreateMapFeatureDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's maps.
    */
   public MapsCreateMapFeatureDemo() {
-    service = MapsService.newInstance("HelloGData_Maps_CreateMapFeatureDemo_v1.0");
+    service = MapsService.newInstance(
+        "HelloGData_Maps_CreateMapFeatureDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a map feature");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getMaps();
+          getMaps("http://maps.google.com/maps/feeds/maps/default/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -92,12 +94,26 @@ public class MapsCreateMapFeatureDemo extends GDataDemo {
       showStatus("You are not logged on to Google Maps.", true);
     }
   }
-  
-  private void getMaps() {
+
+  /**
+   * Retrieve the maps feed using the Maps service and
+   * the maps feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining
+   * success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first map entry with a title
+   * starting with "GWT-Maps-Client" and calls insertMapFeature to
+   * insert a map feature into the map.
+   * If no map is found, a message is displayed.
+   * 
+   * @param mapsFeedUri The uri of the map feed
+   */
+  private void getMaps(String mapsFeedUri) {
     showStatus("Loading maps feed...", false);
-    service.getMapFeed("http://maps.google.com/maps/feeds/maps/default/full", new MapFeedCallback() {
+    service.getMapFeed(mapsFeedUri, new MapFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the maps feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the maps feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(MapFeed result) {
         MapEntry[] entries = result.getEntries();
@@ -109,7 +125,9 @@ public class MapsCreateMapFeatureDemo extends GDataDemo {
           }
         }
         if (targetMap == null) {
-          showStatus("No map found that contains 'GWT-Maps-Client' in the title.", false);
+          showStatus(
+              "No map found that contains 'GWT-Maps-Client' in the title.",
+              false);
         } else {
           String mapEntryUri = targetMap.getId().getValue();
           insertMapFeature(mapEntryUri);
@@ -117,7 +135,21 @@ public class MapsCreateMapFeatureDemo extends GDataDemo {
       }
     });
   }
-  
+
+  /**
+   * Create a feature by inserting a feature entry into
+   * a feature feed for a given map.
+   * Set the feature's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-Maps-Client' so that
+   * we can identify which features were created by this demo.
+   * A value is also provided for the feature's postal address
+   * along with the KML content which defines the placemarks
+   * for this feature.
+   * On success and failure, display a status message.
+   * 
+   * @param mapId The id of the map into which to insert the
+   * new feature entry
+   */
   private void insertMapFeature(String mapId) {
     showStatus("Creating map feature...", false);
     FeatureEntry entry = FeatureEntry.newInstance();
@@ -130,12 +162,17 @@ public class MapsCreateMapFeatureDemo extends GDataDemo {
     entry.setPostalAddress(address);
     KmlContent kml = KmlContent.newInstance();
     kml.setType(KmlContent.TYPE_APPLICATION_VND_GOOGLE_EARTH_KML_XML);
-    kml.setText("<Placemark><name>Faulkner's Birthplace</name><description/><Point><coordinates>-89.520753,34.360902,0.0</coordinates></Point></Placemark>");
+    kml.setText("<Placemark><name>Faulkner's Birthplace</name>" +
+        "<description/><Point><coordinates>-89.520753,34.360902,0.0" +
+        "</coordinates></Point></Placemark>");
     entry.setContent(kml);
-    String featuresFeedUri = mapId.replace("/feeds/maps/", "/feeds/features/") + "/full";
-    service.insertFeatureEntry(featuresFeedUri, entry, new FeatureEntryCallback() {
+    String featuresFeedUri = 
+        mapId.replace("/feeds/maps/", "/feeds/features/") + "/full";
+    service.insertFeatureEntry(featuresFeedUri, entry,
+        new FeatureEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while creating a map feature: " + caught.getMessage(), true);
+        showStatus("An error occurred while creating a map feature: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(FeatureEntry result) {
         showStatus("Created a map feature.", false);

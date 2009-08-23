@@ -58,8 +58,9 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample creates a new blog post in the user's most recently updated blog. " +
-          "The post's title will be 'GWT-Blogger-Client: inserted post'.</p>\n";
+        return "<p>This sample creates a new blog post in the user's most " +
+            "recently updated blog. The post's title will be " +
+            "'GWT-Blogger-Client: inserted post'.</p>\n";
       }
 
       @Override
@@ -79,14 +80,15 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's blogs.
    */
   public BloggerCreateBlogPostDemo() {
-    service = BloggerService.newInstance("HelloGData_Blogger_CreateBlogPostDemo_v1.0");
+    service = BloggerService.newInstance(
+        "HelloGData_Blogger_CreateBlogPostDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a blog post");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getBlogs();
+          getBlogs("http://www.blogger.com/feeds/default/blogs");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -94,12 +96,23 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
       showStatus("You are not logged on to Blogger.", true);
     }
   }
-  
-  private void getBlogs() {
+
+  /**
+   * Retrieve the Blogger blogs feed using the Blogger service and
+   * the blogs feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Blog entry and
+   * calls getPosts to retrieve the posts feed for that blog.
+   * 
+   * @param blogsFeedUri The uri of the blogs feed
+   */
+  private void getBlogs(String blogsFeedUri) {
     showStatus("Loading blog feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
+    service.getBlogFeed(blogsFeedUri, new BlogFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Blog feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Blog " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
@@ -113,12 +126,21 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
       }
     });
   }
-  
+
+  /**
+   * Retrieve the Blogger posts feed using the Blogger service and
+   * the posts feed uri for a given blog.
+   * On success, call insertPost to insert a new post entry
+   * into the retrieved posts feed.
+   * 
+   * @param postsFeedUri The posts feed uri for a given blog
+   */
   private void getPosts(String postsFeedUri) {
     showStatus("Loading posts feed...", false);
     service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Posts feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Posts " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogPostFeed result) {
         insertPost(result);
@@ -126,13 +148,27 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
     });
   }
   
+  /**
+   * Create a blog post by inserting a post entry into
+   * a blog posts feed.
+   * Set the post's title and contents to an arbitrary string. Here
+   * we prefix the title with 'GWT-Blogger-Client' so that
+   * we can identify which posts were created by this demo.
+   * To avoid publishing the new post we set the Atom control status
+   * to "draft".
+   * Finally, we associate the new post with two categories.
+   * On success and failure, display a status message.
+   * 
+   * @param postFeed The post feed into which to insert the new post
+   */
   private void insertPost(BlogPostFeed postFeed) {
     showStatus("Creating blog post entry...", false);
     PostEntry newPost = PostEntry.newInstance();
     newPost.setTitle(Text.newInstance());
     newPost.getTitle().setText("GWT-Blogger-Client - inserted post");
     newPost.setContent(Text.newInstance());
-    newPost.getContent().setText("This is the body of the blog post.  I can include <b>HTML</b> tags.");
+    newPost.getContent().setText("This is the body of the blog post. We " +
+        "can include <b>HTML</b> tags.");
     newPost.setControl(Control.newInstance());
     newPost.getControl().setDraft(Draft.newInstance());
     newPost.getControl().getDraft().setValue(Draft.VALUE_YES);
@@ -145,10 +181,12 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
     newPost.setCategories(new Category[] { cat1, cat2 });
     postFeed.insertPostEntry(newPost, new PostEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while creating a blog post: " + caught.getMessage(), true);
+        showStatus("An error occurred while creating a blog post: " + 
+            caught.getMessage(), true);
       }
       public void onSuccess(PostEntry result) {
-        showStatus("Created a blog entry titled '" + result.getTitle().getText() + "'.", false);
+        showStatus("Created a blog entry titled '" + 
+            result.getTitle().getText() + "'.", false);
       }
     });
   }
