@@ -58,7 +58,7 @@ public class AnalyticsTopSearchesDemo extends GDataDemo {
             "person was taken to when they clicked on the result.</p>" +
             "<div><strong>Note:</strong> To use this example you'll need " +
             "to have Google Analytics configured to track internal site " +
-            "searches.</div>\n";
+            "searches.</div>";
       }
 
       @Override

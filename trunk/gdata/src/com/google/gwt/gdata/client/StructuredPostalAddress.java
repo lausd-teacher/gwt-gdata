@@ -31,17 +31,20 @@ public class StructuredPostalAddress extends JavaScriptObject {
   /**
    * Letters structured postal address.
    */
-  public static final String MAILCLASS_LETTERS = getConstant("MAILCLASS_LETTERS");
+  public static final String MAILCLASS_LETTERS =
+      getConstant("MAILCLASS_LETTERS");
 
   /**
    * Neither structured postal address.
    */
-  public static final String MAILCLASS_NEITHER = getConstant("MAILCLASS_NEITHER");
+  public static final String MAILCLASS_NEITHER =
+      getConstant("MAILCLASS_NEITHER");
 
   /**
    * Parcels structured postal address.
    */
-  public static final String MAILCLASS_PARCELS = getConstant("MAILCLASS_PARCELS");
+  public static final String MAILCLASS_PARCELS =
+      getConstant("MAILCLASS_PARCELS");
 
   /**
    * Home structured postal address.
@@ -83,7 +86,8 @@ public class StructuredPostalAddress extends JavaScriptObject {
   protected StructuredPostalAddress() { }
 
   /**
-   * Returns the Used in work addresses. Also for 'in care of' or 'c/o'. This element is optional.
+   * Returns the Used in work addresses. Also for 'in care of' or 'c/o'.
+   * This element is optional.
    * 
    * @return Used in work addresses. Also for 'in care of' or 'c/o'.
    */
@@ -92,7 +96,8 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the Can be city, village, town, borough, etc. This element is optional.
+   * Returns the Can be city, village, town, borough, etc.
+   * This element is optional.
    * 
    * @return Can be city, village, town, borough, etc.
    */
@@ -119,7 +124,8 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the Used in places where houses or buildings have names. This element is optional.
+   * Returns the Used in places where houses or buildings have names.
+   * This element is optional.
    * 
    * @return Used in places where houses or buildings have names.
    */
@@ -128,7 +134,8 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the Simple string value used to name this address. This attribute is optional.
+   * Returns the Simple string value used to name this address.
+   * This attribute is optional.
    * 
    * @return Simple string value used to name this address.
    */
@@ -146,7 +153,8 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the Neighborhood. Used to disambiguate a street. This element is optional.
+   * Returns the Neighborhood. Used to disambiguate a street.
+   * This element is optional.
    * 
    * @return Neighborhood. Used to disambiguate a street.
    */
@@ -173,7 +181,8 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns whether this is the primary postal address. This attribute is optional.
+   * Returns whether this is the primary postal address.
+   * This attribute is optional.
    * 
    * @return Whether this is the primary postal address.
    */
@@ -182,9 +191,11 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the Region is state, province, county (in Ireland), Land (in Germany), departement (in France), etc. This element is optional.
+   * Returns the Region is state, province, county (in Ireland), Land
+   * (in Germany), departement (in France), etc. This element is optional.
    * 
-   * @return Region is state, province, county (in Ireland), Land (in Germany), departement (in France), etc.
+   * @return Region is state, province, county (in Ireland), Land (in Germany),
+   * departement (in France), etc.
    */
   public final native Region getRegion() /*-{
     return this.getRegion();
@@ -200,16 +211,20 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number. This element is optional.
+   * Returns the Can be street, avenue, road, etc. This element also includes
+   * the house number and room/apartment/flat/floor number.
+   * This element is optional.
    * 
-   * @return Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number.
+   * @return Can be street, avenue, road, etc. This element also includes the
+   * house number and room/apartment/flat/floor number.
    */
   public final native Street getStreet() /*-{
     return this.getStreet();
   }-*/;
 
   /**
-   * Returns the Subregion is county (US), province (in Italy), etc. This element is optional.
+   * Returns the Subregion is county (US), province (in Italy), etc.
+   * This element is optional.
    * 
    * @return Subregion is county (US), province (in Italy), etc.
    */
@@ -227,7 +242,8 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the Used in work addresses. Also for 'in care of' or 'c/o'. This element is optional.
+   * Sets the Used in work addresses. Also for 'in care of' or 'c/o'.
+   * This element is optional.
    * 
    * @param agent Used in work addresses. Also for 'in care of' or 'c/o'.
    */
@@ -236,7 +252,8 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the Can be city, village, town, borough, etc. This element is optional.
+   * Sets the Can be city, village, town, borough, etc.
+   * This element is optional.
    * 
    * @param city Can be city, village, town, borough, etc.
    */
@@ -258,12 +275,14 @@ public class StructuredPostalAddress extends JavaScriptObject {
    * 
    * @param formattedAddress The full, unstructured address.
    */
-  public final native void setFormattedAddress(FormattedAddress formattedAddress) /*-{
+  public final native void setFormattedAddress(
+      FormattedAddress formattedAddress) /*-{
     this.setFormattedAddress(formattedAddress);
   }-*/;
 
   /**
-   * Sets the Used in places where houses or buildings have names. This element is optional.
+   * Sets the Used in places where houses or buildings have names.
+   * This element is optional.
    * 
    * @param housename Used in places where houses or buildings have names.
    */
@@ -272,7 +291,8 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the Simple string value used to name this address. This attribute is optional.
+   * Sets the Simple string value used to name this address.
+   * This attribute is optional.
    * 
    * @param label Simple string value used to name this address.
    */
@@ -290,7 +310,8 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the Neighborhood. Used to disambiguate a street. This element is optional.
+   * Sets the Neighborhood. Used to disambiguate a street.
+   * This element is optional.
    * 
    * @param neighborhood Neighborhood. Used to disambiguate a street.
    */
@@ -317,7 +338,8 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether this is the primary postal address. This attribute is optional.
+   * Sets whether this is the primary postal address.
+   * This attribute is optional.
    * 
    * @param primary Whether this is the primary postal address.
    */
@@ -326,9 +348,12 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the Region is state, province, county (in Ireland), Land (in Germany), departement (in France), etc. This element is optional.
+   * Sets the Region is state, province, county (in Ireland), Land
+   * (in Germany), departement (in France), etc.
+   * This element is optional.
    * 
-   * @param region Region is state, province, county (in Ireland), Land (in Germany), departement (in France), etc.
+   * @param region Region is state, province, county (in Ireland), Land
+   * (in Germany), departement (in France), etc.
    */
   public final native void setRegion(Region region) /*-{
     this.setRegion(region);
@@ -344,16 +369,20 @@ public class StructuredPostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number. This element is optional.
+   * Sets the Can be street, avenue, road, etc. This element also includes the
+   * house number and room/apartment/flat/floor number.
+   * This element is optional.
    * 
-   * @param street Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number.
+   * @param street Can be street, avenue, road, etc. This element also includes
+   * the house number and room/apartment/flat/floor number.
    */
   public final native void setStreet(Street street) /*-{
     this.setStreet(street);
   }-*/;
   
   /**
-   * Sets the Subregion is county (US), province (in Italy), etc. This element is optional.
+   * Sets the Subregion is county (US), province (in Italy), etc. This element
+   * is optional.
    * 
    * @param subregion Subregion is county (US), province (in Italy), etc.
    */

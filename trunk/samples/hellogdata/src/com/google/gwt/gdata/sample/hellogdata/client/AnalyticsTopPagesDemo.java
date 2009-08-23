@@ -53,7 +53,7 @@ public class AnalyticsTopPagesDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample code demonstrates how to access the top ten " +
-            "pages ordered by number of pageviews to your website.</p>\n";
+            "pages ordered by number of pageviews to your website.</p>";
       }
 
       @Override

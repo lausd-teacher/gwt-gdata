@@ -51,7 +51,8 @@ public class Metric extends JavaScriptObject {
   /**
    * Us currency metric.
    */
-  public static final String TYPE_US_CURRENCY = getConstant("TYPE_US_CURRENCY");
+  public static final String TYPE_US_CURRENCY =
+      getConstant("TYPE_US_CURRENCY");
 
   /**
    * Constructs a metric.
@@ -68,7 +69,8 @@ public class Metric extends JavaScriptObject {
   protected Metric() { }
 
   /**
-   * Returns the 95 confidence interval for this metric (lower is better). This attribute is optional.
+   * Returns the 95 confidence interval for this metric (lower is better).
+   * This attribute is optional.
    * 
    * @return 95 confidence interval for this metric (lower is better).
    */
@@ -86,7 +88,8 @@ public class Metric extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the the format of data represented by the metric. This attribute is optional.
+   * Returns the the format of data represented by the metric.
+   * This attribute is optional.
    * 
    * @return The format of data represented by the metric.
    */
@@ -104,9 +107,11 @@ public class Metric extends JavaScriptObject {
   }-*/;
   
   /**
-   * Sets the 95 confidence interval for this metric (lower is better). This attribute is optional.
+   * Sets the 95 confidence interval for this metric (lower is better).
+   * This attribute is optional.
    * 
-   * @param confidenceInterval 95 confidence interval for this metric (lower is better).
+   * @param confidenceInterval 95 confidence interval for this metric
+   * (lower is better).
    */
   public final native void setConfidenceInterval(double confidenceInterval) /*-{
     this.setConfidenceInterval(confidenceInterval);
@@ -122,7 +127,8 @@ public class Metric extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the the format of data represented by the metric. This attribute is optional.
+   * Sets the the format of data represented by the metric.
+   * This attribute is optional.
    * 
    * @param type The format of data represented by the metric.
    */

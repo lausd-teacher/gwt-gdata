@@ -34,7 +34,8 @@ public class TimesCleanedProperty extends JavaScriptObject {
   protected TimesCleanedProperty() { }
 
   /**
-   * Returns the number of times calendar was cleaned. This attribute is required.
+   * Returns the number of times calendar was cleaned.
+   * This attribute is required.
    * 
    * @return Number of times calendar was cleaned.
    */
@@ -43,7 +44,8 @@ public class TimesCleanedProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the number of times calendar was cleaned. This attribute is required.
+   * Sets the number of times calendar was cleaned.
+   * This attribute is required.
    * 
    * @param value Number of times calendar was cleaned.
    */

@@ -24,12 +24,14 @@ public class ContactLink extends com.google.gwt.gdata.client.Link {
   /**
    * Link that provides the contact photo.
    */
-  public static final String REL_CONTACT_PHOTO = getConstant("REL_CONTACT_PHOTO");
+  public static final String REL_CONTACT_PHOTO =
+      getConstant("REL_CONTACT_PHOTO");
 
   /**
    * Link to edit contact photo.
    */
-  public static final String REL_EDIT_CONTACT_PHOTO = getConstant("REL_EDIT_CONTACT_PHOTO");
+  public static final String REL_EDIT_CONTACT_PHOTO =
+      getConstant("REL_EDIT_CONTACT_PHOTO");
 
   /**
    * Image/ Contact Link class.

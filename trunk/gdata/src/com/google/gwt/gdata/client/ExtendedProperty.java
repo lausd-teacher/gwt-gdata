@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Stores a limited amount of custom data as an auxiliary property of the enclosing entity.
+ * Stores a limited amount of custom data as an auxiliary property of the
+ * enclosing entity.
  */
 public class ExtendedProperty extends JavaScriptObject {
 
@@ -43,7 +44,8 @@ public class ExtendedProperty extends JavaScriptObject {
   protected ExtendedProperty() { }
 
   /**
-   * Returns the name of the property expressed as a URI. This attribute is required.
+   * Returns the name of the property expressed as a URI.
+   * This attribute is required.
    * 
    * @return Name of the property expressed as a URI.
    */
@@ -52,7 +54,8 @@ public class ExtendedProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the limit on who may see and modify this extended property. This attribute is optional.
+   * Returns the limit on who may see and modify this extended property.
+   * This attribute is optional.
    * 
    * @return Limit on who may see and modify this extended property.
    */
@@ -70,7 +73,8 @@ public class ExtendedProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the name of the property expressed as a URI. This attribute is required.
+   * Sets the name of the property expressed as a URI.
+   * This attribute is required.
    * 
    * @param name Name of the property expressed as a URI.
    */
@@ -79,7 +83,8 @@ public class ExtendedProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the limit on who may see and modify this extended property. This attribute is optional.
+   * Sets the limit on who may see and modify this extended property.
+   * This attribute is optional.
    * 
    * @param realm Limit on who may see and modify this extended property.
    */

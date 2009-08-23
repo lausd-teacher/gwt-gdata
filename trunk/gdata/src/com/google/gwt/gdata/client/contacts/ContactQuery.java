@@ -32,7 +32,8 @@ public class ContactQuery extends Query {
   /**
    * Order the returned feed's entries by their <updated> values.
    */
-  public static final String ORDERBY_LAST_MODIFIED = getConstant("ORDERBY_LAST_MODIFIED");
+  public static final String ORDERBY_LAST_MODIFIED =
+      getConstant("ORDERBY_LAST_MODIFIED");
 
   /**
    * None.
@@ -42,12 +43,14 @@ public class ContactQuery extends Query {
   /**
    * Ascending.
    */
-  public static final String SORTORDER_ASCENDING = getConstant("SORTORDER_ASCENDING");
+  public static final String SORTORDER_ASCENDING =
+      getConstant("SORTORDER_ASCENDING");
 
   /**
    * Descending.
    */
-  public static final String SORTORDER_DESCENDING = getConstant("SORTORDER_DESCENDING");
+  public static final String SORTORDER_DESCENDING =
+      getConstant("SORTORDER_DESCENDING");
 
   /**
    * None.
@@ -71,7 +74,8 @@ public class ContactQuery extends Query {
   protected ContactQuery() { }
 
   /**
-   * Returns the group id. Results are limited to contacts belonging to this group.
+   * Returns the group id. Results are limited to contacts belonging to this
+   * group.
    * 
    * @return Group id.
    */
@@ -143,7 +147,8 @@ public class ContactQuery extends Query {
   }-*/;
 
   /**
-   * Sets the group id. Results are limited to contacts belonging to this group.
+   * Sets the group id. Results are limited to contacts belonging to this
+   * group.
    * 
    * @param group Group id.
    */
@@ -188,7 +193,8 @@ public class ContactQuery extends Query {
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
+   * Sets the 1-based index of the first result to be retrieved. The default
+   * value is 1.
    * 
    * @param startIndex 1-based index of the first result to be retrieved.
    */

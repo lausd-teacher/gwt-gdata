@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.finance;
 /**
  * Describes a Finance portfolio feed.
  */
-public class PortfolioFeed extends com.google.gwt.gdata.client.Feed<PortfolioEntry> {
+public class PortfolioFeed
+    extends com.google.gwt.gdata.client.Feed<PortfolioEntry> {
 
   /**
    * Constructs a Finance position feed.
@@ -33,9 +34,11 @@ public class PortfolioFeed extends com.google.gwt.gdata.client.Feed<PortfolioEnt
   protected PortfolioFeed() { }
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(PortfolioFeedCallback callback) {
     this.get(callback);
@@ -45,9 +48,11 @@ public class PortfolioFeed extends com.google.gwt.gdata.client.Feed<PortfolioEnt
    * Inserts a new portfolio entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertPortfolioEntry(PortfolioEntry entry, PortfolioEntryCallback callback) {
+  public final void insertPortfolioEntry(PortfolioEntry entry,
+      PortfolioEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

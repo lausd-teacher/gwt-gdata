@@ -50,7 +50,7 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
       public String getDescription() {
         return "<p>This sample code uses the portfolio feed to retrieve a " +
             "list of all of an authenticated user's portfolios. The title " +
-            "of each portfolio entry is printed.</p>\n";
+            "of each portfolio entry is printed.</p>";
       }
 
       @Override

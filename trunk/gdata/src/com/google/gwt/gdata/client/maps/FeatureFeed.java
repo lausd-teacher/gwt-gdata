@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.maps;
 /**
  * Describes a feature feed.
  */
-public class FeatureFeed extends com.google.gwt.gdata.client.Feed<FeatureEntry> {
+public class FeatureFeed
+    extends com.google.gwt.gdata.client.Feed<FeatureEntry> {
 
   /**
    * Constructs a feature feed.
@@ -33,9 +34,11 @@ public class FeatureFeed extends com.google.gwt.gdata.client.Feed<FeatureEntry> 
   protected FeatureFeed() { }
 
   /**
-   * Returns the link that provides the URI of the full feed (without any query parameters).
+   * Returns the link that provides the URI of the full feed
+   * (without any query parameters).
    * 
-   * @return Link that provides the URI of the full feed (without any query parameters).
+   * @return Link that provides the URI of the full feed
+   * (without any query parameters).
    */
   public final native com.google.gwt.gdata.client.Link getAtomFeedLink() /*-{
     return this.getAtomFeedLink();
@@ -51,9 +54,11 @@ public class FeatureFeed extends com.google.gwt.gdata.client.Feed<FeatureEntry> 
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(FeatureFeedCallback callback) {
     this.get(callback);
@@ -63,9 +68,11 @@ public class FeatureFeed extends com.google.gwt.gdata.client.Feed<FeatureEntry> 
    * Inserts a new feature entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertFeatureEntry(FeatureEntry entry, FeatureEntryCallback callback) {
+  public final void insertFeatureEntry(FeatureEntry entry,
+      FeatureEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

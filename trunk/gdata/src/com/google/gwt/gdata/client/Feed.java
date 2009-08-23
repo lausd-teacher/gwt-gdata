@@ -25,7 +25,8 @@ import com.google.gwt.gdata.client.opensearch.TotalResults;
  * Describes a feed for the Google Data API.
  * @param <E> The Entry type.
  */
-public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed<E> {
+public class Feed<E extends Entry>
+    extends com.google.gwt.gdata.client.atom.Feed<E> {
   
   /**
    * Constructs a feed.
@@ -38,16 +39,19 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   protected Feed() { }
 
   /**
-   * Returns the link that provides the URI that can be used to post new entries to the feed.
+   * Returns the link that provides the URI that can be used to post new
+   * entries to the feed.
    * 
-   * @return Link that provides the URI that can be used to post new entries to the feed.
+   * @return Link that provides the URI that can be used to post new entries
+   * to the feed.
    */
   public final native com.google.gwt.gdata.client.Link getEntryPostLink() /*-{
     return this.getEntryPostLink();
   }-*/;
 
   /**
-   * Returns the link that provides the URI of the full feed (without any query parameters).
+   * Returns the link that provides the URI of the full feed (without any query
+   * parameters).
    * 
    * @return
    */
@@ -56,9 +60,11 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   }-*/;
 
   /**
-   * Returns the link that provides the URI of an alternate format of the entrys or feeds contents.
+   * Returns the link that provides the URI of an alternate format of the
+   * entrys or feeds contents.
    * 
-   * @return Link that provides the URI of an alternate format of the entry's or feed's contents.
+   * @return Link that provides the URI of an alternate format of the entry's
+   * or feed's contents.
    */
   public final native com.google.gwt.gdata.client.Link getHtmlLink() /*-{
     return this.getHtmlLink();
@@ -80,7 +86,8 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
    * @param type MIME type of the link target to filter on.
    * @return First link whose relation and type is a match or null for none. 
    */
-  public final native com.google.gwt.gdata.client.Link getLink(String rel, String type) /*-{
+  public final native com.google.gwt.gdata.client.Link getLink(String rel,
+      String type) /*-{
     return this.getLink(rel, type);
   }-*/;
 
@@ -88,7 +95,7 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
    * Returns the link of a relation and type.
    * 
    * @param rel Link relation type to filter on or null to ignore.
-   * @return First link whose relation and type is a match or null for none. 
+   * @return First link whose relation and type is a match or null for none.
    */
   public final native com.google.gwt.gdata.client.Link getLink(String rel) /*-{
     return this.getLink(rel);
@@ -124,7 +131,8 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   /**
    * Sets the items-per-page count.
    * 
-   * @param itemsPerPage Sets the items-per-page count. This element is optional.
+   * @param itemsPerPage Sets the items-per-page count.
+   * This element is optional.
    */
   public final native void setItemsPerPage(ItemsPerPage itemsPerPage) /*-{
     this.setItemsPerPage(itemsPerPage);
@@ -149,11 +157,14 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  protected final native <F extends Feed<E>> void get(Callback<F> callback) /*-{
+  protected final native <F extends Feed<E>> void get(
+      Callback<F> callback) /*-{
     return this.getSelf(
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
@@ -164,7 +175,8 @@ public class Feed<E extends Entry> extends com.google.gwt.gdata.client.atom.Feed
    * Inserts a new entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   protected final native void insertEntry(E entry, Callback<E> callback) /*-{
     return this.insertEntry(

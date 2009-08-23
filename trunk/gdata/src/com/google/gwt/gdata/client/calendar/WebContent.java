@@ -19,7 +19,7 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Describes a "web content" extension. For example: <atom:link rel"http://schemas.google.com/gCal/2005/webContent" title"World Cup" href"http://www.google.com/calendar/images/google-holiday.gif" type"image/gif"> <gCal:webContent width"276" height"120" url"http://www.google.com/logos/worldcup06.gif"/> </atom:link>
+ * Describes a "web content" extension.
  */
 public class WebContent extends JavaScriptObject {
 
@@ -63,7 +63,8 @@ public class WebContent extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the height (in pixels) of the <iframe> or <img> element. This attribute is required.
+   * Returns the height (in pixels) of the <iframe> or <img> element.
+   * This attribute is required.
    * 
    * @return Height (in pixels) of the <iframe> or <img> element.
    */
@@ -72,16 +73,19 @@ public class WebContent extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the URL of the content to display in the pop-up window. This attribute is required.
+   * Returns the URL of the content to display in the pop-up window.
+   * This attribute is required.
    * 
-   * @return URL of the content to display in the pop-up window or undefined for none.
+   * @return URL of the content to display in the pop-up window or undefined
+   * for none.
    */
   public final native String getUrl() /*-{
     return this.getUrl();
   }-*/;
 
   /**
-   * Returns the width (in pixels) of the <iframe> or <img> element. This attribute is required.
+   * Returns the width (in pixels) of the <iframe> or <img> element.
+   * This attribute is required.
    * 
    * @return Width (in pixels) of the <iframe> or <img> element.
    */
@@ -92,16 +96,19 @@ public class WebContent extends JavaScriptObject {
   /**
    * Sets the web content gadget preferences.
    * 
-   * @param gadgetPrefs Web content gadget preferences, where each web content gadget preference is added using addGadgetPref().
+   * @param gadgetPrefs Web content gadget preferences, where each web content
+   * gadget preference is added using addGadgetPref().
    */
-  public final native void setGadgetPrefs(WebContentGadgetPref[] gadgetPrefs) /*-{
+  public final native void setGadgetPrefs(
+      WebContentGadgetPref[] gadgetPrefs) /*-{
     this.setGadgetPrefs(
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(gadgetPrefs)
     );
   }-*/;
 
   /**
-   * Sets the height (in pixels) of the <iframe> or <img> element. This attribute is required.
+   * Sets the height (in pixels) of the <iframe> or <img> element.
+   * This attribute is required.
    * 
    * @param height Height (in pixels) of the <iframe> or <img> element.
    */
@@ -110,7 +117,8 @@ public class WebContent extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the URL of the content to display in the pop-up window. This attribute is required.
+   * Sets the URL of the content to display in the pop-up window.
+   * This attribute is required.
    * 
    * @param url URL of the content to display in the pop-up window.
    */
@@ -118,7 +126,8 @@ public class WebContent extends JavaScriptObject {
     this.setUrl(url);
   }-*/;
   /**
-   * Sets the width (in pixels) of the <iframe> or <img> element. This attribute is required.
+   * Sets the width (in pixels) of the <iframe> or <img> element.
+   * This attribute is required.
    * 
    * @param width Width (in pixels) of the <iframe> or <img> element.
    */

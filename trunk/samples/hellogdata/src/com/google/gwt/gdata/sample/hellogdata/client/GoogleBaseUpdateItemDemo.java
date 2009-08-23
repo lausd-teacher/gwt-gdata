@@ -57,7 +57,7 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
             "item of the authenticated user. It retrieves a list of the " +
             "user's items, and updates the first item with a title that " +
             "starts with 'GWT-GoogleBase-Client' with a new title and " +
-            "target country.</p>\n";
+            "target country.</p>";
       }
 
       @Override

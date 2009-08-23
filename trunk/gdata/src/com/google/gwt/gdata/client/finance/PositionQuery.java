@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.finance;
 import com.google.gwt.gdata.client.Query;
 
 /**
- * Describes a query for the feed of all the positions belonging to the portfolio.
+ * Describes a query for the feed of all the positions belonging to the
+ * portfolio.
  */
 public class PositionQuery extends Query {
 
@@ -36,9 +37,11 @@ public class PositionQuery extends Query {
   protected PositionQuery() { }
 
   /**
-   * Returns the flag indicating whether returns and performance stats should be included in the portfolio and position feed entries.
+   * Returns the flag indicating whether returns and performance stats should
+   * be included in the portfolio and position feed entries.
    * 
-   * @return Flag indicating whether returns and performance stats should be included in the portfolio and position feed entries.
+   * @return Flag indicating whether returns and performance stats should be
+   * included in the portfolio and position feed entries.
    */
   public final native boolean getIncludeReturns() /*-{
     return this.getIncludeReturns();
@@ -54,29 +57,38 @@ public class PositionQuery extends Query {
   }-*/;
 
   /**
-   * Sets the flag indicating whether returns and performance stats should be included in the portfolio and position feed entries. The default value is false.
+   * Sets the flag indicating whether returns and performance stats should be
+   * included in the portfolio and position feed entries.
+   * The default value is false.
    * 
-   * @param includeReturns Flag indicating whether returns and performance stats should be included in the portfolio and position feed entries.
+   * @param includeReturns Flag indicating whether returns and performance
+   * stats should be included in the portfolio and position feed entries.
    */
   public final native void setIncludeReturns(boolean includeReturns) /*-{
     this.setIncludeReturns(includeReturns);
   }-*/;
 
   /**
-   * Sets the flag to inline transactions under the position feed. The default value is false.
+   * Sets the flag to inline transactions under the position feed.
+   * The default value is false.
    * 
-   * @param inlineTransactions Flag to inline transactions under the position feed.
+   * @param inlineTransactions Flag to inline transactions under the position
+   * feed.
    */
-  public final native void setInlineTransactions(boolean inlineTransactions) /*-{
+  public final native void setInlineTransactions(
+      boolean inlineTransactions) /*-{
     this.setInlineTransactions(inlineTransactions);
   }-*/;
 
   /**
-   * Sets the flag to inline transactions under the position feed. The default value is false.
+   * Sets the flag to inline transactions under the position feed.
+   * The default value is false.
    * 
-   * @param inlineTransactions Flag to inline transactions under the position feed.
+   * @param inlineTransactions Flag to inline transactions under the position
+   * feed.
    */
-  public final native void setInlineTransactions(String inlineTransactions) /*-{
+  public final native void setInlineTransactions(
+      String inlineTransactions) /*-{
     this.setInlineTransactions(inlineTransactions);
   }-*/;
 

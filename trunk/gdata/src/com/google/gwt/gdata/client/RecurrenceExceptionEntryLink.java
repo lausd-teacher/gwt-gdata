@@ -21,13 +21,15 @@ package com.google.gwt.gdata.client;
  * 
  * @param <E> The recurrence exception entry type.
  */
-public class RecurrenceExceptionEntryLink<E extends RecurrenceExceptionEntry> extends EntryLink<E> {
+public class RecurrenceExceptionEntryLink<E extends RecurrenceExceptionEntry>
+    extends EntryLink<E> {
 
   /**
    * Constructs a recurrence exception entry link.
    * @return A RecurrenceExceptionEntryLink object.
    */
-  public static native <E extends RecurrenceExceptionEntry> RecurrenceExceptionEntryLink<E> newInstance() /*-{
+  public static native <E extends RecurrenceExceptionEntry>
+      RecurrenceExceptionEntryLink<E> newInstance() /*-{
     return new $wnd.google.gdata.RecurrenceExceptionEntryLink();
   }-*/;
 

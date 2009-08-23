@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.calendar;
 /**
  * Personal settings for Calendar application.
  */
-public class CalendarSettingsFeed extends com.google.gwt.gdata.client.Feed<SettingsEntry> {
+public class CalendarSettingsFeed
+    extends com.google.gwt.gdata.client.Feed<SettingsEntry> {
 
   /**
    * Constructs a calendar settings feed.
@@ -33,9 +34,11 @@ public class CalendarSettingsFeed extends com.google.gwt.gdata.client.Feed<Setti
   protected CalendarSettingsFeed() { }
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(CalendarSettingsFeedCallback callback) {
     this.get(callback);
@@ -45,9 +48,11 @@ public class CalendarSettingsFeed extends com.google.gwt.gdata.client.Feed<Setti
    * Inserts a new settings entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertSettingsEntry(SettingsEntry entry, SettingsEntryCallback callback) {
+  public final void insertSettingsEntry(SettingsEntry entry,
+      SettingsEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

@@ -54,7 +54,7 @@ public class CalendarRetrieveEventsDemo extends GDataDemo {
             "private/full feed is used to obtain the events from the " +
             "private calendar with full projection. The sample iterates " +
             "through the list of events and prints out each event's " +
-            "title.</p>\n";
+            "title.</p>";
       }
 
       @Override

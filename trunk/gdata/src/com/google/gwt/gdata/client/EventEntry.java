@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client;
 
-
 /**
  * Describes an event entry.
  */
@@ -55,7 +54,8 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param recurrenceException Recurrence exception to add.
    */
-  public final native void addRecurrenceException(RecurrenceException recurrenceException) /*-{
+  public final native void addRecurrenceException(
+      RecurrenceException recurrenceException) /*-{
     this.addRecurrenceException(recurrenceException);
   }-*/;
 
@@ -217,7 +217,8 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the event participants.
    * 
-   * @param participants Event participants, where each event participant is added using addParticipant().
+   * @param participants Event participants, where each event participant is
+   * added using addParticipant().
    */
   public final native void setParticipants(Who[] participants) /*-{
     this.setParticipants(
@@ -237,9 +238,11 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the recurrence exceptions.
    * 
-   * @param recurrenceException Recurrence exceptions, where each recurrence exception is added using addRecurrenceException().
+   * @param recurrenceException Recurrence exceptions, where each recurrence
+   * exception is added using addRecurrenceException().
    */
-  public final native void setRecurrenceException(RecurrenceException[] recurrenceException) /*-{
+  public final native void setRecurrenceException(
+      RecurrenceException[] recurrenceException) /*-{
     this.setRecurrenceException(
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(recurrenceException)
     );
@@ -248,7 +251,8 @@ public class EventEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the event reminders.
    * 
-   * @param reminders Event reminders, where each event reminder is added using addReminder().
+   * @param reminders Event reminders, where each event reminder is added using
+   * addReminder().
    */
   public final native void setReminders(Reminder[] reminders) /*-{
     this.setReminders(

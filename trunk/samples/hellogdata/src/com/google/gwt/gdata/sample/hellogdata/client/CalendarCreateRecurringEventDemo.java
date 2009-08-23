@@ -56,7 +56,7 @@ public class CalendarCreateRecurringEventDemo extends GDataDemo {
             "calendar. The private/full feed is used for event insertion. " +
             "The specifics of the recurrence such as recurring frequency " +
             "and recurring duration are specified with a recurring string " +
-            "which is based on the iCalendar specification</p>\n";
+            "which is based on the iCalendar specification</p>";
       }
 
       @Override

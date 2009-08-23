@@ -19,7 +19,10 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Describes the UID in the ical export of the event. The value can be an arbitrary string and is described in section 4.8.4.7 of RFC 2445. This value is different from the value of the event ID. Currently a read-only entry.
+ * Describes the UID in the ical export of the event.
+ * The value can be an arbitrary string and is described in section 4.8.4.7 of
+ * RFC 2445. This value is different from the value of the event ID. Currently
+ * a read-only entry.
  */
 public class IcalUIDProperty extends JavaScriptObject {
 

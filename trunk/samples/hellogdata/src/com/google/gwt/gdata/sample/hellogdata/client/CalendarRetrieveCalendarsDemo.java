@@ -51,7 +51,7 @@ public class CalendarRetrieveCalendarsDemo extends GDataDemo {
         return "<p>This sample code uses the allcalendars feed to retrieve " +
             "the authenticated user's list of calendars (primary," +
             " secondary and subscribed). The feed result is iterated " +
-            "through to print out each calendar's title.</p>\n";
+            "through to print out each calendar's title.</p>";
       }
 
       @Override

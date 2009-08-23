@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Describes whether to send event notifications to other participants of the event.
+ * Describes whether to send event notifications to other participants of the
+ * event.
  */
 public class SendEventNotificationsProperty extends JavaScriptObject {
 
@@ -33,18 +34,22 @@ public class SendEventNotificationsProperty extends JavaScriptObject {
   protected SendEventNotificationsProperty() { }
 
   /**
-   * Returns whether to send event notifications to other participants of the event. This attribute is required.
+   * Returns whether to send event notifications to other participants of the
+   * event. This attribute is required.
    * 
-   * @return Whether to send event notifications to other participants of the event.
+   * @return Whether to send event notifications to other participants of the
+   * event.
    */
   public final native boolean getValue() /*-{
     return this.getValue();
   }-*/;
 
   /**
-   * Sets whether to send event notifications to other participants of the event. This attribute is required.
+   * Sets whether to send event notifications to other participants of the
+   * event. This attribute is required.
    * 
-   * @param value Whether to send event notifications to other participants of the event.
+   * @param value Whether to send event notifications to other participants of
+   * the event.
    */
   public final native void setValue(boolean value) /*-{
     this.setValue(value);

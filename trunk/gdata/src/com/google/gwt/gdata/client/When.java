@@ -71,7 +71,8 @@ public class When extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the string description of the event times. This attribute is optional.
+   * Returns the string description of the event times.
+   * This attribute is optional.
    * 
    * @return String description of the event times.
    */
@@ -102,7 +103,8 @@ public class When extends JavaScriptObject {
   /**
    * Sets the event reminders.
    * 
-   * @param reminder Event reminders, where each event reminder is added using addReminder().
+   * @param reminder Event reminders, where each event reminder is added using
+   * addReminder().
    */
   public final native void setReminder(Reminder[] reminder) /*-{
     this.setReminder(
@@ -131,7 +133,8 @@ public class When extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the string description of the event times. This attribute is optional.
+   * Sets the string description of the event times.
+   * This attribute is optional.
    * 
    * @param valueString String description of the event times.
    */

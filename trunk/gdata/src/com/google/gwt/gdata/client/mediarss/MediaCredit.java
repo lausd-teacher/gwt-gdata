@@ -52,7 +52,8 @@ public class MediaCredit extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the URI that identifies the role scheme. This attribute is optional.
+   * Returns the URI that identifies the role scheme.
+   * This attribute is optional.
    * 
    * @return URI that identifies the role scheme.
    */

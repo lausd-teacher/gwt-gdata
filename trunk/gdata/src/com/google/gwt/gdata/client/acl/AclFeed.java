@@ -20,7 +20,8 @@ package com.google.gwt.gdata.client.acl;
  * Describes a feed of an access control list (ACL).
  * @param <E> The Entry type.
  */
-public class AclFeed<E extends AclEntry> extends com.google.gwt.gdata.client.Feed<E> {
+public class AclFeed<E extends AclEntry>
+    extends com.google.gwt.gdata.client.Feed<E> {
   
   /**
    * Constructs an ACL feed.

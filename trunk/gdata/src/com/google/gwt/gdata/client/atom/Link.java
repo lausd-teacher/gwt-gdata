@@ -24,7 +24,8 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Link extends JavaScriptObject {
 
   /**
-   * Link that provides the URI of an alternate format of the entry's or feed's contents.
+   * Link that provides the URI of an alternate format of the entry's or feed's
+   * contents.
    */
   public static final String REL_ALTERNATE = getConstant("REL_ALTERNATE");
 
@@ -39,7 +40,8 @@ public class Link extends JavaScriptObject {
   public static final String REL_ENTRY_EDIT = getConstant("REL_ENTRY_EDIT");
 
   /**
-   * Link that provides the URI that can be used to edit the media associated with an entry.
+   * Link that provides the URI that can be used to edit the media associated
+   * with an entry.
    */
   public static final String REL_MEDIA_EDIT = getConstant("REL_MEDIA_EDIT");
 
@@ -64,7 +66,8 @@ public class Link extends JavaScriptObject {
   public static final String REL_SELF = getConstant("REL_SELF");
 
   /**
-   * Link that provides the URI that of link that provides the data for the content in the feed.
+   * Link that provides the URI that of link that provides the data for the
+   * content in the feed.
    */
   public static final String REL_VIA = getConstant("REL_VIA");
 
@@ -102,7 +105,8 @@ public class Link extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the language of resource pointed to by href. This attribute is optional.
+   * Returns the language of resource pointed to by href.
+   * This attribute is optional.
    * 
    * @return Language of resource pointed to by href.
    */
@@ -111,7 +115,8 @@ public class Link extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the length of the resource pointed to by href in bytes. This attribute is optional.
+   * Returns the length of the resource pointed to by href in bytes.
+   * This attribute is optional.
    * 
    * @return Length of the resource pointed to by href in bytes.
    */
@@ -165,7 +170,8 @@ public class Link extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the language of resource pointed to by href. This attribute is optional.
+   * Sets the language of resource pointed to by href.
+   * This attribute is optional.
    * 
    * @param hrefLang Language of resource pointed to by href.
    */
@@ -174,7 +180,8 @@ public class Link extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the length of the resource pointed to by href in bytes. This attribute is optional.
+   * Sets the length of the resource pointed to by href in bytes.
+   * This attribute is optional.
    * 
    * @param length Length of the resource pointed to by href in bytes.
    */

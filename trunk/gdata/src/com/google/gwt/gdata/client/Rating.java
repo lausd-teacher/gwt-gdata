@@ -80,18 +80,23 @@ public class Rating extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the number of ratings taken into account when computing the average value. This attribute is optional.
+   * Returns the number of ratings taken into account when computing the
+   * average value. This attribute is optional.
    * 
-   * @return Number of ratings taken into account when computing the average value.
+   * @return Number of ratings taken into account when computing the average
+   * value.
    */
   public final native double getNumRaters() /*-{
     return this.getNumRaters();
   }-*/;
 
   /**
-   * Returns the programmatic value that describes the aspect that's being rated, if not specified, the rating is an overall rating. This attribute is optional.
+   * Returns the programmatic value that describes the aspect that's being
+   * rated, if not specified, the rating is an overall rating. This attribute
+   * is optional.
    * 
-   * @return Programmatic value that describes the aspect that's being rated, if not specified, the rating is an overall rating.
+   * @return Programmatic value that describes the aspect that's being rated,
+   * if not specified, the rating is an overall rating.
    */
   public final native String getRel() /*-{
     return this.getRel();
@@ -134,18 +139,23 @@ public class Rating extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the number of ratings taken into account when computing the average value. This attribute is optional.
+   * Sets the number of ratings taken into account when computing the average
+   * value. This attribute is optional.
    * 
-   * @param numRaters Number of ratings taken into account when computing the average value.
+   * @param numRaters Number of ratings taken into account when computing the
+   * average value.
    */
   public final native void setNumRaters(double numRaters) /*-{
     this.setNumRaters(numRaters);
   }-*/;
 
   /**
-   * Sets the programmatic value that describes the aspect that's being rated, if not specified, the rating is an overall rating. This attribute is optional.
+   * Sets the programmatic value that describes the aspect that's being rated,
+   * if not specified, the rating is an overall rating. This attribute is
+   * optional.
    * 
-   * @param rel Programmatic value that describes the aspect that's being rated, if not specified, the rating is an overall rating.
+   * @param rel Programmatic value that describes the aspect that's being
+   * rated, if not specified, the rating is an overall rating.
    */
   public final native void setRel(String rel) /*-{
     this.setRel(rel);

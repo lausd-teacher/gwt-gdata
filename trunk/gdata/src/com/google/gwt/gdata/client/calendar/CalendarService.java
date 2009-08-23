@@ -48,9 +48,11 @@ public class CalendarService extends GoogleService {
    * Deletes a calendar acl entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deleteCalendarAclEntry(String uri, CalendarAclEntryCallback callback) {
+  public final void deleteCalendarAclEntry(String uri,
+      CalendarAclEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -58,9 +60,11 @@ public class CalendarService extends GoogleService {
    * Deletes a calendar comment entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deleteCalendarCommentEntry(String uri, CalendarCommentEntryCallback callback) {
+  public final void deleteCalendarCommentEntry(String uri,
+      CalendarCommentEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -68,9 +72,11 @@ public class CalendarService extends GoogleService {
    * Deletes a calendar entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deleteCalendarEntry(String uri, CalendarEntryCallback callback) {
+  public final void deleteCalendarEntry(String uri,
+      CalendarEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -78,9 +84,11 @@ public class CalendarService extends GoogleService {
    * Deletes a calendar event entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deleteCalendarEventEntry(String uri, CalendarEventEntryCallback callback) {
+  public final void deleteCalendarEventEntry(String uri,
+      CalendarEventEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -88,9 +96,11 @@ public class CalendarService extends GoogleService {
    * Deletes a settings entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deleteSettingsEntry(String uri, SettingsEntryCallback callback) {
+  public final void deleteSettingsEntry(String uri,
+      SettingsEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -98,7 +108,8 @@ public class CalendarService extends GoogleService {
    * Retrieves the feed of a calendar's Access Control List (ACL).
    * 
    * @param uri URI of feed.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getAclFeed(String uri, CalendarAclFeedCallback callback) {
     this.getFeed(uri, callback, "getAclFeed");
@@ -108,9 +119,11 @@ public class CalendarService extends GoogleService {
    * Retrieves the feed of all of the calendars a user is subscribed to.
    * 
    * @param uri URI of feed.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getAllCalendarsFeed(String uri, CalendarFeedCallback callback) {
+  public final void getAllCalendarsFeed(String uri,
+      CalendarFeedCallback callback) {
     this.getFeed(uri, callback, "getAllCalendarsFeed");
   }
 
@@ -118,9 +131,11 @@ public class CalendarService extends GoogleService {
    * Retrieves a Calendar ACL entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getCalendarAclEntry(String uri, CalendarAclEntryCallback callback) {
+  public final void getCalendarAclEntry(String uri,
+      CalendarAclEntryCallback callback) {
     this.getEntry(uri, callback, "getCalendarAclEntry");
   }
 
@@ -128,9 +143,11 @@ public class CalendarService extends GoogleService {
    * Retrieves a Calendar event's comment entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getCalendarCommentEntry(String uri, CalendarCommentEntryCallback callback) {
+  public final void getCalendarCommentEntry(String uri,
+      CalendarCommentEntryCallback callback) {
     this.getEntry(uri, callback, "getCalendarCommentEntry");
   }
 
@@ -138,9 +155,11 @@ public class CalendarService extends GoogleService {
    * Retrieves a Calendar entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getCalendarEntry(String uri, CalendarEntryCallback callback) {
+  public final void getCalendarEntry(String uri,
+      CalendarEntryCallback callback) {
     this.getEntry(uri, callback, "getCalendarEntry");
   }
 
@@ -148,9 +167,11 @@ public class CalendarService extends GoogleService {
    * Retrieves a Calendar event entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getCalendarEventEntry(String uri, CalendarEventEntryCallback callback) {
+  public final void getCalendarEventEntry(String uri,
+      CalendarEventEntryCallback callback) {
     this.getEntry(uri, callback, "getCalendarEventEntry");
   }
 
@@ -158,9 +179,11 @@ public class CalendarService extends GoogleService {
    * Retrieves the read-only feed of a user's calendars.
    * 
    * @param uri URI of feed.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getCalendarsFeed(String uri, CalendarFeedCallback callback) {
+  public final void getCalendarsFeed(String uri,
+      CalendarFeedCallback callback) {
     this.getFeed(uri, callback, "getCalendarsFeed");
   }
 
@@ -168,9 +191,11 @@ public class CalendarService extends GoogleService {
    * Retrieves the feed of a calendar event's comments.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getCommentsFeed(CalendarCommentQuery query, CalendarCommentFeedCallback callback) {
+  public final void getCommentsFeed(CalendarCommentQuery query,
+      CalendarCommentFeedCallback callback) {
     this.getFeed(query, callback, "getCommentsFeed");
   }
 
@@ -178,9 +203,11 @@ public class CalendarService extends GoogleService {
    * Retrieves the feed of a calendar event's comments.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getCommentsFeed(String uri, CalendarCommentFeedCallback callback) {
+  public final void getCommentsFeed(String uri,
+      CalendarCommentFeedCallback callback) {
     this.getFeed(uri, callback, "getCommentsFeed");
   }
 
@@ -188,9 +215,11 @@ public class CalendarService extends GoogleService {
    * Retrieves the feed of a calendar's events.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getEventsFeed(CalendarEventQuery query, CalendarEventFeedCallback callback) {
+  public final void getEventsFeed(CalendarEventQuery query,
+      CalendarEventFeedCallback callback) {
     this.getFeed(query, callback, "getEventsFeed");
   }
 
@@ -198,9 +227,11 @@ public class CalendarService extends GoogleService {
    * Retrieves the feed of a calendar's events.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getEventsFeed(String uri, CalendarEventFeedCallback callback) {
+  public final void getEventsFeed(String uri,
+      CalendarEventFeedCallback callback) {
     this.getFeed(uri, callback, "getEventsFeed");
   }
 
@@ -208,9 +239,11 @@ public class CalendarService extends GoogleService {
    * Retrieves the feed of the calendars a user owns.
    * 
    * @param uri URI of feed.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getOwnCalendarsFeed(String uri, CalendarFeedCallback callback) {
+  public final void getOwnCalendarsFeed(String uri,
+      CalendarFeedCallback callback) {
     this.getFeed(uri, callback, "getOwnCalendarsFeed");
   }
   
@@ -218,9 +251,11 @@ public class CalendarService extends GoogleService {
    * Retrieves a Calendar Settings property entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getSettingsEntry(String uri, SettingsEntryCallback callback) {
+  public final void getSettingsEntry(String uri,
+      SettingsEntryCallback callback) {
     this.getEntry(uri, callback, "getSettingsEntry");
   }
 
@@ -228,9 +263,11 @@ public class CalendarService extends GoogleService {
    * Retrieves the feed of user personal settings.
    * 
    * @param uri URI of feed.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getSettingsFeed(String uri, CalendarSettingsFeedCallback callback) {
+  public final void getSettingsFeed(String uri,
+      CalendarSettingsFeedCallback callback) {
     this.getFeed(uri, callback, "getSettingsFeed");
   }
 
@@ -239,9 +276,11 @@ public class CalendarService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertCalendarAclEntry(String uri, CalendarAclEntry entry, CalendarAclEntryCallback callback) {
+  public final void insertCalendarAclEntry(String uri,
+      CalendarAclEntry entry, CalendarAclEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -250,9 +289,11 @@ public class CalendarService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertCalendarCommentEntry(String uri, CalendarCommentEntry entry, CalendarCommentEntryCallback callback) {
+  public final void insertCalendarCommentEntry(String uri,
+      CalendarCommentEntry entry, CalendarCommentEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -261,9 +302,11 @@ public class CalendarService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertCalendarEntry(String uri, CalendarEntry entry, CalendarEntryCallback callback) {
+  public final void insertCalendarEntry(String uri,
+      CalendarEntry entry, CalendarEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -272,9 +315,11 @@ public class CalendarService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertCalendarEventEntry(String uri, CalendarEventEntry entry, CalendarEventEntryCallback callback) {
+  public final void insertCalendarEventEntry(String uri,
+      CalendarEventEntry entry, CalendarEventEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -283,9 +328,11 @@ public class CalendarService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertSettingsEntry(String uri, SettingsEntry entry, SettingsEntryCallback callback) {
+  public final void insertSettingsEntry(String uri,
+      SettingsEntry entry, SettingsEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
   
@@ -294,9 +341,11 @@ public class CalendarService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateCalendarAclEntry(String uri, CalendarAclEntry entry, CalendarAclEntryCallback callback) {
+  public final void updateCalendarAclEntry(String uri,
+      CalendarAclEntry entry, CalendarAclEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
   
@@ -305,9 +354,11 @@ public class CalendarService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateCalendarCommentEntry(String uri, CalendarCommentEntry entry, CalendarCommentEntryCallback callback) {
+  public final void updateCalendarCommentEntry(String uri,
+      CalendarCommentEntry entry, CalendarCommentEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
   
@@ -316,9 +367,11 @@ public class CalendarService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateCalendarEntry(String uri, CalendarEntry entry, CalendarEntryCallback callback) {
+  public final void updateCalendarEntry(String uri,
+      CalendarEntry entry, CalendarEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
   
@@ -327,9 +380,11 @@ public class CalendarService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateCalendarEventEntry(String uri, CalendarEventEntry entry, CalendarEventEntryCallback callback) {
+  public final void updateCalendarEventEntry(String uri,
+      CalendarEventEntry entry, CalendarEventEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
   
@@ -338,9 +393,11 @@ public class CalendarService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateSettingsEntry(String uri, SettingsEntry entry, SettingsEntryCallback callback) {
+  public final void updateSettingsEntry(String uri,
+      SettingsEntry entry, SettingsEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 

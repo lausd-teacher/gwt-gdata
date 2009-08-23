@@ -31,12 +31,14 @@ public class MediaContent extends JavaScriptObject {
   /**
    * The media object is a continuous stream.
    */
-  public static final String EXPRESSION_NONSTOP = getConstant("EXPRESSION_NONSTOP");
+  public static final String EXPRESSION_NONSTOP =
+      getConstant("EXPRESSION_NONSTOP");
 
   /**
    * The media object is a sample.
    */
-  public static final String EXPRESSION_SAMPLE = getConstant("EXPRESSION_SAMPLE");
+  public static final String EXPRESSION_SAMPLE =
+      getConstant("EXPRESSION_SAMPLE");
 
   /**
    * Constructs a media content.
@@ -170,7 +172,8 @@ public class MediaContent extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the specifies if object is a sample or full version. This attribute is optional.
+   * Returns the specifies if object is a sample or full version.
+   * This attribute is optional.
    * 
    * @return Specifies if object is a sample or full version.
    */
@@ -188,7 +191,8 @@ public class MediaContent extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the number of frames per second of media. This attribute is optional.
+   * Returns the number of frames per second of media.
+   * This attribute is optional.
    * 
    * @return Number of frames per second of media .
    */
@@ -233,7 +237,8 @@ public class MediaContent extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the primary language encapsulated in the media. This attribute is optional.
+   * Returns the primary language encapsulated in the media.
+   * This attribute is optional.
    * 
    * @return Primary language encapsulated in the media.
    */
@@ -278,7 +283,8 @@ public class MediaContent extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the nubmer of samples per second of media. This attribute is optional.
+   * Returns the nubmer of samples per second of media.
+   * This attribute is optional.
    * 
    * @return Nubmer of samples per second of media.
    */
@@ -353,7 +359,8 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Sets the media categories.
    * 
-   * @param categories Media categories, where each media category is added using addCategory().
+   * @param categories Media categories, where each media category is added
+   * using addCategory().
    */
   public final native void setCategories(MediaCategory[] categories) /*-{
     this.setCategories(
@@ -382,7 +389,8 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Sets the media credits.
    * 
-   * @param credits Media credits, where each media credit is added using addCredit().
+   * @param credits Media credits, where each media credit is added using
+   * addCredit().
    */
   public final native void setCredits(MediaCredit[] credits) /*-{
     this.setCredits(
@@ -409,7 +417,8 @@ public class MediaContent extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the specifies if object is a sample or full version. This attribute is optional.
+   * Sets the specifies if object is a sample or full version.
+   * This attribute is optional.
    * 
    * @param expression Specifies if object is a sample or full version.
    */
@@ -472,7 +481,8 @@ public class MediaContent extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the primary language encapsulated in the media. This attribute is optional.
+   * Sets the primary language encapsulated in the media.
+   * This attribute is optional.
    * 
    * @param language Primary language encapsulated in the media.
    */
@@ -501,7 +511,8 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Sets the media ratings.
    * 
-   * @param ratings Media ratings, where each media rating is added using addRating().
+   * @param ratings Media ratings, where each media rating is added using
+   * addRating().
    */
   public final native void setRatings(MediaRating[] ratings) /*-{
     this.setRatings(
@@ -512,16 +523,19 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Sets the media restrictions.
    * 
-   * @param restrictions Media restrictions, where each media restriction is added using addRestriction().
+   * @param restrictions Media restrictions, where each media restriction is
+   * added using addRestriction().
    */
-  public final native void setRestrictions(MediaRestriction[] restrictions) /*-{
+  public final native void setRestrictions(
+      MediaRestriction[] restrictions) /*-{
     this.setRestrictions(
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(restrictions)
     );
   }-*/;
 
   /**
-   * Sets the nubmer of samples per second of media. This attribute is optional.
+   * Sets the nubmer of samples per second of media.
+   * This attribute is optional.
    * 
    * @param samplingrate Nubmer of samples per second of media.
    */
@@ -543,7 +557,8 @@ public class MediaContent extends JavaScriptObject {
   /**
    * Sets the media thumbnails.
    * 
-   * @param thumbnails Media thumbnails, where each media thumbnail is added using addThumbnail().
+   * @param thumbnails Media thumbnails, where each media thumbnail is added
+   * using addThumbnail().
    */
   public final native void setThumbnails(MediaThumbnail[] thumbnails) /*-{
     this.setThumbnails(

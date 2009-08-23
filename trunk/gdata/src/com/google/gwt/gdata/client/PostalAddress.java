@@ -53,7 +53,8 @@ public class PostalAddress extends JavaScriptObject {
   protected PostalAddress() { }
 
   /**
-   * Returns the simple string value used to name this address. This attribute is optional.
+   * Returns the simple string value used to name this address.
+   * This attribute is optional.
    * 
    * @return Simple string value used to name this address.
    */
@@ -62,7 +63,8 @@ public class PostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns whether this is the primary postal address. This attribute is optional.
+   * Returns whether this is the primary postal address.
+   * This attribute is optional.
    * 
    * @return Whether this is the primary postal address.
    */
@@ -89,7 +91,8 @@ public class PostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the simple string value used to name this address. This attribute is optional.
+   * Sets the simple string value used to name this address.
+   * This attribute is optional.
    * 
    * @param label Simple string value used to name this address.
    */
@@ -98,7 +101,8 @@ public class PostalAddress extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether this is the primary postal address. This attribute is optional.
+   * Sets whether this is the primary postal address.
+   * This attribute is optional.
    * 
    * @param primary Whether this is the primary postal address.
    */

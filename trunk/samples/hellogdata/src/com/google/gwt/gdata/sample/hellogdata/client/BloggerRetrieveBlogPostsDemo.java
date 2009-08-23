@@ -52,7 +52,7 @@ public class BloggerRetrieveBlogPostsDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample returns a list of blog posts for each of the " +
-            "user's blogs. Each post is a link to the actual post.</p>\n";
+            "user's blogs. Each post is a link to the actual post.</p>";
       }
 
       @Override

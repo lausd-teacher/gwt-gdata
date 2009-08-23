@@ -43,7 +43,8 @@ public class MediaThumbnail extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the time offset in relation to the media object. This attribute is optional.
+   * Returns the time offset in relation to the media object.
+   * This attribute is optional.
    * 
    * @return Time offset in relation to the media object.
    */
@@ -79,7 +80,8 @@ public class MediaThumbnail extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the time offset in relation to the media object. This attribute is optional.
+   * Sets the time offset in relation to the media object.
+   * This attribute is optional.
    * 
    * @param time Time offset in relation to the media object.
    */

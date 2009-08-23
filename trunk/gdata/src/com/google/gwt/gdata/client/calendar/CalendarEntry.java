@@ -45,16 +45,19 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Deletes the entry from the feed.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteEntry(CalendarEntryCallback callback) {
     this.delete(callback);
   }
 
   /**
-   * Returns the link that provides the URI of the feed for the access control list for the entry.
+   * Returns the link that provides the URI of the feed for the access control
+   * list for the entry.
    * 
-   * @return Link that provides the URI of the feed for the access control list for the entry.
+   * @return Link that provides the URI of the feed for the access control list
+   * for the entry.
    */
   public final native CalendarLink getAccessControlListLink() /*-{
     return this.getAccessControlListLink();
@@ -70,9 +73,11 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the link that provides the URI of an alternate format of the entry's or feed's contents.
+   * Returns the link that provides the URI of an alternate format of the
+   * entry's or feed's contents.
    * 
-   * @return Link that provides the URI of an alternate format of the entry's or feed's contents.
+   * @return Link that provides the URI of an alternate format of the entry's
+   * or feed's contents.
    */
   public final native CalendarLink getAtomAlternateLink() /*-{
     return this.getAtomAlternateLink();
@@ -142,9 +147,11 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    * @return current representation of the entry.
    */
   public final CalendarEntry getSelf(CalendarEntryCallback callback) {
@@ -199,7 +206,8 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the calendar locations.
    * 
-   * @param locations Calendar locations, where each calendar location is added using addLocation().
+   * @param locations Calendar locations, where each calendar location is
+   * added using addLocation().
    */
   public final native void setLocations(Where[] locations) /*-{
     this.setLocations(
@@ -212,7 +220,8 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param overrideName Override name property.
    */
-  public final native void setOverrideName(OverrideNameProperty overrideName) /*-{
+  public final native void setOverrideName(
+      OverrideNameProperty overrideName) /*-{
     this.setOverrideName(overrideName);
   }-*/;
 
@@ -230,7 +239,8 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param timesCleaned Times cleaned property.
    */
-  public final native void setTimesCleaned(TimesCleanedProperty timesCleaned) /*-{
+  public final native void setTimesCleaned(
+      TimesCleanedProperty timesCleaned) /*-{
     this.setTimesCleaned(timesCleaned);
   }-*/;
 
@@ -246,7 +256,8 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Updated the entry in the feed by sending the representation of this entry.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void updateEntry(CalendarEntryCallback callback) {
     this.update(callback);

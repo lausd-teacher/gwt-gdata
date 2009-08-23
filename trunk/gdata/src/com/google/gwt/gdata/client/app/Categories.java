@@ -67,16 +67,19 @@ public class Categories extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the indicates whether the list of categories is a fixed or an open set. This attribute is optional.
+   * Returns the indicates whether the list of categories is a fixed or an open
+   * set. This attribute is optional.
    * 
-   * @return Indicates whether the list of categories is a fixed or an open set.
+   * @return Indicates whether the list of categories is a fixed or an open
+   * set.
    */
   public final native String getFixed() /*-{
     return this.getFixed();
   }-*/;
 
   /**
-   * Returns the an IRI reference to a Category Document. This attribute is optional.
+   * Returns the an IRI reference to a Category Document.
+   * This attribute is optional.
    * 
    * @return An IRI reference to a Category Document.
    */
@@ -85,7 +88,8 @@ public class Categories extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the default scheme of the contained category elements. This attribute is optional.
+   * Returns the default scheme of the contained category elements.
+   * This attribute is optional.
    * 
    * @return Default scheme of the contained category elements.
    */
@@ -96,7 +100,8 @@ public class Categories extends JavaScriptObject {
   /**
    * Sets the categories.
    * 
-   * @param categories Categories, where each category is added using addCategory().
+   * @param categories Categories, where each category is added using
+   * addCategory().
    */
   public final native void setCategories(Category[] categories) /*-{
     this.setCategories(
@@ -105,16 +110,19 @@ public class Categories extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the indicates whether the list of categories is a fixed or an open set. This attribute is optional.
+   * Sets the indicates whether the list of categories is a fixed or an open
+   * set. This attribute is optional.
    * 
-   * @param fixed Indicates whether the list of categories is a fixed or an open set.
+   * @param fixed Indicates whether the list of categories is a fixed or an
+   * open set.
    */
   public final native void setFixed(String fixed) /*-{
     this.setFixed(fixed);
   }-*/;
 
   /**
-   * Sets the an IRI reference to a Category Document. This attribute is optional.
+   * Sets the an IRI reference to a Category Document.
+   * This attribute is optional.
    * 
    * @param href An IRI reference to a Category Document.
    */
@@ -123,7 +131,8 @@ public class Categories extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the default scheme of the contained category elements. This attribute is optional.
+   * Sets the default scheme of the contained category elements.
+   * This attribute is optional.
    * 
    * @param scheme Default scheme of the contained category elements.
    */

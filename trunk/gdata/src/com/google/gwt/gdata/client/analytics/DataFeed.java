@@ -86,9 +86,11 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(DataFeedCallback callback) {
     this.get(callback);
@@ -107,9 +109,11 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
    * Inserts a new data entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertDataEntry(DataEntry entry, DataEntryCallback callback) {
+  public final void insertDataEntry(DataEntry entry,
+      DataEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 
@@ -125,7 +129,8 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
   /**
    * Sets the data sources.
    * 
-   * @param dataSources Data sources, where each data source is added using the addDataSource() function, or undefined to clear the data sources.
+   * @param dataSources Data sources, where each data source is added using the
+   * addDataSource() function, or undefined to clear the data sources.
    */
   public final native void setDataSources(DataSource[] dataSources) /*-{
     this.setDataSources(
@@ -145,7 +150,8 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
   /**
    * Sets the start date. This element is required.
    * 
-   * @param startDate Start date, or object to use as a parameter to the google.gdata.analytics.StartDate constructor, or undefined for none.
+   * @param startDate Start date, or object to use as a parameter to the
+   * google.gdata.analytics.StartDate constructor, or undefined for none.
    */
   public final native void setStartDate(StartDate startDate) /*-{
     this.setStartDate(startDate);

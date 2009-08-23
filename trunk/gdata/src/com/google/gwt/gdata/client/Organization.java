@@ -75,7 +75,8 @@ public class Organization extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns whether this is the primary organization. This attribute is optional.
+   * Returns whether this is the primary organization.
+   * This attribute is optional.
    * 
    * @return Whether this is the primary organization.
    */
@@ -120,7 +121,8 @@ public class Organization extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether this is the primary organization. This attribute is optional.
+   * Sets whether this is the primary organization.
+   * This attribute is optional.
    * 
    * @param primary Whether this is the primary organization.
    */

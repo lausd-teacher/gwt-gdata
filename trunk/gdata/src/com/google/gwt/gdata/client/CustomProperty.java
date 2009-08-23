@@ -43,16 +43,19 @@ public class CustomProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the datatype such as string, integer, and date, or an ontology-specific URI. This attribute is optional.
+   * Returns the datatype such as string, integer, and date, or an
+   * ontology-specific URI. This attribute is optional.
    * 
-   * @return Datatype such as string, integer, and date, or an ontology-specific URI.
+   * @return Datatype such as string, integer, and date, or an
+   * ontology-specific URI.
    */
   public final native String getType() /*-{
     return this.getType();
   }-*/;
 
   /**
-   * Returns the units of data - can also be a URI to indicate a specific ontology. This attribute is optional.
+   * Returns the units of data - can also be a URI to indicate a specific
+   * ontology. This attribute is optional.
    * 
    * @return Units of data - can also be a URI to indicate a specific ontology.
    */
@@ -70,7 +73,8 @@ public class CustomProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the can be a URI to indicate a specific ontology. This attribute is required.
+   * Sets the can be a URI to indicate a specific ontology. This attribute is
+   * required.
    * 
    * @param name A URI to indicate a specific ontology.
    */
@@ -79,18 +83,22 @@ public class CustomProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the datatype such as string, integer, and date, or an ontology-specific URI. This attribute is optional.
+   * Sets the datatype such as string, integer, and date, or an
+   * ontology-specific URI. This attribute is optional.
    * 
-   * @param type Datatype such as string, integer, and date, or an ontology-specific URI.
+   * @param type Datatype such as string, integer, and date, or an
+   * ontology-specific URI.
    */
   public final native void setType(String type) /*-{
     this.setType(type);
   }-*/;
 
   /**
-   * Sets the units of data - can also be a URI to indicate a specific ontology. This attribute is optional.
+   * Sets the units of data - can also be a URI to indicate a specific
+   * ontology. This attribute is optional.
    * 
-   * @param unit Units of data - can also be a URI to indicate a specific ontology.
+   * @param unit Units of data - can also be a URI to indicate a specific
+   * ontology.
    */
   public final native void setUnit(String unit) /*-{
     this.setUnit(unit);

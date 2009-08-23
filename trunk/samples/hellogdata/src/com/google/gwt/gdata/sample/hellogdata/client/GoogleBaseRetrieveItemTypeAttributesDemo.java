@@ -54,7 +54,7 @@ public class GoogleBaseRetrieveItemTypeAttributesDemo extends GDataDemo {
             "metadata about product listed in Google Base. The attributes " +
             "feed is useful for determining what kinds of attributes other " +
             "users are using with certain item types. This example, looks " +
-            "at attributes related to the products vertical.</p>\n";
+            "at attributes related to the products vertical.</p>";
       }
 
       @Override

@@ -60,7 +60,7 @@ public class ContactsUpdateContactDemo extends GDataDemo {
         return "<p>This sample code demonstrate how to update a contact " +
             "entry. It queries for the most recently modified contact " +
             "entry of today from the authenticated user and update that " +
-            "entry with a phone number.</p>\n";
+            "entry with a phone number.</p>";
       }
 
       @Override

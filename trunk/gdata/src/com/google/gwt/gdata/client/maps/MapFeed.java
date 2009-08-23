@@ -33,9 +33,11 @@ public class MapFeed extends com.google.gwt.gdata.client.Feed<MapEntry> {
   protected MapFeed() { }
 
   /**
-   * Returns the link that provides the URI of the full feed (without any query parameters).
+   * Returns the link that provides the URI of the full feed
+   * (without any query parameters).
    * 
-   * @return Link that provides the URI of the full feed (without any query parameters).
+   * @return Link that provides the URI of the full feed
+   * (without any query parameters).
    */
   public final native com.google.gwt.gdata.client.Link getAtomFeedLink() /*-{
     return this.getAtomFeedLink();
@@ -51,9 +53,11 @@ public class MapFeed extends com.google.gwt.gdata.client.Feed<MapEntry> {
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(MapFeedCallback callback) {
     this.get(callback);
@@ -63,7 +67,8 @@ public class MapFeed extends com.google.gwt.gdata.client.Feed<MapEntry> {
    * Inserts a new map entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void insertMapEntry(MapEntry entry, MapEntryCallback callback) {
     this.insertEntry(entry, callback);

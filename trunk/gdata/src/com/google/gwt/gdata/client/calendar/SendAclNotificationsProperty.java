@@ -34,7 +34,8 @@ public class SendAclNotificationsProperty extends JavaScriptObject {
   protected SendAclNotificationsProperty() { }
 
   /**
-   * Returns whether to send ACL notifications to grantees. This attribute is optional.
+   * Returns whether to send ACL notifications to grantees.
+   * This attribute is optional.
    * 
    * @return Whether to send ACL notifications to grantees.
    */
@@ -43,7 +44,8 @@ public class SendAclNotificationsProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether to send ACL notifications to grantees. This attribute is optional.
+   * Sets whether to send ACL notifications to grantees.
+   * This attribute is optional.
    * 
    * @param value Whether to send ACL notifications to grantees.
    */

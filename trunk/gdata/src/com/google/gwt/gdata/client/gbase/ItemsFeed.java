@@ -36,7 +36,8 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
   protected ItemsFeed() { }
 
   /**
-   * Returns the attributes. The returned object is a map from attribute name to the associated Attribute class.
+   * Returns the attributes. The returned object is a map from attribute name
+   * to the associated Attribute class.
    * 
    * @return Attributes.
    */
@@ -45,18 +46,22 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
   }-*/;
 
   /**
-   * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * Returns the link that provides the URI that can be used to batch
+   * operations to query, insert, update and delete entries on this feed.
    * 
-   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * @return Link that provides the URI that can be used to batch operations to
+   * query, insert, update and delete entries on this feed.
    */
   public final native com.google.gwt.gdata.client.Link getFeedBatchLink() /*-{
     return this.getFeedBatchLink();
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(ItemsFeedCallback callback) {
     this.get(callback);
@@ -66,9 +71,11 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
    * Inserts a new items entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertItemsEntry(ItemsEntry entry, ItemsEntryCallback callback) {
+  public final void insertItemsEntry(ItemsEntry entry,
+      ItemsEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 
@@ -83,9 +90,11 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
   }-*/;
 
   /**
-   * Sets the attributes. The parameter is a map from attribute name to the associated Attribute class.
+   * Sets the attributes. The parameter is a map from attribute name to the
+   * associated Attribute class.
    * 
-   * @param attributes Attributes, where each attribute is added using setAttribute().
+   * @param attributes Attributes, where each attribute is added using
+   * setAttribute().
    */
   public final native void setAttributes(JavaScriptObject attributes) /*-{
     this.setAttributes(attributes);

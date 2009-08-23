@@ -31,7 +31,8 @@ public class CallbackHelper {
    * @param cb The callback object
    * @param error The error object
    */
-  public static <T extends JavaScriptObject> void handleFailureCallback(Callback<T> cb, com.google.gwt.gdata.client.Error error) {
+  public static <T extends JavaScriptObject> void handleFailureCallback(
+      Callback<T> cb, com.google.gwt.gdata.client.Error error) {
     UncaughtExceptionHandler handler = GWT.getUncaughtExceptionHandler();
     if (handler != null) {
       try {
@@ -52,7 +53,8 @@ public class CallbackHelper {
    * @param cb The callback object
    * @param arg The callback's return value
    */
-  public static <T extends JavaScriptObject> void handleSuccessCallback(Callback<T> cb, T arg) {
+  public static <T extends JavaScriptObject> void handleSuccessCallback(
+      Callback<T> cb, T arg) {
     UncaughtExceptionHandler handler = GWT.getUncaughtExceptionHandler();
     if (handler != null) {
       try {

@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.finance;
 /**
  * Describes a Finance position feed.
  */
-public class PositionFeed extends com.google.gwt.gdata.client.Feed<PositionEntry> {
+public class PositionFeed
+    extends com.google.gwt.gdata.client.Feed<PositionEntry> {
 
   /**
    * Constructs a Finance position feed.
@@ -33,9 +34,11 @@ public class PositionFeed extends com.google.gwt.gdata.client.Feed<PositionEntry
   protected PositionFeed() { }
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(PositionFeedCallback callback) {
     this.get(callback);
@@ -45,9 +48,11 @@ public class PositionFeed extends com.google.gwt.gdata.client.Feed<PositionEntry
    * Inserts a new position entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertPositionEntry(PositionEntry entry, PositionEntryCallback callback) {
+  public final void insertPositionEntry(PositionEntry entry,
+      PositionEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

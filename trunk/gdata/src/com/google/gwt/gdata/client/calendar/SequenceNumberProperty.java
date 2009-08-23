@@ -19,7 +19,9 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Describes sequence number of an event. The sequence number is a non-negative integer and is described in section 4.8.7.4 of RFC 2445. Currently this is only a read-only entry.
+ * Describes sequence number of an event. The sequence number is a non-negative
+ * integer and is described in section 4.8.7.4 of RFC 2445. Currently this is
+ * only a read-only entry.
  */
 public class SequenceNumberProperty extends JavaScriptObject {
 

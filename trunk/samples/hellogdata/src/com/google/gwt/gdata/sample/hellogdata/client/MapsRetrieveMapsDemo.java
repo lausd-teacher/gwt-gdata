@@ -48,7 +48,7 @@ public class MapsRetrieveMapsDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample code uses the maps feed to retrieve a list " +
-            "of all of an authenticated user's saved maps.</p>\n";
+            "of all of an authenticated user's saved maps.</p>";
       }
 
       @Override

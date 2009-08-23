@@ -55,7 +55,8 @@ public class CostBasis extends JavaScriptObject {
   /**
    * Sets the monetary value of the cost basis.
    * 
-   * @param money Monetary value of the cost basis, where each monetary value of the cost basis is added using addMoney().
+   * @param money Monetary value of the cost basis, where each monetary value
+   * of the cost basis is added using addMoney().
    */
   public final native void setMoney(Money[] money) /*-{
     this.setMoney(

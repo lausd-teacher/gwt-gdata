@@ -227,7 +227,8 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Sets the media contents.
    * 
-   * @param contents Media contents, where each media content is added using addContent().
+   * @param contents Media contents, where each media content is added using
+   * addContent().
    */
   public final native void setContents(MediaContent[] contents) /*-{
     this.setContents(
@@ -247,7 +248,8 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Sets the media credits.
    * 
-   * @param credits Media credits, where each media credit is added using addCredit().
+   * @param credits Media credits, where each media credit is added using
+   * addCredit().
    */
   public final native void setCredits(MediaCredit[] credits) /*-{
     this.setCredits(
@@ -294,7 +296,8 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Sets the media ratings.
    * 
-   * @param ratings Media ratings, where each media rating is added using addRating().
+   * @param ratings Media ratings, where each media rating is added using
+   * addRating().
    */
   public final native void setRatings(MediaRating[] ratings) /*-{
     this.setRatings(
@@ -306,7 +309,8 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Sets the media restrictions.
    * 
-   * @param restrictions Media restrictions, where each media restriction is added using addRestriction().
+   * @param restrictions Media restrictions, where each media restriction is
+   * added using addRestriction().
    */
   public final native void setRestrictions(MediaRestriction[] restrictions) /*-{
     this.setRestrictions(
@@ -328,7 +332,8 @@ public class MediaGroup extends JavaScriptObject {
   /**
    * Sets the media thumbnails.
    * 
-   * @param thumbnails Media thumbnails, where each media thumbnail is added using addThumbnail().
+   * @param thumbnails Media thumbnails, where each media thumbnail is added
+   * using addThumbnail().
    */
   public final native void setThumbnails(MediaThumbnail[] thumbnails) /*-{
     this.setThumbnails(

@@ -55,7 +55,7 @@ public class ContactsRetrieveContactGroupMembersDemo extends GDataDemo {
         return "<p>This sample code demonstrates how to retrieve all " +
             "members of a particular group. It first retrieves the " +
             "contact group ID and use it as the query parameter to " +
-            "retrieve all members of that group.</p>\n";
+            "retrieve all members of that group.</p>";
       }
 
       @Override

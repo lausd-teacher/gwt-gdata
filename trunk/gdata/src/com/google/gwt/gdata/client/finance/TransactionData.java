@@ -46,7 +46,8 @@ public class TransactionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the date at which the transaction occurred. This attribute is optional.
+   * Returns the date at which the transaction occurred.
+   * This attribute is optional.
    * 
    * @return Date at which the transaction occurred.
    */
@@ -73,7 +74,8 @@ public class TransactionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the number of shares involved in the transaction. This attribute is optional.
+   * Returns the number of shares involved in the transaction.
+   * This attribute is optional.
    * 
    * @return Number of shares involved in the transaction.
    */
@@ -82,9 +84,11 @@ public class TransactionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the type for the transaction (can be "Buy", "Sell", "Buy to Cover" or "Sell Short"). This attribute is required.
+   * Returns the type for the transaction (can be "Buy", "Sell", "Buy to Cover"
+   * or "Sell Short"). This attribute is required.
    * 
-   * @return Type for the transaction (can be "Buy", "Sell", "Buy to Cover" or "Sell Short").
+   * @return Type for the transaction (can be "Buy", "Sell", "Buy to Cover" or
+   * "Sell Short").
    */
   public final native String getType() /*-{
     return this.getType();
@@ -100,7 +104,8 @@ public class TransactionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the date at which the transaction occurred. This attribute is optional.
+   * Sets the date at which the transaction occurred.
+   * This attribute is optional.
    * 
    * @param date Date at which the transaction occurred.
    */
@@ -111,7 +116,8 @@ public class TransactionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the date at which the transaction occurred. This attribute is optional.
+   * Sets the date at which the transaction occurred.
+   * This attribute is optional.
    * 
    * @param date Date at which the transaction occurred.
    */
@@ -138,7 +144,8 @@ public class TransactionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the number of shares involved in the transaction. This attribute is optional.
+   * Sets the number of shares involved in the transaction.
+   * This attribute is optional.
    * 
    * @param shares Number of shares involved in the transaction.
    */
@@ -147,9 +154,11 @@ public class TransactionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the type for the transaction (can be "Buy", "Sell", "Buy to Cover" or "Sell Short"). This attribute is required.
+   * Sets the type for the transaction (can be "Buy", "Sell", "Buy to Cover" or
+   * "Sell Short"). This attribute is required.
    * 
-   * @param type Type for the transaction (can be "Buy", "Sell", "Buy to Cover" or "Sell Short").
+   * @param type Type for the transaction (can be "Buy", "Sell", "Buy to Cover"
+   * or "Sell Short").
    */
   public final native void setType(String type) /*-{
     this.setType(type);

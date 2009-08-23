@@ -54,7 +54,7 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
         return "<p>This sample code demonstrates how to delete an existing " +
             "item of the authenticated user. It retrieves a list of the " +
             "user's items, and deletes the first item with a title that " +
-            "starts with 'GWT-GoogleBase-Client'.</p>\n";
+            "starts with 'GWT-GoogleBase-Client'.</p>";
       }
 
       @Override

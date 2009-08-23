@@ -59,7 +59,7 @@ public class FinanceCreateTransactionDemo extends GDataDemo {
             "created and its properities (transaction type, etc.) are " +
             "set, then the portfolio feed is queried for a list of the " +
             "user's portfolios. The entry is inserted into the portfolio " +
-            "whose title starts with 'GWT-Finance-Client'.</p>\n";
+            "whose title starts with 'GWT-Finance-Client'.</p>";
       }
 
       @Override

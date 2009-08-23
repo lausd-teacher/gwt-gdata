@@ -20,7 +20,8 @@ package com.google.gwt.gdata.client;
  * Describes an event feed.
  * @param <E> The Entry type.
  */
-public class EventFeed<E extends EventEntry> extends com.google.gwt.gdata.client.Feed<E> {
+public class EventFeed<E extends EventEntry>
+    extends com.google.gwt.gdata.client.Feed<E> {
   
   /**
    * Constructs an event feed.

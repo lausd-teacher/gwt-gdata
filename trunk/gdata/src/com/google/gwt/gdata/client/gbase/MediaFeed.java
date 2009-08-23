@@ -17,7 +17,8 @@
 package com.google.gwt.gdata.client.gbase;
 
 /**
- * Describes a media feed used for managing the media attachments for one Google Base Item.
+ * Describes a media feed used for managing the media attachments for one
+ * Google Base Item.
  */
 public class MediaFeed extends com.google.gwt.gdata.client.Feed<MediaEntry> {
 
@@ -33,9 +34,11 @@ public class MediaFeed extends com.google.gwt.gdata.client.Feed<MediaEntry> {
   protected MediaFeed() { }
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(MediaFeedCallback callback) {
     this.get(callback);
@@ -45,9 +48,11 @@ public class MediaFeed extends com.google.gwt.gdata.client.Feed<MediaEntry> {
    * Inserts a new media entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertMediaEntry(MediaEntry entry, MediaEntryCallback callback) {
+  public final void insertMediaEntry(MediaEntry entry,
+      MediaEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

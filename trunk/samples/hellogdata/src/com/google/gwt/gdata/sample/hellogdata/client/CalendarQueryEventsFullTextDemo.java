@@ -54,7 +54,7 @@ public class CalendarQueryEventsFullTextDemo extends GDataDemo {
             "text query to retrieve events. The full text query serves as " +
             "a filter against all event entries of the private/full feed " +
             "and return those events that contain the specified text in " +
-            "the event title and/or description.</p>\n";
+            "the event title and/or description.</p>";
       }
 
       @Override

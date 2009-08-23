@@ -34,7 +34,8 @@ public class OriginalEvent extends JavaScriptObject {
   protected OriginalEvent() { }
 
   /**
-   * Returns the URL of the original recurring event entry. This attribute is required.
+   * Returns the URL of the original recurring event entry.
+   * This attribute is required.
    * 
    * @return URL of the original recurring event entry.
    */
@@ -43,7 +44,8 @@ public class OriginalEvent extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the event ID of the original recurring event entry. This attribute is required.
+   * Returns the event ID of the original recurring event entry.
+   * This attribute is required.
    * 
    * @return Event ID of the original recurring event entry.
    */
@@ -61,7 +63,8 @@ public class OriginalEvent extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the URL of the original recurring event entry. This attribute is required.
+   * Sets the URL of the original recurring event entry.
+   * This attribute is required.
    * 
    * @param href URL of the original recurring event entry.
    */
@@ -70,7 +73,8 @@ public class OriginalEvent extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the event ID of the original recurring event entry. This attribute is required.
+   * Sets the event ID of the original recurring event entry.
+   * This attribute is required.
    * 
    * @param originalId Event ID of the original recurring event entry.
    */

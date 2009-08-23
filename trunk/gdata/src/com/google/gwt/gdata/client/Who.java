@@ -26,22 +26,27 @@ public class Who extends JavaScriptObject {
   /**
    * A general meeting/event attendee.
    */
-  public static final String REL_EVENT_ATTENDEE = getConstant("REL_EVENT_ATTENDEE");
+  public static final String REL_EVENT_ATTENDEE =
+      getConstant("REL_EVENT_ATTENDEE");
 
   /**
    * Event organizer (an organizer is not necessarily an attendee).
    */
-  public static final String REL_EVENT_ORGANIZER = getConstant("REL_EVENT_ORGANIZER");
+  public static final String REL_EVENT_ORGANIZER =
+      getConstant("REL_EVENT_ORGANIZER");
 
   /**
-   * Performer (similar to speaker, but with more emphasis on art than speech delivery).
+   * Performer (similar to speaker, but with more emphasis on art than speech
+   * delivery).
    */
-  public static final String REL_EVENT_PERFORMER = getConstant("REL_EVENT_PERFORMER");
+  public static final String REL_EVENT_PERFORMER =
+      getConstant("REL_EVENT_PERFORMER");
 
   /**
    * Speaker.
    */
-  public static final String REL_EVENT_SPEAKER = getConstant("REL_EVENT_SPEAKER");
+  public static final String REL_EVENT_SPEAKER =
+      getConstant("REL_EVENT_SPEAKER");
 
   /**
    * Message BCC recipient.
@@ -56,12 +61,14 @@ public class Who extends JavaScriptObject {
   /**
    * Message primary recipient.
    */
-  public static final String REL_MESSAGE_FROM = getConstant("REL_MESSAGE_FROM");
+  public static final String REL_MESSAGE_FROM =
+      getConstant("REL_MESSAGE_FROM");
 
   /**
    * Intended recipient of a reply message.
    */
-  public static final String REL_MESSAGE_REPLY_TO = getConstant("REL_MESSAGE_REPLY_TO");
+  public static final String REL_MESSAGE_REPLY_TO =
+      getConstant("REL_MESSAGE_REPLY_TO");
 
   /**
    * Message (email or IM) sender.
@@ -71,7 +78,8 @@ public class Who extends JavaScriptObject {
   /**
    * Person to whom task is assigned.
    */
-  public static final String REL_TASK_ASSIGNED_TO = getConstant("REL_TASK_ASSIGNED_TO");
+  public static final String REL_TASK_ASSIGNED_TO =
+      getConstant("REL_TASK_ASSIGNED_TO");
 
   /**
    * Constructs a person description.
@@ -125,18 +133,22 @@ public class Who extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the relationship between the containing entity and the contained person. This attribute is optional.
+   * Returns the relationship between the containing entity and the contained 
+   * erson. This attribute is optional.
    * 
-   * @return Relationship between the containing entity and the contained person.
+   * @return Relationship between the containing entity and the contained
+   * person.
    */
   public final native String getRel() /*-{
     return this.getRel();
   }-*/;
 
   /**
-   * Returns the simple string value that can be used as a representation of this person. This attribute is optional.
+   * Returns the simple string value that can be used as a representation of
+   * this person. This attribute is optional.
    * 
-   * @return Simple string value that can be used as a representation of this person.
+   * @return Simple string value that can be used as a representation of this
+   * person.
    */
   public final native String getValueString() /*-{
     return this.getValueString();
@@ -147,7 +159,8 @@ public class Who extends JavaScriptObject {
    * 
    * @param attendeeStatus Event attendee status.
    */
-  public final native void setAttendeeStatus(AttendeeStatus attendeeStatus) /*-{
+  public final native void setAttendeeStatus(
+      AttendeeStatus attendeeStatus) /*-{
     this.setAttendeeStatus(attendeeStatus);
   }-*/;
 
@@ -187,18 +200,22 @@ public class Who extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the relationship between the containing entity and the contained person. This attribute is optional.
+   * Sets the relationship between the containing entity and the contained
+   * person. This attribute is optional.
    * 
-   * @param rel Relationship between the containing entity and the contained person.
+   * @param rel Relationship between the containing entity and the contained
+   * person.
    */
   public final native void setRel(String rel) /*-{
     this.setRel(rel);
   }-*/;
 
   /**
-   * Sets the simple string value that can be used as a representation of this person. This attribute is optional.
+   * Sets the simple string value that can be used as a representation of this
+   * person. This attribute is optional.
    * 
-   * @param valueString Simple string value that can be used as a representation of this person.
+   * @param valueString Simple string value that can be used as a
+   * representation of this person.
    */
   public final native void setValueString(String valueString) /*-{
     this.setValueString(valueString);

@@ -33,18 +33,22 @@ public class LocalesFeed extends com.google.gwt.gdata.client.Feed<LocalesEntry> 
   protected LocalesFeed() { }
 
   /**
-   * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * Returns the link that provides the URI that can be used to batch
+   * operations to query, insert, update and delete entries on this feed.
    * 
-   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * @return Link that provides the URI that can be used to batch operations to
+   * query, insert, update and delete entries on this feed.
    */
   public final native com.google.gwt.gdata.client.Link getFeedBatchLink() /*-{
     return this.getFeedBatchLink();
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(LocalesFeedCallback callback) {
     this.get(callback);
@@ -54,9 +58,11 @@ public class LocalesFeed extends com.google.gwt.gdata.client.Feed<LocalesEntry> 
    * Inserts a new locales entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertLocalesEntry(LocalesEntry entry, LocalesEntryCallback callback) {
+  public final void insertLocalesEntry(LocalesEntry entry,
+      LocalesEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

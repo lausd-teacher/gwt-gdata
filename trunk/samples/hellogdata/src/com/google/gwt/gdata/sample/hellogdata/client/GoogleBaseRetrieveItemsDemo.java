@@ -50,7 +50,7 @@ public class GoogleBaseRetrieveItemsDemo extends GDataDemo {
       public String getDescription() {
         return "<p>This sample code uses the items feed to retrieve a list " +
             "of all of an authenticated user's items. The title of each " +
-            "item entry is printed.</p>\n";
+            "item entry is printed.</p>";
       }
 
       @Override

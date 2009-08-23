@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.opensearch;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Describes the number of items that will be returned per page for paged feeds.
+ * Describes the number of items that will be returned per page for paged
+ * feeds.
  */
 public class ItemsPerPage extends JavaScriptObject {
 

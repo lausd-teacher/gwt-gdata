@@ -49,7 +49,7 @@ public class FinanceRetrievePortfolioDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample code requests a specific portfolio entry " +
-            "as specified in the request URL.</p>\n";
+            "as specified in the request URL.</p>";
       }
 
       @Override

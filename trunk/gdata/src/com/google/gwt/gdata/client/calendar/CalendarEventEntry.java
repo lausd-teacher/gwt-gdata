@@ -39,14 +39,16 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @param extendedProperty Calendar extended property to add.
    */
-  public final native void addExtendedProperty(CalendarExtendedProperty extendedProperty) /*-{
+  public final native void addExtendedProperty(
+      CalendarExtendedProperty extendedProperty) /*-{
     this.addExtendedProperty(extendedProperty);
   }-*/;
 
   /**
    * Deletes the entry from the feed.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteEntry(CalendarEventEntryCallback callback) {
     this.delete(callback);
@@ -84,7 +86,8 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @return Guests can invite others property.
    */
-  public final native GuestsCanInviteOthersProperty getGuestsCanInviteOthers() /*-{
+  public final native GuestsCanInviteOthersProperty
+      getGuestsCanInviteOthers() /*-{
     return this.getGuestsCanInviteOthers();
   }-*/;
 
@@ -107,9 +110,11 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Returns the link that provides the URI of an alternate format of the entry's or feed's contents.
+   * Returns the link that provides the URI of an alternate format of the
+   * entry's or feed's contents.
    * 
-   * @return Link that provides the URI of an alternate format of the entry's or feed's contents.
+   * @return Link that provides the URI of an alternate format of the entry's
+   * or feed's contents.
    */
   public final native CalendarLink getHtmlLink() /*-{
     return this.getHtmlLink();
@@ -134,12 +139,15 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    * @return current representation of the entry.
    */
-  public final CalendarEventEntry getSelf(CalendarEventEntryCallback callback) {
+  public final CalendarEventEntry getSelf(
+      CalendarEventEntryCallback callback) {
     return this.get(callback);
   }
 
@@ -148,7 +156,8 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @return Send event notifications property.
    */
-  public final native SendEventNotificationsProperty getSendEventNotifications() /*-{
+  public final native SendEventNotificationsProperty
+      getSendEventNotifications() /*-{
     return this.getSendEventNotifications();
   }-*/;
 
@@ -162,11 +171,13 @@ public class CalendarEventEntry extends EventEntry {
   }-*/;
 
   /**
-   * Returns the suppress reply notifications property. This element is optional.
+   * Returns the suppress reply notifications property.
+   * This element is optional.
    * 
    * @return Suppress reply notifications property.
    */
-  public final native SuppressReplyNotificationsProperty getSuppressReplyNotifications() /*-{
+  public final native SuppressReplyNotificationsProperty
+      getSuppressReplyNotifications() /*-{
     return this.getSuppressReplyNotifications();
   }-*/;
 
@@ -218,16 +229,19 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @param anyoneCanAddSelf Anyone can add self property.
    */
-  public final native void setAnyoneCanAddSelf(AnyoneCanAddSelfProperty anyoneCanAddSelf) /*-{
+  public final native void setAnyoneCanAddSelf(
+      AnyoneCanAddSelfProperty anyoneCanAddSelf) /*-{
     this.setAnyoneCanAddSelf(anyoneCanAddSelf);
   }-*/;
   
   /**
    * Sets the calendar extended properties.
    * 
-   * @param extendedProperties Calendar extended properties, where each calendar extended property is added using addExtendedProperty().
+   * @param extendedProperties Calendar extended properties, where each
+   * calendar extended property is added using addExtendedProperty().
    */
-  public final native void setExtendedProperties(CalendarExtendedProperty[] extendedProperties) /*-{
+  public final native void setExtendedProperties(
+      CalendarExtendedProperty[] extendedProperties) /*-{
     this.setExtendedProperties(
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(extendedProperties)
     );
@@ -247,7 +261,8 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @param guestsCanInviteOthers Guests can invite others property.
    */
-  public final native void setGuestsCanInviteOthers(GuestsCanInviteOthersProperty guestsCanInviteOthers) /*-{
+  public final native void setGuestsCanInviteOthers(
+      GuestsCanInviteOthersProperty guestsCanInviteOthers) /*-{
     this.setGuestsCanInviteOthers(guestsCanInviteOthers);
   }-*/;
 
@@ -256,7 +271,8 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @param guestsCanModify Guests can modify property.
    */
-  public final native void setGuestsCanModify(GuestsCanModifyProperty guestsCanModify) /*-{
+  public final native void setGuestsCanModify(
+      GuestsCanModifyProperty guestsCanModify) /*-{
     this.setGuestsCanModify(guestsCanModify);
   }-*/;
 
@@ -265,7 +281,8 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @param guestsCanSeeGuests Guests can see guests property.
    */
-  public final native void setGuestsCanSeeGuests(GuestsCanSeeGuestsProperty guestsCanSeeGuests) /*-{
+  public final native void setGuestsCanSeeGuests(
+      GuestsCanSeeGuestsProperty guestsCanSeeGuests) /*-{
     this.setGuestsCanSeeGuests(guestsCanSeeGuests);
   }-*/;
 
@@ -292,7 +309,8 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @param sendEventNotifications Send event notifications property.
    */
-  public final native void setSendEventNotifications(SendEventNotificationsProperty sendEventNotifications) /*-{
+  public final native void setSendEventNotifications(
+      SendEventNotificationsProperty sendEventNotifications) /*-{
     this.setSendEventNotifications(sendEventNotifications);
   }-*/;
 
@@ -310,7 +328,8 @@ public class CalendarEventEntry extends EventEntry {
    * 
    * @param suppressReplyNotifications Suppress reply notifications property.
    */
-  public final native void setSuppressReplyNotifications(SuppressReplyNotificationsProperty suppressReplyNotifications) /*-{
+  public final native void setSuppressReplyNotifications(
+      SuppressReplyNotificationsProperty suppressReplyNotifications) /*-{
     this.setSuppressReplyNotifications(suppressReplyNotifications);
   }-*/;
 
@@ -345,7 +364,8 @@ public class CalendarEventEntry extends EventEntry {
   /**
    * Updated the entry in the feed by sending the representation of this entry.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void updateEntry(CalendarEventEntryCallback callback) {
     this.update(callback);

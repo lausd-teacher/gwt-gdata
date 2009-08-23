@@ -36,7 +36,8 @@ public class FeedLink<F extends Feed> extends JavaScriptObject {
   protected FeedLink() { }
 
   /**
-   * Returns the hint at the number of entries in the feed. This attribute is optional.
+   * Returns the hint at the number of entries in the feed.
+   * This attribute is optional.
    * 
    * @return Hint at the number of entries in the feed.
    */
@@ -63,7 +64,8 @@ public class FeedLink<F extends Feed> extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns whether the contained feed is read-only. This attribute is optional.
+   * Returns whether the contained feed is read-only.
+   * This attribute is optional.
    * 
    * @return Whether the contained feed is read-only.
    */
@@ -81,7 +83,8 @@ public class FeedLink<F extends Feed> extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the hint at the number of entries in the feed. This attribute is optional.
+   * Sets the hint at the number of entries in the feed.
+   * This attribute is optional.
    * 
    * @param countHint Hint at the number of entries in the feed.
    */
@@ -108,7 +111,8 @@ public class FeedLink<F extends Feed> extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether the contained feed is read-only. This attribute is optional.
+   * Sets whether the contained feed is read-only.
+   * This attribute is optional.
    * 
    * @param readOnly Whether the contained feed is read-only.
    */

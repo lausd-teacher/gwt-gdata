@@ -26,7 +26,8 @@ import java.util.Date;
 public class Reminder extends JavaScriptObject {
 
   /**
-   * Causes an alert to appear when a user is viewing the calendar in a browser.
+   * Causes an alert to appear when a user is viewing the calendar in a
+   * browser.
    */
   public static final String METHOD_ALERT = getConstant("METHOD_ALERT");
 
@@ -74,7 +75,8 @@ public class Reminder extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the number of days before the start time. This attribute is optional.
+   * Returns the number of days before the start time.
+   * This attribute is optional.
    * 
    * @return Number of days before the start time.
    */
@@ -83,7 +85,8 @@ public class Reminder extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the number of hours before the start time. This attribute is optional.
+   * Returns the number of hours before the start time.
+   * This attribute is optional.
    * 
    * @return Number of hours before the start time.
    */
@@ -101,7 +104,8 @@ public class Reminder extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the number of minute before the start times. This attribute is optional.
+   * Returns the number of minute before the start times.
+   * This attribute is optional.
    * 
    * @return Number of minute before the start times.
    */
@@ -131,7 +135,8 @@ public class Reminder extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the number of days before the start time. This attribute is optional.
+   * Sets the number of days before the start time.
+   * This attribute is optional.
    * 
    * @param days Number of days before the start time.
    */
@@ -140,7 +145,8 @@ public class Reminder extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the number of hours before the start time. This attribute is optional.
+   * Sets the number of hours before the start time.
+   * This attribute is optional.
    * 
    * @param hours Number of hours before the start time.
    */
@@ -158,7 +164,8 @@ public class Reminder extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the number of minute before the start times. This attribute is optional.
+   * Sets the number of minute before the start times.
+   * This attribute is optional.
    * 
    * @param minutes Number of minute before the start times.
    */

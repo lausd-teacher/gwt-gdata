@@ -22,17 +22,20 @@ package com.google.gwt.gdata.client;
 public class Link extends com.google.gwt.gdata.client.atom.Link {
 
   /**
-   * Link that provides the URI that can be used to post new entries to the feed.
+   * Link that provides the URI that can be used to post new entries to the
+   * feed.
    */
   public static final String REL_ENTRY_POST = getConstant("REL_ENTRY_POST");
 
   /**
-   * Link that provides the URI of the full feed (without any query parameters).
+   * Link that provides the URI of the full feed
+   * (without any query parameters).
    */
   public static final String REL_FEED = getConstant("REL_FEED");
 
   /**
-   * Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * Link that provides the URI that can be used to batch operations to query,
+   * insert, update and delete entries on this feed.
    */
   public static final String REL_FEED_BATCH = getConstant("REL_FEED_BATCH");
 

@@ -43,7 +43,8 @@ public class MediaPlayer extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the url of the player console that plays the media. This attribute is required.
+   * Returns the url of the player console that plays the media.
+   * This attribute is required.
    * 
    * @return Url of the player console that plays the media.
    */
@@ -70,7 +71,8 @@ public class MediaPlayer extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the url of the player console that plays the media. This attribute is required.
+   * Sets the url of the player console that plays the media.
+   * This attribute is required.
    * 
    * @param url Url of the player console that plays the media.
    */

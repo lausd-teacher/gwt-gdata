@@ -52,7 +52,8 @@ public class MediaCategory extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the URI that identifies the categorization scheme. This attribute is optional.
+   * Returns the URI that identifies the categorization scheme.
+   * This attribute is optional.
    * 
    * @return URI that identifies the categorization scheme.
    */
@@ -80,7 +81,8 @@ public class MediaCategory extends JavaScriptObject {
 
 
   /**
-   * Sets the URI that identifies the categorization scheme. This attribute is optional.
+   * Sets the URI that identifies the categorization scheme.
+   * This attribute is optional.
    * 
    * @param scheme URI that identifies the categorization scheme.
    */

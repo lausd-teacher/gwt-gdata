@@ -93,7 +93,8 @@ public class Collection extends JavaScriptObject {
   /**
    * Sets the accept elements.
    * 
-   * @param accepts Accept elements, where each accept element is added using addAccept().
+   * @param accepts Accept elements, where each accept element is added using
+   * addAccept().
    */
   public final native void setAccepts(Accept[] accepts) /*-{
     this.setAccepts(
@@ -104,7 +105,8 @@ public class Collection extends JavaScriptObject {
   /**
    * Sets the app categories documents.
    * 
-   * @param categorieses App categories documents, where each app categories document is added using addCategories().
+   * @param categorieses App categories documents, where each app categories
+   * document is added using addCategories().
    */
   public final native void setCategorieses(Categories[] categorieses) /*-{
     this.setCategorieses(

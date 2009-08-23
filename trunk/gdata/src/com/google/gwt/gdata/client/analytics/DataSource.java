@@ -83,7 +83,8 @@ public class DataSource extends JavaScriptObject {
   /**
    * Sets the properties.
    * 
-   * @param properties Properties, where each property is added using addProperty().
+   * @param properties Properties, where each property is added using
+   * addProperty().
    */
   public final native void setProperties(Property[] properties) /*-{
     this.setProperties(

@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client;
 /**
  * Describes an entry used by a recurrence exception entry link.
  */
-public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry {
+public class RecurrenceExceptionEntry
+    extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Constructs a recurrence exception entry.
@@ -178,7 +179,8 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
   /**
    * Sets the time period descriptions.
    * 
-   * @param when Time period descriptions, where each time period description is added using addWhen().
+   * @param when Time period descriptions, where each time period description
+   * is added using addWhen().
    */
   public final native void setWhen(When[] when) /*-{
     this.setWhen(
@@ -189,7 +191,8 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
   /**
    * Sets the place descriptions.
    * 
-   * @param where Place descriptions, where each place description is added using addWhere().
+   * @param where Place descriptions, where each place description is added
+   * using addWhere().
    */
   public final native void setWhere(Where[] where) /*-{
     this.setWhere(
@@ -200,7 +203,8 @@ public class RecurrenceExceptionEntry extends com.google.gwt.gdata.client.Entry 
   /**
    * Sets the person descriptions.
    * 
-   * @param who Person descriptions, where each person description is added using addWho().
+   * @param who Person descriptions, where each person description is added
+   * using addWho().
    */
   public final native void setWho(Who[] who) /*-{
     this.setWho(

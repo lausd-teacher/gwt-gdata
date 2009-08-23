@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Resource ID is the unique identifier of an entry within a given scope implied from the entry type.
+ * Resource ID is the unique identifier of an entry within a given scope
+ * implied from the entry type.
  */
 public class ResourceId extends JavaScriptObject {
 

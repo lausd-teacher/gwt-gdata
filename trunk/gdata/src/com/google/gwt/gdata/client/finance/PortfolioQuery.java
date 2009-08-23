@@ -36,9 +36,11 @@ public class PortfolioQuery extends Query {
   protected PortfolioQuery() { }
 
   /**
-   * Returns the flag indicating whether returns and performance stats should be included in the portfolio and position feed entries.
+   * Returns the flag indicating whether returns and performance stats should
+   * be included in the portfolio and position feed entries.
    * 
-   * @return Flag indicating whether returns and performance stats should be included in the portfolio and position feed entries.
+   * @return Flag indicating whether returns and performance stats should be
+   * included in the portfolio and position feed entries.
    */
   public final native boolean getIncludeReturns() /*-{
     return this.getIncludeReturns();
@@ -54,16 +56,20 @@ public class PortfolioQuery extends Query {
   }-*/;
 
   /**
-   * Sets the flag indicating whether returns and performance stats should be included in the portfolio and position feed entries. The default value is false.
+   * Sets the flag indicating whether returns and performance stats should be
+   * included in the portfolio and position feed entries.
+   * The default value is false.
    * 
-   * @param includeReturns Flag indicating whether returns and performance stats should be included in the portfolio and position feed entries.
+   * @param includeReturns Flag indicating whether returns and performance
+   * stats should be included in the portfolio and position feed entries.
    */
   public final native void setIncludeReturns(boolean includeReturns) /*-{
     this.setIncludeReturns(includeReturns);
   }-*/;
 
   /**
-   * Sets the flag to inline positions under the portfolio feed. The default value is false.
+   * Sets the flag to inline positions under the portfolio feed.
+   * The default value is false.
    * 
    * @param inlinePositions Flag to inline positions under the portfolio feed.
    */

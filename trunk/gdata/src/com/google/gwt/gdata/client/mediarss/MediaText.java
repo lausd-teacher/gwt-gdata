@@ -48,7 +48,8 @@ public class MediaText extends JavaScriptObject {
   protected MediaText() { }
 
   /**
-   * Returns the text transcript, closed captioning, or lyrics. This attribute is optional.
+   * Returns the text transcript, closed captioning, or lyrics.
+   * This attribute is optional.
    * 
    * @return Text transcript, closed captioning, or lyrics.
    */
@@ -57,7 +58,8 @@ public class MediaText extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the end time that the text is relevant. This attribute is optional.
+   * Returns the end time that the text is relevant.
+   * This attribute is optional.
    * 
    * @return End time that the text is relevant.
    */
@@ -75,7 +77,8 @@ public class MediaText extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the start time offset when the text starts. This attribute is optional.
+   * Returns the start time offset when the text starts.
+   * This attribute is optional.
    * 
    * @return Start time offset when the text starts.
    */
@@ -84,7 +87,8 @@ public class MediaText extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the type of text embedded, either plain or html. This attribute is optional.
+   * Returns the type of text embedded, either plain or html.
+   * This attribute is optional.
    * 
    * @return Type of text embedded, either plain or html.
    */
@@ -93,14 +97,16 @@ public class MediaText extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the text transcript, closed captioning, or lyrics. This attribute is optional.
+   * Sets the text transcript, closed captioning, or lyrics.
+   * This attribute is optional.
    */
   public final native void setContent() /*-{
     this.setContent();
   }-*/;
 
   /**
-   * Sets the text transcript, closed captioning, or lyrics. This attribute is optional.
+   * Sets the text transcript, closed captioning, or lyrics.
+   * This attribute is optional.
    * 
    * @param content Text transcript, closed captioning, or lyrics.
    */
@@ -127,7 +133,8 @@ public class MediaText extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the start time offset when the text starts. This attribute is optional.
+   * Sets the start time offset when the text starts.
+   * This attribute is optional.
    * 
    * @param start Start time offset when the text starts.
    */
@@ -136,7 +143,8 @@ public class MediaText extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the type of text embedded, either plain or html. This attribute is optional.
+   * Sets the type of text embedded, either plain or html.
+   * This attribute is optional.
    * 
    * @param type Type of text embedded, either plain or html.
    */

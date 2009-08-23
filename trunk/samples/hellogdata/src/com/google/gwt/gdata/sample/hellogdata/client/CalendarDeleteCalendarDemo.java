@@ -55,7 +55,7 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
             "calendar of the authenticated user. It retrieves a list of " +
             "the user's own calendars, and delete the first calendar with " +
             "title that starts with 'GWT-Calendar-Client'. The owncalendars " +
-            "feed is used for calendar deletion.</p>\n";
+            "feed is used for calendar deletion.</p>";
       }
 
       @Override

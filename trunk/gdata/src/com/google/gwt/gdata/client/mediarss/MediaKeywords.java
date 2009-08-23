@@ -34,7 +34,8 @@ public class MediaKeywords extends JavaScriptObject {
   protected MediaKeywords() { }
 
   /**
-   * Returns the highly relevant keywords describing the media object. This attribute is optional.
+   * Returns the highly relevant keywords describing the media object.
+   * This attribute is optional.
    * 
    * @return Highly relevant keywords describing the media object.
    */
@@ -43,7 +44,8 @@ public class MediaKeywords extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the highly relevant keywords describing the media object. This attribute is optional.
+   * Sets the highly relevant keywords describing the media object.
+   * This attribute is optional.
    * 
    * @param content Highly relevant keywords describing the media object.
    */

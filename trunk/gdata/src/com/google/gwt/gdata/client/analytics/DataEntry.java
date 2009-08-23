@@ -52,7 +52,8 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Deletes the entry from the feed.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteEntry(DataEntryCallback callback) {
     this.delete(callback);
@@ -97,7 +98,8 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
   
   /**
-   * Returns the value of the dimension or metric with the given name in this entry.
+   * Returns the value of the dimension or metric with the given name in this
+   * entry.
    * 
    * @param name The name of the dimension or metric to retrieve.
    * @return The value of the named dimension or metric.
@@ -107,9 +109,11 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    * @return current representation of the entry.
    */
   public final DataEntry getSelf(DataEntryCallback callback) {
@@ -117,7 +121,8 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry {
   }
 
   /**
-   * Returns the value of the dimension or metric with the given name in this entry.
+   * Returns the value of the dimension or metric with the given name in this
+   * entry.
    * 
    * @param name The name of the dimension or metric to retrieve.
    * @return The value of the named dimension or metric.
@@ -129,7 +134,8 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the dimensions.
    * 
-   * @param dimensions Dimensions, where each dimension is added using addDimension().
+   * @param dimensions Dimensions, where each dimension is added using
+   * addDimension().
    */
   public final native void setDimensions(Dimension[] dimensions) /*-{
     this.setDimensions(
@@ -151,7 +157,8 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Updated the entry in the feed by sending the representation of this entry.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void updateEntry(DataEntryCallback callback) {
     this.update(callback);

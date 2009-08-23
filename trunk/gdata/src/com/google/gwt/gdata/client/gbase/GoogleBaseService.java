@@ -34,7 +34,8 @@ public class GoogleBaseService extends GoogleService {
    * @param applicationName Name of application (used for tracking).
    * @return A GoogleBaseService object.
    */
-  public static native GoogleBaseService newInstance(String applicationName) /*-{
+  public static native GoogleBaseService newInstance(
+      String applicationName) /*-{
     return new $wnd.google.gdata.gbase.GoogleBaseService(applicationName);
   }-*/;
 
@@ -48,9 +49,11 @@ public class GoogleBaseService extends GoogleService {
    * Deletes an attributes entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deleteAttributesEntry(String uri, AttributesEntryCallback callback) {
+  public final void deleteAttributesEntry(String uri,
+      AttributesEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -58,7 +61,8 @@ public class GoogleBaseService extends GoogleService {
    * Deletes an items entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteItemsEntry(String uri, ItemsEntryCallback callback) {
     this.deleteEntry(uri, callback);
@@ -68,9 +72,11 @@ public class GoogleBaseService extends GoogleService {
    * Deletes an item types entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deleteItemTypesEntry(String uri, ItemTypesEntryCallback callback) {
+  public final void deleteItemTypesEntry(String uri,
+      ItemTypesEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -78,7 +84,8 @@ public class GoogleBaseService extends GoogleService {
    * Deletes a media entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteMediaEntry(String uri, MediaEntryCallback callback) {
     this.deleteEntry(uri, callback);
@@ -88,9 +95,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves a Google Base attribute entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getAttributesEntry(String uri, AttributesEntryCallback callback) {
+  public final void getAttributesEntry(String uri,
+      AttributesEntryCallback callback) {
     this.getEntry(uri, callback, "getAttributesEntry");
   }
 
@@ -98,9 +107,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves the feed of public attributes.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getAttributesFeed(AttributesQuery query, AttributesFeedCallback callback) {
+  public final void getAttributesFeed(AttributesQuery query,
+      AttributesFeedCallback callback) {
     this.getFeed(query, callback, "getAttributesFeed");
   }
 
@@ -108,9 +119,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves the feed of public attributes.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getAttributesFeed(String uri, AttributesFeedCallback callback) {
+  public final void getAttributesFeed(String uri,
+      AttributesFeedCallback callback) {
     this.getFeed(uri, callback, "getAttributesFeed");
   }
 
@@ -118,7 +131,8 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves a Google Base item entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getItemsEntry(String uri, ItemsEntryCallback callback) {
     this.getEntry(uri, callback, "getItemsEntry");
@@ -128,9 +142,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves the feed of a user's private items.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getItemsFeed(ItemsQuery query, ItemsFeedCallback callback) {
+  public final void getItemsFeed(ItemsQuery query,
+      ItemsFeedCallback callback) {
     this.getFeed(query, callback, "getItemsFeed");
   }
 
@@ -138,9 +154,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves the feed of a user's private items.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getItemsFeed(String uri, ItemsFeedCallback callback) {
+  public final void getItemsFeed(String uri,
+      ItemsFeedCallback callback) {
     this.getFeed(uri, callback, "getItemsFeed");
   }
 
@@ -148,9 +166,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves a Google Base item type entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getItemTypesEntry(String uri, ItemTypesEntryCallback callback) {
+  public final void getItemTypesEntry(String uri,
+      ItemTypesEntryCallback callback) {
     this.getEntry(uri, callback, "getItemTypesEntry");
   }
 
@@ -158,9 +178,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves the feed of public item types.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getItemTypesFeed(ItemTypesQuery query, ItemTypesFeedCallback callback) {
+  public final void getItemTypesFeed(ItemTypesQuery query,
+      ItemTypesFeedCallback callback) {
     this.getFeed(query, callback, "getItemTypesFeed");
   }
 
@@ -168,9 +190,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves the feed of public item types.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getItemTypesFeed(String uri, ItemTypesFeedCallback callback) {
+  public final void getItemTypesFeed(String uri,
+      ItemTypesFeedCallback callback) {
     this.getFeed(uri, callback, "getItemTypesFeed");
   }
 
@@ -178,9 +202,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves a Google Base locale entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getLocalesEntry(String uri, LocalesEntryCallback callback) {
+  public final void getLocalesEntry(String uri,
+      LocalesEntryCallback callback) {
     this.getEntry(uri, callback, "getLocalesEntry");
   }
 
@@ -188,9 +214,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves the feed of locales.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getLocalesFeed(LocalesQuery query, LocalesFeedCallback callback) {
+  public final void getLocalesFeed(LocalesQuery query,
+      LocalesFeedCallback callback) {
     this.getFeed(query, callback, "getLocalesFeed");
   }
 
@@ -198,9 +226,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves the feed of locales.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getLocalesFeed(String uri, LocalesFeedCallback callback) {
+  public final void getLocalesFeed(String uri,
+      LocalesFeedCallback callback) {
     this.getFeed(uri, callback, "getLocalesFeed");
   }
 
@@ -208,17 +238,21 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves a Google Base media entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getMediaEntry(String uri, MediaEntryCallback callback) {
+  public final void getMediaEntry(String uri,
+      MediaEntryCallback callback) {
     this.getEntry(uri, callback, "getMediaEntry");
   }
 
   /**
-   * Retrieves the media feed used for managing the media attachments for one Google Base Item.
+   * Retrieves the media feed used for managing the media attachments for one
+   * Google Base Item.
    * 
    * @param uri URI of feed.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getMediaFeed(String uri, MediaFeedCallback callback) {
     this.getFeed(uri, callback, "getMediaFeed");
@@ -228,9 +262,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves a Google Base snippet entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getSnippetsEntry(String uri, SnippetsEntryCallback callback) {
+  public final void getSnippetsEntry(String uri,
+      SnippetsEntryCallback callback) {
     this.getEntry(uri, callback, "getSnippetsEntry");
   }
 
@@ -238,9 +274,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves the feed of snippets of public items.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getSnippetsFeed(SnippetsQuery query, SnippetsFeedCallback callback) {
+  public final void getSnippetsFeed(SnippetsQuery query,
+      SnippetsFeedCallback callback) {
     this.getFeed(query, callback, "getSnippetsFeed");
   }
 
@@ -248,9 +286,11 @@ public class GoogleBaseService extends GoogleService {
    * Retrieves the feed of snippets of public items.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getSnippetsFeed(String uri, SnippetsFeedCallback callback) {
+  public final void getSnippetsFeed(String uri,
+      SnippetsFeedCallback callback) {
     this.getFeed(uri, callback, "getSnippetsFeed");
   }
 
@@ -259,9 +299,11 @@ public class GoogleBaseService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertAttributesEntry(String uri, AttributesEntry entry, AttributesEntryCallback callback) {
+  public final void insertAttributesEntry(String uri,
+      AttributesEntry entry, AttributesEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -270,9 +312,11 @@ public class GoogleBaseService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertItemsEntry(String uri, ItemsEntry entry, ItemsEntryCallback callback) {
+  public final void insertItemsEntry(String uri, ItemsEntry entry,
+      ItemsEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -281,9 +325,11 @@ public class GoogleBaseService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertItemTypesEntry(String uri, ItemTypesEntry entry, ItemTypesEntryCallback callback) {
+  public final void insertItemTypesEntry(String uri, ItemTypesEntry entry,
+      ItemTypesEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -292,9 +338,11 @@ public class GoogleBaseService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertMediaEntry(String uri, MediaEntry entry, MediaEntryCallback callback) {
+  public final void insertMediaEntry(String uri, MediaEntry entry,
+      MediaEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -303,9 +351,11 @@ public class GoogleBaseService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateAttributesEntry(String uri, AttributesEntry entry, AttributesEntryCallback callback) {
+  public final void updateAttributesEntry(String uri, AttributesEntry entry,
+      AttributesEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 
@@ -314,9 +364,11 @@ public class GoogleBaseService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateItemsEntry(String uri, ItemsEntry entry, ItemsEntryCallback callback) {
+  public final void updateItemsEntry(String uri, ItemsEntry entry,
+      ItemsEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 
@@ -325,9 +377,11 @@ public class GoogleBaseService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateItemTypesEntry(String uri, ItemTypesEntry entry, ItemTypesEntryCallback callback) {
+  public final void updateItemTypesEntry(String uri, ItemTypesEntry entry,
+      ItemTypesEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 
@@ -336,9 +390,11 @@ public class GoogleBaseService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateMediaEntry(String uri, MediaEntry entry, MediaEntryCallback callback) {
+  public final void updateMediaEntry(String uri, MediaEntry entry,
+      MediaEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 

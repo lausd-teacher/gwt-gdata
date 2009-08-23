@@ -31,12 +31,14 @@ public class Where extends JavaScriptObject {
   /**
    * Secondary location.
    */
-  public static final String REL_EVENT_ALTERNATE = getConstant("REL_EVENT_ALTERNATE");
+  public static final String REL_EVENT_ALTERNATE =
+      getConstant("REL_EVENT_ALTERNATE");
 
   /**
    * Nearby parking lot.
    */
-  public static final String REL_EVENT_PARKING = getConstant("REL_EVENT_PARKING");
+  public static final String REL_EVENT_PARKING =
+      getConstant("REL_EVENT_PARKING");
 
   /**
    * Constructs a place description.
@@ -53,7 +55,8 @@ public class Where extends JavaScriptObject {
   protected Where() { }
 
   /**
-   * Returns the nested person or venue (Contact) entry. This element is optional.
+   * Returns the nested person or venue (Contact) entry.
+   * This element is optional.
    * 
    * @return Nested person or venue (Contact) entry.
    */
@@ -63,9 +66,11 @@ public class Where extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the user-readable label that identifies this location in case multiple locations may be present. This attribute is optional.
+   * Returns the user-readable label that identifies this location in case
+   * multiple locations may be present. This attribute is optional.
    * 
-   * @return User-readable label that identifies this location in case multiple locations may be present.
+   * @return User-readable label that identifies this location in case multiple
+   * locations may be present.
    */
   public final native String getLabel() /*-{
     return this.getLabel();
@@ -81,7 +86,8 @@ public class Where extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the text description of the place. This attribute is optional.
+   * Returns the text description of the place.
+   * This attribute is optional.
    * 
    * @return Text description of the place.
    */
@@ -90,7 +96,8 @@ public class Where extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the nested person or venue (Contact) entry. This element is optional.
+   * Sets the nested person or venue (Contact) entry.
+   * This element is optional.
    * 
    * @param entryLink Nested person or venue (Contact) entry.
    */
@@ -100,9 +107,11 @@ public class Where extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the user-readable label that identifies this location in case multiple locations may be present. This attribute is optional.
+   * Sets the user-readable label that identifies this location in case
+   * multiple locations may be present. This attribute is optional.
    * 
-   * @param label User-readable label that identifies this location in case multiple locations may be present.
+   * @param label User-readable label that identifies this location in case
+   * multiple locations may be present.
    */
   public final native void setLabel(String label) /*-{
     this.setLabel(label);

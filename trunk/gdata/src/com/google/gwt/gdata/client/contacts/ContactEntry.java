@@ -38,14 +38,16 @@ public class ContactEntry extends PersonEntry {
    * 
    * @param groupMembershipInfo Group membership info to add.
    */
-  public final native void addGroupMembershipInfo(GroupMembershipInfo groupMembershipInfo) /*-{
+  public final native void addGroupMembershipInfo(
+      GroupMembershipInfo groupMembershipInfo) /*-{
     this.addGroupMembershipInfo(groupMembershipInfo);
   }-*/;
 
   /**
    * Deletes the entry from the feed.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteEntry(ContactEntryCallback callback) {
     this.delete(callback);
@@ -70,9 +72,11 @@ public class ContactEntry extends PersonEntry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    * @return current representation of the entry.
    */
   public final ContactEntry getSelf(ContactEntryCallback callback) {
@@ -98,9 +102,11 @@ public class ContactEntry extends PersonEntry {
   /**
    * Sets the group membership infos.
    * 
-   * @param groupMembershipInfos Group membership infos, where each group membership info is added using addGroupMembershipInfo().
+   * @param groupMembershipInfos Group membership infos, where each group
+   * membership info is added using addGroupMembershipInfo().
    */
-  public final native void setGroupMembershipInfos(GroupMembershipInfo[] groupMembershipInfos) /*-{
+  public final native void setGroupMembershipInfos(
+      GroupMembershipInfo[] groupMembershipInfos) /*-{
     this.setGroupMembershipInfos(
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(groupMembershipInfos)
     );
@@ -109,7 +115,8 @@ public class ContactEntry extends PersonEntry {
   /**
    * Updated the entry in the feed by sending the representation of this entry.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void updateEntry(ContactEntryCallback callback) {
     this.update(callback);

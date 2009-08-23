@@ -54,7 +54,7 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
       public String getDescription() {
         return "<p>This sample code demonstrates how to " +
           "calculate the bounce rate for the top 10 sources of traffic " +
-          "to your website.</p>\n";
+          "to your website.</p>";
       }
 
       @Override

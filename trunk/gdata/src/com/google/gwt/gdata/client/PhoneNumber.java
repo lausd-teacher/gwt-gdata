@@ -78,7 +78,8 @@ public class PhoneNumber extends JavaScriptObject {
   protected PhoneNumber() { }
 
   /**
-   * Returns the simple string value used to name this phone number. This attribute is optional.
+   * Returns the simple string value used to name this phone number.
+   * This attribute is optional.
    * 
    * @return Simple string value used to name this phone number.
    */
@@ -87,7 +88,8 @@ public class PhoneNumber extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns whether this is the primary phone number. This attribute is optional.
+   * Returns whether this is the primary phone number.
+   * This attribute is optional.
    * 
    * @return Whether this is the primary phone number.
    */
@@ -96,7 +98,8 @@ public class PhoneNumber extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the programmatic value that identifies the type of phone number. This attribute is optional.
+   * Returns the programmatic value that identifies the type of phone number.
+   * This attribute is optional.
    * 
    * @return Programmatic value that identifies the type of phone number.
    */
@@ -114,7 +117,8 @@ public class PhoneNumber extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the simple string value used to name this phone number. This attribute is optional.
+   * Sets the simple string value used to name this phone number.
+   * This attribute is optional.
    * 
    * @param label Simple string value used to name this phone number.
    */
@@ -123,7 +127,8 @@ public class PhoneNumber extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether this is the primary phone number. This attribute is optional.
+   * Sets whether this is the primary phone number.
+   * This attribute is optional.
    * 
    * @param primary Whether this is the primary phone number.
    */
@@ -132,7 +137,8 @@ public class PhoneNumber extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the programmatic value that identifies the type of phone number. This attribute is optional.
+   * Sets the programmatic value that identifies the type of phone number.
+   * This attribute is optional.
    * 
    * @param rel Programmatic value that identifies the type of phone number.
    */

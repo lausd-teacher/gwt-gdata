@@ -57,7 +57,7 @@ public class FinanceDeleteTransactionDemo extends GDataDemo {
             "It deletes the first GOOG transaction in the " +
             "'GWT-Finance-Client' portfolio, which was created in a " +
             "preceeding example (an error will be generated if this " +
-            "does not exist).</p>\n";
+            "does not exist).</p>";
       }
 
       @Override

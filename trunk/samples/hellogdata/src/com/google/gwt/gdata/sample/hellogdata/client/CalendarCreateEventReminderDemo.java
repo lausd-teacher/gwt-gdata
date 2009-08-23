@@ -58,7 +58,7 @@ public class CalendarCreateEventReminderDemo extends GDataDemo {
         return "<p>This sample code demonstrate how to create and insert " +
             "a single event with a reminder to the authenticated user's " +
             "primary calendar. The private/full feed is used for event " +
-            "insertion.</p>\n";
+            "insertion.</p>";
       }
 
       @Override

@@ -56,7 +56,7 @@ public class BloggerQueryBlogPostsDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample queries for blog posts that were " +
-            "published within the last month.</p>\n";
+            "published within the last month.</p>";
       }
 
       @Override

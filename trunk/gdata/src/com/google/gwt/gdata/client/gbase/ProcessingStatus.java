@@ -31,17 +31,20 @@ public class ProcessingStatus extends JavaScriptObject {
   /**
    * Indicates that the current item/feed is being processed.
    */
-  public static final String STATUS_IN_PROGRESS = getConstant("STATUS_IN_PROGRESS");
+  public static final String STATUS_IN_PROGRESS =
+      getConstant("STATUS_IN_PROGRESS");
 
   /**
    * Indicates that one or more (but not all) items had a processing error.
    */
-  public static final String STATUS_PARTIAL_SUCCESS = getConstant("STATUS_PARTIAL_SUCCESS");
+  public static final String STATUS_PARTIAL_SUCCESS = 
+      getConstant("STATUS_PARTIAL_SUCCESS");
 
   /**
    * Indicates that all of the item(s) was/were processed successfully.
    */
-  public static final String STATUS_SUCCESS = getConstant("STATUS_SUCCESS");
+  public static final String STATUS_SUCCESS =
+      getConstant("STATUS_SUCCESS");
 
   /**
    * Indicates that the processing status information is not currently known.
@@ -49,9 +52,11 @@ public class ProcessingStatus extends JavaScriptObject {
   public static final String STATUS_UNKNOWN = getConstant("STATUS_UNKNOWN");
 
   /**
-   * Indicates that the current item/feed has not been processed yet (for instance, if it has never been uploaded).
+   * Indicates that the current item/feed has not been processed yet
+   * (for instance, if it has never been uploaded).
    */
-  public static final String STATUS_UNPROCESSED = getConstant("STATUS_UNPROCESSED");
+  public static final String STATUS_UNPROCESSED =
+      getConstant("STATUS_UNPROCESSED");
 
   /**
    * Constructs a processing status.
@@ -126,7 +131,8 @@ public class ProcessingStatus extends JavaScriptObject {
    * 
    * @param itemsProcessed Items processed.
    */
-  public final native void setItemsProcessed(ItemsProcessed itemsProcessed) /*-{
+  public final native void setItemsProcessed(
+      ItemsProcessed itemsProcessed) /*-{
     this.setItemsProcessed(itemsProcessed);
   }-*/;
 

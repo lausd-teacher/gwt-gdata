@@ -80,7 +80,8 @@ public class FileFormat extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the boolean to indicate whether to use quoted fields. This element is optional.
+   * Returns the boolean to indicate whether to use quoted fields.
+   * This element is optional.
    * 
    * @return Boolean to indicate whether to use quoted fields.
    */
@@ -116,11 +117,13 @@ public class FileFormat extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the boolean to indicate whether to use quoted fields. This element is optional.
+   * Sets the boolean to indicate whether to use quoted fields.
+   * This element is optional.
    * 
    * @param useQuotedFields Boolean to indicate whether to use quoted fields.
    */
-  public final native void setUseQuotedFields(UseQuotedFields useQuotedFields) /*-{
+  public final native void setUseQuotedFields(
+      UseQuotedFields useQuotedFields) /*-{
     this.setUseQuotedFields(useQuotedFields);
   }-*/;
 

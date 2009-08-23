@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Region is state, province, county (in Ireland), Land (in Germany), departement (in France), etc.
+ * Region is state, province, county (in Ireland), Land (in Germany),
+ * departement (in France), etc.
  */
 public class Region extends JavaScriptObject {
 

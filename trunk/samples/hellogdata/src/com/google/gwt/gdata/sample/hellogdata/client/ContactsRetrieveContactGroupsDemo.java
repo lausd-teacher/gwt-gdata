@@ -49,7 +49,7 @@ public class ContactsRetrieveContactGroupsDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample code retrieves all the contact groups of " +
-            "the authenticated user.</p>\n";
+            "the authenticated user.</p>";
       }
 
       @Override

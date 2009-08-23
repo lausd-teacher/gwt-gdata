@@ -54,7 +54,7 @@ public class FinanceDeletePortfolioDemo extends GDataDemo {
         return "<p>This sample code demonstrates how to delete an existing " +
             "portfolio of the authenticated user. It retrieves a list of " +
             "the user's portfolios, and delete the first portfolio with " +
-            "title that starts with 'GWT-Finance-Client'.</p>\n";
+            "title that starts with 'GWT-Finance-Client'.</p>";
       }
 
       @Override

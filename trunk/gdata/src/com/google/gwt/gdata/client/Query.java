@@ -39,7 +39,8 @@ public class Query extends JavaScriptObject {
    * Returns the value of a numeric parameter.
    * 
    * @param name Name of the parameter.
-   * @return Parameter value or null if not defined or if it is the same as the default value.
+   * @return Parameter value or null if not defined or if it is the same as the
+   * default value.
    */
   public final native double getNumericParam(String name) /*-{
     return this.getParam(name, value);
@@ -58,7 +59,8 @@ public class Query extends JavaScriptObject {
    * Returns the value of a string parameter.
    * 
    * @param name Name of the parameter.
-   * @return Parameter value or null if not defined or if it is the same as the default value.
+   * @return Parameter value or null if not defined or if it is the same as the
+   * default value.
    */
   public final native String getStringParam(String name) /*-{
     return this.getParam(name, value);
@@ -74,7 +76,10 @@ public class Query extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets a parameter of the query. If a parameter definition does not already exist for the parameter, we create a default for it before setting the parameter. The default definition is no value decoration and no default value.
+   * Sets a parameter of the query. If a parameter definition does not already
+   * exist for the parameter, we create a default for it before setting the
+   * parameter. The default definition is no value decoration and no default
+   * value.
    * 
    * @param name Name of the parameter.
    * @param value Value of the parameter.
@@ -87,14 +92,19 @@ public class Query extends JavaScriptObject {
    * Sets the definition of a parameter.
    * 
    * @param name Name of the parameter.
-   * @param paramDef Definition of the parameter. If parameter value is the same as default value, parameter is not included in query string.
+   * @param paramDef Definition of the parameter. If parameter value is the
+   * same as default value, parameter is not included in query string.
    */
-  public final native void setParamDef(String name, QueryParameterDefinition paramDef) /*-{
+  public final native void setParamDef(String name,
+      QueryParameterDefinition paramDef) /*-{
     this.setParamDef(name, paramDef);
   }-*/;
   
   /**
-   * Sets a parameter of the query. If a parameter definition does not already exist for the parameter, we create a default for it before setting the parameter. The default definition is no value decoration and no default value.
+   * Sets a parameter of the query. If a parameter definition does not already
+   * exist for the parameter, we create a default for it before setting the
+   * parameter. The default definition is no value decoration and no default
+   * value.
    * 
    * @param name Name of the parameter.
    * @param value Value of the parameter.

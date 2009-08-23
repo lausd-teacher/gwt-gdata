@@ -31,7 +31,8 @@ public class AccountStatus extends JavaScriptObject {
   /**
    * The account has been disapproved and cannot be used.
    */
-  public static final String VALUE_DISAPPROVED = getConstant("VALUE_DISAPPROVED");
+  public static final String VALUE_DISAPPROVED =
+      getConstant("VALUE_DISAPPROVED");
 
   /**
    * Constructs an Account Status.

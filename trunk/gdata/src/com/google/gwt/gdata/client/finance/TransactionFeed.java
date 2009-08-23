@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.finance;
 /**
  * Describes a Finance transaction feed.
  */
-public class TransactionFeed extends com.google.gwt.gdata.client.Feed<TransactionEntry> {
+public class TransactionFeed
+    extends com.google.gwt.gdata.client.Feed<TransactionEntry> {
 
   /**
    * Constructs a Finance transaction feed.
@@ -33,9 +34,11 @@ public class TransactionFeed extends com.google.gwt.gdata.client.Feed<Transactio
   protected TransactionFeed() { }
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(TransactionFeedCallback callback) {
     this.get(callback);
@@ -45,9 +48,11 @@ public class TransactionFeed extends com.google.gwt.gdata.client.Feed<Transactio
    * Inserts a new transaction entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertTransactionEntry(TransactionEntry entry, TransactionEntryCallback callback) {
+  public final void insertTransactionEntry(TransactionEntry entry,
+      TransactionEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

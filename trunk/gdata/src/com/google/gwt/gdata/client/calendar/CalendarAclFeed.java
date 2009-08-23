@@ -35,18 +35,22 @@ public class CalendarAclFeed extends AclFeed<CalendarAclEntry> {
   protected CalendarAclFeed() { }
 
   /**
-   * Returns the link that provides the URI of the entry that is controlled by the access control list feed.
+   * Returns the link that provides the URI of the entry that is controlled by
+   * the access control list feed.
    * 
-   * @return Link that provides the URI of the entry that is controlled by the access control list feed.
+   * @return Link that provides the URI of the entry that is controlled by the
+   * access control list feed.
    */
   public final native CalendarLink getControlledObjectLink() /*-{
     return this.getControlledObjectLink();
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(CalendarAclFeedCallback callback) {
     this.get(callback);
@@ -56,9 +60,11 @@ public class CalendarAclFeed extends AclFeed<CalendarAclEntry> {
    * Inserts a new calendar acl entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertCalendarAclEntry(CalendarAclEntry entry, CalendarAclEntryCallback callback) {
+  public final void insertCalendarAclEntry(CalendarAclEntry entry,
+      CalendarAclEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

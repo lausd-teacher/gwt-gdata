@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.gbase;
 /**
  * Describes a feed of snippets of public items.
  */
-public class SnippetsFeed extends com.google.gwt.gdata.client.Feed<SnippetsEntry> {
+public class SnippetsFeed
+    extends com.google.gwt.gdata.client.Feed<SnippetsEntry> {
 
   /**
    * Constructs a Google Base snippet feed.
@@ -32,9 +33,11 @@ public class SnippetsFeed extends com.google.gwt.gdata.client.Feed<SnippetsEntry
   protected SnippetsFeed() { }
 
   /**
-   * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * Returns the link that provides the URI that can be used to batch
+   * operations to query, insert, update and delete entries on this feed.
    * 
-   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * @return Link that provides the URI that can be used to batch operations to
+   * query, insert, update and delete entries on this feed.
    */
   public final native com.google.gwt.gdata.client.Link getFeedBatchLink() /*-{
     return this.getFeedBatchLink();
@@ -54,14 +57,17 @@ public class SnippetsFeed extends com.google.gwt.gdata.client.Feed<SnippetsEntry
    * 
    * @return Link that provides the URI of previous page in a paged feed.
    */
-  public final native com.google.gwt.gdata.client.atom.Link getPreviousLink() /*-{
+  public final native com.google.gwt.gdata.client.atom.Link
+      getPreviousLink() /*-{
     return this.getPreviousLink();
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(SnippetsFeedCallback callback) {
     this.get(callback);
@@ -71,9 +77,11 @@ public class SnippetsFeed extends com.google.gwt.gdata.client.Feed<SnippetsEntry
    * Inserts a new snippets entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertSnippetsEntry(SnippetsEntry entry, SnippetsEntryCallback callback) {
+  public final void insertSnippetsEntry(SnippetsEntry entry,
+      SnippetsEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

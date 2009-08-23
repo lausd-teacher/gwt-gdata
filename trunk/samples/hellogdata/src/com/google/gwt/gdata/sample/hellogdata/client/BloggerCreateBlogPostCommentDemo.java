@@ -58,7 +58,7 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample adds a new comment to a blog post. The " +
-            "comment's contents contain the text 'GWT-Blogger-Client'.</p>\n";
+            "comment's contents contain the text 'GWT-Blogger-Client'.</p>";
       }
 
       @Override

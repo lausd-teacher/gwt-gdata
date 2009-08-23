@@ -55,7 +55,8 @@ public class Commission extends JavaScriptObject {
   /**
    * Sets the monetary value of the commission.
    * 
-   * @param money Monetary value of the commission, where each monetary value of the commission is added using addMoney().
+   * @param money Monetary value of the commission, where each monetary value
+   * of the commission is added using addMoney().
    */
   public final native void setMoney(Money[] money) /*-{
     this.setMoney(

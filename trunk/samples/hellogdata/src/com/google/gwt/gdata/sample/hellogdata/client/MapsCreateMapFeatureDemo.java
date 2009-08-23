@@ -58,7 +58,7 @@ public class MapsCreateMapFeatureDemo extends GDataDemo {
         return "<p>This sample code demonstrates how to create and insert " +
             "a new map feature. It retrieves a list of the user's maps and " +
             "inserts a feature with a title that starts with " +
-            "'GWT-Maps-Client'.</p>\n";
+            "'GWT-Maps-Client'.</p>";
       }
 
       @Override

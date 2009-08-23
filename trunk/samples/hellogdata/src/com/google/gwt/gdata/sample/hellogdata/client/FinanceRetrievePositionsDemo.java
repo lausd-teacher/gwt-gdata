@@ -62,7 +62,7 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
             "number of shares of a particular stock or mutual fund if " +
             "specified in the transactions as well as investment gain if " +
             "requested and if purchase price and date have been " +
-            "specified.</p>\n";
+            "specified.</p>";
       }
 
       @Override

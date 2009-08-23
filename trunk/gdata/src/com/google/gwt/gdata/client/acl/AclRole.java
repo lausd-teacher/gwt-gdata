@@ -29,22 +29,26 @@ public class AclRole extends JavaScriptObject {
   public static final String VALUE_NONE = getConstant("VALUE_NONE");
 
   /**
-   * Predefined value 'owner' to indicate that a user has the right to read, modify and delete the controlled object.
+   * Predefined value 'owner' to indicate that a user has the right to read,
+   * modify and delete the controlled object.
    */
   public static final String VALUE_OWNER = getConstant("VALUE_OWNER");
 
   /**
-   * Predefined value 'peeker' to indicate that a user has the right to know of the existance of the controlled object.
+   * Predefined value 'peeker' to indicate that a user has the right to know of
+   * the existance of the controlled object.
    */
   public static final String VALUE_PEEKER = getConstant("VALUE_PEEKER");
 
   /**
-   * Predefined value 'reader' to indicate that a user has the right to read the controlled object.
+   * Predefined value 'reader' to indicate that a user has the right to read
+   * the controlled object.
    */
   public static final String VALUE_READER = getConstant("VALUE_READER");
 
   /**
-   * Predefined value 'writer' to indicate that a user has the right to read and modify the controlled object.
+   * Predefined value 'writer' to indicate that a user has the right to read
+   * and modify the controlled object.
    */
   public static final String VALUE_WRITER = getConstant("VALUE_WRITER");
 

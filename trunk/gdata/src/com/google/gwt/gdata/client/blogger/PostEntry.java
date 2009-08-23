@@ -37,7 +37,8 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Deletes the entry from the feed.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteEntry(PostEntryCallback callback) {
     this.delete(callback);
@@ -53,27 +54,33 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the link that provides the URI that can be used to post new entries to the feed.
+   * Returns the link that provides the URI that can be used to post new
+   * entries to the feed.
    * 
-   * @return Link that provides the URI that can be used to post new entries to the feed.
+   * @return Link that provides the URI that can be used to post new entries to
+   * the feed.
    */
   public final native BloggerLink getEntryPostLink() /*-{
     return this.getEntryPostLink();
   }-*/;
 
   /**
-   * Returns the link that provides the URI of the full feed (without any query parameters).
+   * Returns the link that provides the URI of the full feed (without any query
+   * parameters).
    * 
-   * @return Link that provides the URI of the full feed (without any query parameters).
+   * @return Link that provides the URI of the full feed (without any query
+   * parameters).
    */
   public final native BloggerLink getFeedLink() /*-{
     return this.getFeedLink();
   }-*/;
 
   /**
-   * Returns the link that provides the URI of an alternate format of the entry's or feed's contents.
+   * Returns the link that provides the URI of an alternate format of the
+   * entry's or feed's contents.
    * 
-   * @return Link that provides the URI of an alternate format of the entry's or feed's contents.
+   * @return Link that provides the URI of an alternate format of the entry's
+   * or feed's contents.
    */
   public final native BloggerLink getHtmlLink() /*-{
     return this.getHtmlLink();
@@ -98,9 +105,11 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    * @return current representation of the entry.
    */
   public final PostEntry getSelf(PostEntryCallback callback) {
@@ -146,7 +155,8 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Updated the entry in the feed by sending the representation of this entry.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void updateEntry(PostEntryCallback callback) {
     this.update(callback);

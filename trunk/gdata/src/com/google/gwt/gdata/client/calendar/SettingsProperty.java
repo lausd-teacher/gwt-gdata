@@ -26,7 +26,8 @@ public class SettingsProperty extends JavaScriptObject {
   /**
    * AlternateCalendar settings property.
    */
-  public static final String NAME_ALTERNATE_CALENDAR = getConstant("NAME_ALTERNATE_CALENDAR");
+  public static final String NAME_ALTERNATE_CALENDAR =
+      getConstant("NAME_ALTERNATE_CALENDAR");
 
   /**
    * Country settings property.
@@ -36,37 +37,44 @@ public class SettingsProperty extends JavaScriptObject {
   /**
    * CustomCalMode settings property.
    */
-  public static final String NAME_CUSTOM_CAL_MODE = getConstant("NAME_CUSTOM_CAL_MODE");
+  public static final String NAME_CUSTOM_CAL_MODE =
+      getConstant("NAME_CUSTOM_CAL_MODE");
 
   /**
    * DateFieldOrder settings property.
    */
-  public static final String NAME_DATE_FIELD_ORDER = getConstant("NAME_DATE_FIELD_ORDER");
+  public static final String NAME_DATE_FIELD_ORDER =
+      getConstant("NAME_DATE_FIELD_ORDER");
 
   /**
    * DefaultCalMode settings property.
    */
-  public static final String NAME_DEFAULT_CAL_MODE = getConstant("NAME_DEFAULT_CAL_MODE");
+  public static final String NAME_DEFAULT_CAL_MODE =
+      getConstant("NAME_DEFAULT_CAL_MODE");
 
   /**
    * DisplayAllTimezones settings property.
    */
-  public static final String NAME_DISPLAY_ALL_TIMEZONES = getConstant("NAME_DISPLAY_ALL_TIMEZONES");
+  public static final String NAME_DISPLAY_ALL_TIMEZONES =
+      getConstant("NAME_DISPLAY_ALL_TIMEZONES");
 
   /**
    * Format24HourTime settings property.
    */
-  public static final String NAME_FORMAT_24_HOUR_TIME = getConstant("NAME_FORMAT_24_HOUR_TIME");
+  public static final String NAME_FORMAT_24_HOUR_TIME =
+      getConstant("NAME_FORMAT_24_HOUR_TIME");
 
   /**
    * HideInvitations settings property.
    */
-  public static final String NAME_HIDE_INVITATIONS = getConstant("NAME_HIDE_INVITATIONS");
+  public static final String NAME_HIDE_INVITATIONS =
+      getConstant("NAME_HIDE_INVITATIONS");
 
   /**
    * HideWeekends settings property.
    */
-  public static final String NAME_HIDE_WEEKENDS = getConstant("NAME_HIDE_WEEKENDS");
+  public static final String NAME_HIDE_WEEKENDS =
+      getConstant("NAME_HIDE_WEEKENDS");
 
   /**
    * Locale settings property.
@@ -76,7 +84,8 @@ public class SettingsProperty extends JavaScriptObject {
   /**
    * ShowDeclinedEvents settings property.
    */
-  public static final String NAME_SHOW_DECLINED_EVENTS = getConstant("NAME_SHOW_DECLINED_EVENTS");
+  public static final String NAME_SHOW_DECLINED_EVENTS =
+      getConstant("NAME_SHOW_DECLINED_EVENTS");
 
   /**
    * Timezone settings property.
@@ -86,12 +95,14 @@ public class SettingsProperty extends JavaScriptObject {
   /**
    * TimezoneLabel settings property.
    */
-  public static final String NAME_TIMEZONE_LABEL = getConstant("NAME_TIMEZONE_LABEL");
+  public static final String NAME_TIMEZONE_LABEL =
+      getConstant("NAME_TIMEZONE_LABEL");
 
   /**
    * UserLocation settings property.
    */
-  public static final String NAME_USER_LOCATION = getConstant("NAME_USER_LOCATION");
+  public static final String NAME_USER_LOCATION =
+      getConstant("NAME_USER_LOCATION");
 
   /**
    * Weather settings property.

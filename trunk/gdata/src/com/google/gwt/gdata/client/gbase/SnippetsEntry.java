@@ -36,14 +36,16 @@ public class SnippetsEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Deletes the entry from the feed.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteEntry(SnippetsEntryCallback callback) {
     this.delete(callback);
   }
 
   /**
-   * Returns the attributes. The returned object is a map from attribute name to the associated Attribute class.
+   * Returns the attributes. The returned object is a map from attribute name
+   * to the associated Attribute class.
    * 
    * @return Attributes.
    */
@@ -52,18 +54,22 @@ public class SnippetsEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the link that provides the URI of an alternate format of the entry's or feed's contents.
+   * Returns the link that provides the URI of an alternate format of the
+   * entry's or feed's contents.
    * 
-   * @return Link that provides the URI of an alternate format of the entry's or feed's contents.
+   * @return Link that provides the URI of an alternate format of the entry's
+   * or feed's contents.
    */
   public final native com.google.gwt.gdata.client.atom.Link getHtmlLink() /*-{
     return this.getHtmlLink();
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    * @return current representation of the entry.
    */
   public final SnippetsEntry getSelf(SnippetsEntryCallback callback) {
@@ -74,16 +80,19 @@ public class SnippetsEntry extends com.google.gwt.gdata.client.Entry {
    * Sets the attribute.
    * 
    * @param name name of attribute.
-   * @param attribute Attribute to add, or object to use as a parameter to the Attribute constructor.
+   * @param attribute Attribute to add, or object to use as a parameter to the
+   * Attribute constructor.
    */
   public final native void setAttribute(String name, Attribute attribute) /*-{
     this.setAttribute(name, attribute);
   }-*/;
 
   /**
-   * Sets the attributes. The parameter is a map from attribute name to the associated Attribute class.
+   * Sets the attributes. The parameter is a map from attribute name to the
+   * associated Attribute class.
    * 
-   * @param attributes Attributes, where each attribute is added using setAttribute().
+   * @param attributes Attributes, where each attribute is added using
+   * setAttribute().
    */
   public final native void setAttributes(Map<Attribute> attributes) /*-{
     this.setAttributes(attributes);
@@ -92,7 +101,8 @@ public class SnippetsEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Updated the entry in the feed by sending the representation of this entry.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void updateEntry(SnippetsEntryCallback callback) {
     this.update(callback);

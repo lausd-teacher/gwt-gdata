@@ -21,5 +21,6 @@ import com.google.gwt.gdata.client.impl.Callback;
 /**
  * Callback for contact group entry.
  */
-public interface ContactGroupEntryCallback extends Callback<ContactGroupEntry> {
+public interface ContactGroupEntryCallback
+    extends Callback<ContactGroupEntry> {
 }

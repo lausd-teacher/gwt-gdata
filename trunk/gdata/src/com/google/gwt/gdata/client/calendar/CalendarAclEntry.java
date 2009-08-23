@@ -38,7 +38,8 @@ public class CalendarAclEntry extends AclEntry {
    * 
    * @return Send acl notifications.
    */
-  public final native SendAclNotificationsProperty getSendAclNotifications() /*-{
+  public final native SendAclNotificationsProperty
+      getSendAclNotifications() /*-{
     return this.getSendAclNotifications();
   }-*/;
 
@@ -47,7 +48,8 @@ public class CalendarAclEntry extends AclEntry {
    * 
    * @param sendAclNotifications Send acl notifications property.
    */
-  public final native void setSendAclNotifications(SendAclNotificationsProperty sendAclNotifications) /*-{
+  public final native void setSendAclNotifications(
+      SendAclNotificationsProperty sendAclNotifications) /*-{
     this.setSendAclNotifications(sendAclNotifications);
   }-*/;
 
