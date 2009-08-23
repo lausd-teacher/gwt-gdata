@@ -53,14 +53,13 @@ public class FinanceCreateTransactionDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>A new transaction is created in a user's Google Finance portfolio by " +
-          "posting a transaction entry to the appropriate Post URL. The target portfolio " +
-          "and ticker symbol for the transaction are specified in this URL: h" +
-          "ttp://finance.google.com/finance/feeds/portfolios/PORTFOLIO_ID/positions/TICKER/transactions." +
-          "In this example, a transaction entry object is created and its properities " +
-          "(transaction type, etc.) are set, then the portfolio feed is queried for a list of " +
-          "the user's portfolios. The entry is inserted into the portfolio whose title " +
-          "starts with 'GWT-Finance-Client'.</p>\n";
+        return "<p>A new transaction is created in a user's Google Finance" +
+            " portfolio by posting a transaction entry to the appropriate" +
+            " Post URL. In this example, a transaction entry object is " +
+            "created and its properities (transaction type, etc.) are " +
+            "set, then the portfolio feed is queried for a list of the " +
+            "user's portfolios. The entry is inserted into the portfolio " +
+            "whose title starts with 'GWT-Finance-Client'.</p>\n";
       }
 
       @Override
@@ -80,14 +79,16 @@ public class FinanceCreateTransactionDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's portfolios.
    */
   public FinanceCreateTransactionDemo() {
-    service = FinanceService.newInstance("HelloGData_Finance_CreateTransactionDemo_v1.0");
+    service = FinanceService.newInstance(
+        "HelloGData_Finance_CreateTransactionDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a transaction");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getPortfolios();
+          getPortfolios(
+              "http://finance.google.com/finance/feeds/default/portfolios");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -95,7 +96,23 @@ public class FinanceCreateTransactionDemo extends GDataDemo {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
-  
+
+  /**
+   * Create a transaction by inserting a transaction entry into
+   * a transaction feed.
+   * Set the transaction's notes to an arbitrary string. Here
+   * we prefix the notes field with 'GWT-Finance-Client' so that
+   * we can identify which transactions were created by this demo.
+   * The new transaction is created with a set of transaction data
+   * specifying the type and shares.
+   * The transaction is inserted into the transactions feed for
+   * the symbol "NASDAQ:GOOG". If no position exists for this symbol
+   * the insert request will fail.
+   * On success and failure, display a status message.
+   * 
+   * @param portfolioEditUri The uri of the portfolio entry into which
+   * to insert the transaction entry
+   */
   private void createTransaction(String portfolioEditUri) {
     showStatus("Creating transaction...", false);
     TransactionEntry entry = TransactionEntry.newInstance();
@@ -105,34 +122,52 @@ public class FinanceCreateTransactionDemo extends GDataDemo {
     data.setNotes("GWT-Finance-Client sample transaction");
     entry.setTransactionData(data);
     String ticker = "NASDAQ:GOOG";
-    String transactionPostUri = portfolioEditUri + "/positions/" + ticker + "/transactions";
-    service.insertTransactionEntry(transactionPostUri, entry, new TransactionEntryCallback() {
+    String transactionPostUri = portfolioEditUri + "/positions/" + 
+        ticker + "/transactions";
+    service.insertTransactionEntry(transactionPostUri, entry,
+        new TransactionEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while creating a transaction: " + caught.getMessage(), true);
+        showStatus("An error occurred while creating a transaction: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(TransactionEntry result) {
         showStatus("Created a transaction.", false);
       }
     });
   }
-  
-  private void getPortfolios() {
+
+  /**
+   * Retrieve the portfolios feed using the Finance service and
+   * the portfolios feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining success
+   * and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Portfolio entry with a title
+   * starting with "GWT-Finance-Client" and calls createTransaction
+   * to insert a transaction.
+   * If no portfolio is found a message is displayed.
+   * 
+   * @param portfoliosFeedUri The uri of the portfolios feed
+   */
+  private void getPortfolios(String portfoliosFeedUri) {
     showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
+    service.getPortfolioFeed(portfoliosFeedUri, new PortfolioFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the portfolios feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
         PortfolioEntry targetPortfolio = null;
         for (PortfolioEntry entry : entries) {
-          if (entry.getTitle().getText().startsWith("")) {
+          if (entry.getTitle().getText().startsWith("GWT-Finance-Client")) {
             targetPortfolio = entry;
             break;
           }
         }
         if (targetPortfolio == null) {
-          showStatus("No portfolio found that contains 'GWT-Finance-Client' in the title.", false);
+          showStatus("No portfolio found that contains 'GWT-Finance-Client' " +
+              "in the title.", false);
         } else {
           String portfolioEditUri = targetPortfolio.getEditLink().getHref();
           createTransaction(portfolioEditUri);

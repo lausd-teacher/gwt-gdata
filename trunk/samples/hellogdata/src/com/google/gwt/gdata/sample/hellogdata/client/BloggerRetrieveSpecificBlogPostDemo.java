@@ -32,7 +32,8 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example demonstrates how to retrieve a specific blog post entry.
+ * The following example demonstrates how to retrieve a specific blog
+ * post entry.
  */
 public class BloggerRetrieveSpecificBlogPostDemo extends GDataDemo {
 
@@ -53,7 +54,7 @@ public class BloggerRetrieveSpecificBlogPostDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample returns a specific blog post by querying the " +
-          "entry's URI with getBlogPostFeed().</p>\n";
+            "entry's URI with getBlogPostFeed().</p>\n";
       }
 
       @Override
@@ -73,21 +74,33 @@ public class BloggerRetrieveSpecificBlogPostDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's blogs.
    */
   public BloggerRetrieveSpecificBlogPostDemo() {
-    service = BloggerService.newInstance("HelloGData_Blogger_RetrieveSpecificBlogPostDemo_v1.0");
+    service = BloggerService.newInstance(
+        "HelloGData_Blogger_RetrieveSpecificBlogPostDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getBlogs();
+      getBlogs("http://www.blogger.com/feeds/default/blogs");
     } else {
       showStatus("You are not logged on to Blogger.", true);
     }
   }
-  
-  private void getBlogs() {
+
+  /**
+   * Retrieve the Blogger blogs feed using the Blogger service and
+   * the blogs feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Blog entry and
+   * calls getPosts to retrieve the posts feed for that blog.
+   * 
+   * @param blogsFeedUri The uri of the blogs feed
+   */
+  private void getBlogs(String blogsFeedUri) {
     showStatus("Loading blog feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
+    service.getBlogFeed(blogsFeedUri, new BlogFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Blog feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Blog " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
@@ -102,23 +115,41 @@ public class BloggerRetrieveSpecificBlogPostDemo extends GDataDemo {
     });
   }
   
+  /**
+   * Retrieves a post entry by uri. On success, call
+   * showData to display the post entry details.
+   * 
+   * @param postEntryUri The uri of the post entry to retrieve
+   */
   private void getPost(String postEntryUri) {
     showStatus("Loading post entry...", false);
     service.getPostEntry(postEntryUri, new PostEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Post entry: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Post " +
+            "entry: " + caught.getMessage(), true);
       }
       public void onSuccess(PostEntry result) {
         showData(result);
       }
     });
   }
-  
+
+  /**
+   * Retrieve the Blogger posts feed using the Blogger service and
+   * the posts feed uri for a given blog.
+   * On success, call getPost on the first post entry. This will 
+   * retrieve the same entry that we already have, the purpose
+   * is to exemplify retrieving a specific post entry directly.
+   * If no posts are available, display a message.
+   * 
+   * @param postsFeedUri The posts feed uri for a given blog
+   */
   private void getPosts(String postsFeedUri) {
     showStatus("Loading posts feed...", false);
     service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Posts feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Posts " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogPostFeed result) {
         PostEntry[] entries = result.getEntries();
@@ -138,16 +169,19 @@ public class BloggerRetrieveSpecificBlogPostDemo extends GDataDemo {
   * the help of a GWT FlexTable widget. The data fields Title, 
   * Author, Published and Contents are displayed.
   * 
-  * @param entries The Blogger post entry to display.
+  * @param entry The Blogger post entry to display.
   */
   private void showData(PostEntry entry) {
     mainPanel.clear();
     mainPanel.insertRow(0);
     mainPanel.addCell(0);
-    mainPanel.setWidget(0, 0, new HTML("<h2>" + entry.getTitle().getText() + "</h2>"));
+    mainPanel.setWidget(0, 0, new HTML("<h2>" + entry.getTitle().getText() + 
+        "</h2>"));
     mainPanel.insertRow(1);
     mainPanel.addCell(1);
-    mainPanel.setWidget(1, 0, new HTML("<i>By " + entry.getAuthors()[0].getName().getValue() + " on " + entry.getPublished().getValue().getDate().toString() + "</i>"));
+    mainPanel.setWidget(1, 0, new HTML("<i>By " + 
+        entry.getAuthors()[0].getName().getValue() + " on " + 
+        entry.getPublished().getValue().getDate().toString() + "</i>"));
     mainPanel.insertRow(2);
     mainPanel.addCell(2);
     mainPanel.setWidget(2, 0, new Label(entry.getContent().getText()));

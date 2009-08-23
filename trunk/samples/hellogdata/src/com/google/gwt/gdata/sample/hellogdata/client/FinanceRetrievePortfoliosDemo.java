@@ -27,7 +27,8 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example demonstrates how to retrieve a list of a user's portfolios.
+ * The following example demonstrates how to retrieve a list of a
+ * user's portfolios.
  */
 public class FinanceRetrievePortfoliosDemo extends GDataDemo {
 
@@ -47,8 +48,9 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses the portfolio feed to retrieve a list of all of an " +
-          "authenticated user's portfolios. The title of each portfolio entry is printed.</p>\n";
+        return "<p>This sample code uses the portfolio feed to retrieve a " +
+            "list of all of an authenticated user's portfolios. The title " +
+            "of each portfolio entry is printed.</p>\n";
       }
 
       @Override
@@ -68,21 +70,34 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's portfolios.
    */
   public FinanceRetrievePortfoliosDemo() {
-    service = FinanceService.newInstance("HelloGData_Finance_RetrievePortfoliosDemo_v1.0");
+    service = FinanceService.newInstance(
+        "HelloGData_Finance_RetrievePortfoliosDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getPortfolios();
+      getPortfolios(
+          "http://finance.google.com/finance/feeds/default/portfolios");
     } else {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
-  
-  private void getPortfolios() {
+
+  /**
+   * Retrieve the portfolios feed using the Finance service and
+   * the portfolios feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining
+   * success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler calls showData to display the portfolio entries.
+   * 
+   * @param portfoliosFeedUri The uri of the portfolios feed
+   */
+  private void getPortfolios(String portfoliosFeedUri) {
     showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
+    service.getPortfolioFeed(portfoliosFeedUri, new PortfolioFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the portfolios " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
@@ -98,13 +113,13 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
   /**
   * Displays a set of Finance portfolio entries in a tabular 
   * fashion with the help of a GWT FlexTable widget. The data fields 
-  * Title, Email and Updated are displayed.
+  * Title and ID are displayed.
   * 
   * @param entries The Finance portfolio entries to display.
   */
   private void showData(PortfolioEntry[] entries) {
     mainPanel.clear();
-    String[] labels = new String[] { "Title", "Id" };
+    String[] labels = new String[] { "Title", "ID" };
     mainPanel.insertRow(0);
     for (int i = 0; i < labels.length; i++) {
       mainPanel.addCell(0);

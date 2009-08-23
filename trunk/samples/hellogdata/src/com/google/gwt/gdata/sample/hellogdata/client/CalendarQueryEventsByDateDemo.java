@@ -52,10 +52,11 @@ public class CalendarQueryEventsByDateDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to perform a date query to retrieve " +
-          "events. The date query serves as a filter against all event entries of the " +
-          "private/full feed and return those events that has a start time between the " +
-          "specified minimum and maximum start time. </p>\n";
+        return "<p>This sample code demonstrates how to perform a date " +
+            "query to retrieve events. The date query serves as a filter " +
+            "against all event entries of the private/full feed and " +
+            "return those events that has a start time between the " +
+            "specified minimum and maximum start time. </p>\n";
       }
 
       @Override
@@ -72,23 +73,36 @@ public class CalendarQueryEventsByDateDemo extends GDataDemo {
   /**
    * Setup the Calendar service and create the main content panel.
    * If the user is not logged on to Calendar display a message,
-   * otherwise start the demo by querying the user's calendars.
+   * otherwise start the demo by querying the user's calendar events.
    */
   public CalendarQueryEventsByDateDemo() {
-    service = CalendarService.newInstance("HelloGData_Calendar_QueryEventsByDateDemo_v1.0");
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_QueryEventsByDateDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      queryCalendars();
+      queryEvents(
+          "http://www.google.com/calendar/feeds/default/private/full");
     } else {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  
+
+  /**
+   * Retrieves an events feed using a Query object.
+   * In GData, feed URIs can contain querystring parameters. The
+   * GData query objects aid in building parameterized feed URIs.
+   * Upon successfully receiving the events feed, the event entries 
+   * are displayed to the user via the showData method.
+   * The MinimumStartTime and MaximumStartTime parameters are used to
+   * limit the range of events to a given time period.
+   * 
+   * @param eventsFeedUri The uri of the events feed
+   */
   @SuppressWarnings("deprecation")
-  private void queryCalendars() {
+  private void queryEvents(String eventsFeedUri) {
     showStatus("Querying for events...", false);
-    CalendarEventQuery query = CalendarEventQuery.newInstance("http://www.google.com/calendar/feeds/default/private/full");
+    CalendarEventQuery query = CalendarEventQuery.newInstance(eventsFeedUri);
     Date startDate = new Date();
     startDate.setMonth(startDate.getMonth() - 1);
     Date endDate = new Date();
@@ -96,7 +110,8 @@ public class CalendarQueryEventsByDateDemo extends GDataDemo {
     query.setMaximumStartTime(DateTime.newInstance(endDate));
     service.getEventsFeed(query, new CalendarEventFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Event feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Event feed: " + 
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarEventFeed result) {
         CalendarEventEntry[] entries = result.getEntries();
@@ -132,9 +147,11 @@ public class CalendarQueryEventsByDateDemo extends GDataDemo {
       mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
       mainPanel.addCell(row);
       String link = entry.getHtmlLink().getHref();
-      mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + "\">" + link + "</a>"));
+      mainPanel.setWidget(row, 1, 
+          new HTML("<a href=\"" + link + "\">" + link + "</a>"));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getUpdated().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 2, 
+          new Label(entry.getUpdated().getValue().getDate().toString()));
     }
   }
 

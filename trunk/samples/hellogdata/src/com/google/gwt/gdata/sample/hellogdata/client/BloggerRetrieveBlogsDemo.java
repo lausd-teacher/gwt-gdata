@@ -49,8 +49,8 @@ public class BloggerRetrieveBlogsDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample uses the \"metafeed\" feed to retrieve the " +
-          "authenticated user's list of blogs. Each blog is listed as a link to " +
-          "the actual blog.</p>\n";
+            "authenticated user's list of blogs. Each blog is listed as a " +
+            "link to the actual blog.</p>\n";
       }
 
       @Override
@@ -70,21 +70,32 @@ public class BloggerRetrieveBlogsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's blogs.
    */
   public BloggerRetrieveBlogsDemo() {
-    service = BloggerService.newInstance("HelloGData_Blogger_RetrieveBlogsDemo_v1.0");
+    service = BloggerService.newInstance(
+        "HelloGData_Blogger_RetrieveBlogsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getBlogs();
+      getBlogs("http://www.blogger.com/feeds/default/blogs");
     } else {
       showStatus("You are not logged on to Blogger.", true);
     }
   }
-  
-  private void getBlogs() {
+
+  /**
+   * Retrieve the Blogger blogs feed using the Blogger service and
+   * the blogs feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler calls showData to display the blog entries.
+   * 
+   * @param blogsFeedUri The uri of the blogs feed
+   */
+  private void getBlogs(String blogsFeedUri) {
     showStatus("Loading blog feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
+    service.getBlogFeed(blogsFeedUri, new BlogFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Blog feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Blog " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
@@ -120,9 +131,11 @@ public class BloggerRetrieveBlogsDemo extends GDataDemo {
       mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
       mainPanel.addCell(row);
       String link = entry.getHtmlLink().getHref();
-      mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + "\" target=\"_blank\">" + link +  "</a>"));
+      mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + 
+          "\" target=\"_blank\">" + link +  "</a>"));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getUpdated().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 2,
+          new Label(entry.getUpdated().getValue().getDate().toString()));
     }
   }
 

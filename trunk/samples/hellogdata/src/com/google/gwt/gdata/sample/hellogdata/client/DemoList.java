@@ -25,15 +25,16 @@ import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
 
 /**
- * The left panel that contains all of the sinks, along with a short description
- * of each.
+ * Implements a GDataDemo list box.
  */
 public class DemoList extends Composite {
 
-//  private HorizontalPanel list = new HorizontalPanel();
   private ListBox list = new ListBox();
   private ArrayList<GDataDemoInfo> sinks = new ArrayList<GDataDemoInfo>();
 
+  /**
+   * Initializes this widget.
+   */
   public DemoList() {
     initWidget(list);
     list.setVisibleItemCount(1);
@@ -44,12 +45,21 @@ public class DemoList extends Composite {
     });
   }
 
+  /**
+   * Adds a demo info instance to the list.
+   * @param info The demo info instance
+   */
   public void addGDataDemo(final GDataDemoInfo info) {
     String name = info.getName();
     list.addItem(name);
     sinks.add(info);
   }
 
+  /**
+   * Retrieves a demo info instance by name.
+   * @param sinkName The name
+   * @return A demo info instance or null if none is found
+   */
   public GDataDemoInfo find(String sinkName) {
     for (int i = 0; i < sinks.size(); ++i) {
       GDataDemoInfo info = sinks.get(i);
@@ -60,6 +70,10 @@ public class DemoList extends Composite {
     return null;
   }
 
+  /**
+   * Sets the selection for the list box.
+   * @param name The name of the demo to select
+   */
   public void setGDataDemoSelection(String name) {
     for (int i = 0; i < list.getItemCount(); i++) {
       if (name.equals(list.getItemText(i))) {

@@ -27,7 +27,8 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example demonstrates how to retrieve a list of a user's contact groups.
+ * The following example demonstrates how to retrieve a list of a
+ * user's contact groups.
  */
 public class ContactsRetrieveContactGroupsDemo extends GDataDemo {
 
@@ -47,7 +48,8 @@ public class ContactsRetrieveContactGroupsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code retrieves all the contact groups of the authenticated user.</p>\n";
+        return "<p>This sample code retrieves all the contact groups of " +
+            "the authenticated user.</p>\n";
       }
 
       @Override
@@ -67,21 +69,34 @@ public class ContactsRetrieveContactGroupsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's contact groups.
    */
   public ContactsRetrieveContactGroupsDemo() {
-    service = ContactsService.newInstance("HelloGData_Contacts_RetrieveContactGroupsDemo_v1.0");
+    service = ContactsService.newInstance(
+        "HelloGData_Contacts_RetrieveContactGroupsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getContactGroups();
+      getContactGroups("http://www.google.com/m8/feeds/groups/default/full");
     } else {
       showStatus("You are not logged on to Google Contacts.", true);
     }
   }
-  
-  private void getContactGroups() {
+
+  /**
+   * Retrieve the contact groups feed using the Contacts service and
+   * the contact groups feed uri. In GData all get, insert, update and
+   * delete methods always receive a callback defining success and
+   * failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler calls showData to display the contact group entries.
+   * 
+   * @param contactGroupsFeedUri The contact groups feed uri
+   */
+  private void getContactGroups(String contactGroupsFeedUri) {
     showStatus("Loading contact groups feed...", false);
-    service.getContactGroupFeed("http://www.google.com/m8/feeds/groups/default/full", new ContactGroupFeedCallback() {
+    service.getContactGroupFeed(contactGroupsFeedUri,
+        new ContactGroupFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the contact groups feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the contact groups " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(ContactGroupFeed result) {
         ContactGroupEntry[] entries = result.getEntries();
@@ -97,13 +112,13 @@ public class ContactsRetrieveContactGroupsDemo extends GDataDemo {
   /**
   * Displays a set of Google Contacts group entries in a tabular 
   * fashion with the help of a GWT FlexTable widget. The data fields 
-  * Title, Email and Updated are displayed.
+  * Title and ID are displayed.
   * 
   * @param entries The Google Contacts group entries to display.
   */
   private void showData(ContactGroupEntry[] entries) {
     mainPanel.clear();
-    String[] labels = new String[] { "Title", "Id" };
+    String[] labels = new String[] { "Title", "ID" };
     mainPanel.insertRow(0);
     for (int i = 0; i < labels.length; i++) {
       mainPanel.addCell(0);

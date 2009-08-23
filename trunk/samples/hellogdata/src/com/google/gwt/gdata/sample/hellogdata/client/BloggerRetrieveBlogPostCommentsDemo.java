@@ -55,7 +55,8 @@ public class BloggerRetrieveBlogPostCommentsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample retrieves the comments for a particular blog post.</p>\n";
+        return "<p>This sample retrieves the comments for a particular " +
+            "blog post.</p>\n";
       }
 
       @Override
@@ -75,21 +76,33 @@ public class BloggerRetrieveBlogPostCommentsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's blogs.
    */
   public BloggerRetrieveBlogPostCommentsDemo() {
-    service = BloggerService.newInstance("HelloGData_Blogger_RetrieveBlogPostCommentsDemo_v1.0");
+    service = BloggerService.newInstance(
+        "HelloGData_Blogger_RetrieveBlogPostCommentsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getBlogs();
+      getBlogs("http://www.blogger.com/feeds/default/blogs");
     } else {
       showStatus("You are not logged on to Blogger.", true);
     }
   }
-  
-  private void getBlogs() {
+
+  /**
+   * Retrieve the Blogger blogs feed using the Blogger service and
+   * the blogs feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Blog entry and
+   * calls getPosts to retrieve the posts feed for that blog.
+   * 
+   * @param blogsFeedUri The uri of the blogs feed
+   */
+  private void getBlogs(String blogsFeedUri) {
     showStatus("Loading blog feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
+    service.getBlogFeed(blogsFeedUri, new BlogFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Blog feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Blog " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
@@ -103,12 +116,21 @@ public class BloggerRetrieveBlogPostCommentsDemo extends GDataDemo {
       }
     });
   }
-  
+
+  /**
+   * Retrieve the Blogger comments feed using the Blogger service and
+   * the comments feed uri for a given post.
+   * On success, call showData to display the comments to the user.
+   * If no comments are available, display a message.
+   * 
+   * @param commentsFeedUri The comments feed uri for a given post
+   */
   private void getComments(String commentsFeedUri) {
     showStatus("Loading comments feed...", false);
     service.getBlogCommentFeed(commentsFeedUri, new BlogCommentFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Comments feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger " +
+            "Comments feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogCommentFeed result) {
         if (result.getEntries().length == 0) {
@@ -119,12 +141,25 @@ public class BloggerRetrieveBlogPostCommentsDemo extends GDataDemo {
       }
     });
   }
-  
+
+  /**
+   * Retrieve the Blogger posts feed using the Blogger service and
+   * the posts feed uri for a given blog.
+   * On success, identify the first post entry that is available for
+   * commenting, this will be the post whose comments will be
+   * displayed.
+   * If no posts are available, display a message.
+   * Otherwise call getComments to retrieve the comments for the
+   * target post.
+   * 
+   * @param postsFeedUri The posts feed uri for a given blog
+   */
   private void getPosts(String postsFeedUri) {
     showStatus("Loading posts feed...", false);
     service.getBlogPostFeed(postsFeedUri, new BlogPostFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Posts feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Posts " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogPostFeed result) {
         PostEntry targetPost = null;
@@ -171,10 +206,12 @@ public class BloggerRetrieveBlogPostCommentsDemo extends GDataDemo {
         mainPanel.setWidget(row, 1, new Label("Not available"));
       } else {
         String link = entry.getHtmlLink().getHref();
-        mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + "\" target=\"_blank\">" + link +  "</a>"));
+        mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + 
+            "\" target=\"_blank\">" + link +  "</a>"));
       }
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getPublished().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 2,
+          new Label(entry.getPublished().getValue().getDate().toString()));
     }
   }
 

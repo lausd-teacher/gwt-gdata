@@ -57,9 +57,10 @@ public class ContactsUpdateContactDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrate how to update a contact entry. It queries for the most " +
-          "recently modified contact entry of today from the authenticated user and update that " +
-          "entry with a phone number.</p>\n";
+        return "<p>This sample code demonstrate how to update a contact " +
+            "entry. It queries for the most recently modified contact " +
+            "entry of today from the authenticated user and update that " +
+            "entry with a phone number.</p>\n";
       }
 
       @Override
@@ -79,14 +80,16 @@ public class ContactsUpdateContactDemo extends GDataDemo {
    * otherwise start the demo by querying the user's contacts.
    */
   public ContactsUpdateContactDemo() {
-    service = ContactsService.newInstance("HelloGData_Contacts_UpdateContactDemo_v1.0");
+    service = ContactsService.newInstance(
+        "HelloGData_Contacts_UpdateContactDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Update a contact");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          queryContacts();
+          queryContacts(
+              "http://www.google.com/m8/feeds/contacts/default/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -94,17 +97,28 @@ public class ContactsUpdateContactDemo extends GDataDemo {
       showStatus("You are not logged on to Google Contacts.", true);
     }
   }
-  
-  private void queryContacts() {
+  /**
+   * Retrieves a contacts feed using a Query object.
+   * In GData, feed URIs can contain querystring parameters. The
+   * GData query objects aid in building parameterized feed URIs.
+   * On success, obtain the first contact entry with a title starting
+   * with "GWT-Contacts-Client", this is the contact that will be updated.
+   * If no contact is found, display a message.
+   * Otherwise call updateContact to update the contact.
+   * 
+   * @param contactsFeedUri The contacts feed uri
+   */
+  private void queryContacts(String contactsFeedUri) {
     showStatus("Querying contacts...", false);
-    ContactQuery query = ContactQuery.newInstance("http://www.google.com/m8/feeds/contacts/default/full");
+    ContactQuery query = ContactQuery.newInstance(contactsFeedUri);
     Date today = new Date();
     DateTime updatedMin = DateTime.newInstance(today, true);
     query.setUpdatedMin(updatedMin);
     query.setSortOrder(ContactQuery.SORTORDER_DESCENDING);
     service.getContactFeed(query, new ContactFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Contacts feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Contacts feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ContactFeed result) {
         ContactEntry[] entries = result.getEntries();
@@ -117,7 +131,8 @@ public class ContactsUpdateContactDemo extends GDataDemo {
           }
         }
         if (targetContact == null) {
-          showStatus("No contacts were found that were modified today and contained 'GWT-Contacts-Client' in the title.", false);
+          showStatus("No contacts were found that were modified today and " +
+              "contained 'GWT-Contacts-Client' in the title.", false);
         } else {
           updateContact(targetContact);
         }
@@ -142,6 +157,17 @@ public class ContactsUpdateContactDemo extends GDataDemo {
     mainPanel.setWidget(0, 0, msg);
   }
   
+  /**
+   * Update a contact by making use of the updateEntry
+   * method of the Entry class.
+   * Set the contact's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-Contacts-Client' so that
+   * we can identify which contacts were updated by this demo.
+   * We also update the contact's phone number.
+   * On success and failure, display a status message.
+   * 
+   * @param targetContact The contact entry which to update
+   */
   private void updateContact(ContactEntry targetContact) {
     targetContact.setTitle(Text.newInstance());
     targetContact.getTitle().setText("GWT-Contacts-Client - updated contact");
@@ -152,7 +178,8 @@ public class ContactsUpdateContactDemo extends GDataDemo {
     showStatus("Updating a contact event...", false);
     targetContact.updateEntry(new ContactEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while updating a contact: " + caught.getMessage(), true);
+        showStatus("An error occurred while updating a contact: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ContactEntry result) {
         showStatus("Updated a contact.", false);

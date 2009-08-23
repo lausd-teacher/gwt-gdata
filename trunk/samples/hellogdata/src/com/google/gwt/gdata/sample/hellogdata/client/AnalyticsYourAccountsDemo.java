@@ -48,9 +48,9 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample demonstrates how to access 50 of " +
-        "the account names, profile names, profile ids and table ids to which your " +
-        "login has access.</p>\n";
+        return "<p>This sample demonstrates how to access 50 of the " +
+            "account names, profile names, profile ids and table ids to " +
+            "which your login has access.</p>\n";
       }
 
       @Override
@@ -70,28 +70,41 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the Analytics accounts.
    */
   public AnalyticsYourAccountsDemo() {
-    service = AnalyticsService.newInstance("HelloGData_Analytics_YourAccountsDemo_v1.0");
+    service = AnalyticsService.newInstance(
+        "HelloGData_Analytics_YourAccountsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getAccounts();
+      getAccounts("https://www.google.com/analytics/feeds/accounts/" +
+          "default?max-results=50");
     } else {
       showStatus("You are not logged on to Google Analytics.", true);
     }
   }
-  
-  private void getAccounts() {
+
+  /**
+   * Retrieve the Analytics accounts feed using the Analytics service and
+   * the accounts feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler calls showData to display all the retrieved
+   * Account entries.
+   * 
+   * @param accountsFeedUri The uri of the accounts feed
+   */
+  private void getAccounts(String accountsFeedUri) {
     showStatus("Loading Analytics accounts feed...", false);
-    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default?max-results=50", new AccountFeedCallback() {
+    service.getAccountFeed(accountsFeedUri, new AccountFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Analytics Accounts feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Analytics " +
+            "Accounts feed: " + caught.getMessage(), true);
       }
       public void onSuccess(AccountFeed result) {
         AccountEntry[] entries = result.getEntries();
         if (entries.length == 0) {
           showStatus("You have no Analytics accounts.", false);
         } else {
-          showData(result.getEntries());
+          showData(entries);
         }
       }
     });
@@ -106,7 +119,8 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
   */
   private void showData(AccountEntry[] entries) {
     mainPanel.clear();
-    String[] labels = new String[] { "Account Name", "Profile Name", "Profile Id", "Table Id" };
+    String[] labels = new String[] { "Account Name", 
+        "Profile Name", "Profile Id", "Table Id" };
     mainPanel.insertRow(0);
     for (int i = 0; i < labels.length; i++) {
       mainPanel.addCell(0);
@@ -117,13 +131,17 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
       AccountEntry entry = entries[i];
       int row = mainPanel.insertRow(i + 1);
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 0, new Label(entry.getPropertyValue("ga:AccountName")));
+      mainPanel.setWidget(row, 0,
+          new Label(entry.getPropertyValue("ga:AccountName")));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 1, new Label(entry.getTitle().getText()));
+      mainPanel.setWidget(row, 1,
+          new Label(entry.getTitle().getText()));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getPropertyValue("ga:ProfileId")));
+      mainPanel.setWidget(row, 2,
+          new Label(entry.getPropertyValue("ga:ProfileId")));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 3, new Label(entry.getTableId().getValue()));
+      mainPanel.setWidget(row, 3,
+          new Label(entry.getTableId().getValue()));
     }
   }
 

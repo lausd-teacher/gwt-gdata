@@ -48,7 +48,8 @@ public class FinanceRetrievePortfolioDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code requests a specific portfolio entry as specified in the request URL.</p>\n";
+        return "<p>This sample code requests a specific portfolio entry " +
+            "as specified in the request URL.</p>\n";
       }
 
       @Override
@@ -68,33 +69,57 @@ public class FinanceRetrievePortfolioDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's portfolios.
    */
   public FinanceRetrievePortfolioDemo() {
-    service = FinanceService.newInstance("HelloGData_Finance_RetrievePortfoliosDemo_v1.0");
+    service = FinanceService.newInstance(
+        "HelloGData_Finance_RetrievePortfoliosDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getPortfolios();
+      getPortfolios(
+          "http://finance.google.com/finance/feeds/default/portfolios");
     } else {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
   
+  /**
+   * Retrieves a portfolio entry by uri. On success, call
+   * showData to display the portfolio entry details.
+   * 
+   * @param portfolioEntryUri The uri of the portfolio
+   * entry to retrieve
+   */
   private void getPortfolio(String portfolioEntryUri) {
     showStatus("Loading portfolio entry...", false);
     service.getPortfolioEntry(portfolioEntryUri, new PortfolioEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving a portfolio entry: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving a portfolio entry: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(PortfolioEntry result) {
         showData(new PortfolioEntry[]{ result });
       }
     });
   }
-  
-  private void getPortfolios() {
+
+  /**
+   * Retrieve the portfolios feed using the Finance service and
+   * the portfolios feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining success
+   * and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Portfolio entry and
+   * calls getPortfolio. The getPortfolio call will retrieve
+   * the same portfolio that we already have, the goal
+   * is to exemplify how to retrieve a portfolio directly.
+   * 
+   * @param portfoliosFeedUri The uri of the portfolios feed
+   */
+  private void getPortfolios(String portfoliosFeedUri) {
     showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
+    service.getPortfolioFeed(portfoliosFeedUri, new PortfolioFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the portfolios " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
@@ -112,13 +137,13 @@ public class FinanceRetrievePortfolioDemo extends GDataDemo {
   /**
   * Displays a set of Finance portfolio entries in a tabular 
   * fashion with the help of a GWT FlexTable widget. The data fields 
-  * Title, Email and Updated are displayed.
+  * Title and ID are displayed.
   * 
   * @param entries The Finance portfolio entries to display.
   */
   private void showData(PortfolioEntry[] entries) {
     mainPanel.clear();
-    String[] labels = new String[] { "Title" };
+    String[] labels = new String[] { "Title", "ID" };
     mainPanel.insertRow(0);
     for (int i = 0; i < labels.length; i++) {
       mainPanel.addCell(0);
@@ -130,6 +155,8 @@ public class FinanceRetrievePortfolioDemo extends GDataDemo {
       int row = mainPanel.insertRow(i + 1);
       mainPanel.addCell(row);
       mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
+      mainPanel.addCell(row);
+      mainPanel.setWidget(row, 1, new Label(entry.getId().getValue()));
     }
   }
 

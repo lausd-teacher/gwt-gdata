@@ -24,6 +24,7 @@ import com.google.gwt.gdata.client.gbase.ItemsEntry;
 import com.google.gwt.gdata.client.gbase.ItemsEntryCallback;
 import com.google.gwt.gdata.client.gbase.ItemsFeed;
 import com.google.gwt.gdata.client.gbase.ItemsFeedCallback;
+import com.google.gwt.gdata.client.gbase.MapAttribute;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
@@ -52,10 +53,11 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update an existing item of the " +
-          "authenticated user. It retrieves a list of the user's items, and updates " +
-          "the first item with a title that starts with 'GWT-GoogleBase-Client' with a " +
-          "new title and target country.</p>\n";
+        return "<p>This sample code demonstrates how to update an existing " +
+            "item of the authenticated user. It retrieves a list of the " +
+            "user's items, and updates the first item with a title that " +
+            "starts with 'GWT-GoogleBase-Client' with a new title and " +
+            "target country.</p>\n";
       }
 
       @Override
@@ -75,14 +77,15 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's items.
    */
   public GoogleBaseUpdateItemDemo() {
-    service = GoogleBaseService.newInstance("HelloGData_GoogleBase_UpdateItemDemo_v1.0");
+    service = GoogleBaseService.newInstance(
+        "HelloGData_GoogleBase_UpdateItemDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Update an item");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getItems();
+          getItems("http://www.google.com/base/feeds/items/");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -91,11 +94,25 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
     }
   }
   
-  private void getItems() {
+  /**
+   * Retrieve the items feed using the Google Base service and
+   * the items feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining success
+   * and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Item entry with a title
+   * starting with "GWT-GoogleBase-Client" and calls updateItem
+   * to update the item.
+   * If no item is found a message is displayed.
+   * 
+   * @param itemsFeedUri The uri of the items feed
+   */
+  private void getItems(String itemsFeedUri) {
     showStatus("Loading items feed...", false);
-    service.getItemsFeed("http://www.google.com/base/feeds/items/", new ItemsFeedCallback() {
+    service.getItemsFeed(itemsFeedUri, new ItemsFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the items feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the items feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ItemsFeed result) {
         ItemsEntry[] entries = result.getEntries();
@@ -107,7 +124,8 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
           }
         }
         if (targetEntry == null) {
-          showStatus("No item found that contains 'GWT-GoogleBase-Client' in the title.", false);
+          showStatus("No item found that contains 'GWT-GoogleBase-Client' " +
+              "in the title.", false);
         } else {
           updateItem(targetEntry);
         }
@@ -132,14 +150,29 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
     mainPanel.setWidget(0, 0, msg);
   }
   
-  private void updateItem(ItemsEntry entry) {
+  /**
+   * Update an item by making use of the updateEntry
+   * method of the Entry class.
+   * Set the item's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-GoogleBase-Client' so that
+   * we can identify which items were updated by this demo.
+   * We also update the target_country property for this item.
+   * On success and failure, display a status message.
+   * 
+   * @param itemsEntry The item entry which to update
+   */
+  private void updateItem(ItemsEntry itemsEntry) {
     showStatus("Updating item...", false);
-    entry.setTitle(Text.newInstance());
-    entry.getTitle().setText("GWT-GoogleBase-Client - updated item");
-    entry.getAttributes().get("target_country").setValue("UK");
-    entry.updateEntry(new ItemsEntryCallback() {
+    itemsEntry.setTitle(Text.newInstance());
+    itemsEntry.getTitle().setText("GWT-GoogleBase-Client - updated item");
+    MapAttribute attributes = itemsEntry.getAttributes();
+    if (attributes.contains("target_country")) {
+      attributes.get("target_country").setValue("UK");
+    }
+    itemsEntry.updateEntry(new ItemsEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while updating an item: " + caught.getMessage(), true);
+        showStatus("An error occurred while updating an item: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ItemsEntry result) {
         showStatus("Updated an item.", false);

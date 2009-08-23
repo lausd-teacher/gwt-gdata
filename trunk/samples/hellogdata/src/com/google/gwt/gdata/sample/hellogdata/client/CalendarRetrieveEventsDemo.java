@@ -28,7 +28,8 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example demonstrates how to retrieve a list of a user's calendar events.
+ * The following example demonstrates how to retrieve a list of a 
+ * user's calendar events.
  */
 public class CalendarRetrieveEventsDemo extends GDataDemo {
 
@@ -48,10 +49,12 @@ public class CalendarRetrieveEventsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to retrieve all primary calendar " +
-          "events from the authenticated user. The private/full feed is used to obtain " +
-          "the events from the private calendar with full projection. The sample iterates " +
-          "through the list of events and prints out each event's title.</p>\n";
+        return "<p>This sample code demonstrates how to retrieve all " +
+            "primary calendar events from the authenticated user. The " +
+            "private/full feed is used to obtain the events from the " +
+            "private calendar with full projection. The sample iterates " +
+            "through the list of events and prints out each event's " +
+            "title.</p>\n";
       }
 
       @Override
@@ -71,21 +74,32 @@ public class CalendarRetrieveEventsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's calendars.
    */
   public CalendarRetrieveEventsDemo() {
-    service = CalendarService.newInstance("HelloGData_Calendar_RetrieveEventsDemo_v1.0");
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_RetrieveEventsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getEvents();
+      getEvents("http://www.google.com/calendar/feeds/default/private/full");
     } else {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  
-  private void getEvents() {
+
+  /**
+   * Retrieve the Calendar events feed using the Calendar service and
+   * the events feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler calls showData to display the event entries.
+   * 
+   * @param eventsFeedUri The uri of the events feed
+   */
+  private void getEvents(String eventsFeedUri) {
     showStatus("Loading events feed...", false);
-    service.getEventsFeed("http://www.google.com/calendar/feeds/default/private/full", new CalendarEventFeedCallback() {
+    service.getEventsFeed(eventsFeedUri, new CalendarEventFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Events feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Events feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarEventFeed result) {
         CalendarEventEntry[] entries = result.getEntries();
@@ -121,9 +135,11 @@ public class CalendarRetrieveEventsDemo extends GDataDemo {
       mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
       mainPanel.addCell(row);
       String link = entry.getHtmlLink().getHref();
-      mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + "\">" + link + "</a>"));
+      mainPanel.setWidget(row, 1,
+          new HTML("<a href=\"" + link + "\">" + link + "</a>"));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getUpdated().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 2,
+          new Label(entry.getUpdated().getValue().getDate().toString()));
     }
   }
 

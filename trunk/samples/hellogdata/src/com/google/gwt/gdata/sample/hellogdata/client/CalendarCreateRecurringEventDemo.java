@@ -51,11 +51,12 @@ public class CalendarCreateRecurringEventDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert a recurring event into " +
-          "the authenticated user's primary calendar. The private/full feed is used for event " +
-          "insertion. The specifics of the recurrence such as recurring frequency and recurring " +
-          "duration are specified with a recurring string which is based on the " +
-          "iCalendar specification</p>\n";
+        return "<p>This sample code demonstrates how to create and insert " +
+            "a recurring event into the authenticated user's primary " +
+            "calendar. The private/full feed is used for event insertion. " +
+            "The specifics of the recurrence such as recurring frequency " +
+            "and recurring duration are specified with a recurring string " +
+            "which is based on the iCalendar specification</p>\n";
       }
 
       @Override
@@ -75,14 +76,16 @@ public class CalendarCreateRecurringEventDemo extends GDataDemo {
    * otherwise start the demo by creating an event.
    */
   public CalendarCreateRecurringEventDemo() {
-    service = CalendarService.newInstance("HelloGData_Calendar_CreateRecurringEventDemo_v1.0");
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_CreateRecurringEventDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create an event");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          createEvent();
+          createEvent(
+              "http://www.google.com/calendar/feeds/default/private/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -90,22 +93,38 @@ public class CalendarCreateRecurringEventDemo extends GDataDemo {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  
-  private void createEvent() {
+
+  /**
+   * Create a calendar event by inserting an event entry into
+   * a calendar events feed.
+   * Set the event's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-Calendar-Client' so that
+   * we can identify which events were created by this demo.
+   * We also specify the event's recurrence settings.
+   * On success and failure, display a status message.
+   * 
+   * @param eventsFeedUri The uri of the events feed into which to 
+   * insert the new event
+   */
+  private void createEvent(String eventsFeedUri) {
     showStatus("Creating event...", false);
     CalendarEventEntry eventEntry = CalendarEventEntry.newInstance();
     eventEntry.setTitle(Text.newInstance());
-    eventEntry.getTitle().setText("GWT-Calendar-Client: insert recurring event");
+    eventEntry.getTitle().setText(
+        "GWT-Calendar-Client: insert recurring event");
     Recurrence recurrence = Recurrence.newInstance();
     String icalBreak = "\r\n";
-    String recurrenceString = "DTSTART;TZID=America/Los_Angeles:20090101T080000" + icalBreak +
+    String recurrenceString = 
+        "DTSTART;TZID=America/Los_Angeles:20090101T080000" + icalBreak +
         "DTEND;TZID=America/Los_Angeles:20090101T090000" + icalBreak +
         "RRULE:FREQ=WEEKLY;UNTIL=20090701T160000Z;";
     recurrence.setValue(recurrenceString);
     eventEntry.setRecurrence(recurrence);
-    service.insertCalendarEventEntry("http://www.google.com/calendar/feeds/default/private/full", eventEntry, new CalendarEventEntryCallback() {
+    service.insertCalendarEventEntry(eventsFeedUri, eventEntry,
+        new CalendarEventEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while creating a Calendar event: " + caught.getMessage(), true);
+        showStatus("An error occurred while creating a Calendar event: " + 
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarEventEntry result) {
         showStatus("Created a recurring event.", false);

@@ -55,9 +55,10 @@ public class CalendarCreateEventReminderDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrate how to create and insert a single event with a " +
-          "reminder to the authenticated user's primary calendar. The private/full feed is used " +
-          "for event insertion.</p>\n";
+        return "<p>This sample code demonstrate how to create and insert " +
+            "a single event with a reminder to the authenticated user's " +
+            "primary calendar. The private/full feed is used for event " +
+            "insertion.</p>\n";
       }
 
       @Override
@@ -77,14 +78,16 @@ public class CalendarCreateEventReminderDemo extends GDataDemo {
    * otherwise start the demo by creating an event.
    */
   public CalendarCreateEventReminderDemo() {
-    service = CalendarService.newInstance("HelloGData_Calendar_CreateEventReminderDemo_v1.0");
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_CreateEventReminderDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create an event reminder");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          createEvent();
+          createEvent(
+              "http://www.google.com/calendar/feeds/default/private/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -92,9 +95,21 @@ public class CalendarCreateEventReminderDemo extends GDataDemo {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  
+
+  /**
+   * Create a calendar event by inserting an event entry into
+   * a calendar events feed.
+   * Set the event's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-Calendar-Client' so that
+   * we can identify which events were created by this demo.
+   * We also specify values for time span and reminder settings.
+   * On success and failure, display a status message.
+   * 
+   * @param eventsFeedUri The uri of the events feed into which to 
+   * insert the new event
+   */
   @SuppressWarnings("deprecation")
-  private void createEvent() {
+  private void createEvent(String eventsFeedUri) {
     showStatus("Creating event reminder...", false);
     CalendarEventEntry entry = CalendarEventEntry.newInstance();
     entry.setTitle(Text.newInstance());
@@ -110,9 +125,11 @@ public class CalendarCreateEventReminderDemo extends GDataDemo {
     reminder.setMethod(Reminder.METHOD_ALERT);
     when.addReminder(reminder);
     entry.addTime(when);
-    service.insertCalendarEventEntry("http://www.google.com/calendar/feeds/default/private/full", entry, new CalendarEventEntryCallback() {
+    service.insertCalendarEventEntry(eventsFeedUri, entry,
+        new CalendarEventEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while creating a Calendar event reminder: " + caught.getMessage(), true);
+        showStatus("An error occurred while creating a Calendar event " +
+            "reminder: " + caught.getMessage(), true);
       }
       public void onSuccess(CalendarEventEntry result) {
         showStatus("Created a Calendar event reminder.", false);

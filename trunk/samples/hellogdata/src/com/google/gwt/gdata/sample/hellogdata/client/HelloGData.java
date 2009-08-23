@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.gdata.client.AttendeeStatus;
 import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.sample.hellogdata.client.GDataDemo.GDataDemoInfo;
 import com.google.gwt.user.client.History;
@@ -33,7 +32,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
- * Main class for implementing the HelloGData gwt-google-apis demo.
+ * Main class for implementing the HelloGData gwt-gdata demo.
  */
 public class HelloGData implements EntryPoint, HistoryListener {
 
@@ -44,6 +43,11 @@ public class HelloGData implements EntryPoint, HistoryListener {
   private VerticalPanel innerPanel = new VerticalPanel();
   private FlexTable outerPanel = new FlexTable();
 
+  /**
+   * Invoked when the GData JS library is loaded and ready to use.
+   * Here we check confirm that GData is available and display a
+   * drop down list containing each demo
+   */
   public void onGDataLoad() {
     if (!GData.isLoaded()) {
       Window.alert("The GData API is not installed."
@@ -62,8 +66,11 @@ public class HelloGData implements EntryPoint, HistoryListener {
     showInfo();
   }
 
+  /**
+   * Invoked when the history context changes.
+   */
   public void onHistoryChanged(String token) {
-    // Find the MapsDemoInfo associated with the history context. If one is
+    // Find the GDataDemoInfo associated with the history context. If one is
     // found, show it (It may not be found, for example, when the user mis-
     // types a URL, or on startup, when the first context will be "").
     GDataDemoInfo info = list.find(token);
@@ -74,6 +81,11 @@ public class HelloGData implements EntryPoint, HistoryListener {
     show(info, false);
   }
   
+  /**
+   * The entrypoint for this demo. Here we build the base UI which
+   * every sample will use and load the GData API, if it has not yet
+   * loaded.
+   */
   public void onModuleLoad() {
 
     innerPanel.setStylePrimaryName("hm-mapinnerpanel");
@@ -122,7 +134,11 @@ public class HelloGData implements EntryPoint, HistoryListener {
       });
     }
   }
-  
+  /**
+   * Instantiates and runs a given GData demo.
+   * @param info An instance of an info object describing the demo
+   * @param affectHistory Whether to add a history entry for this demo
+   */
   public void show(GDataDemoInfo info, boolean affectHistory) {
     // Don't bother re-displaying the existing GDataDemo. This can be an issue
     // in practice, because when the history context is set, our
@@ -258,6 +274,9 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(MapsDeleteMapFeatureDemo.init());
   }
   
+  /**
+   * Displays the default GData demo.
+   */
   private void showInfo() {
     show(list.find("Accounts - Authsub Authentication"), false);
   }

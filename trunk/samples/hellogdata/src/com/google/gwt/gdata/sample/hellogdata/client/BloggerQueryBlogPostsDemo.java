@@ -55,8 +55,8 @@ public class BloggerQueryBlogPostsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample queries for blog posts that were published within " +
-          "the last month.</p>\n";
+        return "<p>This sample queries for blog posts that were " +
+            "published within the last month.</p>\n";
       }
 
       @Override
@@ -76,21 +76,33 @@ public class BloggerQueryBlogPostsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's blogs.
    */
   public BloggerQueryBlogPostsDemo() {
-    service = BloggerService.newInstance("HelloGData_Blogger_QueryBlogPostsDemo_v1.0");
+    service = BloggerService.newInstance(
+        "HelloGData_Blogger_QueryBlogPostsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getBlogs();
+      getBlogs("http://www.blogger.com/feeds/default/blogs");
     } else {
       showStatus("You are not logged on to Blogger.", true);
     }
   }
-  
-  private void getBlogs() {
+
+  /**
+   * Retrieve the Blogger blogs feed using the Blogger service and
+   * the blogs feed uri. In GData all get, insert, update and delete methods
+   * always receive a callback defining success and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler picks up the first Blog entry and
+   * calls queryPosts to retrieve a posts feed for that blog.
+   * 
+   * @param blogsFeedUri The uri of the blogs feed
+   */
+  private void getBlogs(String blogsFeedUri) {
     showStatus("Loading blog feed...", false);
-    service.getBlogFeed("http://www.blogger.com/feeds/default/blogs", new BlogFeedCallback() {
+    service.getBlogFeed(blogsFeedUri, new BlogFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Blogger Blog feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Blogger Blog " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(BlogFeed result) {
         BlogEntry[] entries = result.getEntries();
@@ -104,7 +116,18 @@ public class BloggerQueryBlogPostsDemo extends GDataDemo {
       }
     });
   }
-  
+
+  /**
+   * Retrieves a posts feed for a blog using a Query object.
+   * In GData, feed URIs can contain querystring parameters. The
+   * GData query objects aid in building parameterized feed URIs.
+   * Upon successfully receiving the posts feed, the post entries 
+   * are displayed to the user via the showData method.
+   * The PublishedMin and PublishedMax parameters are used to
+   * limit the range of posts to a given publishing period.
+   * 
+   * @param postsFeedUri The posts feed uri for a given blog.
+   */
   @SuppressWarnings("deprecation")
   private void queryPosts(String postsFeedUri) {
     final BlogPostQuery query = BlogPostQuery.newInstance(postsFeedUri);
@@ -115,7 +138,8 @@ public class BloggerQueryBlogPostsDemo extends GDataDemo {
     showStatus("Querying Blogger for posts...", false);
     service.getBlogPostFeed(query, new BlogPostFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while querying Blogger for Posts: " + caught.getMessage(), true);
+        showStatus("An error occurred while querying Blogger for Posts: " + 
+            caught.getMessage(), true);
       }
       public void onSuccess(BlogPostFeed result) {
         showData(result.getEntries());
@@ -149,10 +173,12 @@ public class BloggerQueryBlogPostsDemo extends GDataDemo {
         mainPanel.setWidget(row, 1, new Label("Not available"));
       } else {
         String link = entry.getHtmlLink().getHref();
-        mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + "\" target=\"_blank\">" + link +  "</a>"));
+        mainPanel.setWidget(row, 1, new HTML("<a href=\"" + link + 
+            "\" target=\"_blank\">" + link +  "</a>"));
       }
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getPublished().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 2,
+          new Label(entry.getPublished().getValue().getDate().toString()));
     }
   }
   

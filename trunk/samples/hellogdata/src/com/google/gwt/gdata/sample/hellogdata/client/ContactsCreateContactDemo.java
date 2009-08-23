@@ -51,7 +51,8 @@ public class ContactsCreateContactDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create a new contact entry.</p>\n";
+        return "<p>This sample code demonstrates how to create a new " +
+            "contact entry.</p>\n";
       }
 
       @Override
@@ -71,14 +72,16 @@ public class ContactsCreateContactDemo extends GDataDemo {
    * otherwise start the demo by creating a contact.
    */
   public ContactsCreateContactDemo() {
-    service = ContactsService.newInstance("HelloGData_Contacts_CreateContactDemo_v1.0");
+    service = ContactsService.newInstance(
+        "HelloGData_Contacts_CreateContactDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a contact");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          createContact();
+          createContact(
+              "http://www.google.com/m8/feeds/contacts/default/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -86,8 +89,19 @@ public class ContactsCreateContactDemo extends GDataDemo {
       showStatus("You are not logged on to Google Contacts.", true);
     }
   }
-  
-  private void createContact() {
+
+  /**
+   * Create a contact by inserting a contact entry into
+   * a contacts feed.
+   * Set the contact's title and contents to an arbitrary string. Here
+   * we prefix the title with 'GWT-Contacts-Client' so that
+   * we can identify which contacts were created by this demo.
+   * On success and failure, display a status message.
+   * 
+   * @param contactFeedUri The uri of the contact feed into which to
+   * insert the new contact entry
+   */
+  private void createContact(String contactFeedUri) {
     showStatus("Creating contact...", false);
     ContactEntry entry = ContactEntry.newInstance();
     entry.setTitle(Text.newInstance());
@@ -99,9 +113,11 @@ public class ContactsCreateContactDemo extends GDataDemo {
     email.setPrimary(true);
     email.setRel(Email.REL_HOME);
     entry.setEmailAddresses(new Email[] { email });
-    service.insertContactEntry("http://www.google.com/m8/feeds/contacts/default/full", entry, new ContactEntryCallback() {
+    service.insertContactEntry(contactFeedUri, entry,
+        new ContactEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while creating a contact: " + caught.getMessage(), true);
+        showStatus("An error occurred while creating a contact: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ContactEntry result) {
         showStatus("Created a contact.", false);

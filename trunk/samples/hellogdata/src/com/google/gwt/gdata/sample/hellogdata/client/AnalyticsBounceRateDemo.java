@@ -31,7 +31,8 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example calculates the bounce rate for the top 10 sources of traffic to a given site.
+ * The following example calculates the bounce rate for the top 10
+ * sources of traffic to a given site.
  */
 public class AnalyticsBounceRateDemo extends GDataDemo {
 
@@ -73,15 +74,17 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
    * otherwise start the demo by retrieving the Analytics accounts.
    */
   public AnalyticsBounceRateDemo() {
-    service = AnalyticsService.newInstance("HelloGData_Analytics_BounceRateDemo_v1.0");
+    service = AnalyticsService.newInstance(
+        "HelloGData_Analytics_BounceRateDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getAccounts();
+      getAccounts("https://www.google.com/analytics/feeds/accounts/default");
     } else {
       showStatus("You are not logged on to Google Analytics.", true);
     }
   }
+  
   /**
    * Retrieve the Analytics accounts feed using the Analytics service and
    * the accounts feed uri. In GData all get, insert, update and delete methods
@@ -89,12 +92,15 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
    * Here, the failure handler displays an error message while the
    * success handler picks up the first Account entry and
    * calls queryData to retrieve the data feed for that account.
+   * 
+   * @param accountsFeedUri The uri of the accounts feed
    */
-  private void getAccounts() {
+  private void getAccounts(String accountsFeedUri) {
     showStatus("Loading Analytics accounts feed...", false);
-    service.getAccountFeed("https://www.google.com/analytics/feeds/accounts/default", new AccountFeedCallback() {
+    service.getAccountFeed(accountsFeedUri, new AccountFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Analytics Accounts feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Analytics " +
+            "Accounts feed: " + caught.getMessage(), true);
       }
       public void onSuccess(AccountFeed result) {
         AccountEntry[] entries = result.getEntries();
@@ -107,17 +113,23 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
       }
     });
   }
+  
   /**
    * Retrieves a data feed for an Analytics account using a Query object.
-   * In GData, feed URIs can contain query string parameters. The
+   * In GData, feed URIs can contain querystring parameters. The
    * GData query objects aid in building parameterized feed URIs.
-   * Upon successfully receiving the data feed, the data entries are displayed to the user
-   * via the showData() method.
+   * Upon successfully receiving the data feed, the data entries are displayed
+   * to the user via the showData method.
+   * Query parameters are specified for start and end dates, dimensions,
+   * metrics, sort field and direction, max results and the IDs of the
+   * account tables which should be queried.
    * 
-   * @param tableId The id of the account table for which to retrieve the Analytics data.
+   * @param tableId The id of the account table for which to retrieve the
+   * Analytics data.
    */
   private void queryData(String tableId) {
-    DataQuery query = DataQuery.newInstance("https://www.google.com/analytics/feeds/data");
+    DataQuery query = DataQuery.newInstance(
+        "https://www.google.com/analytics/feeds/data");
     query.setStartDate("2009-07-01");
     query.setEndDate("2009-07-31");
     query.setDimensions("ga:source,ga:medium");
@@ -128,13 +140,15 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
     showStatus("Loading data feed...", false);
     service.getDataFeed(query, new DataFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Analytics Data feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Analytics Data " +
+            "feed: " + caught.getMessage(), true);
       }
       public void onSuccess(DataFeed result) {
         showData(result.getEntries());
       }
     });
   }
+  
   /**
    * Displays a set of Analytics data entries in a tabular fashion with
    * the help of a GWT FlexTable widget. The data fields Source, Medium 
@@ -146,7 +160,11 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
    */
   private void showData(DataEntry[] entries) {
     mainPanel.clear();
-    String[] labels = new String[] { "Source", "Medium", "Visits", "Entrances", "Bounce Rate" };
+    String[] labels = new String[] { "Source",
+        "Medium",
+        "Visits",
+        "Entrances",
+        "Bounce Rate" };
     mainPanel.insertRow(0);
     for (int i = 0; i < labels.length; i++) {
       mainPanel.addCell(0);
@@ -160,13 +178,17 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
       double bounces = entry.getNumericValueOf("ga:bounces");
       int bounceRate = (int) Math.round(100 * bounces / entrances);
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 0, new Label(entry.getStringValueOf("ga:source")));
+      mainPanel.setWidget(row, 0,
+          new Label(entry.getStringValueOf("ga:source")));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 1, new Label(entry.getStringValueOf("ga:medium")));
+      mainPanel.setWidget(row, 1,
+          new Label(entry.getStringValueOf("ga:medium")));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(new Double(entrances).toString()));
+      mainPanel.setWidget(row, 2,
+          new Label(new Double(entrances).toString()));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 3, new Label(new Double(bounces).toString()));
+      mainPanel.setWidget(row, 3,
+          new Label(new Double(bounces).toString()));
       mainPanel.addCell(row);
       mainPanel.setWidget(row, 4, new Label(bounceRate + "%"));
     }

@@ -52,10 +52,12 @@ public class FinanceDeleteTransactionDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to delete an existing transaction " +
-          "within a portfolio of the authenticated user. It deletes the first GOOG " +
-          "transaction in the 'GWT-Finance-Client' portfolio, which was created in a preceeding " +
-          "example (an error will be generated if this does not exist).</p>\n";
+        return "<p>This sample code demonstrates how to delete an existing " +
+            "transaction within a portfolio of the authenticated user. " +
+            "It deletes the first GOOG transaction in the " +
+            "'GWT-Finance-Client' portfolio, which was created in a " +
+            "preceeding example (an error will be generated if this " +
+            "does not exist).</p>\n";
       }
 
       @Override
@@ -75,14 +77,16 @@ public class FinanceDeleteTransactionDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's portfolios.
    */
   public FinanceDeleteTransactionDemo() {
-    service = FinanceService.newInstance("HelloGData_Finance_DeleteTransactionDemo_v1.0");
+    service = FinanceService.newInstance(
+        "HelloGData_Finance_DeleteTransactionDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a transaction");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          getPortfolios();
+          getPortfolios(
+              "http://finance.google.com/finance/feeds/default/portfolios");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -90,24 +94,49 @@ public class FinanceDeleteTransactionDemo extends GDataDemo {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
-  
+
+  /**
+   * Delete a transaction entry using the Finance service and
+   * the transaction entry uri.
+   * On success and failure, display a status message.
+   * 
+   * @param transactionEntryUri The uri of the transaction entry to delete
+   */
   private void deleteTransaction(String transactionEntryUri) {
     showStatus("Deleting transaction...", false);
-    service.deleteTransactionEntry(transactionEntryUri, new TransactionEntryCallback() {
+    service.deleteTransactionEntry(transactionEntryUri,
+        new TransactionEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while deleting a transaction: " + caught.getMessage(), true);
+        showStatus("An error occurred while deleting a transaction: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(TransactionEntry result) {
         showStatus("Deleted a transaction.", false);
       }
     });
   }
-  
-  private void getPortfolios() {
+
+  /**
+   * Retrieve the portfolios feed using the Finance service and
+   * the portfolios feed uri. In GData all get, insert, update
+   * and delete methods always receive a callback defining success
+   * and failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler obtains the first Portfolio entry with a title
+   * starting with "GWT-Finance-Client" and retrieves the first
+   * transaction in the portfolio with the symbol "NASDAQ:GOOG",
+   * this is the transaction that will be deleted.
+   * If no transaction exists with this symbol, the request will fail.
+   * If no portfolio is found, a message is displayed.
+   * 
+   * @param portfoliosFeedUri The uri of the portfolios feed
+   */
+  private void getPortfolios(String portfoliosFeedUri) {
     showStatus("Loading portfolios feed...", false);
-    service.getPortfolioFeed("http://finance.google.com/finance/feeds/default/portfolios", new PortfolioFeedCallback() {
+    service.getPortfolioFeed(portfoliosFeedUri, new PortfolioFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the portfolios feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the portfolios feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(PortfolioFeed result) {
         PortfolioEntry[] entries = result.getEntries();
@@ -119,22 +148,36 @@ public class FinanceDeleteTransactionDemo extends GDataDemo {
           }
         }
         if (targetPortfolio == null) {
-          showStatus("No portfolio found that contains 'GWT-Finance-Client' in the title.", false);
+          showStatus("No portfolio found that contains 'GWT-Finance-Client' " +
+              "in the title.", false);
         } else {
           final String ticker = "NASDAQ:GOOG";
           int transactionId = 1;
-          String transactionEntryUri = targetPortfolio.getEditLink().getHref() + "/positions/" + ticker + "/transactions/" + transactionId;
+          String transactionEntryUri =
+              targetPortfolio.getEditLink().getHref() + "/positions/" + 
+              ticker + "/transactions/" + transactionId;
           getTransaction(transactionEntryUri);
         }
       }
     });
   }
   
+  /**
+   * Retrieves the transaction entry corresponding to the given URI.
+   * On failure display a status message. On success call
+   * deleteTransaction to delete the transaction. Alternatively,
+   * we could also have used result.deleteEntry, but the effect
+   * is the same.
+   * 
+   * @param transactionEntryUri The transaction entry uri
+   */
   private void getTransaction(String transactionEntryUri) {
     showStatus("Retrieving transaction...", false);
-    service.getTransactionEntry(transactionEntryUri, new TransactionEntryCallback() {
+    service.getTransactionEntry(transactionEntryUri,
+        new TransactionEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving a transaction: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving a transaction: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(TransactionEntry result) {
         if (result == null) {

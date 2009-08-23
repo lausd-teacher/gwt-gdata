@@ -48,7 +48,8 @@ public class ContactsRetrieveContactsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code retrieves all the contact entries of the authenticated user.</p>\n";
+        return "<p>This sample code retrieves all the contact entries of " +
+            "the authenticated user.</p>\n";
       }
 
       @Override
@@ -68,23 +69,36 @@ public class ContactsRetrieveContactsDemo extends GDataDemo {
    * otherwise start the demo by querying the user's contacts.
    */
   public ContactsRetrieveContactsDemo() {
-    service = ContactsService.newInstance("HelloGData_Contacts_RetrieveContactsDemo_v1.0");
+    service = ContactsService.newInstance(
+        "HelloGData_Contacts_RetrieveContactsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      queryContacts();
+      queryContacts("http://www.google.com/m8/feeds/contacts/default/full");
     } else {
       showStatus("You are not logged on to Google Contacts.", true);
     }
   }
-  
-  private void queryContacts() {
+
+  /**
+   * Retrieves a contacts feed using a Query object.
+   * In GData, feed URIs can contain query string parameters. The
+   * GData query objects aid in building parameterized feed URIs.
+   * Upon successfully receiving the contacts feed, the contact entries
+   * are displayed to the user via the showData method.
+   * The MaxResults parameter is used to limit the number of entries
+   * returned.
+   * 
+   * @param contactsFeedUri The contacts feed uri.
+   */
+  private void queryContacts(String contactsFeedUri) {
     showStatus("Loading contacts feed...", false);
-    ContactQuery query = ContactQuery.newInstance("http://www.google.com/m8/feeds/contacts/default/full");
+    ContactQuery query = ContactQuery.newInstance(contactsFeedUri);
     query.setMaxResults(50);
     service.getContactFeed(query, new ContactFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Contacts feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Contacts feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(ContactFeed result) {
         ContactEntry[] entries = result.getEntries();
@@ -125,7 +139,8 @@ public class ContactsRetrieveContactsDemo extends GDataDemo {
       }
       mainPanel.setWidget(row, 1, new Label(email));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getUpdated().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 2,
+          new Label(entry.getUpdated().getValue().getDate().toString()));
     }
   }
 

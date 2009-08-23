@@ -27,7 +27,8 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example demonstrates how to retrieve a list of a user's calendars.
+ * The following example demonstrates how to retrieve a list of a
+ * user's calendars.
  */
 public class CalendarRetrieveCalendarsDemo extends GDataDemo {
 
@@ -47,9 +48,10 @@ public class CalendarRetrieveCalendarsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses the allcalendars feed to retrieve the authenticated user's " +
-          "list of calendars (primary, secondary and subscribed). The feed result is iterated through to " +
-          "print out each calendar's title.</p>\n";
+        return "<p>This sample code uses the allcalendars feed to retrieve " +
+            "the authenticated user's list of calendars (primary," +
+            " secondary and subscribed). The feed result is iterated " +
+            "through to print out each calendar's title.</p>\n";
       }
 
       @Override
@@ -69,21 +71,34 @@ public class CalendarRetrieveCalendarsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's calendars.
    */
   public CalendarRetrieveCalendarsDemo() {
-    service = CalendarService.newInstance("HelloGData_Calendar_RetrieveCalendarsDemo_v1.0");
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_RetrieveCalendarsDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getCalendars();
+      getCalendars(
+          "http://www.google.com/calendar/feeds/default/allcalendars/full");
     } else {
       showStatus("You are not logged on to Google Calendar.", true);
     }
   }
-  
-  private void getCalendars() {
+
+  /**
+   * Retrieve the calendars feed using the Calendar service and
+   * the calendars feed uri. In GData all get, insert, update and 
+   * delete methods always receive a callback defining success and 
+   * failure handlers.
+   * Here, the failure handler displays an error message while the
+   * success handler calls showData to display the calendar entries.
+   * 
+   * @param calendarsFeedUri The uri of the calendars feed
+   */
+  private void getCalendars(String calendarsFeedUri) {
     showStatus("Loading calendars feed...", false);
-    service.getAllCalendarsFeed("http://www.google.com/calendar/feeds/default/allcalendars/full", new CalendarFeedCallback() {
+    service.getAllCalendarsFeed(calendarsFeedUri, new CalendarFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Calendar feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Calendar feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarFeed result) {
         CalendarEntry[] entries = result.getEntries();
@@ -120,7 +135,8 @@ public class CalendarRetrieveCalendarsDemo extends GDataDemo {
       mainPanel.addCell(row);
       mainPanel.setWidget(row, 1, new Label(entry.getColor().getValue()));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 2, new Label(entry.getUpdated().getValue().getDate().toString()));
+      mainPanel.setWidget(row, 2,
+          new Label(entry.getUpdated().getValue().getDate().toString()));
     }
   }
 

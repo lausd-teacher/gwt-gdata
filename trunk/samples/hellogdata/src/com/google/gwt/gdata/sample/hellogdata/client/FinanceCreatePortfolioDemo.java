@@ -51,9 +51,11 @@ public class FinanceCreatePortfolioDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert a new portfolio. " +
-          "The portfolio feed post URL (http://finance.google.com/finance/feeds/default/portfolios) " +
-          "is used to insert a new portfolio entry for the authenticated user.</p>\n";
+        return "<p>This sample code demonstrates how to create and insert " +
+            "a new portfolio. The portfolio feed post URL " +
+            "(http://finance.google.com/finance/feeds/default/portfolios) " +
+            "is used to insert a new portfolio entry for the authenticated " +
+            "user.</p>\n";
       }
 
       @Override
@@ -73,14 +75,16 @@ public class FinanceCreatePortfolioDemo extends GDataDemo {
    * otherwise start the demo by creating a portfolio.
    */
   private FinanceCreatePortfolioDemo() {
-    service = FinanceService.newInstance("HelloGData_Finance_CreatePortfolioDemo_v1.0");
+    service = FinanceService.newInstance(
+        "HelloGData_Finance_CreatePortfolioDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a portfolio");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          createPortfolio();
+          createPortfolio(
+              "http://finance.google.com/finance/feeds/default/portfolios");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -88,8 +92,20 @@ public class FinanceCreatePortfolioDemo extends GDataDemo {
       showStatus("You are not logged on to Google Finance.", true);
     }
   }
-  
-  private void createPortfolio() {
+
+  /**
+   * Create a portfolio by inserting a portfolio entry into
+   * a portfolio feed.
+   * Set the portfolio's title to an arbitrary string. Here
+   * we prefix the title with 'GWT-Finance-Client' so that
+   * we can identify which portfolios were created by this demo.
+   * The new portfolio is created with currency code set to USD.
+   * On success and failure, display a status message.
+   * 
+   * @param portfolioFeedUri The uri of the portfolio feed into which
+   * to insert the portfolio entry
+   */
+  private void createPortfolio(String portfolioFeedUri) {
     showStatus("Creating portfolio...", false);
     PortfolioEntry entry = PortfolioEntry.newInstance();
     entry.setTitle(Text.newInstance());
@@ -97,9 +113,11 @@ public class FinanceCreatePortfolioDemo extends GDataDemo {
     PortfolioData data = PortfolioData.newInstance();
     data.setCurrencyCode("USD");
     entry.setPortfolioData(data);
-    service.insertPortfolioEntry("http://finance.google.com/finance/feeds/default/portfolios", entry, new PortfolioEntryCallback() {
+    service.insertPortfolioEntry(portfolioFeedUri, entry,
+        new PortfolioEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while creating a portfolio: " + caught.getMessage(), true);
+        showStatus("An error occurred while creating a portfolio: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(PortfolioEntry result) {
         showStatus("Created a portfolio.", false);
