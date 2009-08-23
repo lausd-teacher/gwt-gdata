@@ -35,7 +35,8 @@ public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
   protected CalendarEventFeed() { }
 
   /**
-   * Returns the whether the user is permitted to use Google Apps Sync. This element is optional.
+   * Returns the whether the user is permitted to use Google Apps Sync.
+   * This element is optional.
    * 
    * @return Whether the user is permitted to use Google Apps Sync.
    */
@@ -44,9 +45,11 @@ public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
   }-*/;
 
   /**
-   * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * Returns the link that provides the URI that can be used to batch
+   * operations to query, insert, update and delete entries on this feed.
    * 
-   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * @return Link that provides the URI that can be used to batch operations
+   * to query, insert, update and delete entries on this feed.
    */
   public final native CalendarLink getFeedBatchLink() /*-{
     return this.getFeedBatchLink();
@@ -71,9 +74,11 @@ public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(CalendarEventFeedCallback callback) {
     this.get(callback);
@@ -101,14 +106,17 @@ public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
    * Inserts a new calendar event entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertCalendarEventEntry(CalendarEventEntry entry, CalendarEventEntryCallback callback) {
+  public final void insertCalendarEventEntry(CalendarEventEntry entry,
+      CalendarEventEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 
   /**
-   * Sets the whether the user is permitted to use Google Apps Sync. This element is optional.
+   * Sets the whether the user is permitted to use Google Apps Sync. This
+   * element is optional.
    * 
    * @param allowGSync Whether the user is permitted to use Google Apps Sync.
    */
@@ -121,7 +129,8 @@ public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
    * 
    * @param timesCleaned Times cleaned property.
    */
-  public final native void setTimesCleaned(TimesCleanedProperty timesCleaned) /*-{
+  public final native void setTimesCleaned(
+      TimesCleanedProperty timesCleaned) /*-{
     this.setTimesCleaned(timesCleaned);
   }-*/;
 

@@ -118,7 +118,8 @@ public class PostCommentQuery extends Query {
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
+   * Sets the 1-based index of the first result to be retrieved.
+   * The default value is 1.
    * 
    * @param startIndex 1-based index of the first result to be retrieved.
    */

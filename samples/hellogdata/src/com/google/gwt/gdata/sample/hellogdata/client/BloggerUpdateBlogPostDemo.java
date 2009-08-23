@@ -57,7 +57,7 @@ public class BloggerUpdateBlogPostDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample updates the first blog post it finds that " +
-            "begins with the prefix 'GWT-Blogger-Client'.</p>\n";
+            "begins with the prefix 'GWT-Blogger-Client'.</p>";
       }
 
       @Override

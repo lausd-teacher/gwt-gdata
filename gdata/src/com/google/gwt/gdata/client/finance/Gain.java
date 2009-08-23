@@ -55,7 +55,8 @@ public class Gain extends JavaScriptObject {
   /**
    * Sets the monetary value of the total gain.
    * 
-   * @param money Monetary value of the total gain, where each monetary value of the total gain is added using addMoney().
+   * @param money Monetary value of the total gain, where each monetary value
+   * of the total gain is added using addMoney().
    */
   public final native void setMoney(Money[] money) /*-{
     this.setMoney(

@@ -48,9 +48,11 @@ public class FinanceService extends GoogleService {
    * Deletes a portfolio entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deletePortfolioEntry(String uri, PortfolioEntryCallback callback) {
+  public final void deletePortfolioEntry(String uri,
+      PortfolioEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -58,9 +60,11 @@ public class FinanceService extends GoogleService {
    * Deletes a transaction entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deleteTransactionEntry(String uri, TransactionEntryCallback callback) {
+  public final void deleteTransactionEntry(String uri,
+      TransactionEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -68,9 +72,11 @@ public class FinanceService extends GoogleService {
    * Retrieves a Finance portfolio entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getPortfolioEntry(String uri, PortfolioEntryCallback callback) {
+  public final void getPortfolioEntry(String uri,
+      PortfolioEntryCallback callback) {
     this.getEntry(uri, callback, "getPortfolioEntry");
   }
 
@@ -78,9 +84,11 @@ public class FinanceService extends GoogleService {
    * Retrieves the feed of all the user's portfolios.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getPortfolioFeed(PortfolioQuery query, PortfolioFeedCallback callback) {
+  public final void getPortfolioFeed(PortfolioQuery query,
+      PortfolioFeedCallback callback) {
     this.getFeed(query, callback, "getPortfolioFeed");
   }
 
@@ -88,9 +96,11 @@ public class FinanceService extends GoogleService {
    * Retrieves the feed of all the user's portfolios.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getPortfolioFeed(String uri, PortfolioFeedCallback callback) {
+  public final void getPortfolioFeed(String uri,
+      PortfolioFeedCallback callback) {
     this.getFeed(uri, callback, "getPortfolioFeed");
   }
 
@@ -98,9 +108,11 @@ public class FinanceService extends GoogleService {
    * Retrieves a Finance position entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getPositionEntry(String uri, PositionEntryCallback callback) {
+  public final void getPositionEntry(String uri,
+      PositionEntryCallback callback) {
     this.getEntry(uri, callback, "getPositionEntry");
   }
 
@@ -108,9 +120,11 @@ public class FinanceService extends GoogleService {
    * Retrieves the feed of all the positions belonging to the portfolio.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getPositionFeed(PositionQuery query, PositionFeedCallback callback) {
+  public final void getPositionFeed(PositionQuery query,
+      PositionFeedCallback callback) {
     this.getFeed(query, callback, "getPositionFeed");
   }
 
@@ -118,9 +132,11 @@ public class FinanceService extends GoogleService {
    * Retrieves the feed of all the positions belonging to the portfolio.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getPositionFeed(String uri, PositionFeedCallback callback) {
+  public final void getPositionFeed(String uri,
+      PositionFeedCallback callback) {
     this.getFeed(uri, callback, "getPositionFeed");
   }
 
@@ -128,9 +144,11 @@ public class FinanceService extends GoogleService {
    * Retrieves a Finance transaction entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getTransactionEntry(String uri, TransactionEntryCallback callback) {
+  public final void getTransactionEntry(String uri,
+      TransactionEntryCallback callback) {
     this.getEntry(uri, callback, "getTransactionEntry");
   }
 
@@ -138,9 +156,11 @@ public class FinanceService extends GoogleService {
    * Retrieves the feed of all the transactions belonging to the position.
    * 
    * @param uri URI of feed.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getTransactionFeed(String uri, TransactionFeedCallback callback) {
+  public final void getTransactionFeed(String uri,
+      TransactionFeedCallback callback) {
     this.getFeed(uri, callback, "getTransactionFeed");
   }
 
@@ -149,9 +169,11 @@ public class FinanceService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertPortfolioEntry(String uri, PortfolioEntry entry, PortfolioEntryCallback callback) {
+  public final void insertPortfolioEntry(String uri, PortfolioEntry entry,
+      PortfolioEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -160,9 +182,11 @@ public class FinanceService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertTransactionEntry(String uri, TransactionEntry entry, TransactionEntryCallback callback) {
+  public final void insertTransactionEntry(String uri,
+      TransactionEntry entry, TransactionEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -171,9 +195,11 @@ public class FinanceService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updatePortfolioEntry(String uri, PortfolioEntry entry, PortfolioEntryCallback callback) {
+  public final void updatePortfolioEntry(String uri, PortfolioEntry entry,
+      PortfolioEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 
@@ -182,9 +208,11 @@ public class FinanceService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateTransactionEntry(String uri, TransactionEntry entry, TransactionEntryCallback callback) {
+  public final void updateTransactionEntry(String uri, TransactionEntry entry,
+      TransactionEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 

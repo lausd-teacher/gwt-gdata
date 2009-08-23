@@ -24,17 +24,21 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Transparency extends JavaScriptObject {
 
   /**
-   * Indicates event consumes time on calendar; event time will be marked as busy in a free/busy search.
+   * Indicates event consumes time on calendar; event time will be marked as
+   * busy in a free/busy search.
    */
   public static final String VALUE_OPAQUE = getConstant("VALUE_OPAQUE");
 
   /**
-   * Indicates event doesn't consume any time on calendar; event time will not be marked as busy in a free/busy search.
+   * Indicates event doesn't consume any time on calendar; event time will not
+   * be marked as busy in a free/busy search.
    */
-  public static final String VALUE_TRANSPARENT = getConstant("VALUE_TRANSPARENT");
+  public static final String VALUE_TRANSPARENT =
+      getConstant("VALUE_TRANSPARENT");
 
   /**
-   * Constructs an event transparency using an object parameter whose property names match the setter method to use for each property.
+   * Constructs an event transparency using an object parameter whose property
+   * names match the setter method to use for each property.
    * @return A Transparency object.
    */
   public static native Transparency newInstance() /*-{

@@ -26,7 +26,8 @@ public class KmlContent extends Text {
   /**
    * Application/vnd google-earth kml+xml kml content.
    */
-  public static final String TYPE_APPLICATION_VND_GOOGLE_EARTH_KML_XML = getConstant("TYPE_APPLICATION_VND_GOOGLE_EARTH_KML_XML");
+  public static final String TYPE_APPLICATION_VND_GOOGLE_EARTH_KML_XML =
+      getConstant("TYPE_APPLICATION_VND_GOOGLE_EARTH_KML_XML");
 
   /**
    * Constructs a kml content.

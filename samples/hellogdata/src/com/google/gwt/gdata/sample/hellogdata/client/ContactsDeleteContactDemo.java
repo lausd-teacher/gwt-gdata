@@ -58,7 +58,7 @@ public class ContactsDeleteContactDemo extends GDataDemo {
         return "<p>This sample code demonstrate how to delete a contact " +
             "entry. It queries for the most recently modified contact " +
             "entry of today from the authenicated user and delete the " +
-            "entry.</p>\n";
+            "entry.</p>";
       }
 
       @Override

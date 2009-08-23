@@ -25,19 +25,24 @@ import com.google.gwt.gdata.client.Query;
 public class ItemsQuery extends Query {
 
   /**
-   * Specifies that gm:adjusted_name and gm:adjusted_value should be included in query results.
+   * Specifies that gm:adjusted_name and gm:adjusted_value should be included
+   * in query results.
    */
-  public static final String CONTENT_ADJUSTMENTS = getConstant("CONTENT_ADJUSTMENTS");
+  public static final String CONTENT_ADJUSTMENTS =
+      getConstant("CONTENT_ADJUSTMENTS");
 
   /**
-   * Specifies that elements from the atom:, g:, and gm: namespaces should be returned.
+   * Specifies that elements from the atom:, g:, and gm: namespaces should be
+   * returned.
    */
   public static final String CONTENT_ALL = getConstant("CONTENT_ALL");
 
   /**
-   * Specifies that elements from the atom: and g: namespaces should be returned.
+   * Specifies that elements from the atom: and g: namespaces should be
+   * returned.
    */
-  public static final String CONTENT_ATTRIBUTES = getConstant("CONTENT_ATTRIBUTES");
+  public static final String CONTENT_ATTRIBUTES =
+      getConstant("CONTENT_ATTRIBUTES");
 
   /**
    * Specifies that the tags gm:stats and gm:adjusted should be returned.
@@ -55,29 +60,36 @@ public class ItemsQuery extends Query {
   public static final String CONTENT_STATS = getConstant("CONTENT_STATS");
 
   /**
-   * Specifies that links to generated thumbnails should be included in query results.
+   * Specifies that links to generated thumbnails should be included in query
+   * results.
    */
-  public static final String CONTENT_THUMBNAILS = getConstant("CONTENT_THUMBNAILS");
+  public static final String CONTENT_THUMBNAILS =
+      getConstant("CONTENT_THUMBNAILS");
 
   /**
-   * Specifies that query results should be sorted by last modification time, where the most recently modified item has the highest rank.
+   * Specifies that query results should be sorted by last modification time,
+   * where the most recently modified item has the highest rank.
    */
-  public static final String ORDERBY_MODIFICATION_TIME = getConstant("ORDERBY_MODIFICATION_TIME");
+  public static final String ORDERBY_MODIFICATION_TIME =
+      getConstant("ORDERBY_MODIFICATION_TIME");
 
   /**
    * Specifies that query results should be sorted by relevancy.
    */
-  public static final String ORDERBY_RELEVANCY = getConstant("ORDERBY_RELEVANCY");
+  public static final String ORDERBY_RELEVANCY =
+      getConstant("ORDERBY_RELEVANCY");
 
   /**
    * Specifies that items should be returned in increasing rank.
    */
-  public static final String SORTORDER_ASCENDING = getConstant("SORTORDER_ASCENDING");
+  public static final String SORTORDER_ASCENDING =
+      getConstant("SORTORDER_ASCENDING");
 
   /**
    * Specifies that items should be returned in decreasing rank.
    */
-  public static final String SORTORDER_DESCENDING = getConstant("SORTORDER_DESCENDING");
+  public static final String SORTORDER_DESCENDING =
+      getConstant("SORTORDER_DESCENDING");
 
   /**
    * Constructs an Items query.
@@ -96,9 +108,11 @@ public class ItemsQuery extends Query {
   protected ItemsQuery() { }
 
   /**
-   * Returns the whether adjusted query results should contain the gm:adjusted_name and gm:adjusted_value tags.
+   * Returns the whether adjusted query results should contain the
+   * gm:adjusted_name and gm:adjusted_value tags.
    * 
-   * @return Whether adjusted query results should contain the gm:adjusted_name and gm:adjusted_value tags.
+   * @return Whether adjusted query results should contain the gm:adjusted_name
+   * and gm:adjusted_value tags.
    */
   public final native boolean getAdjust() /*-{
     return this.getAdjust();
@@ -114,7 +128,8 @@ public class ItemsQuery extends Query {
   }-*/;
 
   /**
-   * Returns the query string that conforms to the Query Language Specification.
+   * Returns the query string that conforms to the Query Language
+   * Specification.
    * 
    * @return Query string that conforms to the Query Language Specification.
    */
@@ -123,9 +138,11 @@ public class ItemsQuery extends Query {
   }-*/;
 
   /**
-   * Returns the parameter that controls the content returned for each entry in a query request.
+   * Returns the parameter that controls the content returned for each entry in
+   * a query request.
    * 
-   * @return Parameter that controls the content returned for each entry in a query request.
+   * @return Parameter that controls the content returned for each entry in a
+   * query request.
    */
   public final native String getContent() /*-{
     return this.getContent();
@@ -195,9 +212,11 @@ public class ItemsQuery extends Query {
   }-*/;
 
   /**
-   * Returns the whether sorted query results are returned in increasing or decreasing order.
+   * Returns the whether sorted query results are returned in increasing or
+   * decreasing order.
    * 
-   * @return Whether sorted query results are returned in increasing or decreasing order.
+   * @return Whether sorted query results are returned in increasing or
+   * decreasing order.
    */
   public final native String getSortorder() /*-{
     return this.getSortorder();
@@ -231,9 +250,11 @@ public class ItemsQuery extends Query {
   }-*/;
 
   /**
-   * Sets the whether adjusted query results should contain the gm:adjusted_name and gm:adjusted_value tags. The default value is false.
+   * Sets the whether adjusted query results should contain the
+   * gm:adjusted_name and gm:adjusted_value tags. The default value is false.
    * 
-   * @param adjust Whether adjusted query results should contain the gm:adjusted_name and gm:adjusted_value tags.
+   * @param adjust Whether adjusted query results should contain the
+   * gm:adjusted_name and gm:adjusted_value tags.
    */
   public final native void setAdjust(boolean adjust) /*-{
     this.setAdjust(adjust);
@@ -258,9 +279,11 @@ public class ItemsQuery extends Query {
   }-*/;
 
   /**
-   * Sets the parameter that controls the content returned for each entry in a query request. The default value is 'attributes'.
+   * Sets the parameter that controls the content returned for each entry in a
+   * query request. The default value is 'attributes'.
    * 
-   * @param content Parameter that controls the content returned for each entry in a query request.
+   * @param content Parameter that controls the content returned for each entry
+   * in a query request.
    */
   public final native void setContent(String content) /*-{
     this.setContent(content);
@@ -294,7 +317,8 @@ public class ItemsQuery extends Query {
   }-*/;
 
   /**
-   * Sets the ranking order for sorted queries. The default value is 'relevancy'.
+   * Sets the ranking order for sorted queries. The default value is
+   * 'relevancy'.
    * 
    * @param orderby Ranking order for sorted queries.
    */
@@ -331,16 +355,19 @@ public class ItemsQuery extends Query {
 
 
   /**
-   * Sets the whether sorted query results are returned in increasing or decreasing order. The default value is 'descending'.
+   * Sets the whether sorted query results are returned in increasing or
+   * decreasing order. The default value is 'descending'.
    * 
-   * @param sortorder Whether sorted query results are returned in increasing or decreasing order.
+   * @param sortorder Whether sorted query results are returned in increasing
+   * or decreasing order.
    */
   public final native void setSortorder(String sortorder) /*-{
     this.setSortorder(sortorder);
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
+   * Sets the 1-based index of the first result to be retrieved.
+   * The default value is 1.
    * 
    * @param startIndex 1-based index of the first result to be retrieved.
    */

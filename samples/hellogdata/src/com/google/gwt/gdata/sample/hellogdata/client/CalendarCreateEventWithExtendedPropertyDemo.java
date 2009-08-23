@@ -58,7 +58,7 @@ public class CalendarCreateEventWithExtendedPropertyDemo extends GDataDemo {
         return "<p>This sample code demonstrates how to create and insert " +
             "a single event with an extended property in the form of a " +
             "name-value pair to the authenticated user's primary calendar. " +
-            "The private/full feed is used for event insertion.</p>\n";
+            "The private/full feed is used for event insertion.</p>";
       }
 
       @Override

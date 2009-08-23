@@ -24,13 +24,15 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class GoogleService extends Service {
 
   /**
-   * Creates a service that supports all alt formats: atom, atom-in-script, json, json-in-script, rss and rss-in-script.
+   * Creates a service that supports all alt formats: atom, atom-in-script,
+   * json, json-in-script, rss and rss-in-script.
    * 
    * @param serviceName Name of GData service.
    * @param applicationName Name of application.
    * @return A GoogleService object.
    */
-  public static native GoogleService newInstance(String serviceName, String applicationName) /*-{
+  public static native GoogleService newInstance(String serviceName,
+      String applicationName) /*-{
     return new $wnd.google.gdata.client.GoogleService(serviceName, applicationName);
   }-*/;
 
@@ -46,17 +48,20 @@ public class GoogleService extends Service {
   }-*/;
   
   /**
-   * Sets the authentication to be used when running inside a Shindig (OpenSocial) container.
+   * Sets the authentication to be used when running inside a Shindig
+   * (OpenSocial) container.
    * 
    * @param authType one of the three valid Shindig authentication types.
    * @param params other parameters to pass through the request.
    */
-  public final native void setGadgetsAuthentication(ShindigAuthenticationType authType, JavaScriptObject params) /*-{
+  public final native void setGadgetsAuthentication(
+      ShindigAuthenticationType authType, JavaScriptObject params) /*-{
     this.setGadgetsAuthentication(authType.@com.google.gwt.gdata.client.ShindigAuthenticationType::name()(), params);
   }-*/;
 
   /**
-   * Sets the authentication to be used when running inside a Shindig (OpenSocial) container.
+   * Sets the authentication to be used when running inside a Shindig
+   * (OpenSocial) container.
    * 
    * @param authType one of the three valid Shindig authentication types.
    */
@@ -71,7 +76,8 @@ public class GoogleService extends Service {
    * @param password Password.
    * @param accountType The account type.
    */
-  public final native void setUserCredentials(String username, String password, ClientLoginAccountType accountType) /*-{
+  public final native void setUserCredentials(String username, String password,
+      ClientLoginAccountType accountType) /*-{
     this.setUserCredentials(
       username,
       password,
@@ -85,7 +91,8 @@ public class GoogleService extends Service {
    * @param username User name.
    * @param password Password.
    */
-  public final native void setUserCredentials(String username, String password) /*-{
+  public final native void setUserCredentials(String username,
+      String password) /*-{
     this.setUserCredentials(username, password);
   }-*/;
 
@@ -95,7 +102,8 @@ public class GoogleService extends Service {
    * @param serviceName The service whose credentials to use.
    * @param params Optional OAuth related parameters.
    */
-  public final native void useOAuth(String serviceName, JavaScriptObject params) /*-{
+  public final native void useOAuth(String serviceName,
+      JavaScriptObject params) /*-{
     this.useOAuth(serviceName, params);
   }-*/;
 

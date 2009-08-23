@@ -56,7 +56,7 @@ public class CalendarUpdateCalendarDemo extends GDataDemo {
             "calendar of the authenticated user. It retrieves a list of " +
             "the user's own calendars, and update the first calendar with " +
             "a title that starts with 'GWT-Calendar-Client'. The " +
-            "owncalendars feed is used to update an existing calendar.</p>\n";
+            "owncalendars feed is used to update an existing calendar.</p>";
       }
 
       @Override

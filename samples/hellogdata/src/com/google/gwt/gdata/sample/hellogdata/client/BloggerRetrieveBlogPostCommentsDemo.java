@@ -56,7 +56,7 @@ public class BloggerRetrieveBlogPostCommentsDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample retrieves the comments for a particular " +
-            "blog post.</p>\n";
+            "blog post.</p>";
       }
 
       @Override

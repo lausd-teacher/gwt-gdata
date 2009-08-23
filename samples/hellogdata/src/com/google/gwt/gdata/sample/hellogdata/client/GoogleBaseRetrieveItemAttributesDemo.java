@@ -52,7 +52,7 @@ public class GoogleBaseRetrieveItemAttributesDemo extends GDataDemo {
       public String getDescription() {
         return "<p>This sample code uses the items feed to find an item " +
             "with a title starting with 'GWT-GoogleBase-Client' and " +
-            "displays its attributes.</p>\n";
+            "displays its attributes.</p>";
       }
 
       @Override

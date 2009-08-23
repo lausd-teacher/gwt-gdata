@@ -48,8 +48,9 @@ public class GData {
   }-*/;
   
   /**
-   * Check for the availability of the specified GData packages. This means that the API
-   * script for the specified packages is loaded and has successfully initialized.
+   * Check for the availability of the specified GData packages. This means
+   * that the API script for the specified packages is loaded and has
+   * successfully initialized.
    * 
    * @param packages the GData packages to check for.
    * @return <code>true</code> if the GData packages are loaded.
@@ -74,14 +75,15 @@ public class GData {
    * @see "http://code.google.com/apis/gdata/documentation/#AJAX_Loader"
    * 
    * @param key GData API key. See http://code.google.com/apis/gdata/signup.html
-   * @param version The version of the gdata API to load. For example, "2.x"
-   *        Note that not all GData versions may be compatible with a given version
-   *        of the GWT-GData API.
-   * @param settings other AjaxLoader settings for the GData API. This parameter
-   *          must not be <code>null</code>.
+   * @param version The version of the gdata API to load. For example, "2.x" 
+   * Note that not all GData versions may be compatible with a give version of
+   * the GWT-GData API.
+   * @param settings other AjaxLoader settings for the GData API. This
+   * parameter must not be <code>null</code>.
    * @param onLoad callback to be invoked when the library is loaded.
    */
-  public static void loadGDataApi(String key, String version, AjaxLoaderOptions settings, Runnable onLoad) {
+  public static void loadGDataApi(String key, String version,
+      AjaxLoaderOptions settings, Runnable onLoad) {
     assert settings != null;
     AjaxLoader.init(key);
     AjaxLoader.loadApi("gdata", version, onLoad, settings);
@@ -96,8 +98,8 @@ public class GData {
    * 
    * @param key GData API key. See http://code.google.com/apis/gdata/signup.html
    * @param version The version of the gdata API to load. For example, "2.x".
-   *        Note that not all GData versions may be compatible with a given version
-   *        of the GWT-GData API.
+   * Note that not all GData versions may be compatible with a given version of
+   * the GWT-GData API.
    * @param onLoad callback to be invoked when the library is loaded.
    */
   public static void loadGDataApi(String key, String version, Runnable onLoad) {
@@ -105,26 +107,28 @@ public class GData {
   }
   
   /**
-   * Initializes the target version of the GData API using the AjaxLoader. This is in lieu of
-   * specifying the &lt;script&gt; tag for gdata.google.com in your hosted HTML
-   * page or project's GWT module specification.
+   * Initializes the target version of the GData API using the AjaxLoader. This
+   * is in lieu of specifying the &lt;script&gt; tag for gdata.google.com in
+   * your hosted HTML page or project's GWT module specification.
    * 
    * @see "http://code.google.com/apis/gdata/documentation/#AJAX_Loader"
    * 
    * @param key GData API key. See http://code.google.com/apis/gdata/signup.html
-   * @param packages the GData packages that should be loaded (e.g. Calendar, Blogger, etc.)
+   * @param packages the GData packages that should be loaded (e.g. Calendar,
+   * Blogger, etc.)
    * @param onLoad callback to be invoked when the library is loaded.
    */
-  public static void loadGDataApi(String key, String[] packages, Runnable onLoad) {
+  public static void loadGDataApi(String key, String[] packages,
+      Runnable onLoad) {
     AjaxLoaderOptions options = AjaxLoaderOptions.newInstance();
     options.setPackages(packages);
     loadGDataApi(key, targetGDataJsApiVersion, options, onLoad);
   }
   
   /**
-   * Initializes the target version of the GData API using the AjaxLoader. This is in lieu of
-   * specifying the &lt;script&gt; tag for gdata.google.com in your hosted HTML
-   * page or project's GWT module specification.
+   * Initializes the target version of the GData API using the AjaxLoader.
+   * This is in lieu of specifying the &lt;script&gt; tag for gdata.google.com
+   * in your hosted HTML page or project's GWT module specification.
    * 
    * @see "http://code.google.com/apis/gdata/documentation/#AJAX_Loader"
    * 
@@ -132,12 +136,14 @@ public class GData {
    * @param onLoad callback to be invoked when the library is loaded.
    */
   public static void loadGDataApi(String key, Runnable onLoad) {
-    loadGDataApi(key, targetGDataJsApiVersion, AjaxLoaderOptions.newInstance(), onLoad);
+    loadGDataApi(key, targetGDataJsApiVersion, AjaxLoaderOptions.newInstance(),
+        onLoad);
   }
   
   /**
-   * Check for the availability of the specified GData package. This means that the API
-   * script for the specified packages is loaded and has successfully initialized.
+   * Check for the availability of the specified GData package. This means that
+   * the API script for the specified packages is loaded and has successfully
+   * initialized.
    * 
    * @param packageName the GData package to check for.
    * @return <code>true</code> if the GData package is loaded.

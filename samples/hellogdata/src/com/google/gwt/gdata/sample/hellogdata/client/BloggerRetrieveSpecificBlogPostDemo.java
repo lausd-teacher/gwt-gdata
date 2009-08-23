@@ -54,7 +54,7 @@ public class BloggerRetrieveSpecificBlogPostDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample returns a specific blog post by querying the " +
-            "entry's URI with getBlogPostFeed().</p>\n";
+            "entry's URI with getBlogPostFeed().</p>";
       }
 
       @Override

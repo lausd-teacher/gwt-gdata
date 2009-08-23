@@ -22,14 +22,18 @@ package com.google.gwt.gdata.client.acl;
 public class Link extends com.google.gwt.gdata.client.Link {
 
   /**
-   * Link that provides the URI of the feed for the access control list for the entry.
+   * Link that provides the URI of the feed for the access control list for the
+   * entry.
    */
-  public static final String REL_ACCESS_CONTROL_LIST = getConstant("REL_ACCESS_CONTROL_LIST");
+  public static final String REL_ACCESS_CONTROL_LIST =
+      getConstant("REL_ACCESS_CONTROL_LIST");
 
   /**
-   * Link that provides the URI of the entry that is controlled by the access control list feed.
+   * Link that provides the URI of the entry that is controlled by the access
+   * control list feed.
    */
-  public static final String REL_CONTROLLED_OBJECT = getConstant("REL_CONTROLLED_OBJECT");
+  public static final String REL_CONTROLLED_OBJECT =
+      getConstant("REL_CONTROLLED_OBJECT");
 
   /**
    * Constructs an ACL Link class.

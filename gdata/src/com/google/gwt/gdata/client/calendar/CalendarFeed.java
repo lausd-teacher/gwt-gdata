@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.calendar;
 /**
  * Describes a feed of Calendars.
  */
-public class CalendarFeed extends com.google.gwt.gdata.client.Feed<CalendarEntry> {
+public class CalendarFeed
+    extends com.google.gwt.gdata.client.Feed<CalendarEntry> {
 
   /**
    * Constructs a Calendar feed using.
@@ -33,9 +34,11 @@ public class CalendarFeed extends com.google.gwt.gdata.client.Feed<CalendarEntry
   protected CalendarFeed() { }
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(CalendarFeedCallback callback) {
     this.get(callback);
@@ -45,9 +48,11 @@ public class CalendarFeed extends com.google.gwt.gdata.client.Feed<CalendarEntry
    * Inserts a new calendar entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertCalendarEntry(CalendarEntry entry, CalendarEntryCallback callback) {
+  public final void insertCalendarEntry(CalendarEntry entry,
+      CalendarEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

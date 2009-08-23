@@ -56,7 +56,7 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
             "portfolio of the authenticated user. It retrieves a list of " +
             "the user's portfolios, and updates the first portfolio with a " +
             "title that starts with 'GWT-Finance-Client' with a new " +
-            "title.</p>\n";
+            "title.</p>";
       }
 
       @Override

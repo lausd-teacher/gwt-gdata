@@ -26,7 +26,8 @@ public class MediaRating extends JavaScriptObject {
   /**
    * Default rating scheme.
    */
-  public static final String SCHEME_DEFAULT_SCHEME = getConstant("SCHEME_DEFAULT_SCHEME");
+  public static final String SCHEME_DEFAULT_SCHEME =
+      getConstant("SCHEME_DEFAULT_SCHEME");
 
   /**
    * Constructs a media rating.
@@ -52,7 +53,8 @@ public class MediaRating extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the URI that identifies the rating scheme. This attribute is optional.
+   * Returns the URI that identifies the rating scheme.
+   * This attribute is optional.
    * 
    * @return URI that identifies the rating scheme.
    */
@@ -70,7 +72,8 @@ public class MediaRating extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the URI that identifies the rating scheme. This attribute is optional.
+   * Sets the URI that identifies the rating scheme.
+   * This attribute is optional.
    * 
    * @param scheme URI that identifies the rating scheme.
    */

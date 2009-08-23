@@ -59,7 +59,7 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
             "information is displayed. (This portfolio and transaction " +
             "were created in the examples above -- if no transactions for " +
             "a given ticker exist, the transaction feed will not exist and " +
-            "an error will be generated).</p>\n";
+            "an error will be generated).</p>";
       }
 
       @Override

@@ -24,7 +24,8 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class AccessLevelProperty extends JavaScriptObject {
 
   /**
-   * On a calendar, allows full owner access except an editor may not change access control settings on the calendar.
+   * On a calendar, allows full owner access except an editor may not change
+   * access control settings on the calendar.
    */
   public static final String VALUE_EDITOR = getConstant("VALUE_EDITOR");
 
@@ -39,7 +40,8 @@ public class AccessLevelProperty extends JavaScriptObject {
   public static final String VALUE_NONE = getConstant("VALUE_NONE");
 
   /**
-   * Indicates that an event may be modified by way of a set of local overrides that will not be propagated back to the organizer.
+   * Indicates that an event may be modified by way of a set of local overrides
+   * that will not be propagated back to the organizer.
    */
   public static final String VALUE_OVERRIDE = getConstant("VALUE_OVERRIDE");
 

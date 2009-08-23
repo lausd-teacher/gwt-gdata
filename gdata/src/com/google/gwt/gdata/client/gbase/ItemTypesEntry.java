@@ -34,7 +34,8 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Deletes the entry from the feed.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteEntry(ItemTypesEntryCallback callback) {
     this.delete(callback);
@@ -50,7 +51,8 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the item type as defined in /itemtypes feed. This element is required.
+   * Returns the item type as defined in /itemtypes feed.
+   * This element is required.
    * 
    * @return Item type as defined in /itemtypes feed.
    */
@@ -63,14 +65,17 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @return Link that provides the URI of a related link to the entry.
    */
-  public final native com.google.gwt.gdata.client.atom.Link getRelatedLink() /*-{
+  public final native com.google.gwt.gdata.client.atom.Link
+      getRelatedLink() /*-{
     return this.getRelatedLink();
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    * @return current representation of the entry.
    */
   public final ItemTypesEntry getSelf(ItemTypesEntryCallback callback) {
@@ -98,7 +103,8 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Updated the entry in the feed by sending the representation of this entry.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void updateEntry(ItemTypesEntryCallback callback) {
     this.update(callback);

@@ -26,7 +26,8 @@ public class TransactionKind extends Kind {
   /**
    * Transaction.
    */
-  public static final String TERM_TRANSACTION = getConstant("TERM_TRANSACTION");
+  public static final String TERM_TRANSACTION =
+      getConstant("TERM_TRANSACTION");
 
   /**
    * Constructs a transaction kind.

@@ -54,7 +54,8 @@ public class FeedErrors extends JavaScriptObject {
   /**
    * Sets the feed errors.
    * 
-   * @param feedError Feed errors, where each feed error is added using addFeedError().
+   * @param feedError Feed errors, where each feed error is added using
+   * addFeedError().
    */
   public final native void setFeedError(FeedError[] feedError) /*-{
     this.setFeedError(

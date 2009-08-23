@@ -34,7 +34,8 @@ public class SystemGroup extends JavaScriptObject {
   protected SystemGroup() { }
 
   /**
-   * Returns the identifier for distinguishing various system groups. This attribute is required.
+   * Returns the identifier for distinguishing various system groups.
+   * This attribute is required.
    * 
    * @return Identifier for distinguishing various system groups.
    */
@@ -43,7 +44,8 @@ public class SystemGroup extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the identifier for distinguishing various system groups. This attribute is required.
+   * Sets the identifier for distinguishing various system groups.
+   * This attribute is required.
    * 
    * @param id Identifier for distinguishing various system groups.
    */

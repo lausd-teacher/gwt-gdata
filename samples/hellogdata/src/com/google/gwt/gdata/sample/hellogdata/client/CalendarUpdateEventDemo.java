@@ -57,7 +57,7 @@ public class CalendarUpdateEventDemo extends GDataDemo {
             "of an existing event. A full text query is used to locate " +
             "those events with the specified text, and the first match " +
             "will be updated with the new title. The private/full feed is " +
-            "used for event update.</p>\n";
+            "used for event update.</p>";
       }
 
       @Override

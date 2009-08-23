@@ -65,7 +65,8 @@ public class ItemAppControl extends Control {
    * 
    * @param publishingPriority Item publishing priority.
    */
-  public final native void setPublishingPriority(ItemPublishingPriority publishingPriority) /*-{
+  public final native void setPublishingPriority(ItemPublishingPriority
+      publishingPriority) /*-{
     this.setPublishingPriority(publishingPriority);
   }-*/;
 

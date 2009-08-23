@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.gbase;
 import com.google.gwt.gdata.client.mediarss.MediaContent;
 
 /**
- * Describes an entry in the media feed used for managing the media attachments for one Google Base Item..
+ * Describes an entry in the media feed used for managing the media attachments
+ * for one Google Base Item..
  */
 public class MediaEntry extends com.google.gwt.gdata.client.Entry {
 
@@ -36,7 +37,8 @@ public class MediaEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Deletes the entry from the feed.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteEntry(MediaEntryCallback callback) {
     this.delete(callback);
@@ -52,9 +54,11 @@ public class MediaEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    * @return current representation of the entry.
    */
   public final MediaEntry getSelf(MediaEntryCallback callback) {
@@ -73,7 +77,8 @@ public class MediaEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Updated the entry in the feed by sending the representation of this entry.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void updateEntry(MediaEntryCallback callback) {
     this.update(callback);

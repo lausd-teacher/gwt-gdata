@@ -24,12 +24,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class AdultContent extends JavaScriptObject {
 
   /**
-   * The customer associated with this account declares that he does not provide any adult-only content.
+   * The customer associated with this account declares that he does not
+   * provide any adult-only content.
    */
   public static final String VALUE_NO = getConstant("VALUE_NO");
 
   /**
-   * The customer associated with this account declares he provides (some) adult-only content.
+   * The customer associated with this account declares he provides (some)
+   * adult-only content.
    */
   public static final String VALUE_YES = getConstant("VALUE_YES");
 

@@ -51,9 +51,11 @@ public class BlogFeed extends com.google.gwt.gdata.client.Feed<BlogEntry> {
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(BlogFeedCallback callback) {
     this.get(callback);
@@ -63,9 +65,11 @@ public class BlogFeed extends com.google.gwt.gdata.client.Feed<BlogEntry> {
    * Inserts a new blog entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertBlogEntry(BlogEntry entry, BlogEntryCallback callback) {
+  public final void insertBlogEntry(BlogEntry entry,
+      BlogEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

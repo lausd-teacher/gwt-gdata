@@ -55,7 +55,7 @@ public class CalendarDeleteEventDemo extends GDataDemo {
         return "<p>This sample code demonstrates how to delete an existing event. " +
           "A full text query is used to locate those events with the specified text, " +
           "and the first match will be deleted from the authenticated user's primary " +
-          "calendar. The private/full feed is used for event deletion.</p>\n";
+          "calendar. The private/full feed is used for event deletion.</p>";
       }
 
       @Override

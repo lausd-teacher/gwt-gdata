@@ -55,7 +55,7 @@ public class AnalyticsLanguagesDemo extends GDataDemo {
         return "<p>This sample demonstrates how to get the top browser " +
             "languages in the United States.</p>" +
             "<div><strong>Note:</strong>if you have no visitors to your site " +
-            "from the United States, you will see no data.</div>\n";
+            "from the United States, you will see no data.</div>";
       }
 
       @Override

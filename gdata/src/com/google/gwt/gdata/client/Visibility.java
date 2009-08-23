@@ -19,17 +19,20 @@ package com.google.gwt.gdata.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Describes the base set of values for event visibility. Similar to CLASS in RFC 2445.
+ * Describes the base set of values for event visibility. Similar to CLASS in
+ * RFC 2445.
  */
 public class Visibility extends JavaScriptObject {
 
   /**
    * Allow some readers to see the event.
    */
-  public static final String VALUE_CONFIDENTIAL = getConstant("VALUE_CONFIDENTIAL");
+  public static final String VALUE_CONFIDENTIAL =
+      getConstant("VALUE_CONFIDENTIAL");
 
   /**
-   * Inherit the behavior from the preferences of the owner of the calendar on which the event appears.
+   * Inherit the behavior from the preferences of the owner of the calendar on
+   * which the event appears.
    */
   public static final String VALUE_DEFAULT = getConstant("VALUE_DEFAULT");
 

@@ -60,7 +60,7 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
       public String getDescription() {
         return "<p>This sample creates a new blog post in the user's most " +
             "recently updated blog. The post's title will be " +
-            "'GWT-Blogger-Client: inserted post'.</p>\n";
+            "'GWT-Blogger-Client: inserted post'.</p>";
       }
 
       @Override

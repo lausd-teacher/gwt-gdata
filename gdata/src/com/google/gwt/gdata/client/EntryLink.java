@@ -53,7 +53,8 @@ public class EntryLink<E extends Entry> extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns whether the contained entry is read-only. This attribute is optional.
+   * Returns whether the contained entry is read-only.
+   * This attribute is optional.
    * 
    * @return Whether the contained entry is read-only.
    */
@@ -89,7 +90,8 @@ public class EntryLink<E extends Entry> extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether the contained entry is read-only. This attribute is optional.
+   * Sets whether the contained entry is read-only.
+   * This attribute is optional.
    * 
    * @param readOnly Whether the contained entry is read-only.
    */

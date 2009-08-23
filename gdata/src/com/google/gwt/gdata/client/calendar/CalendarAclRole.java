@@ -19,17 +19,20 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.gdata.client.acl.AclRole;
 
 /**
- * Describes the Calendar roles of an entry in the Calendar access control list.
+ * Describes the Calendar roles of an entry in the Calendar access control
+ * list.
  */
 public class CalendarAclRole extends AclRole {
 
   /**
-   * The specified users have full edit access to the calendar, except that they can't change the calendar's access control settings.
+   * The specified users have full edit access to the calendar, except that
+   * they can't change the calendar's access control settings.
    */
   public static final String VALUE_EDITOR = getConstant("VALUE_EDITOR");
 
   /**
-   * The specified users can see only the free/busy information on the calendar, not the details of events.
+   * The specified users can see only the free/busy information on the
+   * calendar, not the details of events.
    */
   public static final String VALUE_FREEBUSY = getConstant("VALUE_FREEBUSY");
 

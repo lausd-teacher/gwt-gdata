@@ -25,8 +25,8 @@ import com.google.gwt.core.client.JsArrayNumber;
 import com.google.gwt.core.client.JsArrayString;
 
 /**
- * Code adapted from http://code.google.com/p/gwt-in-the-air/source/browse/trunk/
- * src/net/ltgt/gwt/jscollections/client/JsArrays.java.
+ * Code adapted from
+ * http://code.google.com/p/gwt-in-the-air/source/browse/trunk/src/net/ltgt/gwt/jscollections/client/JsArrays.java.
  * 
  * Provides utility methods for interacting with Arrays in GWT.
  */

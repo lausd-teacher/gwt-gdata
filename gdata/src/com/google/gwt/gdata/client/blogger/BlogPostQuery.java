@@ -32,7 +32,8 @@ public class BlogPostQuery extends Query {
   /**
    * Order the returned feed's entries by their <published> values.
    */
-  public static final String ORDERBY_PUBLISHED = getConstant("ORDERBY_PUBLISHED");
+  public static final String ORDERBY_PUBLISHED =
+      getConstant("ORDERBY_PUBLISHED");
 
   /**
    * Order the returned feed's entries by their <updated> values.
@@ -157,7 +158,8 @@ public class BlogPostQuery extends Query {
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
+   * Sets the 1-based index of the first result to be retrieved. The default
+   * value is 1.
    * 
    * @param startIndex 1-based index of the first result to be retrieved.
    */

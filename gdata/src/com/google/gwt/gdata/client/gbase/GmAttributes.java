@@ -54,7 +54,8 @@ public class GmAttributes extends JavaScriptObject {
   /**
    * Sets the list of attribute for an item types.
    * 
-   * @param attributes List of attribute for an item types, where each list of attribute for an item type is added using addAttribute().
+   * @param attributes List of attribute for an item types, where each list
+   * of attribute for an item type is added using addAttribute().
    */
   public final native void setAttributes(GmAttribute[] attributes) /*-{
     this.setAttributes(

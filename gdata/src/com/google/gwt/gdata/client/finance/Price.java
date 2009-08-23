@@ -54,7 +54,8 @@ public class Price extends JavaScriptObject {
   /**
    * Sets the monetary value of the transaction price.
    * 
-   * @param money Monetary value of the transaction price, where each monetary value of the transaction price is added using addMoney().
+   * @param money Monetary value of the transaction price, where each monetary
+   * value of the transaction price is added using addMoney().
    */
   public final native void setMoney(Money[] money) /*-{
     this.setMoney(

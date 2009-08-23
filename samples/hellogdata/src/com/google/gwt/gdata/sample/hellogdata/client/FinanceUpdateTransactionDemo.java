@@ -57,7 +57,7 @@ public class FinanceUpdateTransactionDemo extends GDataDemo {
             "retrieves and updates the first NASDAQ:GOOG transaction with " +
             "the 'GWT-Finance-Client' portfolio (Note: The transaction must " +
             "exist before it can be updated; otherwise an error " +
-            "is generated.)</p>\n";
+            "is generated.)</p>";
       }
 
       @Override

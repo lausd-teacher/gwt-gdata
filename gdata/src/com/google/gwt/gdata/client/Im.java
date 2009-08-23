@@ -31,7 +31,8 @@ public class Im extends JavaScriptObject {
   /**
    * Google Talk.
    */
-  public static final String PROTOCOL_GOOGLE_TALK = getConstant("PROTOCOL_GOOGLE_TALK");
+  public static final String PROTOCOL_GOOGLE_TALK =
+      getConstant("PROTOCOL_GOOGLE_TALK");
 
   /**
    * ICQ.
@@ -111,7 +112,8 @@ public class Im extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns whether this is the primary instant messaging address. This attribute is optional.
+   * Returns whether this is the primary instant messaging address.
+   * This attribute is optional.
    * 
    * @return Whether this is the primary instant messaging address.
    */
@@ -156,7 +158,8 @@ public class Im extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether this is the primary instant messaging address. This attribute is optional.
+   * Sets whether this is the primary instant messaging address.
+   * This attribute is optional.
    * 
    * @param primary Whether this is the primary instant messaging address.
    */

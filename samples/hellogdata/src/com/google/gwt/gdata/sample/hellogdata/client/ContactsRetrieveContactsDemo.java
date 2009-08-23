@@ -28,7 +28,8 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example demonstrates how to retrieve a list of a user's contacts.
+ * The following example demonstrates how to retrieve a list of a
+ * user's contacts.
  */
 public class ContactsRetrieveContactsDemo extends GDataDemo {
 
@@ -49,7 +50,7 @@ public class ContactsRetrieveContactsDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample code retrieves all the contact entries of " +
-            "the authenticated user.</p>\n";
+            "the authenticated user.</p>";
       }
 
       @Override

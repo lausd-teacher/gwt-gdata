@@ -52,7 +52,7 @@ public class ContactsCreateContactDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample code demonstrates how to create a new " +
-            "contact entry.</p>\n";
+            "contact entry.</p>";
       }
 
       @Override

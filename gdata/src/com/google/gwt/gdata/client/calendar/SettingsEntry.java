@@ -34,16 +34,19 @@ public class SettingsEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Deletes the entry from the feed.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteEntry(SettingsEntryCallback callback) {
     this.delete(callback);
   }
 
   /**
-   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    * @return current representation of the entry.
    */
   public final SettingsEntry getSelf(SettingsEntryCallback callback) {
@@ -64,14 +67,16 @@ public class SettingsEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param settingsProperty Settings property.
    */
-  public final native void setSettingsProperty(SettingsProperty settingsProperty) /*-{
+  public final native void setSettingsProperty(
+      SettingsProperty settingsProperty) /*-{
     this.setSettingsProperty(settingsProperty);
   }-*/;
 
   /**
    * Updated the entry in the feed by sending the representation of this entry.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void updateEntry(SettingsEntryCallback callback) {
     this.update(callback);

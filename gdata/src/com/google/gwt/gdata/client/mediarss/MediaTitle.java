@@ -57,7 +57,8 @@ public class MediaTitle extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the type of text, either plain or html. This attribute is optional.
+   * Returns the type of text, either plain or html.
+   * This attribute is optional.
    * 
    * @return Type of text, either plain or html.
    */

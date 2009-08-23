@@ -43,7 +43,8 @@ public class MediaCopyright extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the url to the terms of usage page or copyright information. This attribute is optional.
+   * Returns the url to the terms of usage page or copyright information.
+   * This attribute is optional.
    * 
    * @return Url to the terms of usage page or copyright information.
    */
@@ -61,7 +62,8 @@ public class MediaCopyright extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the url to the terms of usage page or copyright information. This attribute is optional.
+   * Sets the url to the terms of usage page or copyright information.
+   * This attribute is optional.
    * 
    * @param url Url to the terms of usage page or copyright information.
    */

@@ -48,9 +48,11 @@ public class ContactsService extends GoogleService {
    * Deletes a contact entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deleteContactEntry(String uri, ContactEntryCallback callback) {
+  public final void deleteContactEntry(String uri,
+      ContactEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -58,9 +60,11 @@ public class ContactsService extends GoogleService {
    * Deletes a contact group entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deleteContactGroupEntry(String uri, ContactGroupEntryCallback callback) {
+  public final void deleteContactGroupEntry(String uri,
+      ContactGroupEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -68,9 +72,11 @@ public class ContactsService extends GoogleService {
    * Retrieves a contact entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getContactEntry(String uri, ContactEntryCallback callback) {
+  public final void getContactEntry(String uri,
+      ContactEntryCallback callback) {
     this.getEntry(uri, callback, "getContactEntry");
   }
 
@@ -78,9 +84,11 @@ public class ContactsService extends GoogleService {
    * Retrieves the feed of contacts.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getContactFeed(ContactQuery query, ContactFeedCallback callback) {
+  public final void getContactFeed(ContactQuery query,
+      ContactFeedCallback callback) {
     this.getFeed(query, callback, "getContactFeed");
   }
 
@@ -88,9 +96,11 @@ public class ContactsService extends GoogleService {
    * Retrieves the feed of contacts.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getContactFeed(String uri, ContactFeedCallback callback) {
+  public final void getContactFeed(String uri,
+      ContactFeedCallback callback) {
     this.getFeed(uri, callback, "getContactFeed");
   }
 
@@ -98,9 +108,11 @@ public class ContactsService extends GoogleService {
    * Retrieves a contact group entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getContactGroupEntry(String uri, ContactGroupEntryCallback callback) {
+  public final void getContactGroupEntry(String uri,
+      ContactGroupEntryCallback callback) {
     this.getEntry(uri, callback, "getContactGroupEntry");
   }
 
@@ -108,9 +120,11 @@ public class ContactsService extends GoogleService {
    * Retrieves the feed of contact groups.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getContactGroupFeed(ContactQuery query, ContactGroupFeedCallback callback) {
+  public final void getContactGroupFeed(ContactQuery query,
+      ContactGroupFeedCallback callback) {
     this.getFeed(query, callback);
   }
 
@@ -118,9 +132,11 @@ public class ContactsService extends GoogleService {
    * Retrieves the feed of contact groups.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getContactGroupFeed(String uri, ContactGroupFeedCallback callback) {
+  public final void getContactGroupFeed(String uri,
+      ContactGroupFeedCallback callback) {
     this.getFeed(uri, callback, "getContactGroupFeed");
   }
 
@@ -129,9 +145,11 @@ public class ContactsService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertContactEntry(String uri, ContactEntry entry, ContactEntryCallback callback) {
+  public final void insertContactEntry(String uri, ContactEntry entry,
+      ContactEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -140,9 +158,11 @@ public class ContactsService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertContactGroupEntry(String uri, ContactGroupEntry entry, ContactGroupEntryCallback callback) {
+  public final void insertContactGroupEntry(String uri,
+      ContactGroupEntry entry, ContactGroupEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
   
@@ -151,9 +171,11 @@ public class ContactsService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateContactEntry(String uri, ContactEntry entry, ContactEntryCallback callback) {
+  public final void updateContactEntry(String uri, ContactEntry entry,
+      ContactEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
   
@@ -162,9 +184,11 @@ public class ContactsService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateContactGroupEntry(String uri, ContactGroupEntry entry, ContactGroupEntryCallback callback) {
+  public final void updateContactGroupEntry(String uri,
+      ContactGroupEntry entry, ContactGroupEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 

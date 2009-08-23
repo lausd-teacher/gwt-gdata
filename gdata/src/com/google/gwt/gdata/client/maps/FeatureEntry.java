@@ -42,23 +42,27 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param customProperty Custom property to add.
    */
-  public final native void addCustomProperty(CustomProperty customProperty) /*-{
+  public final native void addCustomProperty(
+      CustomProperty customProperty) /*-{
     this.addCustomProperty(customProperty);
   }-*/;
   
   /**
    * Deletes the entry from the feed.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteEntry(FeatureEntryCallback callback) {
     this.delete(callback);
   }
 
   /**
-   * Returns the link that provides the URI of the full feed (without any query parameters).
+   * Returns the link that provides the URI of the full feed
+   * (without any query parameters).
    * 
-   * @return Link that provides the URI of the full feed (without any query parameters).
+   * @return Link that provides the URI of the full feed
+   * (without any query parameters).
    */
   public final native com.google.gwt.gdata.client.Link getAtomFeedLink() /*-{
     return this.getAtomFeedLink();
@@ -101,9 +105,11 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    * @return current representation of the entry.
    */
   public final FeatureEntry getSelf(FeatureEntryCallback callback) {
@@ -122,9 +128,11 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the custom properties.
    * 
-   * @param customProperties Custom properties, where each custom property is added using addCustomProperty().
+   * @param customProperties Custom properties, where each custom property is
+   * added using addCustomProperty().
    */
-  public final native void setCustomProperties(CustomProperty[] customProperties) /*-{
+  public final native void setCustomProperties(
+      CustomProperty[] customProperties) /*-{
     this.setCustomProperties(
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(customProperties)
     );
@@ -162,14 +170,16 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param structuredPostalAddress Structured postal address.
    */
-  public final native void setStructuredPostalAddress(StructuredPostalAddress structuredPostalAddress) /*-{
+  public final native void setStructuredPostalAddress(
+      StructuredPostalAddress structuredPostalAddress) /*-{
     this.setStructuredPostalAddress(structuredPostalAddress);
   }-*/;
 
   /**
    * Updated the entry in the feed by sending the representation of this entry.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void updateEntry(FeatureEntryCallback callback) {
     this.update(callback);

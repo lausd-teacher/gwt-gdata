@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.blogger;
 /**
  * Describes a feed of an entire blog's comments.
  */
-public class BlogCommentFeed extends com.google.gwt.gdata.client.Feed<CommentEntry> {
+public class BlogCommentFeed
+    extends com.google.gwt.gdata.client.Feed<CommentEntry> {
 
   /**
    * Constructs a blog comment feed using an object.
@@ -51,9 +52,11 @@ public class BlogCommentFeed extends com.google.gwt.gdata.client.Feed<CommentEnt
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(BlogCommentFeedCallback callback) {
     this.get(callback);
@@ -63,9 +66,11 @@ public class BlogCommentFeed extends com.google.gwt.gdata.client.Feed<CommentEnt
    * Inserts a new comment entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertBlogCommentEntry(CommentEntry entry, CommentEntryCallback callback) {
+  public final void insertBlogCommentEntry(CommentEntry entry,
+      CommentEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

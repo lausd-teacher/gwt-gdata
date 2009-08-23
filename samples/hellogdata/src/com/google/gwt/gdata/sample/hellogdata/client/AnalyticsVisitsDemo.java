@@ -54,7 +54,7 @@ public class AnalyticsVisitsDemo extends GDataDemo {
       public String getDescription() {
         return "<p>This sample code demonstrates how to " +
             "get 30 days worth of Pageviews and Visits from Google " +
-            "Analytics.</p>\n";
+            "Analytics.</p>";
       }
 
       @Override

@@ -57,7 +57,7 @@ public class BloggerDeleteBlogPostCommentDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample deletes a comment from a blog post.</p>\n";
+        return "<p>This sample deletes a comment from a blog post.</p>";
       }
 
       @Override

@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.contacts;
 /**
  * Describes a contact feed.
  */
-public class ContactFeed extends com.google.gwt.gdata.client.Feed<ContactEntry> {
+public class ContactFeed
+    extends com.google.gwt.gdata.client.Feed<ContactEntry> {
 
   /**
    * Constructs a contact feed.
@@ -33,9 +34,11 @@ public class ContactFeed extends com.google.gwt.gdata.client.Feed<ContactEntry> 
   protected ContactFeed() { }
 
   /**
-   * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * Returns the link that provides the URI that can be used to batch
+   * operations to query, insert, update and delete entries on this feed.
    * 
-   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * @return Link that provides the URI that can be used to batch operations to
+   * query, insert, update and delete entries on this feed.
    */
   public final native ContactLink getFeedBatchLink() /*-{
     return this.getFeedBatchLink();
@@ -60,9 +63,11 @@ public class ContactFeed extends com.google.gwt.gdata.client.Feed<ContactEntry> 
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(ContactFeedCallback callback) {
     this.get(callback);
@@ -72,9 +77,11 @@ public class ContactFeed extends com.google.gwt.gdata.client.Feed<ContactEntry> 
    * Inserts a new contact entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertContactEntry(ContactEntry entry, ContactEntryCallback callback) {
+  public final void insertContactEntry(ContactEntry entry,
+      ContactEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

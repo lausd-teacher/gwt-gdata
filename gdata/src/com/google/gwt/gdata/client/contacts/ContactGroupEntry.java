@@ -39,14 +39,16 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param extendedProperty Extended property to add.
    */
-  public final native void addExtendedProperty(ExtendedProperty extendedProperty) /*-{
+  public final native void addExtendedProperty(
+      ExtendedProperty extendedProperty) /*-{
     this.addExtendedProperty(extendedProperty);
   }-*/;
   
   /**
    * Deletes the entry from the feed.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteEntry(ContactGroupEntryCallback callback) {
     this.delete(callback);
@@ -71,9 +73,11 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the associated service using the entry's self link.
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    * @return current representation of the entry.
    */
   public final ContactGroupEntry getSelf(ContactGroupEntryCallback callback) {
@@ -101,9 +105,11 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the extended properties.
    * 
-   * @param extendedProperties Extended properties, where each extended property is added using addExtendedProperty().
+   * @param extendedProperties Extended properties, where each extended
+   * property is added using addExtendedProperty().
    */
-  public final native void setExtendedProperties(ExtendedProperty[] extendedProperties) /*-{
+  public final native void setExtendedProperties(
+      ExtendedProperty[] extendedProperties) /*-{
     this.setExtendedProperties(
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(extendedProperties)
     );
@@ -121,7 +127,8 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Updated the entry in the feed by sending the representation of this entry.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void updateEntry(ContactGroupEntryCallback callback) {
     this.update(callback);

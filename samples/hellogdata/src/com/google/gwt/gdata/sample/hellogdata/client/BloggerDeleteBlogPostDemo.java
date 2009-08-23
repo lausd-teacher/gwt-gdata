@@ -55,7 +55,7 @@ public class BloggerDeleteBlogPostDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample deletes the first blog post it finds " +
-            "that begins with the prefix 'GWT-Blogger-Client'.</p>\n";
+            "that begins with the prefix 'GWT-Blogger-Client'.</p>";
       }
 
       @Override

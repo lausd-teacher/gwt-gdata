@@ -219,7 +219,8 @@ public class Feed<E extends Entry> extends JavaScriptObject {
   /**
    * Sets the categories.
    * 
-   * @param categories Categories, where each category is added using addCategory().
+   * @param categories Categories, where each category is added using
+   * addCategory().
    */
   public final native void setCategories(Category[] categories) /*-{
     this.setCategories(
@@ -230,7 +231,8 @@ public class Feed<E extends Entry> extends JavaScriptObject {
   /**
    * Sets the contributors.
    * 
-   * @param contributors Contributors, where each contributor is added using addContributor().
+   * @param contributors Contributors, where each contributor is added using
+   * addContributor().
    */
   public final native void setContributors(Person[] contributors) /*-{
     this.setContributors(

@@ -33,7 +33,8 @@ public class Symbol extends JavaScriptObject {
   protected Symbol() { }
 
   /**
-   * Returns the exchange symbol for the company or mutual fund. This attribute is required.
+   * Returns the exchange symbol for the company or mutual fund.
+   * This attribute is required.
    * 
    * @return Exchange symbol for the company or mutual fund.
    */
@@ -42,7 +43,8 @@ public class Symbol extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the full name for the company or mutual fund. This attribute is required.
+   * Returns the full name for the company or mutual fund.
+   * This attribute is required.
    * 
    * @return Full name for the company or mutual fund.
    */
@@ -51,7 +53,8 @@ public class Symbol extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the stock symbol for the company or mutual fund. This attribute is required.
+   * Returns the stock symbol for the company or mutual fund.
+   * This attribute is required.
    * 
    * @return Stock symbol for the company or mutual fund.
    */
@@ -60,7 +63,8 @@ public class Symbol extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the exchange symbol for the company or mutual fund. This attribute is required.
+   * Sets the exchange symbol for the company or mutual fund.
+   * This attribute is required.
    * 
    * @param exchange Exchange symbol for the company or mutual fund.
    */
@@ -69,7 +73,8 @@ public class Symbol extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the full name for the company or mutual fund. This attribute is required.
+   * Sets the full name for the company or mutual fund.
+   * This attribute is required.
    * 
    * @param fullName Full name for the company or mutual fund.
    */
@@ -78,7 +83,8 @@ public class Symbol extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the stock symbol for the company or mutual fund. This attribute is required.
+   * Sets the stock symbol for the company or mutual fund.
+   * This attribute is required.
    * 
    * @param symbol Stock symbol for the company or mutual fund.
    */

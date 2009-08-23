@@ -19,12 +19,14 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.gdata.client.ExtendedProperty;
 
 /**
- * Defines a value for the realm attribute that is used only in the calendar API.
+ * Defines a value for the realm attribute that is used only in the calendar
+ * API.
  */
 public class CalendarExtendedProperty extends ExtendedProperty {
 
   /**
-   * Indicates that this extended property can be accessed or modified through the current calendar.
+   * Indicates that this extended property can be accessed or modified through
+   * the current calendar.
    */
   public static final String REALM_CALENDAR = getConstant("REALM_CALENDAR");
 

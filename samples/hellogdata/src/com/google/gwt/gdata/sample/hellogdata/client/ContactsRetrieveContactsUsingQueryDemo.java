@@ -56,7 +56,7 @@ public class ContactsRetrieveContactsUsingQueryDemo extends GDataDemo {
         return "<p>This sample code demonstrates retrieve contact entries " +
             "using query parameters. The list of acceptable query " +
             "parameters for Contacts feed URI can be found here Contacts " +
-            "Data API Reference Guide.</p>\n";
+            "Data API Reference Guide.</p>";
       }
 
       @Override

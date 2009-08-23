@@ -55,7 +55,7 @@ public class FinanceCreatePortfolioDemo extends GDataDemo {
             "a new portfolio. The portfolio feed post URL " +
             "(http://finance.google.com/finance/feeds/default/portfolios) " +
             "is used to insert a new portfolio entry for the authenticated " +
-            "user.</p>\n";
+            "user.</p>";
       }
 
       @Override

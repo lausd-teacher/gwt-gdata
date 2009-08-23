@@ -34,27 +34,33 @@ public class PositionData extends JavaScriptObject {
   protected PositionData() { }
 
   /**
-   * Returns the cost basis of the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
+   * Returns the cost basis of the position in the portfolio default currency
+   * (and exchange currency if it differs). This element is optional.
    * 
-   * @return Cost basis of the position in the portfolio default currency (and exchange currency if it differs).
+   * @return Cost basis of the position in the portfolio default currency
+   * (and exchange currency if it differs).
    */
   public final native CostBasis getCostBasis() /*-{
     return this.getCostBasis();
   }-*/;
 
   /**
-   * Returns the today's gain for the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
+   * Returns the today's gain for the position in the portfolio default
+   * currency (and exchange currency if it differs). This element is optional.
    * 
-   * @return Today's gain for the position in the portfolio default currency (and exchange currency if it differs).
+   * @return Today's gain for the position in the portfolio default currency
+   * (and exchange currency if it differs).
    */
   public final native DaysGain getDaysGain() /*-{
     return this.getDaysGain();
   }-*/;
 
   /**
-   * Returns the gain for the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
+   * Returns the gain for the position in the portfolio default currency
+   * (and exchange currency if it differs). This element is optional.
    * 
-   * @return Gain for the position in the portfolio default currency (and exchange currency if it differs).
+   * @return Gain for the position in the portfolio default currency
+   * (and exchange currency if it differs).
    */
   public final native Gain getGain() /*-{
     return this.getGain();
@@ -70,9 +76,11 @@ public class PositionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the market value of the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
+   * Returns the market value of the position in the portfolio default currency
+   * (and exchange currency if it differs). This element is optional.
    * 
-   * @return Market value of the position in the portfolio default currency (and exchange currency if it differs).
+   * @return Market value of the position in the portfolio default currency
+   * (and exchange currency if it differs).
    */
   public final native MarketValue getMarketValue() /*-{
     return this.getMarketValue();
@@ -151,7 +159,8 @@ public class PositionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the number of shares belonging to the position. This attribute is optional.
+   * Returns the number of shares belonging to the position.
+   * This attribute is optional.
    * 
    * @return Number of shares belonging to the position.
    */
@@ -160,27 +169,34 @@ public class PositionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the cost basis of the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
+   * Sets the cost basis of the position in the portfolio default currency
+   * (and exchange currency if it differs). This element is optional.
    * 
-   * @param costBasis Cost basis of the position in the portfolio default currency (and exchange currency if it differs), or object to use as a parameter to the google.gdata.finance.CostBasis constructor.
+   * @param costBasis Cost basis of the position in the portfolio default
+   * currency (and exchange currency if it differs), or object to use as a
+   * parameter to the google.gdata.finance.CostBasis constructor.
    */
   public final native void setCostBasis(CostBasis costBasis) /*-{
     this.setCostBasis(costBasis);
   }-*/;
 
   /**
-   * Sets the today's gain for the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
+   * Sets the today's gain for the position in the portfolio default currency
+   * (and exchange currency if it differs). This element is optional.
    * 
-   * @param daysGain Today's gain for the position in the portfolio default currency (and exchange currency if it differs).
+   * @param daysGain Today's gain for the position in the portfolio default
+   * currency (and exchange currency if it differs).
    */
   public final native void setDaysGain(DaysGain daysGain) /*-{
     this.setDaysGain(daysGain);
   }-*/;
 
   /**
-   * Sets the gain for the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
+   * Sets the gain for the position in the portfolio default currency
+   * (and exchange currency if it differs). This element is optional.
    * 
-   * @param gain Gain for the position in the portfolio default currency (and exchange currency if it differs).
+   * @param gain Gain for the position in the portfolio default currency
+   * (and exchange currency if it differs).
    */
   public final native void setGain(Gain gain) /*-{
     this.setGain(gain);
@@ -196,9 +212,11 @@ public class PositionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the market value of the position in the portfolio default currency (and exchange currency if it differs). This element is optional.
+   * Sets the market value of the position in the portfolio default currency
+   * (and exchange currency if it differs). This element is optional.
    * 
-   * @param marketValue Market value of the position in the portfolio default currency (and exchange currency if it differs).
+   * @param marketValue Market value of the position in the portfolio default
+   * currency (and exchange currency if it differs).
    */
   public final native void setMarketValue(MarketValue marketValue) /*-{
     this.setMarketValue(marketValue);
@@ -267,7 +285,6 @@ public class PositionData extends JavaScriptObject {
     this.setReturnOverall(returnOverall);
   }-*/;
 
-
   /**
    * Sets the Year-to-date return (percentage). This attribute is optional.
    * 
@@ -278,7 +295,8 @@ public class PositionData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the number of shares belonging to the position. This attribute is optional.
+   * Sets the number of shares belonging to the position.
+   * This attribute is optional.
    * 
    * @param shares Number of shares belonging to the position.
    */

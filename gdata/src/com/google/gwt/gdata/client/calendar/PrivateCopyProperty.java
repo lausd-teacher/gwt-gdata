@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Indicates whether this is a private copy of the event, changes to which should not be sent to other calendars.
+ * Indicates whether this is a private copy of the event, changes to which
+ * should not be sent to other calendars.
  */
 public class PrivateCopyProperty extends JavaScriptObject {
 

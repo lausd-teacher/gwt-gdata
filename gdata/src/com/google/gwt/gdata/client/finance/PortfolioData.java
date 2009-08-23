@@ -34,7 +34,8 @@ public class PortfolioData extends JavaScriptObject {
   protected PortfolioData() { }
 
   /**
-   * Returns the cost basis of the portfolio in the portfolio default currency. This element is optional.
+   * Returns the cost basis of the portfolio in the portfolio default currency.
+   * This element is optional.
    * 
    * @return Cost basis of the portfolio in the portfolio default currency.
    */
@@ -52,7 +53,8 @@ public class PortfolioData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the today's gain for the portfolio in the portfolio default currency. This element is optional.
+   * Returns the today's gain for the portfolio in the portfolio default
+   * currency. This element is optional.
    * 
    * @return Today's gain for the portfolio in the portfolio default currency.
    */
@@ -61,7 +63,8 @@ public class PortfolioData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the gain for the portfolio in the portfolio default currency. This element is optional.
+   * Returns the gain for the portfolio in the portfolio default currency.
+   * This element is optional.
    * 
    * @return Gain for the portfolio in the portfolio default currency.
    */
@@ -79,7 +82,8 @@ public class PortfolioData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the market value of the portfolio in the portfolio default currency. This element is optional.
+   * Returns the market value of the portfolio in the portfolio default
+   * currency. This element is optional.
    * 
    * @return Market value of the portfolio in the portfolio default currency.
    */
@@ -160,9 +164,11 @@ public class PortfolioData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the cost basis of the portfolio in the portfolio default currency. This element is optional.
+   * Sets the cost basis of the portfolio in the portfolio default currency.
+   * This element is optional.
    * 
-   * @param costBasis Cost basis of the portfolio in the portfolio default currency.
+   * @param costBasis Cost basis of the portfolio in the portfolio default
+   * currency.
    */
   public final native void setCostBasis(CostBasis costBasis) /*-{
     this.setCostBasis(costBasis);
@@ -178,16 +184,19 @@ public class PortfolioData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the today's gain for the portfolio in the portfolio default currency. This element is optional.
+   * Sets the today's gain for the portfolio in the portfolio default currency.
+   * This element is optional.
    * 
-   * @param daysGain Today's gain for the portfolio in the portfolio default currency.
+   * @param daysGain Today's gain for the portfolio in the portfolio default
+   * currency.
    */
   public final native void setDaysGain(DaysGain daysGain) /*-{
     this.setDaysGain(daysGain);
   }-*/;
 
   /**
-   * Sets the gain for the portfolio in the portfolio default currency. This element is optional.
+   * Sets the gain for the portfolio in the portfolio default currency.
+   * This element is optional.
    * 
    * @param gain Gain for the portfolio in the portfolio default currency.
    */
@@ -205,9 +214,11 @@ public class PortfolioData extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the market value of the portfolio in the portfolio default currency. This element is optional.
+   * Sets the market value of the portfolio in the portfolio default currency.
+   * This element is optional.
    * 
-   * @param marketValue Market value of the portfolio in the portfolio default currency.
+   * @param marketValue Market value of the portfolio in the portfolio default
+   * currency.
    */
   public final native void setMarketValue(MarketValue marketValue) /*-{
     this.setMarketValue(marketValue);

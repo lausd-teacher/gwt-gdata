@@ -50,7 +50,7 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
       public String getDescription() {
         return "<p>This sample demonstrates how to access 50 of the " +
             "account names, profile names, profile ids and table ids to " +
-            "which your login has access.</p>\n";
+            "which your login has access.</p>";
       }
 
       @Override

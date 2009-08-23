@@ -48,7 +48,8 @@ public class BloggerService extends GoogleService {
    * Deletes a blog entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteBlogEntry(String uri, BlogEntryCallback callback) {
     this.deleteEntry(uri, callback);
@@ -58,9 +59,11 @@ public class BloggerService extends GoogleService {
    * Deletes a comment entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deleteCommentEntry(String uri, CommentEntryCallback callback) {
+  public final void deleteCommentEntry(String uri,
+      CommentEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -68,7 +71,8 @@ public class BloggerService extends GoogleService {
    * Deletes a post entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deletePostEntry(String uri, PostEntryCallback callback) {
     this.deleteEntry(uri, callback);
@@ -78,9 +82,11 @@ public class BloggerService extends GoogleService {
    * Retrieves the feed of a blog's comments.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getBlogCommentFeed(BlogCommentQuery query, BlogCommentFeedCallback callback) {
+  public final void getBlogCommentFeed(BlogCommentQuery query,
+      BlogCommentFeedCallback callback) {
     this.getFeed(query, callback, "getBlogCommentFeed");
   }
 
@@ -88,9 +94,11 @@ public class BloggerService extends GoogleService {
    * Retrieves the feed of a blog's comments.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getBlogCommentFeed(String uri, BlogCommentFeedCallback callback) {
+  public final void getBlogCommentFeed(String uri,
+      BlogCommentFeedCallback callback) {
     this.getFeed(uri, callback, "getBlogCommentFeed");
   }
 
@@ -98,7 +106,8 @@ public class BloggerService extends GoogleService {
    * Retrieves a blog entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getBlogEntry(String uri, BlogEntryCallback callback) {
     this.getEntry(uri, callback, "getBlogEntry");
@@ -108,7 +117,8 @@ public class BloggerService extends GoogleService {
    * Retrieves the feed of a user's blogs.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getBlogFeed(BlogQuery query, BlogFeedCallback callback) {
     this.getFeed(query, callback, "getBlogFeed");
@@ -118,7 +128,8 @@ public class BloggerService extends GoogleService {
    * Retrieves the feed of a user's blogs.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getBlogFeed(String uri, BlogFeedCallback callback) {
     this.getFeed(uri, callback, "getBlogFeed");
@@ -128,9 +139,11 @@ public class BloggerService extends GoogleService {
    * Retrieves the feed of a blog's posts.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getBlogPostFeed(BlogPostQuery query, BlogPostFeedCallback callback) {
+  public final void getBlogPostFeed(BlogPostQuery query,
+      BlogPostFeedCallback callback) {
     this.getFeed(query, callback, "getBlogPostFeed");
   }
 
@@ -138,7 +151,8 @@ public class BloggerService extends GoogleService {
    * Retrieves the feed of a blog's posts.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getBlogPostFeed(String uri, BlogPostFeedCallback callback) {
     this.getFeed(uri, callback, "getBlogPostFeed");
@@ -148,9 +162,11 @@ public class BloggerService extends GoogleService {
    * Retrieves a comment entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getCommentEntry(String uri, CommentEntryCallback callback) {
+  public final void getCommentEntry(String uri,
+      CommentEntryCallback callback) {
     this.getEntry(uri, callback, "getCommentEntry");
   }
 
@@ -158,9 +174,11 @@ public class BloggerService extends GoogleService {
    * Retrieves the feed of a blog post's comments.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getPostCommentFeed(PostCommentQuery query, PostCommentFeedCallback callback) {
+  public final void getPostCommentFeed(PostCommentQuery query,
+      PostCommentFeedCallback callback) {
     this.getFeed(query, callback, "getPostCommentFeed");
   }
 
@@ -168,9 +186,11 @@ public class BloggerService extends GoogleService {
    * Retrieves the feed of a blog post's comments.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getPostCommentFeed(String uri, PostCommentFeedCallback callback) {
+  public final void getPostCommentFeed(String uri,
+      PostCommentFeedCallback callback) {
     this.getFeed(uri, callback, "getPostCommentFeed");
   }
 
@@ -178,7 +198,8 @@ public class BloggerService extends GoogleService {
    * Retrieves a post entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getPostEntry(String uri, PostEntryCallback callback) {
     this.getEntry(uri, callback, "getPostEntry");
@@ -189,9 +210,11 @@ public class BloggerService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertBlogEntry(String uri, BlogEntry entry, BlogEntryCallback callback) {
+  public final void insertBlogEntry(String uri, BlogEntry entry,
+      BlogEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -200,9 +223,11 @@ public class BloggerService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertCommentEntry(String uri, CommentEntry entry, CommentEntryCallback callback) {
+  public final void insertCommentEntry(String uri, CommentEntry entry,
+      CommentEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
   /**
@@ -210,9 +235,11 @@ public class BloggerService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertPostEntry(String uri, PostEntry entry, PostEntryCallback callback) {
+  public final void insertPostEntry(String uri, PostEntry entry,
+      PostEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
   
@@ -221,9 +248,11 @@ public class BloggerService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateBlogEntry(String uri, BlogEntry entry, BlogEntryCallback callback) {
+  public final void updateBlogEntry(String uri, BlogEntry entry,
+      BlogEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 
@@ -232,9 +261,11 @@ public class BloggerService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateCommentEntry(String uri, CommentEntry entry, CommentEntryCallback callback) {
+  public final void updateCommentEntry(String uri, CommentEntry entry,
+      CommentEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
   
@@ -243,9 +274,11 @@ public class BloggerService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updatePostEntry(String uri, PostEntry entry, PostEntryCallback callback) {
+  public final void updatePostEntry(String uri, PostEntry entry,
+      PostEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 

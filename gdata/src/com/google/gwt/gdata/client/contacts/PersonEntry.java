@@ -52,7 +52,8 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param extendedProperty Extended property to add.
    */
-  public final native void addExtendedProperty(ExtendedProperty extendedProperty) /*-{
+  public final native void addExtendedProperty(
+      ExtendedProperty extendedProperty) /*-{
     this.addExtendedProperty(extendedProperty);
   }-*/;
 
@@ -115,7 +116,8 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @return Email addresses.
    */
-  public final native com.google.gwt.gdata.client.Email[] getEmailAddresses() /*-{
+  public final native
+    com.google.gwt.gdata.client.Email[] getEmailAddresses() /*-{
     return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getEmailAddresses());
   }-*/;
 
@@ -167,7 +169,8 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the email addresses.
    * 
-   * @param emailAddresses Email addresses, where each email address is added using addEmailAddress().
+   * @param emailAddresses Email addresses, where each email address is added
+   * using addEmailAddress().
    */
   public final native void setEmailAddresses(Email[] emailAddresses) /*-{
     this.setEmailAddresses(
@@ -178,9 +181,11 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the extended properties.
    * 
-   * @param extendedProperties Extended properties, where each extended property is added using addExtendedProperty().
+   * @param extendedProperties Extended properties, where each extended
+   * property is added using addExtendedProperty().
    */
-  public final native void setExtendedProperties(ExtendedProperty[] extendedProperties) /*-{
+  public final native void setExtendedProperties(
+      ExtendedProperty[] extendedProperties) /*-{
     this.setExtendedProperties(
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(extendedProperties)
     );
@@ -189,7 +194,8 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the instant messaging addresses.
    * 
-   * @param imAddresses Instant messaging addresses, where each instant messaging address is added using addImAddress().
+   * @param imAddresses Instant messaging addresses, where each instant
+   * messaging address is added using addImAddress().
    */
   public final native void setImAddresses(Im[] imAddresses) /*-{
     this.setImAddresses(
@@ -201,7 +207,8 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the organizations.
    * 
-   * @param organizations Organizations, where each organization is added using addOrganization() function, or undefined to clear the organizations.
+   * @param organizations Organizations, where each organization is added
+   * using addOrganization() function, or undefined to clear the organizations.
    */
   public final native void setOrganizations(Organization[] organizations) /*-{
     this.setOrganizations(
@@ -212,7 +219,8 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the phone numbers.
    * 
-   * @param phoneNumbers Phone numbers, where each phone number is added using addPhoneNumber().
+   * @param phoneNumbers Phone numbers, where each phone number is added using
+   * addPhoneNumber().
    */
   public final native void setPhoneNumbers(PhoneNumber[] phoneNumbers) /*-{
     this.setPhoneNumbers(
@@ -223,9 +231,11 @@ public class PersonEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Sets the postal addresses.
    * 
-   * @param postalAddresses Postal addresses, where each postal address is added using addPostalAddress().
+   * @param postalAddresses Postal addresses, where each postal address is
+   * added using addPostalAddress().
    */
-  public final native void setPostalAddresses(PostalAddress[] postalAddresses) /*-{
+  public final native void setPostalAddresses(
+      PostalAddress[] postalAddresses) /*-{
     this.setPostalAddresses(
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(postalAddresses)
     );

@@ -48,9 +48,11 @@ public class MapsService extends GoogleService {
    * Deletes a feature entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void deleteFeatureEntry(String uri, FeatureEntryCallback callback) {
+  public final void deleteFeatureEntry(String uri,
+      FeatureEntryCallback callback) {
     this.deleteEntry(uri, callback);
   }
 
@@ -59,7 +61,8 @@ public class MapsService extends GoogleService {
    * Deletes a map entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void deleteMapEntry(String uri, MapEntryCallback callback) {
     this.deleteEntry(uri, callback);
@@ -70,9 +73,11 @@ public class MapsService extends GoogleService {
    * Retrieves a feature entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getFeatureEntry(String uri, FeatureEntryCallback callback) {
+  public final void getFeatureEntry(String uri,
+      FeatureEntryCallback callback) {
     this.getEntry(uri, callback, "getFeatureEntry");
   }
 
@@ -80,9 +85,11 @@ public class MapsService extends GoogleService {
    * Retrieves the feed of map features.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getFeatureFeed(FeatureQuery query, FeatureFeedCallback callback) {
+  public final void getFeatureFeed(FeatureQuery query,
+      FeatureFeedCallback callback) {
     this.getFeed(query, callback, "getFeatureFeed");
   }
 
@@ -90,9 +97,11 @@ public class MapsService extends GoogleService {
    * Retrieves the feed of map features.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void getFeatureFeed(String uri, FeatureFeedCallback callback) {
+  public final void getFeatureFeed(String uri,
+      FeatureFeedCallback callback) {
     this.getFeed(uri, callback, "getFeatureFeed");
   }
 
@@ -100,7 +109,8 @@ public class MapsService extends GoogleService {
    * Retrieves a map entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getMapEntry(String uri, MapEntryCallback callback) {
     this.getEntry(uri, callback, "getMapEntry");
@@ -110,7 +120,8 @@ public class MapsService extends GoogleService {
    * Retrieves the feed of user-created maps.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getMapFeed(MapQuery query, MapFeedCallback callback) {
     this.getFeed(query, callback, "getMapFeed");
@@ -120,7 +131,8 @@ public class MapsService extends GoogleService {
    * Retrieves the feed of user-created maps.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getMapFeed(String uri, MapFeedCallback callback) {
     this.getFeed(uri, callback, "getMapFeed");
@@ -131,9 +143,11 @@ public class MapsService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertFeatureEntry(String uri, FeatureEntry entry, FeatureEntryCallback callback) {
+  public final void insertFeatureEntry(String uri, FeatureEntry entry,
+      FeatureEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -142,9 +156,11 @@ public class MapsService extends GoogleService {
    * 
    * @param uri URI of feed.
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertMapEntry(String uri, MapEntry entry, MapEntryCallback callback) {
+  public final void insertMapEntry(String uri, MapEntry entry,
+      MapEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
 
@@ -153,9 +169,11 @@ public class MapsService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateFeatureEntry(String uri, FeatureEntry entry, FeatureEntryCallback callback) {
+  public final void updateFeatureEntry(String uri, FeatureEntry entry,
+      FeatureEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 
@@ -164,9 +182,11 @@ public class MapsService extends GoogleService {
    * 
    * @param uri URI of entry.
    * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void updateMapEntry(String uri, MapEntry entry, MapEntryCallback callback) {
+  public final void updateMapEntry(String uri, MapEntry entry,
+      MapEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 

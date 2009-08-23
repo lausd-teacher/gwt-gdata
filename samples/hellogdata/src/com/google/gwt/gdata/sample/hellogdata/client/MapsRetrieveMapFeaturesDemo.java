@@ -53,7 +53,7 @@ public class MapsRetrieveMapFeaturesDemo extends GDataDemo {
       @Override
       public String getDescription() {
         return "<p>This sample code uses the features feed to retrieve a " +
-            "list of features for a given map.</p>\n";
+            "list of features for a given map.</p>";
       }
 
       @Override

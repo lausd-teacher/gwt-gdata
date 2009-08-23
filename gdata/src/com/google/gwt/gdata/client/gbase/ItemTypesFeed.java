@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.gbase;
 /**
  * Describes a feed of public item types.
  */
-public class ItemTypesFeed extends com.google.gwt.gdata.client.Feed<ItemTypesEntry> {
+public class ItemTypesFeed
+    extends com.google.gwt.gdata.client.Feed<ItemTypesEntry> {
 
   /**
    * Constructs a Google Base item type feed.
@@ -33,18 +34,22 @@ public class ItemTypesFeed extends com.google.gwt.gdata.client.Feed<ItemTypesEnt
   protected ItemTypesFeed() { }
 
   /**
-   * Returns the link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * Returns the link that provides the URI that can be used to batch
+   * operations to query, insert, update and delete entries on this feed.
    * 
-   * @return Link that provides the URI that can be used to batch operations to query, insert, update and delete entries on this feed.
+   * @return Link that provides the URI that can be used to batch operations to
+   * query, insert, update and delete entries on this feed.
    */
   public final native com.google.gwt.gdata.client.Link getFeedBatchLink() /*-{
     return this.getFeedBatchLink();
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(ItemTypesFeedCallback callback) {
     this.get(callback);
@@ -54,9 +59,11 @@ public class ItemTypesFeed extends com.google.gwt.gdata.client.Feed<ItemTypesEnt
    * Inserts a new item types entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertItemTypesEntry(ItemTypesEntry entry, ItemTypesEntryCallback callback) {
+  public final void insertItemTypesEntry(ItemTypesEntry entry,
+      ItemTypesEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

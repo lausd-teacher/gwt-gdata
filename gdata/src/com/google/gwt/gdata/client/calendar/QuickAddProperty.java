@@ -33,7 +33,8 @@ public class QuickAddProperty extends JavaScriptObject {
   protected QuickAddProperty() { }
 
   /**
-   * Returns whether gd:content is for quick-add processing. This attribute is required.
+   * Returns whether gd:content is for quick-add processing.
+   * This attribute is required.
    * 
    * @return Whether gd:content is for quick-add processing.
    */
@@ -42,7 +43,8 @@ public class QuickAddProperty extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether gd:content is for quick-add processing. This attribute is required.
+   * Sets whether gd:content is for quick-add processing.
+   * This attribute is required.
    * 
    * @param value Whether gd:content is for quick-add processing.
    */

@@ -21,5 +21,6 @@ import com.google.gwt.gdata.client.impl.Callback;
 /**
  * Callback for calendar recurrence exception entry.
  */
-public interface CalendarRecurrenceExceptionEntryCallback extends Callback<CalendarRecurrenceExceptionEntry> {
+public interface CalendarRecurrenceExceptionEntryCallback
+    extends Callback<CalendarRecurrenceExceptionEntry> {
 }

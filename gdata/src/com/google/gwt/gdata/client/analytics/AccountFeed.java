@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.analytics;
 /**
  * Feed element in account feed.
  */
-public class AccountFeed extends com.google.gwt.gdata.client.Feed<AccountEntry> {
+public class AccountFeed
+    extends com.google.gwt.gdata.client.Feed<AccountEntry> {
 
   /**
    * Constructs an account feed.
@@ -51,9 +52,11 @@ public class AccountFeed extends com.google.gwt.gdata.client.Feed<AccountEntry> 
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the associated service using the feeds self link.
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
    * 
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
   public final void getSelf(AccountFeedCallback callback) {
     this.get(callback);
@@ -63,9 +66,11 @@ public class AccountFeed extends com.google.gwt.gdata.client.Feed<AccountEntry> 
    * Inserts a new account entry into the feed.
    * 
    * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this command.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final void insertAccountEntry(AccountEntry entry, AccountEntryCallback callback) {
+  public final void insertAccountEntry(AccountEntry entry,
+      AccountEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

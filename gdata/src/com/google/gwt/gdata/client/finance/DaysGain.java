@@ -55,7 +55,8 @@ public class DaysGain extends JavaScriptObject {
   /**
    * Sets the monetary value of day's gain.
    * 
-   * @param money Monetary value of day's gain, where each monetary value of day's gain is added using addMoney().
+   * @param money Monetary value of day's gain, where each monetary value of
+   * day's gain is added using addMoney().
    */
   public final native void setMoney(Money[] money) /*-{
     this.setMoney(

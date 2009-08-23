@@ -34,7 +34,8 @@ public class GroupMembershipInfo extends JavaScriptObject {
   protected GroupMembershipInfo() { }
 
   /**
-   * Returns whether the contact was removed from the group. This attribute is optional.
+   * Returns whether the contact was removed from the group.
+   * This attribute is optional.
    * 
    * @return Whether the contact was removed from the group.
    */
@@ -52,7 +53,8 @@ public class GroupMembershipInfo extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets whether the contact was removed from the group. This attribute is optional.
+   * Sets whether the contact was removed from the group.
+   * This attribute is optional.
    * 
    * @param deleted Whether the contact was removed from the group.
    */

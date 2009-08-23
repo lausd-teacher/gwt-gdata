@@ -50,7 +50,7 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
       public String getDescription() {
         return "<p>The following example demonstrates how to use AuthSub to " +
             "authenticate and identify authentication status for the " +
-            "supported GData systems</p>\n";
+            "supported GData systems</p>";
       }
 
       @Override

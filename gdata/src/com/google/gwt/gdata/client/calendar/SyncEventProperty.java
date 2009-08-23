@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.calendar;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Describes whether this is a sync scenario where the Ical UID and Sequence number are honored during inserts and updates.
+ * Describes whether this is a sync scenario where the Ical UID and Sequence
+ * number are honored during inserts and updates.
  */
 public class SyncEventProperty extends JavaScriptObject {
 

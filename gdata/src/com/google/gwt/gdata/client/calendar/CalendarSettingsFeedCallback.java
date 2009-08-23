@@ -21,5 +21,6 @@ import com.google.gwt.gdata.client.impl.Callback;
 /**
  * Callback for calendar settings feed.
  */
-public interface CalendarSettingsFeedCallback extends Callback<CalendarSettingsFeed> {
+public interface CalendarSettingsFeedCallback
+    extends Callback<CalendarSettingsFeed> {
 }

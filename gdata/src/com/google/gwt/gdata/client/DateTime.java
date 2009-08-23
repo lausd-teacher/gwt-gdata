@@ -21,7 +21,8 @@ import com.google.gwt.core.client.JavaScriptObject;
 import java.util.Date;
 
 /**
- * Represents a timestamp that is either a calendar date or a more specific time with millisecond precision
+ * Represents a timestamp that is either a calendar date or a more specific
+ * time with millisecond precision.
  */
 public class DateTime extends JavaScriptObject {
 
@@ -110,7 +111,8 @@ public class DateTime extends JavaScriptObject {
   /**
    * Returns the ISO 8601 string representation of the Date object.
    * 
-   * @param dateTime GData timestamp to represent a timestamp with millesecond precision.
+   * @param dateTime GData timestamp to represent a timestamp with millesecond
+   * precision.
    * 
    * @return ISO 8601 string representation.
    */
@@ -121,7 +123,8 @@ public class DateTime extends JavaScriptObject {
   /**
    * Returns the ISO 8601 string representation of the GData timestamp.
    * 
-   * @param dateTime Date value to represent a timestamp with millesecond precision.
+   * @param dateTime Date value to represent a timestamp with millesecond
+   * precision.
    * 
    * @return ISO 8601 string representation.
    */

@@ -26,12 +26,14 @@ public class MediaRestriction extends JavaScriptObject {
   /**
    * Allow only the given restriction.
    */
-  public static final String RELATIONSHIP_ALLOW = getConstant("RELATIONSHIP_ALLOW");
+  public static final String RELATIONSHIP_ALLOW =
+      getConstant("RELATIONSHIP_ALLOW");
 
   /**
    * Deny the given restriction.
    */
-  public static final String RELATIONSHIP_DENY = getConstant("RELATIONSHIP_DENY");
+  public static final String RELATIONSHIP_DENY =
+      getConstant("RELATIONSHIP_DENY");
 
   /**
    * Restriction is a country identifier.
@@ -67,7 +69,8 @@ public class MediaRestriction extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the type of relationship, either 'allow' or 'deny'. This attribute is required.
+   * Returns the type of relationship, either 'allow' or 'deny'.
+   * This attribute is required.
    * 
    * @return Type of relationship, either 'allow' or 'deny'.
    */
@@ -76,7 +79,8 @@ public class MediaRestriction extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the type of restriction, either 'country' or 'uri'. This attribute is optional.
+   * Returns the type of restriction, either 'country' or 'uri'.
+   * This attribute is optional.
    * 
    * @return Type of restriction, either 'country' or 'uri'.
    */
@@ -94,7 +98,8 @@ public class MediaRestriction extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the type of relationship, either 'allow' or 'deny'. This attribute is required.
+   * Sets the type of relationship, either 'allow' or 'deny'.
+   * This attribute is required.
    * 
    * @param relationship Type of relationship, either 'allow' or 'deny'.
    */
@@ -103,7 +108,8 @@ public class MediaRestriction extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the type of restriction, either 'country' or 'uri'. This attribute is optional.
+   * Sets the type of restriction, either 'country' or 'uri'.
+   * This attribute is optional.
    * 
    * @param type Type of restriction, either 'country' or 'uri'.
    */

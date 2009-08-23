@@ -56,7 +56,7 @@ public class CalendarQueryEventsByDateDemo extends GDataDemo {
             "query to retrieve events. The date query serves as a filter " +
             "against all event entries of the private/full feed and " +
             "return those events that has a start time between the " +
-            "specified minimum and maximum start time. </p>\n";
+            "specified minimum and maximum start time. </p>";
       }
 
       @Override

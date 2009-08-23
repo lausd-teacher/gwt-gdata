@@ -46,7 +46,8 @@ public class AttributesQuery extends Query {
   }-*/;
 
   /**
-   * Returns the query string that conforms to the Query Language Specification.
+   * Returns the query string that conforms to the Query Language
+   * Specification.
    * 
    * @return Query string that conforms to the Query Language Specification.
    */
@@ -73,7 +74,8 @@ public class AttributesQuery extends Query {
   }-*/;
 
   /**
-   * Returns the number of distinct values returned in each entry. Most frequent N values along with their counts are returned.
+   * Returns the number of distinct values returned in each entry. Most
+   * frequent N values along with their counts are returned.
    * 
    * @return Number of distinct values returned in each entry.
    */
@@ -163,7 +165,9 @@ public class AttributesQuery extends Query {
   }-*/;
 
   /**
-   * Sets the number of distinct values returned in each entry. Most frequent N values along with their counts are returned.. The default value is 0.
+   * Sets the number of distinct values returned in each entry.
+   * Most frequent N values along with their counts are returned.
+   * The default value is 0.
    * 
    * @param maxValues Number of distinct values returned in each entry.
    */
@@ -190,7 +194,8 @@ public class AttributesQuery extends Query {
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
+   * Sets the 1-based index of the first result to be retrieved.
+   * The default value is 1.
    * 
    * @param startIndex 1-based index of the first result to be retrieved.
    */

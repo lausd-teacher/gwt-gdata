@@ -27,22 +27,27 @@ public class CalendarEventQuery extends Query {
   /**
    * Order the returned feed's entries by their <updated> values.
    */
-  public static final String ORDERBY_LAST_MODIFIED = getConstant("ORDERBY_LAST_MODIFIED");
+  public static final String ORDERBY_LAST_MODIFIED =
+      getConstant("ORDERBY_LAST_MODIFIED");
 
   /**
-   * Order the returned feed's entries by the <gd:when> element's starttime attribute.
+   * Order the returned feed's entries by the <gd:when> element's starttime
+   * attribute.
    */
-  public static final String ORDERBY_START_TIME = getConstant("ORDERBY_START_TIME");
+  public static final String ORDERBY_START_TIME =
+      getConstant("ORDERBY_START_TIME");
 
   /**
    * Ascending.
    */
-  public static final String SORTORDER_ASCENDING = getConstant("SORTORDER_ASCENDING");
+  public static final String SORTORDER_ASCENDING =
+      getConstant("SORTORDER_ASCENDING");
 
   /**
    * Descending.
    */
-  public static final String SORTORDER_DESCENDING = getConstant("SORTORDER_DESCENDING");
+  public static final String SORTORDER_DESCENDING =
+      getConstant("SORTORDER_DESCENDING");
 
   /**
    * Constructs a calendar event query.
@@ -79,9 +84,13 @@ public class CalendarEventQuery extends Query {
   }-*/;
 
   /**
-   * Returns the shortcut to request all events that are scheduled for future times which overrides the recurrence-expansion-start, recurrence-expansion-end, start-min, and start-max values.
+   * Returns the shortcut to request all events that are scheduled for future
+   * times which overrides the recurrence-expansion-start,
+   * recurrence-expansion-end, start-min, and start-max values.
    * 
-   * @return Shortcut to request all events that are scheduled for future times which overrides the recurrence-expansion-start, recurrence-expansion-end, start-min, and start-max values.
+   * @return Shortcut to request all events that are scheduled for future times
+   * which overrides the recurrence-expansion-start, recurrence-expansion-end,
+   * start-min, and start-max values.
    */
   public final native boolean getFutureEvents() /*-{
     return this.getFutureEvents();
@@ -151,9 +160,11 @@ public class CalendarEventQuery extends Query {
   }-*/;
 
   /**
-   * Returns the whether recurring events should be expanded or represented as a single event.
+   * Returns the whether recurring events should be expanded or represented as
+   * a single event.
    * 
-   * @return Whether recurring events should be expanded or represented as a single event.
+   * @return Whether recurring events should be expanded or represented as a
+   * single event.
    */
   public final native boolean getSingleEvents() /*-{
     return this.getSingleEvents();
@@ -214,9 +225,14 @@ public class CalendarEventQuery extends Query {
   }-*/;
 
   /**
-   * Sets the shortcut to request all events that are scheduled for future times which overrides the recurrence-expansion-start, recurrence-expansion-end, start-min, and start-max values. The default value is false.
+   * Sets the shortcut to request all events that are scheduled for future
+   * times which overrides the recurrence-expansion-start,
+   * recurrence-expansion-end, start-min, and start-max values.
+   * The default value is false.
    * 
-   * @param futureEvents Shortcut to request all events that are scheduled for future times which overrides the recurrence-expansion-start, recurrence-expansion-end, start-min, and start-max values.
+   * @param futureEvents Shortcut to request all events that are scheduled for
+   * future times which overrides the recurrence-expansion-start,
+   * recurrence-expansion-end, start-min, and start-max values.
    */
   public final native void setFutureEvents(boolean futureEvents) /*-{
     this.setFutureEvents(futureEvents);
@@ -225,7 +241,8 @@ public class CalendarEventQuery extends Query {
   /**
    * Sets the latest event start time to match (default is 2031-01-01).
    * 
-   * @param maximumStartTime Latest event start time to match (default is 2031-01-01).
+   * @param maximumStartTime Latest event start time to match
+   * (default is 2031-01-01).
    */
   public final native void setMaximumStartTime(DateTime maximumStartTime) /*-{
     this.setMaximumStartTime(maximumStartTime);
@@ -243,7 +260,8 @@ public class CalendarEventQuery extends Query {
   /**
    * Sets the earliest event start time to match (default is 1970-01-01).
    * 
-   * @param minimumStartTime Earliest event start time to match (default is 1970-01-01).
+   * @param minimumStartTime Earliest event start time to match
+   * (default is 1970-01-01).
    */
   public final native void setMinimumStartTime(DateTime minimumStartTime) /*-{
     this.setMinimumStartTime(minimumStartTime);
@@ -261,34 +279,42 @@ public class CalendarEventQuery extends Query {
   /**
    * Sets the end of time period for which to expand recurring events.
    * 
-   * @param recurrenceExpansionEnd End of time period for which to expand recurring events.
+   * @param recurrenceExpansionEnd End of time period for which to expand
+   * recurring events.
    */
-  public final native void setRecurrenceExpansionEnd(DateTime recurrenceExpansionEnd) /*-{
+  public final native void setRecurrenceExpansionEnd(
+      DateTime recurrenceExpansionEnd) /*-{
     this.setRecurrenceExpansionEnd(recurrenceExpansionEnd);
   }-*/;
 
   /**
    * Sets the beginning of time period for which to expand recurring events.
    * 
-   * @param recurrenceExpansionStart Beginning of time period for which to expand recurring events.
+   * @param recurrenceExpansionStart Beginning of time period for which to
+   * expand recurring events.
    */
-  public final native void setRecurrenceExpansionStart(DateTime recurrenceExpansionStart) /*-{
+  public final native void setRecurrenceExpansionStart(
+      DateTime recurrenceExpansionStart) /*-{
     this.setRecurrenceExpansionStart(recurrenceExpansionStart);
   }-*/;
 
   /**
-   * Sets the whether to include the allowGSync flag in the output. The default value is false.
+   * Sets the whether to include the allowGSync flag in the output.
+   * The default value is false.
    * 
-   * @param showAllowGSync Whether to include the allowGSync flag in the output.
+   * @param showAllowGSync Whether to include the allowGSync flag in the
+   * output.
    */
   public final native void setShowAllowGSync(boolean showAllowGSync) /*-{
     this.setShowAllowGSync(showAllowGSync);
   }-*/;
 
   /**
-   * Sets the whether recurring events should be expanded or represented as a single event. The default value is false.
+   * Sets the whether recurring events should be expanded or represented as a
+   * single event. The default value is false.
    * 
-   * @param singleEvents Whether recurring events should be expanded or represented as a single event.
+   * @param singleEvents Whether recurring events should be expanded or
+   * represented as a single event.
    */
   public final native void setSingleEvents(boolean singleEvents) /*-{
     this.setSingleEvents(singleEvents);
@@ -304,7 +330,8 @@ public class CalendarEventQuery extends Query {
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
+   * Sets the 1-based index of the first result to be retrieved.
+   * The default value is 1.
    * 
    * @param startIndex 1-based index of the first result to be retrieved.
    */

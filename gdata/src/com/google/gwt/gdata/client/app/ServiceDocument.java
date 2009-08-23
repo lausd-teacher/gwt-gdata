@@ -54,7 +54,8 @@ public class ServiceDocument extends JavaScriptObject {
   /**
    * Sets the workspaces.
    * 
-   * @param workspaces Workspaces, where each workspace is added using addWorkspace().
+   * @param workspaces Workspaces, where each workspace is added using
+   * addWorkspace().
    */
   public final native void setWorkspaces(Workspace[] workspaces) /*-{
     this.setWorkspaces(

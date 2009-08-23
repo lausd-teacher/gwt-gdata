@@ -64,7 +64,8 @@ public class Workspace extends JavaScriptObject {
   /**
    * Sets the collections.
    * 
-   * @param collections Collections, where each collection is added using addCollection().
+   * @param collections Collections, where each collection is added using
+   * addCollection().
    */
   public final native void setCollections(Collection[] collections) /*-{
     this.setCollections(

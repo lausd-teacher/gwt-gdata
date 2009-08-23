@@ -26,17 +26,20 @@ public class GmAttribute extends JavaScriptObject {
   /**
    * The attribute is optional.
    */
-  public static final String IMPORTANCE_OPTIONAL = getConstant("IMPORTANCE_OPTIONAL");
+  public static final String IMPORTANCE_OPTIONAL =
+      getConstant("IMPORTANCE_OPTIONAL");
 
   /**
    * The attribute is recommended.
    */
-  public static final String IMPORTANCE_RECOMMENDED = getConstant("IMPORTANCE_RECOMMENDED");
+  public static final String IMPORTANCE_RECOMMENDED =
+      getConstant("IMPORTANCE_RECOMMENDED");
 
   /**
    * The attribute is required.
    */
-  public static final String IMPORTANCE_REQUIRED = getConstant("IMPORTANCE_REQUIRED");
+  public static final String IMPORTANCE_REQUIRED =
+      getConstant("IMPORTANCE_REQUIRED");
 
   /**
    * Constructs a list of attribute for an item type.

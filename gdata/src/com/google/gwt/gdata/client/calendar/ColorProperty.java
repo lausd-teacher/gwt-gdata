@@ -26,107 +26,128 @@ public class ColorProperty extends JavaScriptObject {
   /**
    * RGB value 0D7813.
    */
-  public static final String VALUE_RGB_0D7813 = getConstant("VALUE_RGB_0D7813");
+  public static final String VALUE_RGB_0D7813 =
+      getConstant("VALUE_RGB_0D7813");
 
   /**
    * RGB value 1B887A.
    */
-  public static final String VALUE_RGB_1B887A = getConstant("VALUE_RGB_1B887A");
+  public static final String VALUE_RGB_1B887A =
+      getConstant("VALUE_RGB_1B887A");
 
   /**
    * RGB value 28754E.
    */
-  public static final String VALUE_RGB_28754E = getConstant("VALUE_RGB_28754E");
+  public static final String VALUE_RGB_28754E =
+      getConstant("VALUE_RGB_28754E");
 
   /**
    * RGB value 29527A.
    */
-  public static final String VALUE_RGB_29527A = getConstant("VALUE_RGB_29527A");
+  public static final String VALUE_RGB_29527A =
+      getConstant("VALUE_RGB_29527A");
 
   /**
    * RGB value 2952A3.
    */
-  public static final String VALUE_RGB_2952A3 = getConstant("VALUE_RGB_2952A3");
+  public static final String VALUE_RGB_2952A3 =
+      getConstant("VALUE_RGB_2952A3");
 
   /**
    * RGB value 4A716C.
    */
-  public static final String VALUE_RGB_4A716C = getConstant("VALUE_RGB_4A716C");
+  public static final String VALUE_RGB_4A716C =
+      getConstant("VALUE_RGB_4A716C");
 
   /**
    * RGB value 4E5D6C.
    */
-  public static final String VALUE_RGB_4E5D6C = getConstant("VALUE_RGB_4E5D6C");
+  public static final String VALUE_RGB_4E5D6C =
+      getConstant("VALUE_RGB_4E5D6C");
 
   /**
    * RGB value 5229A3.
    */
-  public static final String VALUE_RGB_5229A3 = getConstant("VALUE_RGB_5229A3");
+  public static final String VALUE_RGB_5229A3 =
+      getConstant("VALUE_RGB_5229A3");
 
   /**
    * RGB value 528800.
    */
-  public static final String VALUE_RGB_528800 = getConstant("VALUE_RGB_528800");
+  public static final String VALUE_RGB_528800 =
+      getConstant("VALUE_RGB_528800");
 
   /**
    * RGB value 5A6986.
    */
-  public static final String VALUE_RGB_5A6986 = getConstant("VALUE_RGB_5A6986");
+  public static final String VALUE_RGB_5A6986 =
+      getConstant("VALUE_RGB_5A6986");
 
   /**
    * RGB value 6E6E41.
    */
-  public static final String VALUE_RGB_6E6E41 = getConstant("VALUE_RGB_6E6E41");
+  public static final String VALUE_RGB_6E6E41 =
+      getConstant("VALUE_RGB_6E6E41");
 
   /**
    * RGB value 705770.
    */
-  public static final String VALUE_RGB_705770 = getConstant("VALUE_RGB_705770");
+  public static final String VALUE_RGB_705770 =
+      getConstant("VALUE_RGB_705770");
 
   /**
    * RGB value 7A367A.
    */
-  public static final String VALUE_RGB_7A367A = getConstant("VALUE_RGB_7A367A");
+  public static final String VALUE_RGB_7A367A =
+      getConstant("VALUE_RGB_7A367A");
 
   /**
    * RGB value 865A5A.
    */
-  public static final String VALUE_RGB_865A5A = getConstant("VALUE_RGB_865A5A");
+  public static final String VALUE_RGB_865A5A =
+      getConstant("VALUE_RGB_865A5A");
 
   /**
    * RGB value 88880E.
    */
-  public static final String VALUE_RGB_88880E = getConstant("VALUE_RGB_88880E");
+  public static final String VALUE_RGB_88880E =
+      getConstant("VALUE_RGB_88880E");
 
   /**
    * RGB value 8D6F47.
    */
-  public static final String VALUE_RGB_8D6F47 = getConstant("VALUE_RGB_8D6F47");
+  public static final String VALUE_RGB_8D6F47 =
+      getConstant("VALUE_RGB_8D6F47");
 
   /**
    * RGB value A32929.
    */
-  public static final String VALUE_RGB_A32929 = getConstant("VALUE_RGB_A32929");
+  public static final String VALUE_RGB_A32929 =
+      getConstant("VALUE_RGB_A32929");
 
   /**
    * RGB value AB8B00.
    */
-  public static final String VALUE_RGB_AB8B00 = getConstant("VALUE_RGB_AB8B00");
+  public static final String VALUE_RGB_AB8B00 =
+      getConstant("VALUE_RGB_AB8B00");
 
   /**
    * RGB value B1365F.
    */
-  public static final String VALUE_RGB_B1365F = getConstant("VALUE_RGB_B1365F");
+  public static final String VALUE_RGB_B1365F =
+      getConstant("VALUE_RGB_B1365F");
 
   /**
    * RGB value B1440E.
    */
-  public static final String VALUE_RGB_B1440E = getConstant("VALUE_RGB_B1440E");
+  public static final String VALUE_RGB_B1440E =
+      getConstant("VALUE_RGB_B1440E");
 
   /**
    * RGB value BE6D00.
    */
-  public static final String VALUE_RGB_BE6D00 = getConstant("VALUE_RGB_BE6D00");
+  public static final String VALUE_RGB_BE6D00 =
+      getConstant("VALUE_RGB_BE6D00");
 
   /**
    * Constructs a color property.

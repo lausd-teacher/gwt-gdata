@@ -52,7 +52,8 @@ public class Text extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the type of text construct (typically 'text', 'html' or 'xhtml'). This attribute is optional.
+   * Returns the type of text construct (typically 'text', 'html' or 'xhtml').
+   * This attribute is optional.
    * 
    * @return Type of text construct (typically 'text', 'html' or 'xhtml').
    */
@@ -88,7 +89,8 @@ public class Text extends JavaScriptObject {
   }-*/;
 
   /**
-   * Sets the type of text construct (typically 'text', 'html' or 'xhtml'). This attribute is optional.
+   * Sets the type of text construct (typically 'text', 'html' or 'xhtml').
+   * This attribute is optional.
    * 
    * @param type Type of text construct (typically 'text', 'html' or 'xhtml').
    */

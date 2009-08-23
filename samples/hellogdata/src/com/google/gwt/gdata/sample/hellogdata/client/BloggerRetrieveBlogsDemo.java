@@ -50,7 +50,7 @@ public class BloggerRetrieveBlogsDemo extends GDataDemo {
       public String getDescription() {
         return "<p>This sample uses the \"metafeed\" feed to retrieve the " +
             "authenticated user's list of blogs. Each blog is listed as a " +
-            "link to the actual blog.</p>\n";
+            "link to the actual blog.</p>";
       }
 
       @Override

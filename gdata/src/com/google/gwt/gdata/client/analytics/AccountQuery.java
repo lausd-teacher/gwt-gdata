@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.analytics;
 import com.google.gwt.gdata.client.Query;
 
 /**
- * Describes a query for the feed of accounts and profiles to which a given user has access.
+ * Describes a query for the feed of accounts and profiles to which a given
+ * user has access.
  */
 public class AccountQuery extends Query {
 
@@ -81,7 +82,8 @@ public class AccountQuery extends Query {
   }-*/;
 
   /**
-   * Sets the 1-based index of the first result to be retrieved. The default value is 1.
+   * Sets the 1-based index of the first result to be retrieved. The default
+   * value is 1.
    * 
    * @param startIndex 1-based index of the first result to be retrieved.
    */

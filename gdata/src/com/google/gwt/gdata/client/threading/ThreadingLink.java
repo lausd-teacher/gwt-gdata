@@ -45,36 +45,46 @@ public class ThreadingLink extends com.google.gwt.gdata.client.atom.Link {
   protected ThreadingLink() { }
 
   /**
-   * Returns the provides a hint to clients as to the total number of replies contained by the linked resource. This attribute is optional.
+   * Returns the provides a hint to clients as to the total number of replies
+   * contained by the linked resource. This attribute is optional.
    * 
-   * @return Provides a hint to clients as to the total number of replies contained by the linked resource.
+   * @return Provides a hint to clients as to the total number of replies
+   * contained by the linked resource.
    */
   public final native double getCount() /*-{
     return this.getCount();
   }-*/;
 
   /**
-   * Returns the provides a hint to clients as to the date and time of the most recently updated reply contained by the linked resource. This attribute is optional.
+   * Returns the provides a hint to clients as to the date and time of the most
+   * recently updated reply contained by the linked resource.
+   * This attribute is optional.
    * 
-   * @return Provides a hint to clients as to the date and time of the most recently updated reply contained by the linked resource.
+   * @return Provides a hint to clients as to the date and time of the most
+   * recently updated reply contained by the linked resource.
    */
   public final native DateTime getUpdated() /*-{
     return this.getUpdated();
   }-*/;
 
   /**
-   * Sets the provides a hint to clients as to the total number of replies contained by the linked resource. This attribute is optional.
+   * Sets the provides a hint to clients as to the total number of replies
+   * contained by the linked resource. This attribute is optional.
    * 
-   * @param count Provides a hint to clients as to the total number of replies contained by the linked resource.
+   * @param count Provides a hint to clients as to the total number of replies
+   * contained by the linked resource.
    */
   public final native void setCount(double count) /*-{
     this.setCount(count);
   }-*/;
 
   /**
-   * Sets the provides a hint to clients as to the date and time of the most recently updated reply contained by the linked resource. This attribute is optional.
+   * Sets the provides a hint to clients as to the date and time of the most
+   * recently updated reply contained by the linked resource.
+   * This attribute is optional.
    * 
-   * @param updated Provides a hint to clients as to the date and time of the most recently updated reply contained by the linked resource.
+   * @param updated Provides a hint to clients as to the date and time of the
+   * most recently updated reply contained by the linked resource.
    */
   public final native void setUpdated(Date updated) /*-{
     this.setUpdated(
@@ -83,9 +93,12 @@ public class ThreadingLink extends com.google.gwt.gdata.client.atom.Link {
   }-*/;
 
   /**
-   * Sets the provides a hint to clients as to the date and time of the most recently updated reply contained by the linked resource. This attribute is optional.
+   * Sets the provides a hint to clients as to the date and time of the most
+   * recently updated reply contained by the linked resource.
+   * This attribute is optional.
    * 
-   * @param updated Provides a hint to clients as to the date and time of the most recently updated reply contained by the linked resource.
+   * @param updated Provides a hint to clients as to the date and time of the
+   * most recently updated reply contained by the linked resource.
    */
   public final native void setUpdated(DateTime updated) /*-{
     this.setUpdated(updated);

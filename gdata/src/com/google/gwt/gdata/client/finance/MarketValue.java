@@ -54,7 +54,8 @@ public class MarketValue extends JavaScriptObject {
   /**
    * Sets the monetary value of the market value.
    * 
-   * @param money Monetary value of the market value, where each monetary value of the market value is added using addMoney().
+   * @param money Monetary value of the market value, where each monetary value
+   * of the market value is added using addMoney().
    */
   public final native void setMoney(Money[] money) /*-{
     this.setMoney(

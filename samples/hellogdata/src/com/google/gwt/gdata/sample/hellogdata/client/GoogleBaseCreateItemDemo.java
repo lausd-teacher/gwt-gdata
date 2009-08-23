@@ -54,7 +54,7 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
         return "<p>This sample code demonstrates how to create and insert " +
             "a new item. The items feed post URL " +
             "(http://www.google.com/base/feeds/items) is used to insert a " +
-            "new item entry for the authenticated user.</p>\n";
+            "new item entry for the authenticated user.</p>";
       }
 
       @Override
