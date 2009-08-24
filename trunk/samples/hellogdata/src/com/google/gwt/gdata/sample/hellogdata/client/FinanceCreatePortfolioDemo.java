@@ -51,7 +51,7 @@ public class FinanceCreatePortfolioDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert " +
+        return "<p>This sample demonstrates how to create and insert " +
             "a new portfolio. The portfolio feed post URL " +
             "(http://finance.google.com/finance/feeds/default/portfolios) " +
             "is used to insert a new portfolio entry for the authenticated " +

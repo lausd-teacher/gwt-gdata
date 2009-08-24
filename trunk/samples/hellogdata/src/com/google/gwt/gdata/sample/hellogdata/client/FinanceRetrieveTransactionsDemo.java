@@ -51,7 +51,7 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>In this example, all transactions for a particular " +
+        return "<p>In this sample, all transactions for a particular " +
             "ticker (e.g. NYSE:IBM) are retrieved for a portfolio. The " +
             "user's portfolio feed is queried and searched for a portfolio " +
             "starting with 'GWT-Finance-Client'. The transaction feed for " +
@@ -164,13 +164,13 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
   /**
   * Displays a set of Finance transaction entries in a tabular 
   * fashion with the help of a GWT FlexTable widget. The data fields 
-  * Title, Type and Shares are displayed.
+  * Notes, Type and Shares are displayed.
   * 
   * @param entries The Finance transaction entries to display.
   */
   private void showData(TransactionEntry[] entries) {
     mainPanel.clear();
-    String[] labels = new String[] { "Title", "Type", "Shares" };
+    String[] labels = new String[] { "Notes", "Type", "Shares" };
     mainPanel.insertRow(0);
     for (int i = 0; i < labels.length; i++) {
       mainPanel.addCell(0);
@@ -182,7 +182,7 @@ public class FinanceRetrieveTransactionsDemo extends GDataDemo {
       TransactionData data = entry.getTransactionData();
       int row = mainPanel.insertRow(i + 1);
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
+      mainPanel.setWidget(row, 0, new Label(data.getNotes()));
       mainPanel.addCell(row);
       mainPanel.setWidget(row, 1, new Label(data.getType()));
       mainPanel.addCell(row);

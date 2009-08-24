@@ -51,10 +51,10 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrate how to delete a contact " +
-            "group entry. It locates the contact group that has a title " +
-            "that starts with 'GWT-Contacts-Client' and delete the " +
-            "group. </p>";
+        return "<p>This sample demonstrates how to delete a contact " +
+            "group entry. It obtains the contact group that has a title " +
+            "that starts with 'GWT-Contacts-Client' and deletes the " +
+            "group.</p>";
       }
 
       @Override
@@ -147,7 +147,7 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
           showStatus("No contacts were found with a title starting with " +
               "'GWT-Contacts-Client'.", false);
         } else {
-          String contactGroupEntryUri = targetGroup.getSelfLink().getHref();
+          String contactGroupEntryUri = targetGroup.getEditLink().getHref();
           deleteContactGroup(contactGroupEntryUri);
         }
       }

@@ -99,13 +99,11 @@ public class HelloGData implements EntryPoint, HistoryListener {
     outerPanel.insertRow(0);
     outerPanel.insertRow(0);
     outerPanel.insertRow(0);
-    outerPanel.insertRow(0);
 
     outerPanel.addCell(0);
     outerPanel.addCell(1);
     outerPanel.addCell(2);
     outerPanel.addCell(3);
-    outerPanel.addCell(4);
 
     outerPanel.setWidget(0, 0, new HTML(
         "This GData-enabled application was built using the GData "
@@ -170,16 +168,6 @@ public class HelloGData implements EntryPoint, HistoryListener {
     // Display the new GDataDemo and update the description panel.
     innerPanel.add(curGDataDemo);
     description.setHTML(info.getDescription());
-    // outerPanel.setWidget(2, 0, info.getDescriptionHTML());
-
-    outerPanel.setWidget(
-        3,
-        0,
-        new HTML(
-            "The concepts behind these demos"
-                + " are explained in the "
-                + "<a href=\"http://www.google.com/apis/gdata/documentation/index.html\">"
-                + "Google GData API Concepts</a> document."));
 
     // info is an inner class of the class we want to display. Strip off the
     // generated anonymous class name.
@@ -189,7 +177,7 @@ public class HelloGData implements EntryPoint, HistoryListener {
       strippedClassName = strippedClassName.substring(0, lastIndex);
     }
 
-    outerPanel.setWidget(4, 0, new HTML("<h5> See source in "
+    outerPanel.setWidget(3, 0, new HTML("<h5> See source in "
         + strippedClassName + "</h5><h5>GData API version: " + GData.getVersion()
         + "</h5>"));
 
@@ -205,10 +193,22 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(AccountsAuthSubAuthenticationDemo.init());
     list.addGDataDemo(AnalyticsYourAccountsDemo.init());
     list.addGDataDemo(AnalyticsTopPagesDemo.init());
-    list.addGDataDemo(AnalyticsBounceRateDemo.init());
     list.addGDataDemo(AnalyticsLanguagesDemo.init());
     list.addGDataDemo(AnalyticsTopSearchesDemo.init());
     list.addGDataDemo(AnalyticsVisitsDemo.init());
+    list.addGDataDemo(AnalyticsBounceRateDemo.init());
+    list.addGDataDemo(GoogleBaseRetrieveItemsDemo.init());
+    list.addGDataDemo(GoogleBaseCreateItemDemo.init());
+    list.addGDataDemo(GoogleBaseUpdateItemDemo.init());
+    list.addGDataDemo(GoogleBaseDeleteItemDemo.init());
+    list.addGDataDemo(GoogleBaseRetrieveItemAttributesDemo.init());
+    list.addGDataDemo(GoogleBaseRetrieveItemTypeAttributesDemo.init());
+    list.addGDataDemo(GoogleBaseRetrieveMediaDemo.init());
+    list.addGDataDemo(GoogleBaseQuerySnippetsForCamerasDemo.init());
+    list.addGDataDemo(GoogleBaseQuerySnippetsForJobsDemo.init());
+    list.addGDataDemo(GoogleBaseQuerySnippetsForConvertiblesDemo.init());
+    list.addGDataDemo(GoogleBaseQuerySnippetsForRecipesDemo.init());
+    list.addGDataDemo(GoogleBaseQuerySnippetsForHousingDemo.init());
     list.addGDataDemo(BloggerRetrieveBlogsDemo.init());
     list.addGDataDemo(BloggerRetrieveBlogPostsDemo.init());
     list.addGDataDemo(BloggerCreateBlogPostDemo.init());
@@ -252,18 +252,6 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(FinanceCreateTransactionDemo.init());
     list.addGDataDemo(FinanceUpdateTransactionDemo.init());
     list.addGDataDemo(FinanceDeleteTransactionDemo.init());
-    list.addGDataDemo(GoogleBaseRetrieveItemsDemo.init());
-    list.addGDataDemo(GoogleBaseCreateItemDemo.init());
-    list.addGDataDemo(GoogleBaseUpdateItemDemo.init());
-    list.addGDataDemo(GoogleBaseDeleteItemDemo.init());
-    list.addGDataDemo(GoogleBaseRetrieveItemAttributesDemo.init());
-    list.addGDataDemo(GoogleBaseRetrieveItemTypeAttributesDemo.init());
-    list.addGDataDemo(GoogleBaseQuerySnippetsForCamerasDemo.init());
-    list.addGDataDemo(GoogleBaseQuerySnippetsForJobsDemo.init());
-    list.addGDataDemo(GoogleBaseQuerySnippetsForConvertiblesDemo.init());
-    list.addGDataDemo(GoogleBaseQuerySnippetsForRecipesDemo.init());
-    list.addGDataDemo(GoogleBaseQuerySnippetsForHousingDemo.init());
-    list.addGDataDemo(GoogleBaseRetrieveMediaDemo.init());
     list.addGDataDemo(MapsRetrieveMapsDemo.init());
     list.addGDataDemo(MapsCreateMapDemo.init());
     list.addGDataDemo(MapsUpdateMapDemo.init());

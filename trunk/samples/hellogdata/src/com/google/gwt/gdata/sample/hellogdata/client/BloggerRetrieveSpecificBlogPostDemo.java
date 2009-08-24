@@ -59,7 +59,7 @@ public class BloggerRetrieveSpecificBlogPostDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Blogger - Retrieve a specific blog post";
+        return "Blogger - Retrieving a specific blog post";
       }
     };
   }

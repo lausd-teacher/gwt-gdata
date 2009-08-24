@@ -61,7 +61,7 @@ public class BloggerQueryBlogPostsDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Blogger - Query for blog posts";
+        return "Blogger - Querying for blog posts";
       }
     };
   }

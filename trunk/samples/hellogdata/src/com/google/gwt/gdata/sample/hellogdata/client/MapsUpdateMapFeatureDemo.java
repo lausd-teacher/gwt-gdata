@@ -55,7 +55,7 @@ public class MapsUpdateMapFeatureDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update an existing " +
+        return "<p>This sample demonstrates how to update an existing " +
             "map feature of the authenticated user. It retrieves a list of " +
             "the user's maps and updates the first map feature with a title " +
             "that starts with 'GWT-Maps-Client' with a new title.</p>";

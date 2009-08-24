@@ -50,7 +50,7 @@ public class CalendarQueryEventsFullTextDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to perform a full " +
+        return "<p>This sample demonstrates how to perform a full " +
             "text query to retrieve events. The full text query serves as " +
             "a filter against all event entries of the private/full feed " +
             "and return those events that contain the specified text in " +
@@ -59,7 +59,7 @@ public class CalendarQueryEventsFullTextDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Calendar - Full text query for events";
+        return "Calendar - Querying events full-text";
       }
     };
   }

@@ -55,7 +55,7 @@ public class CalendarCreateEventReminderDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrate how to create and insert " +
+        return "<p>This sample demonstrates how to create and insert " +
             "a single event with a reminder to the authenticated user's " +
             "primary calendar. The private/full feed is used for event " +
             "insertion.</p>";
@@ -63,7 +63,7 @@ public class CalendarCreateEventReminderDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Calendar - Add event reminder";
+        return "Calendar - Creating an event reminder";
       }
     };
   }

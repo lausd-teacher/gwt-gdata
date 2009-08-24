@@ -48,13 +48,13 @@ public class GoogleBaseQuerySnippetsForConvertiblesDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses a snippets query to find an items " +
+        return "<p>This sample uses a snippets query to find an items " +
             "corresponding to convertibles matching a set of criteria.</p>";
       }
 
       @Override
       public String getName() {
-        return "Google Base - Querying snippets for convertibles";
+        return "Base - Querying snippets for convertibles";
       }
     };
   }

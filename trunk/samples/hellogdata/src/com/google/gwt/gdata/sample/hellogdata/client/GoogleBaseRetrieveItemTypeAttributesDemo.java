@@ -50,8 +50,8 @@ public class GoogleBaseRetrieveItemTypeAttributesDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses the attributes feed to query for " +
-            "metadata about product listed in Google Base. The attributes " +
+        return "<p>This sample uses the attributes feed to query for " +
+            "metadata about products listed in Google Base. The attributes " +
             "feed is useful for determining what kinds of attributes other " +
             "users are using with certain item types. This example, looks " +
             "at attributes related to the products vertical.</p>";
@@ -59,7 +59,7 @@ public class GoogleBaseRetrieveItemTypeAttributesDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Google Base - Retrieving item type attributes";
+        return "Base - Retrieving item type attributes";
       }
     };
   }

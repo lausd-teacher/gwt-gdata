@@ -52,15 +52,16 @@ public class CalendarDeleteEventDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to delete an existing event. " +
-          "A full text query is used to locate those events with the specified text, " +
-          "and the first match will be deleted from the authenticated user's primary " +
-          "calendar. The private/full feed is used for event deletion.</p>";
+        return "<p>This sample demonstrates how to delete an existing " +
+            "event. A full text query is used to locate those events with " +
+            "the specified text, and the first match will be deleted from " +
+            "the authenticated user's primary calendar. The private/full " +
+            "feed is used for event deletion.</p>";
       }
 
       @Override
       public String getName() {
-        return "Calendar - Delete an event";
+        return "Calendar - Deleting an event";
       }
     };
   }
@@ -75,14 +76,16 @@ public class CalendarDeleteEventDemo extends GDataDemo {
    * otherwise start the demo by querying the user's calendars.
    */
   public CalendarDeleteEventDemo() {
-    service = CalendarService.newInstance("HelloGData_Calendar_DeleteEventDemo_v1.0");
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_DeleteEventDemo_v1.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete an event");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
-          queryCalendars("http://www.google.com/calendar/feeds/default/private/full");
+          queryCalendars(
+              "http://www.google.com/calendar/feeds/default/private/full");
         }
       });
       mainPanel.setWidget(0, 0, startButton);
@@ -95,13 +98,16 @@ public class CalendarDeleteEventDemo extends GDataDemo {
    * Delete an event entry using the Calendar service and
    * the event entry uri.
    * On success and failure, display a status message.
+   * 
    * @param eventEntryUri The uri of the event entry to delete
    */
   private void deleteEvent(String eventEntryUri) {
     showStatus("Deleting event...", false);
-    service.deleteCalendarEventEntry(eventEntryUri, new CalendarEventEntryCallback() {
+    service.deleteCalendarEventEntry(eventEntryUri,
+        new CalendarEventEntryCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while deleting a Calendar event: " + caught.getMessage(), true);
+        showStatus("An error occurred while deleting a Calendar event: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarEventEntry result) {
         showStatus("Deleted a Calendar event.", false);
@@ -114,7 +120,7 @@ public class CalendarDeleteEventDemo extends GDataDemo {
    * In GData, feed URIs can contain querystring parameters. The
    * GData query objects aid in building parameterized feed URIs.
    * We query for events with a title starting with 
-   * "GWT-Blogger-Client", this will be the event that will be deleted.
+   * "GWT-Calendar-Client", this is the event that will be deleted.
    * If no event is found, display a message.
    * Otherwise call deleteEvent to delete the event. Alternatively
    * we could also have used targetEvent.deleteEntry to
@@ -124,19 +130,23 @@ public class CalendarDeleteEventDemo extends GDataDemo {
    */
   private void queryCalendars(String calendarsFeedUri) {
     showStatus("Querying for events...", false);
-    CalendarEventQuery query = CalendarEventQuery.newInstance(calendarsFeedUri);
+    CalendarEventQuery query =
+        CalendarEventQuery.newInstance(calendarsFeedUri);
     query.setFullTextQuery("GWT-Calendar-Client");
     service.getEventsFeed(query, new CalendarEventFeedCallback() {
       public void onFailure(CallErrorException caught) {
-        showStatus("An error occurred while retrieving the Event feed: " + caught.getMessage(), true);
+        showStatus("An error occurred while retrieving the Event feed: " +
+            caught.getMessage(), true);
       }
       public void onSuccess(CalendarEventFeed result) {
         CalendarEventEntry[] entries = result.getEntries();
         if (entries.length == 0) {
-          showStatus("No events found containing the text 'GWT-Calendar-Client'.", false);
+          showStatus(
+              "No events found containing the text 'GWT-Calendar-Client'.",
+              false);
         } else {
           CalendarEventEntry targetEvent = entries[0];
-          String eventEntryUri = targetEvent.getSelfLink().getHref();
+          String eventEntryUri = targetEvent.getEditLink().getHref();
           deleteEvent(eventEntryUri);
         }
       }

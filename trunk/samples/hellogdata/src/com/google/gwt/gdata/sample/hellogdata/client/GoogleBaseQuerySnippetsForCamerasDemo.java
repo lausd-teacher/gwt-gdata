@@ -48,13 +48,14 @@ public class GoogleBaseQuerySnippetsForCamerasDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses a snippets query to find an items " +
-            "corresponding to digital cameras matching a set of criteria.</p>";
+        return "<p>This sample uses a snippets query to find items " +
+            "corresponding to digital cameras that match a set of " +
+            "criteria.</p>";
       }
 
       @Override
       public String getName() {
-        return "Google Base - Querying snippets for cameras";
+        return "Base - Querying snippets for cameras";
       }
     };
   }

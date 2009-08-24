@@ -49,8 +49,8 @@ public class CalendarRetrieveEventsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to retrieve all " +
-            "primary calendar events from the authenticated user. The " +
+        return "<p>This sample demonstrates how to retrieve all " +
+            "primary calendar events for the authenticated user. The " +
             "private/full feed is used to obtain the events from the " +
             "private calendar with full projection. The sample iterates " +
             "through the list of events and prints out each event's " +
@@ -59,7 +59,7 @@ public class CalendarRetrieveEventsDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Calendar - Retrieve all events";
+        return "Calendar - Retrieving events";
       }
     };
   }

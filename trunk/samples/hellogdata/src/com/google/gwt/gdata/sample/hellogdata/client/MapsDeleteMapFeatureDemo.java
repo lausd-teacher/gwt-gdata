@@ -54,7 +54,7 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to delete an existing " +
+        return "<p>This sample demonstrates how to delete an existing " +
             "map feature of the authenticated user. It retrieves a list of " +
             "the user's maps and deletes the first map feature with a title " +
             "that starts with 'GWT-Maps-Client'.</p>";
@@ -82,7 +82,7 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Update a map feature");
+      Button startButton = new Button("Delete a map feature");
       startButton.addClickListener(new ClickListener() {
         public void onClick(Widget sender) {
           getMaps("http://maps.google.com/maps/feeds/maps/default/full");

@@ -50,7 +50,7 @@ public class ContactsCreateContactGroupDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create a new " +
+        return "<p>This sample demonstrates how to create a new " +
             "contact group.</p>";
       }
 

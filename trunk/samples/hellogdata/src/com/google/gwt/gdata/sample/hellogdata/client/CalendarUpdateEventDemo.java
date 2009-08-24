@@ -53,16 +53,17 @@ public class CalendarUpdateEventDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update the title " +
+        return "<p>This sample demonstrates how to update the title " +
             "of an existing event. A full text query is used to locate " +
-            "those events with the specified text, and the first match " +
-            "will be updated with the new title. The private/full feed is " +
-            "used for event update.</p>";
+            "an event with a title/description containing " +
+            "'GWT-Calendar-Client', where the first match " +
+            "is updated with the new title. The private/full feed is " +
+            "used for the event update.</p>";
       }
 
       @Override
       public String getName() {
-        return "Calendar - Update an event";
+        return "Calendar - Updating an event";
       }
     };
   }

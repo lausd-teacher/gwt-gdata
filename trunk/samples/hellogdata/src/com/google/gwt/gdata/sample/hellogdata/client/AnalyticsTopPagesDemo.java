@@ -52,13 +52,13 @@ public class AnalyticsTopPagesDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to access the top ten " +
+        return "<p>This sample demonstrates how to access the top ten " +
             "pages ordered by number of pageviews to your website.</p>";
       }
 
       @Override
       public String getName() {
-        return "Analytics - Top pages by pageviews";
+        return "Analytics - Querying pages by pageviews";
       }
     };
   }

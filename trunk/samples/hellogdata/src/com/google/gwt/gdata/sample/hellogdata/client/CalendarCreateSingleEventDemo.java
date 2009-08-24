@@ -54,14 +54,14 @@ public class CalendarCreateSingleEventDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert a " +
+        return "<p>This sample demonstrates how to create and insert a " +
             "single event into the authenticated user's primary calendar. " +
             "The private/full feed is used for event insertion.</p>";
       }
 
       @Override
       public String getName() {
-        return "Calendar - Create a single event";
+        return "Calendar - Creating a single event";
       }
     };
   }

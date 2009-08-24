@@ -62,7 +62,7 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Google Base - Updating an item";
+        return "Base - Updating an item";
       }
     };
   }

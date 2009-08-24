@@ -63,7 +63,7 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Blogger - Create a comment";
+        return "Blogger - Creating a comment";
       }
     };
   }

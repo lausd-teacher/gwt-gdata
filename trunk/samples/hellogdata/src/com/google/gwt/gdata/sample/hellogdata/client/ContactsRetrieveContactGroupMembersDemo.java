@@ -52,10 +52,10 @@ public class ContactsRetrieveContactGroupMembersDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to retrieve all " +
-            "members of a particular group. It first retrieves the " +
-            "contact group ID and use it as the query parameter to " +
-            "retrieve all members of that group.</p>";
+        return "<p>This sample demonstrates how to retrieve all members of " +
+            "a particular group. It first obtains the ID for a given " +
+            "contact group and uses it as the query parameter to retrieve " +
+            "all members of that group.</p>";
       }
 
       @Override

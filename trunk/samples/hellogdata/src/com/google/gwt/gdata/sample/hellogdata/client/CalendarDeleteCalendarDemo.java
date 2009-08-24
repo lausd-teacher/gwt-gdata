@@ -51,7 +51,7 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to delete an existing " +
+        return "<p>This sample demonstrates how to delete an existing " +
             "calendar of the authenticated user. It retrieves a list of " +
             "the user's own calendars, and delete the first calendar with " +
             "title that starts with 'GWT-Calendar-Client'. The owncalendars " +
@@ -60,7 +60,7 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Calendar - Delete a calendar";
+        return "Calendar - Deleting a calendar";
       }
     };
   }

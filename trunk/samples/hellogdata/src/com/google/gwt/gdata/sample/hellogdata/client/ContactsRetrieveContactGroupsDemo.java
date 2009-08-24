@@ -48,7 +48,7 @@ public class ContactsRetrieveContactGroupsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code retrieves all the contact groups of " +
+        return "<p>This sample retrieves all the contact groups for " +
             "the authenticated user.</p>";
       }
 

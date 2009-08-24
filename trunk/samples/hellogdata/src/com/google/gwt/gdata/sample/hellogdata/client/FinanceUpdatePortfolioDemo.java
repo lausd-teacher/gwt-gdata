@@ -52,8 +52,8 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update an existing " +
-            "portfolio of the authenticated user. It retrieves a list of " +
+        return "<p>This sample demonstrates how to update an existing " +
+            "portfolio for the authenticated user. It retrieves a list of " +
             "the user's portfolios, and updates the first portfolio with a " +
             "title that starts with 'GWT-Finance-Client' with a new " +
             "title.</p>";

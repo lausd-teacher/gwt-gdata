@@ -53,10 +53,8 @@ public class ContactsRetrieveContactsUsingQueryDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates retrieve contact entries " +
-            "using query parameters. The list of acceptable query " +
-            "parameters for Contacts feed URI can be found here Contacts " +
-            "Data API Reference Guide.</p>";
+        return "<p>This sample demonstrates how to retrieve contact entries " +
+            "using query parameters.</p>";
       }
 
       @Override

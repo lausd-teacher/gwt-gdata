@@ -60,7 +60,7 @@ public class AnalyticsLanguagesDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Analytics - Languages by country";
+        return "Analytics - Querying languages by country";
       }
     };
   }

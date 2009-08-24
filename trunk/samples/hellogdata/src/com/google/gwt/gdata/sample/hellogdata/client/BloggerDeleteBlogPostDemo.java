@@ -60,7 +60,7 @@ public class BloggerDeleteBlogPostDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Blogger - Delete a blog post";
+        return "Blogger - Deleting a blog post";
       }
     };
   }
