@@ -53,10 +53,11 @@ public class FinanceCreateTransactionDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>A new transaction is created in a user's Google Finance" +
-            " portfolio by posting a transaction entry to the appropriate" +
-            " Post URL. In this example, a transaction entry object is " +
-            "created and its properities (transaction type, etc.) are " +
+        return "<p>This sample demonstrates how to create a transaction." +
+            "A new transaction is created in a user's Google Finance " +
+            "portfolio by posting a transaction entry to the appropriate " +
+            "Post URL. In this example, a transaction entry object is " +
+            "created and its properties (transaction type, etc.) are " +
             "set, then the portfolio feed is queried for a list of the " +
             "user's portfolios. The entry is inserted into the portfolio " +
             "whose title starts with 'GWT-Finance-Client'.</p>";
@@ -119,7 +120,7 @@ public class FinanceCreateTransactionDemo extends GDataDemo {
     TransactionData data = TransactionData.newInstance();
     data.setType("Buy");
     data.setShares(141.42);
-    data.setNotes("GWT-Finance-Client sample transaction");
+    data.setNotes("GWT-Finance-Client - inserted transaction");
     entry.setTransactionData(data);
     String ticker = "NASDAQ:GOOG";
     String transactionPostUri = portfolioEditUri + "/positions/" + 

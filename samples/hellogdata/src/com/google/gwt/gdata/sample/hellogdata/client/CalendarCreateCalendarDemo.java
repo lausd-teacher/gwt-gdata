@@ -54,14 +54,14 @@ public class CalendarCreateCalendarDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert " +
+        return "<p>This sample demonstrates how to create and insert " +
             "a new calendar. The owncalendars feed is used to insert the " +
             "new calendar entry for the authenticated user.</p>";
       }
 
       @Override
       public String getName() {
-        return "Calendar - Create new calendar";
+        return "Calendar - Creating a calendar";
       }
     };
   }

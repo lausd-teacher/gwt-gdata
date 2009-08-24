@@ -51,7 +51,7 @@ public class CalendarCreateRecurringEventDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert " +
+        return "<p>This sample demonstrates how to create and insert " +
             "a recurring event into the authenticated user's primary " +
             "calendar. The private/full feed is used for event insertion. " +
             "The specifics of the recurrence such as recurring frequency " +
@@ -61,7 +61,7 @@ public class CalendarCreateRecurringEventDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Calendar - Create a recurring event";
+        return "Calendar - Creating a recurring event";
       }
     };
   }

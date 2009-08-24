@@ -55,7 +55,7 @@ public class BloggerRetrieveBlogsDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Blogger - Retrieve a list of blogs";
+        return "Blogger - Retrieving a list of blogs";
       }
     };
   }

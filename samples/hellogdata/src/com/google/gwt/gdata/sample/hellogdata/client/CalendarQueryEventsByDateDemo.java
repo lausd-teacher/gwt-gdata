@@ -52,16 +52,16 @@ public class CalendarQueryEventsByDateDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to perform a date " +
+        return "<p>This sample demonstrates how to perform a date " +
             "query to retrieve events. The date query serves as a filter " +
             "against all event entries of the private/full feed and " +
-            "return those events that has a start time between the " +
-            "specified minimum and maximum start time. </p>";
+            "return those events that have a start time between the " +
+            "specified minimum and maximum times. </p>";
       }
 
       @Override
       public String getName() {
-        return "Calendar - Date query for events";
+        return "Calendar - Querying events by date";
       }
     };
   }

@@ -50,7 +50,7 @@ public class MapsCreateMapDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert " +
+        return "<p>This sample demonstrates how to create and insert " +
             "a new map. The map feed post URL " +
             "(http://maps.google.com/maps/feeds/maps/default/full) is used " +
             "to insert a new map entry for the authenticated user.</p>";

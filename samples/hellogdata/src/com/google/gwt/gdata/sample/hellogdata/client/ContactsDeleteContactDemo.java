@@ -55,10 +55,9 @@ public class ContactsDeleteContactDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrate how to delete a contact " +
+        return "<p>This sample demonstrates how to delete a contact " +
             "entry. It queries for the most recently modified contact " +
-            "entry of today from the authenicated user and delete the " +
-            "entry.</p>";
+            "entry and deletes it.</p>";
       }
 
       @Override
@@ -155,7 +154,7 @@ public class ContactsDeleteContactDemo extends GDataDemo {
           showStatus("No contacts were found that were modified today and " +
               "contained 'GWT-Contacts-Client' in the title.", false);
         } else {
-          String contactEntryUri = targetContact.getSelfLink().getHref();
+          String contactEntryUri = targetContact.getEditLink().getHref();
           deleteContact(contactEntryUri);
         }
       }

@@ -55,7 +55,7 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Analytics - Your accounts";
+        return "Analytics - Retrieving accounts";
       }
     };
   }

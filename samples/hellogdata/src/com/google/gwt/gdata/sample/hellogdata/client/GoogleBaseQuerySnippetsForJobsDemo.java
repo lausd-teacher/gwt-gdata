@@ -48,13 +48,13 @@ public class GoogleBaseQuerySnippetsForJobsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses a snippets query to find an items " +
-            "corresponding to jobs matching a set of criteria.</p>";
+        return "<p>This sample uses a snippets query to find items " +
+            "corresponding to jobs that match a set of criteria.</p>";
       }
 
       @Override
       public String getName() {
-        return "Google Base - Querying snippets for jobs";
+        return "Base - Querying snippets for jobs";
       }
     };
   }

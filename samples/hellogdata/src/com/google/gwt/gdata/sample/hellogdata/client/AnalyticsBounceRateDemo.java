@@ -52,14 +52,14 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to " +
+        return "<p>This sample demonstrates how to " +
           "calculate the bounce rate for the top 10 sources of traffic " +
           "to your website.</p>";
       }
 
       @Override
       public String getName() {
-        return "Analytics - Calculate bounce rate by source";
+        return "Analytics - Calculating bounce rate by source";
       }
     };
   }

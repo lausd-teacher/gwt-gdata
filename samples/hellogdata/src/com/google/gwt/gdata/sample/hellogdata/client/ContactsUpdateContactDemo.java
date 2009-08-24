@@ -57,10 +57,9 @@ public class ContactsUpdateContactDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrate how to update a contact " +
-            "entry. It queries for the most recently modified contact " +
-            "entry of today from the authenticated user and update that " +
-            "entry with a phone number.</p>";
+        return "<p>This sample demonstrates how to update a contact entry. " +
+            "It obtains the first contact entry with a title starting with " +
+            "'GWT-Contacts-Client' and updates its title.</p>";
       }
 
       @Override

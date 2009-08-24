@@ -55,7 +55,7 @@ public class CalendarCreateEventWithExtendedPropertyDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert " +
+        return "<p>This sample demonstrates how to create and insert " +
             "a single event with an extended property in the form of a " +
             "name-value pair to the authenticated user's primary calendar. " +
             "The private/full feed is used for event insertion.</p>";
@@ -63,7 +63,7 @@ public class CalendarCreateEventWithExtendedPropertyDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Calendar - Add extended property";
+        return "Calendar - Creating an event with an extended property";
       }
     };
   }

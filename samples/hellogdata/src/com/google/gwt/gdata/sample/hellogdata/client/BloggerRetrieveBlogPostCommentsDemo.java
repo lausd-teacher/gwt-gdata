@@ -61,7 +61,7 @@ public class BloggerRetrieveBlogPostCommentsDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Blogger - Retrieve a list of comments";
+        return "Blogger - Retrieving a list of comments";
       }
     };
   }

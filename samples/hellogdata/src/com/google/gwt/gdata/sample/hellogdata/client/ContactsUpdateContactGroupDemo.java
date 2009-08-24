@@ -52,10 +52,10 @@ public class ContactsUpdateContactGroupDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrate how to update a contact " +
-            "group entry. It locates the contact group that has a title " +
-            "that starts with 'GWT-Contacts-Client' and update its title " +
-            "with 'GWT-Contacts-Client: Update Group'.</p>";
+        return "<p>This sample demonstrates how to update a contact group " +
+            "entry. It obtains the first contact group entry that has a " +
+            "title that starts with 'GWT-Contacts-Client' and updates its " +
+            "title.</p>";
       }
 
       @Override

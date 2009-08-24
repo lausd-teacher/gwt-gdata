@@ -49,8 +49,8 @@ public class ContactsRetrieveContactsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code retrieves all the contact entries of " +
-            "the authenticated user.</p>";
+        return "<p>This sample demonstrates how to retrieve contact entries " +
+            "for the authenticated user.</p>";
       }
 
       @Override

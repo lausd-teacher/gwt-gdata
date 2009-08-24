@@ -62,7 +62,7 @@ public class BloggerUpdateBlogPostDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Blogger - Update a blog post";
+        return "Blogger - Updating a blog post";
       }
     };
   }

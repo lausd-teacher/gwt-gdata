@@ -48,7 +48,7 @@ public class CalendarRetrieveCalendarsDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses the allcalendars feed to retrieve " +
+        return "<p>This sample uses the allcalendars feed to retrieve " +
             "the authenticated user's list of calendars (primary," +
             " secondary and subscribed). The feed result is iterated " +
             "through to print out each calendar's title.</p>";
@@ -56,7 +56,7 @@ public class CalendarRetrieveCalendarsDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Calendar - Retrieve all calendars";
+        return "Calendar - Retrieving all calendars";
       }
     };
   }

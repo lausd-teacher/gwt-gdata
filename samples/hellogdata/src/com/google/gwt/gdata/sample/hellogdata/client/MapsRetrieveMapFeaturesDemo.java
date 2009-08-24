@@ -26,7 +26,6 @@ import com.google.gwt.gdata.client.maps.MapEntry;
 import com.google.gwt.gdata.client.maps.MapFeed;
 import com.google.gwt.gdata.client.maps.MapFeedCallback;
 import com.google.gwt.gdata.client.maps.MapsService;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -52,8 +51,9 @@ public class MapsRetrieveMapFeaturesDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses the features feed to retrieve a " +
-            "list of features for a given map.</p>";
+        return "<p>This sample uses the features feed to retrieve a " +
+            "list of features for the first map that has a title starting " +
+            "with 'GWT-Maps-Client'.</p>";
       }
 
       @Override
@@ -96,10 +96,8 @@ public class MapsRetrieveMapFeaturesDemo extends GDataDemo {
    * retrieve the features feed
    */
   private void getFeatures(String mapEntryUri) {
-    Window.alert(mapEntryUri);
     String featuresFeedUri =
       mapEntryUri.replace("/feeds/maps/", "/feeds/features/") + "/full";
-    Window.alert(featuresFeedUri);
     showStatus("Loading features feed...", false);
     service.getFeatureFeed(featuresFeedUri, new FeatureFeedCallback() {
       public void onFailure(CallErrorException caught) {
@@ -109,7 +107,7 @@ public class MapsRetrieveMapFeaturesDemo extends GDataDemo {
       public void onSuccess(FeatureFeed result) {
         FeatureEntry[] entries = result.getEntries();
         if (entries.length == 0) {
-          showStatus("The target map contains no features.", false);
+          showStatus("The map contains no features.", false);
         } else {
           showData(entries);
         }

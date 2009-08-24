@@ -48,13 +48,13 @@ public class GoogleBaseQuerySnippetsForRecipesDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses a snippets query to find an items " +
-            "corresponding to recipes matching a set of criteria.</p>";
+        return "<p>This sample uses a snippets query to find items " +
+            "corresponding to recipes that match a set of criteria.</p>";
       }
 
       @Override
       public String getName() {
-        return "Google Base - Querying snippets for recipes";
+        return "Base - Querying snippets for recipes";
       }
     };
   }

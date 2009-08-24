@@ -51,7 +51,7 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to create and insert " +
+        return "<p>This sample demonstrates how to create and insert " +
             "a new item. The items feed post URL " +
             "(http://www.google.com/base/feeds/items) is used to insert a " +
             "new item entry for the authenticated user.</p>";
@@ -59,7 +59,7 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Google Base - Creating an item";
+        return "Base - Creating an item";
       }
     };
   }

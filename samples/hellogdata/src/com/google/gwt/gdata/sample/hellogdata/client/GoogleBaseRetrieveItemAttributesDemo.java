@@ -50,14 +50,14 @@ public class GoogleBaseRetrieveItemAttributesDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code uses the items feed to find an item " +
+        return "<p>This sample uses the items feed to find an item " +
             "with a title starting with 'GWT-GoogleBase-Client' and " +
             "displays its attributes.</p>";
       }
 
       @Override
       public String getName() {
-        return "Google Base - Retrieving item attributes";
+        return "Base - Retrieving item attributes";
       }
     };
   }

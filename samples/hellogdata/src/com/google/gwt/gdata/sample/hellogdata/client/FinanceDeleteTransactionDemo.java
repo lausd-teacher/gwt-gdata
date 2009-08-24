@@ -52,7 +52,7 @@ public class FinanceDeleteTransactionDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to delete an existing " +
+        return "<p>This sample demonstrates how to delete an existing " +
             "transaction within a portfolio of the authenticated user. " +
             "It deletes the first GOOG transaction in the " +
             "'GWT-Finance-Client' portfolio, which was created in a " +
@@ -62,7 +62,7 @@ public class FinanceDeleteTransactionDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Finance - Deleting a Transaction";
+        return "Finance - Deleting a transaction";
       }
     };
   }

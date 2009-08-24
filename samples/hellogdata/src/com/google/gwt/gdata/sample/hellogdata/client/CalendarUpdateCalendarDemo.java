@@ -52,16 +52,16 @@ public class CalendarUpdateCalendarDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update an existing " +
+        return "<p>This sample demonstrates how to update an existing " +
             "calendar of the authenticated user. It retrieves a list of " +
-            "the user's own calendars, and update the first calendar with " +
+            "the user's own calendars, and updates the first calendar with " +
             "a title that starts with 'GWT-Calendar-Client'. The " +
             "owncalendars feed is used to update an existing calendar.</p>";
       }
 
       @Override
       public String getName() {
-        return "Calendar - Update a calendar";
+        return "Calendar - Updating a calendar";
       }
     };
   }

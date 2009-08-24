@@ -51,7 +51,7 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to delete an existing " +
+        return "<p>This sample demonstrates how to delete an existing " +
             "item of the authenticated user. It retrieves a list of the " +
             "user's items, and deletes the first item with a title that " +
             "starts with 'GWT-GoogleBase-Client'.</p>";
@@ -59,7 +59,7 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Google Base - Deleting an item";
+        return "Base - Deleting an item";
       }
     };
   }

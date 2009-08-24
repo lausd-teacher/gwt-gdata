@@ -52,8 +52,8 @@ public class FinanceUpdateTransactionDemo extends GDataDemo {
 
       @Override
       public String getDescription() {
-        return "<p>This sample code demonstrates how to update an existing " +
-            "transaction within the portfolio of the authenticated user. It " +
+        return "<p>This sample demonstrates how to update an existing " +
+            "transaction within a portfolio of the authenticated user. It " +
             "retrieves and updates the first NASDAQ:GOOG transaction with " +
             "the 'GWT-Finance-Client' portfolio (Note: The transaction must " +
             "exist before it can be updated; otherwise an error " +
@@ -186,8 +186,8 @@ public class FinanceUpdateTransactionDemo extends GDataDemo {
   /**
    * Update a transaction by making use of the updateEntry
    * method of the Entry class.
-   * Set the transaction title to an arbitrary string. Here
-   * we prefix the title with 'GWT-Finance-Client' so that
+   * Set the transaction notes to an arbitrary string. Here
+   * we prefix the notes with 'GWT-Finance-Client' so that
    * we can identify which transactions were updated by this demo.
    * On success and failure, display a status message.
    * 
@@ -195,6 +195,7 @@ public class FinanceUpdateTransactionDemo extends GDataDemo {
    */
   private void updateTransaction(TransactionEntry transactionEntry) {
     showStatus("Updating transaction...", false);
+    transactionEntry.getTransactionData().setNotes("GWT-Finance-Client - updated transaction");
     transactionEntry.getTransactionData().setShares(271.82);
     transactionEntry.updateEntry(new TransactionEntryCallback() {
       public void onFailure(CallErrorException caught) {

@@ -63,7 +63,7 @@ public class AnalyticsTopSearchesDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Analytics - Top search refinements";
+        return "Analytics - Querying search refinements";
       }
     };
   }

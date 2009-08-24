@@ -54,7 +54,7 @@ public class MapsDeleteMapDemo extends GDataDemo {
         return "<p>This sample code demonstrates how to delete an existing " +
             "map of the authenticated user. It retrieves a list of the " +
             "user's maps, and deletes the first map with a title that " +
-            "starts with 'GWT-Maps-Client' with a new title.</p>";
+            "starts with 'GWT-Maps-Client'.</p>";
       }
 
       @Override
