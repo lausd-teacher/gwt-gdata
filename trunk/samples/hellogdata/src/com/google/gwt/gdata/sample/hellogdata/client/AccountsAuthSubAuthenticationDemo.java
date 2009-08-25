@@ -18,6 +18,7 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
@@ -72,7 +73,12 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
     mainPanel.setCellPadding(4);
     mainPanel.setCellSpacing(0);
     initWidget(mainPanel);
-    showAuthSubStatus();
+    if (Window.Location.getHref().startsWith("http")) {
+      showAuthSubStatus();
+    } else {
+      showStatus("This sample must be run over HTTP, AuthSub does not " +
+          "support requests initiated from non-HTTP URIs.", true);
+    }
   }
 
   /**
@@ -164,5 +170,22 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
       mainPanel.setWidget(i, 2, statusLabel);
       mainPanel.setWidget(i, 3, actionLink);
     }
+  }
+  
+  /**
+   * Displays a status message to the user.
+   * 
+   * @param message The message to display.
+   * @param isError Indicates whether the status is an error status.
+   */
+  private void showStatus(String message, boolean isError) {
+    mainPanel.clear();
+    mainPanel.insertRow(0);
+    mainPanel.addCell(0);
+    Label msg = new Label(message);
+    if (isError) {
+      msg.setStylePrimaryName("hm-error");
+    }
+    mainPanel.setWidget(0, 0, msg);
   }
 }
