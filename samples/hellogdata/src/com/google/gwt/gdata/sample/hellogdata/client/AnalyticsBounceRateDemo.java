@@ -193,6 +193,7 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
       mainPanel.setWidget(row, 4, new Label(bounceRate + "%"));
     }
   }
+  
   /**
    * Displays a status message to the user.
    * 
