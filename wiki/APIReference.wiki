@@ -1,6 +1,4 @@
 #summary API Reference
 #labels Featured
 
-= API Reference =
-
 The JavaDocs for the latest version of the gwt-gdata library is available <a href="http://gwt-gdata.appspot.com/javadocs/v1.10.1/index.html">here</a>.
