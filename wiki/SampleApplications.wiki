@@ -1,5 +1,5 @@
+#summary Sample applications using gwt-gdata
 #labels Featured
-#Sample applications using gwt-gdata
 
 = HelloGData Demo =
 
