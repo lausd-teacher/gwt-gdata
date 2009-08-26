@@ -3,7 +3,7 @@
 
 = HelloGData Demo =
 
-<a href="http://gwt-gdata.appspot.com/v/HelloGData.html">HelloGData</a>
+===<a href="http://gwt-gdata.appspot.com/v/HelloGData.html">HelloGData</a>===
 
 <img src="http://gwt-gdata.appspot.com/images/hellogdata-demo-screen.png" />
 
