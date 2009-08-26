@@ -5,6 +5,6 @@
 
 ===<a href="http://gwt-gdata.appspot.com/v/HelloGData.html">HelloGData</a>===
 
-<img src="http://gwt-gdata.appspot.com/images/hellogdata-demo-screen.png" />
+<a href="http://gwt-gdata.appspot.com/v/HelloGData.html"><img src="http://gwt-gdata.appspot.com/images/hellogdata-demo-screen.png" border="0px" /></a>
 
 This example showcases many of the features of the Maps API. It serves both as a demonstration project and as a test bed for adding features. Navigate to each demo using the List box at the top of the demo. A textual description of each demo is at the bottom of the page. 
