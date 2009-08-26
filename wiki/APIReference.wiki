@@ -3,4 +3,4 @@
 
 = API Reference =
 
-Browse the JavaDocs <a href="http://gwt-gdata.appspot.com/javadocs/v1.10.1/index.html">here</a>.
+The JavaDocs for the latest version of the gwt-gdata library is available <a href="http://gwt-gdata.appspot.com/javadocs/v1.10.1/index.html">here</a>.
