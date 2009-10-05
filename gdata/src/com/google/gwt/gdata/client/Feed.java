@@ -61,7 +61,7 @@ public class Feed<E extends Entry>
 
   /**
    * Returns the link that provides the URI of an alternate format of the
-   * entrys or feeds contents.
+   * entry's or feed's contents.
    * 
    * @return Link that provides the URI of an alternate format of the entry's
    * or feed's contents.
