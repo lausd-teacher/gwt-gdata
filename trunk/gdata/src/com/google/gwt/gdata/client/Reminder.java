@@ -53,6 +53,7 @@ public class Reminder extends JavaScriptObject {
 
   /**
    * Constructs a reminder.
+   * 
    * @return A Reminder object.
    */
   public static native Reminder newInstance() /*-{

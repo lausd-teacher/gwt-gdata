@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/gwt-gdata"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/My Documents/Projects/GWT-GData/gwt-gdata-2.0/trunk/gwt-gdata/gwt-gdata.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
