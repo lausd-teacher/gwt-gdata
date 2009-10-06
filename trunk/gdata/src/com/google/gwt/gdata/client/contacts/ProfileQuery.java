@@ -30,9 +30,7 @@ public class ProfileQuery extends Query {
    * @return A ProfileQuery object.
    */
   public static native ProfileQuery newInstance(String feedUri) /*-{
-    return new $wnd.google.gdata.contacts.ProfileQuery(
-      feedUri
-    );
+    return new $wnd.google.gdata.contacts.ProfileQuery(feedUri);
   }-*/;
 
   protected ProfileQuery() { }
@@ -49,7 +47,8 @@ public class ProfileQuery extends Query {
   /**
    * Returns the maximum number of results to be retrieved.
    * 
-   * @return Maximum number of results to be retrieved or null to indicate that the parameter is disabled.
+   * @return Maximum number of results to be retrieved or null to indicate that
+   * the parameter is disabled.
    */
   public final native double getMaxResults() /*-{
     return this.getMaxResults();
@@ -58,7 +57,8 @@ public class ProfileQuery extends Query {
   /**
    * Returns the opaque key of the first element to retrieve.
    * 
-   * @return Opaque key of the first element to retrieve or null to indicate that the parameter is disabled.
+   * @return Opaque key of the first element to retrieve or null to indicate
+   * that the parameter is disabled.
    */
   public final native String getStartKey() /*-{
     return this.getStartKey();
@@ -67,7 +67,8 @@ public class ProfileQuery extends Query {
   /**
    * Returns the user name to query.
    * 
-   * @return User name to query or null to indicate that the parameter is disabled.
+   * @return User name to query or null to indicate that the parameter is
+   * disabled.
    */
   public final native String getUserName() /*-{
     return this.getUserName();
@@ -79,42 +80,37 @@ public class ProfileQuery extends Query {
    * @param domainName Domain to query or null to disable this parameter.
    */
   public final native void setDomainName(String domainName) /*-{
-    this.setDomainName(
-      domainName
-    );
+    this.setDomainName(domainName);
   }-*/;
 
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param maxResults Maximum number of results to be retrieved or an
+   * equivalent string value or null to disable this parameter.
    */
   public final native void setMaxResults(double maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
+    this.setMaxResults(maxResults);
   }-*/;
 
   /**
    * Sets the maximum number of results to be retrieved.
    * 
-   * @param maxResults Maximum number of results to be retrieved or an equivalent string value or null to disable this parameter.
+   * @param maxResults Maximum number of results to be retrieved or an
+   * equivalent string value or null to disable this parameter.
    */
   public final native void setMaxResults(String maxResults) /*-{
-    this.setMaxResults(
-      maxResults
-    );
+    this.setMaxResults(maxResults);
   }-*/;
 
   /**
    * Sets the opaque key of the first element to retrieve.
    * 
-   * @param startKey Opaque key of the first element to retrieve or null to disable this parameter.
+   * @param startKey Opaque key of the first element to retrieve or null to
+   * disable this parameter.
    */
   public final native void setStartKey(String startKey) /*-{
-    this.setStartKey(
-      startKey
-    );
+    this.setStartKey(startKey);
   }-*/;
 
   /**
@@ -123,9 +119,7 @@ public class ProfileQuery extends Query {
    * @param userName User name to query or null to disable this parameter.
    */
   public final native void setUserName(String userName) /*-{
-    this.setUserName(
-      userName
-    );
+    this.setUserName(userName);
   }-*/;
 
 }

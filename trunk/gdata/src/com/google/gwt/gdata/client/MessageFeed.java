@@ -17,12 +17,15 @@
 package com.google.gwt.gdata.client;
 
 /**
- * Describes a message feed. Defined in gdata.js
+ * Describes a message feed.
  */
-public class MessageFeed extends com.google.gwt.gdata.client.Feed<MessageEntry> {
+public class MessageFeed
+    extends com.google.gwt.gdata.client.Feed<MessageEntry> {
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 2.0
+   * Constructs a message feed.
+   * 
+   * @return A MessageFeed object.
    */
   @SuppressWarnings("unchecked")
   public static native MessageFeed newInstance() /*-{
@@ -31,4 +34,27 @@ public class MessageFeed extends com.google.gwt.gdata.client.Feed<MessageEntry> 
 
   protected MessageFeed() { }
 
+  /**
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getSelf(MessageFeedCallback callback) {
+    this.get(callback);
+  }
+
+  /**
+   * Inserts a new entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void insertMessageEntry(MessageEntry entry,
+      MessageEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
+  
 }

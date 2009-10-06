@@ -17,12 +17,14 @@
 package com.google.gwt.gdata.client.sidewiki;
 
 /**
- * Describes a Sidewiki user entry. Defined in gdata.js
+ * Describes a Sidewiki user entry.
  */
 public class SidewikiUserEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
-   * Constructs a sidewiki user entry using an object parameter whose property names match the setter method to use for each property.
+   * Constructs a sidewiki user entry.
+   * 
+   * @return A SidewikiUserEntry object.
    */
   public static native SidewikiUserEntry newInstance() /*-{
     return new $wnd.google.gdata.sidewiki.SidewikiUserEntry();
@@ -31,12 +33,46 @@ public class SidewikiUserEntry extends com.google.gwt.gdata.client.Entry {
   protected SidewikiUserEntry() { }
 
   /**
-   * Returns the link that provides the URI of an alternate format of the entry's or feed's contents.
+   * Deletes the entry from the feed.
    * 
-   * @return Link that provides the URI of an alternate format of the entry's or feed's contents or undefined for none.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void deleteEntry(SidewikiEntryCallback callback) {
+    this.delete(callback);
+  }
+  
+  /**
+   * Returns the link that provides the URI of an alternate format of the
+   * entry's or feed's contents.
+   * 
+   * @return Link that provides the URI of an alternate format of the entry's
+   * or feed's contents.
    */
   public final native SidewikiLink getHtmlLink() /*-{
     return this.getHtmlLink();
   }-*/;
+
+  /**
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @return current representation of the entry.
+   */
+  public final SidewikiUserEntry getSelf(SidewikiUserEntryCallback callback) {
+    return this.get(callback);
+  }
+
+  /**
+   * Updates the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void updateEntry(SidewikiUserEntryCallback callback) {
+    this.update(callback);
+  }
 
 }

@@ -17,10 +17,9 @@
 package com.google.gwt.gdata.client.sidewiki;
 
 import com.google.gwt.gdata.client.GoogleService;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
- * Google Sidewiki Data API service. Defined in gdata.js
+ * Google Sidewiki Data API service.
  */
 public class SidewikiService extends GoogleService {
 
@@ -30,14 +29,13 @@ public class SidewikiService extends GoogleService {
   public static final String SERVICE_NAME = getConstant("SERVICE_NAME");
 
   /**
-   * Constructor.
+   * Constructs a sidewiki service.
    * 
    * @param applicationName Name of application (used for tracking).
+   * @return A SidewikiService object.
    */
   public static native SidewikiService newInstance(String applicationName) /*-{
-    return new $wnd.google.gdata.sidewiki.SidewikiService(
-      applicationName
-    );
+    return new $wnd.google.gdata.sidewiki.SidewikiService(applicationName);
   }-*/;
 
   private static native String getConstant(String name) /*-{
@@ -47,99 +45,151 @@ public class SidewikiService extends GoogleService {
   protected SidewikiService() { }
 
   /**
+   * Deletes a sidewiki entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void deleteSidewikiEntry(String uri,
+      SidewikiEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+  /**
+   * Deletes a sidewiki user entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void deleteSidewikiUserEntry(String uri,
+      SidewikiUserEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+  
+  /**
    * Retrieves a sidewiki entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
-   * 
-   * @return Retrieved entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final native SidewikiEntry getSidewikiEntry(String uri, AsyncCallback<SidewikiEntry> callback) /*-{
-    return this.getSidewikiEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getSidewikiEntry(String uri,
+      SidewikiEntryCallback callback) {
+    this.getEntry(uri, callback, "getSidewikiEntry");
+  }
 
   /**
-   * Retrieves the feed of Sidewiki entries.
+   * Retrieves the feed of sidewiki entries.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
-   * 
-   * @return Retrieved feed.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final native SidewikiEntryFeed getSidewikiEntryFeed(SidewikiEntryQuery query, AsyncCallback<SidewikiEntryFeed> callback) /*-{
-    return this.getSidewikiEntryFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
-
+  public final void getSidewikiEntryFeed(SidewikiEntryQuery query,
+      SidewikiEntryFeedCallback callback) {
+    this.getFeed(query, callback, "getSidewikiEntryFeed");
+  }
+  
   /**
-   * Retrieves the feed of Sidewiki entries.
+   * Retrieves the feed of sidewiki entries.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
-   * 
-   * @return Retrieved feed.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final native SidewikiEntryFeed getSidewikiEntryFeed(String uri, AsyncCallback<SidewikiEntryFeed> callback) /*-{
-    return this.getSidewikiEntryFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
-
+  public final void getSidewikiEntryFeed(String uri,
+      SidewikiEntryFeedCallback callback) {
+    this.getFeed(uri, callback, "getSidewikiEntryFeed");
+  }
+  
   /**
    * Retrieves a sidewiki user entry.
    * 
    * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this command.
-   * 
-   * @return Retrieved entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final native SidewikiUserEntry getSidewikiUserEntry(String uri, AsyncCallback<SidewikiUserEntry> callback) /*-{
-    return this.getSidewikiUserEntry(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.entry); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
-
+  public final void getSidewikiUserEntry(String uri,
+      SidewikiUserEntryCallback callback) {
+    this.getEntry(uri, callback, "getSidewikiUserEntry");
+  }
+  
   /**
-   * Retrieves the feed of Sidewiki users.
+   * Retrieves the feed of sidewiki user entries.
    * 
    * @param query URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
-   * 
-   * @return Retrieved feed.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final native SidewikiUserFeed getSidewikiUserFeed(SidewikiUserQuery query, AsyncCallback<SidewikiUserFeed> callback) /*-{
-    return this.getSidewikiUserFeed(
-      query,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
-
+  public final void getSidewikiUserFeed(SidewikiUserQuery query,
+      SidewikiUserFeedCallback callback) {
+    this.getFeed(query, callback, "getSidewikiUserFeed");
+  }
+  
   /**
-   * Retrieves the feed of Sidewiki users.
+   * Retrieves the feed of sidewiki user entries.
    * 
    * @param uri URI of feed or query.
-   * @param callback Callback defining success and failure handlers for this command.
-   * 
-   * @return Retrieved feed.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
    */
-  public final native SidewikiUserFeed getSidewikiUserFeed(String uri, AsyncCallback<SidewikiUserFeed> callback) /*-{
-    return this.getSidewikiUserFeed(
-      uri,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result.feed); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/user/client/rpc/AsyncCallback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
-  }-*/;
+  public final void getSidewikiUserFeed(String uri,
+      SidewikiUserFeedCallback callback) {
+    this.getFeed(uri, callback, "getSidewikiUserFeed");
+  }
+  
+  /**
+   * Inserts a new sidewiki entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void insertSidewikiEntry(String uri, SidewikiEntry entry,
+      SidewikiEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
+  
+  /**
+   * Inserts a new sidewiki user entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void insertSidewikiUserEntry(String uri, SidewikiUserEntry entry,
+      SidewikiUserEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
 
+  /**
+   * Updates a sidewiki entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void updateSidewikiEntry(String uri, SidewikiEntry entry,
+      SidewikiEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
+
+  /**
+   * Updates a sidewiki user entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void updateSidewikiEntry(String uri, SidewikiUserEntry entry,
+      SidewikiUserEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
+  
 }

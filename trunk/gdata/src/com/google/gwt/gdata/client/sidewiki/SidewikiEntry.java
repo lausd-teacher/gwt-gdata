@@ -20,41 +20,57 @@ import com.google.gwt.gdata.client.Rating;
 import com.google.gwt.gdata.client.ResourceId;
 
 /**
- * Describes a Sidewiki entry in the feed of Sidewiki entries. Defined in gdata.js
+ * Describes a Sidewiki entry in the feed of Sidewiki entries.
  */
 public class SidewikiEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
-   * Constructs a sidewiki entry using an object parameter whose property names match the setter method to use for each property.
+   * Constructs a sidewiki entry.
+   * 
+   * @return A SidewikiEntry object.
    */
   public static native SidewikiEntry newInstance() /*-{
     return new $wnd.google.gdata.sidewiki.SidewikiEntry();
   }-*/;
 
   protected SidewikiEntry() { }
+  
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void deleteEntry(SidewikiEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the Sidewiki entry source. This element is optional.
    * 
-   * @return Sidewiki entry source or undefined for none.
+   * @return Sidewiki entry source.
    */
   public final native Source getEntrySource() /*-{
     return this.getEntrySource();
   }-*/;
 
   /**
-   * Returns the link that provides the URI of an alternate format of the entry's or feed's contents.
+   * Returns the link that provides the URI of an alternate format of the
+   * entry's or feed's contents.
    * 
-   * @return Link that provides the URI of an alternate format of the entry's or feed's contents or undefined for none.
+   * @return Link that provides the URI of an alternate format of the entry's
+   * or feed's contents or undefined for none.
    */
   public final native SidewikiLink getHtmlLink() /*-{
     return this.getHtmlLink();
   }-*/;
 
   /**
-   * Returns the Entry ratings given by all users and by the user issued the request. This element is optional.
+   * Returns the Entry ratings given by all users and by the user issued the
+   * request. This element is optional.
    * 
-   * @return Entry ratings given by all users and by the user issued the request or undefined for none.
+   * @return Entry ratings given by all users and by the user issued the
+   * request or undefined for none.
    */
   public final native Rating getRating() /*-{
     return this.getRating();
@@ -63,64 +79,61 @@ public class SidewikiEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Returns the Sidewiki author id. This element is required.
    * 
-   * @return Sidewiki author id or undefined for none.
+   * @return Sidewiki author id.
    */
   public final native ResourceId getResourceId() /*-{
     return this.getResourceId();
   }-*/;
 
   /**
-   * Sets the Sidewiki entry source. This element is optional.
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @return current representation of the entry.
    */
-  public final native void setEntrySource() /*-{
-    this.setEntrySource();
-  }-*/;
+  public final SidewikiEntry getSelf(SidewikiEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Sets the Sidewiki entry source. This element is optional.
    * 
-   * @param entrySource Sidewiki entry source, or object to use as a parameter to the google.gdata.sidewiki.Source constructor, or undefined for none.
+   * @param entrySource Sidewiki entry source.
    */
   public final native void setEntrySource(Source entrySource) /*-{
-    this.setEntrySource(
-      entrySource
-    );
+    this.setEntrySource(entrySource);
   }-*/;
 
   /**
-   * Sets the Entry ratings given by all users and by the user issued the request. This element is optional.
-   */
-  public final native void setRating() /*-{
-    this.setRating();
-  }-*/;
-
-  /**
-   * Sets the Entry ratings given by all users and by the user issued the request. This element is optional.
+   * Sets the Entry ratings given by all users and by the user issued the
+   * request. This element is optional.
    * 
-   * @param rating Entry ratings given by all users and by the user issued the request, or object to use as a parameter to the google.gdata.Rating constructor, or undefined for none.
+   * @param rating Entry ratings given by all users and by the user issued the
+   * request.
    */
   public final native void setRating(Rating rating) /*-{
-    this.setRating(
-      rating
-    );
-  }-*/;
-
-  /**
-   * Sets the Sidewiki author id. This element is required.
-   */
-  public final native void setResourceId() /*-{
-    this.setResourceId();
+    this.setRating(rating);
   }-*/;
 
   /**
    * Sets the Sidewiki author id. This element is required.
    * 
-   * @param resourceId Sidewiki author id, or object to use as a parameter to the google.gdata.ResourceId constructor, or undefined for none.
+   * @param resourceId Sidewiki author id.
    */
   public final native void setResourceId(ResourceId resourceId) /*-{
-    this.setResourceId(
-      resourceId
-    );
+    this.setResourceId(resourceId);
   }-*/;
+
+  /**
+   * Updates the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void updateEntry(SidewikiEntryCallback callback) {
+    this.update(callback);
+  }
 
 }

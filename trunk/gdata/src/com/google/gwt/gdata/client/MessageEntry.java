@@ -17,12 +17,14 @@
 package com.google.gwt.gdata.client;
 
 /**
- * Extension class for manipulating entries of the Message kind. Defined in gdata.js
+ * Extension class for manipulating entries of the Message kind.
  */
 public class MessageEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
-   * Constructs a message entry using an object parameter whose property names match the setter method to use for each property.
+   * Constructs a message entry.
+   * 
+   * @return A MessageEntry object.
    */
   public static native MessageEntry newInstance() /*-{
     return new $wnd.google.gdata.MessageEntry();
@@ -33,18 +35,26 @@ public class MessageEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Adds a new person description.
    * 
-   * @param whoList Person description to add, or object to use as a parameter to the google.gdata.Who constructor.
+   * @param whoList Person description to add.
    */
   public final native void addWhoList(Who whoList) /*-{
-    this.addWhoList(
-      whoList
-    );
+    this.addWhoList(whoList);
   }-*/;
+  
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void deleteEntry(MessageEntryCallback callback) {
+    this.delete(callback);
+  }
 
   /**
    * Returns the geo pt. This element is optional.
    * 
-   * @return Geo pt or undefined for none.
+   * @return Geo pt.
    */
   public final native GeoPt getGeoPt() /*-{
     return this.getGeoPt();
@@ -53,16 +63,28 @@ public class MessageEntry extends com.google.gwt.gdata.client.Entry {
   /**
    * Returns the rating. This element is optional.
    * 
-   * @return Rating or undefined for none.
+   * @return Rating.
    */
   public final native Rating getRating() /*-{
     return this.getRating();
   }-*/;
+  
+  /**
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @return current representation of the entry.
+   */
+  public final MessageEntry getSelf(MessageEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Returns the time period description. This element is optional.
    * 
-   * @return Time period description or undefined for none.
+   * @return Time period description.
    */
   public final native When getTime() /*-{
     return this.getTime();
@@ -79,74 +101,51 @@ public class MessageEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
    * Sets the geo pt. This element is optional.
-   */
-  public final native void setGeoPt() /*-{
-    this.setGeoPt();
-  }-*/;
-
-  /**
-   * Sets the geo pt. This element is optional.
    * 
-   * @param geoPt Geo pt, or object to use as a parameter to the google.gdata.GeoPt constructor, or undefined for none.
+   * @param geoPt Geo pt.
    */
   public final native void setGeoPt(GeoPt geoPt) /*-{
-    this.setGeoPt(
-      geoPt
-    );
-  }-*/;
-
-  /**
-   * Sets the rating. This element is optional.
-   */
-  public final native void setRating() /*-{
-    this.setRating();
+    this.setGeoPt(geoPt);
   }-*/;
 
   /**
    * Sets the rating. This element is optional.
    * 
-   * @param rating Rating, or object to use as a parameter to the google.gdata.Rating constructor, or undefined for none.
+   * @param rating Rating.
    */
   public final native void setRating(Rating rating) /*-{
-    this.setRating(
-      rating
-    );
-  }-*/;
-
-  /**
-   * Sets the time period description. This element is optional.
-   */
-  public final native void setTime() /*-{
-    this.setTime();
+    this.setRating(rating);
   }-*/;
 
   /**
    * Sets the time period description. This element is optional.
    * 
-   * @param time Time period description, or object to use as a parameter to the google.gdata.When constructor, or undefined for none.
+   * @param time Time period description.
    */
   public final native void setTime(When time) /*-{
-    this.setTime(
-      time
-    );
-  }-*/;
-
-  /**
-   * Sets the person descriptions.
-   */
-  public final native void setWhoList() /*-{
-    this.setWhoList();
+    this.setTime(time);
   }-*/;
 
   /**
    * Sets the person descriptions.
    * 
-   * @param whoList Person descriptions, where each person description is added using the addWhoList() function, or undefined to clear the person descriptions.
+   * @param whoList Person descriptions, where each person description is added
+   * using addWhoList().
    */
   public final native void setWhoList(Who[] whoList) /*-{
     this.setWhoList(
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(whoList)
     );
   }-*/;
+
+  /**
+   * Updates the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void updateEntry(MessageEntryCallback callback) {
+    this.update(callback);
+  }
 
 }
