@@ -22,7 +22,7 @@ package com.google.gwt.gdata.client.sidewiki;
 public class SidewikiLink extends com.google.gwt.gdata.client.Link {
 
   /**
-   * Sidewiki Link class.
+   * Http://www google com/sidewiki/original Sidewiki Link class.
    */
   public static final String REL_ORIGINAL_URL = getConstant("REL_ORIGINAL_URL");
 

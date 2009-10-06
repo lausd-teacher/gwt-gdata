@@ -17,12 +17,15 @@
 package com.google.gwt.gdata.client.sidewiki;
 
 /**
- * Describes a feed of Sidewiki entries. Defined in gdata.js
+ * Describes a feed of Sidewiki entries.
  */
-public class SidewikiEntryFeed extends com.google.gwt.gdata.client.Feed<SidewikiEntry> {
+public class SidewikiEntryFeed
+    extends com.google.gwt.gdata.client.Feed<SidewikiEntry> {
 
   /**
-   * Overview  File   Class  Tree  Index  Help  GData JavaScript Client 2.0
+   * Constructs a sidewiki entry feed.
+   * 
+   * @return A SidewikiEntryFeed object.
    */
   @SuppressWarnings("unchecked")
   public static native SidewikiEntryFeed newInstance() /*-{
@@ -30,5 +33,28 @@ public class SidewikiEntryFeed extends com.google.gwt.gdata.client.Feed<Sidewiki
   }-*/;
 
   protected SidewikiEntryFeed() { }
+
+  /**
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getSelf(SidewikiEntryFeedCallback callback) {
+    this.get(callback);
+  }
+
+  /**
+   * Inserts a new entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void insertSidewikiEntry(SidewikiEntry entry,
+      SidewikiEntryCallback callback) {
+    this.insertEntry(entry, callback);
+  }
 
 }

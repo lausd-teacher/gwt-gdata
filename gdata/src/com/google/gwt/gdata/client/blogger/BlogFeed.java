@@ -23,6 +23,7 @@ public class BlogFeed extends com.google.gwt.gdata.client.Feed<BlogEntry> {
 
   /**
    * Constructs a blog feed.
+   * 
    * @return A BlogFeed object.
    */
   @SuppressWarnings("unchecked")
