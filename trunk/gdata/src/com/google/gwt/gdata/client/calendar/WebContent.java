@@ -24,6 +24,16 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class WebContent extends JavaScriptObject {
 
   /**
+   * Show a chip with an icon on it.
+   */
+  public static final String DISPLAY_CHIP = getConstant("DISPLAY_CHIP");
+
+  /**
+   * Only show an icon (the default).
+   */
+  public static final String DISPLAY_ICON = getConstant("DISPLAY_ICON");
+  
+  /**
    * Constructs a web content.
    * @return A WebContent object.
    */
@@ -31,6 +41,10 @@ public class WebContent extends JavaScriptObject {
     return new $wnd.google.gdata.calendar.WebContent();
   }-*/;
 
+  private static native String getConstant(String name) /*-{
+    return $wnd.google.gdata.calendar.WebContent[name];
+  }-*/;
+  
   protected WebContent() { }
 
   /**
@@ -40,6 +54,15 @@ public class WebContent extends JavaScriptObject {
    */
   public final native void addGadgetPref(WebContentGadgetPref gadgetPref) /*-{
     this.addGadgetPref(gadgetPref);
+  }-*/;
+
+  /**
+   * Returns determine how the event is drawn. This attribute is optional.
+   * 
+   * @return Determine how the event is drawn.
+   */
+  public final native String getDisplay() /*-{
+    return this.getDisplay();
   }-*/;
 
   /**
@@ -94,6 +117,15 @@ public class WebContent extends JavaScriptObject {
   }-*/;
 
   /**
+   * Sets how the event is drawn. This attribute is optional.
+   * 
+   * @param display How the event is drawn. 
+   */
+  public final native void setDisplay(String display) /*-{
+    this.setDisplay(display);
+  }-*/;
+
+  /**
    * Sets the web content gadget preferences.
    * 
    * @param gadgetPrefs Web content gadget preferences, where each web content
@@ -125,6 +157,7 @@ public class WebContent extends JavaScriptObject {
   public final native void setUrl(String url) /*-{
     this.setUrl(url);
   }-*/;
+  
   /**
    * Sets the width (in pixels) of the <iframe> or <img> element.
    * This attribute is required.

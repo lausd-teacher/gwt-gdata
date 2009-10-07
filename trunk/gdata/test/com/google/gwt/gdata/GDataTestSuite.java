@@ -95,6 +95,8 @@ public class GDataTestSuite extends GWTTestSuite {
     suite.addTestSuite(com.google.gwt.gdata.client.blogger.PostCommentQueryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.blogger.PostEntryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.calendar.AccessLevelPropertyTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.calendar.AllowGSync2PropertyTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.calendar.AllowGSyncPropertyTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.calendar.AnyoneCanAddSelfPropertyTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.calendar.CalendarAclEntryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.calendar.CalendarAclFeedTest.class);

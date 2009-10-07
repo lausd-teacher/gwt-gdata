@@ -38,6 +38,9 @@ public class WebContentTest extends GWTTestCase {
 
   public void testProperties() {
     WebContent obj = WebContent.newInstance();
+    String display = "myValue";
+    obj.setDisplay(display);
+    assertEquals("display", obj.getDisplay(), display);
     double width = 600813;
     obj.setWidth(width);
     assertEquals("width", obj.getWidth(), width);

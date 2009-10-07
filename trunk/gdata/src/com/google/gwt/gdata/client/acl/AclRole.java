@@ -22,7 +22,13 @@ import com.google.gwt.core.client.JavaScriptObject;
  * Describes the role of an entry in an access control list.
  */
 public class AclRole extends JavaScriptObject {
-
+  
+  /**
+   * Predefined value 'appender' to indicate that a user has the right to add
+   * to the controlled object.
+   */
+  public static final String VALUE_APPENDER = getConstant("VALUE_APPENDER");
+  
   /**
    * Predefined value 'none' to indicate that a user has no rights.
    */
