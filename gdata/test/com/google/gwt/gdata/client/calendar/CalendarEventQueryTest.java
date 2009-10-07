@@ -84,6 +84,9 @@ public class CalendarEventQueryTest extends GWTTestCase {
     boolean showallowgsync = true;
     obj.setShowAllowGSync(showallowgsync);
     assertSame("showallowgsync", obj.getShowAllowGSync(), showallowgsync);
+    boolean showhidden = true;
+    obj.setShowHidden(showhidden);
+    assertSame("showhidden", obj.getShowHidden(), showhidden);
     DateTime maximumstarttime = DateTime.newInstance(new Date(), false);
     obj.setMaximumStartTime(maximumstarttime);
     assertEquals("maximumstarttime", obj.getMaximumStartTime().getDate(), maximumstarttime.getDate());

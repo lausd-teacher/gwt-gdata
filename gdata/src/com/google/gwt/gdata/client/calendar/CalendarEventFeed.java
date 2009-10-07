@@ -33,7 +33,7 @@ public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
   }-*/;
 
   protected CalendarEventFeed() { }
-
+  
   /**
    * Returns the whether the user is permitted to use Google Apps Sync.
    * This element is optional.
@@ -44,6 +44,16 @@ public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
     return this.getAllowGSync();
   }-*/;
 
+  /**
+   * Returns the whether the user is permitted to use Google Apps Sync.
+   * This element is optional.
+   * 
+   * @return Whether the user is permitted to use Google Apps Sync.
+   */
+  public final native AllowGSync2Property getAllowGSync2() /*-{
+    return this.getAllowGSync2();
+  }-*/;
+  
   /**
    * Returns the link that provides the URI that can be used to batch
    * operations to query, insert, update and delete entries on this feed.
@@ -124,6 +134,16 @@ public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
     this.setAllowGSync(allowGSync);
   }-*/;
 
+  /**
+   * Sets the whether the user is permitted to use Google Apps Sync. This
+   * element is optional.
+   * 
+   * @param allowGSync2 Whether the user is permitted to use Google Apps Sync.
+   */
+  public final native void setAllowGSync2(AllowGSync2Property allowGSync2) /*-{
+    this.setAllowGSync2(allowGSync2);
+  }-*/;
+  
   /**
    * Sets the times cleaned property. This element is optional.
    * 

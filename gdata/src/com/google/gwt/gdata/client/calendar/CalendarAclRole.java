@@ -23,7 +23,7 @@ import com.google.gwt.gdata.client.acl.AclRole;
  * list.
  */
 public class CalendarAclRole extends AclRole {
-
+  
   /**
    * The specified users have full edit access to the calendar, except that
    * they can't change the calendar's access control settings.
@@ -37,6 +37,11 @@ public class CalendarAclRole extends AclRole {
   public static final String VALUE_FREEBUSY = getConstant("VALUE_FREEBUSY");
 
   /**
+   * The specified users may override events.
+   */
+  public static final String VALUE_OVERRIDE = getConstant("VALUE_OVERRIDE");
+  
+  /**
    * The specified users have full owner access to the calendar.
    */
   public static final String VALUE_OWNER = getConstant("VALUE_OWNER");
@@ -47,10 +52,15 @@ public class CalendarAclRole extends AclRole {
   public static final String VALUE_READ = getConstant("VALUE_READ");
 
   /**
+   * The specified users can read and respond to events.
+   */
+  public static final String VALUE_RESPOND = getConstant("VALUE_RESPOND");
+
+  /**
    * The specified users have administrator access to the calendar server.
    */
   public static final String VALUE_ROOT = getConstant("VALUE_ROOT");
-
+  
   /**
    * Constructs a Calendar role.
    * @return A CalendarAclRole object.

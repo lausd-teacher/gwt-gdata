@@ -160,6 +160,16 @@ public class CalendarEventQuery extends Query {
   }-*/;
 
   /**
+   * Returns the whether to force including new invitation events.
+   * 
+   * @return Whether to force including new invitation events or null to
+   * indicate that the parameter is disabled. 
+   */
+  public final native boolean getShowHidden() /*-{
+    return this.getShowHidden();
+  }-*/;
+
+  /**
    * Returns the whether recurring events should be expanded or represented as
    * a single event.
    * 
@@ -309,6 +319,16 @@ public class CalendarEventQuery extends Query {
     this.setShowAllowGSync(showAllowGSync);
   }-*/;
 
+  /**
+   * Sets the whether to force including new invitation events.
+   * The default value is false.
+   * 
+   * @param showHidden Whether to force including new invitation events. 
+   */
+  public final native void setShowHidden(boolean showHidden) /*-{
+    this.setShowHidden(showHidden);
+  }-*/;
+  
   /**
    * Sets the whether recurring events should be expanded or represented as a
    * single event. The default value is false.

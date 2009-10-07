@@ -49,6 +49,9 @@ public class CalendarEventFeedTest extends GWTTestCase {
     AllowGSyncProperty allowgsync = AllowGSyncProperty.newInstance();
     obj.setAllowGSync(allowgsync);
     assertSame("allowgsync", obj.getAllowGSync(), allowgsync);
+    AllowGSync2Property allowgsync2 = AllowGSync2Property.newInstance();
+    obj.setAllowGSync2(allowgsync2);
+    assertSame("allowgsync2", obj.getAllowGSync2(), allowgsync2);
     TimesCleanedProperty timescleaned = TimesCleanedProperty.newInstance();
     obj.setTimesCleaned(timescleaned);
     assertSame("timescleaned", obj.getTimesCleaned(), timescleaned);
