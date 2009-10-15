@@ -36,26 +36,6 @@ public class Service extends JavaScriptObject {
   protected Service() { }
 
   /**
-   * Tests whether XD2 transport is supported by this service.
-   * 
-   * @return Whether XD2 transport is supported.
-   */
-  public final native boolean isXd2Supported() /*-{
-    return this.isXd2Supported();
-  }-*/;
-
-  /**
-   * Sets services support for an alt format.
-   * 
-   * @param alt alt format to set.
-   * @param supported true if the alt format is supported by this service;
-   * false otherwise.
-   */
-  public final native void setAltSupport(String alt, boolean supported) /*-{
-    this.setAltSupport(alt, supported);
-  }-*/;
-
-  /**
    * Sets developer key of this service.
    * 
    * @param developerKey Service-specific developer key (not GData API
@@ -72,26 +52,6 @@ public class Service extends JavaScriptObject {
    */
   public final native void setHeaders(MapString headers) /*-{
     this.setHeaders(headers);
-  }-*/;
-
-  /**
-   * Sets whether XD2 transport is supported by this service.
-   * 
-   * @param xd2Supported Whether XD2 transport is supported.
-   */
-  public final native void setXd2Supported(boolean xd2Supported) /*-{
-    this.setXd2Supported(xd2Supported);
-  }-*/;
-
-  /**
-   * Tests whether service supports an alt format.
-   * 
-   * @param alt alt format to test.
-   * @return true if the alt format is supported by this service; false
-   * otherwise.
-   */
-  public final native boolean supportsAlt(String alt) /*-{
-    return this.supportsAlt(alt);
   }-*/;
 
   /**

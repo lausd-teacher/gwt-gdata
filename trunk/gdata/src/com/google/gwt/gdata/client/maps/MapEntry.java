@@ -16,6 +16,7 @@
 
 package com.google.gwt.gdata.client.maps;
 
+import com.google.gwt.gdata.client.CustomProperty;
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.FeedLink;
 import com.google.gwt.gdata.client.ResourceId;
@@ -34,6 +35,17 @@ public class MapEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   protected MapEntry() { }
+
+  /**
+   * Adds a new custom property.
+   * 
+   * @param customProperty Custom property to add. 
+   */
+  public final native void
+      addCustomProperty(CustomProperty customProperty) /*-{
+    this.addCustomProperty(customProperty);
+  }-*/;
+  
   /**
    * Deletes the entry from the feed.
    * 
@@ -68,6 +80,15 @@ public class MapEntry extends com.google.gwt.gdata.client.Entry {
     return this.getAtomFeedLink();
   }-*/;
 
+  /**
+   * Returns the custom properties.
+   * 
+   * @return Custom properties.
+   */
+  public final native CustomProperty[] getCustomProperties() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getCustomProperties());
+  }-*/;
+  
   /**
    * Returns the marker for deleted entries. This element is optional.
    * 
@@ -107,6 +128,19 @@ public class MapEntry extends com.google.gwt.gdata.client.Entry {
   public final MapEntry getSelf(MapEntryCallback callback) {
     return this.get(callback);
   }
+
+  /**
+   * Sets the custom properties.
+   * 
+   * @param customProperties Custom properties, where each custom property
+   * is added using addCustomProperty().
+   */
+  public final native void setCustomProperties(
+      CustomProperty[] customProperties) /*-{
+    this.setCustomProperties(
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(customProperties)
+    );
+  }-*/;
 
   /**
    * Sets the marker for deleted entries. This element is optional.

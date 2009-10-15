@@ -63,6 +63,15 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
   }-*/;
 
   /**
+   * Returns the entity tag of the entry. This attribute is optional.
+   * 
+   * @return Entity tag of the entry.
+   */
+  public final native String getEtag() /*-{
+    return this.getEtag();
+  }-*/;
+
+  /**
    * Returns the link of a relation and type.
    * 
    * @param rel Link relation type to filter on.
@@ -109,6 +118,15 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
    */
   public final native void setEdited(Edited edited) /*-{
     this.setEdited(edited);
+  }-*/;
+
+  /**
+   * Sets the entity tag of the entry. This attribute is optional.
+   * 
+   * @param etag Entity tag of the entry.
+   */
+  public final native void setEtag(String etag) /*-{
+    this.setEtag(etag);
   }-*/;
 
   /**

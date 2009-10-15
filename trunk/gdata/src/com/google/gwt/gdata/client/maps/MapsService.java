@@ -68,7 +68,28 @@ public class MapsService extends GoogleService {
     this.deleteEntry(uri, callback);
   }
 
+  /**
+   * Retrieves an ACL entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getAclEntry(String uri, MapsAclEntryCallback callback) {
+    this.getEntry(uri, callback, "getAclEntry");
+  }
 
+  /**
+   * Retrieves a feed of ACL entries.
+   * 
+   * @param uri URI of feed.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getAclFeed(String uri, MapsAclFeedCallback callback) {
+    this.getFeed(uri, callback, "getAclFeed");
+  }
+  
   /**
    * Retrieves a feature entry.
    * 
