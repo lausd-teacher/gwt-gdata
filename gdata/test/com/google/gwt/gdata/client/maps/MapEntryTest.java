@@ -16,6 +16,7 @@
 
 package com.google.gwt.gdata.client.maps;
 
+import com.google.gwt.gdata.client.CustomProperty;
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.FeedLink;
 import com.google.gwt.gdata.client.ResourceId;
@@ -54,5 +55,10 @@ public class MapEntryTest extends GWTTestCase {
     Deleted deleted = Deleted.newInstance();
     obj.setDeleted(deleted);
     assertSame("deleted", obj.getDeleted(), deleted);
+    CustomProperty[] customproperties = new CustomProperty[]{ CustomProperty.newInstance() };
+    obj.setCustomProperties(customproperties);
+    assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length);
+    obj.addCustomProperty(CustomProperty.newInstance());
+    assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length);
   }
 }

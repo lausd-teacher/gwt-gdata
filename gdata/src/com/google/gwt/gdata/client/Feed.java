@@ -50,6 +50,15 @@ public class Feed<E extends Entry>
   }-*/;
 
   /**
+   * Returns the entity tag of the feed. This attribute is optional.
+   * 
+   * @return Entity tag of the feed. 
+   */
+  public final native String getEtag() /*-{
+    return this.getEtag();
+  }-*/;
+
+  /**
    * Returns the link that provides the URI of the full feed (without any query
    * parameters).
    * 
@@ -126,6 +135,15 @@ public class Feed<E extends Entry>
    */
   public final native TotalResults getTotalResults() /*-{
     return this.getTotalResults();
+  }-*/;
+
+  /**
+   * Sets the entity tag of the feed. This attribute is optional.
+   * 
+   * @param etag Entity tag of the feed. 
+   */
+  public final native void setEtag(String etag) /*-{
+    this.setEtag(etag);
   }-*/;
 
   /**

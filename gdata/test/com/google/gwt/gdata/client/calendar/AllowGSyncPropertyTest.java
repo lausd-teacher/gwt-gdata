@@ -14,30 +14,27 @@
  * the License.
  */
 
-package com.google.gwt.gdata.client.gbase;
+package com.google.gwt.gdata.client.calendar;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
- * Tests for the LocalesFeed class.
+ * Tests for the AllowGSyncProperty class.
  */
-public class LocalesFeedTest extends GWTTestCase {
+public class AllowGSyncPropertyTest extends GWTTestCase {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", LocalesFeed.newInstance());
+    assertNotNull("newInstance()", AllowGSyncProperty.newInstance());
   }
 
-  public void testOther() {
-    LocalesFeed obj = LocalesFeed.newInstance();
-    // Unit Test for getFeedBatchLink()
-    assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
-    // Unit Test for getNextLink()
-    assertEquals("getNextLink", obj.getNextLink(), null);
-    // Unit Test for getPreviousLink()
-    assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+  public void testProperties() {
+    AllowGSyncProperty obj = AllowGSyncProperty.newInstance();
+    boolean value = true;
+    obj.setValue(value);
+    assertSame("value", obj.getValue(), value);
   }
 }

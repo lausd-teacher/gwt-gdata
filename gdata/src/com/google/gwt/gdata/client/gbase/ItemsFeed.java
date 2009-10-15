@@ -57,6 +57,24 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
   }-*/;
 
   /**
+   * Returns the link that provides the URI of next page in a paged feed.
+   * 
+   * @return Link that provides the URI of next page in a paged feed.
+   */
+  public final native com.google.gwt.gdata.client.Link getNextLink() /*-{
+    return this.getNextLink();
+  }-*/;
+
+  /**
+   * Returns the link that provides the URI of previous page in a paged feed.
+   * 
+   * @return Link that provides the URI of previous page in a paged feed.
+   */
+  public final native com.google.gwt.gdata.client.Link getPreviousLink() /*-{
+    return this.getPreviousLink();
+  }-*/;
+
+  /**
    * Returns the current representation of the feed by requesting it from the
    * associated service using the feeds self link.
    * 

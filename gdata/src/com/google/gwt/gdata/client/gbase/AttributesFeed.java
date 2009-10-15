@@ -34,6 +34,17 @@ public class AttributesFeed
   protected AttributesFeed() { }
 
   /**
+   * Returns the link that provides the URI of the full feed
+   * (without any query parameters).
+   * 
+   * @return Link that provides the URI of the full feed
+   * (without any query parameters).
+   */
+  public final native com.google.gwt.gdata.client.Link getFeedAtomLink() /*-{
+    return this.getFeedAtomLink();
+  }-*/;
+  
+  /**
    * Returns the link that provides the URI that can be used to batch
    * operations to query, insert, update and delete entries on this feed.
    * 

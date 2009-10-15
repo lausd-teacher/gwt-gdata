@@ -33,6 +33,8 @@ public class AttributesFeedTest extends GWTTestCase {
 
   public void testOther() {
     AttributesFeed obj = AttributesFeed.newInstance();
+    // Unit Test for getFeedAtomLink()
+    assertEquals("getFeedAtomLink", obj.getFeedAtomLink(), null);
     // Unit Test for getFeedBatchLink()
     assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
   }

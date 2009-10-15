@@ -94,13 +94,6 @@ public class ContactEntry extends PersonEntry {
 
   /**
    * Sets the group membership infos.
-   */
-  public final native void setGroupMembershipInfos() /*-{
-    this.setGroupMembershipInfos();
-  }-*/;
-
-  /**
-   * Sets the group membership infos.
    * 
    * @param groupMembershipInfos Group membership infos, where each group
    * membership info is added using addGroupMembershipInfo().

@@ -37,6 +37,10 @@ public class ItemsFeedTest extends GWTTestCase {
     assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
     // Unit Test for getFeedBatchLink()
     assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+    // Unit Test for getNextLink()
+    assertEquals("getNextLink", obj.getNextLink(), null);
+    // Unit Test for getPreviousLink()
+    assertEquals("getPreviousLink", obj.getPreviousLink(), null);
     // Unit Test for setAttribute(String name, Attribute attribute)
     // Unit Test for setAttributes(JavaScriptObject attributes)
   }

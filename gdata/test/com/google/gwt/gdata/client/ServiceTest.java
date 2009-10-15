@@ -42,9 +42,5 @@ public class ServiceTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    Service obj = Service.newInstance("myValue", "myValue");
-    boolean xd2supported = true;
-    obj.setXd2Supported(xd2supported);
-    assertSame("xd2supported", obj.isXd2Supported(), xd2supported);
   }
 }

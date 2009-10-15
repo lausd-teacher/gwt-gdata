@@ -24,7 +24,7 @@ import com.google.gwt.ajaxloader.client.AjaxLoader.AjaxLoaderOptions;
  */
 public class GData {
   
-  static String targetGDataJsApiVersion = "1.10";
+  static String targetGDataJsApiVersion = "2.0";
 
   /**
    * Return the GData API Version currently loaded.
@@ -83,10 +83,20 @@ public class GData {
    * @param onLoad callback to be invoked when the library is loaded.
    */
   public static void loadGDataApi(String key, String version,
-      AjaxLoaderOptions settings, Runnable onLoad) {
+      AjaxLoaderOptions settings, final Runnable onLoad) {
     assert settings != null;
     AjaxLoader.init(key);
-    AjaxLoader.loadApi("gdata", version, onLoad, settings);
+    Runnable onGDataLoad = new Runnable() {
+      public void run() {
+        callGDataOnLoad();
+        onLoad.run();
+      }
+      
+      private native void callGDataOnLoad() /*-{
+        if(google.gdata) google.gdata.onLoad();
+      }-*/;
+    };
+    AjaxLoader.loadApi("gdata", version, onGDataLoad, settings);
   }
 
   /**

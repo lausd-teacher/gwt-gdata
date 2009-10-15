@@ -170,15 +170,6 @@ public class Feed<E extends Entry> extends JavaScriptObject {
   }-*/;
 
   /**
-   * Returns the subtitle.
-   * 
-   * @return Subtitle.
-   */
-  public final native Text getSubtitle() /*-{
-    return this.getSubtitle();
-  }-*/;
-
-  /**
    * Returns the title. This element is required.
    * 
    * @return Title.
@@ -296,15 +287,6 @@ public class Feed<E extends Entry> extends JavaScriptObject {
    */
   public final native void setRights(Text rights) /*-{
     this.setRights(rights);
-  }-*/;
-
-  /**
-   * Sets the subtitle.
-   * 
-   * @param subtitle
-   */
-  public final native void setSubtitle(Text subtitle) /*-{
-    this.setSubtitle(subtitle);
   }-*/;
 
   /**
