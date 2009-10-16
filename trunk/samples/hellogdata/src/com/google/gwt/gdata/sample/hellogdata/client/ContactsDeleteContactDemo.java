@@ -18,6 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
 import com.google.gwt.gdata.client.contacts.ContactEntryCallback;
@@ -27,10 +29,8 @@ import com.google.gwt.gdata.client.contacts.ContactQuery;
 import com.google.gwt.gdata.client.contacts.ContactsService;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 import java.util.Date;
 
@@ -83,8 +83,8 @@ public class ContactsDeleteContactDemo extends GDataDemo {
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a contact");
-      startButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
           queryContacts(
               "http://www.google.com/m8/feeds/contacts/default/full");
         }

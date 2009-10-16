@@ -18,16 +18,16 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.contacts.ContactGroupEntry;
 import com.google.gwt.gdata.client.contacts.ContactGroupEntryCallback;
 import com.google.gwt.gdata.client.contacts.ContactsService;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The following example demonstrates how to create a contact group.
@@ -77,8 +77,8 @@ public class ContactsCreateContactGroupDemo extends GDataDemo {
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Create a contact group");
-      startButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
           createContactGroup(
               "http://www.google.com/m8/feeds/groups/default/full");
         }

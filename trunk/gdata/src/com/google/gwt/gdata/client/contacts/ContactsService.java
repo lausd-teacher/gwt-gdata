@@ -69,6 +69,18 @@ public class ContactsService extends GoogleService {
   }
 
   /**
+   * Deletes a profile entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void deleteProfileEntry(String uri,
+      ProfileEntryCallback callback) {
+    this.deleteEntry(uri, callback);
+  }
+
+  /**
    * Retrieves a contact entry.
    * 
    * @param uri URI of entry.
@@ -125,7 +137,7 @@ public class ContactsService extends GoogleService {
    */
   public final void getContactGroupFeed(ContactQuery query,
       ContactGroupFeedCallback callback) {
-    this.getFeed(query, callback);
+    this.getFeed(query, callback, "getContactGroupFeed");
   }
 
   /**
@@ -138,6 +150,42 @@ public class ContactsService extends GoogleService {
   public final void getContactGroupFeed(String uri,
       ContactGroupFeedCallback callback) {
     this.getFeed(uri, callback, "getContactGroupFeed");
+  }
+
+  /**
+   * Retrieves a profile entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getProfileEntry(String uri,
+      ProfileEntryCallback callback) {
+    this.getEntry(uri, callback, "getProfileEntry");
+  }
+
+  /**
+   * Retrieves the feed of profiles.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getProfileFeed(ProfileQuery query,
+      ProfileFeedCallback callback) {
+    this.getFeed(query, callback, "getProfileFeed");
+  }
+
+  /**
+   * Retrieves the feed of profiles.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getProfileFeed(String uri,
+      ProfileFeedCallback callback) {
+    this.getFeed(uri, callback, "getProfileFeed");
   }
 
   /**
@@ -165,6 +213,19 @@ public class ContactsService extends GoogleService {
       ContactGroupEntry entry, ContactGroupEntryCallback callback) {
     this.insertEntry(uri, entry, callback);
   }
+
+  /**
+   * Inserts a new profile entry.
+   * 
+   * @param uri URI of feed.
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void insertProfileEntry(String uri,
+      ProfileEntry entry, ProfileEntryCallback callback) {
+    this.insertEntry(uri, entry, callback);
+  }
   
   /**
    * Updates a contact entry.
@@ -189,6 +250,19 @@ public class ContactsService extends GoogleService {
    */
   public final void updateContactGroupEntry(String uri,
       ContactGroupEntry entry, ContactGroupEntryCallback callback) {
+    this.updateEntry(uri, entry, callback);
+  }
+  
+  /**
+   * Updates a profile entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void updateProfileEntry(String uri,
+      ProfileEntry entry, ProfileEntryCallback callback) {
     this.updateEntry(uri, entry, callback);
   }
 
