@@ -17,21 +17,21 @@
 package com.google.gwt.gdata.client.contacts;
 
 /**
- * Describes a contact group feed.
+ * Describes a profile feed.
  */
-public class ContactGroupFeed
-    extends com.google.gwt.gdata.client.Feed<ContactGroupEntry> {
+public class ProfileFeed
+    extends com.google.gwt.gdata.client.Feed<ProfileEntry> {
 
   /**
-   * Constructs a contact group feed.
-   * @return A ContactGroupFeed object.
+   * Constructs a profile feed.
+   * @return A ProfileFeed object.
    */
   @SuppressWarnings("unchecked")
-  public static native ContactGroupFeed newInstance() /*-{
-    return new $wnd.google.gdata.contacts.ContactGroupFeed();
+  public static native ProfileFeed newInstance() /*-{
+    return new $wnd.google.gdata.contacts.ProfileFeed();
   }-*/;
 
-  protected ContactGroupFeed() { }
+  protected ProfileFeed() { }
 
   /**
    * Returns the link that provides the URI that can be used to batch
@@ -58,8 +58,7 @@ public class ContactGroupFeed
    * 
    * @return Link that provides the URI of previous page in a paged feed.
    */
-  public final native
-      com.google.gwt.gdata.client.atom.Link getPreviousLink() /*-{
+  public final native ContactLink getPreviousLink() /*-{
     return this.getPreviousLink();
   }-*/;
 
@@ -70,19 +69,19 @@ public class ContactGroupFeed
    * @param callback Callback defining success and failure handlers for this
    * command.
    */
-  public final void getSelf(ContactGroupFeedCallback callback) {
+  public final void getSelf(ProfileFeedCallback callback) {
     this.get(callback);
   }
 
   /**
-   * Inserts a new contact group entry into the feed.
+   * Inserts a new profile entry into the feed.
    * 
    * @param entry Entry to insert.
    * @param callback Callback defining success and failure handlers for this
    * command.
    */
-  public final void insertAccountEntry(ContactGroupEntry entry,
-      ContactGroupEntryCallback callback) {
+  public final void insertProfileEntry(ProfileEntry entry,
+      ProfileEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
 

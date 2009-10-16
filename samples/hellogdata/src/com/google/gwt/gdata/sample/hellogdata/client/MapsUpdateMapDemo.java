@@ -18,6 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.gdata.client.maps.MapEntry;
@@ -26,10 +28,8 @@ import com.google.gwt.gdata.client.maps.MapFeed;
 import com.google.gwt.gdata.client.maps.MapFeedCallback;
 import com.google.gwt.gdata.client.maps.MapsService;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The following example demonstrates how to update a map.
@@ -80,8 +80,8 @@ public class MapsUpdateMapDemo extends GDataDemo {
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Update a map");
-      startButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
           getMaps("http://maps.google.com/maps/feeds/maps/default/full");
         }
       });

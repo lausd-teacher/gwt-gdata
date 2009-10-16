@@ -18,6 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.blogger.BlogCommentFeed;
 import com.google.gwt.gdata.client.blogger.BlogCommentFeedCallback;
 import com.google.gwt.gdata.client.blogger.BlogEntry;
@@ -31,10 +33,8 @@ import com.google.gwt.gdata.client.blogger.CommentEntryCallback;
 import com.google.gwt.gdata.client.blogger.PostEntry;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The following example demonstrates how to delete a blog post comment.
@@ -83,8 +83,8 @@ public class BloggerDeleteBlogPostCommentDemo extends GDataDemo {
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a blog comment");
-      startButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
           getBlogs("http://www.blogger.com/feeds/default/blogs");
         }
       });

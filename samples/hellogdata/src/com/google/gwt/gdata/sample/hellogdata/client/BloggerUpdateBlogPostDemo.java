@@ -18,6 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.atom.Category;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.blogger.BlogEntry;
@@ -30,10 +32,8 @@ import com.google.gwt.gdata.client.blogger.PostEntry;
 import com.google.gwt.gdata.client.blogger.PostEntryCallback;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The following example demonstrates how to update a blog post.
@@ -83,8 +83,8 @@ public class BloggerUpdateBlogPostDemo extends GDataDemo {
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Update a blog post");
-      startButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
           getBlogs("http://www.blogger.com/feeds/default/blogs");
         }
       });

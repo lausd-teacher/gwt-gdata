@@ -81,8 +81,7 @@ public class User {
    * AuthSubJS: http://code.google.com/apis/gdata/client-js.html#Authenticating
    * 
    * @param scope URL identifying the service to be accessed.
-   * @param hd String value identifying a particular hosted domain account to
-   * be accessed.
+   * @param settings AuthSub parameters.
    * @return Returns a token, keyed to a specific combination of user, client
    * application domain, and Google service scope, or null if the scope is
    * empty, or the token is invalid. In addition, if no valid token exists in
@@ -90,8 +89,8 @@ public class User {
    * invited to log into their Google account and authorize access by the web
    * application.
    */
-  public static final native String login(String scope, String hd) /*-{
-    return $wnd.google.accounts.user.login(scope, hd);
+  public static final native String login(String scope, AuthSubSettings settings) /*-{
+    return $wnd.google.accounts.user.login(scope, settings);
   }-*/;
   
   /**

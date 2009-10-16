@@ -34,6 +34,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 /**
  * Main class for implementing the HelloGData gwt-gdata demo.
  */
+@SuppressWarnings("deprecation")
 public class HelloGData implements EntryPoint, HistoryListener {
 
   protected DemoList list = new DemoList();

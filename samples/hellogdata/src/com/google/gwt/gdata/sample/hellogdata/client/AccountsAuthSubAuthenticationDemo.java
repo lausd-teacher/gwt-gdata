@@ -18,14 +18,14 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The following example demonstrates how to use AuthSub to authenticate and
@@ -152,8 +152,8 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
       if (status == AuthSubStatus.LOGGED_IN) {
         statusLabel.setText("Logged in");
         actionLink.setText("Log out");
-        actionLink.addClickListener(new ClickListener() {
-          public void onClick(Widget sender) {
+        actionLink.addClickHandler(new ClickHandler() {
+          public void onClick(ClickEvent event) {
             User.logout(scope);
             refreshDemo();
           }
@@ -161,8 +161,8 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
       } else if (status == AuthSubStatus.LOGGED_OUT) {
         statusLabel.setText("Logged out");
         actionLink.setText("Log in");
-        actionLink.addClickListener(new ClickListener() {
-          public void onClick(Widget sender) {
+        actionLink.addClickHandler(new ClickHandler() {
+          public void onClick(ClickEvent event) {
             User.login(scope);
           }
         });

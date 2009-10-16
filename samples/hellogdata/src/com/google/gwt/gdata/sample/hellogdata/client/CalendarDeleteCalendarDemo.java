@@ -18,6 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.calendar.CalendarEntry;
 import com.google.gwt.gdata.client.calendar.CalendarEntryCallback;
 import com.google.gwt.gdata.client.calendar.CalendarFeed;
@@ -25,10 +27,8 @@ import com.google.gwt.gdata.client.calendar.CalendarFeedCallback;
 import com.google.gwt.gdata.client.calendar.CalendarService;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The following example demonstrates how to delete a calendar.
@@ -81,8 +81,8 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
       Button startButton = new Button("Delete a calendar");
-      startButton.addClickListener(new ClickListener() {
-        public void onClick(Widget sender) {
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
           getCalendars(
               "http://www.google.com/calendar/feeds/default/" +
               "owncalendars/full");
