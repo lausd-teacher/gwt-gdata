@@ -75,7 +75,7 @@ public class AnalyticsVisitsDemo extends GDataDemo {
    */
   public AnalyticsVisitsDemo() {
     service = AnalyticsService.newInstance(
-        "HelloGData_Analytics_VisitsDemo_v1.0");
+        "HelloGData_Analytics_VisitsDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

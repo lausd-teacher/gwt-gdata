@@ -93,7 +93,7 @@ public class GData {
       }
       
       private native void callGDataOnLoad() /*-{
-        if(google.gdata) google.gdata.onLoad();
+        if(typeof($wnd.google.gdata) !== 'undefined') $wnd.google.gdata.onLoad();
       }-*/;
     };
     AjaxLoader.loadApi("gdata", version, onGDataLoad, settings);

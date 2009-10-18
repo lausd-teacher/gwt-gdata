@@ -83,7 +83,7 @@ public class FinanceRetrievePositionsDemo extends GDataDemo {
    */
   public FinanceRetrievePositionsDemo() {
     service = FinanceService.newInstance(
-        "HelloGData_Finance_RetrievePositionsDemo_v1.0");
+        "HelloGData_Finance_RetrievePositionsDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

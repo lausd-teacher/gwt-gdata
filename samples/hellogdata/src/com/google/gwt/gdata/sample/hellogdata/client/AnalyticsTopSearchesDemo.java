@@ -79,7 +79,7 @@ public class AnalyticsTopSearchesDemo extends GDataDemo {
    */
   public AnalyticsTopSearchesDemo() {
     service = AnalyticsService.newInstance(
-        "HelloGData_Analytics_TopSearchesDemo_v1.0");
+        "HelloGData_Analytics_TopSearchesDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

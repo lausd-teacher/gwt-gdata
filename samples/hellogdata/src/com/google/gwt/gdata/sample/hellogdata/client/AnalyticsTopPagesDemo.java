@@ -74,7 +74,7 @@ public class AnalyticsTopPagesDemo extends GDataDemo {
    */
   public AnalyticsTopPagesDemo() {
     service = AnalyticsService.newInstance(
-        "HelloGData_Analytics_TopPagesDemo_v1.0");
+        "HelloGData_Analytics_TopPagesDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

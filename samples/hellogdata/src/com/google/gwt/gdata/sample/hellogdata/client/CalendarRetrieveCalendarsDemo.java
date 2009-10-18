@@ -72,7 +72,7 @@ public class CalendarRetrieveCalendarsDemo extends GDataDemo {
    */
   public CalendarRetrieveCalendarsDemo() {
     service = CalendarService.newInstance(
-        "HelloGData_Calendar_RetrieveCalendarsDemo_v1.0");
+        "HelloGData_Calendar_RetrieveCalendarsDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

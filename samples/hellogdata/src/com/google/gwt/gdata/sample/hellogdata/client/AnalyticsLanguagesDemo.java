@@ -76,7 +76,7 @@ public class AnalyticsLanguagesDemo extends GDataDemo {
    */
   public AnalyticsLanguagesDemo() {
     service = AnalyticsService.newInstance(
-        "HelloGData_Analytics_LanguagesDemo_v1.0");
+        "HelloGData_Analytics_LanguagesDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

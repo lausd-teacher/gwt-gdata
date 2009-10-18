@@ -78,7 +78,7 @@ public class FinanceUpdateTransactionDemo extends GDataDemo {
    */
   public FinanceUpdateTransactionDemo() {
     service = FinanceService.newInstance(
-        "HelloGData_Finance_UpdateTransactionDemo_v1.0");
+        "HelloGData_Finance_UpdateTransactionDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

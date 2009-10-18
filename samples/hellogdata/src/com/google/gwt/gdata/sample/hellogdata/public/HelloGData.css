@@ -1,23 +1,27 @@
 /* Add some space between the outside browser window and the blue border */
+
 h2 {
 	font-stretch: narrower;
 	font-weight: 500;
 	margin: 4px;
 }
 
-#hm-map {
-	margin: 10px;
-}
+
 .gwt-Hyperlink * {
 	text-decoration: underline;
 	cursor: pointer;
 }
 
 /* Add some space between the blue border and the interior stuff */
+.hm-body {
+	margin: 10px;
+}
 .hm-outerpanel {
 	margin: 10px;
 }
-
+.hm-innerpanel {
+	margin: 10px;
+}
 .hm-tableheader {
 	background-color: #E5ECF9;
 	padding: 6px;
@@ -40,4 +44,9 @@ h2 {
 .hm-error strong {
     font-weight: bold;
     color: #B53812;
+}
+.hm-title {
+ 	font-size: 1.5em; 
+	font-family: sans-serif;
+	display: inline;	
 }

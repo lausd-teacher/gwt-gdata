@@ -71,7 +71,7 @@ public class GoogleBaseRetrieveItemsDemo extends GDataDemo {
    */
   public GoogleBaseRetrieveItemsDemo() {
     service = GoogleBaseService.newInstance(
-        "HelloGData_GoogleBase_RetrieveItemsDemo_v1.0");
+        "HelloGData_GoogleBase_RetrieveItemsDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

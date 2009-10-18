@@ -76,7 +76,7 @@ public class ContactsRetrieveContactGroupMembersDemo extends GDataDemo {
    */
   public ContactsRetrieveContactGroupMembersDemo() {
     service = ContactsService.newInstance(
-        "HelloGData_Contacts_RetrieveContactGroupMembersDemo_v1.0");
+        "HelloGData_Contacts_RetrieveContactGroupMembersDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

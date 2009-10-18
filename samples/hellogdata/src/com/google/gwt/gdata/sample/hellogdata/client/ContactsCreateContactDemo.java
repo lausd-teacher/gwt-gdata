@@ -73,7 +73,7 @@ public class ContactsCreateContactDemo extends GDataDemo {
    */
   public ContactsCreateContactDemo() {
     service = ContactsService.newInstance(
-        "HelloGData_Contacts_CreateContactDemo_v1.0");
+        "HelloGData_Contacts_CreateContactDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

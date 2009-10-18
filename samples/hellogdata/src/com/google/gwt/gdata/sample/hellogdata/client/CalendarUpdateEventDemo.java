@@ -79,7 +79,7 @@ public class CalendarUpdateEventDemo extends GDataDemo {
    */
   public CalendarUpdateEventDemo() {
     service = CalendarService.newInstance(
-        "HelloGData_Calendar_UpdateEventDemo_v1.0");
+        "HelloGData_Calendar_UpdateEventDemo_v12.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

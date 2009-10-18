@@ -74,7 +74,7 @@ public class MapsDeleteMapDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's maps.
    */
   public MapsDeleteMapDemo() {
-    service = MapsService.newInstance("HelloGData_Maps_DeleteMapDemo_v1.0");
+    service = MapsService.newInstance("HelloGData_Maps_DeleteMapDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

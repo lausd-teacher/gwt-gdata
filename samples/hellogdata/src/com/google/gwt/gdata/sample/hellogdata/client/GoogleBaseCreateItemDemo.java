@@ -75,7 +75,7 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
    */
   public GoogleBaseCreateItemDemo() {
     service = GoogleBaseService.newInstance(
-        "HelloGData_GoogleBase_CreateItemDemo_v1.0");
+        "HelloGData_GoogleBase_CreateItemDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

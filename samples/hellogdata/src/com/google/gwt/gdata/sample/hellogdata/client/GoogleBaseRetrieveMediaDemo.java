@@ -82,7 +82,7 @@ public class GoogleBaseRetrieveMediaDemo extends GDataDemo {
    */
   public GoogleBaseRetrieveMediaDemo() {
     service = GoogleBaseService.newInstance(
-        "HelloGData_GoogleBase_RetrieveMediaDemo_v1.0");
+        "HelloGData_GoogleBase_RetrieveMediaDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

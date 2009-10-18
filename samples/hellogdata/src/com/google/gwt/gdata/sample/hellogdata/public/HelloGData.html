@@ -4,34 +4,9 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>HelloGData, built with GWT</title>
-    <style type="text/css"> v\:* { behavior: url("#default#VML"); } </style>
-	<style>
-	.hm-title {
-	  font-size: 1.5em; 
-	  font-family: sans-serif;
-	  display: inline;	
-	}
-	</style>
-	<!-- 
-		The GWT GData API exposes the ability to load the GData JS library
-		via the call GData.loadGDataApi() which makes use of the JSAPI command
-		google.load("gdata", "1.10", callback).
-		Because this command, when supplied with a callback, interferes with authsub
-		in IE, in these samples we load the GData JS library directly with
-		the JSAPI auto-load feature described in the following link:
-		http://code.google.com/apis/ajax/documentation/#AutoLoading
-	 -->
-	<script src="http://www.google.com/jsapi?autoload=%7Bmodules%3A%5B%7Bname%3Agdata%2Cversion%3A%221.10%22%7D%5D%7D" type="text/javascript"></script>
+    <link type="text/css" rel="stylesheet" href="HelloGData.css">
   </head>
   <body>
-    <!-- A blue bar with rounded corners drawn across the top of the screen.-->
-    <div>
-      <img src="logo-small.png" alt="gwt logo">
-	  <span class="hm-title">Google GData API Library for GWT Demo (Beta)</span>
-    </div>
-
-    <div id="hm-map"></div>
-    
     <script src="com.google.gwt.gdata.sample.hellogdata.HelloGData.nocache.js" type="text/javascript"></script>
     <iframe src="javascript:''" id='__gwt_historyFrame' style='width: 0; height: 0; border: 0'></iframe>
   </body>
