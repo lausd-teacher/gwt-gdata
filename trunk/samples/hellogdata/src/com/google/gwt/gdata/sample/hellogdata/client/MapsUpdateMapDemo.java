@@ -75,7 +75,7 @@ public class MapsUpdateMapDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's maps.
    */
   public MapsUpdateMapDemo() {
-    service = MapsService.newInstance("HelloGData_Maps_UpdateMapDemo_v1.0");
+    service = MapsService.newInstance("HelloGData_Maps_UpdateMapDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

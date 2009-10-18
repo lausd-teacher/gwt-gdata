@@ -78,7 +78,7 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
    */
   public MapsDeleteMapFeatureDemo() {
     service = MapsService.newInstance(
-        "HelloGData_Maps_DeleteMapFeatureDemo_v1.0");
+        "HelloGData_Maps_DeleteMapFeatureDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

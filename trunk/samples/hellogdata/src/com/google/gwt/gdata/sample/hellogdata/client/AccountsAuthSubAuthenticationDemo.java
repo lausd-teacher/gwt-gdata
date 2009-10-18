@@ -132,7 +132,11 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
         new String[] { "Google Maps",
             "http://maps.google.com/maps/feeds/",
             "gdata-maps.png",
-            "http://code.google.com/apis/maps/documentation/mapsdata/" }
+            "http://code.google.com/apis/maps/documentation/mapsdata/" },
+        new String[] { "Google Sidewiki",
+            "http://www.google.com/sidewiki/feeds/",
+            "gdata-sidewiki.png",
+            "http://code.google.com/apis/sidewiki/" }
     };
     for (int i = 0; i < systems.length; i++) {
       String[] sys = systems[i];

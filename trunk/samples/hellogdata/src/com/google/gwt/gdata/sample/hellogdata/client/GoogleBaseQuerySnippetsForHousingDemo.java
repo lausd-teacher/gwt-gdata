@@ -68,7 +68,7 @@ public class GoogleBaseQuerySnippetsForHousingDemo extends GDataDemo {
    */
   public GoogleBaseQuerySnippetsForHousingDemo() {
     service = GoogleBaseService.newInstance(
-        "HelloGData_GoogleBase_QuerySnippetsForHousingDemo_v1.0");
+        "HelloGData_GoogleBase_QuerySnippetsForHousingDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     querySnippets("http://www.google.com/base/feeds/snippets/");
@@ -109,13 +109,13 @@ public class GoogleBaseQuerySnippetsForHousingDemo extends GDataDemo {
   /**
   * Displays a set of Google Base snippet entries in a tabular 
   * fashion with the help of a GWT FlexTable widget. The data fields 
-  * Name, Type and Value are displayed.
+  * Name, Url and Value are displayed.
   * 
   * @param entries The Google Base snippet entries to display.
   */
   private void showData(SnippetsEntry[] snippets) {
     mainPanel.clear();
-    String[] labels = new String[] { "Name", "Type", "Value" };
+    String[] labels = new String[] { "Name", "Url", "Value" };
     mainPanel.insertRow(0);
     for (int i = 0; i < labels.length; i++) {
       mainPanel.addCell(0);

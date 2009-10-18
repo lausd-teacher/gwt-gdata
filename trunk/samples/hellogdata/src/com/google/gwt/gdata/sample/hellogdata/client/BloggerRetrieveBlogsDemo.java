@@ -71,7 +71,7 @@ public class BloggerRetrieveBlogsDemo extends GDataDemo {
    */
   public BloggerRetrieveBlogsDemo() {
     service = BloggerService.newInstance(
-        "HelloGData_Blogger_RetrieveBlogsDemo_v1.0");
+        "HelloGData_Blogger_RetrieveBlogsDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

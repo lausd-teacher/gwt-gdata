@@ -88,8 +88,10 @@ public class HelloGData implements EntryPoint, HistoryListener {
    * loaded.
    */
   public void onModuleLoad() {
-
-    innerPanel.setStylePrimaryName("hm-mapinnerpanel");
+    RootPanel.get().setStylePrimaryName("hm-body");
+    RootPanel.get().add(new HTML("<img src='logo-small.png' alt='gwt logo' align='absmiddle'><span class='hm-title'>Google GData API Library for GWT Demo</span>"));
+    
+    innerPanel.setStylePrimaryName("hm-innerpanel");
     innerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
     innerPanel.setSpacing(10);
 
@@ -119,7 +121,7 @@ public class HelloGData implements EntryPoint, HistoryListener {
     DecoratorPanel decorator = new DecoratorPanel();
     decorator.add(outerPanel);
 
-    RootPanel.get("hm-map").add(decorator);
+    RootPanel.get().add(decorator);
     
     innerPanel.add(new Label("Loading the GData library..."));
     
@@ -261,6 +263,7 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(MapsCreateMapFeatureDemo.init());
     list.addGDataDemo(MapsUpdateMapFeatureDemo.init());
     list.addGDataDemo(MapsDeleteMapFeatureDemo.init());
+    list.addGDataDemo(SidewikiQuerySiteEntriesDemo.init());
   }
   
   /**

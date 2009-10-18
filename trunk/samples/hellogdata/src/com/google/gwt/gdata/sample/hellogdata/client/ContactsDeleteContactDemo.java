@@ -78,7 +78,7 @@ public class ContactsDeleteContactDemo extends GDataDemo {
    */
   public ContactsDeleteContactDemo() {
     service = ContactsService.newInstance(
-        "HelloGData_Contacts_DeleteContactDemo_v1.0");
+        "HelloGData_Contacts_DeleteContactDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

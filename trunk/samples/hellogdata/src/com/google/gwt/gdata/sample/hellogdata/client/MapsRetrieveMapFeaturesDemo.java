@@ -74,7 +74,7 @@ public class MapsRetrieveMapFeaturesDemo extends GDataDemo {
    */
   public MapsRetrieveMapFeaturesDemo() {
     service = MapsService.newInstance(
-        "HelloGData_Maps_RetrieveMapFeaturesDemo_v1.0");
+        "HelloGData_Maps_RetrieveMapFeaturesDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

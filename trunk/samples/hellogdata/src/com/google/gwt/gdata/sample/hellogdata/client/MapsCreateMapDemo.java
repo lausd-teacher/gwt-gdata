@@ -73,7 +73,7 @@ public class MapsCreateMapDemo extends GDataDemo {
    * otherwise start the demo by creating a map.
    */
   public MapsCreateMapDemo() {
-    service = MapsService.newInstance("HelloGData_Maps_CreateMapDemo_v1.0");
+    service = MapsService.newInstance("HelloGData_Maps_CreateMapDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
     if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {

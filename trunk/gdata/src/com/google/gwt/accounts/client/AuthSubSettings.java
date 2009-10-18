@@ -32,6 +32,8 @@ public class AuthSubSettings extends JavaScriptObject{
     return JavaScriptObject.createObject().cast();
   }
   
+  protected AuthSubSettings() { }
+  
   /**
    * Gets a value indicating the mobile version of the approval page.
    * The only accepted value is "mobile". Optional.
