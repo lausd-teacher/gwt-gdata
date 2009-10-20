@@ -16,34 +16,42 @@
 
 package com.google.gwt.gdata.client.atom;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Person class.
  */
-public class PersonTest extends GWTTestCase {
+public class PersonTest extends AtomTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Person.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Person.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Person obj = Person.newInstance();
-    Name name = Name.newInstance();
-    obj.setName(name);
-    assertSame("name", obj.getName(), name);
-    String namelang = "myValue";
-    obj.setNameLang(namelang);
-    assertEquals("namelang", obj.getNameLang(), namelang);
-    Uri uri = Uri.newInstance();
-    obj.setUri(uri);
-    assertSame("uri", obj.getUri(), uri);
-    Email email = Email.newInstance();
-    obj.setEmail(email);
-    assertSame("email", obj.getEmail(), email);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Person obj = Person.newInstance();
+        Name name = Name.newInstance();
+        obj.setName(name);
+        assertSame("name", obj.getName(), name);
+        String namelang = "myValue";
+        obj.setNameLang(namelang);
+        assertEquals("namelang", obj.getNameLang(), namelang);
+        Uri uri = Uri.newInstance();
+        obj.setUri(uri);
+        assertSame("uri", obj.getUri(), uri);
+        Email email = Email.newInstance();
+        obj.setEmail(email);
+        assertSame("email", obj.getEmail(), email);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

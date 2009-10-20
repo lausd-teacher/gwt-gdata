@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.mediarss;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the MediaRestriction class.
  */
-public class MediaRestrictionTest extends GWTTestCase {
+public class MediaRestrictionTest extends MediaRssTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

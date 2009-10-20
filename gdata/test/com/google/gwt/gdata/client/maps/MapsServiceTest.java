@@ -20,12 +20,11 @@ import com.google.gwt.accounts.client.UserTest;
 import com.google.gwt.gdata.client.GDataTestScripts;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.impl.CallErrorException;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the MapsService class.
  */
-public class MapsServiceTest extends GWTTestCase {
+public class MapsServiceTest extends MapsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

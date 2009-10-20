@@ -16,43 +16,54 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the FeedLink class.
  */
-public class FeedLinkTest extends GWTTestCase {
+public class FeedLinkTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", FeedLink.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", FeedLink.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   @SuppressWarnings("unchecked")
   public void testOther() {
-    FeedLink obj = FeedLink.newInstance();
-    // Unit Test for getFeed()
-    assertEquals("getFeed", obj.getFeed(), null);
-    // Unit Test for setFeed(Feed feed)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        FeedLink obj = FeedLink.newInstance();
+        assertEquals("getFeed", obj.getFeed(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   @SuppressWarnings("unchecked")
   public void testProperties() {
-    FeedLink obj = FeedLink.newInstance();
-    boolean readonly = true;
-    obj.setReadOnly(readonly);
-    assertSame("readonly", obj.getReadOnly(), readonly);
-    double counthint = 600813;
-    obj.setCountHint(counthint);
-    assertEquals("counthint", obj.getCountHint(), counthint);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    String href = "myValue";
-    obj.setHref(href);
-    assertEquals("href", obj.getHref(), href);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        FeedLink obj = FeedLink.newInstance();
+        boolean readonly = true;
+        obj.setReadOnly(readonly);
+        assertSame("readonly", obj.getReadOnly(), readonly);
+        double counthint = 600813;
+        obj.setCountHint(counthint);
+        assertEquals("counthint", obj.getCountHint(), counthint);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        String href = "myValue";
+        obj.setHref(href);
+        assertEquals("href", obj.getHref(), href);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

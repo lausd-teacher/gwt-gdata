@@ -16,12 +16,14 @@
 
 package com.google.gwt.gdata.client.sidewiki;
 
-import com.google.gwt.junit.client.GWTTestCase;
+import com.google.gwt.accounts.client.UserTest;
+import com.google.gwt.gdata.client.GDataTestScripts;
+import com.google.gwt.gdata.client.impl.CallErrorException;
 
 /**
  * Tests for the SidewikiService class.
  */
-public class SidewikiServiceTest extends GWTTestCase {
+public class SidewikiServiceTest extends SidewikiTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
@@ -35,12 +37,25 @@ public class SidewikiServiceTest extends GWTTestCase {
     assertNotNull("newInstance()", SidewikiService.newInstance("myValue"));
   }
 
-  public void testOther() {
-    // Unit Test for getSidewikiEntry(String uri, function(Object) callback, function(Error) opt_errorHandler)
-    // Unit Test for getSidewikiEntryFeed(SidewikiEntryQuery query, function(Object) callback, function(Error) opt_errorHandler)
-    // Unit Test for getSidewikiEntryFeed(String uri, function(Object) callback, function(Error) opt_errorHandler)
-    // Unit Test for getSidewikiUserEntry(String uri, function(Object) callback, function(Error) opt_errorHandler)
-    // Unit Test for getSidewikiUserFeed(SidewikiUserQuery query, function(Object) callback, function(Error) opt_errorHandler)
-    // Unit Test for getSidewikiUserFeed(String uri, function(Object) callback, function(Error) opt_errorHandler)
+  public void testGetSidewikiEntries() {
+    UserTest.login(GDataTestScripts.Sidewiki.testCookie_Name, GDataTestScripts.Sidewiki.testCookie_Value);
+    SidewikiService svc = SidewikiService.newInstance(SidewikiService.SERVICE_NAME);
+    SidewikiEntryQuery query = SidewikiEntryQuery.newInstance(GDataTestScripts.Sidewiki.testEntries_Feed_Link);
+    query.setMaxResults(25);
+    svc.getSidewikiEntryFeed(query, new SidewikiEntryFeedCallback() {
+      public void onFailure(CallErrorException caught) {
+        fail("Get Failed: " + caught.getMessage());
+      }
+      public void onSuccess(SidewikiEntryFeed result) {
+        if (result.getEntries().length != 24) {
+          fail("Get Failed: " + result.getEntries().length);
+        }
+        if (!result.getTitle().getText().equals(GDataTestScripts.Sidewiki.testEntries_Feed_Title)) {
+          fail("Get Failed: " + result.getTitle().getText());
+        }
+        finishTest();
+      }
+    });
+    this.delayTestFinish(4000);
   }
 }

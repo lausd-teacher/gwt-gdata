@@ -263,7 +263,9 @@ public class HelloGData implements EntryPoint, HistoryListener {
     list.addGDataDemo(MapsCreateMapFeatureDemo.init());
     list.addGDataDemo(MapsUpdateMapFeatureDemo.init());
     list.addGDataDemo(MapsDeleteMapFeatureDemo.init());
-    list.addGDataDemo(SidewikiQuerySiteEntriesDemo.init());
+    list.addGDataDemo(SidewikiRetrieveEntriesDemo.init());
+    list.addGDataDemo(SidewikiQueryEntriesBySiteDemo.init());
+    list.addGDataDemo(SidewikiQueryEntriesByAuthorDemo.init());
   }
   
   /**

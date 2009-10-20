@@ -16,40 +16,51 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the EntryLink class.
  */
-public class EntryLinkTest extends GWTTestCase {
+public class EntryLinkTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", EntryLink.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", EntryLink.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   @SuppressWarnings("unchecked")
   public void testOther() {
-    EntryLink obj = EntryLink.newInstance();
-    // Unit Test for getEntry()
-    assertEquals("getEntry", obj.getEntry(), null);
-    // Unit Test for setEntry(Entry entry)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        EntryLink obj = EntryLink.newInstance();
+        assertEquals("getEntry", obj.getEntry(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   @SuppressWarnings("unchecked")
   public void testProperties() {
-    EntryLink obj = EntryLink.newInstance();
-    boolean readonly = true;
-    obj.setReadOnly(readonly);
-    assertSame("readonly", obj.getReadOnly(), readonly);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    String href = "myValue";
-    obj.setHref(href);
-    assertEquals("href", obj.getHref(), href);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        EntryLink obj = EntryLink.newInstance();
+        boolean readonly = true;
+        obj.setReadOnly(readonly);
+        assertSame("readonly", obj.getReadOnly(), readonly);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        String href = "myValue";
+        obj.setHref(href);
+        assertEquals("href", obj.getHref(), href);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

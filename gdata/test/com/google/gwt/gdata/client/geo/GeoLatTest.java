@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.geo;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the GeoLat class.
  */
-public class GeoLatTest extends GWTTestCase {
+public class GeoLatTest extends GeoTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

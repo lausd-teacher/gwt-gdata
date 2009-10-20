@@ -17,24 +17,33 @@
 package com.google.gwt.gdata.client.app;
 
 import com.google.gwt.gdata.client.atom.Category;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the Categories class.
  */
-public class CategoriesTest extends GWTTestCase {
+public class CategoriesTest extends AppTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("FIXED_NO", Categories.FIXED_NO);
-    assertNotNull("FIXED_YES", Categories.FIXED_YES);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("FIXED_NO", Categories.FIXED_NO);
+        assertNotNull("FIXED_YES", Categories.FIXED_YES);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Categories.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Categories.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -42,18 +51,23 @@ public class CategoriesTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    Categories obj = Categories.newInstance();
-    String scheme = "myValue";
-    obj.setScheme(scheme);
-    assertEquals("scheme", obj.getScheme(), scheme);
-    String fixed = "myValue";
-    obj.setFixed(fixed);
-    assertEquals("fixed", obj.getFixed(), fixed);
-    Category[] categories = new Category[]{ Category.newInstance() };
-    obj.setCategories(categories);
-    assertEquals("categories", obj.getCategories().length, categories.length);
-    String href = "myValue";
-    obj.setHref(href);
-    assertEquals("href", obj.getHref(), href);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Categories obj = Categories.newInstance();
+        String scheme = "myValue";
+        obj.setScheme(scheme);
+        assertEquals("scheme", obj.getScheme(), scheme);
+        String fixed = "myValue";
+        obj.setFixed(fixed);
+        assertEquals("fixed", obj.getFixed(), fixed);
+        Category[] categories = new Category[]{ Category.newInstance() };
+        obj.setCategories(categories);
+        assertEquals("categories", obj.getCategories().length, categories.length);
+        String href = "myValue";
+        obj.setHref(href);
+        assertEquals("href", obj.getHref(), href);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

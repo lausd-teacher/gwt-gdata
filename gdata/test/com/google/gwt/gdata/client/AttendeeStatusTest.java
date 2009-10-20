@@ -16,32 +16,45 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the AttendeeStatus class.
  */
-public class AttendeeStatusTest extends GWTTestCase {
+public class AttendeeStatusTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("VALUE_ACCEPTED", AttendeeStatus.VALUE_ACCEPTED);
-    assertNotNull("VALUE_DECLINED", AttendeeStatus.VALUE_DECLINED);
-    assertNotNull("VALUE_INVITED", AttendeeStatus.VALUE_INVITED);
-    assertNotNull("VALUE_TENTATIVE", AttendeeStatus.VALUE_TENTATIVE);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("VALUE_ACCEPTED", AttendeeStatus.VALUE_ACCEPTED);
+        assertNotNull("VALUE_DECLINED", AttendeeStatus.VALUE_DECLINED);
+        assertNotNull("VALUE_INVITED", AttendeeStatus.VALUE_INVITED);
+        assertNotNull("VALUE_TENTATIVE", AttendeeStatus.VALUE_TENTATIVE);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AttendeeStatus.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AttendeeStatus.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    AttendeeStatus obj = AttendeeStatus.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AttendeeStatus obj = AttendeeStatus.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

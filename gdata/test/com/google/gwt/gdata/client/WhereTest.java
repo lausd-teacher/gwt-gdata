@@ -16,41 +16,54 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Where class.
  */
-public class WhereTest extends GWTTestCase {
+public class WhereTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("REL_EVENT", Where.REL_EVENT);
-    assertNotNull("REL_EVENT_ALTERNATE", Where.REL_EVENT_ALTERNATE);
-    assertNotNull("REL_EVENT_PARKING", Where.REL_EVENT_PARKING);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_EVENT", Where.REL_EVENT);
+        assertNotNull("REL_EVENT_ALTERNATE", Where.REL_EVENT_ALTERNATE);
+        assertNotNull("REL_EVENT_PARKING", Where.REL_EVENT_PARKING);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Where.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Where.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   @SuppressWarnings("unchecked")
   public void testProperties() {
-    Where obj = Where.newInstance();
-    String valuestring = "myValue";
-    obj.setValueString(valuestring);
-    assertEquals("valuestring", obj.getValueString(), valuestring);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    String label = "myValue";
-    obj.setLabel(label);
-    assertEquals("label", obj.getLabel(), label);
-    EntryLink entrylink = EntryLink.newInstance();
-    obj.setEntryLink(entrylink);
-    assertSame("entrylink", obj.getEntryLink(), entrylink);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Where obj = Where.newInstance();
+        String valuestring = "myValue";
+        obj.setValueString(valuestring);
+        assertEquals("valuestring", obj.getValueString(), valuestring);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        String label = "myValue";
+        obj.setLabel(label);
+        assertEquals("label", obj.getLabel(), label);
+        EntryLink entrylink = EntryLink.newInstance();
+        obj.setEntryLink(entrylink);
+        assertSame("entrylink", obj.getEntryLink(), entrylink);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

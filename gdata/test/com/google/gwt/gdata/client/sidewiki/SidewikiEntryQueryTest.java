@@ -17,14 +17,13 @@
 package com.google.gwt.gdata.client.sidewiki;
 
 import com.google.gwt.gdata.client.DateTime;
-import com.google.gwt.junit.client.GWTTestCase;
 
 import java.util.Date;
 
 /**
  * Tests for the SidewikiEntryQuery class.
  */
-public class SidewikiEntryQueryTest extends GWTTestCase {
+public class SidewikiEntryQueryTest extends SidewikiTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

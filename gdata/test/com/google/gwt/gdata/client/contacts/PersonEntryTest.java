@@ -22,12 +22,11 @@ import com.google.gwt.gdata.client.Im;
 import com.google.gwt.gdata.client.Organization;
 import com.google.gwt.gdata.client.PhoneNumber;
 import com.google.gwt.gdata.client.PostalAddress;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the PersonEntry class.
  */
-public class PersonEntryTest extends GWTTestCase {
+public class PersonEntryTest extends ContactsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

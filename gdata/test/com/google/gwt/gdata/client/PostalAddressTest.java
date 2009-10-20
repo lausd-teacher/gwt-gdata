@@ -16,40 +16,53 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the PostalAddress class.
  */
-public class PostalAddressTest extends GWTTestCase {
+public class PostalAddressTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("REL_HOME", PostalAddress.REL_HOME);
-    assertNotNull("REL_OTHER", PostalAddress.REL_OTHER);
-    assertNotNull("REL_WORK", PostalAddress.REL_WORK);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_HOME", PostalAddress.REL_HOME);
+        assertNotNull("REL_OTHER", PostalAddress.REL_OTHER);
+        assertNotNull("REL_WORK", PostalAddress.REL_WORK);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PostalAddress.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PostalAddress.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    PostalAddress obj = PostalAddress.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
-    boolean primary = true;
-    obj.setPrimary(primary);
-    assertSame("primary", obj.getPrimary(), primary);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    String label = "myValue";
-    obj.setLabel(label);
-    assertEquals("label", obj.getLabel(), label);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        PostalAddress obj = PostalAddress.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        boolean primary = true;
+        obj.setPrimary(primary);
+        assertSame("primary", obj.getPrimary(), primary);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        String label = "myValue";
+        obj.setLabel(label);
+        assertEquals("label", obj.getLabel(), label);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

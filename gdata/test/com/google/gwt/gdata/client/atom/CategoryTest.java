@@ -16,34 +16,42 @@
 
 package com.google.gwt.gdata.client.atom;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Category class.
  */
-public class CategoryTest extends GWTTestCase {
+public class CategoryTest extends AtomTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Category.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Category.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Category obj = Category.newInstance();
-    String term = "myValue";
-    obj.setTerm(term);
-    assertEquals("term", obj.getTerm(), term);
-    String scheme = "myValue";
-    obj.setScheme(scheme);
-    assertEquals("scheme", obj.getScheme(), scheme);
-    String labellang = "myValue";
-    obj.setLabelLang(labellang);
-    assertEquals("labellang", obj.getLabelLang(), labellang);
-    String label = "myValue";
-    obj.setLabel(label);
-    assertEquals("label", obj.getLabel(), label);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Category obj = Category.newInstance();
+        String term = "myValue";
+        obj.setTerm(term);
+        assertEquals("term", obj.getTerm(), term);
+        String scheme = "myValue";
+        obj.setScheme(scheme);
+        assertEquals("scheme", obj.getScheme(), scheme);
+        String labellang = "myValue";
+        obj.setLabelLang(labellang);
+        assertEquals("labellang", obj.getLabelLang(), labellang);
+        String label = "myValue";
+        obj.setLabel(label);
+        assertEquals("label", obj.getLabel(), label);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

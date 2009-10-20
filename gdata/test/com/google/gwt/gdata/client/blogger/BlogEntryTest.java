@@ -16,34 +16,42 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the BlogEntry class.
  */
-public class BlogEntryTest extends GWTTestCase {
+public class BlogEntryTest extends BloggerTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", BlogEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", BlogEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    BlogEntry obj = BlogEntry.newInstance();
-    // Unit Test for getEntryPostLink()
-    assertEquals("getEntryPostLink", obj.getEntryPostLink(), null);
-    // Unit Test for getFeedLink()
-    assertEquals("getFeedLink", obj.getFeedLink(), null);
-    // Unit Test for getHtmlLink()
-    assertEquals("getHtmlLink", obj.getHtmlLink(), null);
-    // Unit Test for getRepliesLink()
-    assertEquals("getRepliesLink", obj.getRepliesLink(), null);
-    // Unit Test for getSettingsLink()
-    assertEquals("getSettingsLink", obj.getSettingsLink(), null);
-    // Unit Test for getTemplateLink()
-    assertEquals("getTemplateLink", obj.getTemplateLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        BlogEntry obj = BlogEntry.newInstance();
+        // Unit Test for getEntryPostLink()
+        assertEquals("getEntryPostLink", obj.getEntryPostLink(), null);
+        // Unit Test for getFeedLink()
+        assertEquals("getFeedLink", obj.getFeedLink(), null);
+        // Unit Test for getHtmlLink()
+        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+        // Unit Test for getRepliesLink()
+        assertEquals("getRepliesLink", obj.getRepliesLink(), null);
+        // Unit Test for getSettingsLink()
+        assertEquals("getSettingsLink", obj.getSettingsLink(), null);
+        // Unit Test for getTemplateLink()
+        assertEquals("getTemplateLink", obj.getTemplateLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

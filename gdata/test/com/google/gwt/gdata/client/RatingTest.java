@@ -16,46 +16,59 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Rating class.
  */
-public class RatingTest extends GWTTestCase {
+public class RatingTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("REL_OVERALL", Rating.REL_OVERALL);
-    assertNotNull("REL_PRICE", Rating.REL_PRICE);
-    assertNotNull("REL_QUALITY", Rating.REL_QUALITY);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_OVERALL", Rating.REL_OVERALL);
+        assertNotNull("REL_PRICE", Rating.REL_PRICE);
+        assertNotNull("REL_QUALITY", Rating.REL_QUALITY);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Rating.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Rating.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Rating obj = Rating.newInstance();
-    double min = 600813;
-    obj.setMin(min);
-    assertEquals("min", obj.getMin(), min);
-    double value = 600813;
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
-    double average = 600813;
-    obj.setAverage(average);
-    assertEquals("average", obj.getAverage(), average);
-    double numraters = 600813;
-    obj.setNumRaters(numraters);
-    assertEquals("numraters", obj.getNumRaters(), numraters);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    double max = 600813;
-    obj.setMax(max);
-    assertEquals("max", obj.getMax(), max);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Rating obj = Rating.newInstance();
+        double min = 600813;
+        obj.setMin(min);
+        assertEquals("min", obj.getMin(), min);
+        double value = 600813;
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        double average = 600813;
+        obj.setAverage(average);
+        assertEquals("average", obj.getAverage(), average);
+        double numraters = 600813;
+        obj.setNumRaters(numraters);
+        assertEquals("numraters", obj.getNumRaters(), numraters);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        double max = 600813;
+        obj.setMax(max);
+        assertEquals("max", obj.getMax(), max);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

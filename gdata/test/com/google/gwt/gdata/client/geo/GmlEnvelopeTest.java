@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.geo;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the GmlEnvelope class.
  */
-public class GmlEnvelopeTest extends GWTTestCase {
+public class GmlEnvelopeTest extends GeoTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

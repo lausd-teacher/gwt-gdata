@@ -16,22 +16,30 @@
 
 package com.google.gwt.gdata.client.acl;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the AclKind class.
  */
-public class AclKindTest extends GWTTestCase {
+public class AclKindTest extends AclTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("TERM_ACCESSRULE", AclKind.TERM_ACCESSRULE);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TERM_ACCESSRULE", AclKind.TERM_ACCESSRULE);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AclKind.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AclKind.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

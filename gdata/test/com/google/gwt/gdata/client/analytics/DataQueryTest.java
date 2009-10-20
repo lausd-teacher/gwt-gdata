@@ -16,19 +16,22 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the DataQuery class.
  */
-public class DataQueryTest extends GWTTestCase {
+public class DataQueryTest extends AnalyticsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", DataQuery.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", DataQuery.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -38,36 +41,41 @@ public class DataQueryTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    DataQuery obj = DataQuery.newInstance("myValue");
-    String startdate = "myValue";
-    obj.setStartDate(startdate);
-    assertEquals("startdate", obj.getStartDate(), startdate);
-    String ids = "myValue";
-    obj.setIds(ids);
-    assertEquals("ids", obj.getIds(), ids);
-    String enddate = "myValue";
-    obj.setEndDate(enddate);
-    assertEquals("enddate", obj.getEndDate(), enddate);
-    String metrics = "myValue";
-    obj.setMetrics(metrics);
-    assertEquals("metrics", obj.getMetrics(), metrics);
-    double startindex = 600813;
-    obj.setStartIndex(startindex);
-    assertEquals("startindex", obj.getStartIndex(), startindex);
-    String sort = "myValue";
-    obj.setSort(sort);
-    assertEquals("sort", obj.getSort(), sort);
-    String filters = "myValue";
-    obj.setFilters(filters);
-    assertEquals("filters", obj.getFilters(), filters);
-    boolean prettyprint = true;
-    obj.setPrettyprint(prettyprint);
-    assertSame("prettyprint", obj.getPrettyprint(), prettyprint);
-    String dimensions = "myValue";
-    obj.setDimensions(dimensions);
-    assertEquals("dimensions", obj.getDimensions(), dimensions);
-    double maxresults = 600813;
-    obj.setMaxResults(maxresults);
-    assertEquals("maxresults", obj.getMaxResults(), maxresults);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        DataQuery obj = DataQuery.newInstance("myValue");
+        String startdate = "myValue";
+        obj.setStartDate(startdate);
+        assertEquals("startdate", obj.getStartDate(), startdate);
+        String ids = "myValue";
+        obj.setIds(ids);
+        assertEquals("ids", obj.getIds(), ids);
+        String enddate = "myValue";
+        obj.setEndDate(enddate);
+        assertEquals("enddate", obj.getEndDate(), enddate);
+        String metrics = "myValue";
+        obj.setMetrics(metrics);
+        assertEquals("metrics", obj.getMetrics(), metrics);
+        double startindex = 600813;
+        obj.setStartIndex(startindex);
+        assertEquals("startindex", obj.getStartIndex(), startindex);
+        String sort = "myValue";
+        obj.setSort(sort);
+        assertEquals("sort", obj.getSort(), sort);
+        String filters = "myValue";
+        obj.setFilters(filters);
+        assertEquals("filters", obj.getFilters(), filters);
+        boolean prettyprint = true;
+        obj.setPrettyprint(prettyprint);
+        assertSame("prettyprint", obj.getPrettyprint(), prettyprint);
+        String dimensions = "myValue";
+        obj.setDimensions(dimensions);
+        assertEquals("dimensions", obj.getDimensions(), dimensions);
+        double maxresults = 600813;
+        obj.setMaxResults(maxresults);
+        assertEquals("maxresults", obj.getMaxResults(), maxresults);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

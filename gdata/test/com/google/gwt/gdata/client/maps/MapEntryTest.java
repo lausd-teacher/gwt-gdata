@@ -20,12 +20,11 @@ import com.google.gwt.gdata.client.CustomProperty;
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.FeedLink;
 import com.google.gwt.gdata.client.ResourceId;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the MapEntry class.
  */
-public class MapEntryTest extends GWTTestCase {
+public class MapEntryTest extends MapsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
@@ -59,6 +58,6 @@ public class MapEntryTest extends GWTTestCase {
     obj.setCustomProperties(customproperties);
     assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length);
     obj.addCustomProperty(CustomProperty.newInstance());
-    assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length);
+    assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length + 1);
   }
 }

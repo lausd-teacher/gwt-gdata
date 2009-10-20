@@ -16,21 +16,24 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 import java.util.Date;
 
 /**
  * Tests for the When class.
  */
-public class WhenTest extends GWTTestCase {
+public class WhenTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", When.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", When.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -40,18 +43,23 @@ public class WhenTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    When obj = When.newInstance();
-    DateTime endtime = DateTime.newInstance(new Date(), false);
-    obj.setEndTime(endtime);
-    assertEquals("endtime", obj.getEndTime().getDate(), endtime.getDate());
-    Reminder[] reminder = new Reminder[]{ Reminder.newInstance() };
-    obj.setReminder(reminder);
-    assertEquals("reminder", obj.getReminder().length, reminder.length);
-    DateTime starttime = DateTime.newInstance(new Date(), false);
-    obj.setStartTime(starttime);
-    assertEquals("starttime", obj.getStartTime().getDate(), starttime.getDate());
-    String valuestring = "myValue";
-    obj.setValueString(valuestring);
-    assertEquals("valuestring", obj.getValueString(), valuestring);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        When obj = When.newInstance();
+        DateTime endtime = DateTime.newInstance(new Date(), false);
+        obj.setEndTime(endtime);
+        assertEquals("endtime", obj.getEndTime().getDate(), endtime.getDate());
+        Reminder[] reminder = new Reminder[]{ Reminder.newInstance() };
+        obj.setReminder(reminder);
+        assertEquals("reminder", obj.getReminder().length, reminder.length);
+        DateTime starttime = DateTime.newInstance(new Date(), false);
+        obj.setStartTime(starttime);
+        assertEquals("starttime", obj.getStartTime().getDate(), starttime.getDate());
+        String valuestring = "myValue";
+        obj.setValueString(valuestring);
+        assertEquals("valuestring", obj.getValueString(), valuestring);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

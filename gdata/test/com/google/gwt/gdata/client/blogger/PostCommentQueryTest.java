@@ -17,21 +17,25 @@
 package com.google.gwt.gdata.client.blogger;
 
 import com.google.gwt.gdata.client.DateTime;
-import com.google.gwt.junit.client.GWTTestCase;
 
 import java.util.Date;
 
 /**
  * Tests for the PostCommentQuery class.
  */
-public class PostCommentQueryTest extends GWTTestCase {
+public class PostCommentQueryTest extends BloggerTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PostCommentQuery.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PostCommentQuery.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -44,24 +48,29 @@ public class PostCommentQueryTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    PostCommentQuery obj = PostCommentQuery.newInstance("myValue");
-    DateTime publishedmax = DateTime.newInstance(new Date(), false);
-    obj.setPublishedMax(publishedmax);
-    assertEquals("publishedmax", obj.getPublishedMax().getDate(), publishedmax.getDate());
-    DateTime updatedmin = DateTime.newInstance(new Date(), false);
-    obj.setUpdatedMin(updatedmin);
-    assertEquals("updatedmin", obj.getUpdatedMin().getDate(), updatedmin.getDate());
-    double startindex = 600813;
-    obj.setStartIndex(startindex);
-    assertEquals("startindex", obj.getStartIndex(), startindex);
-    DateTime publishedmin = DateTime.newInstance(new Date(), false);
-    obj.setPublishedMin(publishedmin);
-    assertEquals("publishedmin", obj.getPublishedMin().getDate(), publishedmin.getDate());
-    double maxresults = 600813;
-    obj.setMaxResults(maxresults);
-    assertEquals("maxresults", obj.getMaxResults(), maxresults);
-    DateTime updatedmax = DateTime.newInstance(new Date(), false);
-    obj.setUpdatedMax(updatedmax);
-    assertEquals("updatedmax", obj.getUpdatedMax().getDate(), updatedmax.getDate());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        PostCommentQuery obj = PostCommentQuery.newInstance("myValue");
+        DateTime publishedmax = DateTime.newInstance(new Date(), false);
+        obj.setPublishedMax(publishedmax);
+        assertEquals("publishedmax", obj.getPublishedMax().getDate(), publishedmax.getDate());
+        DateTime updatedmin = DateTime.newInstance(new Date(), false);
+        obj.setUpdatedMin(updatedmin);
+        assertEquals("updatedmin", obj.getUpdatedMin().getDate(), updatedmin.getDate());
+        double startindex = 600813;
+        obj.setStartIndex(startindex);
+        assertEquals("startindex", obj.getStartIndex(), startindex);
+        DateTime publishedmin = DateTime.newInstance(new Date(), false);
+        obj.setPublishedMin(publishedmin);
+        assertEquals("publishedmin", obj.getPublishedMin().getDate(), publishedmin.getDate());
+        double maxresults = 600813;
+        obj.setMaxResults(maxresults);
+        assertEquals("maxresults", obj.getMaxResults(), maxresults);
+        DateTime updatedmax = DateTime.newInstance(new Date(), false);
+        obj.setUpdatedMax(updatedmax);
+        assertEquals("updatedmax", obj.getUpdatedMax().getDate(), updatedmax.getDate());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

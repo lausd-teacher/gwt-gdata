@@ -16,35 +16,48 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 import java.util.Date;
 
 /**
  * Tests for the LastViewed class.
  */
-public class LastViewedTest extends GWTTestCase {
+public class LastViewedTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", LastViewed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", LastViewed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    LastViewed obj = LastViewed.newInstance();
-    // Unit Test for setValue(Date value)
-    Date value = new Date();
-    obj.setValue(value);
-    assertEquals("value", obj.getValue().getDate(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        LastViewed obj = LastViewed.newInstance();
+        // Unit Test for setValue(Date value)
+        Date value = new Date();
+        obj.setValue(value);
+        assertEquals("value", obj.getValue().getDate(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    LastViewed obj = LastViewed.newInstance();
-    DateTime value = DateTime.newInstance(new Date(), false);
-    obj.setValue(value);
-    assertEquals("value", obj.getValue().getDate(), value.getDate());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        LastViewed obj = LastViewed.newInstance();
+        DateTime value = DateTime.newInstance(new Date(), false);
+        obj.setValue(value);
+        assertEquals("value", obj.getValue().getDate(), value.getDate());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

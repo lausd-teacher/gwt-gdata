@@ -16,34 +16,42 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the CustomProperty class.
  */
-public class CustomPropertyTest extends GWTTestCase {
+public class CustomPropertyTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CustomProperty.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CustomProperty.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    CustomProperty obj = CustomProperty.newInstance();
-    String name = "myValue";
-    obj.setName(name);
-    assertEquals("name", obj.getName(), name);
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
-    String type = "myValue";
-    obj.setType(type);
-    assertEquals("type", obj.getType(), type);
-    String unit = "myValue";
-    obj.setUnit(unit);
-    assertEquals("unit", obj.getUnit(), unit);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CustomProperty obj = CustomProperty.newInstance();
+        String name = "myValue";
+        obj.setName(name);
+        assertEquals("name", obj.getName(), name);
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        String unit = "myValue";
+        obj.setUnit(unit);
+        assertEquals("unit", obj.getUnit(), unit);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

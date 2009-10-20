@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the GroupMembershipInfo class.
  */
-public class GroupMembershipInfoTest extends GWTTestCase {
+public class GroupMembershipInfoTest extends ContactsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

@@ -16,45 +16,58 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the PhoneNumber class.
  */
-public class PhoneNumberTest extends GWTTestCase {
+public class PhoneNumberTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("REL_FAX", PhoneNumber.REL_FAX);
-    assertNotNull("REL_HOME", PhoneNumber.REL_HOME);
-    assertNotNull("REL_HOME_FAX", PhoneNumber.REL_HOME_FAX);
-    assertNotNull("REL_MOBILE", PhoneNumber.REL_MOBILE);
-    assertNotNull("REL_OTHER", PhoneNumber.REL_OTHER);
-    assertNotNull("REL_PAGER", PhoneNumber.REL_PAGER);
-    assertNotNull("REL_WORK", PhoneNumber.REL_WORK);
-    assertNotNull("REL_WORK_FAX", PhoneNumber.REL_WORK_FAX);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_FAX", PhoneNumber.REL_FAX);
+        assertNotNull("REL_HOME", PhoneNumber.REL_HOME);
+        assertNotNull("REL_HOME_FAX", PhoneNumber.REL_HOME_FAX);
+        assertNotNull("REL_MOBILE", PhoneNumber.REL_MOBILE);
+        assertNotNull("REL_OTHER", PhoneNumber.REL_OTHER);
+        assertNotNull("REL_PAGER", PhoneNumber.REL_PAGER);
+        assertNotNull("REL_WORK", PhoneNumber.REL_WORK);
+        assertNotNull("REL_WORK_FAX", PhoneNumber.REL_WORK_FAX);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PhoneNumber.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PhoneNumber.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    PhoneNumber obj = PhoneNumber.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
-    boolean primary = true;
-    obj.setPrimary(primary);
-    assertSame("primary", obj.getPrimary(), primary);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    String label = "myValue";
-    obj.setLabel(label);
-    assertEquals("label", obj.getLabel(), label);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        PhoneNumber obj = PhoneNumber.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        boolean primary = true;
+        obj.setPrimary(primary);
+        assertSame("primary", obj.getPrimary(), primary);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        String label = "myValue";
+        obj.setLabel(label);
+        assertEquals("label", obj.getLabel(), label);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

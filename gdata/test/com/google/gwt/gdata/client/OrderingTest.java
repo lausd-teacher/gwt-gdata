@@ -16,43 +16,56 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Ordering class.
  */
-public class OrderingTest extends GWTTestCase {
+public class OrderingTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("REL_COMESAFTER", Ordering.REL_COMESAFTER);
-    assertNotNull("REL_FIRST", Ordering.REL_FIRST);
-    assertNotNull("REL_LAST", Ordering.REL_LAST);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_COMESAFTER", Ordering.REL_COMESAFTER);
+        assertNotNull("REL_FIRST", Ordering.REL_FIRST);
+        assertNotNull("REL_LAST", Ordering.REL_LAST);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Ordering.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Ordering.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Ordering obj = Ordering.newInstance();
-    String ref = "myValue";
-    obj.setRef(ref);
-    assertEquals("ref", obj.getRef(), ref);
-    String next = "myValue";
-    obj.setNext(next);
-    assertEquals("next", obj.getNext(), next);
-    String prev = "myValue";
-    obj.setPrev(prev);
-    assertEquals("prev", obj.getPrev(), prev);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    String orderid = "myValue";
-    obj.setOrderId(orderid);
-    assertEquals("orderid", obj.getOrderId(), orderid);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Ordering obj = Ordering.newInstance();
+        String ref = "myValue";
+        obj.setRef(ref);
+        assertEquals("ref", obj.getRef(), ref);
+        String next = "myValue";
+        obj.setNext(next);
+        assertEquals("next", obj.getNext(), next);
+        String prev = "myValue";
+        obj.setPrev(prev);
+        assertEquals("prev", obj.getPrev(), prev);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        String orderid = "myValue";
+        obj.setOrderId(orderid);
+        assertEquals("orderid", obj.getOrderId(), orderid);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

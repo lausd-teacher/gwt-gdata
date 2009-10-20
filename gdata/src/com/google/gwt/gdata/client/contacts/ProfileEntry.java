@@ -27,6 +27,7 @@ public class ProfileEntry extends PersonEntry {
 
   /**
    * Constructs a profile entry.
+   * 
    * @return A ProfileEntry object.
    */
   public static native ProfileEntry newInstance() /*-{
@@ -199,21 +200,21 @@ public class ProfileEntry extends PersonEntry {
   }-*/;
   
   /**
-   * Returns the initials. This element is optional.
-   * 
-   * @return Initials.
-   */
-  public final native Initials getInitials() /*-{
-    return this.getInitials();
-  }-*/;
-  
-  /**
    * Returns the hobbies. This element is optional.
    * 
    * @return Hobbies
    */
   public final native Hobby[] getHobbies() /*-{
     return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getHobbies());
+  }-*/;
+  
+  /**
+   * Returns the initials. This element is optional.
+   * 
+   * @return Initials.
+   */
+  public final native Initials getInitials() /*-{
+    return this.getInitials();
   }-*/;
   
   /**
@@ -296,6 +297,18 @@ public class ProfileEntry extends PersonEntry {
   public final native Relation[] getRelations() /*-{
     return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getRelations());
   }-*/;
+  
+  /**
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @return current representation of the entry.
+   */
+  public final ProfileEntry getSelf(ProfileEntryCallback callback) {
+    return this.get(callback);
+  }
 
   /**
    * Returns the sensitivity. This element is optional.
@@ -353,25 +366,20 @@ public class ProfileEntry extends PersonEntry {
 
   /**
    * Returns the location. This element is optional.
+   * 
    * @return Where.
    */
   public final native Where getWhere() /*-{
     return this.getWhere();
   }-*/;
-  
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @return current representation of the entry.
-   */
-  public final ProfileEntry getSelf(ProfileEntryCallback callback) {
-    return this.get(callback);
-  }
 
-  public final native void setBillingInformation(BillingInformation billingInformation) /*-{
+  /**
+   * Returns the billing information. This element is optional.
+   * 
+   * @param billingInformation Billing information.
+   */
+  public final native void setBillingInformation(
+      BillingInformation billingInformation) /*-{
     this.setBillingInformation(billingInformation);
   }-*/;
 
@@ -469,7 +477,7 @@ public class ProfileEntry extends PersonEntry {
   /**
    * Sets the languages. This element is optional.
    * 
-   * @param language Languages.
+   * @param languages Languages.
    */
   public final native void setLanguages(Language[] languages) /*-{
     this.setLanguages(

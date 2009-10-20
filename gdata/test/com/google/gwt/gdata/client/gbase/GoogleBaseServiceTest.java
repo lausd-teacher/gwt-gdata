@@ -21,12 +21,11 @@ import com.google.gwt.gdata.client.GDataTestScripts;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.gdata.client.impl.Map;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the GoogleBaseService class.
  */
-public class GoogleBaseServiceTest extends GWTTestCase {
+public class GoogleBaseServiceTest extends GoogleBaseTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
@@ -138,10 +137,10 @@ public class GoogleBaseServiceTest extends GWTTestCase {
           }
           public void onSuccess(ItemsFeed result) {
             if (result.getEntries().length == 0) {
-              fail("Get Failed");
+              fail("Get Failed: " + result.getEntries().length);
             }
             if (!result.getTitle().getText().equals(GDataTestScripts.GoogleBase.testItems_Feed_Title)) {
-              fail("Get Failed");
+              fail("Get Failed: " + result.getTitle().getText());
             }
             finishTest();
           }

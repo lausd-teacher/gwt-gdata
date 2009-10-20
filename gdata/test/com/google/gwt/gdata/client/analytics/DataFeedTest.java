@@ -16,43 +16,56 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the DataFeed class.
  */
-public class DataFeedTest extends GWTTestCase {
+public class DataFeedTest extends AnalyticsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", DataFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", DataFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    DataFeed obj = DataFeed.newInstance();
-    // Unit Test for addDataSource(DataSource dataSource)
-    // Unit Test for getNextLink()
-    assertEquals("getNextLink", obj.getNextLink(), null);
-    // Unit Test for getPreviousLink()
-    assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        DataFeed obj = DataFeed.newInstance();
+        // Unit Test for addDataSource(DataSource dataSource)
+        // Unit Test for getNextLink()
+        assertEquals("getNextLink", obj.getNextLink(), null);
+        // Unit Test for getPreviousLink()
+        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    DataFeed obj = DataFeed.newInstance();
-    DataSource[] datasources = new DataSource[]{ DataSource.newInstance() };
-    obj.setDataSources(datasources);
-    assertEquals("datasources", obj.getDataSources().length, datasources.length);
-    EndDate enddate = EndDate.newInstance();
-    obj.setEndDate(enddate);
-    assertSame("enddate", obj.getEndDate(), enddate);
-    Aggregates aggregates = Aggregates.newInstance();
-    obj.setAggregates(aggregates);
-    assertSame("aggregates", obj.getAggregates(), aggregates);
-    StartDate startdate = StartDate.newInstance();
-    obj.setStartDate(startdate);
-    assertSame("startdate", obj.getStartDate(), startdate);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        DataFeed obj = DataFeed.newInstance();
+        DataSource[] datasources = new DataSource[]{ DataSource.newInstance() };
+        obj.setDataSources(datasources);
+        assertEquals("datasources", obj.getDataSources().length, datasources.length);
+        EndDate enddate = EndDate.newInstance();
+        obj.setEndDate(enddate);
+        assertSame("enddate", obj.getEndDate(), enddate);
+        Aggregates aggregates = Aggregates.newInstance();
+        obj.setAggregates(aggregates);
+        assertSame("aggregates", obj.getAggregates(), aggregates);
+        StartDate startdate = StartDate.newInstance();
+        obj.setStartDate(startdate);
+        assertSame("startdate", obj.getStartDate(), startdate);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

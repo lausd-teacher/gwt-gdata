@@ -16,28 +16,36 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Country class.
  */
-public class CountryTest extends GWTTestCase {
+public class CountryTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Country.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Country.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Country obj = Country.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
-    String code = "myValue";
-    obj.setCode(code);
-    assertEquals("code", obj.getCode(), code);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Country obj = Country.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        String code = "myValue";
+        obj.setCode(code);
+        assertEquals("code", obj.getCode(), code);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

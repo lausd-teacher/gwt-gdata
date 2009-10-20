@@ -25,12 +25,11 @@ import com.google.gwt.gdata.client.PhoneNumber;
 import com.google.gwt.gdata.client.PostalAddress;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.impl.CallErrorException;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the ContactsService class.
  */
-public class ContactsServiceTest extends GWTTestCase {
+public class ContactsServiceTest extends ContactsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

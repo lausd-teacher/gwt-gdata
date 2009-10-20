@@ -16,31 +16,39 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the OriginalEvent class.
  */
-public class OriginalEventTest extends GWTTestCase {
+public class OriginalEventTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", OriginalEvent.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", OriginalEvent.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    OriginalEvent obj = OriginalEvent.newInstance();
-    When originalstarttime = When.newInstance();
-    obj.setOriginalStartTime(originalstarttime);
-    assertSame("originalstarttime", obj.getOriginalStartTime(), originalstarttime);
-    String originalid = "myValue";
-    obj.setOriginalId(originalid);
-    assertEquals("originalid", obj.getOriginalId(), originalid);
-    String href = "myValue";
-    obj.setHref(href);
-    assertEquals("href", obj.getHref(), href);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        OriginalEvent obj = OriginalEvent.newInstance();
+        When originalstarttime = When.newInstance();
+        obj.setOriginalStartTime(originalstarttime);
+        assertSame("originalstarttime", obj.getOriginalStartTime(), originalstarttime);
+        String originalid = "myValue";
+        obj.setOriginalId(originalid);
+        assertEquals("originalid", obj.getOriginalId(), originalid);
+        String href = "myValue";
+        obj.setHref(href);
+        assertEquals("href", obj.getHref(), href);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

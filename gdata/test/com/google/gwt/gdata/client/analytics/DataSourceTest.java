@@ -16,19 +16,22 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the DataSource class.
  */
-public class DataSourceTest extends GWTTestCase {
+public class DataSourceTest extends AnalyticsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", DataSource.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", DataSource.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -37,15 +40,20 @@ public class DataSourceTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    DataSource obj = DataSource.newInstance();
-    Property[] properties = new Property[]{ Property.newInstance() };
-    obj.setProperties(properties);
-    assertEquals("properties", obj.getProperties().length, properties.length);
-    TableName tablename = TableName.newInstance();
-    obj.setTableName(tablename);
-    assertSame("tablename", obj.getTableName(), tablename);
-    TableId tableid = TableId.newInstance();
-    obj.setTableId(tableid);
-    assertSame("tableid", obj.getTableId(), tableid);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        DataSource obj = DataSource.newInstance();
+        Property[] properties = new Property[]{ Property.newInstance() };
+        obj.setProperties(properties);
+        assertEquals("properties", obj.getProperties().length, properties.length);
+        TableName tablename = TableName.newInstance();
+        obj.setTableName(tablename);
+        assertSame("tablename", obj.getTableName(), tablename);
+        TableId tableid = TableId.newInstance();
+        obj.setTableId(tableid);
+        assertSame("tableid", obj.getTableId(), tableid);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

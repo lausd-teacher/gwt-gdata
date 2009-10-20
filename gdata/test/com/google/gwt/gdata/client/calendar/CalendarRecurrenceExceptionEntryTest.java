@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the CalendarRecurrenceExceptionEntry class.
  */
-public class CalendarRecurrenceExceptionEntryTest extends GWTTestCase {
+public class CalendarRecurrenceExceptionEntryTest extends CalendarTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

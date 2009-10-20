@@ -16,26 +16,34 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the PostCommentFeed class.
  */
-public class PostCommentFeedTest extends GWTTestCase {
+public class PostCommentFeedTest extends BloggerTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PostCommentFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PostCommentFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    PostCommentFeed obj = PostCommentFeed.newInstance();
-    // Unit Test for getNextLink()
-    assertEquals("getNextLink", obj.getNextLink(), null);
-    // Unit Test for getPreviousLink()
-    assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        PostCommentFeed obj = PostCommentFeed.newInstance();
+        // Unit Test for getNextLink()
+        assertEquals("getNextLink", obj.getNextLink(), null);
+        // Unit Test for getPreviousLink()
+        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -16,35 +16,48 @@
 
 package com.google.gwt.gdata.client.acl;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the AclScope class.
  */
-public class AclScopeTest extends GWTTestCase {
+public class AclScopeTest extends AclTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("TYPE_DEFAULT", AclScope.TYPE_DEFAULT);
-    assertNotNull("TYPE_DOMAIN", AclScope.TYPE_DOMAIN);
-    assertNotNull("TYPE_GROUP", AclScope.TYPE_GROUP);
-    assertNotNull("TYPE_USER", AclScope.TYPE_USER);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TYPE_DEFAULT", AclScope.TYPE_DEFAULT);
+        assertNotNull("TYPE_DOMAIN", AclScope.TYPE_DOMAIN);
+        assertNotNull("TYPE_GROUP", AclScope.TYPE_GROUP);
+        assertNotNull("TYPE_USER", AclScope.TYPE_USER);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AclScope.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AclScope.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    AclScope obj = AclScope.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
-    String type = "myValue";
-    obj.setType(type);
-    assertEquals("type", obj.getType(), type);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AclScope obj = AclScope.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -16,24 +16,32 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the BloggerLink class.
  */
-public class BloggerLinkTest extends GWTTestCase {
+public class BloggerLinkTest extends BloggerTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("REL_REPLIES", BloggerLink.REL_REPLIES);
-    assertNotNull("REL_SETTINGS", BloggerLink.REL_SETTINGS);
-    assertNotNull("REL_TEMPLATE", BloggerLink.REL_TEMPLATE);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_REPLIES", BloggerLink.REL_REPLIES);
+        assertNotNull("REL_SETTINGS", BloggerLink.REL_SETTINGS);
+        assertNotNull("REL_TEMPLATE", BloggerLink.REL_TEMPLATE);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", BloggerLink.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", BloggerLink.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

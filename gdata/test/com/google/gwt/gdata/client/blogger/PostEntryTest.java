@@ -18,44 +18,58 @@ package com.google.gwt.gdata.client.blogger;
 
 import com.google.gwt.gdata.client.mediarss.MediaThumbnail;
 import com.google.gwt.gdata.client.threading.Total;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the PostEntry class.
  */
-public class PostEntryTest extends GWTTestCase {
+public class PostEntryTest extends BloggerTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PostEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PostEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    PostEntry obj = PostEntry.newInstance();
-    // Unit Test for getEnclosureLink()
-    assertEquals("getEnclosureLink", obj.getEnclosureLink(), null);
-    // Unit Test for getEntryPostLink()
-    assertEquals("getEntryPostLink", obj.getEntryPostLink(), null);
-    // Unit Test for getFeedLink()
-    assertEquals("getFeedLink", obj.getFeedLink(), null);
-    // Unit Test for getHtmlLink()
-    assertEquals("getHtmlLink", obj.getHtmlLink(), null);
-    // Unit Test for getRepliesHtmlLink()
-    assertEquals("getRepliesHtmlLink", obj.getRepliesHtmlLink(), null);
-    // Unit Test for getRepliesLink()
-    assertEquals("getRepliesLink", obj.getRepliesLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        PostEntry obj = PostEntry.newInstance();
+        // Unit Test for getEnclosureLink()
+        assertEquals("getEnclosureLink", obj.getEnclosureLink(), null);
+        // Unit Test for getEntryPostLink()
+        assertEquals("getEntryPostLink", obj.getEntryPostLink(), null);
+        // Unit Test for getFeedLink()
+        assertEquals("getFeedLink", obj.getFeedLink(), null);
+        // Unit Test for getHtmlLink()
+        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+        // Unit Test for getRepliesHtmlLink()
+        assertEquals("getRepliesHtmlLink", obj.getRepliesHtmlLink(), null);
+        // Unit Test for getRepliesLink()
+        assertEquals("getRepliesLink", obj.getRepliesLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    PostEntry obj = PostEntry.newInstance();
-    Total total = Total.newInstance();
-    obj.setTotal(total);
-    assertSame("total", obj.getTotal(), total);
-    MediaThumbnail thumbnail = MediaThumbnail.newInstance();
-    obj.setThumbnail(thumbnail);
-    assertSame("thumbnail", obj.getThumbnail(), thumbnail);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        PostEntry obj = PostEntry.newInstance();
+        Total total = Total.newInstance();
+        obj.setTotal(total);
+        assertSame("total", obj.getTotal(), total);
+        MediaThumbnail thumbnail = MediaThumbnail.newInstance();
+        obj.setThumbnail(thumbnail);
+        assertSame("thumbnail", obj.getThumbnail(), thumbnail);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

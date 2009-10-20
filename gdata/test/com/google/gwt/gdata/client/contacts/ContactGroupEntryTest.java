@@ -18,12 +18,11 @@ package com.google.gwt.gdata.client.contacts;
 
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.ExtendedProperty;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the ContactGroupEntry class.
  */
-public class ContactGroupEntryTest extends GWTTestCase {
+public class ContactGroupEntryTest extends ContactsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

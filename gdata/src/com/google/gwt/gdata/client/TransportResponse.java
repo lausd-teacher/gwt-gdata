@@ -41,7 +41,7 @@ public class TransportResponse extends JavaScriptObject {
    * @param headerValue The value of the header.
    */
   public final native void addHeader(String headerKey, String headerValue) /*-{
-    this.addHeader(headerKey,headerValue);
+    this.headers[headerKey] = headerValue;
   }-*/;
 
   /**
@@ -96,7 +96,7 @@ public class TransportResponse extends JavaScriptObject {
    * @param responseText The response text.
    */
   public final native void setResponseText(String responseText) /*-{
-    this.setResponseText(responseText);
+    this.responseText = responseText;
   }-*/;
 
   /**
@@ -105,7 +105,7 @@ public class TransportResponse extends JavaScriptObject {
    * @param responseXml The response text as xml.
    */
   public final native void setResponseXml(String responseXml) /*-{
-    this.setResponseXml(responseXml);
+    this.responseXML = responseXml;
   }-*/;
 
   /**
@@ -114,7 +114,7 @@ public class TransportResponse extends JavaScriptObject {
    * @param status The http status code of the response.
    */
   public final native void setStatus(double status) /*-{
-    this.setStatus(status);
+    this.status = status;
   }-*/;
 
   /**
@@ -123,7 +123,7 @@ public class TransportResponse extends JavaScriptObject {
    * @param statusText The text associated with the http status code of the response.
    */
   public final native void setStatusText(String statusText) /*-{
-    this.setStatusText(statusText);
+    this.statusText = statusText;
   }-*/;
 
 }

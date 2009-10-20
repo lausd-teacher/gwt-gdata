@@ -15,13 +15,10 @@
  */
 
 package com.google.gwt.gdata.client.calendar;
-
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the GuestsCanInviteOthersProperty class.
  */
-public class GuestsCanInviteOthersPropertyTest extends GWTTestCase {
+public class GuestsCanInviteOthersPropertyTest extends CalendarTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

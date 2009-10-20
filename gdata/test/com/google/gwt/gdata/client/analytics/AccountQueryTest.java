@@ -16,19 +16,22 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the AccountQuery class.
  */
-public class AccountQueryTest extends GWTTestCase {
+public class AccountQueryTest extends AnalyticsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AccountQuery.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AccountQuery.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -38,15 +41,20 @@ public class AccountQueryTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    AccountQuery obj = AccountQuery.newInstance("myValue");
-    double startindex = 600813;
-    obj.setStartIndex(startindex);
-    assertEquals("startindex", obj.getStartIndex(), startindex);
-    boolean prettyprint = true;
-    obj.setPrettyprint(prettyprint);
-    assertSame("prettyprint", obj.getPrettyprint(), prettyprint);
-    double maxresults = 600813;
-    obj.setMaxResults(maxresults);
-    assertEquals("maxresults", obj.getMaxResults(), maxresults);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AccountQuery obj = AccountQuery.newInstance("myValue");
+        double startindex = 600813;
+        obj.setStartIndex(startindex);
+        assertEquals("startindex", obj.getStartIndex(), startindex);
+        boolean prettyprint = true;
+        obj.setPrettyprint(prettyprint);
+        assertSame("prettyprint", obj.getPrettyprint(), prettyprint);
+        double maxresults = 600813;
+        obj.setMaxResults(maxresults);
+        assertEquals("maxresults", obj.getMaxResults(), maxresults);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

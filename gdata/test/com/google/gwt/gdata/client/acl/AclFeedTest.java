@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.acl;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the AclFeed class.
  */
-public class AclFeedTest extends GWTTestCase {
+public class AclFeedTest extends AclTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

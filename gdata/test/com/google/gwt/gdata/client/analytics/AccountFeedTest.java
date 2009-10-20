@@ -16,26 +16,34 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the AccountFeed class.
  */
-public class AccountFeedTest extends GWTTestCase {
+public class AccountFeedTest extends AnalyticsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AccountFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AccountFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    AccountFeed obj = AccountFeed.newInstance();
-    // Unit Test for getNextLink()
-    assertEquals("getNextLink", obj.getNextLink(), null);
-    // Unit Test for getPreviousLink()
-    assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AccountFeed obj = AccountFeed.newInstance();
+        // Unit Test for getNextLink()
+        assertEquals("getNextLink", obj.getNextLink(), null);
+        // Unit Test for getPreviousLink()
+        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

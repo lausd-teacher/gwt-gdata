@@ -16,40 +16,53 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Email class.
  */
-public class EmailTest extends GWTTestCase {
+public class EmailTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
+    executeGDataTest(new Runnable() {
+      public void run() {
+        finishGDataTest();
+      }
+    }, 10000);
     assertNotNull("REL_HOME", Email.REL_HOME);
     assertNotNull("REL_OTHER", Email.REL_OTHER);
     assertNotNull("REL_WORK", Email.REL_WORK);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Email.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Email.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Email obj = Email.newInstance();
-    boolean primary = true;
-    obj.setPrimary(primary);
-    assertSame("primary", obj.getPrimary(), primary);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    String label = "myValue";
-    obj.setLabel(label);
-    assertEquals("label", obj.getLabel(), label);
-    String address = "myValue";
-    obj.setAddress(address);
-    assertEquals("address", obj.getAddress(), address);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Email obj = Email.newInstance();
+        boolean primary = true;
+        obj.setPrimary(primary);
+        assertSame("primary", obj.getPrimary(), primary);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        String label = "myValue";
+        obj.setLabel(label);
+        assertEquals("label", obj.getLabel(), label);
+        String address = "myValue";
+        obj.setAddress(address);
+        assertEquals("address", obj.getAddress(), address);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -55,12 +55,12 @@ public class GData {
    * @param packages the GData packages to check for.
    * @return <code>true</code> if the GData packages are loaded.
    */
-  public static boolean isLoaded(String[] packages) {
+  public static boolean isLoaded(GDataPackage... packages) {
     if (!isLoaded()) {
       return false;
     }
-    for (String p : packages) {
-      if (!isLoaded(p.toLowerCase())) {
+    for (GDataPackage p : packages) {
+      if (!isLoaded(p.getValue())) {
         return false;
       }
     }
@@ -128,10 +128,14 @@ public class GData {
    * Blogger, etc.)
    * @param onLoad callback to be invoked when the library is loaded.
    */
-  public static void loadGDataApi(String key, String[] packages,
-      Runnable onLoad) {
+  public static void loadGDataApi(String key,
+      Runnable onLoad, GDataPackage... packages) {
     AjaxLoaderOptions options = AjaxLoaderOptions.newInstance();
-    options.setPackages(packages);
+    String[] packageNames = new String[packages.length];
+    for (int i = 0; i < packages.length; i++) {
+      packageNames[i] = packages[i].getValue();
+    }
+    options.setPackages(packageNames);
     loadGDataApi(key, targetGDataJsApiVersion, options, onLoad);
   }
   

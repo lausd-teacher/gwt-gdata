@@ -16,28 +16,36 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Money class.
  */
-public class MoneyTest extends GWTTestCase {
+public class MoneyTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Money.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Money.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Money obj = Money.newInstance();
-    String currencycode = "myValue";
-    obj.setCurrencyCode(currencycode);
-    assertEquals("currencycode", obj.getCurrencyCode(), currencycode);
-    double amount = 600813;
-    obj.setAmount(amount);
-    assertEquals("amount", obj.getAmount(), amount);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Money obj = Money.newInstance();
+        String currencycode = "myValue";
+        obj.setCurrencyCode(currencycode);
+        assertEquals("currencycode", obj.getCurrencyCode(), currencycode);
+        double amount = 600813;
+        obj.setAmount(amount);
+        assertEquals("amount", obj.getAmount(), amount);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

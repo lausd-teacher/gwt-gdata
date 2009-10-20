@@ -16,32 +16,45 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Visibility class.
  */
-public class VisibilityTest extends GWTTestCase {
+public class VisibilityTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("VALUE_CONFIDENTIAL", Visibility.VALUE_CONFIDENTIAL);
-    assertNotNull("VALUE_DEFAULT", Visibility.VALUE_DEFAULT);
-    assertNotNull("VALUE_PRIVATE", Visibility.VALUE_PRIVATE);
-    assertNotNull("VALUE_PUBLIC", Visibility.VALUE_PUBLIC);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("VALUE_CONFIDENTIAL", Visibility.VALUE_CONFIDENTIAL);
+        assertNotNull("VALUE_DEFAULT", Visibility.VALUE_DEFAULT);
+        assertNotNull("VALUE_PRIVATE", Visibility.VALUE_PRIVATE);
+        assertNotNull("VALUE_PUBLIC", Visibility.VALUE_PUBLIC);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Visibility.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Visibility.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Visibility obj = Visibility.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Visibility obj = Visibility.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

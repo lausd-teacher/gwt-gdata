@@ -43,7 +43,7 @@ public class User {
    * @return The scopes the user is currently logged into.
    */
   public static final native String[] getScopes() /*-{
-    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)($wnd.google.accounts.user.getScopes());
+    return @com.google.gwt.accounts.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArrayString;)($wnd.google.accounts.user.getScopes());
   }-*/;
   
   /**

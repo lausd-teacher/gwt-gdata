@@ -17,12 +17,11 @@
 package com.google.gwt.gdata.client.finance;
 
 import com.google.gwt.gdata.client.Money;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the DaysGain class.
  */
-public class DaysGainTest extends GWTTestCase {
+public class DaysGainTest extends FinanceTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
