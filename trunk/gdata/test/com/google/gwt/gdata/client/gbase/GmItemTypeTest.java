@@ -26,13 +26,23 @@ public class GmItemTypeTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GmItemType.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", GmItemType.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    GmItemType obj = GmItemType.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GmItemType obj = GmItemType.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

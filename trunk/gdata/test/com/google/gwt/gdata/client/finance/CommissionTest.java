@@ -28,7 +28,12 @@ public class CommissionTest extends FinanceTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Commission.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Commission.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -36,9 +41,14 @@ public class CommissionTest extends FinanceTest {
   }
 
   public void testProperties() {
-    Commission obj = Commission.newInstance();
-    Money[] money = new Money[]{ Money.newInstance() };
-    obj.setMoney(money);
-    assertEquals("money", obj.getMoney().length, money.length);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Commission obj = Commission.newInstance();
+        Money[] money = new Money[]{ Money.newInstance() };
+        obj.setMoney(money);
+        assertEquals("money", obj.getMoney().length, money.length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

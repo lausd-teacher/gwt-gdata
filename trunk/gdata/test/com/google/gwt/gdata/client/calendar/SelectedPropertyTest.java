@@ -26,13 +26,23 @@ public class SelectedPropertyTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SelectedProperty.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SelectedProperty.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    SelectedProperty obj = SelectedProperty.newInstance();
-    boolean value = true;
-    obj.setValue(value);
-    assertSame("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SelectedProperty obj = SelectedProperty.newInstance();
+        boolean value = true;
+        obj.setValue(value);
+        assertSame("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

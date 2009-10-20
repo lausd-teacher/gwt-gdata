@@ -30,14 +30,24 @@ public class SidewikiEntryQueryTest extends SidewikiTest {
   }
 
   public void testConstants() {
-    assertNotNull("SORTORDER_PUBLISHED",
-        SidewikiEntryQuery.SORTORDER_PUBLISHED);
-    assertNotNull("SORTORDER_QUALITY", SidewikiEntryQuery.SORTORDER_QUALITY);
-    assertNotNull("SORTORDER_UPDATED", SidewikiEntryQuery.SORTORDER_UPDATED);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("SORTORDER_PUBLISHED",
+            SidewikiEntryQuery.SORTORDER_PUBLISHED);
+        assertNotNull("SORTORDER_QUALITY", SidewikiEntryQuery.SORTORDER_QUALITY);
+        assertNotNull("SORTORDER_UPDATED", SidewikiEntryQuery.SORTORDER_UPDATED);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SidewikiEntryQuery.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SidewikiEntryQuery.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -48,23 +58,28 @@ public class SidewikiEntryQueryTest extends SidewikiTest {
   }
 
   public void testProperties() {
-    SidewikiEntryQuery obj = SidewikiEntryQuery.newInstance("myValue");
-    DateTime updatedmin = DateTime.newInstance(new Date(), false);
-    obj.setUpdatedMin(updatedmin);
-    assertEquals("updatedmin", obj.getUpdatedMin().getDate(),
-        updatedmin.getDate());
-    double startindex = 600813;
-    obj.setStartIndex(startindex);
-    assertEquals("startindex", obj.getStartIndex(), startindex);
-    String sortorder = "myValue";
-    obj.setSortOrder(sortorder);
-    assertEquals("sortorder", obj.getSortOrder(), sortorder);
-    double maxresults = 600813;
-    obj.setMaxResults(maxresults);
-    assertEquals("maxresults", obj.getMaxResults(), maxresults);
-    DateTime updatedmax = DateTime.newInstance(new Date(), false);
-    obj.setUpdatedMax(updatedmax);
-    assertEquals("updatedmax", obj.getUpdatedMax().getDate(),
-        updatedmax.getDate());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SidewikiEntryQuery obj = SidewikiEntryQuery.newInstance("myValue");
+        DateTime updatedmin = DateTime.newInstance(new Date(), false);
+        obj.setUpdatedMin(updatedmin);
+        assertEquals("updatedmin", obj.getUpdatedMin().getDate(),
+            updatedmin.getDate());
+        double startindex = 600813;
+        obj.setStartIndex(startindex);
+        assertEquals("startindex", obj.getStartIndex(), startindex);
+        String sortorder = "myValue";
+        obj.setSortOrder(sortorder);
+        assertEquals("sortorder", obj.getSortOrder(), sortorder);
+        double maxresults = 600813;
+        obj.setMaxResults(maxresults);
+        assertEquals("maxresults", obj.getMaxResults(), maxresults);
+        DateTime updatedmax = DateTime.newInstance(new Date(), false);
+        obj.setUpdatedMax(updatedmax);
+        assertEquals("updatedmax", obj.getUpdatedMax().getDate(),
+            updatedmax.getDate());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -20,6 +20,8 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.Where;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.calendar.CalendarEntry;
@@ -76,21 +78,17 @@ public class CalendarCreateCalendarDemo extends GDataDemo {
    * otherwise start the demo by creating a calendar.
    */
   public CalendarCreateCalendarDemo() {
-    service = CalendarService.newInstance(
-        "HelloGData_Calendar_CreateCalendarDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Create a calendar");
-      startButton.addClickHandler(new ClickHandler() {
-        public void onClick(ClickEvent event) {
-          createCalendar("http://www.google.com/calendar/feeds/default/" +
-              "owncalendars/full");
+    if (!GData.isLoaded(GDataSystemPackage.CALENDAR)) {
+      showStatus("Loading the GData Calendar package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
         }
-      });
-      mainPanel.setWidget(0, 0, startButton);
+      }, GDataSystemPackage.CALENDAR);
     } else {
-      showStatus("You are not logged on to Google Calendar.", true);
+      startDemo();
     }
   }
 
@@ -153,5 +151,25 @@ public class CalendarCreateCalendarDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_CreateCalendarDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      Button startButton = new Button("Create a calendar");
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
+          createCalendar("http://www.google.com/calendar/feeds/default/" +
+              "owncalendars/full");
+        }
+      });
+      mainPanel.setWidget(0, 0, startButton);
+    } else {
+      showStatus("You are not logged on to Google Calendar.", true);
+    }
   }
 }

@@ -26,24 +26,39 @@ public class JotTest extends ContactsTest {
   }
 
   public void testConstants() {
-    assertNotNull("REL_HOME", Jot.REL_HOME);
-    assertNotNull("REL_KEYWORDS", Jot.REL_KEYWORDS);
-    assertNotNull("REL_OTHER", Jot.REL_OTHER);
-    assertNotNull("REL_USER", Jot.REL_USER);
-    assertNotNull("REL_WORK", Jot.REL_WORK);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_HOME", Jot.REL_HOME);
+        assertNotNull("REL_KEYWORDS", Jot.REL_KEYWORDS);
+        assertNotNull("REL_OTHER", Jot.REL_OTHER);
+        assertNotNull("REL_USER", Jot.REL_USER);
+        assertNotNull("REL_WORK", Jot.REL_WORK);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Jot.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Jot.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Jot obj = Jot.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Jot obj = Jot.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

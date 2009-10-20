@@ -26,10 +26,20 @@ public class CalendarMetaKindTest extends CalendarTest {
   }
 
   public void testConstants() {
-    assertNotNull("TERM_CALENDARMETA", CalendarMetaKind.TERM_CALENDARMETA);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TERM_CALENDARMETA", CalendarMetaKind.TERM_CALENDARMETA);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarMetaKind.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarMetaKind.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

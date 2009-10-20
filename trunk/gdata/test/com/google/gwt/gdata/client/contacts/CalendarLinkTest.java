@@ -26,28 +26,43 @@ public class CalendarLinkTest extends ContactsTest {
   }
 
   public void testConstants() {
-    assertNotNull("REL_FREE_BUSY", CalendarLink.REL_FREE_BUSY);
-    assertNotNull("REL_HOME", CalendarLink.REL_HOME);
-    assertNotNull("REL_WORK", CalendarLink.REL_WORK);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_FREE_BUSY", CalendarLink.REL_FREE_BUSY);
+        assertNotNull("REL_HOME", CalendarLink.REL_HOME);
+        assertNotNull("REL_WORK", CalendarLink.REL_WORK);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarLink.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarLink.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    CalendarLink obj = CalendarLink.newInstance();
-    boolean primary = true;
-    obj.setPrimary(primary);
-    assertSame("primary", obj.getPrimary(), primary);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    String label = "myValue";
-    obj.setLabel(label);
-    assertEquals("label", obj.getLabel(), label);
-    String href = "myValue";
-    obj.setHref(href);
-    assertEquals("href", obj.getHref(), href);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CalendarLink obj = CalendarLink.newInstance();
+        boolean primary = true;
+        obj.setPrimary(primary);
+        assertSame("primary", obj.getPrimary(), primary);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        String label = "myValue";
+        obj.setLabel(label);
+        assertEquals("label", obj.getLabel(), label);
+        String href = "myValue";
+        obj.setHref(href);
+        assertEquals("href", obj.getHref(), href);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -26,13 +26,23 @@ public class SendAclNotificationsPropertyTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SendAclNotificationsProperty.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SendAclNotificationsProperty.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    SendAclNotificationsProperty obj = SendAclNotificationsProperty.newInstance();
-    boolean value = true;
-    obj.setValue(value);
-    assertSame("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SendAclNotificationsProperty obj = SendAclNotificationsProperty.newInstance();
+        boolean value = true;
+        obj.setValue(value);
+        assertSame("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

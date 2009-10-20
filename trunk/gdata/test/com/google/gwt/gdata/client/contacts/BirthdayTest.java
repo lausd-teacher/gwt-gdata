@@ -26,13 +26,23 @@ public class BirthdayTest extends ContactsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Birthday.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Birthday.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Birthday obj = Birthday.newInstance();
-    String when = "myValue";
-    obj.setWhen(when);
-    assertEquals("when", obj.getWhen(), when);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Birthday obj = Birthday.newInstance();
+        String when = "myValue";
+        obj.setWhen(when);
+        assertEquals("when", obj.getWhen(), when);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

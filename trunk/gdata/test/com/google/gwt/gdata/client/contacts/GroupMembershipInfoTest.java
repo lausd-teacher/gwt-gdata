@@ -26,16 +26,26 @@ public class GroupMembershipInfoTest extends ContactsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GroupMembershipInfo.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", GroupMembershipInfo.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    GroupMembershipInfo obj = GroupMembershipInfo.newInstance();
-    boolean deleted = true;
-    obj.setDeleted(deleted);
-    assertSame("deleted", obj.getDeleted(), deleted);
-    String href = "myValue";
-    obj.setHref(href);
-    assertEquals("href", obj.getHref(), href);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GroupMembershipInfo obj = GroupMembershipInfo.newInstance();
+        boolean deleted = true;
+        obj.setDeleted(deleted);
+        assertSame("deleted", obj.getDeleted(), deleted);
+        String href = "myValue";
+        obj.setHref(href);
+        assertEquals("href", obj.getHref(), href);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

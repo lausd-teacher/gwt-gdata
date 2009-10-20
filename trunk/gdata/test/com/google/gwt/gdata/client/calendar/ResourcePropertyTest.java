@@ -26,16 +26,26 @@ public class ResourcePropertyTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ResourceProperty.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ResourceProperty.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    ResourceProperty obj = ResourceProperty.newInstance();
-    String id = "myValue";
-    obj.setId(id);
-    assertEquals("id", obj.getId(), id);
-    boolean value = true;
-    obj.setValue(value);
-    assertSame("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ResourceProperty obj = ResourceProperty.newInstance();
+        String id = "myValue";
+        obj.setId(id);
+        assertEquals("id", obj.getId(), id);
+        boolean value = true;
+        obj.setValue(value);
+        assertSame("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

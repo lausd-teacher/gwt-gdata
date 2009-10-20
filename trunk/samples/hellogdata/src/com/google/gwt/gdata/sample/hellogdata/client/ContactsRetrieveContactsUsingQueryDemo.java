@@ -19,6 +19,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.gdata.client.DateTime;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
 import com.google.gwt.gdata.client.contacts.ContactFeed;
 import com.google.gwt.gdata.client.contacts.ContactFeedCallback;
@@ -74,14 +76,17 @@ public class ContactsRetrieveContactsUsingQueryDemo extends GDataDemo {
    * otherwise start the demo by querying the user's contacts.
    */
   public ContactsRetrieveContactsUsingQueryDemo() {
-    service = ContactsService.newInstance(
-        "HelloGData_Contacts_RetrieveContactsUsingQueryDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      queryContacts("http://www.google.com/m8/feeds/contacts/default/full");
+    if (!GData.isLoaded(GDataSystemPackage.CONTACTS)) {
+      showStatus("Loading the GData Contacts package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
+        }
+      }, GDataSystemPackage.CONTACTS);
     } else {
-      showStatus("You are not logged on to Google Contacts.", true);
+      startDemo();
     }
   }
 
@@ -170,5 +175,18 @@ public class ContactsRetrieveContactsUsingQueryDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = ContactsService.newInstance(
+        "HelloGData_Contacts_RetrieveContactsUsingQueryDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      queryContacts("http://www.google.com/m8/feeds/contacts/default/full");
+    } else {
+      showStatus("You are not logged on to Google Contacts.", true);
+    }
   }
 }

@@ -29,26 +29,36 @@ public class SidewikiAuthorTest extends SidewikiTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SidewikiAuthor.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SidewikiAuthor.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    SidewikiAuthor obj = SidewikiAuthor.newInstance();
-    Rating rating = Rating.newInstance();
-    obj.setRating(rating);
-    assertSame("rating", obj.getRating(), rating);
-    EntriesNumber numentries = EntriesNumber.newInstance();
-    obj.setNumEntries(numentries);
-    assertSame("numentries", obj.getNumEntries(), numentries);
-    ResourceId resourceid = ResourceId.newInstance();
-    obj.setResourceId(resourceid);
-    assertSame("resourceid", obj.getResourceId(), resourceid);
-    SidewikiUserDescription description =
-      SidewikiUserDescription.newInstance();
-    obj.setDescription(description);
-    assertSame("description", obj.getDescription(), description);
-    SidewikiThumbnail thumbnail = SidewikiThumbnail.newInstance();
-    obj.setThumbnail(thumbnail);
-    assertSame("thumbnail", obj.getThumbnail(), thumbnail);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SidewikiAuthor obj = SidewikiAuthor.newInstance();
+        Rating rating = Rating.newInstance();
+        obj.setRating(rating);
+        assertSame("rating", obj.getRating(), rating);
+        EntriesNumber numentries = EntriesNumber.newInstance();
+        obj.setNumEntries(numentries);
+        assertSame("numentries", obj.getNumEntries(), numentries);
+        ResourceId resourceid = ResourceId.newInstance();
+        obj.setResourceId(resourceid);
+        assertSame("resourceid", obj.getResourceId(), resourceid);
+        SidewikiUserDescription description =
+          SidewikiUserDescription.newInstance();
+        obj.setDescription(description);
+        assertSame("description", obj.getDescription(), description);
+        SidewikiThumbnail thumbnail = SidewikiThumbnail.newInstance();
+        obj.setThumbnail(thumbnail);
+        assertSame("thumbnail", obj.getThumbnail(), thumbnail);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

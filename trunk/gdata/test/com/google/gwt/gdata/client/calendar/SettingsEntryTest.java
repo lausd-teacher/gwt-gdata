@@ -26,13 +26,23 @@ public class SettingsEntryTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SettingsEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SettingsEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    SettingsEntry obj = SettingsEntry.newInstance();
-    SettingsProperty settingsproperty = SettingsProperty.newInstance();
-    obj.setSettingsProperty(settingsproperty);
-    assertSame("settingsproperty", obj.getSettingsProperty(), settingsproperty);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SettingsEntry obj = SettingsEntry.newInstance();
+        SettingsProperty settingsproperty = SettingsProperty.newInstance();
+        obj.setSettingsProperty(settingsproperty);
+        assertSame("settingsproperty", obj.getSettingsProperty(), settingsproperty);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

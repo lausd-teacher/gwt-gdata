@@ -26,13 +26,23 @@ public class GeoLongTest extends GeoTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GeoLong.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", GeoLong.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    GeoLong obj = GeoLong.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GeoLong obj = GeoLong.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

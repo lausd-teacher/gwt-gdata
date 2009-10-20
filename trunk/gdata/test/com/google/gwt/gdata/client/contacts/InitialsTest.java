@@ -26,13 +26,23 @@ public class InitialsTest extends ContactsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Initials.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Initials.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Initials obj = Initials.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Initials obj = Initials.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

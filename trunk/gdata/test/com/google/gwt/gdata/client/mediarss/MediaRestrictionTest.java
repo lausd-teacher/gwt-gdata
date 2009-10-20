@@ -26,26 +26,41 @@ public class MediaRestrictionTest extends MediaRssTest {
   }
 
   public void testConstants() {
-    assertNotNull("RELATIONSHIP_ALLOW", MediaRestriction.RELATIONSHIP_ALLOW);
-    assertNotNull("RELATIONSHIP_DENY", MediaRestriction.RELATIONSHIP_DENY);
-    assertNotNull("TYPE_COUNTRY", MediaRestriction.TYPE_COUNTRY);
-    assertNotNull("TYPE_URI", MediaRestriction.TYPE_URI);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("RELATIONSHIP_ALLOW", MediaRestriction.RELATIONSHIP_ALLOW);
+        assertNotNull("RELATIONSHIP_DENY", MediaRestriction.RELATIONSHIP_DENY);
+        assertNotNull("TYPE_COUNTRY", MediaRestriction.TYPE_COUNTRY);
+        assertNotNull("TYPE_URI", MediaRestriction.TYPE_URI);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaRestriction.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaRestriction.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    MediaRestriction obj = MediaRestriction.newInstance();
-    String type = "myValue";
-    obj.setType(type);
-    assertEquals("type", obj.getType(), type);
-    String content = "myValue";
-    obj.setContent(content);
-    assertEquals("content", obj.getContent(), content);
-    String relationship = "myValue";
-    obj.setRelationship(relationship);
-    assertEquals("relationship", obj.getRelationship(), relationship);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaRestriction obj = MediaRestriction.newInstance();
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        String content = "myValue";
+        obj.setContent(content);
+        assertEquals("content", obj.getContent(), content);
+        String relationship = "myValue";
+        obj.setRelationship(relationship);
+        assertEquals("relationship", obj.getRelationship(), relationship);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

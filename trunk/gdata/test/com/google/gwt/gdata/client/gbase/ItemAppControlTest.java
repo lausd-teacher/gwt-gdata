@@ -26,16 +26,26 @@ public class ItemAppControlTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ItemAppControl.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ItemAppControl.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    ItemAppControl obj = ItemAppControl.newInstance();
-    ItemPublishingPriority publishingpriority = ItemPublishingPriority.newInstance();
-    obj.setPublishingPriority(publishingpriority);
-    assertSame("publishingpriority", obj.getPublishingPriority(), publishingpriority);
-    ItemDisapproved disapproved = ItemDisapproved.newInstance();
-    obj.setDisapproved(disapproved);
-    assertSame("disapproved", obj.getDisapproved(), disapproved);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ItemAppControl obj = ItemAppControl.newInstance();
+        ItemPublishingPriority publishingpriority = ItemPublishingPriority.newInstance();
+        obj.setPublishingPriority(publishingpriority);
+        assertSame("publishingpriority", obj.getPublishingPriority(), publishingpriority);
+        ItemDisapproved disapproved = ItemDisapproved.newInstance();
+        obj.setDisapproved(disapproved);
+        assertSame("disapproved", obj.getDisapproved(), disapproved);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

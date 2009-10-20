@@ -29,7 +29,12 @@ public class ContactGroupEntryTest extends ContactsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ContactGroupEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ContactGroupEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -37,15 +42,20 @@ public class ContactGroupEntryTest extends ContactsTest {
   }
 
   public void testProperties() {
-    ContactGroupEntry obj = ContactGroupEntry.newInstance();
-    SystemGroup systemgroup = SystemGroup.newInstance();
-    obj.setSystemGroup(systemgroup);
-    assertSame("systemgroup", obj.getSystemGroup(), systemgroup);
-    ExtendedProperty[] extendedproperties = new ExtendedProperty[]{ ExtendedProperty.newInstance() };
-    obj.setExtendedProperties(extendedproperties);
-    assertEquals("extendedproperties", obj.getExtendedProperties().length, extendedproperties.length);
-    Deleted deleted = Deleted.newInstance();
-    obj.setDeleted(deleted);
-    assertSame("deleted", obj.getDeleted(), deleted);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ContactGroupEntry obj = ContactGroupEntry.newInstance();
+        SystemGroup systemgroup = SystemGroup.newInstance();
+        obj.setSystemGroup(systemgroup);
+        assertSame("systemgroup", obj.getSystemGroup(), systemgroup);
+        ExtendedProperty[] extendedproperties = new ExtendedProperty[]{ ExtendedProperty.newInstance() };
+        obj.setExtendedProperties(extendedproperties);
+        assertEquals("extendedproperties", obj.getExtendedProperties().length, extendedproperties.length);
+        Deleted deleted = Deleted.newInstance();
+        obj.setDeleted(deleted);
+        assertSame("deleted", obj.getDeleted(), deleted);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

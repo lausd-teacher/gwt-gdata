@@ -34,151 +34,173 @@ public class CalendarServiceTest extends CalendarTest {
   }
 
   public void testConstants() {
-    assertNotNull("SERVICE_NAME", CalendarService.SERVICE_NAME);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("SERVICE_NAME", CalendarService.SERVICE_NAME);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AnalyticsService.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AnalyticsService.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
   
   public void testCreateAndDeleteCalendar() {
-    UserTest.login(GDataTestScripts.Calendar.testCookie_Name, GDataTestScripts.Calendar.testCookie_Value);
-    CalendarService svc = CalendarService.newInstance("test");
-    CalendarEntry newEntry = CalendarEntry.newInstance();
-    newEntry.setTitle(Text.newInstance());
-    newEntry.getTitle().setText(GDataTestScripts.Calendar.testCalendar_Entry_Title_Created);
-    newEntry.setSummary(Text.newInstance());
-    newEntry.getSummary().setText(GDataTestScripts.Calendar.testCalendar_Entry_Summary_Created);
-    newEntry.setTimeZone(TimeZoneProperty.newInstance());
-    newEntry.getTimeZone().setValue(GDataTestScripts.Calendar.testCalendar_Entry_TimeZone_Created);
-    newEntry.setHidden(HiddenProperty.newInstance());
-    newEntry.getHidden().setValue(false);
-    newEntry.setColor(ColorProperty.newInstance());
-    newEntry.getColor().setValue(ColorProperty.VALUE_RGB_4E5D6C);
-    svc.insertCalendarEntry(GDataTestScripts.Calendar.testCalendars_Feed_InsertLink, newEntry, new CalendarEntryCallback() {
-      public void onFailure(CallErrorException caught) {
-        fail("Create Failed: " + caught.getMessage());
-      }
-      public void onSuccess(CalendarEntry result) {
-        if (!result.getTitle().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Title_Created) ||
-            !result.getSummary().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Summary_Created) ||
-            !result.getTimeZone().getValue().equals(GDataTestScripts.Calendar.testCalendar_Entry_TimeZone_Created) ||
-            !result.getColor().getValue().equals(ColorProperty.VALUE_RGB_4E5D6C) ||
-            result.getHidden().getValue() == true) {
-          fail("Create Failed");
-        }
-        result.deleteEntry(new CalendarEntryCallback() {
+    executeGDataTest(new Runnable() {
+      public void run() {
+        UserTest.login(GDataTestScripts.Calendar.testCookie_Name, GDataTestScripts.Calendar.testCookie_Value);
+        CalendarService svc = CalendarService.newInstance("test");
+        CalendarEntry newEntry = CalendarEntry.newInstance();
+        newEntry.setTitle(Text.newInstance());
+        newEntry.getTitle().setText(GDataTestScripts.Calendar.testCalendar_Entry_Title_Created);
+        newEntry.setSummary(Text.newInstance());
+        newEntry.getSummary().setText(GDataTestScripts.Calendar.testCalendar_Entry_Summary_Created);
+        newEntry.setTimeZone(TimeZoneProperty.newInstance());
+        newEntry.getTimeZone().setValue(GDataTestScripts.Calendar.testCalendar_Entry_TimeZone_Created);
+        newEntry.setHidden(HiddenProperty.newInstance());
+        newEntry.getHidden().setValue(false);
+        newEntry.setColor(ColorProperty.newInstance());
+        newEntry.getColor().setValue(ColorProperty.VALUE_RGB_4E5D6C);
+        svc.insertCalendarEntry(GDataTestScripts.Calendar.testCalendars_Feed_InsertLink, newEntry, new CalendarEntryCallback() {
           public void onFailure(CallErrorException caught) {
-            fail("Delete Failed: " + caught.getMessage());
+            fail("Create Failed: " + caught.getMessage());
           }
           public void onSuccess(CalendarEntry result) {
-            finishTest();
-          }
-        });
-      }
-    });
-    delayTestFinish(10000);
-  }
-  
-  public void testGetCalendar() {
-    UserTest.login(GDataTestScripts.Calendar.testCookie_Name, GDataTestScripts.Calendar.testCookie_Value);
-    CalendarService svc = CalendarService.newInstance("test");
-    svc.getCalendarEntry(GDataTestScripts.Calendar.testCalendar_Entry_Link,
-        new CalendarEntryCallback() {
-          public void onFailure(CallErrorException caught) {
-            fail("Get Failed: " + caught.getMessage());
-          }
-          public void onSuccess(CalendarEntry result) {
-            Person[] authors = result.getAuthors();
-            Category[] cats = result.getCategories();
-            if (authors.length == 0 || cats.length == 0) {
-              fail("Get Failed");
+            if (!result.getTitle().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Title_Created) ||
+                !result.getSummary().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Summary_Created) ||
+                !result.getTimeZone().getValue().equals(GDataTestScripts.Calendar.testCalendar_Entry_TimeZone_Created) ||
+                !result.getColor().getValue().equals(ColorProperty.VALUE_RGB_4E5D6C) ||
+                result.getHidden().getValue() == true) {
+              fail("Create Failed");
             }
-            Person author = authors[0];
-            Category cat = cats[0];
-            if (!GDataTestScripts.Calendar.testCalendar_Entry_Title.equals(result.getTitle().getText()) ||
-                !GDataTestScripts.Calendar.testCalendar_Entry_Summary.equals(result.getSummary().getText()) ||
-                !GDataTestScripts.Calendar.testCalendar_Entry_AccessControlListLink.equals(result.getAccessControlListLink().getHref()) ||
-                !GDataTestScripts.Calendar.testCalendar_Entry_AtomAlternateLink.equals(result.getAtomAlternateLink().getHref()) ||
-                !GDataTestScripts.Calendar.testCalendar_Entry_AccessLevel.equals(result.getAccessLevel().getValue()) ||
-                !GDataTestScripts.Calendar.testCalendar_Entry_Color.equals(result.getColor().getValue()) ||
-                !GDataTestScripts.Calendar.testCalendar_Entry_AuthorEmail.equals(author.getEmail().getValue()) ||
-                !GDataTestScripts.Calendar.testCalendar_Entry_AuthorName.equals(author.getName().getValue()) ||
-                !GDataTestScripts.Calendar.testCalendar_Entry_CategoryTerm.equals(cat.getTerm()) ||
-                !GDataTestScripts.Calendar.testCalendar_Entry_EditLink.equals(result.getEditLink().getHref()) ||
-                !GDataTestScripts.Calendar.testCalendar_Entry_EventFeedLink.equals(result.getEventFeedLink().getHref()) ||
-                result.getHidden().getValue() ||
-                !result.getSelected().getValue() ||
-                result.getTimesCleaned().getValue() != 0.0) {
-              fail("Get Failed");
-            }
-            finishTest();
-          }
-    });
-    this.delayTestFinish(10000);
-  }
-  
-  public void testGetCalendars() {
-    UserTest.login(GDataTestScripts.Calendar.testCookie_Name, GDataTestScripts.Calendar.testCookie_Value);
-    CalendarService svc = CalendarService.newInstance("test");
-    svc.getOwnCalendarsFeed(GDataTestScripts.Calendar.testCalendars_Feed_Link,
-        new CalendarFeedCallback() {
-          public void onFailure(CallErrorException caught) {
-            fail("Get Failed: " + caught.getMessage());
-          }
-          public void onSuccess(CalendarFeed result) {
-            if (result.getEntries().length == 0) {
-              fail("Get Failed: " + result.getEntries().length);
-            }
-            if (!result.getTitle().getText().equals(GDataTestScripts.Calendar.testCalendars_Feed_Title)) {
-              fail("Get Failed: " + result.getTitle().getText());
-            }
-            finishTest();
-          }
-    });
-    this.delayTestFinish(10000);
-  }
-  
-  public void testUpdateCalendar() {
-    UserTest.login(GDataTestScripts.Calendar.testCookie_Name, GDataTestScripts.Calendar.testCookie_Value);
-    CalendarService svc = CalendarService.newInstance("test");
-    svc.getCalendarEntry(GDataTestScripts.Calendar.testCalendar_Entry_Link,
-        new CalendarEntryCallback() {
-          public void onFailure(CallErrorException caught) {
-            fail("Get Failed: " + caught.getMessage());
-          }
-          public void onSuccess(CalendarEntry result) {
-            result.getTitle().setText(GDataTestScripts.Calendar.testCalendar_Entry_Title_Updated);
-            result.getSummary().setText(GDataTestScripts.Calendar.testCalendar_Entry_Summary_Updated);
-            result.updateEntry(new CalendarEntryCallback() {
+            result.deleteEntry(new CalendarEntryCallback() {
               public void onFailure(CallErrorException caught) {
-                fail("Update Failed: " + caught.getMessage());
+                fail("Delete Failed: " + caught.getMessage());
               }
               public void onSuccess(CalendarEntry result) {
-                if (result.getTitle().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Title_Updated) &&
-                    result.getSummary().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Summary_Updated)) {
-                  result.getTitle().setText(GDataTestScripts.Calendar.testCalendar_Entry_Title);
-                  result.getSummary().setText(GDataTestScripts.Calendar.testCalendar_Entry_Summary);
-                  result.updateEntry(new CalendarEntryCallback() {
-                    public void onFailure(CallErrorException caught) {
-                      fail("Revert Failed: " + caught.getMessage());
-                    }
-                    public void onSuccess(CalendarEntry result) {
-                      if (result.getTitle().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Title) &&
-                          result.getSummary().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Summary)) {
-                        finishTest();
-                      } else { 
-                        fail("Revert Failed");
-                      }
-                    }
-                  });
-                } else { 
-                  fail("Update Failed");
-                }
+                finishGDataTest();
               }
             });
           }
-    });
-    delayTestFinish(10000);
+        });
+      }
+    }, 20000);
+  }
+  
+  public void testGetCalendar() {
+    executeGDataTest(new Runnable() {
+      public void run() {
+        UserTest.login(GDataTestScripts.Calendar.testCookie_Name, GDataTestScripts.Calendar.testCookie_Value);
+        CalendarService svc = CalendarService.newInstance("test");
+        svc.getCalendarEntry(GDataTestScripts.Calendar.testCalendar_Entry_Link,
+            new CalendarEntryCallback() {
+              public void onFailure(CallErrorException caught) {
+                fail("Get Failed: " + caught.getMessage());
+              }
+              public void onSuccess(CalendarEntry result) {
+                Person[] authors = result.getAuthors();
+                Category[] cats = result.getCategories();
+                if (authors.length == 0 || cats.length == 0) {
+                  fail("Get Failed");
+                }
+                Person author = authors[0];
+                Category cat = cats[0];
+                if (!GDataTestScripts.Calendar.testCalendar_Entry_Title.equals(result.getTitle().getText()) ||
+                    !GDataTestScripts.Calendar.testCalendar_Entry_Summary.equals(result.getSummary().getText()) ||
+                    !GDataTestScripts.Calendar.testCalendar_Entry_AccessControlListLink.equals(result.getAccessControlListLink().getHref()) ||
+                    !GDataTestScripts.Calendar.testCalendar_Entry_AtomAlternateLink.equals(result.getAtomAlternateLink().getHref()) ||
+                    !GDataTestScripts.Calendar.testCalendar_Entry_AccessLevel.equals(result.getAccessLevel().getValue()) ||
+                    !GDataTestScripts.Calendar.testCalendar_Entry_Color.equals(result.getColor().getValue()) ||
+                    !GDataTestScripts.Calendar.testCalendar_Entry_AuthorEmail.equals(author.getEmail().getValue()) ||
+                    !GDataTestScripts.Calendar.testCalendar_Entry_AuthorName.equals(author.getName().getValue()) ||
+                    !GDataTestScripts.Calendar.testCalendar_Entry_CategoryTerm.equals(cat.getTerm()) ||
+                    !GDataTestScripts.Calendar.testCalendar_Entry_EditLink.equals(result.getEditLink().getHref()) ||
+                    !GDataTestScripts.Calendar.testCalendar_Entry_EventFeedLink.equals(result.getEventFeedLink().getHref()) ||
+                    result.getHidden().getValue() ||
+                    !result.getSelected().getValue() ||
+                    result.getTimesCleaned().getValue() != 0.0) {
+                  fail("Get Failed");
+                }
+                finishGDataTest();
+              }
+        });
+      }
+    }, 20000);
+  }
+  
+  public void testGetCalendars() {
+    executeGDataTest(new Runnable() {
+      public void run() {
+        UserTest.login(GDataTestScripts.Calendar.testCookie_Name, GDataTestScripts.Calendar.testCookie_Value);
+        CalendarService svc = CalendarService.newInstance("test");
+        svc.getOwnCalendarsFeed(GDataTestScripts.Calendar.testCalendars_Feed_Link,
+            new CalendarFeedCallback() {
+              public void onFailure(CallErrorException caught) {
+                fail("Get Failed: " + caught.getMessage());
+              }
+              public void onSuccess(CalendarFeed result) {
+                if (result.getEntries().length == 0) {
+                  fail("Get Failed: " + result.getEntries().length);
+                }
+                if (!result.getTitle().getText().equals(GDataTestScripts.Calendar.testCalendars_Feed_Title)) {
+                  fail("Get Failed: " + result.getTitle().getText());
+                }
+                finishGDataTest();
+              }
+        });
+      }
+    }, 20000);
+  }
+  
+  public void testUpdateCalendar() {
+    executeGDataTest(new Runnable() {
+      public void run() {
+        UserTest.login(GDataTestScripts.Calendar.testCookie_Name, GDataTestScripts.Calendar.testCookie_Value);
+        CalendarService svc = CalendarService.newInstance("test");
+        svc.getCalendarEntry(GDataTestScripts.Calendar.testCalendar_Entry_Link,
+            new CalendarEntryCallback() {
+              public void onFailure(CallErrorException caught) {
+                fail("Get Failed: " + caught.getMessage());
+              }
+              public void onSuccess(CalendarEntry result) {
+                result.getTitle().setText(GDataTestScripts.Calendar.testCalendar_Entry_Title_Updated);
+                result.getSummary().setText(GDataTestScripts.Calendar.testCalendar_Entry_Summary_Updated);
+                result.updateEntry(new CalendarEntryCallback() {
+                  public void onFailure(CallErrorException caught) {
+                    fail("Update Failed: " + caught.getMessage());
+                  }
+                  public void onSuccess(CalendarEntry result) {
+                    if (result.getTitle().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Title_Updated) &&
+                        result.getSummary().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Summary_Updated)) {
+                      result.getTitle().setText(GDataTestScripts.Calendar.testCalendar_Entry_Title);
+                      result.getSummary().setText(GDataTestScripts.Calendar.testCalendar_Entry_Summary);
+                      result.updateEntry(new CalendarEntryCallback() {
+                        public void onFailure(CallErrorException caught) {
+                          fail("Revert Failed: " + caught.getMessage());
+                        }
+                        public void onSuccess(CalendarEntry result) {
+                          if (result.getTitle().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Title) &&
+                              result.getSummary().getText().equals(GDataTestScripts.Calendar.testCalendar_Entry_Summary)) {
+                            finishGDataTest();
+                          } else { 
+                            fail("Revert Failed");
+                          }
+                        }
+                      });
+                    } else { 
+                      fail("Update Failed");
+                    }
+                  }
+                });
+              }
+        });
+      }
+    }, 20000);
   }
 }

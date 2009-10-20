@@ -17,10 +17,24 @@
 package com.google.gwt.gdata.client;
 
 /**
- * Base interface for GData packages.
+ * Represents the available GData auxiliary packages.
  */
-public interface GDataPackage {
+public enum GDataAuxiliaryPackage implements GDataPackage {
   
-  String getValue();
+  ACL("acl"),
+  APP("app"),
+  ATOM("atom"),
+  GEO("geo"),
+  MEDIARSS("mediarss"),
+  OPENSEARCH("opensearch"),
+  THREADING("threading");
   
+  private String value;
+  private GDataAuxiliaryPackage(String name) {
+    value = name;
+  }
+  
+  public String getValue() {
+    return value;
+  }
 }

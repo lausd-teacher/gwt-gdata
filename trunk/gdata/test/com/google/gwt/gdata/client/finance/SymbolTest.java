@@ -26,19 +26,29 @@ public class SymbolTest extends FinanceTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Symbol.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Symbol.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Symbol obj = Symbol.newInstance();
-    String exchange = "myValue";
-    obj.setExchange(exchange);
-    assertEquals("exchange", obj.getExchange(), exchange);
-    String symbol = "myValue";
-    obj.setSymbol(symbol);
-    assertEquals("symbol", obj.getSymbol(), symbol);
-    String fullname = "myValue";
-    obj.setFullName(fullname);
-    assertEquals("fullname", obj.getFullName(), fullname);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Symbol obj = Symbol.newInstance();
+        String exchange = "myValue";
+        obj.setExchange(exchange);
+        assertEquals("exchange", obj.getExchange(), exchange);
+        String symbol = "myValue";
+        obj.setSymbol(symbol);
+        assertEquals("symbol", obj.getSymbol(), symbol);
+        String fullname = "myValue";
+        obj.setFullName(fullname);
+        assertEquals("fullname", obj.getFullName(), fullname);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

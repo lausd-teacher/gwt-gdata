@@ -26,10 +26,20 @@ public class VersionCategoryTest extends MapsTest {
   }
 
   public void testConstants() {
-    assertNotNull("TERM_VERSION", VersionCategory.TERM_VERSION);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TERM_VERSION", VersionCategory.TERM_VERSION);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", VersionCategory.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", VersionCategory.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

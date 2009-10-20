@@ -26,10 +26,20 @@ public class PositionKindTest extends FinanceTest {
   }
 
   public void testConstants() {
-    assertNotNull("TERM_POSITION", PositionKind.TERM_POSITION);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TERM_POSITION", PositionKind.TERM_POSITION);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PositionKind.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PositionKind.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

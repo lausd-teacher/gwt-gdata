@@ -26,13 +26,23 @@ public class EntriesNumberTest extends SidewikiTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", EntriesNumber.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", EntriesNumber.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    EntriesNumber obj = EntriesNumber.newInstance();
-    double value = 600813;
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        EntriesNumber obj = EntriesNumber.newInstance();
+        double value = 600813;
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

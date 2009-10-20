@@ -18,6 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.gbase.Attribute;
 import com.google.gwt.gdata.client.gbase.GoogleBaseService;
 import com.google.gwt.gdata.client.gbase.ItemsEntry;
@@ -72,14 +74,17 @@ public class GoogleBaseRetrieveItemAttributesDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's items.
    */
   public GoogleBaseRetrieveItemAttributesDemo() {
-    service = GoogleBaseService.newInstance(
-        "HelloGData_GoogleBase_RetrieveItemAttributesDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getItems("http://www.google.com/base/feeds/items");
+    if (!GData.isLoaded(GDataSystemPackage.GBASE)) {
+      showStatus("Loading the GData Google-Base package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
+        }
+      }, GDataSystemPackage.GBASE);
     } else {
-      showStatus("You are not logged on to Google Base.", true);
+      startDemo();
     }
   }
 
@@ -171,5 +176,18 @@ public class GoogleBaseRetrieveItemAttributesDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = GoogleBaseService.newInstance(
+        "HelloGData_GoogleBase_RetrieveItemAttributesDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      getItems("http://www.google.com/base/feeds/items");
+    } else {
+      showStatus("You are not logged on to Google Base.", true);
+    }
   }
 }

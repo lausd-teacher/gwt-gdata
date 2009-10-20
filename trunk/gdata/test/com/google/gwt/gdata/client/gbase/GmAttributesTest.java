@@ -26,7 +26,12 @@ public class GmAttributesTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GmAttributes.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", GmAttributes.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -34,9 +39,14 @@ public class GmAttributesTest extends GoogleBaseTest {
   }
 
   public void testProperties() {
-    GmAttributes obj = GmAttributes.newInstance();
-    GmAttribute[] attributes = new GmAttribute[]{ GmAttribute.newInstance() };
-    obj.setAttributes(attributes);
-    assertEquals("attributes", obj.getAttributes().length, attributes.length);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GmAttributes obj = GmAttributes.newInstance();
+        GmAttribute[] attributes = new GmAttribute[]{ GmAttribute.newInstance() };
+        obj.setAttributes(attributes);
+        assertEquals("attributes", obj.getAttributes().length, attributes.length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

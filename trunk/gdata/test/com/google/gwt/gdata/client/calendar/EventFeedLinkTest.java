@@ -26,10 +26,20 @@ public class EventFeedLinkTest extends CalendarTest {
   }
 
   public void testConstants() {
-    assertNotNull("REL_EVENT_FEED", EventFeedLink.REL_EVENT_FEED);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_EVENT_FEED", EventFeedLink.REL_EVENT_FEED);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", EventFeedLink.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", EventFeedLink.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -26,13 +26,23 @@ public class GeoLatTest extends GeoTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GeoLat.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", GeoLat.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    GeoLat obj = GeoLat.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GeoLat obj = GeoLat.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

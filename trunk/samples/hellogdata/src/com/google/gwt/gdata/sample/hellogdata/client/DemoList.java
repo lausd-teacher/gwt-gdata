@@ -15,10 +15,8 @@
  */
 package com.google.gwt.gdata.sample.hellogdata.client;
 
-import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.gdata.sample.hellogdata.client.GDataDemo.GDataDemoInfo;
-import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.ListBox;
 
@@ -38,11 +36,10 @@ public class DemoList extends Composite {
   public DemoList() {
     initWidget(list);
     list.setVisibleItemCount(1);
-    list.addChangeHandler(new ChangeHandler() {
-      public void onChange(ChangeEvent event) {
-        History.newItem(list.getItemText(list.getSelectedIndex()));
-      }      
-    });
+  }
+  
+  public void addChangeHandler(ChangeHandler handler) {
+    list.addChangeHandler(handler);
   }
 
   /**
@@ -68,6 +65,10 @@ public class DemoList extends Composite {
       }
     }
     return null;
+  }
+  
+  public GDataDemoInfo getGDataDemoSelection() {
+    return find(list.getItemText(list.getSelectedIndex()));
   }
 
   /**

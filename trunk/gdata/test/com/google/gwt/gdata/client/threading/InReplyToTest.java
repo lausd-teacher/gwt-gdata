@@ -26,22 +26,32 @@ public class InReplyToTest extends ThreadingTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", InReplyTo.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", InReplyTo.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    InReplyTo obj = InReplyTo.newInstance();
-    String type = "myValue";
-    obj.setType(type);
-    assertEquals("type", obj.getType(), type);
-    String ref = "myValue";
-    obj.setRef(ref);
-    assertEquals("ref", obj.getRef(), ref);
-    String source = "myValue";
-    obj.setSource(source);
-    assertEquals("source", obj.getSource(), source);
-    String href = "myValue";
-    obj.setHref(href);
-    assertEquals("href", obj.getHref(), href);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        InReplyTo obj = InReplyTo.newInstance();
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        String ref = "myValue";
+        obj.setRef(ref);
+        assertEquals("ref", obj.getRef(), ref);
+        String source = "myValue";
+        obj.setSource(source);
+        assertEquals("source", obj.getSource(), source);
+        String href = "myValue";
+        obj.setHref(href);
+        assertEquals("href", obj.getHref(), href);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

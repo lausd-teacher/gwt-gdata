@@ -26,19 +26,29 @@ public class PositionEntryTest extends FinanceTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PositionEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PositionEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    PositionEntry obj = PositionEntry.newInstance();
-    PositionData positiondata = PositionData.newInstance();
-    obj.setPositionData(positiondata);
-    assertSame("positiondata", obj.getPositionData(), positiondata);
-    PositionFeedLink feedlink = PositionFeedLink.newInstance();
-    obj.setFeedLink(feedlink);
-    assertSame("feedlink", obj.getFeedLink(), feedlink);
-    Symbol symbol = Symbol.newInstance();
-    obj.setSymbol(symbol);
-    assertSame("symbol", obj.getSymbol(), symbol);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        PositionEntry obj = PositionEntry.newInstance();
+        PositionData positiondata = PositionData.newInstance();
+        obj.setPositionData(positiondata);
+        assertSame("positiondata", obj.getPositionData(), positiondata);
+        PositionFeedLink feedlink = PositionFeedLink.newInstance();
+        obj.setFeedLink(feedlink);
+        assertSame("feedlink", obj.getFeedLink(), feedlink);
+        Symbol symbol = Symbol.newInstance();
+        obj.setSymbol(symbol);
+        assertSame("symbol", obj.getSymbol(), symbol);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

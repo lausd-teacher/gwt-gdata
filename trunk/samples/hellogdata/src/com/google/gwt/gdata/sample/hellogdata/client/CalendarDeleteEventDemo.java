@@ -20,6 +20,8 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.calendar.CalendarEventEntry;
 import com.google.gwt.gdata.client.calendar.CalendarEventEntryCallback;
 import com.google.gwt.gdata.client.calendar.CalendarEventFeed;
@@ -76,21 +78,17 @@ public class CalendarDeleteEventDemo extends GDataDemo {
    * otherwise start the demo by querying the user's calendars.
    */
   public CalendarDeleteEventDemo() {
-    service = CalendarService.newInstance(
-        "HelloGData_Calendar_DeleteEventDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Delete an event");
-      startButton.addClickHandler(new ClickHandler() {
-        public void onClick(ClickEvent event) {
-          queryCalendars(
-              "http://www.google.com/calendar/feeds/default/private/full");
+    if (!GData.isLoaded(GDataSystemPackage.CALENDAR)) {
+      showStatus("Loading the GData Calendar package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
         }
-      });
-      mainPanel.setWidget(0, 0, startButton);
+      }, GDataSystemPackage.CALENDAR);
     } else {
-      showStatus("You are not logged on to Google Calendar.", true);
+      startDemo();
     }
   }
 
@@ -168,5 +166,25 @@ public class CalendarDeleteEventDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_DeleteEventDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      Button startButton = new Button("Delete an event");
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
+          queryCalendars(
+              "http://www.google.com/calendar/feeds/default/private/full");
+        }
+      });
+      mainPanel.setWidget(0, 0, startButton);
+    } else {
+      showStatus("You are not logged on to Google Calendar.", true);
+    }
   }
 }

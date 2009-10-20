@@ -26,14 +26,24 @@ public class CalendarAclRoleTest extends CalendarTest {
   }
 
   public void testConstants() {
-    assertNotNull("VALUE_EDITOR", CalendarAclRole.VALUE_EDITOR);
-    assertNotNull("VALUE_FREEBUSY", CalendarAclRole.VALUE_FREEBUSY);
-    assertNotNull("VALUE_OWNER", CalendarAclRole.VALUE_OWNER);
-    assertNotNull("VALUE_READ", CalendarAclRole.VALUE_READ);
-    assertNotNull("VALUE_ROOT", CalendarAclRole.VALUE_ROOT);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("VALUE_EDITOR", CalendarAclRole.VALUE_EDITOR);
+        assertNotNull("VALUE_FREEBUSY", CalendarAclRole.VALUE_FREEBUSY);
+        assertNotNull("VALUE_OWNER", CalendarAclRole.VALUE_OWNER);
+        assertNotNull("VALUE_READ", CalendarAclRole.VALUE_READ);
+        assertNotNull("VALUE_ROOT", CalendarAclRole.VALUE_ROOT);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarAclRole.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarAclRole.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

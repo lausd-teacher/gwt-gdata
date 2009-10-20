@@ -32,32 +32,47 @@ public class FeatureEntryTest extends MapsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", FeatureEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", FeatureEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    FeatureEntry obj = FeatureEntry.newInstance();
-    // Unit Test for addCustomProperty(CustomProperty customProperty)
-    // Unit Test for getAtomFeedLink()
-    assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        FeatureEntry obj = FeatureEntry.newInstance();
+        // Unit Test for addCustomProperty(CustomProperty customProperty)
+        // Unit Test for getAtomFeedLink()
+        assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    FeatureEntry obj = FeatureEntry.newInstance();
-    PostalAddress postaladdress = PostalAddress.newInstance();
-    obj.setPostalAddress(postaladdress);
-    assertSame("postaladdress", obj.getPostalAddress(), postaladdress);
-    CustomProperty[] customproperties = new CustomProperty[]{ CustomProperty.newInstance() };
-    obj.setCustomProperties(customproperties);
-    assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length);
-    StructuredPostalAddress structuredpostaladdress = StructuredPostalAddress.newInstance();
-    obj.setStructuredPostalAddress(structuredpostaladdress);
-    assertSame("structuredpostaladdress", obj.getStructuredPostalAddress(), structuredpostaladdress);
-    ResourceId resourceid = ResourceId.newInstance();
-    obj.setResourceId(resourceid);
-    assertSame("resourceid", obj.getResourceId(), resourceid);
-    Deleted deleted = Deleted.newInstance();
-    obj.setDeleted(deleted);
-    assertSame("deleted", obj.getDeleted(), deleted);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        FeatureEntry obj = FeatureEntry.newInstance();
+        PostalAddress postaladdress = PostalAddress.newInstance();
+        obj.setPostalAddress(postaladdress);
+        assertSame("postaladdress", obj.getPostalAddress(), postaladdress);
+        CustomProperty[] customproperties = new CustomProperty[]{ CustomProperty.newInstance() };
+        obj.setCustomProperties(customproperties);
+        assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length);
+        StructuredPostalAddress structuredpostaladdress = StructuredPostalAddress.newInstance();
+        obj.setStructuredPostalAddress(structuredpostaladdress);
+        assertSame("structuredpostaladdress", obj.getStructuredPostalAddress(), structuredpostaladdress);
+        ResourceId resourceid = ResourceId.newInstance();
+        obj.setResourceId(resourceid);
+        assertSame("resourceid", obj.getResourceId(), resourceid);
+        Deleted deleted = Deleted.newInstance();
+        obj.setDeleted(deleted);
+        assertSame("deleted", obj.getDeleted(), deleted);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

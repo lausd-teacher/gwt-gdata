@@ -26,32 +26,47 @@ public class CalendarEventFeedTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarEventFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarEventFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    CalendarEventFeed obj = CalendarEventFeed.newInstance();
-    // Unit Test for getFeedBatchLink()
-    assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
-    // Unit Test for getNextLink()
-    assertEquals("getNextLink", obj.getNextLink(), null);
-    // Unit Test for getPreviousLink()
-    assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CalendarEventFeed obj = CalendarEventFeed.newInstance();
+        // Unit Test for getFeedBatchLink()
+        assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+        // Unit Test for getNextLink()
+        assertEquals("getNextLink", obj.getNextLink(), null);
+        // Unit Test for getPreviousLink()
+        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    CalendarEventFeed obj = CalendarEventFeed.newInstance();
-    TimeZoneProperty timezone = TimeZoneProperty.newInstance();
-    obj.setTimeZone(timezone);
-    assertSame("timezone", obj.getTimeZone(), timezone);
-    AllowGSyncProperty allowgsync = AllowGSyncProperty.newInstance();
-    obj.setAllowGSync(allowgsync);
-    assertSame("allowgsync", obj.getAllowGSync(), allowgsync);
-    AllowGSync2Property allowgsync2 = AllowGSync2Property.newInstance();
-    obj.setAllowGSync2(allowgsync2);
-    assertSame("allowgsync2", obj.getAllowGSync2(), allowgsync2);
-    TimesCleanedProperty timescleaned = TimesCleanedProperty.newInstance();
-    obj.setTimesCleaned(timescleaned);
-    assertSame("timescleaned", obj.getTimesCleaned(), timescleaned);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CalendarEventFeed obj = CalendarEventFeed.newInstance();
+        TimeZoneProperty timezone = TimeZoneProperty.newInstance();
+        obj.setTimeZone(timezone);
+        assertSame("timezone", obj.getTimeZone(), timezone);
+        AllowGSyncProperty allowgsync = AllowGSyncProperty.newInstance();
+        obj.setAllowGSync(allowgsync);
+        assertSame("allowgsync", obj.getAllowGSync(), allowgsync);
+        AllowGSync2Property allowgsync2 = AllowGSync2Property.newInstance();
+        obj.setAllowGSync2(allowgsync2);
+        assertSame("allowgsync2", obj.getAllowGSync2(), allowgsync2);
+        TimesCleanedProperty timescleaned = TimesCleanedProperty.newInstance();
+        obj.setTimesCleaned(timescleaned);
+        assertSame("timescleaned", obj.getTimesCleaned(), timescleaned);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

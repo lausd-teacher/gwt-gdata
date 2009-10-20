@@ -26,10 +26,20 @@ public class ContactGroupKindTest extends ContactsTest {
   }
 
   public void testConstants() {
-    assertNotNull("TERM_GROUP", ContactGroupKind.TERM_GROUP);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TERM_GROUP", ContactGroupKind.TERM_GROUP);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ContactGroupKind.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ContactGroupKind.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

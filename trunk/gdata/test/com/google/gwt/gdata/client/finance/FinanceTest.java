@@ -17,7 +17,7 @@
 package com.google.gwt.gdata.client.finance;
 
 import com.google.gwt.gdata.client.GData;
-import com.google.gwt.gdata.client.GDataPackage;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -33,9 +33,9 @@ public class FinanceTest extends GWTTestCase {
   }
   
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataPackage.FINANCE)) {
+    if (!GData.isLoaded(GDataSystemPackage.FINANCE)) {
       isAsync = true;
-      GData.loadGDataApi(null, test, GDataPackage.FINANCE);
+      GData.loadGDataApi(null, test, GDataSystemPackage.FINANCE);
       delayTestFinish(delay);
     } else {
       test.run();

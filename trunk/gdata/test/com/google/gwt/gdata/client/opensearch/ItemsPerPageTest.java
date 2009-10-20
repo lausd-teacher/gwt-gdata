@@ -26,13 +26,23 @@ public class ItemsPerPageTest extends OpenSearchTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ItemsPerPage.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ItemsPerPage.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    ItemsPerPage obj = ItemsPerPage.newInstance();
-    double value = 600813;
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ItemsPerPage obj = ItemsPerPage.newInstance();
+        double value = 600813;
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

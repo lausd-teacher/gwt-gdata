@@ -26,13 +26,23 @@ public class AllowGSync2PropertyTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AllowGSync2Property.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AllowGSync2Property.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    AllowGSync2Property obj = AllowGSync2Property.newInstance();
-    boolean value = true;
-    obj.setValue(value);
-    assertSame("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AllowGSync2Property obj = AllowGSync2Property.newInstance();
+        boolean value = true;
+        obj.setValue(value);
+        assertSame("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -26,13 +26,23 @@ public class TotalResultsTest extends OpenSearchTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", TotalResults.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", TotalResults.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    TotalResults obj = TotalResults.newInstance();
-    double value = 600813;
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        TotalResults obj = TotalResults.newInstance();
+        double value = 600813;
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

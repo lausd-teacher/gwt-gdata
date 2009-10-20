@@ -28,7 +28,12 @@ public class DaysGainTest extends FinanceTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", DaysGain.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", DaysGain.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -36,9 +41,14 @@ public class DaysGainTest extends FinanceTest {
   }
 
   public void testProperties() {
-    DaysGain obj = DaysGain.newInstance();
-    Money[] money = new Money[]{ Money.newInstance() };
-    obj.setMoney(money);
-    assertEquals("money", obj.getMoney().length, money.length);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        DaysGain obj = DaysGain.newInstance();
+        Money[] money = new Money[]{ Money.newInstance() };
+        obj.setMoney(money);
+        assertEquals("money", obj.getMoney().length, money.length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

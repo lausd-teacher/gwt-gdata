@@ -26,6 +26,11 @@ public class PositionFeedTest extends FinanceTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PositionFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PositionFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

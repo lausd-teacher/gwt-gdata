@@ -18,6 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.gdata.client.sidewiki.SidewikiEntry;
 import com.google.gwt.gdata.client.sidewiki.SidewikiEntryFeed;
@@ -70,14 +72,17 @@ public class SidewikiRetrieveEntriesDemo extends GDataDemo {
    * Start the demo by querying Sidewiki entries.
    */
   public SidewikiRetrieveEntriesDemo() {
-    service = SidewikiService.newInstance(
-        "HelloGData_Sidewiki_QueryEntriesByAuthorDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      queryEntries("http://www.google.com/sidewiki/feeds/entries/author/me/full");
+    if (!GData.isLoaded(GDataSystemPackage.SIDEWIKI)) {
+      showStatus("Loading the GData Sidewiki package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
+        }
+      }, GDataSystemPackage.SIDEWIKI);
     } else {
-      showStatus("You are not logged on to Google Sidewiki.", true);
+      startDemo();
     }
   }
 
@@ -158,5 +163,18 @@ public class SidewikiRetrieveEntriesDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = SidewikiService.newInstance(
+        "HelloGData_Sidewiki_QueryEntriesByAuthorDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      queryEntries("http://www.google.com/sidewiki/feeds/entries/author/me/full");
+    } else {
+      showStatus("You are not logged on to Google Sidewiki.", true);
+    }
   }
 }

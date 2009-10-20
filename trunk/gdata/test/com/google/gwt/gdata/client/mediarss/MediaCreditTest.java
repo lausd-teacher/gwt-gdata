@@ -26,19 +26,29 @@ public class MediaCreditTest extends MediaRssTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaCredit.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaCredit.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    MediaCredit obj = MediaCredit.newInstance();
-    String scheme = "myValue";
-    obj.setScheme(scheme);
-    assertEquals("scheme", obj.getScheme(), scheme);
-    String content = "myValue";
-    obj.setContent(content);
-    assertEquals("content", obj.getContent(), content);
-    String role = "myValue";
-    obj.setRole(role);
-    assertEquals("role", obj.getRole(), role);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaCredit obj = MediaCredit.newInstance();
+        String scheme = "myValue";
+        obj.setScheme(scheme);
+        assertEquals("scheme", obj.getScheme(), scheme);
+        String content = "myValue";
+        obj.setContent(content);
+        assertEquals("content", obj.getContent(), content);
+        String role = "myValue";
+        obj.setRole(role);
+        assertEquals("role", obj.getRole(), role);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

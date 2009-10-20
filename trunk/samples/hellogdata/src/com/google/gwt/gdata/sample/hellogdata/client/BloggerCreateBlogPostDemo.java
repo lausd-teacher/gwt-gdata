@@ -20,6 +20,8 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.app.Control;
 import com.google.gwt.gdata.client.app.Draft;
 import com.google.gwt.gdata.client.atom.Category;
@@ -80,20 +82,17 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's blogs.
    */
   public BloggerCreateBlogPostDemo() {
-    service = BloggerService.newInstance(
-        "HelloGData_Blogger_CreateBlogPostDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Create a blog post");
-      startButton.addClickHandler(new ClickHandler() {
-        public void onClick(ClickEvent event) {
-          getBlogs("http://www.blogger.com/feeds/default/blogs");
+    if (!GData.isLoaded(GDataSystemPackage.BLOGGER)) {
+      showStatus("Loading the GData Blogger package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
         }
-      });
-      mainPanel.setWidget(0, 0, startButton);
+      }, GDataSystemPackage.BLOGGER);
     } else {
-      showStatus("You are not logged on to Blogger.", true);
+      startDemo();
     }
   }
 
@@ -206,5 +205,24 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = BloggerService.newInstance(
+        "HelloGData_Blogger_CreateBlogPostDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      Button startButton = new Button("Create a blog post");
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
+          getBlogs("http://www.blogger.com/feeds/default/blogs");
+        }
+      });
+      mainPanel.setWidget(0, 0, startButton);
+    } else {
+      showStatus("You are not logged on to Blogger.", true);
+    }
   }
 }

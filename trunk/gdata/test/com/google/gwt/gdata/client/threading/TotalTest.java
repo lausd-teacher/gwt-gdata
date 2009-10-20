@@ -26,13 +26,23 @@ public class TotalTest extends ThreadingTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Total.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Total.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Total obj = Total.newInstance();
-    double value = 600813;
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Total obj = Total.newInstance();
+        double value = 600813;
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

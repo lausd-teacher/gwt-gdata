@@ -30,32 +30,45 @@ public class SidewikiServiceTest extends SidewikiTest {
   }
 
   public void testConstants() {
-    assertNotNull("SERVICE_NAME", SidewikiService.SERVICE_NAME);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("SERVICE_NAME", SidewikiService.SERVICE_NAME);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SidewikiService.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SidewikiService.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testGetSidewikiEntries() {
-    UserTest.login(GDataTestScripts.Sidewiki.testCookie_Name, GDataTestScripts.Sidewiki.testCookie_Value);
-    SidewikiService svc = SidewikiService.newInstance(SidewikiService.SERVICE_NAME);
-    SidewikiEntryQuery query = SidewikiEntryQuery.newInstance(GDataTestScripts.Sidewiki.testEntries_Feed_Link);
-    query.setMaxResults(25);
-    svc.getSidewikiEntryFeed(query, new SidewikiEntryFeedCallback() {
-      public void onFailure(CallErrorException caught) {
-        fail("Get Failed: " + caught.getMessage());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        UserTest.login(GDataTestScripts.Sidewiki.testCookie_Name, GDataTestScripts.Sidewiki.testCookie_Value);
+        SidewikiService svc = SidewikiService.newInstance(SidewikiService.SERVICE_NAME);
+        SidewikiEntryQuery query = SidewikiEntryQuery.newInstance(GDataTestScripts.Sidewiki.testEntries_Feed_Link);
+        query.setMaxResults(25);
+        svc.getSidewikiEntryFeed(query, new SidewikiEntryFeedCallback() {
+          public void onFailure(CallErrorException caught) {
+            fail("Get Failed: " + caught.getMessage());
+          }
+          public void onSuccess(SidewikiEntryFeed result) {
+            if (result.getEntries().length != 24) {
+              fail("Get Failed: " + result.getEntries().length);
+            }
+            if (!result.getTitle().getText().equals(GDataTestScripts.Sidewiki.testEntries_Feed_Title)) {
+              fail("Get Failed: " + result.getTitle().getText());
+            }
+            finishGDataTest();
+          }
+        });
       }
-      public void onSuccess(SidewikiEntryFeed result) {
-        if (result.getEntries().length != 24) {
-          fail("Get Failed: " + result.getEntries().length);
-        }
-        if (!result.getTitle().getText().equals(GDataTestScripts.Sidewiki.testEntries_Feed_Title)) {
-          fail("Get Failed: " + result.getTitle().getText());
-        }
-        finishTest();
-      }
-    });
-    this.delayTestFinish(4000);
+    }, 10000);
   }
 }

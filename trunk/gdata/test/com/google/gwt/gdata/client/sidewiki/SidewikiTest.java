@@ -17,7 +17,7 @@
 package com.google.gwt.gdata.client.sidewiki;
 
 import com.google.gwt.gdata.client.GData;
-import com.google.gwt.gdata.client.GDataPackage;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -33,9 +33,9 @@ public class SidewikiTest extends GWTTestCase {
   }
   
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataPackage.SIDEWIKI)) {
+    if (!GData.isLoaded(GDataSystemPackage.SIDEWIKI)) {
       isAsync = true;
-      GData.loadGDataApi(null, test, GDataPackage.SIDEWIKI);
+      GData.loadGDataApi(null, test, GDataSystemPackage.SIDEWIKI);
       delayTestFinish(delay);
     } else {
       test.run();

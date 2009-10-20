@@ -17,7 +17,7 @@
 package com.google.gwt.gdata.client.contacts;
 
 import com.google.gwt.gdata.client.GData;
-import com.google.gwt.gdata.client.GDataPackage;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -33,9 +33,9 @@ public class ContactsTest extends GWTTestCase {
   }
   
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataPackage.CONTACTS)) {
+    if (!GData.isLoaded(GDataSystemPackage.CONTACTS)) {
       isAsync = true;
-      GData.loadGDataApi(null, test, GDataPackage.CONTACTS);
+      GData.loadGDataApi(null, test, GDataSystemPackage.CONTACTS);
       delayTestFinish(delay);
     } else {
       test.run();

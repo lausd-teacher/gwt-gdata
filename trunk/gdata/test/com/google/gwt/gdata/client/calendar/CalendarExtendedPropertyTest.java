@@ -26,10 +26,20 @@ public class CalendarExtendedPropertyTest extends CalendarTest {
   }
 
   public void testConstants() {
-    assertNotNull("REALM_CALENDAR", CalendarExtendedProperty.REALM_CALENDAR);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REALM_CALENDAR", CalendarExtendedProperty.REALM_CALENDAR);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarExtendedProperty.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarExtendedProperty.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

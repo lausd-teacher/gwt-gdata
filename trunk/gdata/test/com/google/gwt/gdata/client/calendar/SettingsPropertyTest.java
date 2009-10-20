@@ -26,35 +26,50 @@ public class SettingsPropertyTest extends CalendarTest {
   }
 
   public void testConstants() {
-    assertNotNull("NAME_ALTERNATE_CALENDAR", SettingsProperty.NAME_ALTERNATE_CALENDAR);
-    assertNotNull("NAME_COUNTRY", SettingsProperty.NAME_COUNTRY);
-    assertNotNull("NAME_CUSTOM_CAL_MODE", SettingsProperty.NAME_CUSTOM_CAL_MODE);
-    assertNotNull("NAME_DATE_FIELD_ORDER", SettingsProperty.NAME_DATE_FIELD_ORDER);
-    assertNotNull("NAME_DEFAULT_CAL_MODE", SettingsProperty.NAME_DEFAULT_CAL_MODE);
-    assertNotNull("NAME_DISPLAY_ALL_TIMEZONES", SettingsProperty.NAME_DISPLAY_ALL_TIMEZONES);
-    assertNotNull("NAME_FORMAT_24_HOUR_TIME", SettingsProperty.NAME_FORMAT_24_HOUR_TIME);
-    assertNotNull("NAME_HIDE_INVITATIONS", SettingsProperty.NAME_HIDE_INVITATIONS);
-    assertNotNull("NAME_HIDE_WEEKENDS", SettingsProperty.NAME_HIDE_WEEKENDS);
-    assertNotNull("NAME_LOCALE", SettingsProperty.NAME_LOCALE);
-    assertNotNull("NAME_SHOW_DECLINED_EVENTS", SettingsProperty.NAME_SHOW_DECLINED_EVENTS);
-    assertNotNull("NAME_TIMEZONE", SettingsProperty.NAME_TIMEZONE);
-    assertNotNull("NAME_TIMEZONE_LABEL", SettingsProperty.NAME_TIMEZONE_LABEL);
-    assertNotNull("NAME_USER_LOCATION", SettingsProperty.NAME_USER_LOCATION);
-    assertNotNull("NAME_WEATHER", SettingsProperty.NAME_WEATHER);
-    assertNotNull("NAME_WEEK_START", SettingsProperty.NAME_WEEK_START);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("NAME_ALTERNATE_CALENDAR", SettingsProperty.NAME_ALTERNATE_CALENDAR);
+        assertNotNull("NAME_COUNTRY", SettingsProperty.NAME_COUNTRY);
+        assertNotNull("NAME_CUSTOM_CAL_MODE", SettingsProperty.NAME_CUSTOM_CAL_MODE);
+        assertNotNull("NAME_DATE_FIELD_ORDER", SettingsProperty.NAME_DATE_FIELD_ORDER);
+        assertNotNull("NAME_DEFAULT_CAL_MODE", SettingsProperty.NAME_DEFAULT_CAL_MODE);
+        assertNotNull("NAME_DISPLAY_ALL_TIMEZONES", SettingsProperty.NAME_DISPLAY_ALL_TIMEZONES);
+        assertNotNull("NAME_FORMAT_24_HOUR_TIME", SettingsProperty.NAME_FORMAT_24_HOUR_TIME);
+        assertNotNull("NAME_HIDE_INVITATIONS", SettingsProperty.NAME_HIDE_INVITATIONS);
+        assertNotNull("NAME_HIDE_WEEKENDS", SettingsProperty.NAME_HIDE_WEEKENDS);
+        assertNotNull("NAME_LOCALE", SettingsProperty.NAME_LOCALE);
+        assertNotNull("NAME_SHOW_DECLINED_EVENTS", SettingsProperty.NAME_SHOW_DECLINED_EVENTS);
+        assertNotNull("NAME_TIMEZONE", SettingsProperty.NAME_TIMEZONE);
+        assertNotNull("NAME_TIMEZONE_LABEL", SettingsProperty.NAME_TIMEZONE_LABEL);
+        assertNotNull("NAME_USER_LOCATION", SettingsProperty.NAME_USER_LOCATION);
+        assertNotNull("NAME_WEATHER", SettingsProperty.NAME_WEATHER);
+        assertNotNull("NAME_WEEK_START", SettingsProperty.NAME_WEEK_START);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SettingsProperty.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SettingsProperty.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    SettingsProperty obj = SettingsProperty.newInstance();
-    String name = "myValue";
-    obj.setName(name);
-    assertEquals("name", obj.getName(), name);
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SettingsProperty obj = SettingsProperty.newInstance();
+        String name = "myValue";
+        obj.setName(name);
+        assertEquals("name", obj.getName(), name);
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

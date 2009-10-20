@@ -26,16 +26,26 @@ public class ContactFeedTest extends ContactsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ContactFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ContactFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    ContactFeed obj = ContactFeed.newInstance();
-    // Unit Test for getFeedBatchLink()
-    assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
-    // Unit Test for getNextLink()
-    assertEquals("getNextLink", obj.getNextLink(), null);
-    // Unit Test for getPreviousLink()
-    assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ContactFeed obj = ContactFeed.newInstance();
+        // Unit Test for getFeedBatchLink()
+        assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+        // Unit Test for getNextLink()
+        assertEquals("getNextLink", obj.getNextLink(), null);
+        // Unit Test for getPreviousLink()
+        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -17,10 +17,24 @@
 package com.google.gwt.gdata.client;
 
 /**
- * Base interface for GData packages.
+ * Represents the available GData system packages.
  */
-public interface GDataPackage {
+public enum GDataSystemPackage implements GDataPackage {
+  ANALYTICS("analytics"),
+  BLOGGER("blogger"),
+  CALENDAR("calendar"),
+  CONTACTS("contacts"),
+  FINANCE("finance"),
+  GBASE("gbase"),
+  MAPS("maps"),
+  SIDEWIKI("sidewiki");
   
-  String getValue();
+  private String value;
+  private GDataSystemPackage(String name) {
+    value = name;
+  }
   
+  public String getValue() {
+    return value;
+  }
 }

@@ -33,42 +33,57 @@ public class PersonEntryTest extends ContactsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PersonEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PersonEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    PersonEntry obj = PersonEntry.newInstance();
-    // Unit Test for addEmailAddress(Email emailAddress)
-    // Unit Test for addExtendedProperty(ExtendedProperty extendedProperty)
-    // Unit Test for addImAddress(Im imAddress)
-    // Unit Test for addOrganization(Organization organization)
-    // Unit Test for addPhoneNumber(PhoneNumber phoneNumber)
-    // Unit Test for addPostalAddress(PostalAddress postalAddress)
-    // Unit Test for getContactEditPhotoLink()
-    assertEquals("getContactEditPhotoLink", obj.getContactEditPhotoLink(), null);
-    // Unit Test for getContactPhotoLink()
-    assertEquals("getContactPhotoLink", obj.getContactPhotoLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        PersonEntry obj = PersonEntry.newInstance();
+        // Unit Test for addEmailAddress(Email emailAddress)
+        // Unit Test for addExtendedProperty(ExtendedProperty extendedProperty)
+        // Unit Test for addImAddress(Im imAddress)
+        // Unit Test for addOrganization(Organization organization)
+        // Unit Test for addPhoneNumber(PhoneNumber phoneNumber)
+        // Unit Test for addPostalAddress(PostalAddress postalAddress)
+        // Unit Test for getContactEditPhotoLink()
+        assertEquals("getContactEditPhotoLink", obj.getContactEditPhotoLink(), null);
+        // Unit Test for getContactPhotoLink()
+        assertEquals("getContactPhotoLink", obj.getContactPhotoLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    PersonEntry obj = PersonEntry.newInstance();
-    PostalAddress[] postaladdresses = new PostalAddress[]{ PostalAddress.newInstance() };
-    obj.setPostalAddresses(postaladdresses);
-    assertEquals("postaladdresses", obj.getPostalAddresses().length, postaladdresses.length);
-    Im[] imaddresses = new Im[]{ Im.newInstance() };
-    obj.setImAddresses(imaddresses);
-    assertEquals("imaddresses", obj.getImAddresses().length, imaddresses.length);
-    PhoneNumber[] phonenumbers = new PhoneNumber[]{ PhoneNumber.newInstance() };
-    obj.setPhoneNumbers(phonenumbers);
-    assertEquals("phonenumbers", obj.getPhoneNumbers().length, phonenumbers.length);
-    Organization[] organizations = new Organization[]{ Organization.newInstance() };
-    obj.setOrganizations(organizations);
-    assertEquals("organizations", obj.getOrganizations().length, organizations.length);
-    Email[] emailaddresses = new Email[]{ Email.newInstance() };
-    obj.setEmailAddresses(emailaddresses);
-    assertEquals("emailaddresses", obj.getEmailAddresses().length, emailaddresses.length);
-    ExtendedProperty[] extendedproperties = new ExtendedProperty[]{ ExtendedProperty.newInstance() };
-    obj.setExtendedProperties(extendedproperties);
-    assertEquals("extendedproperties", obj.getExtendedProperties().length, extendedproperties.length);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        PersonEntry obj = PersonEntry.newInstance();
+        PostalAddress[] postaladdresses = new PostalAddress[]{ PostalAddress.newInstance() };
+        obj.setPostalAddresses(postaladdresses);
+        assertEquals("postaladdresses", obj.getPostalAddresses().length, postaladdresses.length);
+        Im[] imaddresses = new Im[]{ Im.newInstance() };
+        obj.setImAddresses(imaddresses);
+        assertEquals("imaddresses", obj.getImAddresses().length, imaddresses.length);
+        PhoneNumber[] phonenumbers = new PhoneNumber[]{ PhoneNumber.newInstance() };
+        obj.setPhoneNumbers(phonenumbers);
+        assertEquals("phonenumbers", obj.getPhoneNumbers().length, phonenumbers.length);
+        Organization[] organizations = new Organization[]{ Organization.newInstance() };
+        obj.setOrganizations(organizations);
+        assertEquals("organizations", obj.getOrganizations().length, organizations.length);
+        Email[] emailaddresses = new Email[]{ Email.newInstance() };
+        obj.setEmailAddresses(emailaddresses);
+        assertEquals("emailaddresses", obj.getEmailAddresses().length, emailaddresses.length);
+        ExtendedProperty[] extendedproperties = new ExtendedProperty[]{ ExtendedProperty.newInstance() };
+        obj.setExtendedProperties(extendedproperties);
+        assertEquals("extendedproperties", obj.getExtendedProperties().length, extendedproperties.length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -17,7 +17,7 @@
 package com.google.gwt.gdata.client.blogger;
 
 import com.google.gwt.gdata.client.GData;
-import com.google.gwt.gdata.client.GDataPackage;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -33,9 +33,9 @@ public class BloggerTest extends GWTTestCase {
   }
   
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataPackage.BLOGGER)) {
+    if (!GData.isLoaded(GDataSystemPackage.BLOGGER)) {
       isAsync = true;
-      GData.loadGDataApi(null, test, GDataPackage.BLOGGER);
+      GData.loadGDataApi(null, test, GDataSystemPackage.BLOGGER);
       delayTestFinish(delay);
     } else {
       test.run();

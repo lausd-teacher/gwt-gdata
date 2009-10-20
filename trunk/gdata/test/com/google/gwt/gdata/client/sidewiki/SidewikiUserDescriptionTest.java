@@ -26,13 +26,23 @@ public class SidewikiUserDescriptionTest extends SidewikiTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SidewikiUserDescription.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SidewikiUserDescription.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    SidewikiUserDescription obj = SidewikiUserDescription.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SidewikiUserDescription obj = SidewikiUserDescription.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

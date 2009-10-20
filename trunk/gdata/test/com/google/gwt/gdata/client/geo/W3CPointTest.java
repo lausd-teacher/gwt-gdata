@@ -26,16 +26,26 @@ public class W3CPointTest extends GeoTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", W3CPoint.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", W3CPoint.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    W3CPoint obj = W3CPoint.newInstance();
-    GeoLat geolatitude = GeoLat.newInstance();
-    obj.setGeoLatitude(geolatitude);
-    assertSame("geolatitude", obj.getGeoLatitude(), geolatitude);
-    GeoLong geolongitude = GeoLong.newInstance();
-    obj.setGeoLongitude(geolongitude);
-    assertSame("geolongitude", obj.getGeoLongitude(), geolongitude);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        W3CPoint obj = W3CPoint.newInstance();
+        GeoLat geolatitude = GeoLat.newInstance();
+        obj.setGeoLatitude(geolatitude);
+        assertSame("geolatitude", obj.getGeoLatitude(), geolatitude);
+        GeoLong geolongitude = GeoLong.newInstance();
+        obj.setGeoLongitude(geolongitude);
+        assertSame("geolongitude", obj.getGeoLongitude(), geolongitude);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

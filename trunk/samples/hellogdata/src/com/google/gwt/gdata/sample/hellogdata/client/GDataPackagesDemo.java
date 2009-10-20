@@ -16,13 +16,10 @@
 
 package com.google.gwt.gdata.sample.hellogdata.client;
 
-import com.google.gwt.accounts.client.AuthSubStatus;
-import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.client.GDataSystemPackage;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Hyperlink;
@@ -30,10 +27,10 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * The following example demonstrates how to use AuthSub to authenticate and
- * identify authentication status for the supported GData systems.
+ * The following example demonstrates how to load individual
+ * GData packages.
  */
-public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
+public class GDataPackagesDemo extends GDataDemo {
 
   /**
    * This method is used by the main sample app to obtain
@@ -46,19 +43,19 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
 
       @Override
       public GDataDemo createInstance() {
-        return new AccountsAuthSubAuthenticationDemo();
+        return new GDataPackagesDemo();
       }
 
       @Override
       public String getDescription() {
-        return "<p>This sample demonstrates how to use AuthSub to " +
-            "login, logout and retrieve the authentication status for the " +
-            "current user across the supported GData systems.</p>";
+        return "<p>This sample demonstrates how to load individual GData " +
+            "packages. In your GData apps you can enhance performance by " +
+            "loading only the GData packages that are used.</p>";
       }
 
       @Override
       public String getName() {
-        return "Accounts - Authsub Authentication";
+        return "Packages - Loading GData packages";
       }
     };
   }
@@ -67,89 +64,75 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
 
   /**
    * Create the main content panel for this demo and call
-   * showAuthSubStatus to display the authentication status
-   * for each GData system.
+   * showPackageStatus to display the load status
+   * for each GData system package.
    */
-  public AccountsAuthSubAuthenticationDemo() {
+  public GDataPackagesDemo() {
     mainPanel = new FlexTable();
     mainPanel.setCellPadding(4);
     mainPanel.setCellSpacing(0);
     initWidget(mainPanel);
-    /* 
-     * Here we load the Maps package to make AuthSub available.
-     * For AuthSub any of the GData packages will do.
-     * */
-    if (!GData.isLoaded(GDataSystemPackage.MAPS)) {
-      GData.loadGDataApi(null, new Runnable() {
-        public void run() {
-          startDemo();
-        }
-      }, GDataSystemPackage.MAPS);
-    } else {
-      startDemo();
-    }
+    startDemo();
   }
 
   /**
    * Refreshes this demo by clearing the contents of
-   * the main panel and calling showAuthSubStatus to
-   * display the authentication status for each GData system.
+   * the main panel and calling showPackageStatus to
+   * display the load status for each GData system package.
    */
   private void refreshDemo() {
     mainPanel.clear();
-    showAuthSubStatus();
+    showPackageStatus();
   }
   
   /**
-   * Display the AuthSub authentication statuses in a
+   * Display the GData package statuses in a
    * tabular fashion with the help of a GWT FlexTable widget.
-   * We initialize an array containing the name, scope, icon
-   * and url for each of the supported GData systems.
-   * For each system a table row is added displaying the name,
-   * page, link and icon, in addition to the AuthSub status
-   * and a hyperlink for logging in or logging, as appropriate.
-   * The User class contains the getStatus method which is used
-   * to retrieve the authentication status for the current user
-   * and for a given system (scope).
+   * We initialize an array containing the name, icon
+   * and url for each of the supported GData packages.
+   * For each package a table row is added displaying the name,
+   * page, link and icon, in addition to the load status.
+   * The GData class contains the isLoaded method which is used
+   * to retrieve the load status for a given package.
    */
-  private void showAuthSubStatus() {
+  private void showPackageStatus() {
     String[][] systems = new String[][] {
         new String[] { "Google Analytics",
-            "https://www.google.com/analytics/feeds/",
+            "ANALYTICS",
             "gdata-analytics.png",
             "http://code.google.com/apis/analytics/" },
         new String[] { "Google Base",
-            "http://www.google.com/base/feeds/",
+            "GBASE",
             "gdata-base.png",
             "http://code.google.com/apis/base/" },
         new String[] { "Google Blogger",
-            "http://www.blogger.com/feeds/",
+            "BLOGGER",
             "gdata-blogger.png",
             "http://code.google.com/apis/blogger/" },
         new String[] { "Google Calendar",
-            "http://www.google.com/calendar/feeds/",
+            "CALENDAR",
             "gdata-calendar.png",
             "http://code.google.com/apis/calendar/" },
         new String[] { "Google Contacts",
-            "http://www.google.com/m8/feeds/",
+            "CONTACTS",
             "gdata-contacts.png",
             "http://code.google.com/apis/contacts/" },
         new String[] { "Google Finance",
-            "http://finance.google.com/finance/feeds/",
+            "FINANCE",
             "gdata-finance.png",
             "http://code.google.com/apis/finance/" },
         new String[] { "Google Maps",
-            "http://maps.google.com/maps/feeds/",
+            "MAPS",
             "gdata-maps.png",
             "http://code.google.com/apis/maps/documentation/mapsdata/" },
         new String[] { "Google Sidewiki",
-            "http://www.google.com/sidewiki/feeds/",
+            "SIDEWIKI",
             "gdata-sidewiki.png",
             "http://code.google.com/apis/sidewiki/" }
     };
     for (int i = 0; i < systems.length; i++) {
       String[] sys = systems[i];
-      final String scope = sys[1];
+      final String identifier = sys[1];
       mainPanel.insertRow(i);
       mainPanel.addCell(i);
       mainPanel.addCell(i);
@@ -161,22 +144,18 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
       mainPanel.setWidget(i, 1, name);
       Label statusLabel = new Label();
       Hyperlink actionLink = new Hyperlink();
-      AuthSubStatus status = User.getStatus(scope);
-      if (status == AuthSubStatus.LOGGED_IN) {
-        statusLabel.setText("Logged in");
-        actionLink.setText("Log out");
+      if (GData.isLoaded(GDataSystemPackage.valueOf(identifier))) {
+        statusLabel.setText("Loaded");
+      } else {
+        statusLabel.setText("Not loaded");
+        actionLink.setText("Load");
         actionLink.addClickHandler(new ClickHandler() {
           public void onClick(ClickEvent event) {
-            User.logout(scope);
-            refreshDemo();
-          }
-        });
-      } else if (status == AuthSubStatus.LOGGED_OUT) {
-        statusLabel.setText("Logged out");
-        actionLink.setText("Log in");
-        actionLink.addClickHandler(new ClickHandler() {
-          public void onClick(ClickEvent event) {
-            User.login(scope);
+            GData.loadGDataApi(null, new Runnable() {
+              public void run() {
+                refreshDemo();
+              }
+            }, GDataSystemPackage.valueOf(identifier));
           }
         });
       }
@@ -186,31 +165,9 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
   }
   
   /**
-   * Displays a status message to the user.
-   * 
-   * @param message The message to display.
-   * @param isError Indicates whether the status is an error status.
-   */
-  private void showStatus(String message, boolean isError) {
-    mainPanel.clear();
-    mainPanel.insertRow(0);
-    mainPanel.addCell(0);
-    Label msg = new Label(message);
-    if (isError) {
-      msg.setStylePrimaryName("hm-error");
-    }
-    mainPanel.setWidget(0, 0, msg);
-  }
-  
-  /**
    * Starts this demo.
    */
   private void startDemo() {
-    if (Window.Location.getHref().startsWith("http")) {
-      showAuthSubStatus();
-    } else {
-      showStatus("This sample must be run over HTTP, AuthSub does not " +
-          "support requests initiated from non-HTTP URIs.", true);
-    }
+    showPackageStatus();
   }
 }

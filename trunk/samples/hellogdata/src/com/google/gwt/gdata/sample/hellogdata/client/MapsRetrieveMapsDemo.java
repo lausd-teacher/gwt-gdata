@@ -18,6 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.gdata.client.maps.MapEntry;
 import com.google.gwt.gdata.client.maps.MapFeed;
@@ -68,13 +70,17 @@ public class MapsRetrieveMapsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's maps.
    */
   public MapsRetrieveMapsDemo() {
-    service = MapsService.newInstance("HelloGData_Maps_RetrieveMapsDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getMaps("http://maps.google.com/maps/feeds/maps/default/full");
+    if (!GData.isLoaded(GDataSystemPackage.MAPS)) {
+      showStatus("Loading the GData Maps package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
+        }
+      }, GDataSystemPackage.MAPS);
     } else {
-      showStatus("You are not logged on to Google Maps.", true);
+      startDemo();
     }
   }
 
@@ -148,5 +154,17 @@ public class MapsRetrieveMapsDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = MapsService.newInstance("HelloGData_Maps_RetrieveMapsDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      getMaps("http://maps.google.com/maps/feeds/maps/default/full");
+    } else {
+      showStatus("You are not logged on to Google Maps.", true);
+    }
   }
 }

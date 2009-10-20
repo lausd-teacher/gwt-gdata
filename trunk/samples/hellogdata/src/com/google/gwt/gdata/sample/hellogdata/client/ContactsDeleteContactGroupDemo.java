@@ -20,6 +20,8 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.contacts.ContactGroupEntry;
 import com.google.gwt.gdata.client.contacts.ContactGroupEntryCallback;
 import com.google.gwt.gdata.client.contacts.ContactGroupFeed;
@@ -74,21 +76,17 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's contact groups.
    */
   public ContactsDeleteContactGroupDemo() {
-    service = ContactsService.newInstance(
-        "HelloGData_Contacts_DeleteContactGroupDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Delete a contact group");
-      startButton.addClickHandler(new ClickHandler() {
-        public void onClick(ClickEvent event) {
-          getContactGroups(
-              "http://www.google.com/m8/feeds/groups/default/full");
+    if (!GData.isLoaded(GDataSystemPackage.CONTACTS)) {
+      showStatus("Loading the GData Contacts package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
         }
-      });
-      mainPanel.setWidget(0, 0, startButton);
+      }, GDataSystemPackage.CONTACTS);
     } else {
-      showStatus("You are not logged on to Google Contacts.", true);
+      startDemo();
     }
   }
 
@@ -169,5 +167,25 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = ContactsService.newInstance(
+        "HelloGData_Contacts_DeleteContactGroupDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      Button startButton = new Button("Delete a contact group");
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
+          getContactGroups(
+              "http://www.google.com/m8/feeds/groups/default/full");
+        }
+      });
+      mainPanel.setWidget(0, 0, startButton);
+    } else {
+      showStatus("You are not logged on to Google Contacts.", true);
+    }
   }
 }

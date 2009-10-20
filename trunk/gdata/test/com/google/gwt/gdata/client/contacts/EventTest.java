@@ -28,24 +28,39 @@ public class EventTest extends ContactsTest {
   }
 
   public void testConstants() {
-    assertNotNull("REL_ANNIVERSARY", Event.REL_ANNIVERSARY);
-    assertNotNull("REL_OTHER", Event.REL_OTHER);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_ANNIVERSARY", Event.REL_ANNIVERSARY);
+        assertNotNull("REL_OTHER", Event.REL_OTHER);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Event.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Event.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Event obj = Event.newInstance();
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    When when = When.newInstance();
-    obj.setWhen(when);
-    assertSame("when", obj.getWhen(), when);
-    String label = "myValue";
-    obj.setLabel(label);
-    assertEquals("label", obj.getLabel(), label);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Event obj = Event.newInstance();
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        When when = When.newInstance();
+        obj.setWhen(when);
+        assertSame("when", obj.getWhen(), when);
+        String label = "myValue";
+        obj.setLabel(label);
+        assertEquals("label", obj.getLabel(), label);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

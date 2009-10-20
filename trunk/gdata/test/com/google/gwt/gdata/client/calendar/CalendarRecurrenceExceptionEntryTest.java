@@ -26,16 +26,26 @@ public class CalendarRecurrenceExceptionEntryTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarRecurrenceExceptionEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarRecurrenceExceptionEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    CalendarRecurrenceExceptionEntry obj = CalendarRecurrenceExceptionEntry.newInstance();
-    IcalUIDProperty uid = IcalUIDProperty.newInstance();
-    obj.setUid(uid);
-    assertSame("uid", obj.getUid(), uid);
-    SequenceNumberProperty sequence = SequenceNumberProperty.newInstance();
-    obj.setSequence(sequence);
-    assertSame("sequence", obj.getSequence(), sequence);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CalendarRecurrenceExceptionEntry obj = CalendarRecurrenceExceptionEntry.newInstance();
+        IcalUIDProperty uid = IcalUIDProperty.newInstance();
+        obj.setUid(uid);
+        assertSame("uid", obj.getUid(), uid);
+        SequenceNumberProperty sequence = SequenceNumberProperty.newInstance();
+        obj.setSequence(sequence);
+        assertSame("sequence", obj.getSequence(), sequence);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

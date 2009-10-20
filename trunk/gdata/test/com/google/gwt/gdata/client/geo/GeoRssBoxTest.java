@@ -26,13 +26,23 @@ public class GeoRssBoxTest extends GeoTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GeoRssBox.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", GeoRssBox.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    GeoRssBox obj = GeoRssBox.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GeoRssBox obj = GeoRssBox.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -26,13 +26,23 @@ public class EventWhoTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", EventWho.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", EventWho.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    EventWho obj = EventWho.newInstance();
-    ResourceProperty resource = ResourceProperty.newInstance();
-    obj.setResource(resource);
-    assertSame("resource", obj.getResource(), resource);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        EventWho obj = EventWho.newInstance();
+        ResourceProperty resource = ResourceProperty.newInstance();
+        obj.setResource(resource);
+        assertSame("resource", obj.getResource(), resource);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.atom;
 
 import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataAuxiliaryPackage;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -32,9 +33,9 @@ public class AtomTest extends GWTTestCase {
   }
   
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded()) {
+    if (!GData.isLoaded(GDataAuxiliaryPackage.ATOM)) {
       isAsync = true;
-      GData.loadGDataApi(null, test);
+      GData.loadGDataApi(null, test, GDataAuxiliaryPackage.ATOM);
       delayTestFinish(delay);
     } else {
       test.run();

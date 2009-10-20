@@ -26,16 +26,26 @@ public class WebContentGadgetPrefTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", WebContentGadgetPref.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", WebContentGadgetPref.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    WebContentGadgetPref obj = WebContentGadgetPref.newInstance();
-    String name = "myValue";
-    obj.setName(name);
-    assertEquals("name", obj.getName(), name);
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        WebContentGadgetPref obj = WebContentGadgetPref.newInstance();
+        String name = "myValue";
+        obj.setName(name);
+        assertEquals("name", obj.getName(), name);
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

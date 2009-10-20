@@ -26,23 +26,38 @@ public class ItemsEntryTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ItemsEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ItemsEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    ItemsEntry obj = ItemsEntry.newInstance();
-    // Unit Test for getAttributes()
-    assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
-    // Unit Test for getHtmlLink()
-    assertEquals("getHtmlLink", obj.getHtmlLink(), null);
-    // Unit Test for setAttribute(String name, Attribute attribute)
-    // Unit Test for setAttributes(JavaScriptObject attributes)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ItemsEntry obj = ItemsEntry.newInstance();
+        // Unit Test for getAttributes()
+        assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
+        // Unit Test for getHtmlLink()
+        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+        // Unit Test for setAttribute(String name, Attribute attribute)
+        // Unit Test for setAttributes(JavaScriptObject attributes)
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    ItemsEntry obj = ItemsEntry.newInstance();
-    MediaFeedLink feedlink = MediaFeedLink.newInstance();
-    obj.setMediaFeedLink(feedlink);
-    assertSame("feedlink", obj.getMediaFeedLink(), feedlink);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ItemsEntry obj = ItemsEntry.newInstance();
+        MediaFeedLink feedlink = MediaFeedLink.newInstance();
+        obj.setMediaFeedLink(feedlink);
+        assertSame("feedlink", obj.getMediaFeedLink(), feedlink);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

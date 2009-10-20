@@ -30,11 +30,21 @@ public class ThreadingLinkTest extends ThreadingTest {
   }
 
   public void testConstants() {
-    assertNotNull("REL_REPLIES", ThreadingLink.REL_REPLIES);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_REPLIES", ThreadingLink.REL_REPLIES);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ThreadingLink.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ThreadingLink.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -42,12 +52,17 @@ public class ThreadingLinkTest extends ThreadingTest {
   }
 
   public void testProperties() {
-    ThreadingLink obj = ThreadingLink.newInstance();
-    double count = 600813;
-    obj.setCount(count);
-    assertEquals("count", obj.getCount(), count);
-    DateTime updated = DateTime.newInstance(new Date(), false);
-    obj.setUpdated(updated);
-    assertEquals("updated", obj.getUpdated().getDate(), updated.getDate());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ThreadingLink obj = ThreadingLink.newInstance();
+        double count = 600813;
+        obj.setCount(count);
+        assertEquals("count", obj.getCount(), count);
+        DateTime updated = DateTime.newInstance(new Date(), false);
+        obj.setUpdated(updated);
+        assertEquals("updated", obj.getUpdated().getDate(), updated.getDate());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

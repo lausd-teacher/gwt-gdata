@@ -26,13 +26,23 @@ public class SuppressReplyNotificationsPropertyTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SuppressReplyNotificationsProperty.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SuppressReplyNotificationsProperty.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    SuppressReplyNotificationsProperty obj = SuppressReplyNotificationsProperty.newInstance();
-    String methods = "myValue";
-    obj.setMethods(methods);
-    assertEquals("methods", obj.getMethods(), methods);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SuppressReplyNotificationsProperty obj = SuppressReplyNotificationsProperty.newInstance();
+        String methods = "myValue";
+        obj.setMethods(methods);
+        assertEquals("methods", obj.getMethods(), methods);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

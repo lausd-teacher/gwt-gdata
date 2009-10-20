@@ -26,52 +26,62 @@ public class PortfolioDataTest extends FinanceTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PortfolioData.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PortfolioData.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    PortfolioData obj = PortfolioData.newInstance();
-    double gainpercentage = 600813;
-    obj.setGainPercentage(gainpercentage);
-    assertEquals("gainpercentage", obj.getGainPercentage(), gainpercentage);
-    double return3m = 600813;
-    obj.setReturn3m(return3m);
-    assertEquals("return3m", obj.getReturn3m(), return3m);
-    Gain gain = Gain.newInstance();
-    obj.setGain(gain);
-    assertSame("gain", obj.getGain(), gain);
-    double return1y = 600813;
-    obj.setReturn1y(return1y);
-    assertEquals("return1y", obj.getReturn1y(), return1y);
-    double returnoverall = 600813;
-    obj.setReturnOverall(returnoverall);
-    assertEquals("returnoverall", obj.getReturnOverall(), returnoverall);
-    double return4w = 600813;
-    obj.setReturn4w(return4w);
-    assertEquals("return4w", obj.getReturn4w(), return4w);
-    double return1w = 600813;
-    obj.setReturn1w(return1w);
-    assertEquals("return1w", obj.getReturn1w(), return1w);
-    CostBasis costbasis = CostBasis.newInstance();
-    obj.setCostBasis(costbasis);
-    assertSame("costbasis", obj.getCostBasis(), costbasis);
-    double return3y = 600813;
-    obj.setReturn3y(return3y);
-    assertEquals("return3y", obj.getReturn3y(), return3y);
-    DaysGain daysgain = DaysGain.newInstance();
-    obj.setDaysGain(daysgain);
-    assertSame("daysgain", obj.getDaysGain(), daysgain);
-    MarketValue marketvalue = MarketValue.newInstance();
-    obj.setMarketValue(marketvalue);
-    assertSame("marketvalue", obj.getMarketValue(), marketvalue);
-    String currencycode = "myValue";
-    obj.setCurrencyCode(currencycode);
-    assertEquals("currencycode", obj.getCurrencyCode(), currencycode);
-    double returnytd = 600813;
-    obj.setReturnYTD(returnytd);
-    assertEquals("returnytd", obj.getReturnYTD(), returnytd);
-    double return5y = 600813;
-    obj.setReturn5y(return5y);
-    assertEquals("return5y", obj.getReturn5y(), return5y);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        PortfolioData obj = PortfolioData.newInstance();
+        double gainpercentage = 600813;
+        obj.setGainPercentage(gainpercentage);
+        assertEquals("gainpercentage", obj.getGainPercentage(), gainpercentage);
+        double return3m = 600813;
+        obj.setReturn3m(return3m);
+        assertEquals("return3m", obj.getReturn3m(), return3m);
+        Gain gain = Gain.newInstance();
+        obj.setGain(gain);
+        assertSame("gain", obj.getGain(), gain);
+        double return1y = 600813;
+        obj.setReturn1y(return1y);
+        assertEquals("return1y", obj.getReturn1y(), return1y);
+        double returnoverall = 600813;
+        obj.setReturnOverall(returnoverall);
+        assertEquals("returnoverall", obj.getReturnOverall(), returnoverall);
+        double return4w = 600813;
+        obj.setReturn4w(return4w);
+        assertEquals("return4w", obj.getReturn4w(), return4w);
+        double return1w = 600813;
+        obj.setReturn1w(return1w);
+        assertEquals("return1w", obj.getReturn1w(), return1w);
+        CostBasis costbasis = CostBasis.newInstance();
+        obj.setCostBasis(costbasis);
+        assertSame("costbasis", obj.getCostBasis(), costbasis);
+        double return3y = 600813;
+        obj.setReturn3y(return3y);
+        assertEquals("return3y", obj.getReturn3y(), return3y);
+        DaysGain daysgain = DaysGain.newInstance();
+        obj.setDaysGain(daysgain);
+        assertSame("daysgain", obj.getDaysGain(), daysgain);
+        MarketValue marketvalue = MarketValue.newInstance();
+        obj.setMarketValue(marketvalue);
+        assertSame("marketvalue", obj.getMarketValue(), marketvalue);
+        String currencycode = "myValue";
+        obj.setCurrencyCode(currencycode);
+        assertEquals("currencycode", obj.getCurrencyCode(), currencycode);
+        double returnytd = 600813;
+        obj.setReturnYTD(returnytd);
+        assertEquals("returnytd", obj.getReturnYTD(), returnytd);
+        double return5y = 600813;
+        obj.setReturn5y(return5y);
+        assertEquals("return5y", obj.getReturn5y(), return5y);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

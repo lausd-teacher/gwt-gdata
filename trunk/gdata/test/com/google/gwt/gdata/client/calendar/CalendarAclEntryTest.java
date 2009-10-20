@@ -26,13 +26,23 @@ public class CalendarAclEntryTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarAclEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarAclEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    CalendarAclEntry obj = CalendarAclEntry.newInstance();
-    SendAclNotificationsProperty sendaclnotifications = SendAclNotificationsProperty.newInstance();
-    obj.setSendAclNotifications(sendaclnotifications);
-    assertSame("sendaclnotifications", obj.getSendAclNotifications(), sendaclnotifications);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CalendarAclEntry obj = CalendarAclEntry.newInstance();
+        SendAclNotificationsProperty sendaclnotifications = SendAclNotificationsProperty.newInstance();
+        obj.setSendAclNotifications(sendaclnotifications);
+        assertSame("sendaclnotifications", obj.getSendAclNotifications(), sendaclnotifications);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

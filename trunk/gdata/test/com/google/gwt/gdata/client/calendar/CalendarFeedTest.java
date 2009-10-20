@@ -26,6 +26,11 @@ public class CalendarFeedTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

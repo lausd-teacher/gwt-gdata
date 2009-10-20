@@ -26,10 +26,20 @@ public class KmlContentTest extends MapsTest {
   }
 
   public void testConstants() {
-    assertNotNull("TYPE_APPLICATION_VND_GOOGLE_EARTH_KML_XML", KmlContent.TYPE_APPLICATION_VND_GOOGLE_EARTH_KML_XML);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TYPE_APPLICATION_VND_GOOGLE_EARTH_KML_XML", KmlContent.TYPE_APPLICATION_VND_GOOGLE_EARTH_KML_XML);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", KmlContent.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", KmlContent.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

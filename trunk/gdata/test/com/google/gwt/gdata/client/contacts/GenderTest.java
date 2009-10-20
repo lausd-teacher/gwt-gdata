@@ -26,18 +26,33 @@ public class GenderTest extends ContactsTest {
   }
 
   public void testConstants() {
-    assertNotNull("VALUE_FEMALE", Gender.VALUE_FEMALE);
-    assertNotNull("VALUE_MALE", Gender.VALUE_MALE);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("VALUE_FEMALE", Gender.VALUE_FEMALE);
+        assertNotNull("VALUE_MALE", Gender.VALUE_MALE);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Gender.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Gender.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Gender obj = Gender.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Gender obj = Gender.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

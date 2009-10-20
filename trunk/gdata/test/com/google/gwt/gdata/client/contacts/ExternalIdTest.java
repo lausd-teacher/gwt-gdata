@@ -26,26 +26,41 @@ public class ExternalIdTest extends ContactsTest {
   }
 
   public void testConstants() {
-    assertNotNull("REL_ACCOUNT", ExternalId.REL_ACCOUNT);
-    assertNotNull("REL_CUSTOMER", ExternalId.REL_CUSTOMER);
-    assertNotNull("REL_NETWORK", ExternalId.REL_NETWORK);
-    assertNotNull("REL_ORGANIZATION", ExternalId.REL_ORGANIZATION);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_ACCOUNT", ExternalId.REL_ACCOUNT);
+        assertNotNull("REL_CUSTOMER", ExternalId.REL_CUSTOMER);
+        assertNotNull("REL_NETWORK", ExternalId.REL_NETWORK);
+        assertNotNull("REL_ORGANIZATION", ExternalId.REL_ORGANIZATION);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ExternalId.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ExternalId.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    ExternalId obj = ExternalId.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    String label = "myValue";
-    obj.setLabel(label);
-    assertEquals("label", obj.getLabel(), label);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ExternalId obj = ExternalId.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        String label = "myValue";
+        obj.setLabel(label);
+        assertEquals("label", obj.getLabel(), label);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

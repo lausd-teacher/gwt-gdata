@@ -20,6 +20,8 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.gdata.client.maps.MapEntry;
 import com.google.gwt.gdata.client.maps.MapEntryCallback;
@@ -74,19 +76,17 @@ public class MapsDeleteMapDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's maps.
    */
   public MapsDeleteMapDemo() {
-    service = MapsService.newInstance("HelloGData_Maps_DeleteMapDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Delete a map");
-      startButton.addClickHandler(new ClickHandler() {
-        public void onClick(ClickEvent event) {
-          getMaps("http://maps.google.com/maps/feeds/maps/default/full");
+    if (!GData.isLoaded(GDataSystemPackage.MAPS)) {
+      showStatus("Loading the GData Maps package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
         }
-      });
-      mainPanel.setWidget(0, 0, startButton);
+      }, GDataSystemPackage.MAPS);
     } else {
-      showStatus("You are not logged on to Google Maps.", true);
+      startDemo();
     }
   }
 
@@ -166,5 +166,23 @@ public class MapsDeleteMapDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = MapsService.newInstance("HelloGData_Maps_DeleteMapDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      Button startButton = new Button("Delete a map");
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
+          getMaps("http://maps.google.com/maps/feeds/maps/default/full");
+        }
+      });
+      mainPanel.setWidget(0, 0, startButton);
+    } else {
+      showStatus("You are not logged on to Google Maps.", true);
+    }
   }
 }

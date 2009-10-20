@@ -26,10 +26,20 @@ public class MapCategoryTest extends MapsTest {
   }
 
   public void testConstants() {
-    assertNotNull("TERM_MAP", MapCategory.TERM_MAP);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TERM_MAP", MapCategory.TERM_MAP);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MapCategory.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MapCategory.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

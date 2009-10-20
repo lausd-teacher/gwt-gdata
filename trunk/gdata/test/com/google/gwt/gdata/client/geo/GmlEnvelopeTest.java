@@ -26,16 +26,26 @@ public class GmlEnvelopeTest extends GeoTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GmlEnvelope.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", GmlEnvelope.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    GmlEnvelope obj = GmlEnvelope.newInstance();
-    GmlLowerCorner lowercorner = GmlLowerCorner.newInstance();
-    obj.setLowerCorner(lowercorner);
-    assertSame("lowercorner", obj.getLowerCorner(), lowercorner);
-    GmlUpperCorner uppercorner = GmlUpperCorner.newInstance();
-    obj.setUpperCorner(uppercorner);
-    assertSame("uppercorner", obj.getUpperCorner(), uppercorner);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GmlEnvelope obj = GmlEnvelope.newInstance();
+        GmlLowerCorner lowercorner = GmlLowerCorner.newInstance();
+        obj.setLowerCorner(lowercorner);
+        assertSame("lowercorner", obj.getLowerCorner(), lowercorner);
+        GmlUpperCorner uppercorner = GmlUpperCorner.newInstance();
+        obj.setUpperCorner(uppercorner);
+        assertSame("uppercorner", obj.getUpperCorner(), uppercorner);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

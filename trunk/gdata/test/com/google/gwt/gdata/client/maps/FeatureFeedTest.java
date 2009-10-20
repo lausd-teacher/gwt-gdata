@@ -26,14 +26,24 @@ public class FeatureFeedTest extends MapsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", FeatureFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", FeatureFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    FeatureFeed obj = FeatureFeed.newInstance();
-    // Unit Test for getAtomFeedLink()
-    assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
-    // Unit Test for getNextLink()
-    assertEquals("getNextLink", obj.getNextLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        FeatureFeed obj = FeatureFeed.newInstance();
+        // Unit Test for getAtomFeedLink()
+        assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
+        // Unit Test for getNextLink()
+        assertEquals("getNextLink", obj.getNextLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -26,18 +26,33 @@ public class SourceTest extends SidewikiTest {
   }
 
   public void testConstants() {
-    assertNotNull("VALUE_BLOG", Source.VALUE_BLOG);
-    assertNotNull("VALUE_SIDEWIKI", Source.VALUE_SIDEWIKI);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("VALUE_BLOG", Source.VALUE_BLOG);
+        assertNotNull("VALUE_SIDEWIKI", Source.VALUE_SIDEWIKI);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Source.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Source.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Source obj = Source.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Source obj = Source.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

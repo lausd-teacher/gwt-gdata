@@ -26,16 +26,26 @@ public class GeoRssWhereTest extends GeoTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GeoRssWhere.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", GeoRssWhere.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    GeoRssWhere obj = GeoRssWhere.newInstance();
-    GmlPoint point = GmlPoint.newInstance();
-    obj.setPoint(point);
-    assertSame("point", obj.getPoint(), point);
-    GmlEnvelope envelope = GmlEnvelope.newInstance();
-    obj.setEnvelope(envelope);
-    assertSame("envelope", obj.getEnvelope(), envelope);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GeoRssWhere obj = GeoRssWhere.newInstance();
+        GmlPoint point = GmlPoint.newInstance();
+        obj.setPoint(point);
+        assertSame("point", obj.getPoint(), point);
+        GmlEnvelope envelope = GmlEnvelope.newInstance();
+        obj.setEnvelope(envelope);
+        assertSame("envelope", obj.getEnvelope(), envelope);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }
