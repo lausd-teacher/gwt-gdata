@@ -16,23 +16,31 @@
 
 package com.google.gwt.gdata.client.acl;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Link class.
  */
-public class LinkTest extends GWTTestCase {
+public class LinkTest extends AclTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("REL_ACCESS_CONTROL_LIST", Link.REL_ACCESS_CONTROL_LIST);
-    assertNotNull("REL_CONTROLLED_OBJECT", Link.REL_CONTROLLED_OBJECT);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_ACCESS_CONTROL_LIST", Link.REL_ACCESS_CONTROL_LIST);
+        assertNotNull("REL_CONTROLLED_OBJECT", Link.REL_CONTROLLED_OBJECT);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Link.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Link.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

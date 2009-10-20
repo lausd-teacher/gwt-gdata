@@ -16,25 +16,33 @@
 
 package com.google.gwt.gdata.client.app;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Accept class.
  */
-public class AcceptTest extends GWTTestCase {
+public class AcceptTest extends AppTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Accept.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Accept.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Accept obj = Accept.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Accept obj = Accept.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

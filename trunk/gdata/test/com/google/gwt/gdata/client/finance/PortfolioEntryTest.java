@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the PortfolioEntry class.
  */
-public class PortfolioEntryTest extends GWTTestCase {
+public class PortfolioEntryTest extends FinanceTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

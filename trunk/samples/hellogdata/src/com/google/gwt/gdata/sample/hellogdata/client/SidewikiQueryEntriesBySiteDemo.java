@@ -30,7 +30,7 @@ import com.google.gwt.user.client.ui.Label;
  * The following example demonstrates how to query entries to find
  * Sidewiki entries for a given site.
  */
-public class SidewikiQuerySiteEntriesDemo extends GDataDemo {
+public class SidewikiQueryEntriesBySiteDemo extends GDataDemo {
 
   /**
    * This method is used by the main sample app to obtain
@@ -43,18 +43,18 @@ public class SidewikiQuerySiteEntriesDemo extends GDataDemo {
 
       @Override
       public GDataDemo createInstance() {
-        return new SidewikiQuerySiteEntriesDemo();
+        return new SidewikiQueryEntriesBySiteDemo();
       }
 
       @Override
       public String getDescription() {
         return "<p>This sample uses an entry query to find Sidewiki content " +
-        		"for a given site.</p>";
+          "for a given site.</p>";
       }
 
       @Override
       public String getName() {
-        return "Sidewiki - Querying for site entries";
+        return "Sidewiki - Querying entries by site";
       }
     };
   }
@@ -66,15 +66,15 @@ public class SidewikiQuerySiteEntriesDemo extends GDataDemo {
    * Setup the Google Sidewiki service and create the main content panel.
    * Start the demo by querying Sidewiki entries.
    */
-  public SidewikiQuerySiteEntriesDemo() {
+  public SidewikiQueryEntriesBySiteDemo() {
     service = SidewikiService.newInstance(
-        "HelloGData_Sidewiki_QuerySiteEntriesDemo_v2.0");
+        "HelloGData_Sidewiki_QueryEntriesBySiteDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    String webpage_encoded = "http%3A%2F%2Fwww.google.com%2F";
+    String webpageEncoded = "http%3A%2F%2Fwww.google.com%2F";
     String webpageFeedUri =
       "http://www.google.com/sidewiki/feeds/entries/webpage/" +
-        webpage_encoded + "/full";
+      webpageEncoded + "/full";
     queryEntries(webpageFeedUri);
   }
 

@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the AnyoneCanAddSelfProperty class.
  */
-public class AnyoneCanAddSelfPropertyTest extends GWTTestCase {
+public class AnyoneCanAddSelfPropertyTest extends CalendarTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

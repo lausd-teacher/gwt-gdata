@@ -16,25 +16,33 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the StartDate class.
  */
-public class StartDateTest extends GWTTestCase {
+public class StartDateTest extends AnalyticsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", StartDate.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", StartDate.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    StartDate obj = StartDate.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        StartDate obj = StartDate.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

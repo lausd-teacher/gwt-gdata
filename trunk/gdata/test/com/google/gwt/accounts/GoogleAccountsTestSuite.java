@@ -28,6 +28,7 @@ public class GoogleAccountsTestSuite extends GWTTestSuite {
   
   public static Test suite() {
     TestSuite suite = new TestSuite("TestSuite for the GoogleAccountsTest.");
+    suite.addTestSuite(com.google.gwt.accounts.client.AuthSubSettingsTest.class);
     suite.addTestSuite(com.google.gwt.accounts.client.AuthSubStatusTest.class);
     suite.addTestSuite(com.google.gwt.accounts.client.UserTest.class);
     return suite;

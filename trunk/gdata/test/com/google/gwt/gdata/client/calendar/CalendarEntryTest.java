@@ -17,12 +17,11 @@
 package com.google.gwt.gdata.client.calendar;
 
 import com.google.gwt.gdata.client.Where;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the CalendarEntry class.
  */
-public class CalendarEntryTest extends GWTTestCase {
+public class CalendarEntryTest extends CalendarTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

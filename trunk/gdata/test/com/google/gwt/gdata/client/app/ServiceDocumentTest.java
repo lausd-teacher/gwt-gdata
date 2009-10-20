@@ -16,19 +16,22 @@
 
 package com.google.gwt.gdata.client.app;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the ServiceDocument class.
  */
-public class ServiceDocumentTest extends GWTTestCase {
+public class ServiceDocumentTest extends AppTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ServiceDocument.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ServiceDocument.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -36,9 +39,14 @@ public class ServiceDocumentTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    ServiceDocument obj = ServiceDocument.newInstance();
-    Workspace[] workspaces = new Workspace[]{ Workspace.newInstance() };
-    obj.setWorkspaces(workspaces);
-    assertEquals("workspaces", obj.getWorkspaces().length, workspaces.length);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ServiceDocument obj = ServiceDocument.newInstance();
+        Workspace[] workspaces = new Workspace[]{ Workspace.newInstance() };
+        obj.setWorkspaces(workspaces);
+        assertEquals("workspaces", obj.getWorkspaces().length, workspaces.length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

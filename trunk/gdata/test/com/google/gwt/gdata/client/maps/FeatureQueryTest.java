@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.maps;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the FeatureQuery class.
  */
-public class FeatureQueryTest extends GWTTestCase {
+public class FeatureQueryTest extends MapsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

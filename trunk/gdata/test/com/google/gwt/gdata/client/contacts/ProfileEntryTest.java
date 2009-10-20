@@ -19,12 +19,11 @@ package com.google.gwt.gdata.client.contacts;
 import com.google.gwt.gdata.client.Name;
 import com.google.gwt.gdata.client.StructuredPostalAddress;
 import com.google.gwt.gdata.client.Where;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the ProfileEntry class.
  */
-public class ProfileEntryTest extends GWTTestCase {
+public class ProfileEntryTest extends ContactsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

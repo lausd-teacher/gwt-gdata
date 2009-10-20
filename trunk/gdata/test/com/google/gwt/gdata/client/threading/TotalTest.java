@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.threading;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Total class.
  */
-public class TotalTest extends GWTTestCase {
+public class TotalTest extends ThreadingTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

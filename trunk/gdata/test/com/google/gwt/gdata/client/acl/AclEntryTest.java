@@ -16,28 +16,36 @@
 
 package com.google.gwt.gdata.client.acl;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the AclEntry class.
  */
-public class AclEntryTest extends GWTTestCase {
+public class AclEntryTest extends AclTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
   
   public void testConstructors() {
-    assertNotNull("newInstance()", AclEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AclEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    AclEntry obj = AclEntry.newInstance();
-    AclScope scope = AclScope.newInstance();
-    obj.setScope(scope);
-    assertSame("scope", obj.getScope(), scope);
-    AclRole role = AclRole.newInstance();
-    obj.setRole(role);
-    assertSame("role", obj.getRole(), role);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AclEntry obj = AclEntry.newInstance();
+        AclScope scope = AclScope.newInstance();
+        obj.setScope(scope);
+        assertSame("scope", obj.getScope(), scope);
+        AclRole role = AclRole.newInstance();
+        obj.setRole(role);
+        assertSame("role", obj.getRole(), role);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -16,28 +16,36 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Property class.
  */
-public class PropertyTest extends GWTTestCase {
+public class PropertyTest extends AnalyticsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Property.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Property.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Property obj = Property.newInstance();
-    String name = "myValue";
-    obj.setName(name);
-    assertEquals("name", obj.getName(), name);
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Property obj = Property.newInstance();
+        String name = "myValue";
+        obj.setName(name);
+        assertEquals("name", obj.getName(), name);
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

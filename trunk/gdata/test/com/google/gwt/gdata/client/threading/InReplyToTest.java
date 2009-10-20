@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.threading;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the InReplyTo class.
  */
-public class InReplyToTest extends GWTTestCase {
+public class InReplyToTest extends ThreadingTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

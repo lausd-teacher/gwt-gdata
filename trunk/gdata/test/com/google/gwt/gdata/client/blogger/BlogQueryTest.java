@@ -16,19 +16,22 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the BlogQuery class.
  */
-public class BlogQueryTest extends GWTTestCase {
+public class BlogQueryTest extends BloggerTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", BlogQuery.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", BlogQuery.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -37,12 +40,17 @@ public class BlogQueryTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    BlogQuery obj = BlogQuery.newInstance("myValue");
-    double startindex = 600813;
-    obj.setStartIndex(startindex);
-    assertEquals("startindex", obj.getStartIndex(), startindex);
-    double maxresults = 600813;
-    obj.setMaxResults(maxresults);
-    assertEquals("maxresults", obj.getMaxResults(), maxresults);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        BlogQuery obj = BlogQuery.newInstance("myValue");
+        double startindex = 600813;
+        obj.setStartIndex(startindex);
+        assertEquals("startindex", obj.getStartIndex(), startindex);
+        double maxresults = 600813;
+        obj.setMaxResults(maxresults);
+        assertEquals("maxresults", obj.getMaxResults(), maxresults);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

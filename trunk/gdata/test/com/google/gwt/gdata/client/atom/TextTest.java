@@ -16,34 +16,42 @@
 
 package com.google.gwt.gdata.client.atom;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Text class.
  */
-public class TextTest extends GWTTestCase {
+public class TextTest extends AtomTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Text.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Text.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Text obj = Text.newInstance();
-    String uri = "myValue";
-    obj.setUri(uri);
-    assertEquals("uri", obj.getUri(), uri);
-    String type = "myValue";
-    obj.setType(type);
-    assertEquals("type", obj.getType(), type);
-    String text = "myValue";
-    obj.setText(text);
-    assertEquals("text", obj.getText(), text);
-    String lang = "myValue";
-    obj.setLang(lang);
-    assertEquals("lang", obj.getLang(), lang);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Text obj = Text.newInstance();
+        String uri = "myValue";
+        obj.setUri(uri);
+        assertEquals("uri", obj.getUri(), uri);
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        String text = "myValue";
+        obj.setText(text);
+        assertEquals("text", obj.getText(), text);
+        String lang = "myValue";
+        obj.setLang(lang);
+        assertEquals("lang", obj.getLang(), lang);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -20,12 +20,11 @@ import com.google.gwt.accounts.client.UserTest;
 import com.google.gwt.gdata.client.GDataTestScripts;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.impl.CallErrorException;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the FinanceService class.
  */
-public class FinanceServiceTest extends GWTTestCase {
+public class FinanceServiceTest extends FinanceTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

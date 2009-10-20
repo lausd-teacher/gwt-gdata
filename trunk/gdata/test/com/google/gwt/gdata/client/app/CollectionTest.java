@@ -17,19 +17,23 @@
 package com.google.gwt.gdata.client.app;
 
 import com.google.gwt.gdata.client.atom.Text;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the Collection class.
  */
-public class CollectionTest extends GWTTestCase {
+public class CollectionTest extends AppTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Collection.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Collection.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -38,18 +42,23 @@ public class CollectionTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    Collection obj = Collection.newInstance();
-    Accept[] accepts = new Accept[]{ Accept.newInstance() };
-    obj.setAccepts(accepts);
-    assertEquals("accepts", obj.getAccepts().length, accepts.length);
-    Text title = Text.newInstance();
-    obj.setTitle(title);
-    assertSame("title", obj.getTitle(), title);
-    Categories[] categorieses = new Categories[]{ Categories.newInstance() };
-    obj.setCategorieses(categorieses);
-    assertEquals("categorieses", obj.getCategorieses().length, categorieses.length);
-    String href = "myValue";
-    obj.setHref(href);
-    assertEquals("href", obj.getHref(), href);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Collection obj = Collection.newInstance();
+        Accept[] accepts = new Accept[]{ Accept.newInstance() };
+        obj.setAccepts(accepts);
+        assertEquals("accepts", obj.getAccepts().length, accepts.length);
+        Text title = Text.newInstance();
+        obj.setTitle(title);
+        assertSame("title", obj.getTitle(), title);
+        Categories[] categorieses = new Categories[]{ Categories.newInstance() };
+        obj.setCategorieses(categorieses);
+        assertEquals("categorieses", obj.getCategorieses().length, categorieses.length);
+        String href = "myValue";
+        obj.setHref(href);
+        assertEquals("href", obj.getHref(), href);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

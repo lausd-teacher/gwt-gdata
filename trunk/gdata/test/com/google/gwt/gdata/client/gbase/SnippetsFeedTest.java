@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the SnippetsFeed class.
  */
-public class SnippetsFeedTest extends GWTTestCase {
+public class SnippetsFeedTest extends GoogleBaseTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

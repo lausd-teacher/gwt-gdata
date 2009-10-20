@@ -17,33 +17,47 @@
 package com.google.gwt.gdata.client.blogger;
 
 import com.google.gwt.gdata.client.threading.InReplyTo;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the CommentEntry class.
  */
-public class CommentEntryTest extends GWTTestCase {
+public class CommentEntryTest extends BloggerTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CommentEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CommentEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    CommentEntry obj = CommentEntry.newInstance();
-    // Unit Test for getHtmlLink()
-    assertEquals("getHtmlLink", obj.getHtmlLink(), null);
-    // Unit Test for getRepliesLink()
-    assertEquals("getRepliesLink", obj.getRepliesLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CommentEntry obj = CommentEntry.newInstance();
+        // Unit Test for getHtmlLink()
+        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+        // Unit Test for getRepliesLink()
+        assertEquals("getRepliesLink", obj.getRepliesLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    CommentEntry obj = CommentEntry.newInstance();
-    InReplyTo inreplyto = InReplyTo.newInstance();
-    obj.setInReplyTo(inreplyto);
-    assertSame("inreplyto", obj.getInReplyTo(), inreplyto);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CommentEntry obj = CommentEntry.newInstance();
+        InReplyTo inreplyto = InReplyTo.newInstance();
+        obj.setInReplyTo(inreplyto);
+        assertSame("inreplyto", obj.getInReplyTo(), inreplyto);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the GmAttribute class.
  */
-public class GmAttributeTest extends GWTTestCase {
+public class GmAttributeTest extends GoogleBaseTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

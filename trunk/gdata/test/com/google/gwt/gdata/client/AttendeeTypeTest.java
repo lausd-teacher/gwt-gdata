@@ -16,30 +16,43 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the AttendeeType class.
  */
-public class AttendeeTypeTest extends GWTTestCase {
+public class AttendeeTypeTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("VALUE_OPTIONAL", AttendeeType.VALUE_OPTIONAL);
-    assertNotNull("VALUE_REQUIRED", AttendeeType.VALUE_REQUIRED);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("VALUE_OPTIONAL", AttendeeType.VALUE_OPTIONAL);
+        assertNotNull("VALUE_REQUIRED", AttendeeType.VALUE_REQUIRED);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AttendeeType.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AttendeeType.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    AttendeeType obj = AttendeeType.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AttendeeType obj = AttendeeType.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

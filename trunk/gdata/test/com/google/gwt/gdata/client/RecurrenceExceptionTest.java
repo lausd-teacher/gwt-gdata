@@ -16,25 +16,33 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the RecurrenceException class.
  */
-public class RecurrenceExceptionTest extends GWTTestCase {
+public class RecurrenceExceptionTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", RecurrenceException.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", RecurrenceException.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    RecurrenceException obj = RecurrenceException.newInstance();
-    boolean specialized = true;
-    obj.setSpecialized(specialized);
-    assertSame("specialized", obj.getSpecialized(), specialized);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        RecurrenceException obj = RecurrenceException.newInstance();
+        boolean specialized = true;
+        obj.setSpecialized(specialized);
+        assertSame("specialized", obj.getSpecialized(), specialized);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

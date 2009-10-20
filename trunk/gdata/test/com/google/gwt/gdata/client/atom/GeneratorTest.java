@@ -16,31 +16,39 @@
 
 package com.google.gwt.gdata.client.atom;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Generator class.
  */
-public class GeneratorTest extends GWTTestCase {
+public class GeneratorTest extends AtomTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Generator.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Generator.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Generator obj = Generator.newInstance();
-    String name = "myValue";
-    obj.setName(name);
-    assertEquals("name", obj.getName(), name);
-    String uri = "myValue";
-    obj.setUri(uri);
-    assertEquals("uri", obj.getUri(), uri);
-    String version = "myValue";
-    obj.setVersion(version);
-    assertEquals("version", obj.getVersion(), version);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Generator obj = Generator.newInstance();
+        String name = "myValue";
+        obj.setName(name);
+        assertEquals("name", obj.getName(), name);
+        String uri = "myValue";
+        obj.setUri(uri);
+        assertEquals("uri", obj.getUri(), uri);
+        String version = "myValue";
+        obj.setVersion(version);
+        assertEquals("version", obj.getVersion(), version);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

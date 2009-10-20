@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the WebContent class.
  */
-public class WebContentTest extends GWTTestCase {
+public class WebContentTest extends CalendarTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the AllowGSync2Property class.
  */
-public class AllowGSync2PropertyTest extends GWTTestCase {
+public class AllowGSync2PropertyTest extends CalendarTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

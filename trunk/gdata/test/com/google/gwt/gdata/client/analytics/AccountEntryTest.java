@@ -16,19 +16,22 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the AccountEntry class.
  */
-public class AccountEntryTest extends GWTTestCase {
+public class AccountEntryTest extends AnalyticsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AccountEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AccountEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -37,12 +40,17 @@ public class AccountEntryTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    AccountEntry obj = AccountEntry.newInstance();
-    Property[] properties = new Property[]{ Property.newInstance() };
-    obj.setProperties(properties);
-    assertEquals("properties", obj.getProperties().length, properties.length);
-    TableId tableid = TableId.newInstance();
-    obj.setTableId(tableid);
-    assertSame("tableid", obj.getTableId(), tableid);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AccountEntry obj = AccountEntry.newInstance();
+        Property[] properties = new Property[]{ Property.newInstance() };
+        obj.setProperties(properties);
+        assertEquals("properties", obj.getProperties().length, properties.length);
+        TableId tableid = TableId.newInstance();
+        obj.setTableId(tableid);
+        assertSame("tableid", obj.getTableId(), tableid);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

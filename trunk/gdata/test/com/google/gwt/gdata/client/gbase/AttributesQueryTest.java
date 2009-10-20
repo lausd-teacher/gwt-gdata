@@ -17,14 +17,13 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.gdata.client.DateTime;
-import com.google.gwt.junit.client.GWTTestCase;
 
 import java.util.Date;
 
 /**
  * Tests for the AttributesQuery class.
  */
-public class AttributesQueryTest extends GWTTestCase {
+public class AttributesQueryTest extends GoogleBaseTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

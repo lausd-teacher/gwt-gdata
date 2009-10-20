@@ -21,12 +21,11 @@ import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.PostalAddress;
 import com.google.gwt.gdata.client.ResourceId;
 import com.google.gwt.gdata.client.StructuredPostalAddress;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the FeatureEntry class.
  */
-public class FeatureEntryTest extends GWTTestCase {
+public class FeatureEntryTest extends MapsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

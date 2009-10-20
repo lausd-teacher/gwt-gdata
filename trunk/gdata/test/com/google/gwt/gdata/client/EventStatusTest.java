@@ -16,31 +16,44 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the EventStatus class.
  */
-public class EventStatusTest extends GWTTestCase {
+public class EventStatusTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("VALUE_CANCELED", EventStatus.VALUE_CANCELED);
-    assertNotNull("VALUE_CONFIRMED", EventStatus.VALUE_CONFIRMED);
-    assertNotNull("VALUE_TENTATIVE", EventStatus.VALUE_TENTATIVE);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("VALUE_CANCELED", EventStatus.VALUE_CANCELED);
+        assertNotNull("VALUE_CONFIRMED", EventStatus.VALUE_CONFIRMED);
+        assertNotNull("VALUE_TENTATIVE", EventStatus.VALUE_TENTATIVE);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", EventStatus.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", EventStatus.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    EventStatus obj = EventStatus.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        EventStatus obj = EventStatus.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

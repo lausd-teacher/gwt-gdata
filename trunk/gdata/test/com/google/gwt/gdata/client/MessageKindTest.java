@@ -16,22 +16,30 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the MessageKind class.
  */
-public class MessageKindTest extends GWTTestCase {
+public class MessageKindTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("TERM_MESSAGE", MessageKind.TERM_MESSAGE);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TERM_MESSAGE", MessageKind.TERM_MESSAGE);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MessageKind.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MessageKind.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

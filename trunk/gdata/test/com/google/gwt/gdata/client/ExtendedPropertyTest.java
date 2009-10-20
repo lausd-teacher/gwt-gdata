@@ -16,35 +16,48 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the ExtendedProperty class.
  */
-public class ExtendedPropertyTest extends GWTTestCase {
+public class ExtendedPropertyTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("REALM_SHARED", ExtendedProperty.REALM_SHARED);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REALM_SHARED", ExtendedProperty.REALM_SHARED);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ExtendedProperty.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ExtendedProperty.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    ExtendedProperty obj = ExtendedProperty.newInstance();
-    String name = "myValue";
-    obj.setName(name);
-    assertEquals("name", obj.getName(), name);
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
-    String realm = "myValue";
-    obj.setRealm(realm);
-    assertEquals("realm", obj.getRealm(), realm);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ExtendedProperty obj = ExtendedProperty.newInstance();
+        String name = "myValue";
+        obj.setName(name);
+        assertEquals("name", obj.getName(), name);
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        String realm = "myValue";
+        obj.setRealm(realm);
+        assertEquals("realm", obj.getRealm(), realm);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

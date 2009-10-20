@@ -16,51 +16,64 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Im class.
  */
-public class ImTest extends GWTTestCase {
+public class ImTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("PROTOCOL_AIM", Im.PROTOCOL_AIM);
-    assertNotNull("PROTOCOL_GOOGLE_TALK", Im.PROTOCOL_GOOGLE_TALK);
-    assertNotNull("PROTOCOL_ICQ", Im.PROTOCOL_ICQ);
-    assertNotNull("PROTOCOL_JABBER", Im.PROTOCOL_JABBER);
-    assertNotNull("PROTOCOL_MSN", Im.PROTOCOL_MSN);
-    assertNotNull("PROTOCOL_QQ", Im.PROTOCOL_QQ);
-    assertNotNull("PROTOCOL_SKYPE", Im.PROTOCOL_SKYPE);
-    assertNotNull("PROTOCOL_YAHOO", Im.PROTOCOL_YAHOO);
-    assertNotNull("REL_HOME", Im.REL_HOME);
-    assertNotNull("REL_OTHER", Im.REL_OTHER);
-    assertNotNull("REL_WORK", Im.REL_WORK);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("PROTOCOL_AIM", Im.PROTOCOL_AIM);
+        assertNotNull("PROTOCOL_GOOGLE_TALK", Im.PROTOCOL_GOOGLE_TALK);
+        assertNotNull("PROTOCOL_ICQ", Im.PROTOCOL_ICQ);
+        assertNotNull("PROTOCOL_JABBER", Im.PROTOCOL_JABBER);
+        assertNotNull("PROTOCOL_MSN", Im.PROTOCOL_MSN);
+        assertNotNull("PROTOCOL_QQ", Im.PROTOCOL_QQ);
+        assertNotNull("PROTOCOL_SKYPE", Im.PROTOCOL_SKYPE);
+        assertNotNull("PROTOCOL_YAHOO", Im.PROTOCOL_YAHOO);
+        assertNotNull("REL_HOME", Im.REL_HOME);
+        assertNotNull("REL_OTHER", Im.REL_OTHER);
+        assertNotNull("REL_WORK", Im.REL_WORK);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Im.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Im.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Im obj = Im.newInstance();
-    boolean primary = true;
-    obj.setPrimary(primary);
-    assertSame("primary", obj.getPrimary(), primary);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    String label = "myValue";
-    obj.setLabel(label);
-    assertEquals("label", obj.getLabel(), label);
-    String protocol = "myValue";
-    obj.setProtocol(protocol);
-    assertEquals("protocol", obj.getProtocol(), protocol);
-    String address = "myValue";
-    obj.setAddress(address);
-    assertEquals("address", obj.getAddress(), address);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Im obj = Im.newInstance();
+        boolean primary = true;
+        obj.setPrimary(primary);
+        assertSame("primary", obj.getPrimary(), primary);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        String label = "myValue";
+        obj.setLabel(label);
+        assertEquals("label", obj.getLabel(), label);
+        String protocol = "myValue";
+        obj.setProtocol(protocol);
+        assertEquals("protocol", obj.getProtocol(), protocol);
+        String address = "myValue";
+        obj.setAddress(address);
+        assertEquals("address", obj.getAddress(), address);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

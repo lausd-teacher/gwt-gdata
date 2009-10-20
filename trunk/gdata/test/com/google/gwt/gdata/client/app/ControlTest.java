@@ -16,25 +16,33 @@
 
 package com.google.gwt.gdata.client.app;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Control class.
  */
-public class ControlTest extends GWTTestCase {
+public class ControlTest extends AppTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Control.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Control.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Control obj = Control.newInstance();
-    Draft draft = Draft.newInstance();
-    obj.setDraft(draft);
-    assertSame("draft", obj.getDraft(), draft);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Control obj = Control.newInstance();
+        Draft draft = Draft.newInstance();
+        obj.setDraft(draft);
+        assertSame("draft", obj.getDraft(), draft);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

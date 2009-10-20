@@ -16,25 +16,33 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the TableName class.
  */
-public class TableNameTest extends GWTTestCase {
+public class TableNameTest extends AnalyticsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", TableName.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", TableName.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    TableName obj = TableName.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        TableName obj = TableName.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the ContactGroupFeed class.
  */
-public class ContactGroupFeedTest extends GWTTestCase {
+public class ContactGroupFeedTest extends ContactsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

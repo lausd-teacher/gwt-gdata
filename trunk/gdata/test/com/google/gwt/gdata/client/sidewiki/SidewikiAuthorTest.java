@@ -18,12 +18,11 @@ package com.google.gwt.gdata.client.sidewiki;
 
 import com.google.gwt.gdata.client.Rating;
 import com.google.gwt.gdata.client.ResourceId;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the SidewikiAuthor class.
  */
-public class SidewikiAuthorTest extends GWTTestCase {
+public class SidewikiAuthorTest extends SidewikiTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

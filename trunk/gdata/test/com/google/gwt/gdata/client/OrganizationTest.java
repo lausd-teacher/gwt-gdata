@@ -16,42 +16,55 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Organization class.
  */
-public class OrganizationTest extends GWTTestCase {
+public class OrganizationTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("REL_OTHER", Organization.REL_OTHER);
-    assertNotNull("REL_WORK", Organization.REL_WORK);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_OTHER", Organization.REL_OTHER);
+        assertNotNull("REL_WORK", Organization.REL_WORK);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Organization.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Organization.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Organization obj = Organization.newInstance();
-    boolean primary = true;
-    obj.setPrimary(primary);
-    assertSame("primary", obj.getPrimary(), primary);
-    OrgName orgname = OrgName.newInstance();
-    obj.setOrgName(orgname);
-    assertSame("orgname", obj.getOrgName(), orgname);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    OrgTitle orgtitle = OrgTitle.newInstance();
-    obj.setOrgTitle(orgtitle);
-    assertSame("orgtitle", obj.getOrgTitle(), orgtitle);
-    String label = "myValue";
-    obj.setLabel(label);
-    assertEquals("label", obj.getLabel(), label);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Organization obj = Organization.newInstance();
+        boolean primary = true;
+        obj.setPrimary(primary);
+        assertSame("primary", obj.getPrimary(), primary);
+        OrgName orgname = OrgName.newInstance();
+        obj.setOrgName(orgname);
+        assertSame("orgname", obj.getOrgName(), orgname);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        OrgTitle orgtitle = OrgTitle.newInstance();
+        obj.setOrgTitle(orgtitle);
+        assertSame("orgtitle", obj.getOrgTitle(), orgtitle);
+        String label = "myValue";
+        obj.setLabel(label);
+        assertEquals("label", obj.getLabel(), label);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

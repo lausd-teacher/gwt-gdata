@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the PrivateCopyProperty class.
  */
-public class PrivateCopyPropertyTest extends GWTTestCase {
+public class PrivateCopyPropertyTest extends CalendarTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

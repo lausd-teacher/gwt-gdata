@@ -16,18 +16,21 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Deleted class.
  */
-public class DeletedTest extends GWTTestCase {
+public class DeletedTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Deleted.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Deleted.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

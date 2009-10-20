@@ -16,19 +16,22 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the RecurrenceExceptionEntry class.
  */
-public class RecurrenceExceptionEntryTest extends GWTTestCase {
+public class RecurrenceExceptionEntryTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", RecurrenceExceptionEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", RecurrenceExceptionEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -38,30 +41,35 @@ public class RecurrenceExceptionEntryTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    RecurrenceExceptionEntry obj = RecurrenceExceptionEntry.newInstance();
-    Who[] who = new Who[]{ Who.newInstance() };
-    obj.setWho(who);
-    assertEquals("who", obj.getWho().length, who.length);
-    Transparency transparency = Transparency.newInstance();
-    obj.setTransparency(transparency);
-    assertSame("transparency", obj.getTransparency(), transparency);
-    EventStatus eventstatus = EventStatus.newInstance();
-    obj.setEventStatus(eventstatus);
-    assertSame("eventstatus", obj.getEventStatus(), eventstatus);
-    OriginalEvent originalevent = OriginalEvent.newInstance();
-    obj.setOriginalEvent(originalevent);
-    assertSame("originalevent", obj.getOriginalEvent(), originalevent);
-    When[] when = new When[]{ When.newInstance() };
-    obj.setWhen(when);
-    assertEquals("when", obj.getWhen().length, when.length);
-    Visibility visibility = Visibility.newInstance();
-    obj.setVisibility(visibility);
-    assertSame("visibility", obj.getVisibility(), visibility);
-    Where[] where = new Where[]{ Where.newInstance() };
-    obj.setWhere(where);
-    assertEquals("where", obj.getWhere().length, where.length);
-    Comments comments = Comments.newInstance();
-    obj.setComments(comments);
-    assertSame("comments", obj.getComments(), comments);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        RecurrenceExceptionEntry obj = RecurrenceExceptionEntry.newInstance();
+        Who[] who = new Who[]{ Who.newInstance() };
+        obj.setWho(who);
+        assertEquals("who", obj.getWho().length, who.length);
+        Transparency transparency = Transparency.newInstance();
+        obj.setTransparency(transparency);
+        assertSame("transparency", obj.getTransparency(), transparency);
+        EventStatus eventstatus = EventStatus.newInstance();
+        obj.setEventStatus(eventstatus);
+        assertSame("eventstatus", obj.getEventStatus(), eventstatus);
+        OriginalEvent originalevent = OriginalEvent.newInstance();
+        obj.setOriginalEvent(originalevent);
+        assertSame("originalevent", obj.getOriginalEvent(), originalevent);
+        When[] when = new When[]{ When.newInstance() };
+        obj.setWhen(when);
+        assertEquals("when", obj.getWhen().length, when.length);
+        Visibility visibility = Visibility.newInstance();
+        obj.setVisibility(visibility);
+        assertSame("visibility", obj.getVisibility(), visibility);
+        Where[] where = new Where[]{ Where.newInstance() };
+        obj.setWhere(where);
+        assertEquals("where", obj.getWhere().length, where.length);
+        Comments comments = Comments.newInstance();
+        obj.setComments(comments);
+        assertSame("comments", obj.getComments(), comments);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

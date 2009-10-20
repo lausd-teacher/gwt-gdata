@@ -16,19 +16,22 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the DataEntry class.
  */
-public class DataEntryTest extends GWTTestCase {
+public class DataEntryTest extends AnalyticsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", DataEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", DataEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -40,12 +43,17 @@ public class DataEntryTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    DataEntry obj = DataEntry.newInstance();
-    Dimension[] dimensions = new Dimension[]{ Dimension.newInstance() };
-    obj.setDimensions(dimensions);
-    assertEquals("dimensions", obj.getDimensions().length, dimensions.length);
-    Metric[] metrics = new Metric[]{ Metric.newInstance() };
-    obj.setMetrics(metrics);
-    assertEquals("metrics", obj.getMetrics().length, metrics.length);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        DataEntry obj = DataEntry.newInstance();
+        Dimension[] dimensions = new Dimension[]{ Dimension.newInstance() };
+        obj.setDimensions(dimensions);
+        assertEquals("dimensions", obj.getDimensions().length, dimensions.length);
+        Metric[] metrics = new Metric[]{ Metric.newInstance() };
+        obj.setMetrics(metrics);
+        assertEquals("metrics", obj.getMetrics().length, metrics.length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

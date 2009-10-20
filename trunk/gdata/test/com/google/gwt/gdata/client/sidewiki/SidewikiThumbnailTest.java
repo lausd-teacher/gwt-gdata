@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.sidewiki;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the SidewikiThumbnail class.
  */
-public class SidewikiThumbnailTest extends GWTTestCase {
+public class SidewikiThumbnailTest extends SidewikiTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

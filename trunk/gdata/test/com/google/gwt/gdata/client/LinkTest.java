@@ -16,24 +16,32 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Link class.
  */
-public class LinkTest extends GWTTestCase {
+public class LinkTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("REL_ENTRY_POST", Link.REL_ENTRY_POST);
-    assertNotNull("REL_FEED", Link.REL_FEED);
-    assertNotNull("REL_FEED_BATCH", Link.REL_FEED_BATCH);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_ENTRY_POST", Link.REL_ENTRY_POST);
+        assertNotNull("REL_FEED", Link.REL_FEED);
+        assertNotNull("REL_FEED_BATCH", Link.REL_FEED_BATCH);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Link.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Link.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

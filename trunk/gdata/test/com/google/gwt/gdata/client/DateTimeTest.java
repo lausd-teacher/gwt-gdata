@@ -16,14 +16,12 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 import java.util.Date;
 
 /**
  * Tests for the DateTime class.
  */
-public class DateTimeTest extends GWTTestCase {
+public class DateTimeTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
@@ -42,12 +40,17 @@ public class DateTimeTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    DateTime obj = DateTime.newInstance(new Date(), false);
-    Date date = new Date();
-    obj.setDate(date);
-    assertEquals("date", obj.getDate(), date);
-    boolean dateonly = true;
-    obj.setDateOnly(dateonly);
-    assertSame("dateonly", obj.isDateOnly(), dateonly);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        DateTime obj = DateTime.newInstance(new Date(), false);
+        Date date = new Date();
+        obj.setDate(date);
+        assertEquals("date", obj.getDate(), date);
+        boolean dateonly = true;
+        obj.setDateOnly(dateonly);
+        assertSame("dateonly", obj.isDateOnly(), dateonly);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

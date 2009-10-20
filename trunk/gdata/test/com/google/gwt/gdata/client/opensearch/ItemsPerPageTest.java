@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.opensearch;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the ItemsPerPage class.
  */
-public class ItemsPerPageTest extends GWTTestCase {
+public class ItemsPerPageTest extends OpenSearchTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

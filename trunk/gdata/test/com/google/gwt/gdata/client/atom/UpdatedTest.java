@@ -17,35 +17,49 @@
 package com.google.gwt.gdata.client.atom;
 
 import com.google.gwt.gdata.client.DateTime;
-import com.google.gwt.junit.client.GWTTestCase;
 
 import java.util.Date;
 
 /**
  * Tests for the Updated class.
  */
-public class UpdatedTest extends GWTTestCase {
+public class UpdatedTest extends AtomTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Updated.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Updated.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    Updated obj = Updated.newInstance();
-    // Unit Test for setValue(Date value)
-    Date value = new Date();
-    obj.setValue(value);
-    assertEquals("value", obj.getValue().getDate(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Updated obj = Updated.newInstance();
+        // Unit Test for setValue(Date value)
+        Date value = new Date();
+        obj.setValue(value);
+        assertEquals("value", obj.getValue().getDate(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Updated obj = Updated.newInstance();
-    DateTime value = DateTime.newInstance(new Date(), false);
-    obj.setValue(value);
-    assertEquals("value", obj.getValue().getDate(), value.getDate());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Updated obj = Updated.newInstance();
+        DateTime value = DateTime.newInstance(new Date(), false);
+        obj.setValue(value);
+        assertEquals("value", obj.getValue().getDate(), value.getDate());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

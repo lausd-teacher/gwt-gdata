@@ -16,22 +16,30 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Kind class.
  */
-public class KindTest extends GWTTestCase {
+public class KindTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("SCHEME_KIND", Kind.SCHEME_KIND);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("SCHEME_KIND", Kind.SCHEME_KIND);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Kind.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Kind.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

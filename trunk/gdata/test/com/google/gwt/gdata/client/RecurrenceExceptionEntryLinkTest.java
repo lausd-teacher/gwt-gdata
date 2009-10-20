@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the RecurrenceExceptionEntryLink class.
  */
-public class RecurrenceExceptionEntryLinkTest extends GWTTestCase {
+public class RecurrenceExceptionEntryLinkTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

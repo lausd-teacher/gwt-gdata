@@ -16,30 +16,43 @@
 
 package com.google.gwt.gdata.client.app;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Draft class.
  */
-public class DraftTest extends GWTTestCase {
+public class DraftTest extends AppTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("VALUE_NO", Draft.VALUE_NO);
-    assertNotNull("VALUE_YES", Draft.VALUE_YES);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("VALUE_NO", Draft.VALUE_NO);
+        assertNotNull("VALUE_YES", Draft.VALUE_YES);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Draft.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Draft.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Draft obj = Draft.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Draft obj = Draft.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

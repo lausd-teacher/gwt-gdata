@@ -22,7 +22,7 @@ import com.google.gwt.junit.client.GWTTestCase;
  * Tests for the AttendeeStatus class.
  */
 public class UserTest extends GWTTestCase {
-  public static final String TEST_SCOPE = "";
+  public static final String TEST_SCOPE = "http://www.google.com/calendar/feeds/";
   public static final String AUTH_COOKIE_NAME = "g314-scope-0";
   public static final String AUTH_COOKIE_VALUE = "scope=http://www.google.com/calendar/feeds/&token=2/POEfcUwqkbSIiyj4CaiQ6A";
   
@@ -53,21 +53,21 @@ public class UserTest extends GWTTestCase {
   
   public void testAuthentication() {
     login(AUTH_COOKIE_NAME, AUTH_COOKIE_VALUE);
-    assertEquals("getStatus", User.getStatus(), AuthSubStatus.LOGGED_IN);
+    assertEquals("getStatus", AuthSubStatus.LOGGED_IN, User.getStatus());
     assertFalse("checkLogin", User.checkLogin(TEST_SCOPE).equals(""));
-    assertEquals("getScopes", User.getScopes()[0], TEST_SCOPE);
+    assertEquals("getScopes", TEST_SCOPE, User.getScopes()[0]);
     User.logout(new Runnable() {
       public void run() {
         finishTest();
       }
     }, TEST_SCOPE);
     delayTestFinish(2000);
-    assertEquals("getStatus", User.getStatus(), AuthSubStatus.LOGGED_OUT);
+    assertEquals("getStatus", AuthSubStatus.LOGGED_OUT, User.getStatus());
   }
   
   public void testUnauthenticated() {
-    assertEquals("getStatus", User.getStatus(), AuthSubStatus.LOGGED_OUT);
-    assertEquals("checkLogin", User.checkLogin(TEST_SCOPE), "");
-    assertEquals("getScopes", User.getScopes().length, 0);
+    assertEquals("getStatus", AuthSubStatus.LOGGED_OUT, User.getStatus());
+    assertEquals("checkLogin", "", User.checkLogin(TEST_SCOPE));
+    assertEquals("getScopes", 0, User.getScopes().length);
   }
 }

@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.sidewiki;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the EntriesNumber class.
  */
-public class EntriesNumberTest extends GWTTestCase {
+public class EntriesNumberTest extends SidewikiTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

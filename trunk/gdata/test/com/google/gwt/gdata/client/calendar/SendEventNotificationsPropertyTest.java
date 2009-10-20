@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the SendEventNotificationsProperty class.
  */
-public class SendEventNotificationsPropertyTest extends GWTTestCase {
+public class SendEventNotificationsPropertyTest extends CalendarTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

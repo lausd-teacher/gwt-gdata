@@ -23,12 +23,11 @@ import com.google.gwt.gdata.client.atom.Category;
 import com.google.gwt.gdata.client.atom.Person;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.impl.CallErrorException;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the CalendarService class.
  */
-public class CalendarServiceTest extends GWTTestCase {
+public class CalendarServiceTest extends CalendarTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
@@ -129,10 +128,10 @@ public class CalendarServiceTest extends GWTTestCase {
           }
           public void onSuccess(CalendarFeed result) {
             if (result.getEntries().length == 0) {
-              fail("Get Failed");
+              fail("Get Failed: " + result.getEntries().length);
             }
             if (!result.getTitle().getText().equals(GDataTestScripts.Calendar.testCalendars_Feed_Title)) {
-              fail("Get Failed");
+              fail("Get Failed: " + result.getTitle().getText());
             }
             finishTest();
           }

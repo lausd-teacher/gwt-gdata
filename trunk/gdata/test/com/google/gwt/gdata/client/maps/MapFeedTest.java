@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.maps;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the MapFeed class.
  */
-public class MapFeedTest extends GWTTestCase {
+public class MapFeedTest extends MapsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

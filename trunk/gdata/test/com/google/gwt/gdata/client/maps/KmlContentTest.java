@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.maps;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the KmlContent class.
  */
-public class KmlContentTest extends GWTTestCase {
+public class KmlContentTest extends MapsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

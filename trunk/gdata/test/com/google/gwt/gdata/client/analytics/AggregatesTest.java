@@ -16,19 +16,22 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Aggregates class.
  */
-public class AggregatesTest extends GWTTestCase {
+public class AggregatesTest extends AnalyticsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Aggregates.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Aggregates.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -36,9 +39,14 @@ public class AggregatesTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    Aggregates obj = Aggregates.newInstance();
-    Metric[] metrics = new Metric[]{ Metric.newInstance() };
-    obj.setMetrics(metrics);
-    assertEquals("metrics", obj.getMetrics().length, metrics.length);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Aggregates obj = Aggregates.newInstance();
+        Metric[] metrics = new Metric[]{ Metric.newInstance() };
+        obj.setMetrics(metrics);
+        assertEquals("metrics", obj.getMetrics().length, metrics.length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

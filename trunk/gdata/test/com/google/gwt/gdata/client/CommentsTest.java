@@ -16,26 +16,34 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Comments class.
  */
-public class CommentsTest extends GWTTestCase {
+public class CommentsTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Comments.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Comments.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   @SuppressWarnings("unchecked")
   public void testProperties() {
-    Comments obj = Comments.newInstance();
-    FeedLink feedlink = FeedLink.newInstance();
-    obj.setFeedLink(feedlink);
-    assertSame("feedlink", obj.getFeedLink(), feedlink);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Comments obj = Comments.newInstance();
+        FeedLink feedlink = FeedLink.newInstance();
+        obj.setFeedLink(feedlink);
+        assertSame("feedlink", obj.getFeedLink(), feedlink);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

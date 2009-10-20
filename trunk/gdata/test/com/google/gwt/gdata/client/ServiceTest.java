@@ -16,19 +16,22 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Service class.
  */
-public class ServiceTest extends GWTTestCase {
+public class ServiceTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Service.newInstance("myValue", "myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Service.newInstance("myValue", "myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {

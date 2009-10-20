@@ -17,12 +17,11 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.gdata.client.mediarss.MediaContent;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the MediaEntry class.
  */
-public class MediaEntryTest extends GWTTestCase {
+public class MediaEntryTest extends GoogleBaseTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

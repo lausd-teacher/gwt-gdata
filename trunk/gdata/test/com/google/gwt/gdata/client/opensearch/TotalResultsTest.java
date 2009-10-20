@@ -16,12 +16,10 @@
 
 package com.google.gwt.gdata.client.opensearch;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the TotalResults class.
  */
-public class TotalResultsTest extends GWTTestCase {
+public class TotalResultsTest extends OpenSearchTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";

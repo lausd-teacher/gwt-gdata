@@ -16,43 +16,56 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Metric class.
  */
-public class MetricTest extends GWTTestCase {
+public class MetricTest extends AnalyticsTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("TYPE_CURRENCY", Metric.TYPE_CURRENCY);
-    assertNotNull("TYPE_FLOAT", Metric.TYPE_FLOAT);
-    assertNotNull("TYPE_INTEGER", Metric.TYPE_INTEGER);
-    assertNotNull("TYPE_PERCENT", Metric.TYPE_PERCENT);
-    assertNotNull("TYPE_TIME", Metric.TYPE_TIME);
-    assertNotNull("TYPE_US_CURRENCY", Metric.TYPE_US_CURRENCY);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TYPE_CURRENCY", Metric.TYPE_CURRENCY);
+        assertNotNull("TYPE_FLOAT", Metric.TYPE_FLOAT);
+        assertNotNull("TYPE_INTEGER", Metric.TYPE_INTEGER);
+        assertNotNull("TYPE_PERCENT", Metric.TYPE_PERCENT);
+        assertNotNull("TYPE_TIME", Metric.TYPE_TIME);
+        assertNotNull("TYPE_US_CURRENCY", Metric.TYPE_US_CURRENCY);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Metric.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Metric.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Metric obj = Metric.newInstance();
-    String name = "myValue";
-    obj.setName(name);
-    assertEquals("name", obj.getName(), name);
-    double confidenceinterval = 600813;
-    obj.setConfidenceInterval(confidenceinterval);
-    assertEquals("confidenceinterval", obj.getConfidenceInterval(), confidenceinterval);
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
-    String type = "myValue";
-    obj.setType(type);
-    assertEquals("type", obj.getType(), type);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Metric obj = Metric.newInstance();
+        String name = "myValue";
+        obj.setName(name);
+        assertEquals("name", obj.getName(), name);
+        double confidenceinterval = 600813;
+        obj.setConfidenceInterval(confidenceinterval);
+        assertEquals("confidenceinterval", obj.getConfidenceInterval(), confidenceinterval);
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

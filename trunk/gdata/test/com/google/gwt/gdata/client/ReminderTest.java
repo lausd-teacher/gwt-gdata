@@ -16,55 +16,73 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 import java.util.Date;
 
 /**
  * Tests for the Reminder class.
  */
-public class ReminderTest extends GWTTestCase {
+public class ReminderTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("METHOD_ALERT", Reminder.METHOD_ALERT);
-    assertNotNull("METHOD_ALL", Reminder.METHOD_ALL);
-    assertNotNull("METHOD_EMAIL", Reminder.METHOD_EMAIL);
-    assertNotNull("METHOD_NONE", Reminder.METHOD_NONE);
-    assertNotNull("METHOD_SMS", Reminder.METHOD_SMS);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("METHOD_ALERT", Reminder.METHOD_ALERT);
+        assertNotNull("METHOD_ALL", Reminder.METHOD_ALL);
+        assertNotNull("METHOD_EMAIL", Reminder.METHOD_EMAIL);
+        assertNotNull("METHOD_NONE", Reminder.METHOD_NONE);
+        assertNotNull("METHOD_SMS", Reminder.METHOD_SMS);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Reminder.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Reminder.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    Reminder obj = Reminder.newInstance();
-    // Unit Test for setAbsoluteTime(Date absoluteTime)
-    Date value = new Date();
-    obj.setAbsoluteTime(value);
-    assertEquals("value", obj.getAbsoluteTime().getDate(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Reminder obj = Reminder.newInstance();
+        // Unit Test for setAbsoluteTime(Date absoluteTime)
+        Date value = new Date();
+        obj.setAbsoluteTime(value);
+        assertEquals("value", obj.getAbsoluteTime().getDate(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Reminder obj = Reminder.newInstance();
-    double minutes = 600813;
-    obj.setMinutes(minutes);
-    assertEquals("minutes", obj.getMinutes(), minutes);
-    DateTime absolutetime = DateTime.newInstance(new Date(), false);
-    obj.setAbsoluteTime(absolutetime);
-    assertEquals("absolutetime", obj.getAbsoluteTime().getDate(), absolutetime.getDate());
-    double hours = 600813;
-    obj.setHours(hours);
-    assertEquals("hours", obj.getHours(), hours);
-    double days = 600813;
-    obj.setDays(days);
-    assertEquals("days", obj.getDays(), days);
-    String method = "myValue";
-    obj.setMethod(method);
-    assertEquals("method", obj.getMethod(), method);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Reminder obj = Reminder.newInstance();
+        double minutes = 600813;
+        obj.setMinutes(minutes);
+        assertEquals("minutes", obj.getMinutes(), minutes);
+        DateTime absolutetime = DateTime.newInstance(new Date(), false);
+        obj.setAbsoluteTime(absolutetime);
+        assertEquals("absolutetime", obj.getAbsoluteTime().getDate(), absolutetime.getDate());
+        double hours = 600813;
+        obj.setHours(hours);
+        assertEquals("hours", obj.getHours(), hours);
+        double days = 600813;
+        obj.setDays(days);
+        assertEquals("days", obj.getDays(), days);
+        String method = "myValue";
+        obj.setMethod(method);
+        assertEquals("method", obj.getMethod(), method);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

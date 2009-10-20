@@ -17,19 +17,23 @@
 package com.google.gwt.gdata.client.app;
 
 import com.google.gwt.gdata.client.atom.Text;
-import com.google.gwt.junit.client.GWTTestCase;
 
 /**
  * Tests for the Workspace class.
  */
-public class WorkspaceTest extends GWTTestCase {
+public class WorkspaceTest extends AppTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Workspace.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Workspace.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -37,12 +41,17 @@ public class WorkspaceTest extends GWTTestCase {
   }
 
   public void testProperties() {
-    Workspace obj = Workspace.newInstance();
-    Text title = Text.newInstance();
-    obj.setTitle(title);
-    assertSame("title", obj.getTitle(), title);
-    Collection[] collections = new Collection[]{ Collection.newInstance() };
-    obj.setCollections(collections);
-    assertEquals("collections", obj.getCollections().length, collections.length);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Workspace obj = Workspace.newInstance();
+        Text title = Text.newInstance();
+        obj.setTitle(title);
+        assertSame("title", obj.getTitle(), title);
+        Collection[] collections = new Collection[]{ Collection.newInstance() };
+        obj.setCollections(collections);
+        assertEquals("collections", obj.getCollections().length, collections.length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

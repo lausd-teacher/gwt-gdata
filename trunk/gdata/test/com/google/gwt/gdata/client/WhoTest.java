@@ -16,54 +16,67 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Who class.
  */
-public class WhoTest extends GWTTestCase {
+public class WhoTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("REL_EVENT_ATTENDEE", Who.REL_EVENT_ATTENDEE);
-    assertNotNull("REL_EVENT_ORGANIZER", Who.REL_EVENT_ORGANIZER);
-    assertNotNull("REL_EVENT_PERFORMER", Who.REL_EVENT_PERFORMER);
-    assertNotNull("REL_EVENT_SPEAKER", Who.REL_EVENT_SPEAKER);
-    assertNotNull("REL_MESSAGE_BCC", Who.REL_MESSAGE_BCC);
-    assertNotNull("REL_MESSAGE_CC", Who.REL_MESSAGE_CC);
-    assertNotNull("REL_MESSAGE_FROM", Who.REL_MESSAGE_FROM);
-    assertNotNull("REL_MESSAGE_REPLY_TO", Who.REL_MESSAGE_REPLY_TO);
-    assertNotNull("REL_MESSAGE_TO", Who.REL_MESSAGE_TO);
-    assertNotNull("REL_TASK_ASSIGNED_TO", Who.REL_TASK_ASSIGNED_TO);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_EVENT_ATTENDEE", Who.REL_EVENT_ATTENDEE);
+        assertNotNull("REL_EVENT_ORGANIZER", Who.REL_EVENT_ORGANIZER);
+        assertNotNull("REL_EVENT_PERFORMER", Who.REL_EVENT_PERFORMER);
+        assertNotNull("REL_EVENT_SPEAKER", Who.REL_EVENT_SPEAKER);
+        assertNotNull("REL_MESSAGE_BCC", Who.REL_MESSAGE_BCC);
+        assertNotNull("REL_MESSAGE_CC", Who.REL_MESSAGE_CC);
+        assertNotNull("REL_MESSAGE_FROM", Who.REL_MESSAGE_FROM);
+        assertNotNull("REL_MESSAGE_REPLY_TO", Who.REL_MESSAGE_REPLY_TO);
+        assertNotNull("REL_MESSAGE_TO", Who.REL_MESSAGE_TO);
+        assertNotNull("REL_TASK_ASSIGNED_TO", Who.REL_TASK_ASSIGNED_TO);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Who.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Who.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   @SuppressWarnings("unchecked")
   public void testProperties() {
-    Who obj = Who.newInstance();
-    AttendeeType attendeetype = AttendeeType.newInstance();
-    obj.setAttendeeType(attendeetype);
-    assertSame("attendeetype", obj.getAttendeeType(), attendeetype);
-    AttendeeStatus attendeestatus = AttendeeStatus.newInstance();
-    obj.setAttendeeStatus(attendeestatus);
-    assertSame("attendeestatus", obj.getAttendeeStatus(), attendeestatus);
-    String valuestring = "myValue";
-    obj.setValueString(valuestring);
-    assertEquals("valuestring", obj.getValueString(), valuestring);
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
-    EntryLink entrylink = EntryLink.newInstance();
-    obj.setEntryLink(entrylink);
-    assertSame("entrylink", obj.getEntryLink(), entrylink);
-    String email = "myValue";
-    obj.setEmail(email);
-    assertEquals("email", obj.getEmail(), email);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Who obj = Who.newInstance();
+        AttendeeType attendeetype = AttendeeType.newInstance();
+        obj.setAttendeeType(attendeetype);
+        assertSame("attendeetype", obj.getAttendeeType(), attendeetype);
+        AttendeeStatus attendeestatus = AttendeeStatus.newInstance();
+        obj.setAttendeeStatus(attendeestatus);
+        assertSame("attendeestatus", obj.getAttendeeStatus(), attendeestatus);
+        String valuestring = "myValue";
+        obj.setValueString(valuestring);
+        assertEquals("valuestring", obj.getValueString(), valuestring);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        EntryLink entrylink = EntryLink.newInstance();
+        obj.setEntryLink(entrylink);
+        assertSame("entrylink", obj.getEntryLink(), entrylink);
+        String email = "myValue";
+        obj.setEmail(email);
+        assertEquals("email", obj.getEmail(), email);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

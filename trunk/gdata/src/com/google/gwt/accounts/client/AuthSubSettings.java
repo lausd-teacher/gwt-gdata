@@ -21,7 +21,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * Specifies AuthSub parameters.
  */
-public class AuthSubSettings extends JavaScriptObject{
+public class AuthSubSettings extends JavaScriptObject {
 
   /**
    * Constructs an AuthSubSettings object.

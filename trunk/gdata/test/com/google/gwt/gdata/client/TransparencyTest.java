@@ -16,30 +16,43 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Transparency class.
  */
-public class TransparencyTest extends GWTTestCase {
+public class TransparencyTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("VALUE_OPAQUE", Transparency.VALUE_OPAQUE);
-    assertNotNull("VALUE_TRANSPARENT", Transparency.VALUE_TRANSPARENT);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("VALUE_OPAQUE", Transparency.VALUE_OPAQUE);
+        assertNotNull("VALUE_TRANSPARENT", Transparency.VALUE_TRANSPARENT);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Transparency.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Transparency.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Transparency obj = Transparency.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Transparency obj = Transparency.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

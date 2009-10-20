@@ -16,22 +16,30 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the EventKind class.
  */
-public class EventKindTest extends GWTTestCase {
+public class EventKindTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("TERM_EVENT", EventKind.TERM_EVENT);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TERM_EVENT", EventKind.TERM_EVENT);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", EventKind.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", EventKind.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }
