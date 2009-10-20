@@ -26,10 +26,20 @@ public class TransactionKindTest extends FinanceTest {
   }
 
   public void testConstants() {
-    assertNotNull("TERM_TRANSACTION", TransactionKind.TERM_TRANSACTION);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TERM_TRANSACTION", TransactionKind.TERM_TRANSACTION);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", TransactionKind.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", TransactionKind.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

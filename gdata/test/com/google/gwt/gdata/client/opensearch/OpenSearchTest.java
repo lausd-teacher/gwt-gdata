@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.opensearch;
 
 import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataAuxiliaryPackage;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -32,9 +33,9 @@ public class OpenSearchTest extends GWTTestCase {
   }
   
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded()) {
+    if (!GData.isLoaded(GDataAuxiliaryPackage.OPENSEARCH)) {
       isAsync = true;
-      GData.loadGDataApi(null, test);
+      GData.loadGDataApi(null, test, GDataAuxiliaryPackage.OPENSEARCH);
       delayTestFinish(delay);
     } else {
       test.run();

@@ -26,10 +26,20 @@ public class FeatureCategoryTest extends MapsTest {
   }
 
   public void testConstants() {
-    assertNotNull("TERM_FEATURE", FeatureCategory.TERM_FEATURE);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TERM_FEATURE", FeatureCategory.TERM_FEATURE);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", FeatureCategory.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", FeatureCategory.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

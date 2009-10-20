@@ -28,13 +28,23 @@ public class MediaEntryTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    MediaEntry obj = MediaEntry.newInstance();
-    MediaContent mediacontent = MediaContent.newInstance();
-    obj.setMediaContent(mediacontent);
-    assertSame("mediacontent", obj.getMediaContent(), mediacontent);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaEntry obj = MediaEntry.newInstance();
+        MediaContent mediacontent = MediaContent.newInstance();
+        obj.setMediaContent(mediacontent);
+        assertSame("mediacontent", obj.getMediaContent(), mediacontent);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -26,16 +26,26 @@ public class SnippetsEntryTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SnippetsEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SnippetsEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    SnippetsEntry obj = SnippetsEntry.newInstance();
-    // Unit Test for getAttributes()
-    assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
-    // Unit Test for getHtmlLink()
-    assertEquals("getHtmlLink", obj.getHtmlLink(), null);
-    // Unit Test for setAttribute(String name, Attribute attribute)
-    // Unit Test for setAttributes(JavaScriptObject attributes)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SnippetsEntry obj = SnippetsEntry.newInstance();
+        // Unit Test for getAttributes()
+        assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
+        // Unit Test for getHtmlLink()
+        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+        // Unit Test for setAttribute(String name, Attribute attribute)
+        // Unit Test for setAttributes(JavaScriptObject attributes)
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

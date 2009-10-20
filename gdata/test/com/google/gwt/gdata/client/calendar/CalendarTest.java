@@ -17,7 +17,7 @@
 package com.google.gwt.gdata.client.calendar;
 
 import com.google.gwt.gdata.client.GData;
-import com.google.gwt.gdata.client.GDataPackage;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -33,9 +33,9 @@ public class CalendarTest extends GWTTestCase {
   }
   
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataPackage.CALENDAR)) {
+    if (!GData.isLoaded(GDataSystemPackage.CALENDAR)) {
       isAsync = true;
-      GData.loadGDataApi(null, test, GDataPackage.CALENDAR);
+      GData.loadGDataApi(null, test, GDataSystemPackage.CALENDAR);
       delayTestFinish(delay);
     } else {
       test.run();

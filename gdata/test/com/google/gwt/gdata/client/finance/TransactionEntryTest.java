@@ -26,13 +26,23 @@ public class TransactionEntryTest extends FinanceTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", TransactionEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", TransactionEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    TransactionEntry obj = TransactionEntry.newInstance();
-    TransactionData transactiondata = TransactionData.newInstance();
-    obj.setTransactionData(transactiondata);
-    assertSame("transactiondata", obj.getTransactionData(), transactiondata);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        TransactionEntry obj = TransactionEntry.newInstance();
+        TransactionData transactiondata = TransactionData.newInstance();
+        obj.setTransactionData(transactiondata);
+        assertSame("transactiondata", obj.getTransactionData(), transactiondata);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

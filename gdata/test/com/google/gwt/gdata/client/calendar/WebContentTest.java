@@ -26,7 +26,12 @@ public class WebContentTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", WebContent.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", WebContent.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -35,21 +40,26 @@ public class WebContentTest extends CalendarTest {
   }
 
   public void testProperties() {
-    WebContent obj = WebContent.newInstance();
-    String display = "myValue";
-    obj.setDisplay(display);
-    assertEquals("display", obj.getDisplay(), display);
-    double width = 600813;
-    obj.setWidth(width);
-    assertEquals("width", obj.getWidth(), width);
-    WebContentGadgetPref[] gadgetprefs = new WebContentGadgetPref[]{ WebContentGadgetPref.newInstance() };
-    obj.setGadgetPrefs(gadgetprefs);
-    assertEquals("gadgetprefs", obj.getGadgetPrefs().length, gadgetprefs.length);
-    String url = "myValue";
-    obj.setUrl(url);
-    assertEquals("url", obj.getUrl(), url);
-    double height = 600813;
-    obj.setHeight(height);
-    assertEquals("height", obj.getHeight(), height);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        WebContent obj = WebContent.newInstance();
+        String display = "myValue";
+        obj.setDisplay(display);
+        assertEquals("display", obj.getDisplay(), display);
+        double width = 600813;
+        obj.setWidth(width);
+        assertEquals("width", obj.getWidth(), width);
+        WebContentGadgetPref[] gadgetprefs = new WebContentGadgetPref[]{ WebContentGadgetPref.newInstance() };
+        obj.setGadgetPrefs(gadgetprefs);
+        assertEquals("gadgetprefs", obj.getGadgetPrefs().length, gadgetprefs.length);
+        String url = "myValue";
+        obj.setUrl(url);
+        assertEquals("url", obj.getUrl(), url);
+        double height = 600813;
+        obj.setHeight(height);
+        assertEquals("height", obj.getHeight(), height);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

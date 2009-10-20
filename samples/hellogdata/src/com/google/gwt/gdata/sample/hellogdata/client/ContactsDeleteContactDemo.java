@@ -21,6 +21,8 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.DateTime;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
 import com.google.gwt.gdata.client.contacts.ContactEntryCallback;
 import com.google.gwt.gdata.client.contacts.ContactFeed;
@@ -77,21 +79,17 @@ public class ContactsDeleteContactDemo extends GDataDemo {
    * otherwise start the demo by querying the user's contacts.
    */
   public ContactsDeleteContactDemo() {
-    service = ContactsService.newInstance(
-        "HelloGData_Contacts_DeleteContactDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Delete a contact");
-      startButton.addClickHandler(new ClickHandler() {
-        public void onClick(ClickEvent event) {
-          queryContacts(
-              "http://www.google.com/m8/feeds/contacts/default/full");
+    if (!GData.isLoaded(GDataSystemPackage.CONTACTS)) {
+      showStatus("Loading the GData Contacts package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
         }
-      });
-      mainPanel.setWidget(0, 0, startButton);
+      }, GDataSystemPackage.CONTACTS);
     } else {
-      showStatus("You are not logged on to Google Contacts.", true);
+      startDemo();
     }
   }
 
@@ -101,9 +99,11 @@ public class ContactsDeleteContactDemo extends GDataDemo {
    * On success and failure, display a status message.
    * 
    * @param contactEntryUri The uri of the contact entry to delete
+   * @param etag The etag of the entry to be deleted
    */
-  private void deleteContact(String contactEntryUri) {
+  private void deleteContact(String contactEntryUri, String etag) {
     showStatus("Deleting a contact...", false);
+    service
     service.deleteContactEntry(contactEntryUri, new ContactEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while deleting a contact: " +
@@ -176,5 +176,25 @@ public class ContactsDeleteContactDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = ContactsService.newInstance(
+        "HelloGData_Contacts_DeleteContactDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      Button startButton = new Button("Delete a contact");
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
+          queryContacts(
+              "http://www.google.com/m8/feeds/contacts/default/full");
+        }
+      });
+      mainPanel.setWidget(0, 0, startButton);
+    } else {
+      showStatus("You are not logged on to Google Contacts.", true);
+    }
   }
 }

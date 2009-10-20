@@ -28,59 +28,74 @@ public class CalendarEventEntryTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarEventEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarEventEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    CalendarEventEntry obj = CalendarEventEntry.newInstance();
-    // Unit Test for addExtendedProperty(CalendarExtendedProperty extendedProperty)
-    // Unit Test for getHtmlLink()
-    assertEquals("getHtmlLink", obj.getHtmlLink(), null);
-    // Unit Test for getWebContent()
-    assertEquals("getWebContent", obj.getWebContent(), null);
-    // Unit Test for removeWebContent()
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CalendarEventEntry obj = CalendarEventEntry.newInstance();
+        // Unit Test for addExtendedProperty(CalendarExtendedProperty extendedProperty)
+        // Unit Test for getHtmlLink()
+        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+        // Unit Test for getWebContent()
+        assertEquals("getWebContent", obj.getWebContent(), null);
+        // Unit Test for removeWebContent()
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    CalendarEventEntry obj = CalendarEventEntry.newInstance();
-    SequenceNumberProperty sequence = SequenceNumberProperty.newInstance();
-    obj.setSequence(sequence);
-    assertSame("sequence", obj.getSequence(), sequence);
-    SyncEventProperty syncevent = SyncEventProperty.newInstance();
-    obj.setSyncEvent(syncevent);
-    assertSame("syncevent", obj.getSyncEvent(), syncevent);
-    GuestsCanInviteOthersProperty guestscaninviteothers = GuestsCanInviteOthersProperty.newInstance();
-    obj.setGuestsCanInviteOthers(guestscaninviteothers);
-    assertSame("guestscaninviteothers", obj.getGuestsCanInviteOthers(), guestscaninviteothers);
-    AnyoneCanAddSelfProperty anyonecanaddself = AnyoneCanAddSelfProperty.newInstance();
-    obj.setAnyoneCanAddSelf(anyonecanaddself);
-    assertSame("anyonecanaddself", obj.getAnyoneCanAddSelf(), anyonecanaddself);
-    SuppressReplyNotificationsProperty suppressreplynotifications = SuppressReplyNotificationsProperty.newInstance();
-    obj.setSuppressReplyNotifications(suppressreplynotifications);
-    assertSame("suppressreplynotifications", obj.getSuppressReplyNotifications(), suppressreplynotifications);
-    GuestsCanModifyProperty guestscanmodify = GuestsCanModifyProperty.newInstance();
-    obj.setGuestsCanModify(guestscanmodify);
-    assertSame("guestscanmodify", obj.getGuestsCanModify(), guestscanmodify);
-    GuestsCanSeeGuestsProperty guestscanseeguests = GuestsCanSeeGuestsProperty.newInstance();
-    obj.setGuestsCanSeeGuests(guestscanseeguests);
-    assertSame("guestscanseeguests", obj.getGuestsCanSeeGuests(), guestscanseeguests);
-    GeoRssWhere geolocation = GeoRssWhere.newInstance();
-    obj.setGeoLocation(geolocation);
-    assertSame("geolocation", obj.getGeoLocation(), geolocation);
-    CalendarExtendedProperty[] extendedproperties = new CalendarExtendedProperty[]{ CalendarExtendedProperty.newInstance() };
-    obj.setExtendedProperties(extendedproperties);
-    assertEquals("extendedproperties", obj.getExtendedProperties().length, extendedproperties.length);
-    IcalUIDProperty uid = IcalUIDProperty.newInstance();
-    obj.setUid(uid);
-    assertSame("uid", obj.getUid(), uid);
-    SendEventNotificationsProperty sendeventnotifications = SendEventNotificationsProperty.newInstance();
-    obj.setSendEventNotifications(sendeventnotifications);
-    assertSame("sendeventnotifications", obj.getSendEventNotifications(), sendeventnotifications);
-    QuickAddProperty quickadd = QuickAddProperty.newInstance();
-    obj.setQuickAdd(quickadd);
-    assertSame("quickadd", obj.getQuickAdd(), quickadd);
-    PrivateCopyProperty privatecopy = PrivateCopyProperty.newInstance();
-    obj.setPrivateCopy(privatecopy);
-    assertSame("privatecopy", obj.getPrivateCopy(), privatecopy);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CalendarEventEntry obj = CalendarEventEntry.newInstance();
+        SequenceNumberProperty sequence = SequenceNumberProperty.newInstance();
+        obj.setSequence(sequence);
+        assertSame("sequence", obj.getSequence(), sequence);
+        SyncEventProperty syncevent = SyncEventProperty.newInstance();
+        obj.setSyncEvent(syncevent);
+        assertSame("syncevent", obj.getSyncEvent(), syncevent);
+        GuestsCanInviteOthersProperty guestscaninviteothers = GuestsCanInviteOthersProperty.newInstance();
+        obj.setGuestsCanInviteOthers(guestscaninviteothers);
+        assertSame("guestscaninviteothers", obj.getGuestsCanInviteOthers(), guestscaninviteothers);
+        AnyoneCanAddSelfProperty anyonecanaddself = AnyoneCanAddSelfProperty.newInstance();
+        obj.setAnyoneCanAddSelf(anyonecanaddself);
+        assertSame("anyonecanaddself", obj.getAnyoneCanAddSelf(), anyonecanaddself);
+        SuppressReplyNotificationsProperty suppressreplynotifications = SuppressReplyNotificationsProperty.newInstance();
+        obj.setSuppressReplyNotifications(suppressreplynotifications);
+        assertSame("suppressreplynotifications", obj.getSuppressReplyNotifications(), suppressreplynotifications);
+        GuestsCanModifyProperty guestscanmodify = GuestsCanModifyProperty.newInstance();
+        obj.setGuestsCanModify(guestscanmodify);
+        assertSame("guestscanmodify", obj.getGuestsCanModify(), guestscanmodify);
+        GuestsCanSeeGuestsProperty guestscanseeguests = GuestsCanSeeGuestsProperty.newInstance();
+        obj.setGuestsCanSeeGuests(guestscanseeguests);
+        assertSame("guestscanseeguests", obj.getGuestsCanSeeGuests(), guestscanseeguests);
+        GeoRssWhere geolocation = GeoRssWhere.newInstance();
+        obj.setGeoLocation(geolocation);
+        assertSame("geolocation", obj.getGeoLocation(), geolocation);
+        CalendarExtendedProperty[] extendedproperties = new CalendarExtendedProperty[]{ CalendarExtendedProperty.newInstance() };
+        obj.setExtendedProperties(extendedproperties);
+        assertEquals("extendedproperties", obj.getExtendedProperties().length, extendedproperties.length);
+        IcalUIDProperty uid = IcalUIDProperty.newInstance();
+        obj.setUid(uid);
+        assertSame("uid", obj.getUid(), uid);
+        SendEventNotificationsProperty sendeventnotifications = SendEventNotificationsProperty.newInstance();
+        obj.setSendEventNotifications(sendeventnotifications);
+        assertSame("sendeventnotifications", obj.getSendEventNotifications(), sendeventnotifications);
+        QuickAddProperty quickadd = QuickAddProperty.newInstance();
+        obj.setQuickAdd(quickadd);
+        assertSame("quickadd", obj.getQuickAdd(), quickadd);
+        PrivateCopyProperty privatecopy = PrivateCopyProperty.newInstance();
+        obj.setPrivateCopy(privatecopy);
+        assertSame("privatecopy", obj.getPrivateCopy(), privatecopy);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

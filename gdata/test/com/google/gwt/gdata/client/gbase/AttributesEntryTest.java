@@ -26,13 +26,23 @@ public class AttributesEntryTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AttributesEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AttributesEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    AttributesEntry obj = AttributesEntry.newInstance();
-    GmAttribute attribute = GmAttribute.newInstance();
-    obj.setAttribute(attribute);
-    assertSame("attribute", obj.getAttribute(), attribute);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AttributesEntry obj = AttributesEntry.newInstance();
+        GmAttribute attribute = GmAttribute.newInstance();
+        obj.setAttribute(attribute);
+        assertSame("attribute", obj.getAttribute(), attribute);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

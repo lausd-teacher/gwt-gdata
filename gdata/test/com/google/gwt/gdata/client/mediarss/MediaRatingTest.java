@@ -26,20 +26,35 @@ public class MediaRatingTest extends MediaRssTest {
   }
 
   public void testConstants() {
-    assertNotNull("SCHEME_DEFAULT_SCHEME", MediaRating.SCHEME_DEFAULT_SCHEME);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("SCHEME_DEFAULT_SCHEME", MediaRating.SCHEME_DEFAULT_SCHEME);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaRating.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaRating.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    MediaRating obj = MediaRating.newInstance();
-    String scheme = "myValue";
-    obj.setScheme(scheme);
-    assertEquals("scheme", obj.getScheme(), scheme);
-    String content = "myValue";
-    obj.setContent(content);
-    assertEquals("content", obj.getContent(), content);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaRating obj = MediaRating.newInstance();
+        String scheme = "myValue";
+        obj.setScheme(scheme);
+        assertEquals("scheme", obj.getScheme(), scheme);
+        String content = "myValue";
+        obj.setContent(content);
+        assertEquals("content", obj.getContent(), content);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

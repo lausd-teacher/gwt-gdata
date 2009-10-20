@@ -26,24 +26,39 @@ public class AccessLevelPropertyTest extends CalendarTest {
   }
 
   public void testConstants() {
-    assertNotNull("VALUE_EDITOR", AccessLevelProperty.VALUE_EDITOR);
-    assertNotNull("VALUE_FREEBUSY", AccessLevelProperty.VALUE_FREEBUSY);
-    assertNotNull("VALUE_NONE", AccessLevelProperty.VALUE_NONE);
-    assertNotNull("VALUE_OVERRIDE", AccessLevelProperty.VALUE_OVERRIDE);
-    assertNotNull("VALUE_OWNER", AccessLevelProperty.VALUE_OWNER);
-    assertNotNull("VALUE_READ", AccessLevelProperty.VALUE_READ);
-    assertNotNull("VALUE_RESPOND", AccessLevelProperty.VALUE_RESPOND);
-    assertNotNull("VALUE_ROOT", AccessLevelProperty.VALUE_ROOT);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("VALUE_EDITOR", AccessLevelProperty.VALUE_EDITOR);
+        assertNotNull("VALUE_FREEBUSY", AccessLevelProperty.VALUE_FREEBUSY);
+        assertNotNull("VALUE_NONE", AccessLevelProperty.VALUE_NONE);
+        assertNotNull("VALUE_OVERRIDE", AccessLevelProperty.VALUE_OVERRIDE);
+        assertNotNull("VALUE_OWNER", AccessLevelProperty.VALUE_OWNER);
+        assertNotNull("VALUE_READ", AccessLevelProperty.VALUE_READ);
+        assertNotNull("VALUE_RESPOND", AccessLevelProperty.VALUE_RESPOND);
+        assertNotNull("VALUE_ROOT", AccessLevelProperty.VALUE_ROOT);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AccessLevelProperty.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AccessLevelProperty.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    AccessLevelProperty obj = AccessLevelProperty.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AccessLevelProperty obj = AccessLevelProperty.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

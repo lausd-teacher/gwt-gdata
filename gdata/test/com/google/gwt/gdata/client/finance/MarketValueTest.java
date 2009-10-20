@@ -28,7 +28,12 @@ public class MarketValueTest extends FinanceTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MarketValue.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MarketValue.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -36,9 +41,14 @@ public class MarketValueTest extends FinanceTest {
   }
 
   public void testProperties() {
-    MarketValue obj = MarketValue.newInstance();
-    Money[] money = new Money[]{ Money.newInstance() };
-    obj.setMoney(money);
-    assertEquals("money", obj.getMoney().length, money.length);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MarketValue obj = MarketValue.newInstance();
+        Money[] money = new Money[]{ Money.newInstance() };
+        obj.setMoney(money);
+        assertEquals("money", obj.getMoney().length, money.length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -26,22 +26,37 @@ public class ItemTypesEntryTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ItemTypesEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ItemTypesEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    ItemTypesEntry obj = ItemTypesEntry.newInstance();
-    // Unit Test for getRelatedLink()
-    assertEquals("getRelatedLink", obj.getRelatedLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ItemTypesEntry obj = ItemTypesEntry.newInstance();
+        // Unit Test for getRelatedLink()
+        assertEquals("getRelatedLink", obj.getRelatedLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    ItemTypesEntry obj = ItemTypesEntry.newInstance();
-    GmAttributes attributes = GmAttributes.newInstance();
-    obj.setAttributes(attributes);
-    assertSame("attributes", obj.getAttributes(), attributes);
-    GmItemType itemtype = GmItemType.newInstance();
-    obj.setItemType(itemtype);
-    assertSame("itemtype", obj.getItemType(), itemtype);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ItemTypesEntry obj = ItemTypesEntry.newInstance();
+        GmAttributes attributes = GmAttributes.newInstance();
+        obj.setAttributes(attributes);
+        assertSame("attributes", obj.getAttributes(), attributes);
+        GmItemType itemtype = GmItemType.newInstance();
+        obj.setItemType(itemtype);
+        assertSame("itemtype", obj.getItemType(), itemtype);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

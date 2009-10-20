@@ -26,16 +26,26 @@ public class AttributeTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Attribute.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Attribute.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Attribute obj = Attribute.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
-    String type = "myValue";
-    obj.setType(type);
-    assertEquals("type", obj.getType(), type);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Attribute obj = Attribute.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

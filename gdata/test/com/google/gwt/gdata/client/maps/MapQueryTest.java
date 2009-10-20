@@ -26,7 +26,12 @@ public class MapQueryTest extends MapsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MapQuery.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MapQuery.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -36,18 +41,23 @@ public class MapQueryTest extends MapsTest {
   }
 
   public void testProperties() {
-    MapQuery obj = MapQuery.newInstance("myValue");
-    double startindex = 600813;
-    obj.setStartIndex(startindex);
-    assertEquals("startindex", obj.getStartIndex(), startindex);
-    boolean showdeleted = true;
-    obj.setShowDeleted(showdeleted);
-    assertSame("showdeleted", obj.getShowDeleted(), showdeleted);
-    double maxresults = 600813;
-    obj.setMaxResults(maxresults);
-    assertEquals("maxresults", obj.getMaxResults(), maxresults);
-    String previd = "myValue";
-    obj.setPrevId(previd);
-    assertEquals("previd", obj.getPrevId(), previd);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MapQuery obj = MapQuery.newInstance("myValue");
+        double startindex = 600813;
+        obj.setStartIndex(startindex);
+        assertEquals("startindex", obj.getStartIndex(), startindex);
+        boolean showdeleted = true;
+        obj.setShowDeleted(showdeleted);
+        assertSame("showdeleted", obj.getShowDeleted(), showdeleted);
+        double maxresults = 600813;
+        obj.setMaxResults(maxresults);
+        assertEquals("maxresults", obj.getMaxResults(), maxresults);
+        String previd = "myValue";
+        obj.setPrevId(previd);
+        assertEquals("previd", obj.getPrevId(), previd);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

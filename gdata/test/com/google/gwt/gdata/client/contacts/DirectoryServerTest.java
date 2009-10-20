@@ -26,13 +26,23 @@ public class DirectoryServerTest extends ContactsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", DirectoryServer.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", DirectoryServer.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    DirectoryServer obj = DirectoryServer.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        DirectoryServer obj = DirectoryServer.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

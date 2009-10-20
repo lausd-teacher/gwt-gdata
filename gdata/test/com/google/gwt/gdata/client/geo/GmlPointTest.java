@@ -26,13 +26,23 @@ public class GmlPointTest extends GeoTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GmlPoint.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", GmlPoint.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    GmlPoint obj = GmlPoint.newInstance();
-    GmlPos pos = GmlPos.newInstance();
-    obj.setPos(pos);
-    assertSame("pos", obj.getPos(), pos);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GmlPoint obj = GmlPoint.newInstance();
+        GmlPos pos = GmlPos.newInstance();
+        obj.setPos(pos);
+        assertSame("pos", obj.getPos(), pos);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

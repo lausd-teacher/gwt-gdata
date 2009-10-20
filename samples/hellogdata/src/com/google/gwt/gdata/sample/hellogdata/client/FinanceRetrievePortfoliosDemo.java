@@ -18,6 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.finance.FinanceService;
 import com.google.gwt.gdata.client.finance.PortfolioEntry;
 import com.google.gwt.gdata.client.finance.PortfolioFeed;
@@ -70,15 +72,17 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's portfolios.
    */
   public FinanceRetrievePortfoliosDemo() {
-    service = FinanceService.newInstance(
-        "HelloGData_Finance_RetrievePortfoliosDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getPortfolios(
-          "http://finance.google.com/finance/feeds/default/portfolios");
+    if (!GData.isLoaded(GDataSystemPackage.FINANCE)) {
+      showStatus("Loading the GData Finance package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
+        }
+      }, GDataSystemPackage.FINANCE);
     } else {
-      showStatus("You are not logged on to Google Finance.", true);
+      startDemo();
     }
   }
 
@@ -151,5 +155,19 @@ public class FinanceRetrievePortfoliosDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = FinanceService.newInstance(
+        "HelloGData_Finance_RetrievePortfoliosDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      getPortfolios(
+          "http://finance.google.com/finance/feeds/default/portfolios");
+    } else {
+      showStatus("You are not logged on to Google Finance.", true);
+    }
   }
 }

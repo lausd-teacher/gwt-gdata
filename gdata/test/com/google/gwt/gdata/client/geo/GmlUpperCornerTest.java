@@ -26,13 +26,23 @@ public class GmlUpperCornerTest extends GeoTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GmlUpperCorner.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", GmlUpperCorner.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    GmlUpperCorner obj = GmlUpperCorner.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GmlUpperCorner obj = GmlUpperCorner.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

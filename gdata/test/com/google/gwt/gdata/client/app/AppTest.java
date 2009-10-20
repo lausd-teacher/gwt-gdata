@@ -17,10 +17,11 @@
 package com.google.gwt.gdata.client.app;
 
 import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataAuxiliaryPackage;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
- * Base class for Acl test.
+ * Base class for App test.
  */
 public class AppTest extends GWTTestCase {
 
@@ -32,9 +33,9 @@ public class AppTest extends GWTTestCase {
   }
   
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded()) {
+    if (!GData.isLoaded(GDataAuxiliaryPackage.APP)) {
       isAsync = true;
-      GData.loadGDataApi(null, test);
+      GData.loadGDataApi(null, test, GDataAuxiliaryPackage.APP);
       delayTestFinish(delay);
     } else {
       test.run();

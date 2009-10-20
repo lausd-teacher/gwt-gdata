@@ -26,30 +26,45 @@ public class MediaTextTest extends MediaRssTest {
   }
 
   public void testConstants() {
-    assertNotNull("TYPE_HTML", MediaText.TYPE_HTML);
-    assertNotNull("TYPE_PLAIN", MediaText.TYPE_PLAIN);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TYPE_HTML", MediaText.TYPE_HTML);
+        assertNotNull("TYPE_PLAIN", MediaText.TYPE_PLAIN);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaText.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaText.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    MediaText obj = MediaText.newInstance();
-    String type = "myValue";
-    obj.setType(type);
-    assertEquals("type", obj.getType(), type);
-    String content = "myValue";
-    obj.setContent(content);
-    assertEquals("content", obj.getContent(), content);
-    String start = "myValue";
-    obj.setStart(start);
-    assertEquals("start", obj.getStart(), start);
-    String lang = "myValue";
-    obj.setLang(lang);
-    assertEquals("lang", obj.getLang(), lang);
-    String end = "myValue";
-    obj.setEnd(end);
-    assertEquals("end", obj.getEnd(), end);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaText obj = MediaText.newInstance();
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        String content = "myValue";
+        obj.setContent(content);
+        assertEquals("content", obj.getContent(), content);
+        String start = "myValue";
+        obj.setStart(start);
+        assertEquals("start", obj.getStart(), start);
+        String lang = "myValue";
+        obj.setLang(lang);
+        assertEquals("lang", obj.getLang(), lang);
+        String end = "myValue";
+        obj.setEnd(end);
+        assertEquals("end", obj.getEnd(), end);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

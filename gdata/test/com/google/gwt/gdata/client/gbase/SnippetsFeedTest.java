@@ -30,12 +30,17 @@ public class SnippetsFeedTest extends GoogleBaseTest {
   }
 
   public void testOther() {
-    SnippetsFeed obj = SnippetsFeed.newInstance();
-    // Unit Test for getFeedBatchLink()
-    assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
-    // Unit Test for getNextLink()
-    assertEquals("getNextLink", obj.getNextLink(), null);
-    // Unit Test for getPreviousLink()
-    assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SnippetsFeed obj = SnippetsFeed.newInstance();
+        // Unit Test for getFeedBatchLink()
+        assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+        // Unit Test for getNextLink()
+        assertEquals("getNextLink", obj.getNextLink(), null);
+        // Unit Test for getPreviousLink()
+        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

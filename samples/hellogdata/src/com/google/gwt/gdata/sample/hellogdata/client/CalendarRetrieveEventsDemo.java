@@ -18,6 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.calendar.CalendarEventEntry;
 import com.google.gwt.gdata.client.calendar.CalendarEventFeed;
 import com.google.gwt.gdata.client.calendar.CalendarEventFeedCallback;
@@ -74,14 +76,17 @@ public class CalendarRetrieveEventsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's calendars.
    */
   public CalendarRetrieveEventsDemo() {
-    service = CalendarService.newInstance(
-        "HelloGData_Calendar_RetrieveEventsDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getEvents("http://www.google.com/calendar/feeds/default/private/full");
+    if (!GData.isLoaded(GDataSystemPackage.CALENDAR)) {
+      showStatus("Loading the GData Calendar package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
+        }
+      }, GDataSystemPackage.CALENDAR);
     } else {
-      showStatus("You are not logged on to Google Calendar.", true);
+      startDemo();
     }
   }
 
@@ -158,5 +163,18 @@ public class CalendarRetrieveEventsDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = CalendarService.newInstance(
+        "HelloGData_Calendar_RetrieveEventsDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      getEvents("http://www.google.com/calendar/feeds/default/private/full");
+    } else {
+      showStatus("You are not logged on to Google Calendar.", true);
+    }
   }
 }

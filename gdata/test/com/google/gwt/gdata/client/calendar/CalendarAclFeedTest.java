@@ -26,12 +26,22 @@ public class CalendarAclFeedTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarAclFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarAclFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    CalendarAclFeed obj = CalendarAclFeed.newInstance();
-    // Unit Test for getControlledObjectLink()
-    assertEquals("getControlledObjectLink", obj.getControlledObjectLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CalendarAclFeed obj = CalendarAclFeed.newInstance();
+        // Unit Test for getControlledObjectLink()
+        assertEquals("getControlledObjectLink", obj.getControlledObjectLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -26,22 +26,32 @@ public class MediaThumbnailTest extends MediaRssTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaThumbnail.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaThumbnail.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    MediaThumbnail obj = MediaThumbnail.newInstance();
-    double width = 600813;
-    obj.setWidth(width);
-    assertEquals("width", obj.getWidth(), width);
-    String time = "myValue";
-    obj.setTime(time);
-    assertEquals("time", obj.getTime(), time);
-    String url = "myValue";
-    obj.setUrl(url);
-    assertEquals("url", obj.getUrl(), url);
-    double height = 600813;
-    obj.setHeight(height);
-    assertEquals("height", obj.getHeight(), height);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaThumbnail obj = MediaThumbnail.newInstance();
+        double width = 600813;
+        obj.setWidth(width);
+        assertEquals("width", obj.getWidth(), width);
+        String time = "myValue";
+        obj.setTime(time);
+        assertEquals("time", obj.getTime(), time);
+        String url = "myValue";
+        obj.setUrl(url);
+        assertEquals("url", obj.getUrl(), url);
+        double height = 600813;
+        obj.setHeight(height);
+        assertEquals("height", obj.getHeight(), height);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -26,20 +26,30 @@ public class ItemsFeedTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ItemsFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ItemsFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    ItemsFeed obj = ItemsFeed.newInstance();
-    // Unit Test for getAttributes()
-    assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
-    // Unit Test for getFeedBatchLink()
-    assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
-    // Unit Test for getNextLink()
-    assertEquals("getNextLink", obj.getNextLink(), null);
-    // Unit Test for getPreviousLink()
-    assertEquals("getPreviousLink", obj.getPreviousLink(), null);
-    // Unit Test for setAttribute(String name, Attribute attribute)
-    // Unit Test for setAttributes(JavaScriptObject attributes)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ItemsFeed obj = ItemsFeed.newInstance();
+        // Unit Test for getAttributes()
+        assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
+        // Unit Test for getFeedBatchLink()
+        assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+        // Unit Test for getNextLink()
+        assertEquals("getNextLink", obj.getNextLink(), null);
+        // Unit Test for getPreviousLink()
+        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+        // Unit Test for setAttribute(String name, Attribute attribute)
+        // Unit Test for setAttributes(JavaScriptObject attributes)
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

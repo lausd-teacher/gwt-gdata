@@ -17,7 +17,7 @@
 package com.google.gwt.gdata.client.analytics;
 
 import com.google.gwt.gdata.client.GData;
-import com.google.gwt.gdata.client.GDataPackage;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -33,9 +33,9 @@ public class AnalyticsTest extends GWTTestCase {
   }
   
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataPackage.ANALYTICS)) {
+    if (!GData.isLoaded(GDataSystemPackage.ANALYTICS)) {
       isAsync = true;
-      GData.loadGDataApi(null, test, GDataPackage.ANALYTICS);
+      GData.loadGDataApi(null, test, GDataSystemPackage.ANALYTICS);
       delayTestFinish(delay);
     } else {
       test.run();

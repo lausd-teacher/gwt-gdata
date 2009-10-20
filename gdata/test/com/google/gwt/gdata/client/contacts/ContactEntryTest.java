@@ -28,7 +28,12 @@ public class ContactEntryTest extends ContactsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ContactEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ContactEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -36,12 +41,17 @@ public class ContactEntryTest extends ContactsTest {
   }
 
   public void testProperties() {
-    ContactEntry obj = ContactEntry.newInstance();
-    GroupMembershipInfo[] groupmembershipinfos = new GroupMembershipInfo[]{ GroupMembershipInfo.newInstance() };
-    obj.setGroupMembershipInfos(groupmembershipinfos);
-    assertEquals("groupmembershipinfos", obj.getGroupMembershipInfos().length, groupmembershipinfos.length);
-    Deleted deleted = Deleted.newInstance();
-    obj.setDeleted(deleted);
-    assertSame("deleted", obj.getDeleted(), deleted);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ContactEntry obj = ContactEntry.newInstance();
+        GroupMembershipInfo[] groupmembershipinfos = new GroupMembershipInfo[]{ GroupMembershipInfo.newInstance() };
+        obj.setGroupMembershipInfos(groupmembershipinfos);
+        assertEquals("groupmembershipinfos", obj.getGroupMembershipInfos().length, groupmembershipinfos.length);
+        Deleted deleted = Deleted.newInstance();
+        obj.setDeleted(deleted);
+        assertSame("deleted", obj.getDeleted(), deleted);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

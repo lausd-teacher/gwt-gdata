@@ -26,16 +26,26 @@ public class LanguageTest extends ContactsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Language.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Language.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Language obj = Language.newInstance();
-    String code = "myValue";
-    obj.setCode(code);
-    assertEquals("code", obj.getCode(), code);
-    String label = "myValue";
-    obj.setLabel(label);
-    assertEquals("label", obj.getLabel(), label);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Language obj = Language.newInstance();
+        String code = "myValue";
+        obj.setCode(code);
+        assertEquals("code", obj.getCode(), code);
+        String label = "myValue";
+        obj.setLabel(label);
+        assertEquals("label", obj.getLabel(), label);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

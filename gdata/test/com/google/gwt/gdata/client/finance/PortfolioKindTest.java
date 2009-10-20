@@ -26,10 +26,20 @@ public class PortfolioKindTest extends FinanceTest {
   }
 
   public void testConstants() {
-    assertNotNull("TERM_PORTFOLIO", PortfolioKind.TERM_PORTFOLIO);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TERM_PORTFOLIO", PortfolioKind.TERM_PORTFOLIO);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PortfolioKind.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PortfolioKind.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

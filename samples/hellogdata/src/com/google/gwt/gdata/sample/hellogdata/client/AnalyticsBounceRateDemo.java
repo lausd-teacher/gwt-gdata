@@ -18,6 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.analytics.AccountEntry;
 import com.google.gwt.gdata.client.analytics.AccountFeed;
 import com.google.gwt.gdata.client.analytics.AccountFeedCallback;
@@ -74,14 +76,17 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
    * otherwise start the demo by retrieving the Analytics accounts.
    */
   public AnalyticsBounceRateDemo() {
-    service = AnalyticsService.newInstance(
-        "HelloGData_Analytics_BounceRateDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getAccounts("https://www.google.com/analytics/feeds/accounts/default");
+    if (!GData.isLoaded(GDataSystemPackage.ANALYTICS)) {
+      showStatus("Loading the GData Analytics package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
+        }
+      }, GDataSystemPackage.ANALYTICS);
     } else {
-      showStatus("You are not logged on to Google Analytics.", true);
+      startDemo();
     }
   }
   
@@ -209,5 +214,18 @@ public class AnalyticsBounceRateDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = AnalyticsService.newInstance(
+        "HelloGData_Analytics_BounceRateDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      getAccounts("https://www.google.com/analytics/feeds/accounts/default");
+    } else {
+      showStatus("You are not logged on to Google Analytics.", true);
+    }
   }
 }

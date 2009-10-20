@@ -21,6 +21,8 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.Email;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
 import com.google.gwt.gdata.client.contacts.ContactEntryCallback;
@@ -72,21 +74,17 @@ public class ContactsCreateContactDemo extends GDataDemo {
    * otherwise start the demo by creating a contact.
    */
   public ContactsCreateContactDemo() {
-    service = ContactsService.newInstance(
-        "HelloGData_Contacts_CreateContactDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Create a contact");
-      startButton.addClickHandler(new ClickHandler() {
-        public void onClick(ClickEvent event) {
-          createContact(
-              "http://www.google.com/m8/feeds/contacts/default/full");
+    if (!GData.isLoaded(GDataSystemPackage.CONTACTS)) {
+      showStatus("Loading the GData Contacts package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
         }
-      });
-      mainPanel.setWidget(0, 0, startButton);
+      }, GDataSystemPackage.CONTACTS);
     } else {
-      showStatus("You are not logged on to Google Contacts.", true);
+      startDemo();
     }
   }
 
@@ -140,5 +138,25 @@ public class ContactsCreateContactDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = ContactsService.newInstance(
+        "HelloGData_Contacts_CreateContactDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      Button startButton = new Button("Create a contact");
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
+          createContact(
+              "http://www.google.com/m8/feeds/contacts/default/full");
+        }
+      });
+      mainPanel.setWidget(0, 0, startButton);
+    } else {
+      showStatus("You are not logged on to Google Contacts.", true);
+    }
   }
 }

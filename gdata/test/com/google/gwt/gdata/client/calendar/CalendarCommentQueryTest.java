@@ -30,7 +30,12 @@ public class CalendarCommentQueryTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarCommentQuery.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarCommentQuery.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -41,24 +46,29 @@ public class CalendarCommentQueryTest extends CalendarTest {
   }
 
   public void testProperties() {
-    CalendarCommentQuery obj = CalendarCommentQuery.newInstance("myValue");
-    String author = "myValue";
-    obj.setAuthor(author);
-    assertEquals("author", obj.getAuthor(), author);
-    DateTime updatedmin = DateTime.newInstance(new Date(), false);
-    obj.setUpdatedMin(updatedmin);
-    assertEquals("updatedmin", obj.getUpdatedMin().getDate(), updatedmin.getDate());
-    String fulltextquery = "myValue";
-    obj.setFullTextQuery(fulltextquery);
-    assertEquals("fulltextquery", obj.getFullTextQuery(), fulltextquery);
-    double startindex = 600813;
-    obj.setStartIndex(startindex);
-    assertEquals("startindex", obj.getStartIndex(), startindex);
-    double maxresults = 600813;
-    obj.setMaxResults(maxresults);
-    assertEquals("maxresults", obj.getMaxResults(), maxresults);
-    DateTime updatedmax = DateTime.newInstance(new Date(), false);
-    obj.setUpdatedMax(updatedmax);
-    assertEquals("updatedmax", obj.getUpdatedMax().getDate(), updatedmax.getDate());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CalendarCommentQuery obj = CalendarCommentQuery.newInstance("myValue");
+        String author = "myValue";
+        obj.setAuthor(author);
+        assertEquals("author", obj.getAuthor(), author);
+        DateTime updatedmin = DateTime.newInstance(new Date(), false);
+        obj.setUpdatedMin(updatedmin);
+        assertEquals("updatedmin", obj.getUpdatedMin().getDate(), updatedmin.getDate());
+        String fulltextquery = "myValue";
+        obj.setFullTextQuery(fulltextquery);
+        assertEquals("fulltextquery", obj.getFullTextQuery(), fulltextquery);
+        double startindex = 600813;
+        obj.setStartIndex(startindex);
+        assertEquals("startindex", obj.getStartIndex(), startindex);
+        double maxresults = 600813;
+        obj.setMaxResults(maxresults);
+        assertEquals("maxresults", obj.getMaxResults(), maxresults);
+        DateTime updatedmax = DateTime.newInstance(new Date(), false);
+        obj.setUpdatedMax(updatedmax);
+        assertEquals("updatedmax", obj.getUpdatedMax().getDate(), updatedmax.getDate());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

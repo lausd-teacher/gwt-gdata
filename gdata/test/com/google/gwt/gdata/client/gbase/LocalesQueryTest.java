@@ -30,7 +30,12 @@ public class LocalesQueryTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", LocalesQuery.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", LocalesQuery.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -43,30 +48,35 @@ public class LocalesQueryTest extends GoogleBaseTest {
   }
 
   public void testProperties() {
-    LocalesQuery obj = LocalesQuery.newInstance("myValue");
-    DateTime publishedmax = DateTime.newInstance(new Date(), false);
-    obj.setPublishedMax(publishedmax);
-    assertEquals("publishedmax", obj.getPublishedMax().getDate(), publishedmax.getDate());
-    String author = "myValue";
-    obj.setAuthor(author);
-    assertEquals("author", obj.getAuthor(), author);
-    DateTime updatedmin = DateTime.newInstance(new Date(), false);
-    obj.setUpdatedMin(updatedmin);
-    assertEquals("updatedmin", obj.getUpdatedMin().getDate(), updatedmin.getDate());
-    String fulltextquery = "myValue";
-    obj.setFullTextQuery(fulltextquery);
-    assertEquals("fulltextquery", obj.getFullTextQuery(), fulltextquery);
-    double startindex = 600813;
-    obj.setStartIndex(startindex);
-    assertEquals("startindex", obj.getStartIndex(), startindex);
-    DateTime publishedmin = DateTime.newInstance(new Date(), false);
-    obj.setPublishedMin(publishedmin);
-    assertEquals("publishedmin", obj.getPublishedMin().getDate(), publishedmin.getDate());
-    double maxresults = 600813;
-    obj.setMaxResults(maxresults);
-    assertEquals("maxresults", obj.getMaxResults(), maxresults);
-    DateTime updatedmax = DateTime.newInstance(new Date(), false);
-    obj.setUpdatedMax(updatedmax);
-    assertEquals("updatedmax", obj.getUpdatedMax().getDate(), updatedmax.getDate());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        LocalesQuery obj = LocalesQuery.newInstance("myValue");
+        DateTime publishedmax = DateTime.newInstance(new Date(), false);
+        obj.setPublishedMax(publishedmax);
+        assertEquals("publishedmax", obj.getPublishedMax().getDate(), publishedmax.getDate());
+        String author = "myValue";
+        obj.setAuthor(author);
+        assertEquals("author", obj.getAuthor(), author);
+        DateTime updatedmin = DateTime.newInstance(new Date(), false);
+        obj.setUpdatedMin(updatedmin);
+        assertEquals("updatedmin", obj.getUpdatedMin().getDate(), updatedmin.getDate());
+        String fulltextquery = "myValue";
+        obj.setFullTextQuery(fulltextquery);
+        assertEquals("fulltextquery", obj.getFullTextQuery(), fulltextquery);
+        double startindex = 600813;
+        obj.setStartIndex(startindex);
+        assertEquals("startindex", obj.getStartIndex(), startindex);
+        DateTime publishedmin = DateTime.newInstance(new Date(), false);
+        obj.setPublishedMin(publishedmin);
+        assertEquals("publishedmin", obj.getPublishedMin().getDate(), publishedmin.getDate());
+        double maxresults = 600813;
+        obj.setMaxResults(maxresults);
+        assertEquals("maxresults", obj.getMaxResults(), maxresults);
+        DateTime updatedmax = DateTime.newInstance(new Date(), false);
+        obj.setUpdatedMax(updatedmax);
+        assertEquals("updatedmax", obj.getUpdatedMax().getDate(), updatedmax.getDate());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -26,6 +26,11 @@ public class ItemDisapprovedTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ItemDisapproved.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ItemDisapproved.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

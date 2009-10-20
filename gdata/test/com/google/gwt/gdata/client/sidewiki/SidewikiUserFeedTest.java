@@ -26,6 +26,11 @@ public class SidewikiUserFeedTest extends SidewikiTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SidewikiUserFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SidewikiUserFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

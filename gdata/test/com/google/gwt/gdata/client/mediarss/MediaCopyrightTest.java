@@ -26,16 +26,26 @@ public class MediaCopyrightTest extends MediaRssTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaCopyright.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaCopyright.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    MediaCopyright obj = MediaCopyright.newInstance();
-    String content = "myValue";
-    obj.setContent(content);
-    assertEquals("content", obj.getContent(), content);
-    String url = "myValue";
-    obj.setUrl(url);
-    assertEquals("url", obj.getUrl(), url);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaCopyright obj = MediaCopyright.newInstance();
+        String content = "myValue";
+        obj.setContent(content);
+        assertEquals("content", obj.getContent(), content);
+        String url = "myValue";
+        obj.setUrl(url);
+        assertEquals("url", obj.getUrl(), url);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

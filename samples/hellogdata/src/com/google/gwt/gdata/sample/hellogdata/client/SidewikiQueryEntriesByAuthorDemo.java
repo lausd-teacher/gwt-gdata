@@ -16,6 +16,8 @@
 
 package com.google.gwt.gdata.sample.hellogdata.client;
 
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.gdata.client.sidewiki.SidewikiAuthor;
 import com.google.gwt.gdata.client.sidewiki.SidewikiEntry;
@@ -68,15 +70,18 @@ public class SidewikiQueryEntriesByAuthorDemo extends GDataDemo {
    * Start the demo by querying Sidewiki entries.
    */
   public SidewikiQueryEntriesByAuthorDemo() {
-    service = SidewikiService.newInstance(
-        "HelloGData_Sidewiki_QueryEntriesByAuthorDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    String webpageEncoded = "http%3A%2F%2Fwww.google.com%2F";
-    String webpageFeedUri =
-      "http://www.google.com/sidewiki/feeds/entries/webpage/" +
-      webpageEncoded + "/full";
-    queryEntries(webpageFeedUri);
+    if (!GData.isLoaded(GDataSystemPackage.SIDEWIKI)) {
+      showStatus("Loading the GData Sidewiki package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
+        }
+      }, GDataSystemPackage.SIDEWIKI);
+    } else {
+      startDemo();
+    }
   }
 
   /**
@@ -188,5 +193,18 @@ public class SidewikiQueryEntriesByAuthorDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = SidewikiService.newInstance(
+        "HelloGData_Sidewiki_QueryEntriesByAuthorDemo_v2.0");
+    String webpageEncoded = "http%3A%2F%2Fwww.google.com%2F";
+    String webpageFeedUri =
+      "http://www.google.com/sidewiki/feeds/entries/webpage/" +
+      webpageEncoded + "/full";
+    queryEntries(webpageFeedUri);
   }
 }

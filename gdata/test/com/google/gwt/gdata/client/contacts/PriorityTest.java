@@ -26,19 +26,34 @@ public class PriorityTest extends ContactsTest {
   }
 
   public void testConstants() {
-    assertNotNull("REL_HIGH", Priority.REL_HIGH);
-    assertNotNull("REL_LOW", Priority.REL_LOW);
-    assertNotNull("REL_NORMAL", Priority.REL_NORMAL);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_HIGH", Priority.REL_HIGH);
+        assertNotNull("REL_LOW", Priority.REL_LOW);
+        assertNotNull("REL_NORMAL", Priority.REL_NORMAL);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Priority.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Priority.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Priority obj = Priority.newInstance();
-    String rel = "myValue";
-    obj.setRel(rel);
-    assertEquals("rel", obj.getRel(), rel);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Priority obj = Priority.newInstance();
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

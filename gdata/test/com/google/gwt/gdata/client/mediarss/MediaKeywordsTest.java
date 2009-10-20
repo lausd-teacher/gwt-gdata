@@ -26,13 +26,23 @@ public class MediaKeywordsTest extends MediaRssTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaKeywords.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaKeywords.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    MediaKeywords obj = MediaKeywords.newInstance();
-    String content = "myValue";
-    obj.setContent(content);
-    assertEquals("content", obj.getContent(), content);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaKeywords obj = MediaKeywords.newInstance();
+        String content = "myValue";
+        obj.setContent(content);
+        assertEquals("content", obj.getContent(), content);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

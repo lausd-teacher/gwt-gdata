@@ -26,6 +26,11 @@ public class CalendarRecurrenceExceptionTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarRecurrenceException.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarRecurrenceException.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

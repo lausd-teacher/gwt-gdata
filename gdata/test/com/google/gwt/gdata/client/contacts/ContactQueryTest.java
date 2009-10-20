@@ -30,16 +30,26 @@ public class ContactQueryTest extends ContactsTest {
   }
 
   public void testConstants() {
-    assertNotNull("ORDERBY_EDITED", ContactQuery.ORDERBY_EDITED);
-    assertNotNull("ORDERBY_LAST_MODIFIED", ContactQuery.ORDERBY_LAST_MODIFIED);
-    assertNotNull("ORDERBY_NONE", ContactQuery.ORDERBY_NONE);
-    assertNotNull("SORTORDER_ASCENDING", ContactQuery.SORTORDER_ASCENDING);
-    assertNotNull("SORTORDER_DESCENDING", ContactQuery.SORTORDER_DESCENDING);
-    assertNotNull("SORTORDER_NONE", ContactQuery.SORTORDER_NONE);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("ORDERBY_EDITED", ContactQuery.ORDERBY_EDITED);
+        assertNotNull("ORDERBY_LAST_MODIFIED", ContactQuery.ORDERBY_LAST_MODIFIED);
+        assertNotNull("ORDERBY_NONE", ContactQuery.ORDERBY_NONE);
+        assertNotNull("SORTORDER_ASCENDING", ContactQuery.SORTORDER_ASCENDING);
+        assertNotNull("SORTORDER_DESCENDING", ContactQuery.SORTORDER_DESCENDING);
+        assertNotNull("SORTORDER_NONE", ContactQuery.SORTORDER_NONE);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ContactQuery.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ContactQuery.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -51,30 +61,35 @@ public class ContactQueryTest extends ContactsTest {
   }
 
   public void testProperties() {
-    ContactQuery obj = ContactQuery.newInstance("myValue");
-    DateTime updatedmin = DateTime.newInstance(new Date(), false);
-    obj.setUpdatedMin(updatedmin);
-    assertEquals("updatedmin", obj.getUpdatedMin().getDate(), updatedmin.getDate());
-    String group = "myValue";
-    obj.setGroup(group);
-    assertEquals("group", obj.getGroup(), group);
-    double startindex = 600813;
-    obj.setStartIndex(startindex);
-    assertEquals("startindex", obj.getStartIndex(), startindex);
-    String sortorder = "myValue";
-    obj.setSortOrder(sortorder);
-    assertEquals("sortorder", obj.getSortOrder(), sortorder);
-    boolean showdeleted = true;
-    obj.setShowDeleted(showdeleted);
-    assertSame("showdeleted", obj.getShowDeleted(), showdeleted);
-    String orderby = "myValue";
-    obj.setOrderBy(orderby);
-    assertEquals("orderby", obj.getOrderBy(), orderby);
-    double maxresults = 600813;
-    obj.setMaxResults(maxresults);
-    assertEquals("maxresults", obj.getMaxResults(), maxresults);
-    DateTime updatedmax = DateTime.newInstance(new Date(), false);
-    obj.setUpdatedMax(updatedmax);
-    assertEquals("updatedmax", obj.getUpdatedMax().getDate(), updatedmax.getDate());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ContactQuery obj = ContactQuery.newInstance("myValue");
+        DateTime updatedmin = DateTime.newInstance(new Date(), false);
+        obj.setUpdatedMin(updatedmin);
+        assertEquals("updatedmin", obj.getUpdatedMin().getDate(), updatedmin.getDate());
+        String group = "myValue";
+        obj.setGroup(group);
+        assertEquals("group", obj.getGroup(), group);
+        double startindex = 600813;
+        obj.setStartIndex(startindex);
+        assertEquals("startindex", obj.getStartIndex(), startindex);
+        String sortorder = "myValue";
+        obj.setSortOrder(sortorder);
+        assertEquals("sortorder", obj.getSortOrder(), sortorder);
+        boolean showdeleted = true;
+        obj.setShowDeleted(showdeleted);
+        assertSame("showdeleted", obj.getShowDeleted(), showdeleted);
+        String orderby = "myValue";
+        obj.setOrderBy(orderby);
+        assertEquals("orderby", obj.getOrderBy(), orderby);
+        double maxresults = 600813;
+        obj.setMaxResults(maxresults);
+        assertEquals("maxresults", obj.getMaxResults(), maxresults);
+        DateTime updatedmax = DateTime.newInstance(new Date(), false);
+        obj.setUpdatedMax(updatedmax);
+        assertEquals("updatedmax", obj.getUpdatedMax().getDate(), updatedmax.getDate());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -26,6 +26,11 @@ public class MediaFeedTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

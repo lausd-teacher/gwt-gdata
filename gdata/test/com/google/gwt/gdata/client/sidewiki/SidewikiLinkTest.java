@@ -26,10 +26,20 @@ public class SidewikiLinkTest extends SidewikiTest {
   }
 
   public void testConstants() {
-    assertNotNull("REL_ORIGINAL_URL", SidewikiLink.REL_ORIGINAL_URL);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_ORIGINAL_URL", SidewikiLink.REL_ORIGINAL_URL);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SidewikiLink.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SidewikiLink.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

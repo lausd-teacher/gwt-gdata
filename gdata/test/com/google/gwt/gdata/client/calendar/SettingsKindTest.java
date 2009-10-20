@@ -26,10 +26,20 @@ public class SettingsKindTest extends CalendarTest {
   }
 
   public void testConstants() {
-    assertNotNull("TERM_SETTINGS", SettingsKind.TERM_SETTINGS);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TERM_SETTINGS", SettingsKind.TERM_SETTINGS);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SettingsKind.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SettingsKind.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

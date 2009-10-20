@@ -26,19 +26,29 @@ public class MediaPlayerTest extends MediaRssTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaPlayer.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaPlayer.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    MediaPlayer obj = MediaPlayer.newInstance();
-    double width = 600813;
-    obj.setWidth(width);
-    assertEquals("width", obj.getWidth(), width);
-    String url = "myValue";
-    obj.setUrl(url);
-    assertEquals("url", obj.getUrl(), url);
-    double height = 600813;
-    obj.setHeight(height);
-    assertEquals("height", obj.getHeight(), height);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaPlayer obj = MediaPlayer.newInstance();
+        double width = 600813;
+        obj.setWidth(width);
+        assertEquals("width", obj.getWidth(), width);
+        String url = "myValue";
+        obj.setUrl(url);
+        assertEquals("url", obj.getUrl(), url);
+        double height = 600813;
+        obj.setHeight(height);
+        assertEquals("height", obj.getHeight(), height);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

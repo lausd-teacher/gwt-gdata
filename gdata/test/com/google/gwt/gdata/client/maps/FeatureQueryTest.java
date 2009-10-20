@@ -26,7 +26,12 @@ public class FeatureQueryTest extends MapsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", FeatureQuery.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", FeatureQuery.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -36,18 +41,23 @@ public class FeatureQueryTest extends MapsTest {
   }
 
   public void testProperties() {
-    FeatureQuery obj = FeatureQuery.newInstance("myValue");
-    String fulltextquery = "myValue";
-    obj.setFullTextQuery(fulltextquery);
-    assertEquals("fulltextquery", obj.getFullTextQuery(), fulltextquery);
-    double startindex = 600813;
-    obj.setStartIndex(startindex);
-    assertEquals("startindex", obj.getStartIndex(), startindex);
-    boolean showdeleted = true;
-    obj.setShowDeleted(showdeleted);
-    assertSame("showdeleted", obj.getShowDeleted(), showdeleted);
-    double maxresults = 600813;
-    obj.setMaxResults(maxresults);
-    assertEquals("maxresults", obj.getMaxResults(), maxresults);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        FeatureQuery obj = FeatureQuery.newInstance("myValue");
+        String fulltextquery = "myValue";
+        obj.setFullTextQuery(fulltextquery);
+        assertEquals("fulltextquery", obj.getFullTextQuery(), fulltextquery);
+        double startindex = 600813;
+        obj.setStartIndex(startindex);
+        assertEquals("startindex", obj.getStartIndex(), startindex);
+        boolean showdeleted = true;
+        obj.setShowDeleted(showdeleted);
+        assertSame("showdeleted", obj.getShowDeleted(), showdeleted);
+        double maxresults = 600813;
+        obj.setMaxResults(maxresults);
+        assertEquals("maxresults", obj.getMaxResults(), maxresults);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

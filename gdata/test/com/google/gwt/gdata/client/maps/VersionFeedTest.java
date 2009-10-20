@@ -26,14 +26,24 @@ public class VersionFeedTest extends MapsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", VersionFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", VersionFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    VersionFeed obj = VersionFeed.newInstance();
-    // Unit Test for getAtomFeedLink()
-    assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
-    // Unit Test for getNextLink()
-    assertEquals("getNextLink", obj.getNextLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        VersionFeed obj = VersionFeed.newInstance();
+        // Unit Test for getAtomFeedLink()
+        assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
+        // Unit Test for getNextLink()
+        assertEquals("getNextLink", obj.getNextLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

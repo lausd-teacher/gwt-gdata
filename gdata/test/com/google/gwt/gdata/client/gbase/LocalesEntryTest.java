@@ -26,12 +26,22 @@ public class LocalesEntryTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", LocalesEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", LocalesEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    LocalesEntry obj = LocalesEntry.newInstance();
-    // Unit Test for getRelatedLink()
-    assertEquals("getRelatedLink", obj.getRelatedLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        LocalesEntry obj = LocalesEntry.newInstance();
+        // Unit Test for getRelatedLink()
+        assertEquals("getRelatedLink", obj.getRelatedLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

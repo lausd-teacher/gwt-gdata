@@ -26,12 +26,22 @@ public class ContactLinkTest extends ContactsTest {
   }
 
   public void testConstants() {
-    assertNotNull("REL_CONTACT_PHOTO", ContactLink.REL_CONTACT_PHOTO);
-    assertNotNull("REL_EDIT_CONTACT_PHOTO", ContactLink.REL_EDIT_CONTACT_PHOTO);
-    assertNotNull("TYPE_IMAGE", ContactLink.TYPE_IMAGE);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_CONTACT_PHOTO", ContactLink.REL_CONTACT_PHOTO);
+        assertNotNull("REL_EDIT_CONTACT_PHOTO", ContactLink.REL_EDIT_CONTACT_PHOTO);
+        assertNotNull("TYPE_IMAGE", ContactLink.TYPE_IMAGE);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ContactLink.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ContactLink.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

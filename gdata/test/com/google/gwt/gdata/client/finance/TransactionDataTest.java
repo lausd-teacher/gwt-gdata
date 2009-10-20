@@ -30,7 +30,12 @@ public class TransactionDataTest extends FinanceTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", TransactionData.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", TransactionData.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -38,24 +43,29 @@ public class TransactionDataTest extends FinanceTest {
   }
 
   public void testProperties() {
-    TransactionData obj = TransactionData.newInstance();
-    DateTime date = DateTime.newInstance(new Date(), false);
-    obj.setDate(date);
-    assertEquals("date", obj.getDate().getDate(), date.getDate());
-    Price price = Price.newInstance();
-    obj.setPrice(price);
-    assertSame("price", obj.getPrice(), price);
-    String type = "myValue";
-    obj.setType(type);
-    assertEquals("type", obj.getType(), type);
-    double shares = 600813;
-    obj.setShares(shares);
-    assertEquals("shares", obj.getShares(), shares);
-    Commission commission = Commission.newInstance();
-    obj.setCommission(commission);
-    assertSame("commission", obj.getCommission(), commission);
-    String notes = "myValue";
-    obj.setNotes(notes);
-    assertEquals("notes", obj.getNotes(), notes);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        TransactionData obj = TransactionData.newInstance();
+        DateTime date = DateTime.newInstance(new Date(), false);
+        obj.setDate(date);
+        assertEquals("date", obj.getDate().getDate(), date.getDate());
+        Price price = Price.newInstance();
+        obj.setPrice(price);
+        assertSame("price", obj.getPrice(), price);
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        double shares = 600813;
+        obj.setShares(shares);
+        assertEquals("shares", obj.getShares(), shares);
+        Commission commission = Commission.newInstance();
+        obj.setCommission(commission);
+        assertSame("commission", obj.getCommission(), commission);
+        String notes = "myValue";
+        obj.setNotes(notes);
+        assertEquals("notes", obj.getNotes(), notes);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

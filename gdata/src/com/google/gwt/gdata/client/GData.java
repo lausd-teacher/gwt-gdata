@@ -86,16 +86,24 @@ public class GData {
       AjaxLoaderOptions settings, final Runnable onLoad) {
     assert settings != null;
     AjaxLoader.init(key);
-    Runnable onGDataLoad = new Runnable() {
-      public void run() {
-        callGDataOnLoad();
-        onLoad.run();
-      }
-      
-      private native void callGDataOnLoad() /*-{
-        if(typeof($wnd.google.gdata) !== 'undefined') $wnd.google.gdata.onLoad();
-      }-*/;
-    };
+    Runnable onGDataLoad = onLoad;
+    /*
+     * If loading for the first time insert a call to gdata.onLoad.
+     * This fixes an issue where AuthSub doesn't consume the token
+     * whenever the API is loaded asynchronously.
+     */
+    if (!isLoaded()) {
+      onGDataLoad = new Runnable() {
+        public void run() {
+          callGDataOnLoad();
+          onLoad.run();
+        }
+        
+        private native void callGDataOnLoad() /*-{
+          if(typeof($wnd.google.gdata) !== 'undefined') $wnd.google.gdata.onLoad();
+        }-*/;
+      };
+    }
     AjaxLoader.loadApi("gdata", version, onGDataLoad, settings);
   }
 
@@ -124,9 +132,9 @@ public class GData {
    * @see "http://code.google.com/apis/gdata/documentation/#AJAX_Loader"
    * 
    * @param key GData API key. See http://code.google.com/apis/gdata/signup.html
+   * @param onLoad callback to be invoked when the library is loaded.
    * @param packages the GData packages that should be loaded (e.g. Calendar,
    * Blogger, etc.)
-   * @param onLoad callback to be invoked when the library is loaded.
    */
   public static void loadGDataApi(String key,
       Runnable onLoad, GDataPackage... packages) {

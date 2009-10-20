@@ -26,18 +26,33 @@ public class ItemPublishingPriorityTest extends GoogleBaseTest {
   }
 
   public void testConstants() {
-    assertNotNull("VALUE_HIGH", ItemPublishingPriority.VALUE_HIGH);
-    assertNotNull("VALUE_LOW", ItemPublishingPriority.VALUE_LOW);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("VALUE_HIGH", ItemPublishingPriority.VALUE_HIGH);
+        assertNotNull("VALUE_LOW", ItemPublishingPriority.VALUE_LOW);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", ItemPublishingPriority.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", ItemPublishingPriority.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    ItemPublishingPriority obj = ItemPublishingPriority.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ItemPublishingPriority obj = ItemPublishingPriority.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

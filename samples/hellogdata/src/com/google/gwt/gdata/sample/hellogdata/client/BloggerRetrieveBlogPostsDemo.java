@@ -18,6 +18,8 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.blogger.BlogEntry;
 import com.google.gwt.gdata.client.blogger.BlogFeed;
 import com.google.gwt.gdata.client.blogger.BlogFeedCallback;
@@ -72,14 +74,17 @@ public class BloggerRetrieveBlogPostsDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's blogs.
    */
   public BloggerRetrieveBlogPostsDemo() {
-    service = BloggerService.newInstance(
-        "HelloGData_Blogger_RetrieveBlogPostsDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      getBlogs("http://www.blogger.com/feeds/default/blogs");
+    if (!GData.isLoaded(GDataSystemPackage.BLOGGER)) {
+      showStatus("Loading the GData Blogger package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
+        }
+      }, GDataSystemPackage.BLOGGER);
     } else {
-      showStatus("You are not logged on to Blogger.", true);
+      startDemo();
     }
   }
 
@@ -183,5 +188,18 @@ public class BloggerRetrieveBlogPostsDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = BloggerService.newInstance(
+        "HelloGData_Blogger_RetrieveBlogPostsDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      getBlogs("http://www.blogger.com/feeds/default/blogs");
+    } else {
+      showStatus("You are not logged on to Blogger.", true);
+    }
   }
 }

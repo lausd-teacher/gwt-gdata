@@ -17,7 +17,7 @@
 package com.google.gwt.gdata.client.maps;
 
 import com.google.gwt.gdata.client.GData;
-import com.google.gwt.gdata.client.GDataPackage;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -33,9 +33,9 @@ public class MapsTest extends GWTTestCase {
   }
   
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataPackage.MAPS)) {
+    if (!GData.isLoaded(GDataSystemPackage.MAPS)) {
       isAsync = true;
-      GData.loadGDataApi(null, test, GDataPackage.MAPS);
+      GData.loadGDataApi(null, test, GDataSystemPackage.MAPS);
       delayTestFinish(delay);
     } else {
       test.run();

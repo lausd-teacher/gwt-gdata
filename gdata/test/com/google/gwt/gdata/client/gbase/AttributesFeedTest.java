@@ -26,14 +26,24 @@ public class AttributesFeedTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", AttributesFeed.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", AttributesFeed.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    AttributesFeed obj = AttributesFeed.newInstance();
-    // Unit Test for getFeedAtomLink()
-    assertEquals("getFeedAtomLink", obj.getFeedAtomLink(), null);
-    // Unit Test for getFeedBatchLink()
-    assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AttributesFeed obj = AttributesFeed.newInstance();
+        // Unit Test for getFeedAtomLink()
+        assertEquals("getFeedAtomLink", obj.getFeedAtomLink(), null);
+        // Unit Test for getFeedBatchLink()
+        assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

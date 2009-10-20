@@ -29,25 +29,40 @@ public class SidewikiEntryTest extends SidewikiTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SidewikiEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SidewikiEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    SidewikiEntry obj = SidewikiEntry.newInstance();
-    // Unit Test for getHtmlLink()
-    assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SidewikiEntry obj = SidewikiEntry.newInstance();
+        // Unit Test for getHtmlLink()
+        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    SidewikiEntry obj = SidewikiEntry.newInstance();
-    Rating rating = Rating.newInstance();
-    obj.setRating(rating);
-    assertSame("rating", obj.getRating(), rating);
-    ResourceId resourceid = ResourceId.newInstance();
-    obj.setResourceId(resourceid);
-    assertSame("resourceid", obj.getResourceId(), resourceid);
-    Source entrysource = Source.newInstance();
-    obj.setEntrySource(entrysource);
-    assertSame("entrysource", obj.getEntrySource(), entrysource);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SidewikiEntry obj = SidewikiEntry.newInstance();
+        Rating rating = Rating.newInstance();
+        obj.setRating(rating);
+        assertSame("rating", obj.getRating(), rating);
+        ResourceId resourceid = ResourceId.newInstance();
+        obj.setResourceId(resourceid);
+        assertSame("resourceid", obj.getResourceId(), resourceid);
+        Source entrysource = Source.newInstance();
+        obj.setEntrySource(entrysource);
+        assertSame("entrysource", obj.getEntrySource(), entrysource);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

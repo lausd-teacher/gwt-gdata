@@ -26,21 +26,36 @@ public class MediaTitleTest extends MediaRssTest {
   }
 
   public void testConstants() {
-    assertNotNull("TYPE_HTML", MediaTitle.TYPE_HTML);
-    assertNotNull("TYPE_PLAIN", MediaTitle.TYPE_PLAIN);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TYPE_HTML", MediaTitle.TYPE_HTML);
+        assertNotNull("TYPE_PLAIN", MediaTitle.TYPE_PLAIN);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaTitle.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaTitle.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    MediaTitle obj = MediaTitle.newInstance();
-    String type = "myValue";
-    obj.setType(type);
-    assertEquals("type", obj.getType(), type);
-    String content = "myValue";
-    obj.setContent(content);
-    assertEquals("content", obj.getContent(), content);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaTitle obj = MediaTitle.newInstance();
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        String content = "myValue";
+        obj.setContent(content);
+        assertEquals("content", obj.getContent(), content);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

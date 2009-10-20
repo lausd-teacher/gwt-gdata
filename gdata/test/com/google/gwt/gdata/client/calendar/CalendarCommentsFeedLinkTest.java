@@ -26,6 +26,11 @@ public class CalendarCommentsFeedLinkTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarCommentsFeedLink.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarCommentsFeedLink.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

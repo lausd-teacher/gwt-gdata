@@ -16,6 +16,8 @@
 
 package com.google.gwt.gdata.sample.hellogdata.client;
 
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.gbase.GoogleBaseService;
 import com.google.gwt.gdata.client.gbase.SnippetsEntry;
 import com.google.gwt.gdata.client.gbase.SnippetsFeed;
@@ -68,11 +70,18 @@ public class GoogleBaseQuerySnippetsForCamerasDemo extends GDataDemo {
    * Start the demo by querying Google Base snippets.
    */
   public GoogleBaseQuerySnippetsForCamerasDemo() {
-    service = GoogleBaseService.newInstance(
-        "HelloGData_GoogleBase_QuerySnippetsForCamerasDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    querySnippets("http://www.google.com/base/feeds/snippets/");
+    if (!GData.isLoaded(GDataSystemPackage.GBASE)) {
+      showStatus("Loading the GData Google-Base package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
+        }
+      }, GDataSystemPackage.GBASE);
+    } else {
+      startDemo();
+    }
   }
 
   /**
@@ -158,5 +167,14 @@ public class GoogleBaseQuerySnippetsForCamerasDemo extends GDataDemo {
       msg.setStylePrimaryName("hm-error");
     }
     mainPanel.setWidget(0, 0, msg);
+  }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = GoogleBaseService.newInstance(
+        "HelloGData_GoogleBase_QuerySnippetsForCamerasDemo_v2.0");
+    querySnippets("http://www.google.com/base/feeds/snippets/");
   }
 }

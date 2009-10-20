@@ -28,7 +28,12 @@ public class CostBasisTest extends FinanceTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CostBasis.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CostBasis.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -36,9 +41,14 @@ public class CostBasisTest extends FinanceTest {
   }
 
   public void testProperties() {
-    CostBasis obj = CostBasis.newInstance();
-    Money[] money = new Money[]{ Money.newInstance() };
-    obj.setMoney(money);
-    assertEquals("money", obj.getMoney().length, money.length);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CostBasis obj = CostBasis.newInstance();
+        Money[] money = new Money[]{ Money.newInstance() };
+        obj.setMoney(money);
+        assertEquals("money", obj.getMoney().length, money.length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

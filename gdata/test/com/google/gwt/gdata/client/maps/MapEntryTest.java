@@ -31,33 +31,48 @@ public class MapEntryTest extends MapsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MapEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MapEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    MapEntry obj = MapEntry.newInstance();
-    // Unit Test for getAtomAlternateLink()
-    assertEquals("getAtomAlternateLink", obj.getAtomAlternateLink(), null);
-    // Unit Test for getAtomFeedLink()
-    assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MapEntry obj = MapEntry.newInstance();
+        // Unit Test for getAtomAlternateLink()
+        assertEquals("getAtomAlternateLink", obj.getAtomAlternateLink(), null);
+        // Unit Test for getAtomFeedLink()
+        assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   @SuppressWarnings("unchecked")
   public void testProperties() {
-    MapEntry obj = MapEntry.newInstance();
-    FeedLink feedlink = FeedLink.newInstance();
-    obj.setFeedLink(feedlink);
-    assertSame("feedlink", obj.getFeedLink(), feedlink);
-    ResourceId resourceid = ResourceId.newInstance();
-    obj.setResourceId(resourceid);
-    assertSame("resourceid", obj.getResourceId(), resourceid);
-    Deleted deleted = Deleted.newInstance();
-    obj.setDeleted(deleted);
-    assertSame("deleted", obj.getDeleted(), deleted);
-    CustomProperty[] customproperties = new CustomProperty[]{ CustomProperty.newInstance() };
-    obj.setCustomProperties(customproperties);
-    assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length);
-    obj.addCustomProperty(CustomProperty.newInstance());
-    assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length + 1);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MapEntry obj = MapEntry.newInstance();
+        FeedLink feedlink = FeedLink.newInstance();
+        obj.setFeedLink(feedlink);
+        assertSame("feedlink", obj.getFeedLink(), feedlink);
+        ResourceId resourceid = ResourceId.newInstance();
+        obj.setResourceId(resourceid);
+        assertSame("resourceid", obj.getResourceId(), resourceid);
+        Deleted deleted = Deleted.newInstance();
+        obj.setDeleted(deleted);
+        assertSame("deleted", obj.getDeleted(), deleted);
+        CustomProperty[] customproperties = new CustomProperty[]{ CustomProperty.newInstance() };
+        obj.setCustomProperties(customproperties);
+        assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length);
+        obj.addCustomProperty(CustomProperty.newInstance());
+        assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length + 1);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

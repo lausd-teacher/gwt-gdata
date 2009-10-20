@@ -26,21 +26,36 @@ public class MediaHashTest extends MediaRssTest {
   }
 
   public void testConstants() {
-    assertNotNull("ALGO_MD5", MediaHash.ALGO_MD5);
-    assertNotNull("ALGO_SHA_1", MediaHash.ALGO_SHA_1);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("ALGO_MD5", MediaHash.ALGO_MD5);
+        assertNotNull("ALGO_SHA_1", MediaHash.ALGO_SHA_1);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaHash.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaHash.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    MediaHash obj = MediaHash.newInstance();
-    String content = "myValue";
-    obj.setContent(content);
-    assertEquals("content", obj.getContent(), content);
-    String algo = "myValue";
-    obj.setAlgo(algo);
-    assertEquals("algo", obj.getAlgo(), algo);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaHash obj = MediaHash.newInstance();
+        String content = "myValue";
+        obj.setContent(content);
+        assertEquals("content", obj.getContent(), content);
+        String algo = "myValue";
+        obj.setAlgo(algo);
+        assertEquals("algo", obj.getAlgo(), algo);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

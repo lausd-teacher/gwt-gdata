@@ -26,7 +26,12 @@ public class PositionQueryTest extends FinanceTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PositionQuery.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PositionQuery.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -35,12 +40,17 @@ public class PositionQueryTest extends FinanceTest {
   }
 
   public void testProperties() {
-    PositionQuery obj = PositionQuery.newInstance("myValue");
-    boolean inlinetransactions = true;
-    obj.setInlineTransactions(inlinetransactions);
-    assertSame("inlinetransactions", obj.getInlineTransactions(), inlinetransactions);
-    boolean includereturns = true;
-    obj.setIncludeReturns(includereturns);
-    assertSame("includereturns", obj.getIncludeReturns(), includereturns);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        PositionQuery obj = PositionQuery.newInstance("myValue");
+        boolean inlinetransactions = true;
+        obj.setInlineTransactions(inlinetransactions);
+        assertSame("inlinetransactions", obj.getInlineTransactions(), inlinetransactions);
+        boolean includereturns = true;
+        obj.setIncludeReturns(includereturns);
+        assertSame("includereturns", obj.getIncludeReturns(), includereturns);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

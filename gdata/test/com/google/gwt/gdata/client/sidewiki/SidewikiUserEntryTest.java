@@ -26,12 +26,22 @@ public class SidewikiUserEntryTest extends SidewikiTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SidewikiUserEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SidewikiUserEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    SidewikiUserEntry obj = SidewikiUserEntry.newInstance();
-    // Unit Test for getHtmlLink()
-    assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SidewikiUserEntry obj = SidewikiUserEntry.newInstance();
+        // Unit Test for getHtmlLink()
+        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

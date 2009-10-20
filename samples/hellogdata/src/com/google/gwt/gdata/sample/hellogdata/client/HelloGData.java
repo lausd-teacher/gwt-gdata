@@ -17,11 +17,10 @@
 package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.sample.hellogdata.client.GDataDemo.GDataDemoInfo;
-import com.google.gwt.user.client.History;
-import com.google.gwt.user.client.HistoryListener;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
@@ -34,8 +33,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 /**
  * Main class for implementing the HelloGData gwt-gdata demo.
  */
-@SuppressWarnings("deprecation")
-public class HelloGData implements EntryPoint, HistoryListener {
+public class HelloGData implements EntryPoint {
 
   protected DemoList list = new DemoList();
   private GDataDemoInfo curInfo;
@@ -50,13 +48,25 @@ public class HelloGData implements EntryPoint, HistoryListener {
    * drop down list containing each demo
    */
   public void onGDataLoad() {
+    /*
     if (!GData.isLoaded()) {
       Window.alert("The GData API is not installed."
           + "  The GData API is unavailable or your GData key may be wrong.");
       return;
     }
+    */
     HorizontalPanel horizPanel = new HorizontalPanel();
     list.setStylePrimaryName("hm-demolistbox");
+    list.addChangeHandler(new ChangeHandler() {
+      public void onChange(ChangeEvent event) {
+        GDataDemoInfo info = list.getGDataDemoSelection();
+        if (info == null) {
+          showInfo();
+        } else {
+          show(info);
+        }
+      }
+    });
     description.setStylePrimaryName("hm-description");
     innerPanel.clear();
     innerPanel.add(horizPanel);
@@ -67,21 +77,6 @@ public class HelloGData implements EntryPoint, HistoryListener {
     showInfo();
   }
 
-  /**
-   * Invoked when the history context changes.
-   */
-  public void onHistoryChanged(String token) {
-    // Find the GDataDemoInfo associated with the history context. If one is
-    // found, show it (It may not be found, for example, when the user mis-
-    // types a URL, or on startup, when the first context will be "").
-    GDataDemoInfo info = list.find(token);
-    if (info == null) {
-      showInfo();
-      return;
-    }
-    show(info, false);
-  }
-  
   /**
    * The entrypoint for this demo. Here we build the base UI which
    * every sample will use and load the GData API, if it has not yet
@@ -94,8 +89,6 @@ public class HelloGData implements EntryPoint, HistoryListener {
     innerPanel.setStylePrimaryName("hm-innerpanel");
     innerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
     innerPanel.setSpacing(10);
-
-    History.addHistoryListener(this);
 
     outerPanel.setStylePrimaryName("hm-outerpanel");
     outerPanel.insertRow(0);
@@ -125,6 +118,8 @@ public class HelloGData implements EntryPoint, HistoryListener {
     
     innerPanel.add(new Label("Loading the GData library..."));
     
+    onGDataLoad();
+    /*
     if (GData.isLoaded()) {
       onGDataLoad();
     } else {
@@ -134,17 +129,14 @@ public class HelloGData implements EntryPoint, HistoryListener {
         }
       });
     }
+    */
   }
   /**
    * Instantiates and runs a given GData demo.
    * @param info An instance of an info object describing the demo
-   * @param affectHistory Whether to add a history entry for this demo
    */
-  public void show(GDataDemoInfo info, boolean affectHistory) {
-    // Don't bother re-displaying the existing GDataDemo. This can be an issue
-    // in practice, because when the history context is set, our
-    // onHistoryChanged() handler will attempt to show the currently-visible
-    // GDataDemo.
+  public void show(GDataDemoInfo info) {
+    // Don't bother re-displaying the existing GDataDemo.
     if (info == curInfo) {
       return;
     }
@@ -159,14 +151,6 @@ public class HelloGData implements EntryPoint, HistoryListener {
     // MapsDemo list.
     curGDataDemo = info.getInstance();
     list.setGDataDemoSelection(info.getName());
-
-    // If affectHistory is set, create a new item on the history stack. This
-    // will ultimately result in onHistoryChanged() being called. It will call
-    // show() again, but nothing will happen because it will request the exact
-    // same GDataDemo we're already showing.
-    if (affectHistory) {
-      History.newItem(info.getName());
-    }
 
     // Display the new GDataDemo and update the description panel.
     innerPanel.add(curGDataDemo);
@@ -194,6 +178,7 @@ public class HelloGData implements EntryPoint, HistoryListener {
    */
   protected void loadGDataDemos() {
     list.addGDataDemo(AccountsAuthSubAuthenticationDemo.init());
+    list.addGDataDemo(GDataPackagesDemo.init());
     list.addGDataDemo(AnalyticsYourAccountsDemo.init());
     list.addGDataDemo(AnalyticsTopPagesDemo.init());
     list.addGDataDemo(AnalyticsLanguagesDemo.init());
@@ -272,6 +257,6 @@ public class HelloGData implements EntryPoint, HistoryListener {
    * Displays the default GData demo.
    */
   private void showInfo() {
-    show(list.find("Accounts - Authsub Authentication"), false);
+    show(list.find("Accounts - Authsub Authentication"));
   }
 }

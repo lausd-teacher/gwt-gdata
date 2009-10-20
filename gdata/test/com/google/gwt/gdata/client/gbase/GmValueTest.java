@@ -26,16 +26,26 @@ public class GmValueTest extends GoogleBaseTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GmValue.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", GmValue.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    GmValue obj = GmValue.newInstance();
-    double count = 600813;
-    obj.setCount(count);
-    assertEquals("count", obj.getCount(), count);
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GmValue obj = GmValue.newInstance();
+        double count = 600813;
+        obj.setCount(count);
+        assertEquals("count", obj.getCount(), count);
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

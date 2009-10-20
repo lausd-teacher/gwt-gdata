@@ -28,47 +28,62 @@ public class CalendarEntryTest extends CalendarTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    CalendarEntry obj = CalendarEntry.newInstance();
-    // Unit Test for addLocation(Where location)
-    // Unit Test for getAccessControlListLink()
-    assertEquals("getAccessControlListLink", obj.getAccessControlListLink(), null);
-    // Unit Test for getAtomAlternateLink()
-    assertEquals("getAtomAlternateLink", obj.getAtomAlternateLink(), null);
-    // Unit Test for getEventFeedLink()
-    assertEquals("getEventFeedLink", obj.getEventFeedLink(), null);
-    // Unit Test for getRelatedLink()
-    assertEquals("getRelatedLink", obj.getRelatedLink(), null);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CalendarEntry obj = CalendarEntry.newInstance();
+        // Unit Test for addLocation(Where location)
+        // Unit Test for getAccessControlListLink()
+        assertEquals("getAccessControlListLink", obj.getAccessControlListLink(), null);
+        // Unit Test for getAtomAlternateLink()
+        assertEquals("getAtomAlternateLink", obj.getAtomAlternateLink(), null);
+        // Unit Test for getEventFeedLink()
+        assertEquals("getEventFeedLink", obj.getEventFeedLink(), null);
+        // Unit Test for getRelatedLink()
+        assertEquals("getRelatedLink", obj.getRelatedLink(), null);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    CalendarEntry obj = CalendarEntry.newInstance();
-    SelectedProperty selected = SelectedProperty.newInstance();
-    obj.setSelected(selected);
-    assertSame("selected", obj.getSelected(), selected);
-    ColorProperty color = ColorProperty.newInstance();
-    obj.setColor(color);
-    assertSame("color", obj.getColor(), color);
-    TimesCleanedProperty timescleaned = TimesCleanedProperty.newInstance();
-    obj.setTimesCleaned(timescleaned);
-    assertSame("timescleaned", obj.getTimesCleaned(), timescleaned);
-    TimeZoneProperty timezone = TimeZoneProperty.newInstance();
-    obj.setTimeZone(timezone);
-    assertSame("timezone", obj.getTimeZone(), timezone);
-    HiddenProperty hidden = HiddenProperty.newInstance();
-    obj.setHidden(hidden);
-    assertSame("hidden", obj.getHidden(), hidden);
-    OverrideNameProperty overridename = OverrideNameProperty.newInstance();
-    obj.setOverrideName(overridename);
-    assertSame("overridename", obj.getOverrideName(), overridename);
-    Where[] locations = new Where[]{ Where.newInstance() };
-    obj.setLocations(locations);
-    assertEquals("locations", obj.getLocations().length, locations.length);
-    AccessLevelProperty accesslevel = AccessLevelProperty.newInstance();
-    obj.setAccessLevel(accesslevel);
-    assertSame("accesslevel", obj.getAccessLevel(), accesslevel);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CalendarEntry obj = CalendarEntry.newInstance();
+        SelectedProperty selected = SelectedProperty.newInstance();
+        obj.setSelected(selected);
+        assertSame("selected", obj.getSelected(), selected);
+        ColorProperty color = ColorProperty.newInstance();
+        obj.setColor(color);
+        assertSame("color", obj.getColor(), color);
+        TimesCleanedProperty timescleaned = TimesCleanedProperty.newInstance();
+        obj.setTimesCleaned(timescleaned);
+        assertSame("timescleaned", obj.getTimesCleaned(), timescleaned);
+        TimeZoneProperty timezone = TimeZoneProperty.newInstance();
+        obj.setTimeZone(timezone);
+        assertSame("timezone", obj.getTimeZone(), timezone);
+        HiddenProperty hidden = HiddenProperty.newInstance();
+        obj.setHidden(hidden);
+        assertSame("hidden", obj.getHidden(), hidden);
+        OverrideNameProperty overridename = OverrideNameProperty.newInstance();
+        obj.setOverrideName(overridename);
+        assertSame("overridename", obj.getOverrideName(), overridename);
+        Where[] locations = new Where[]{ Where.newInstance() };
+        obj.setLocations(locations);
+        assertEquals("locations", obj.getLocations().length, locations.length);
+        AccessLevelProperty accesslevel = AccessLevelProperty.newInstance();
+        obj.setAccessLevel(accesslevel);
+        assertSame("accesslevel", obj.getAccessLevel(), accesslevel);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

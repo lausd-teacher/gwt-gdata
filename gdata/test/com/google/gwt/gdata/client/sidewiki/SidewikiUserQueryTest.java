@@ -26,7 +26,12 @@ public class SidewikiUserQueryTest extends SidewikiTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", SidewikiUserQuery.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", SidewikiUserQuery.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -35,12 +40,17 @@ public class SidewikiUserQueryTest extends SidewikiTest {
   }
 
   public void testProperties() {
-    SidewikiUserQuery obj = SidewikiUserQuery.newInstance("myValue");
-    double startindex = 600813;
-    obj.setStartIndex(startindex);
-    assertEquals("startindex", obj.getStartIndex(), startindex);
-    double maxresults = 600813;
-    obj.setMaxResults(maxresults);
-    assertEquals("maxresults", obj.getMaxResults(), maxresults);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        SidewikiUserQuery obj = SidewikiUserQuery.newInstance("myValue");
+        double startindex = 600813;
+        obj.setStartIndex(startindex);
+        assertEquals("startindex", obj.getStartIndex(), startindex);
+        double maxresults = 600813;
+        obj.setMaxResults(maxresults);
+        assertEquals("maxresults", obj.getMaxResults(), maxresults);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -26,13 +26,23 @@ public class BillingInformationTest extends ContactsTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", BillingInformation.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", BillingInformation.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    BillingInformation obj = BillingInformation.newInstance();
-    String value = "myValue";
-    obj.setValue(value);
-    assertEquals("value", obj.getValue(), value);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        BillingInformation obj = BillingInformation.newInstance();
+        String value = "myValue";
+        obj.setValue(value);
+        assertEquals("value", obj.getValue(), value);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

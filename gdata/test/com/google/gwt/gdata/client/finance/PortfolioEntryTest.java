@@ -26,16 +26,26 @@ public class PortfolioEntryTest extends FinanceTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", PortfolioEntry.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", PortfolioEntry.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    PortfolioEntry obj = PortfolioEntry.newInstance();
-    PositionFeedLink feedlink = PositionFeedLink.newInstance();
-    obj.setPositionFeedLink(feedlink);
-    assertSame("feedlink", obj.getPositionFeedLink(), feedlink);
-    PortfolioData portfoliodata = PortfolioData.newInstance();
-    obj.setPortfolioData(portfoliodata);
-    assertSame("portfoliodata", obj.getPortfolioData(), portfoliodata);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        PortfolioEntry obj = PortfolioEntry.newInstance();
+        PositionFeedLink feedlink = PositionFeedLink.newInstance();
+        obj.setPositionFeedLink(feedlink);
+        assertSame("feedlink", obj.getPositionFeedLink(), feedlink);
+        PortfolioData portfoliodata = PortfolioData.newInstance();
+        obj.setPortfolioData(portfoliodata);
+        assertSame("portfoliodata", obj.getPortfolioData(), portfoliodata);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -20,6 +20,8 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.finance.FinanceService;
 import com.google.gwt.gdata.client.finance.PortfolioEntry;
@@ -76,21 +78,17 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
    * otherwise start the demo by retrieving the user's portfolios.
    */
   public FinanceUpdatePortfolioDemo() {
-    service = FinanceService.newInstance(
-        "HelloGData_Finance_UpdatePortfolioDemo_v2.0");
     mainPanel = new FlexTable();
     initWidget(mainPanel);
-    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
-      Button startButton = new Button("Update a portfolio");
-      startButton.addClickHandler(new ClickHandler() {
-        public void onClick(ClickEvent event) {
-          getPortfolios(
-              "http://finance.google.com/finance/feeds/default/portfolios");
+    if (!GData.isLoaded(GDataSystemPackage.FINANCE)) {
+      showStatus("Loading the GData Finance package...", false);
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          startDemo();
         }
-      });
-      mainPanel.setWidget(0, 0, startButton);
+      }, GDataSystemPackage.FINANCE);
     } else {
-      showStatus("You are not logged on to Google Finance.", true);
+      startDemo();
     }
   }
 
@@ -149,6 +147,26 @@ public class FinanceUpdatePortfolioDemo extends GDataDemo {
     }
     mainPanel.setWidget(0, 0, msg);
   }
+  
+  /**
+   * Starts this demo.
+   */
+  private void startDemo() {
+    service = FinanceService.newInstance(
+        "HelloGData_Finance_UpdatePortfolioDemo_v2.0");
+    if (User.getStatus(scope) == AuthSubStatus.LOGGED_IN) {
+      Button startButton = new Button("Update a portfolio");
+      startButton.addClickHandler(new ClickHandler() {
+        public void onClick(ClickEvent event) {
+          getPortfolios(
+              "http://finance.google.com/finance/feeds/default/portfolios");
+        }
+      });
+      mainPanel.setWidget(0, 0, startButton);
+    } else {
+      showStatus("You are not logged on to Google Finance.", true);
+    }
+      }
   
   /**
    * Update a portfolio by making use of the updateEntry

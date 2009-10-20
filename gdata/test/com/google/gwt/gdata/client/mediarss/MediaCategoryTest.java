@@ -26,19 +26,29 @@ public class MediaCategoryTest extends MediaRssTest {
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", MediaCategory.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", MediaCategory.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    MediaCategory obj = MediaCategory.newInstance();
-    String scheme = "myValue";
-    obj.setScheme(scheme);
-    assertEquals("scheme", obj.getScheme(), scheme);
-    String content = "myValue";
-    obj.setContent(content);
-    assertEquals("content", obj.getContent(), content);
-    String label = "myValue";
-    obj.setLabel(label);
-    assertEquals("label", obj.getLabel(), label);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaCategory obj = MediaCategory.newInstance();
+        String scheme = "myValue";
+        obj.setScheme(scheme);
+        assertEquals("scheme", obj.getScheme(), scheme);
+        String content = "myValue";
+        obj.setContent(content);
+        assertEquals("content", obj.getContent(), content);
+        String label = "myValue";
+        obj.setLabel(label);
+        assertEquals("label", obj.getLabel(), label);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

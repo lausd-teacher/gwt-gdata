@@ -26,17 +26,32 @@ public class CalendarLinkTest extends CalendarTest {
   }
 
   public void testConstants() {
-    assertNotNull("REL_WEB_CONTENT", CalendarLink.REL_WEB_CONTENT);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("REL_WEB_CONTENT", CalendarLink.REL_WEB_CONTENT);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", CalendarLink.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", CalendarLink.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    CalendarLink obj = CalendarLink.newInstance();
-    WebContent webcontent = WebContent.newInstance();
-    obj.setWebContent(webcontent);
-    assertSame("webcontent", obj.getWebContent(), webcontent);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        CalendarLink obj = CalendarLink.newInstance();
+        WebContent webcontent = WebContent.newInstance();
+        obj.setWebContent(webcontent);
+        assertSame("webcontent", obj.getWebContent(), webcontent);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

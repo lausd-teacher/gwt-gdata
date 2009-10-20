@@ -26,13 +26,23 @@ public class GmAttributeTest extends GoogleBaseTest {
   }
 
   public void testConstants() {
-    assertNotNull("IMPORTANCE_OPTIONAL", GmAttribute.IMPORTANCE_OPTIONAL);
-    assertNotNull("IMPORTANCE_RECOMMENDED", GmAttribute.IMPORTANCE_RECOMMENDED);
-    assertNotNull("IMPORTANCE_REQUIRED", GmAttribute.IMPORTANCE_REQUIRED);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("IMPORTANCE_OPTIONAL", GmAttribute.IMPORTANCE_OPTIONAL);
+        assertNotNull("IMPORTANCE_RECOMMENDED", GmAttribute.IMPORTANCE_RECOMMENDED);
+        assertNotNull("IMPORTANCE_REQUIRED", GmAttribute.IMPORTANCE_REQUIRED);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", GmAttribute.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", GmAttribute.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
@@ -40,21 +50,26 @@ public class GmAttributeTest extends GoogleBaseTest {
   }
 
   public void testProperties() {
-    GmAttribute obj = GmAttribute.newInstance();
-    String name = "myValue";
-    obj.setName(name);
-    assertEquals("name", obj.getName(), name);
-    GmValue[] values = new GmValue[]{ GmValue.newInstance() };
-    obj.setValues(values);
-    assertEquals("values", obj.getValues().length, values.length);
-    double count = 600813;
-    obj.setCount(count);
-    assertEquals("count", obj.getCount(), count);
-    String type = "myValue";
-    obj.setType(type);
-    assertEquals("type", obj.getType(), type);
-    String importance = "myValue";
-    obj.setImportance(importance);
-    assertEquals("importance", obj.getImportance(), importance);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GmAttribute obj = GmAttribute.newInstance();
+        String name = "myValue";
+        obj.setName(name);
+        assertEquals("name", obj.getName(), name);
+        GmValue[] values = new GmValue[]{ GmValue.newInstance() };
+        obj.setValues(values);
+        assertEquals("values", obj.getValues().length, values.length);
+        double count = 600813;
+        obj.setCount(count);
+        assertEquals("count", obj.getCount(), count);
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        String importance = "myValue";
+        obj.setImportance(importance);
+        assertEquals("importance", obj.getImportance(), importance);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }
