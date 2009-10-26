@@ -16,6 +16,7 @@
 
 package com.google.gwt.gdata.client.finance;
 
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.GoogleService;
 
 /**
@@ -53,7 +54,20 @@ public class FinanceService extends GoogleService {
    */
   public final void deletePortfolioEntry(String uri,
       PortfolioEntryCallback callback) {
-    this.deleteEntry(uri, callback);
+    this.deleteEntry(uri, callback, null);
+  }
+
+  /**
+   * Deletes a portfolio entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deletePortfolioEntry(String uri,
+      PortfolioEntryCallback callback, GDataRequestParameters parameters) {
+    this.deleteEntry(uri, callback, parameters);
   }
 
   /**
@@ -65,7 +79,20 @@ public class FinanceService extends GoogleService {
    */
   public final void deleteTransactionEntry(String uri,
       TransactionEntryCallback callback) {
-    this.deleteEntry(uri, callback);
+    this.deleteEntry(uri, callback, null);
+  }
+
+  /**
+   * Deletes a transaction entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteTransactionEntry(String uri,
+      TransactionEntryCallback callback, GDataRequestParameters parameters) {
+    this.deleteEntry(uri, callback, parameters);
   }
 
   /**
@@ -77,7 +104,20 @@ public class FinanceService extends GoogleService {
    */
   public final void getPortfolioEntry(String uri,
       PortfolioEntryCallback callback) {
-    this.getEntry(uri, callback, "getPortfolioEntry");
+    this.getEntry(uri, callback, null, "getPortfolioEntry");
+  }
+
+  /**
+   * Retrieves a Finance portfolio entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getPortfolioEntry(String uri,
+      PortfolioEntryCallback callback, GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getPortfolioEntry");
   }
 
   /**
@@ -89,7 +129,20 @@ public class FinanceService extends GoogleService {
    */
   public final void getPortfolioFeed(PortfolioQuery query,
       PortfolioFeedCallback callback) {
-    this.getFeed(query, callback, "getPortfolioFeed");
+    this.getFeed(query, callback, null, "getPortfolioFeed");
+  }
+
+  /**
+   * Retrieves the feed of all the user's portfolios.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getPortfolioFeed(PortfolioQuery query,
+      PortfolioFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(query, callback, parameters, "getPortfolioFeed");
   }
 
   /**
@@ -101,7 +154,20 @@ public class FinanceService extends GoogleService {
    */
   public final void getPortfolioFeed(String uri,
       PortfolioFeedCallback callback) {
-    this.getFeed(uri, callback, "getPortfolioFeed");
+    this.getFeed(uri, callback, null, "getPortfolioFeed");
+  }
+
+  /**
+   * Retrieves the feed of all the user's portfolios.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getPortfolioFeed(String uri,
+      PortfolioFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getPortfolioFeed");
   }
 
   /**
@@ -113,7 +179,20 @@ public class FinanceService extends GoogleService {
    */
   public final void getPositionEntry(String uri,
       PositionEntryCallback callback) {
-    this.getEntry(uri, callback, "getPositionEntry");
+    this.getEntry(uri, callback, null, "getPositionEntry");
+  }
+
+  /**
+   * Retrieves a Finance position entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getPositionEntry(String uri,
+      PositionEntryCallback callback, GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getPositionEntry");
   }
 
   /**
@@ -125,7 +204,20 @@ public class FinanceService extends GoogleService {
    */
   public final void getPositionFeed(PositionQuery query,
       PositionFeedCallback callback) {
-    this.getFeed(query, callback, "getPositionFeed");
+    this.getFeed(query, callback, null, "getPositionFeed");
+  }
+
+  /**
+   * Retrieves the feed of all the positions belonging to the portfolio.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getPositionFeed(PositionQuery query,
+      PositionFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(query, callback, parameters, "getPositionFeed");
   }
 
   /**
@@ -137,7 +229,20 @@ public class FinanceService extends GoogleService {
    */
   public final void getPositionFeed(String uri,
       PositionFeedCallback callback) {
-    this.getFeed(uri, callback, "getPositionFeed");
+    this.getFeed(uri, callback, null, "getPositionFeed");
+  }
+
+  /**
+   * Retrieves the feed of all the positions belonging to the portfolio.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getPositionFeed(String uri,
+      PositionFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getPositionFeed");
   }
 
   /**
@@ -149,7 +254,20 @@ public class FinanceService extends GoogleService {
    */
   public final void getTransactionEntry(String uri,
       TransactionEntryCallback callback) {
-    this.getEntry(uri, callback, "getTransactionEntry");
+    this.getEntry(uri, callback, null, "getTransactionEntry");
+  }
+
+  /**
+   * Retrieves a Finance transaction entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getTransactionEntry(String uri,
+      TransactionEntryCallback callback, GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getTransactionEntry");
   }
 
   /**
@@ -161,7 +279,20 @@ public class FinanceService extends GoogleService {
    */
   public final void getTransactionFeed(String uri,
       TransactionFeedCallback callback) {
-    this.getFeed(uri, callback, "getTransactionFeed");
+    this.getFeed(uri, callback, null, "getTransactionFeed");
+  }
+
+  /**
+   * Retrieves the feed of all the transactions belonging to the position.
+   * 
+   * @param uri URI of feed.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getTransactionFeed(String uri,
+      TransactionFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getTransactionFeed");
   }
 
   /**
@@ -200,7 +331,21 @@ public class FinanceService extends GoogleService {
    */
   public final void updatePortfolioEntry(String uri, PortfolioEntry entry,
       PortfolioEntryCallback callback) {
-    this.updateEntry(uri, entry, callback);
+    this.updateEntry(uri, entry, callback, null);
+  }
+
+  /**
+   * Updates a portfolio entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updatePortfolioEntry(String uri, PortfolioEntry entry,
+      PortfolioEntryCallback callback, GDataRequestParameters parameters) {
+    this.updateEntry(uri, entry, callback, parameters);
   }
 
   /**
@@ -213,7 +358,21 @@ public class FinanceService extends GoogleService {
    */
   public final void updateTransactionEntry(String uri, TransactionEntry entry,
       TransactionEntryCallback callback) {
-    this.updateEntry(uri, entry, callback);
+    this.updateEntry(uri, entry, callback, null);
+  }
+
+  /**
+   * Updates a transaction entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateTransactionEntry(String uri, TransactionEntry entry,
+      TransactionEntryCallback callback, GDataRequestParameters parameters) {
+    this.updateEntry(uri, entry, callback, parameters);
   }
 
 }
