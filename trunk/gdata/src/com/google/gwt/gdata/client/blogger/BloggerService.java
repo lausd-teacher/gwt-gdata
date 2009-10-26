@@ -16,6 +16,7 @@
 
 package com.google.gwt.gdata.client.blogger;
 
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.GoogleService;
 
 /**
@@ -52,7 +53,20 @@ public class BloggerService extends GoogleService {
    * command.
    */
   public final void deleteBlogEntry(String uri, BlogEntryCallback callback) {
-    this.deleteEntry(uri, callback);
+    this.deleteEntry(uri, callback, null);
+  }
+
+  /**
+   * Deletes a blog entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteBlogEntry(String uri, BlogEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.deleteEntry(uri, callback, parameters);
   }
 
   /**
@@ -64,7 +78,20 @@ public class BloggerService extends GoogleService {
    */
   public final void deleteCommentEntry(String uri,
       CommentEntryCallback callback) {
-    this.deleteEntry(uri, callback);
+    this.deleteEntry(uri, callback, null);
+  }
+
+  /**
+   * Deletes a comment entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteCommentEntry(String uri,
+      CommentEntryCallback callback, GDataRequestParameters parameters) {
+    this.deleteEntry(uri, callback, parameters);
   }
 
   /**
@@ -75,7 +102,20 @@ public class BloggerService extends GoogleService {
    * command.
    */
   public final void deletePostEntry(String uri, PostEntryCallback callback) {
-    this.deleteEntry(uri, callback);
+    this.deleteEntry(uri, callback, null);
+  }
+
+  /**
+   * Deletes a post entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deletePostEntry(String uri, PostEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.deleteEntry(uri, callback, parameters);
   }
 
   /**
@@ -87,7 +127,20 @@ public class BloggerService extends GoogleService {
    */
   public final void getBlogCommentFeed(BlogCommentQuery query,
       BlogCommentFeedCallback callback) {
-    this.getFeed(query, callback, "getBlogCommentFeed");
+    this.getFeed(query, callback, null, "getBlogCommentFeed");
+  }
+
+  /**
+   * Retrieves the feed of a blog's comments.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getBlogCommentFeed(BlogCommentQuery query,
+      BlogCommentFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(query, callback, parameters, "getBlogCommentFeed");
   }
 
   /**
@@ -99,7 +152,20 @@ public class BloggerService extends GoogleService {
    */
   public final void getBlogCommentFeed(String uri,
       BlogCommentFeedCallback callback) {
-    this.getFeed(uri, callback, "getBlogCommentFeed");
+    this.getFeed(uri, callback, null, "getBlogCommentFeed");
+  }
+
+  /**
+   * Retrieves the feed of a blog's comments.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getBlogCommentFeed(String uri,
+      BlogCommentFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getBlogCommentFeed");
   }
 
   /**
@@ -110,7 +176,20 @@ public class BloggerService extends GoogleService {
    * command.
    */
   public final void getBlogEntry(String uri, BlogEntryCallback callback) {
-    this.getEntry(uri, callback, "getBlogEntry");
+    this.getEntry(uri, callback, null, "getBlogEntry");
+  }
+
+  /**
+   * Retrieves a blog entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getBlogEntry(String uri, BlogEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getBlogEntry");
   }
 
   /**
@@ -121,7 +200,20 @@ public class BloggerService extends GoogleService {
    * command.
    */
   public final void getBlogFeed(BlogQuery query, BlogFeedCallback callback) {
-    this.getFeed(query, callback, "getBlogFeed");
+    this.getFeed(query, callback, null, "getBlogFeed");
+  }
+
+  /**
+   * Retrieves the feed of a user's blogs.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getBlogFeed(BlogQuery query, BlogFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.getFeed(query, callback, parameters, "getBlogFeed");
   }
 
   /**
@@ -132,7 +224,20 @@ public class BloggerService extends GoogleService {
    * command.
    */
   public final void getBlogFeed(String uri, BlogFeedCallback callback) {
-    this.getFeed(uri, callback, "getBlogFeed");
+    this.getFeed(uri, callback, null, "getBlogFeed");
+  }
+
+  /**
+   * Retrieves the feed of a user's blogs.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getBlogFeed(String uri, BlogFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getBlogFeed");
   }
 
   /**
@@ -144,7 +249,20 @@ public class BloggerService extends GoogleService {
    */
   public final void getBlogPostFeed(BlogPostQuery query,
       BlogPostFeedCallback callback) {
-    this.getFeed(query, callback, "getBlogPostFeed");
+    this.getFeed(query, callback, null, "getBlogPostFeed");
+  }
+
+  /**
+   * Retrieves the feed of a blog's posts.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getBlogPostFeed(BlogPostQuery query,
+      BlogPostFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(query, callback, parameters, "getBlogPostFeed");
   }
 
   /**
@@ -155,7 +273,20 @@ public class BloggerService extends GoogleService {
    * command.
    */
   public final void getBlogPostFeed(String uri, BlogPostFeedCallback callback) {
-    this.getFeed(uri, callback, "getBlogPostFeed");
+    this.getFeed(uri, callback, null, "getBlogPostFeed");
+  }
+
+  /**
+   * Retrieves the feed of a blog's posts.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getBlogPostFeed(String uri, BlogPostFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getBlogPostFeed");
   }
   
   /**
@@ -167,7 +298,20 @@ public class BloggerService extends GoogleService {
    */
   public final void getCommentEntry(String uri,
       CommentEntryCallback callback) {
-    this.getEntry(uri, callback, "getCommentEntry");
+    this.getEntry(uri, callback, null, "getCommentEntry");
+  }
+  
+  /**
+   * Retrieves a comment entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getCommentEntry(String uri,
+      CommentEntryCallback callback, GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getCommentEntry");
   }
 
   /**
@@ -179,7 +323,20 @@ public class BloggerService extends GoogleService {
    */
   public final void getPostCommentFeed(PostCommentQuery query,
       PostCommentFeedCallback callback) {
-    this.getFeed(query, callback, "getPostCommentFeed");
+    this.getFeed(query, callback, null, "getPostCommentFeed");
+  }
+
+  /**
+   * Retrieves the feed of a blog post's comments.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getPostCommentFeed(PostCommentQuery query,
+      PostCommentFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(query, callback, parameters, "getPostCommentFeed");
   }
 
   /**
@@ -191,7 +348,20 @@ public class BloggerService extends GoogleService {
    */
   public final void getPostCommentFeed(String uri,
       PostCommentFeedCallback callback) {
-    this.getFeed(uri, callback, "getPostCommentFeed");
+    this.getFeed(uri, callback, null, "getPostCommentFeed");
+  }
+
+  /**
+   * Retrieves the feed of a blog post's comments.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getPostCommentFeed(String uri,
+      PostCommentFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getPostCommentFeed");
   }
 
   /**
@@ -202,7 +372,20 @@ public class BloggerService extends GoogleService {
    * command.
    */
   public final void getPostEntry(String uri, PostEntryCallback callback) {
-    this.getEntry(uri, callback, "getPostEntry");
+    this.getEntry(uri, callback, null, "getPostEntry");
+  }
+
+  /**
+   * Retrieves a post entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getPostEntry(String uri, PostEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getPostEntry");
   }
 
   /**
@@ -253,7 +436,21 @@ public class BloggerService extends GoogleService {
    */
   public final void updateBlogEntry(String uri, BlogEntry entry,
       BlogEntryCallback callback) {
-    this.updateEntry(uri, entry, callback);
+    this.updateEntry(uri, entry, callback, null);
+  }
+  
+  /**
+   * Updates a blog entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateBlogEntry(String uri, BlogEntry entry,
+      BlogEntryCallback callback, GDataRequestParameters parameters) {
+    this.updateEntry(uri, entry, callback, parameters);
   }
 
   /**
@@ -266,7 +463,21 @@ public class BloggerService extends GoogleService {
    */
   public final void updateCommentEntry(String uri, CommentEntry entry,
       CommentEntryCallback callback) {
-    this.updateEntry(uri, entry, callback);
+    this.updateEntry(uri, entry, callback, null);
+  }
+
+  /**
+   * Updates a comment entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateCommentEntry(String uri, CommentEntry entry,
+      CommentEntryCallback callback, GDataRequestParameters parameters) {
+    this.updateEntry(uri, entry, callback, parameters);
   }
   
   /**
@@ -279,7 +490,21 @@ public class BloggerService extends GoogleService {
    */
   public final void updatePostEntry(String uri, PostEntry entry,
       PostEntryCallback callback) {
-    this.updateEntry(uri, entry, callback);
+    this.updateEntry(uri, entry, callback, null);
+  }
+  
+  /**
+   * Updates a post entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updatePostEntry(String uri, PostEntry entry,
+      PostEntryCallback callback, GDataRequestParameters parameters) {
+    this.updateEntry(uri, entry, callback, parameters);
   }
 
 }

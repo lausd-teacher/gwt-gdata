@@ -16,6 +16,7 @@
 
 package com.google.gwt.gdata.client.maps;
 
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.GoogleService;
 
 /**
@@ -53,9 +54,21 @@ public class MapsService extends GoogleService {
    */
   public final void deleteFeatureEntry(String uri,
       FeatureEntryCallback callback) {
-    this.deleteEntry(uri, callback);
+    this.deleteEntry(uri, callback, null);
   }
 
+  /**
+   * Deletes a feature entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteFeatureEntry(String uri,
+      FeatureEntryCallback callback, GDataRequestParameters parameters) {
+    this.deleteEntry(uri, callback, parameters);
+  }
 
   /**
    * Deletes a map entry.
@@ -65,7 +78,20 @@ public class MapsService extends GoogleService {
    * command.
    */
   public final void deleteMapEntry(String uri, MapEntryCallback callback) {
-    this.deleteEntry(uri, callback);
+    this.deleteEntry(uri, callback, null);
+  }
+
+  /**
+   * Deletes a map entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteMapEntry(String uri, MapEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.deleteEntry(uri, callback, parameters);
   }
 
   /**
@@ -76,7 +102,20 @@ public class MapsService extends GoogleService {
    * command.
    */
   public final void getAclEntry(String uri, MapsAclEntryCallback callback) {
-    this.getEntry(uri, callback, "getAclEntry");
+    this.getEntry(uri, callback, null, "getAclEntry");
+  }
+
+  /**
+   * Retrieves an ACL entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getAclEntry(String uri, MapsAclEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getAclEntry");
   }
 
   /**
@@ -87,7 +126,20 @@ public class MapsService extends GoogleService {
    * command.
    */
   public final void getAclFeed(String uri, MapsAclFeedCallback callback) {
-    this.getFeed(uri, callback, "getAclFeed");
+    this.getFeed(uri, callback, null, "getAclFeed");
+  }
+
+  /**
+   * Retrieves a feed of ACL entries.
+   * 
+   * @param uri URI of feed.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getAclFeed(String uri, MapsAclFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getAclFeed");
   }
   
   /**
@@ -99,7 +151,20 @@ public class MapsService extends GoogleService {
    */
   public final void getFeatureEntry(String uri,
       FeatureEntryCallback callback) {
-    this.getEntry(uri, callback, "getFeatureEntry");
+    this.getEntry(uri, callback, null, "getFeatureEntry");
+  }
+  
+  /**
+   * Retrieves a feature entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getFeatureEntry(String uri,
+      FeatureEntryCallback callback, GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getFeatureEntry");
   }
 
   /**
@@ -111,7 +176,20 @@ public class MapsService extends GoogleService {
    */
   public final void getFeatureFeed(FeatureQuery query,
       FeatureFeedCallback callback) {
-    this.getFeed(query, callback, "getFeatureFeed");
+    this.getFeed(query, callback, null, "getFeatureFeed");
+  }
+
+  /**
+   * Retrieves the feed of map features.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getFeatureFeed(FeatureQuery query,
+      FeatureFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(query, callback, parameters, "getFeatureFeed");
   }
 
   /**
@@ -123,7 +201,20 @@ public class MapsService extends GoogleService {
    */
   public final void getFeatureFeed(String uri,
       FeatureFeedCallback callback) {
-    this.getFeed(uri, callback, "getFeatureFeed");
+    this.getFeed(uri, callback, null, "getFeatureFeed");
+  }
+
+  /**
+   * Retrieves the feed of map features.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getFeatureFeed(String uri,
+      FeatureFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getFeatureFeed");
   }
 
   /**
@@ -134,7 +225,20 @@ public class MapsService extends GoogleService {
    * command.
    */
   public final void getMapEntry(String uri, MapEntryCallback callback) {
-    this.getEntry(uri, callback, "getMapEntry");
+    this.getEntry(uri, callback, null, "getMapEntry");
+  }
+
+  /**
+   * Retrieves a map entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getMapEntry(String uri, MapEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getMapEntry");
   }
 
   /**
@@ -145,7 +249,20 @@ public class MapsService extends GoogleService {
    * command.
    */
   public final void getMapFeed(MapQuery query, MapFeedCallback callback) {
-    this.getFeed(query, callback, "getMapFeed");
+    this.getFeed(query, callback, null, "getMapFeed");
+  }
+
+  /**
+   * Retrieves the feed of user-created maps.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getMapFeed(MapQuery query, MapFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.getFeed(query, callback, parameters, "getMapFeed");
   }
 
   /**
@@ -156,7 +273,20 @@ public class MapsService extends GoogleService {
    * command.
    */
   public final void getMapFeed(String uri, MapFeedCallback callback) {
-    this.getFeed(uri, callback, "getMapFeed");
+    this.getFeed(uri, callback, null, "getMapFeed");
+  }
+
+  /**
+   * Retrieves the feed of user-created maps.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getMapFeed(String uri, MapFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getMapFeed");
   }
   
   /**
@@ -195,7 +325,21 @@ public class MapsService extends GoogleService {
    */
   public final void updateFeatureEntry(String uri, FeatureEntry entry,
       FeatureEntryCallback callback) {
-    this.updateEntry(uri, entry, callback);
+    this.updateEntry(uri, entry, callback, null);
+  }
+
+  /**
+   * Updates a feature entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateFeatureEntry(String uri, FeatureEntry entry,
+      FeatureEntryCallback callback, GDataRequestParameters parameters) {
+    this.updateEntry(uri, entry, callback, parameters);
   }
 
   /**
@@ -208,7 +352,21 @@ public class MapsService extends GoogleService {
    */
   public final void updateMapEntry(String uri, MapEntry entry,
       MapEntryCallback callback) {
-    this.updateEntry(uri, entry, callback);
+    this.updateEntry(uri, entry, callback, null);
+  }
+
+  /**
+   * Updates a map entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateMapEntry(String uri, MapEntry entry,
+      MapEntryCallback callback, GDataRequestParameters parameters) {
+    this.updateEntry(uri, entry, callback, parameters);
   }
 
 }

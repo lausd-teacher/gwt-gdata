@@ -22,6 +22,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.DateTime;
 import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
 import com.google.gwt.gdata.client.contacts.ContactEntryCallback;
@@ -103,7 +104,8 @@ public class ContactsDeleteContactDemo extends GDataDemo {
    */
   private void deleteContact(String contactEntryUri, String etag) {
     showStatus("Deleting a contact...", false);
-    service
+    GDataRequestParameters pars = GDataRequestParameters.newInstance();
+    pars.setEtag(etag);
     service.deleteContactEntry(contactEntryUri, new ContactEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while deleting a contact: " +
@@ -112,7 +114,7 @@ public class ContactsDeleteContactDemo extends GDataDemo {
       public void onSuccess(ContactEntry result) {
         showStatus("Deleted a contact.", false);
       }
-    });
+    }, pars);
   }
 
   /**
@@ -155,7 +157,7 @@ public class ContactsDeleteContactDemo extends GDataDemo {
               "contained 'GWT-Contacts-Client' in the title.", false);
         } else {
           String contactEntryUri = targetContact.getEditLink().getHref();
-          deleteContact(contactEntryUri);
+          deleteContact(contactEntryUri, targetContact.getEtag());
         }
       }
     });

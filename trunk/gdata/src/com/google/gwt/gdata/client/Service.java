@@ -60,13 +60,16 @@ public class Service extends JavaScriptObject {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this
    * command.
+   * @param parameters The request parameters.
    */
   protected final native <E extends com.google.gwt.gdata.client.Entry> void 
-      deleteEntry(String uri, Callback<E> callback) /*-{
+      deleteEntry(String uri, Callback<E> callback,
+          GDataRequestParameters parameters) /*-{
     this.deleteEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
     );
   }-*/;
   
@@ -76,10 +79,11 @@ public class Service extends JavaScriptObject {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this
    * command.
+   * @param parameters The request parameters.
    */
   protected final <E extends com.google.gwt.gdata.client.Entry> void getEntry(
-      String uri, Callback<E> callback) {
-    this.getEntry(uri, callback, null, false);
+      String uri, Callback<E> callback, GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, null, false, parameters);
   }
 
   /**
@@ -88,15 +92,18 @@ public class Service extends JavaScriptObject {
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this
    * command.
+   * @param parameters The request parameters.
    * @param delegateName The name of the member method to delegate to (for use
    * in binding to the underlying JS API).
    */
   protected final native <E extends com.google.gwt.gdata.client.Entry> void
-      getEntry(String uri, Callback<E> callback, String delegateName) /*-{
+      getEntry(String uri, Callback<E> callback,
+          GDataRequestParameters parameters, String delegateName) /*-{
     this[delegateName](
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
     );
   }-*/;
 
@@ -109,16 +116,18 @@ public class Service extends JavaScriptObject {
    * @param entryClass Class (constructor) of entry to be returned.
    * @param authenticationRequired Flag indicating whether authentication is
    * required for this request.
+   * @param parameters The request parameters.
    */
   protected final native <E extends com.google.gwt.gdata.client.Entry> void
       getEntry(String uri, Callback<E> callback, JavaScriptObject entryClass,
-          boolean authenticationRequired) /*-{
+          boolean authenticationRequired, GDataRequestParameters parameters) /*-{
     this.getEntry(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
       entryClass,
-      authenticationRequired
+      authenticationRequired,
+      parameters
     );
   }-*/;
 
@@ -128,10 +137,12 @@ public class Service extends JavaScriptObject {
    * @param uri URI of feed.
    * @param callback Callback defining success and failure handlers for this
    * command.
+   * @param parameters The request parameters.
    */
   protected final <F extends com.google.gwt.gdata.client.Feed<E>,
-      E extends Entry> void getFeed(String uri, Callback<F> callback) {
-    this.getFeed(uri, callback, null, false);
+      E extends Entry> void getFeed(String uri, Callback<F> callback,
+          GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, null, false, parameters);
   }
 
   /**
@@ -140,16 +151,18 @@ public class Service extends JavaScriptObject {
    * @param uri URI of feed.
    * @param callback Callback defining success and failure handlers for this
    * command.
+   * @param parameters The request parameters.
    * @param delegateName The name of the member method to delegate to (for use
    * in binding to the underlying JS API).
    */
   protected final native <F extends com.google.gwt.gdata.client.Feed<E>,
       E extends Entry> void getFeed(String uri, Callback<F> callback,
-          String delegateName) /*-{
+          GDataRequestParameters parameters, String delegateName) /*-{
     this[delegateName](
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
     );
   }-*/;
 
@@ -162,16 +175,19 @@ public class Service extends JavaScriptObject {
    * @param feedClass Class (constructor) of feed to be returned.
    * @param authenticationRequired Flag indicating whether authentication is
    * required for this request.
+   * @param parameters The request parameters.
    */
   protected final native <F extends com.google.gwt.gdata.client.Feed<E>,
       E extends Entry> void getFeed(String uri, Callback<F> callback,
-          JavaScriptObject feedClass, boolean authenticationRequired) /*-{
+          JavaScriptObject feedClass, boolean authenticationRequired,
+          GDataRequestParameters parameters) /*-{
     this.getFeed(
       uri,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
       feedClass,
-      authenticationRequired
+      authenticationRequired,
+      parameters
     );
   }-*/;
 
@@ -181,10 +197,12 @@ public class Service extends JavaScriptObject {
    * @param query The data query.
    * @param callback Callback defining success and failure handlers for this
    * command.
+   * @param parameters The request parameters.
    */
   protected final <F extends com.google.gwt.gdata.client.Feed<E>,
-      E extends Entry> void getFeed(Query query, Callback<F> callback) {
-    this.getFeed(query, callback, null, false);
+      E extends Entry> void getFeed(Query query, Callback<F> callback,
+          GDataRequestParameters parameters) {
+    this.getFeed(query, callback, null, false, parameters);
   }
 
   /**
@@ -193,16 +211,18 @@ public class Service extends JavaScriptObject {
    * @param query The data query.
    * @param callback Callback defining success and failure handlers for this
    * command.
+   * @param parameters The request parameters.
    * @param delegateName The name of the member method to delegate to (for use
    * in binding to the underlying JS API).
    */
   protected final native <F extends com.google.gwt.gdata.client.Feed<E>,
       E extends Entry> void getFeed(Query query, Callback<F> callback,
-          String delegateName) /*-{
+          GDataRequestParameters parameters, String delegateName) /*-{
     this[delegateName](
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
     );
   }-*/;
   
@@ -215,16 +235,19 @@ public class Service extends JavaScriptObject {
    * @param feedClass Class (constructor) of feed to be returned.
    * @param authenticationRequired Flag indicating whether authentication is
    * required for this request.
+   * @param parameters The request parameters.
    */
   protected final native <F extends com.google.gwt.gdata.client.Feed<E>,
       E extends Entry> void getFeed(Query query, Callback<F> callback,
-          JavaScriptObject feedClass, boolean authenticationRequired) /*-{
+          JavaScriptObject feedClass, boolean authenticationRequired,
+          GDataRequestParameters parameters) /*-{
     this.getFeed(
       query,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
       feedClass,
-      authenticationRequired
+      authenticationRequired,
+      parameters
     );
   }-*/;
 
@@ -251,7 +274,8 @@ public class Service extends JavaScriptObject {
    * @param entryClass Class (constructor) of entry to be returned.
    */
   protected final native <E extends com.google.gwt.gdata.client.Entry> void
-      insertEntry(String uri, E entry, Callback<E> callback, JavaScriptObject entryClass) /*-{
+      insertEntry(String uri, E entry, Callback<E> callback,
+          JavaScriptObject entryClass) /*-{
     this.insertEntry(
       uri,
       entry,
@@ -268,10 +292,12 @@ public class Service extends JavaScriptObject {
    * @param entry Entry to update.
    * @param callback Callback defining success and failure handlers for this
    * command.
+   * @param parameters The request parameters.
    */
   protected final <E extends com.google.gwt.gdata.client.Entry> void
-      updateEntry(String uri, E entry, Callback<E> callback) {
-    this.updateEntry(uri, entry, callback, null);
+      updateEntry(String uri, E entry, Callback<E> callback,
+          GDataRequestParameters parameters) {
+    this.updateEntry(uri, entry, callback, null, parameters);
   }
 
   /**
@@ -282,16 +308,18 @@ public class Service extends JavaScriptObject {
    * @param callback Callback defining success and failure handlers for this
    * command.
    * @param entryClass Class (constructor) of entry to be returned.
+   * @param parameters The request parameters.
    */
   protected final native <E extends com.google.gwt.gdata.client.Entry> void
       updateEntry(String uri, E entry, Callback<E> callback,
-          JavaScriptObject entryClass) /*-{
+          JavaScriptObject entryClass, GDataRequestParameters parameters) /*-{
     this.updateEntry(
       uri,
       entry,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
-      entryClass
+      entryClass,
+      parameters
     );
   }-*/;
 

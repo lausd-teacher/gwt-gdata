@@ -16,6 +16,7 @@
 
 package com.google.gwt.gdata.client.sidewiki;
 
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.GoogleService;
 
 /**
@@ -53,7 +54,20 @@ public class SidewikiService extends GoogleService {
    */
   public final void deleteSidewikiEntry(String uri,
       SidewikiEntryCallback callback) {
-    this.deleteEntry(uri, callback);
+    this.deleteEntry(uri, callback, null);
+  }
+
+  /**
+   * Deletes a sidewiki entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteSidewikiEntry(String uri,
+      SidewikiEntryCallback callback, GDataRequestParameters parameters) {
+    this.deleteEntry(uri, callback, parameters);
   }
 
   /**
@@ -65,7 +79,20 @@ public class SidewikiService extends GoogleService {
    */
   public final void deleteSidewikiUserEntry(String uri,
       SidewikiUserEntryCallback callback) {
-    this.deleteEntry(uri, callback);
+    this.deleteEntry(uri, callback, null);
+  }
+
+  /**
+   * Deletes a sidewiki user entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteSidewikiUserEntry(String uri,
+      SidewikiUserEntryCallback callback, GDataRequestParameters parameters) {
+    this.deleteEntry(uri, callback, parameters);
   }
   
   /**
@@ -77,7 +104,20 @@ public class SidewikiService extends GoogleService {
    */
   public final void getSidewikiEntry(String uri,
       SidewikiEntryCallback callback) {
-    this.getEntry(uri, callback, "getSidewikiEntry");
+    this.getEntry(uri, callback, null, "getSidewikiEntry");
+  }
+  
+  /**
+   * Retrieves a sidewiki entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSidewikiEntry(String uri,
+      SidewikiEntryCallback callback, GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getSidewikiEntry");
   }
 
   /**
@@ -89,7 +129,20 @@ public class SidewikiService extends GoogleService {
    */
   public final void getSidewikiEntryFeed(SidewikiEntryQuery query,
       SidewikiEntryFeedCallback callback) {
-    this.getFeed(query, callback, "getSidewikiEntryFeed");
+    this.getFeed(query, callback, null, "getSidewikiEntryFeed");
+  }
+
+  /**
+   * Retrieves the feed of sidewiki entries.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSidewikiEntryFeed(SidewikiEntryQuery query,
+      SidewikiEntryFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(query, callback, parameters, "getSidewikiEntryFeed");
   }
   
   /**
@@ -101,7 +154,20 @@ public class SidewikiService extends GoogleService {
    */
   public final void getSidewikiEntryFeed(String uri,
       SidewikiEntryFeedCallback callback) {
-    this.getFeed(uri, callback, "getSidewikiEntryFeed");
+    this.getFeed(uri, callback, null, "getSidewikiEntryFeed");
+  }
+  
+  /**
+   * Retrieves the feed of sidewiki entries.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSidewikiEntryFeed(String uri,
+      SidewikiEntryFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getSidewikiEntryFeed");
   }
   
   /**
@@ -113,7 +179,20 @@ public class SidewikiService extends GoogleService {
    */
   public final void getSidewikiUserEntry(String uri,
       SidewikiUserEntryCallback callback) {
-    this.getEntry(uri, callback, "getSidewikiUserEntry");
+    this.getEntry(uri, callback, null, "getSidewikiUserEntry");
+  }
+  
+  /**
+   * Retrieves a sidewiki user entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSidewikiUserEntry(String uri,
+      SidewikiUserEntryCallback callback, GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getSidewikiUserEntry");
   }
   
   /**
@@ -125,7 +204,20 @@ public class SidewikiService extends GoogleService {
    */
   public final void getSidewikiUserFeed(SidewikiUserQuery query,
       SidewikiUserFeedCallback callback) {
-    this.getFeed(query, callback, "getSidewikiUserFeed");
+    this.getFeed(query, callback, null, "getSidewikiUserFeed");
+  }
+  
+  /**
+   * Retrieves the feed of sidewiki user entries.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSidewikiUserFeed(SidewikiUserQuery query,
+      SidewikiUserFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(query, callback, parameters, "getSidewikiUserFeed");
   }
   
   /**
@@ -137,7 +229,20 @@ public class SidewikiService extends GoogleService {
    */
   public final void getSidewikiUserFeed(String uri,
       SidewikiUserFeedCallback callback) {
-    this.getFeed(uri, callback, "getSidewikiUserFeed");
+    this.getFeed(uri, callback, null, "getSidewikiUserFeed");
+  }
+  
+  /**
+   * Retrieves the feed of sidewiki user entries.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSidewikiUserFeed(String uri,
+      SidewikiUserFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getSidewikiUserFeed");
   }
   
   /**
@@ -176,7 +281,21 @@ public class SidewikiService extends GoogleService {
    */
   public final void updateSidewikiEntry(String uri, SidewikiEntry entry,
       SidewikiEntryCallback callback) {
-    this.updateEntry(uri, entry, callback);
+    this.updateEntry(uri, entry, callback, null);
+  }
+
+  /**
+   * Updates a sidewiki entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateSidewikiEntry(String uri, SidewikiEntry entry,
+      SidewikiEntryCallback callback, GDataRequestParameters parameters) {
+    this.updateEntry(uri, entry, callback, parameters);
   }
 
   /**
@@ -189,7 +308,21 @@ public class SidewikiService extends GoogleService {
    */
   public final void updateSidewikiEntry(String uri, SidewikiUserEntry entry,
       SidewikiUserEntryCallback callback) {
-    this.updateEntry(uri, entry, callback);
+    this.updateEntry(uri, entry, callback, null);
+  }
+
+  /**
+   * Updates a sidewiki user entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateSidewikiEntry(String uri, SidewikiUserEntry entry,
+      SidewikiUserEntryCallback callback, GDataRequestParameters parameters) {
+    this.updateEntry(uri, entry, callback, parameters);
   }
   
 }

@@ -16,6 +16,7 @@
 
 package com.google.gwt.gdata.client.analytics;
 
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.GoogleService;
 
 /**
@@ -54,7 +55,20 @@ public class AnalyticsService extends GoogleService {
    */
   public final void deleteAccountEntry(String uri,
       AccountEntryCallback callback) {
-    this.deleteEntry(uri, callback);
+    this.deleteEntry(uri, callback, null);
+  }
+
+  /**
+   * Deletes an account entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteAccountEntry(String uri,
+      AccountEntryCallback callback, GDataRequestParameters parameters) {
+    this.deleteEntry(uri, callback, parameters);
   }
 
   /**
@@ -66,7 +80,20 @@ public class AnalyticsService extends GoogleService {
    */
   public final void getAccountEntry(String uri,
       AccountEntryCallback callback) {
-    this.getEntry(uri, callback, "getAccountEntry");
+    this.getEntry(uri, callback, null, "getAccountEntry");
+  }
+
+  /**
+   * Retrieves an account entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getAccountEntry(String uri,
+      AccountEntryCallback callback, GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getAccountEntry");
   }
 
   /**
@@ -79,7 +106,21 @@ public class AnalyticsService extends GoogleService {
    */
   public final void getAccountFeed(AccountQuery query,
       AccountFeedCallback callback) {
-    this.getFeed(query, callback, "getAccountFeed");
+    this.getFeed(query, callback, null, "getAccountFeed");
+  }
+
+  /**
+   * Retrieves the feed of accounts and profiles to which a given user has
+   * access.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getAccountFeed(AccountQuery query,
+      AccountFeedCallback callback, GDataRequestParameters parameters) {
+    this.getFeed(query, callback, parameters, "getAccountFeed");
   }
 
   /**
@@ -91,7 +132,21 @@ public class AnalyticsService extends GoogleService {
    * command.
    */
   public final void getAccountFeed(String uri, AccountFeedCallback callback) {
-    this.getFeed(uri, callback, "getAccountFeed");
+    this.getFeed(uri, callback, null, "getAccountFeed");
+  }
+
+  /**
+   * Retrieves the feed of accounts and profiles to which a given user has
+   * access.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getAccountFeed(String uri, AccountFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getAccountFeed");
   }
 
   /**
@@ -102,7 +157,20 @@ public class AnalyticsService extends GoogleService {
    * command.
    */
   public final void getDataEntry(String uri, DataEntryCallback callback) {
-    this.getEntry(uri, callback, "getDataEntry");
+    this.getEntry(uri, callback, null, "getDataEntry");
+  }
+
+  /**
+   * Retrieves a data entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getDataEntry(String uri, DataEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.getEntry(uri, callback, parameters, "getDataEntry");
   }
   
   /**
@@ -113,7 +181,20 @@ public class AnalyticsService extends GoogleService {
    * command.
    */
   public final void getDataFeed(DataQuery query, DataFeedCallback callback) {
-    this.getFeed(query, callback, "getDataFeed");
+    this.getFeed(query, callback, null, "getDataFeed");
+  }
+  
+  /**
+   * Retrieves the arbitrary data from an Analytics profile.
+   * 
+   * @param query URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getDataFeed(DataQuery query, DataFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.getFeed(query, callback, parameters, "getDataFeed");
   }
 
   /**
@@ -124,7 +205,20 @@ public class AnalyticsService extends GoogleService {
    * command.
    */
   public final void getDataFeed(String uri, DataFeedCallback callback) {
-    this.getFeed(uri, callback, "getDataFeed");
+    this.getFeed(uri, callback, null, "getDataFeed");
+  }
+
+  /**
+   * Retrieves the arbitrary data from an Analytics profile.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getDataFeed(String uri, DataFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.getFeed(uri, callback, parameters, "getDataFeed");
   }
 
   /**
@@ -150,6 +244,20 @@ public class AnalyticsService extends GoogleService {
    */
   public final void updateAccountEntry(String uri, AccountEntry entry,
       AccountEntryCallback callback) {
-    this.updateEntry(uri, entry, callback);
+    this.updateEntry(uri, entry, callback, null);
+  }
+  
+  /**
+   * Updates an account entry.
+   * 
+   * @param uri URI of entry.
+   * @param entry Entry to update.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateAccountEntry(String uri, AccountEntry entry,
+      AccountEntryCallback callback, GDataRequestParameters parameters) {
+    this.updateEntry(uri, entry, callback, parameters);
   }
 }
