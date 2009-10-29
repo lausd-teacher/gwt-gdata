@@ -18,6 +18,7 @@ package com.google.gwt.gdata.client.maps;
 
 import com.google.gwt.gdata.client.CustomProperty;
 import com.google.gwt.gdata.client.Deleted;
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.PostalAddress;
 import com.google.gwt.gdata.client.ResourceId;
 import com.google.gwt.gdata.client.StructuredPostalAddress;
@@ -54,7 +55,19 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
    * command.
    */
   public final void deleteEntry(FeatureEntryCallback callback) {
-    this.delete(callback);
+    this.delete(callback, null);
+  }
+  
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteEntry(FeatureEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.delete(callback, parameters);
   }
 
   /**
@@ -110,10 +123,22 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param callback Callback defining success and failure handlers for this
    * command.
-   * @return current representation of the entry.
    */
-  public final FeatureEntry getSelf(FeatureEntryCallback callback) {
-    return this.get(callback);
+  public final void getSelf(FeatureEntryCallback callback) {
+    this.get(callback, null);
+  }
+
+  /**
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSelf(FeatureEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.get(callback, parameters);
   }
 
   /**
@@ -182,7 +207,19 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
    * command.
    */
   public final void updateEntry(FeatureEntryCallback callback) {
-    this.update(callback);
+    this.update(callback, null);
+  }
+
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateEntry(FeatureEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.update(callback, parameters);
   }
 
 }

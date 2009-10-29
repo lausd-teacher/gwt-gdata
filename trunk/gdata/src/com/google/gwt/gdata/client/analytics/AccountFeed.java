@@ -16,6 +16,8 @@
 
 package com.google.gwt.gdata.client.analytics;
 
+import com.google.gwt.gdata.client.GDataRequestParameters;
+
 /**
  * Feed element in account feed.
  */
@@ -59,7 +61,20 @@ public class AccountFeed
    * command.
    */
   public final void getSelf(AccountFeedCallback callback) {
-    this.get(callback);
+    this.get(callback, null);
+  }
+
+  /**
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSelf(AccountFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.get(callback, parameters);
   }
 
   /**

@@ -16,6 +16,7 @@
 
 package com.google.gwt.gdata.client.contacts;
 
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.Name;
 import com.google.gwt.gdata.client.StructuredPostalAddress;
 import com.google.gwt.gdata.client.Where;
@@ -133,7 +134,19 @@ public class ProfileEntry extends PersonEntry {
    * command.
    */
   public final void deleteEntry(ProfileEntryCallback callback) {
-    this.delete(callback);
+    this.delete(callback, null);
+  }
+  
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteEntry(ProfileEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.delete(callback, parameters);
   }
 
   /**
@@ -304,10 +317,22 @@ public class ProfileEntry extends PersonEntry {
    * 
    * @param callback Callback defining success and failure handlers for this
    * command.
-   * @return current representation of the entry.
    */
-  public final ProfileEntry getSelf(ProfileEntryCallback callback) {
-    return this.get(callback);
+  public final void getSelf(ProfileEntryCallback callback) {
+    this.get(callback, null);
+  }
+  
+  /**
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSelf(ProfileEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.get(callback, parameters);
   }
 
   /**
@@ -626,7 +651,19 @@ public class ProfileEntry extends PersonEntry {
    * command.
    */
   public final void updateEntry(ProfileEntryCallback callback) {
-    this.update(callback);
+    this.update(callback, null);
+  }
+  
+  /**
+   * Updates the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateEntry(ProfileEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.update(callback, parameters);
   }
   
 }

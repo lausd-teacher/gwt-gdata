@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.contacts;
 
 import com.google.gwt.gdata.client.Deleted;
+import com.google.gwt.gdata.client.GDataRequestParameters;
 
 /**
  * Describes a contact entry.
@@ -50,7 +51,19 @@ public class ContactEntry extends PersonEntry {
    * command.
    */
   public final void deleteEntry(ContactEntryCallback callback) {
-    this.delete(callback);
+    this.delete(callback, null);
+  }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteEntry(ContactEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.delete(callback, parameters);
   }
 
   /**
@@ -77,10 +90,22 @@ public class ContactEntry extends PersonEntry {
    * 
    * @param callback Callback defining success and failure handlers for this
    * command.
-   * @return current representation of the entry.
    */
-  public final ContactEntry getSelf(ContactEntryCallback callback) {
-    return this.get(callback);
+  public final void getSelf(ContactEntryCallback callback) {
+    this.get(callback, null);
+  }
+
+  /**
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSelf(ContactEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.get(callback, parameters);
   }
 
   /**
@@ -112,7 +137,19 @@ public class ContactEntry extends PersonEntry {
    * command.
    */
   public final void updateEntry(ContactEntryCallback callback) {
-    this.update(callback);
+    this.update(callback, null);
+  }
+
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateEntry(ContactEntryCallback callback, 
+      GDataRequestParameters parameters) {
+    this.update(callback, parameters);
   }
   
 }

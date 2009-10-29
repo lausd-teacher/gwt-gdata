@@ -17,6 +17,7 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.impl.Map;
 
 /**
@@ -82,7 +83,20 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
    * command.
    */
   public final void getSelf(ItemsFeedCallback callback) {
-    this.get(callback);
+    this.get(callback, null);
+  }
+
+  /**
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSelf(ItemsFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.get(callback, parameters);
   }
 
   /**

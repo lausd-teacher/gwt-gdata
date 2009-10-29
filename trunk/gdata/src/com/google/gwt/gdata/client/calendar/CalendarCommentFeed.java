@@ -16,6 +16,8 @@
 
 package com.google.gwt.gdata.client.calendar;
 
+import com.google.gwt.gdata.client.GDataRequestParameters;
+
 /**
  * Describes feed of a Calendar event's comments.
  */
@@ -41,7 +43,19 @@ public class CalendarCommentFeed
    * command.
    */
   public final void getSelf(CalendarCommentFeedCallback callback) {
-    this.get(callback);
+    this.get(callback, null);
+  }
+
+  /**
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getSelf(CalendarCommentFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.get(callback, parameters);
   }
 
   /**

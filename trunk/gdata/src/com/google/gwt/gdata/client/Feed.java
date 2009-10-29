@@ -182,10 +182,11 @@ public class Feed<E extends Entry>
    * command.
    */
   protected final native <F extends Feed<E>> void get(
-      Callback<F> callback) /*-{
-    return this.getSelf(
+      Callback<F> callback, GDataRequestParameters parameters) /*-{
+    this.getSelf(
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
     );
   }-*/;
 
@@ -197,7 +198,7 @@ public class Feed<E extends Entry>
    * command.
    */
   protected final native void insertEntry(E entry, Callback<E> callback) /*-{
-    return this.insertEntry(
+    this.insertEntry(
       entry,
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
       function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
