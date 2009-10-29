@@ -16,6 +16,8 @@
 
 package com.google.gwt.gdata.client.maps;
 
+import com.google.gwt.gdata.client.GDataRequestParameters;
+
 /**
  * Describes a feature feed.
  */
@@ -61,7 +63,19 @@ public class FeatureFeed
    * command.
    */
   public final void getSelf(FeatureFeedCallback callback) {
-    this.get(callback);
+    this.get(callback, null);
+  }
+
+  /**
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getSelf(FeatureFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.get(callback, parameters);
   }
 
   /**

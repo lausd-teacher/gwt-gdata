@@ -16,6 +16,7 @@
 
 package com.google.gwt.gdata.client.blogger;
 
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.mediarss.MediaThumbnail;
 import com.google.gwt.gdata.client.threading.Total;
 
@@ -41,7 +42,19 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
    * command.
    */
   public final void deleteEntry(PostEntryCallback callback) {
-    this.delete(callback);
+    this.delete(callback, null);
+  }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteEntry(PostEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.delete(callback, parameters);
   }
 
   /**
@@ -110,10 +123,22 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param callback Callback defining success and failure handlers for this
    * command.
-   * @return current representation of the entry.
    */
-  public final PostEntry getSelf(PostEntryCallback callback) {
-    return this.get(callback);
+  public final void getSelf(PostEntryCallback callback) {
+    this.get(callback, null);
+  }
+
+  /**
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSelf(PostEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.get(callback, parameters);
   }
 
   /**
@@ -159,7 +184,19 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
    * command.
    */
   public final void updateEntry(PostEntryCallback callback) {
-    this.update(callback);
+    this.update(callback, null);
+  }
+
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateEntry(PostEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.update(callback, parameters);
   }
   
 }

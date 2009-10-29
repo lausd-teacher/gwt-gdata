@@ -134,12 +134,14 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
    * 
    * @param callback Callback defining success and failure handlers for this
    * command.
+   * @param parameters The request parameters.
    */
   protected final native <E extends Entry> void delete(
-      Callback<E> callback) /*-{
-    return this.deleteEntry(
+      Callback<E> callback, GDataRequestParameters parameters) /*-{
+    this.deleteEntry(
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
     );
   }-*/;
 
@@ -149,12 +151,14 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
    * 
    * @param callback Callback defining success and failure handlers for this
    * command.
-   * @return current representation of the entry.
+   * @param parameters The request parameters.
    */
-  protected final native <E extends Entry> E get(Callback<E> callback) /*-{
-    return this.getSelf(
+  protected final native <E extends Entry> void get(Callback<E> callback,
+      GDataRequestParameters parameters) /*-{
+    this.getSelf(
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
     );
   }-*/;
 
@@ -162,13 +166,15 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
    * Updated the entry in the feed by sending the representation of this entry.
    * 
    * @param callback Callback defining success and failure handlers for this
+   * @param parameters The request parameters.
    * command.
    */
   protected final native<E extends Entry> void update(
-      Callback<E> callback) /*-{
-    return this.updateEntry(
+      Callback<E> callback, GDataRequestParameters parameters) /*-{
+    this.updateEntry(
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
     );
   }-*/;
 }

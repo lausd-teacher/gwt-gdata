@@ -16,6 +16,8 @@
 
 package com.google.gwt.gdata.client.calendar;
 
+import com.google.gwt.gdata.client.GDataRequestParameters;
+
 /**
  * Describes a feed of Calendars.
  */
@@ -41,7 +43,20 @@ public class CalendarFeed
    * command.
    */
   public final void getSelf(CalendarFeedCallback callback) {
-    this.get(callback);
+    this.get(callback, null);
+  }
+
+  /**
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSelf(CalendarFeedCallback callback,
+      GDataRequestParameters parameters) {
+    this.get(callback, parameters);
   }
 
   /**

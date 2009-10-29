@@ -16,6 +16,7 @@
 
 package com.google.gwt.gdata.client.gbase;
 
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.mediarss.MediaContent;
 
 /**
@@ -41,7 +42,19 @@ public class MediaEntry extends com.google.gwt.gdata.client.Entry {
    * command.
    */
   public final void deleteEntry(MediaEntryCallback callback) {
-    this.delete(callback);
+    this.delete(callback, null);
+  }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void deleteEntry(MediaEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.delete(callback, parameters);
   }
 
   /**
@@ -59,10 +72,22 @@ public class MediaEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @param callback Callback defining success and failure handlers for this
    * command.
-   * @return current representation of the entry.
    */
-  public final MediaEntry getSelf(MediaEntryCallback callback) {
-    return this.get(callback);
+  public final void getSelf(MediaEntryCallback callback) {
+    this.get(callback, null);
+  }
+
+  /**
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void getSelf(MediaEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.get(callback, parameters);
   }
 
   /**
@@ -81,7 +106,19 @@ public class MediaEntry extends com.google.gwt.gdata.client.Entry {
    * command.
    */
   public final void updateEntry(MediaEntryCallback callback) {
-    this.update(callback);
+    this.update(callback, null);
+  }
+
+  /**
+   * Updated the entry in the feed by sending the representation of this entry.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final void updateEntry(MediaEntryCallback callback,
+      GDataRequestParameters parameters) {
+    this.update(callback, parameters);
   }
   
 }
