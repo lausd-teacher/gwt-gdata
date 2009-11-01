@@ -185,7 +185,7 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
     itemsEntry.getTitle().setText("GWT-GoogleBase-Client - updated item");
     MapAttribute attributes = itemsEntry.getAttributes();
     if (attributes.contains("target_country")) {
-      attributes.get("target_country").setValue("UK");
+      attributes.get("target_country")[0].setValue("UK");
     }
     itemsEntry.updateEntry(new ItemsEntryCallback() {
       public void onFailure(CallErrorException caught) {

@@ -21,6 +21,7 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.calendar.CalendarEventEntry;
 import com.google.gwt.gdata.client.calendar.CalendarEventEntryCallback;
@@ -98,9 +99,12 @@ public class CalendarDeleteEventDemo extends GDataDemo {
    * On success and failure, display a status message.
    * 
    * @param eventEntryUri The uri of the event entry to delete
+   * @param etag The etag of the entry to delete
    */
-  private void deleteEvent(String eventEntryUri) {
+  private void deleteEvent(String eventEntryUri, String etag) {
     showStatus("Deleting event...", false);
+    GDataRequestParameters pars = GDataRequestParameters.newInstance();
+    pars.setEtag(etag);
     service.deleteCalendarEventEntry(eventEntryUri,
         new CalendarEventEntryCallback() {
       public void onFailure(CallErrorException caught) {
@@ -110,7 +114,7 @@ public class CalendarDeleteEventDemo extends GDataDemo {
       public void onSuccess(CalendarEventEntry result) {
         showStatus("Deleted a Calendar event.", false);
       }
-    });
+    }, pars);
   }
 
   /**
@@ -145,7 +149,7 @@ public class CalendarDeleteEventDemo extends GDataDemo {
         } else {
           CalendarEventEntry targetEvent = entries[0];
           String eventEntryUri = targetEvent.getEditLink().getHref();
-          deleteEvent(eventEntryUri);
+          deleteEvent(eventEntryUri, targetEvent.getEtag());
         }
       }
     });

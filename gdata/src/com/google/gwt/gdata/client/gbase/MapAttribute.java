@@ -16,12 +16,21 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.gdata.client.impl.Map;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.gdata.client.impl.MultiMap;
 
 /**
  * A map in which keys are of type string and values of type Attribute.
  */
-public class MapAttribute extends Map<Attribute> {
+public class MapAttribute extends MultiMap<Attribute> {
+  
+  /**
+   * Constructs a Map of attributes.
+   */
+  @SuppressWarnings("unchecked")
+  public static MapAttribute newInstance() {
+    return JavaScriptObject.createObject().cast();
+  }
   
   protected MapAttribute() { }
   

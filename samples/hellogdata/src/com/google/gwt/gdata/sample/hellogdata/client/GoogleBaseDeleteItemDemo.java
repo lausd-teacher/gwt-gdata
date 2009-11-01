@@ -98,7 +98,7 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
    * @param itemsEntryUri The uri of the item entry to delete
    */
   private void deleteItem(String itemsEntryUri) {
-    showStatus("Updating item...", false);
+    showStatus("Deleting item...", false);
     service.deleteItemsEntry(itemsEntryUri, new ItemsEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while deleting an item: " +

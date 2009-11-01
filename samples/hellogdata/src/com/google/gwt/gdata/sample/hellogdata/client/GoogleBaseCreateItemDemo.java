@@ -110,23 +110,32 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
     entry.getTitle().setText("GWT-GoogleBase-Client - inserted item");
     entry.setContent(Text.newInstance());
     entry.getContent().setText("GData is great data!! :)");
-    entry.setAttribute("target_country", Attribute.newInstance());
-    entry.getAttributes().get("target_country").setValue("US");
-    entry.setAttribute("review_type", Attribute.newInstance());
-    entry.getAttributes().get("review_type").setValue("Product Review");
-    entry.setAttribute("name_of_item_reviewed", Attribute.newInstance());
-    entry.getAttributes().get("name_of_item_reviewed").setValue("gwt-gdata");
-    entry.setAttribute("expiration_date", Attribute.newInstance());
-    entry.getAttributes().get("expiration_date").setValue(
-        "2038-01-19T03:14:07Z");
-    entry.setAttribute("rating", Attribute.newInstance());
-    entry.getAttributes().get("rating").setValue("5-Excellent");
-    entry.setAttribute("customer_id", Attribute.newInstance());
-    entry.getAttributes().get("customer_id").setValue("5752122");
-    entry.setAttribute("item_type", Attribute.newInstance());
-    entry.getAttributes().get("item_type").setValue("Reviews");
-    entry.setAttribute("item_language", Attribute.newInstance());
-    entry.getAttributes().get("item_language").setValue("en");
+    
+    Attribute targetCountry = Attribute.newInstance();
+    targetCountry.setValue("US");
+    Attribute reviewType = Attribute.newInstance();
+    reviewType.setValue("Product Review");
+    Attribute nameOfItem = Attribute.newInstance();
+    nameOfItem.setValue("gwt-gdata");
+    Attribute expirationDate = Attribute.newInstance();
+    expirationDate.setValue("2038-01-19T03:14:07Z");
+    Attribute rating = Attribute.newInstance();
+    rating.setValue("5-Excellent");
+    Attribute customerId = Attribute.newInstance();
+    customerId.setValue("5752122");
+    Attribute itemType = Attribute.newInstance();
+    itemType.setValue("Reviews");
+    Attribute itemLanguage = Attribute.newInstance();
+    itemLanguage.setValue("en");
+    
+    entry.setAttribute("target_country", targetCountry);
+    entry.setAttribute("review_type", reviewType);
+    entry.setAttribute("name_of_item_reviewed", nameOfItem);
+    entry.setAttribute("expiration_date", expirationDate);
+    entry.setAttribute("rating", rating);
+    entry.setAttribute("customer_id", customerId);
+    entry.setAttribute("item_type", itemType);
+    entry.setAttribute("item_language", itemLanguage);
     
     service.insertItemsEntry(itemsFeedUri, entry, new ItemsEntryCallback() {
       public void onFailure(CallErrorException caught) {

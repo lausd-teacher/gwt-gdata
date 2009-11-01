@@ -21,6 +21,7 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.contacts.ContactGroupEntry;
 import com.google.gwt.gdata.client.contacts.ContactGroupEntryCallback;
@@ -96,9 +97,12 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
    * On success and failure, display a status message.
    * 
    * @param contactGroupEntryUri The uri of the contact group entry to delete
+   * @param etag The etag of the entry to delete
    */
-  private void deleteContactGroup(String contactGroupEntryUri) {
+  private void deleteContactGroup(String contactGroupEntryUri, String etag) {
     showStatus("Deleting a contact group...", false);
+    GDataRequestParameters pars = GDataRequestParameters.newInstance();
+    pars.setEtag(etag);
     service.deleteContactGroupEntry(contactGroupEntryUri,
         new ContactGroupEntryCallback() {
       public void onFailure(CallErrorException caught) {
@@ -108,7 +112,7 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
       public void onSuccess(ContactGroupEntry result) {
         showStatus("Deleted a contact group.", false);
       }
-    });
+    }, pars);
   }
 
   /**
@@ -146,7 +150,7 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
               "'GWT-Contacts-Client'.", false);
         } else {
           String contactGroupEntryUri = targetGroup.getEditLink().getHref();
-          deleteContactGroup(contactGroupEntryUri);
+          deleteContactGroup(contactGroupEntryUri, targetGroup.getEtag());
         }
       }
     });
