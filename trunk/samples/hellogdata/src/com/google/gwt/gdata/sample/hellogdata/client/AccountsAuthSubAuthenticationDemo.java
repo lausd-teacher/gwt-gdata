@@ -21,7 +21,6 @@ import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.GData;
-import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
@@ -58,7 +57,7 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Accounts - Authsub Authentication";
+        return "API - Authsub Authentication";
       }
     };
   }
@@ -76,15 +75,15 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
     mainPanel.setCellSpacing(0);
     initWidget(mainPanel);
     /* 
-     * Here we load the Maps package to make AuthSub available.
+     * Here we load the default package to make AuthSub available.
      * For AuthSub any of the GData packages will do.
      * */
-    if (!GData.isLoaded(GDataSystemPackage.MAPS)) {
+    if (!GData.isLoaded(HelloGData.defaultPackage)) {
       GData.loadGDataApi(null, new Runnable() {
         public void run() {
           startDemo();
         }
-      }, GDataSystemPackage.MAPS);
+      }, HelloGData.defaultPackage);
     } else {
       startDemo();
     }

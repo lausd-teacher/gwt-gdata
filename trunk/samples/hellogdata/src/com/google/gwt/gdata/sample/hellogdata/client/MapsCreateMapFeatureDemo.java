@@ -161,9 +161,11 @@ public class MapsCreateMapFeatureDemo extends GDataDemo {
     entry.setPostalAddress(address);
     KmlContent kml = KmlContent.newInstance();
     kml.setType(KmlContent.TYPE_APPLICATION_VND_GOOGLE_EARTH_KML_XML);
-    kml.setText("<Placemark><name>Faulkner's Birthplace</name>" +
+    kml.setText("<Placemark xmlns=\"http://www.opengis.net/kml/2.2\">" +
+        "<name>Faulkner's Birthplace</name>" +
         "<description/><Point><coordinates>-89.520753,34.360902,0.0" +
-        "</coordinates></Point></Placemark>");
+        "</coordinates></Point><" +
+        "/Placemark>");
     entry.setContent(kml);
     String featuresFeedUri = 
         mapId.replace("/feeds/maps/", "/feeds/features/") + "/full";

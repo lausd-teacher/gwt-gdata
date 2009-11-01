@@ -181,8 +181,11 @@ public class MapsRetrieveMapFeaturesDemo extends GDataDemo {
       mainPanel.addCell(row);
       mainPanel.setWidget(row, 0, new Label(entry.getTitle().getText()));
       mainPanel.addCell(row);
-      mainPanel.setWidget(row, 1,
-          new Label(entry.getPostalAddress().getValue()));
+      String address = "";
+      if (entry.getPostalAddress() != null) {
+        address = entry.getPostalAddress().getValue();
+      }
+      mainPanel.setWidget(row, 1, new Label(address));
     }
   }
 

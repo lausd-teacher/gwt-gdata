@@ -55,7 +55,7 @@ public class GDataPackagesDemo extends GDataDemo {
 
       @Override
       public String getName() {
-        return "Packages - Loading GData packages";
+        return "API - Loading GData packages";
       }
     };
   }

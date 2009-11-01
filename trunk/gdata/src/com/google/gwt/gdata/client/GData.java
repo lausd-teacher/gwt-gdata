@@ -18,6 +18,8 @@ package com.google.gwt.gdata.client;
 
 import com.google.gwt.ajaxloader.client.AjaxLoader;
 import com.google.gwt.ajaxloader.client.AjaxLoader.AjaxLoaderOptions;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 
 /**
  * A collection of static methods and API wide constants.
@@ -95,13 +97,27 @@ public class GData {
     if (!isLoaded()) {
       onGDataLoad = new Runnable() {
         public void run() {
-          callGDataOnLoad();
-          onLoad.run();
+          UncaughtExceptionHandler handler = GWT.getUncaughtExceptionHandler();
+          if (handler != null) {
+            try {
+              runAll();
+            } catch (Throwable e) {
+              e.printStackTrace();
+              handler.onUncaughtException(e);
+            }
+          } else {
+            runAll();
+          }
         }
         
         private native void callGDataOnLoad() /*-{
           if(typeof($wnd.google.gdata) !== 'undefined') $wnd.google.gdata.onLoad();
         }-*/;
+        
+        private void runAll() {
+            callGDataOnLoad();
+            onLoad.run();
+        }
       };
     }
     AjaxLoader.loadApi("gdata", version, onGDataLoad, settings);

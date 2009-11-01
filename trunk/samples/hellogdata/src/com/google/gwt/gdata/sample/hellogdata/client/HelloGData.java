@@ -16,10 +16,13 @@
 
 package com.google.gwt.gdata.sample.hellogdata.client;
 
+import com.google.gwt.accounts.client.AuthSubStatus;
+import com.google.gwt.accounts.client.User;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.gdata.client.GData;
+import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.sample.hellogdata.client.GDataDemo.GDataDemoInfo;
 import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -35,6 +38,13 @@ import com.google.gwt.user.client.ui.VerticalPanel;
  */
 public class HelloGData implements EntryPoint {
 
+  /**
+   * The value of defaultPackage indicates the package to use for loading the
+   * GData library core. We load a specific package (any package) instead of
+   * loading all of them.
+   */
+  public static GDataSystemPackage defaultPackage =
+    GDataSystemPackage.ANALYTICS;
   protected DemoList list = new DemoList();
   private GDataDemoInfo curInfo;
   private GDataDemo curGDataDemo;
@@ -43,48 +53,40 @@ public class HelloGData implements EntryPoint {
   private FlexTable outerPanel = new FlexTable();
 
   /**
-   * Invoked when the GData JS library is loaded and ready to use.
-   * Here we check confirm that GData is available and display a
-   * drop down list containing each demo
-   */
-  public void onGDataLoad() {
-    /*
-    if (!GData.isLoaded()) {
-      Window.alert("The GData API is not installed."
-          + "  The GData API is unavailable or your GData key may be wrong.");
-      return;
-    }
-    */
-    HorizontalPanel horizPanel = new HorizontalPanel();
-    list.setStylePrimaryName("hm-demolistbox");
-    list.addChangeHandler(new ChangeHandler() {
-      public void onChange(ChangeEvent event) {
-        GDataDemoInfo info = list.getGDataDemoSelection();
-        if (info == null) {
-          showInfo();
-        } else {
-          show(info);
-        }
-      }
-    });
-    description.setStylePrimaryName("hm-description");
-    innerPanel.clear();
-    innerPanel.add(horizPanel);
-    innerPanel.add(description);
-    horizPanel.add(new Label("Select Demo: "));
-    horizPanel.add(list);
-    loadGDataDemos();
-    showInfo();
-  }
-
-  /**
-   * The entrypoint for this demo. Here we build the base UI which
-   * every sample will use and load the GData API, if it has not yet
-   * loaded.
+   * The entrypoint for this demo. Load the GData API core.
    */
   public void onModuleLoad() {
+    if (!GData.isLoaded(defaultPackage)) {
+      GData.loadGDataApi(null, new Runnable() {
+        public void run() {
+          onGDataLoad();
+        }
+      }, defaultPackage);
+    } else {
+      onGDataLoad();
+    }
+  }
+  
+  /**
+   * Invoked when GData has loaded. Build the UI and display the default demo.
+   */
+  public void onGDataLoad() {
+    if (User.getStatus() == AuthSubStatus.LOGGING_IN) {
+      /*
+       * AuthSub causes a refresh of the browser, so if status is LOGGING_IN
+       * don't render anything. An empty page refresh is friendlier.
+       */
+      return;
+    }
+    
+    DecoratorPanel decorator = new DecoratorPanel();
+    decorator.add(outerPanel);
+    
     RootPanel.get().setStylePrimaryName("hm-body");
-    RootPanel.get().add(new HTML("<img src='logo-small.png' alt='gwt logo' align='absmiddle'><span class='hm-title'>Google GData API Library for GWT Demo</span>"));
+    RootPanel.get().add(new HTML("<img src='logo-small.png' alt='gwt logo' " +
+        "align='absmiddle'><span class='hm-title'>Google GData API Library " +
+        "for GWT Demo</span>"));
+    RootPanel.get().add(decorator);
     
     innerPanel.setStylePrimaryName("hm-innerpanel");
     innerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
@@ -111,26 +113,28 @@ public class HelloGData implements EntryPoint {
 
     outerPanel.setWidget(1, 0, innerPanel);
 
-    DecoratorPanel decorator = new DecoratorPanel();
-    decorator.add(outerPanel);
-
-    RootPanel.get().add(decorator);
-    
-    innerPanel.add(new Label("Loading the GData library..."));
-    
-    onGDataLoad();
-    /*
-    if (GData.isLoaded()) {
-      onGDataLoad();
-    } else {
-      GData.loadGDataApi(null, new Runnable() {
-        public void run() {
-          onGDataLoad();
+    HorizontalPanel horizPanel = new HorizontalPanel();
+    list.setStylePrimaryName("hm-demolistbox");
+    list.addChangeHandler(new ChangeHandler() {
+      public void onChange(ChangeEvent event) {
+        GDataDemoInfo info = list.getGDataDemoSelection();
+        if (info == null) {
+          showInfo();
+        } else {
+          show(info);
         }
-      });
-    }
-    */
+      }
+    });
+    description.setStylePrimaryName("hm-description");
+    innerPanel.clear();
+    innerPanel.add(horizPanel);
+    innerPanel.add(description);
+    horizPanel.add(new Label("Select Demo: "));
+    horizPanel.add(list);
+    loadGDataDemos();
+    showInfo();
   }
+  
   /**
    * Instantiates and runs a given GData demo.
    * @param info An instance of an info object describing the demo
@@ -165,7 +169,8 @@ public class HelloGData implements EntryPoint {
     }
 
     outerPanel.setWidget(3, 0, new HTML("<h5> See source in "
-        + strippedClassName + "</h5><h5>GData API version: " + GData.getVersion()
+        + strippedClassName + "</h5><h5>GData API version: " +
+        GData.getVersion()
         + "</h5>"));
 
     curGDataDemo.onShow();
@@ -173,8 +178,8 @@ public class HelloGData implements EntryPoint {
 
   /**
    * Adds all GDataDemos to the list. Note that this does not create actual
-   * instances of all GDataDemos yet (they are created on-demand). This can make
-   * a significant difference in startup time.
+   * instances of all GDataDemos yet (they are created on-demand). This can
+   * make a significant difference in startup time.
    */
   protected void loadGDataDemos() {
     list.addGDataDemo(AccountsAuthSubAuthenticationDemo.init());
@@ -257,6 +262,6 @@ public class HelloGData implements EntryPoint {
    * Displays the default GData demo.
    */
   private void showInfo() {
-    show(list.find("Accounts - Authsub Authentication"));
+    show(list.find("API - Authsub Authentication"));
   }
 }

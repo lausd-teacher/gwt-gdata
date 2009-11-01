@@ -25,8 +25,8 @@ import com.google.gwt.gdata.client.gbase.GoogleBaseService;
 import com.google.gwt.gdata.client.gbase.ItemsEntry;
 import com.google.gwt.gdata.client.gbase.ItemsFeed;
 import com.google.gwt.gdata.client.gbase.ItemsFeedCallback;
+import com.google.gwt.gdata.client.gbase.MapAttribute;
 import com.google.gwt.gdata.client.impl.CallErrorException;
-import com.google.gwt.gdata.client.impl.Map;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -138,7 +138,7 @@ public class GoogleBaseRetrieveItemAttributesDemo extends GDataDemo {
   * 
   * @param entries The Google Base item attributes to display.
   */
-  private void showData(Map<Attribute> attributes) {
+  private void showData(MapAttribute attributes) {
     mainPanel.clear();
     String[] labels = new String[] { "Name", "Type", "Value" };
     mainPanel.insertRow(0);
@@ -150,7 +150,7 @@ public class GoogleBaseRetrieveItemAttributesDemo extends GDataDemo {
     String[] attributeNames = attributes.keys();
     for (int i = 0; i < attributeNames.length; i++) {
       String attributeName = attributeNames[i];
-      Attribute attribute = attributes.get(attributeName);
+      Attribute attribute = attributes.get(attributeName)[0];
       int row = mainPanel.insertRow(i + 1);
       mainPanel.addCell(row);
       mainPanel.setWidget(row, 0, new Label(attributeName));

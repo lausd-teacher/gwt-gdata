@@ -18,7 +18,6 @@ package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.GDataRequestParameters;
-import com.google.gwt.gdata.client.impl.Map;
 
 /**
  * Describes a feed of a user's private items.
@@ -42,7 +41,7 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
    * 
    * @return Attributes.
    */
-  public final native Map<Attribute> getAttributes() /*-{
+  public final native MapAttribute getAttributes() /*-{
     return this.getAttributes();
   }-*/;
 

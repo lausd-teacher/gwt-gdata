@@ -52,18 +52,6 @@ public class MapString extends JavaScriptObject {
   public final native String get(String key) /*-{
     return this[key];
   }-*/;
-  
-  /**
-   * Retrieves a value by the corresponding key.
-   * 
-   * @param key The key corresponding to the value which should be retrieved.
-   * @param defaultValue The value to return if the key is not present.
-   * @return The corresponding value or the default value if the key is not
-   * present.
-   */
-  public final native String get(String key, String defaultValue) /*-{
-    return this[key] || defaultValue;
-  }-*/;
 
   /**
    * Retrieves the collection of keys for this map.
@@ -93,24 +81,10 @@ public class MapString extends JavaScriptObject {
     this[key] = value;
   }-*/;
   
-  /**
-   * Retrieves the collection of values for this map.
-   * 
-   * @return The map values.
-   */
-  public final String[] values() {
-    return ArrayHelper.toArray(getValues());
-  }
-  
   private native JsArrayString getKeys() /*-{
     var ls = [];
     for(var l in this) ls.push(l);
     return ls;
   }-*/;
-  
-  private native JsArrayString getValues() /*-{
-    var ls = [];
-    for(var l in this) ls.push(l);
-    return ls;
-  }-*/;
+
 }

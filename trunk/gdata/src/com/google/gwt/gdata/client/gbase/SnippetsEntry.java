@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.gdata.client.GDataRequestParameters;
-import com.google.gwt.gdata.client.impl.Map;
 
 /**
  * Describes an entry in the feed of snippets of public items.
@@ -62,7 +61,7 @@ public class SnippetsEntry extends com.google.gwt.gdata.client.Entry {
    * 
    * @return Attributes.
    */
-  public final native Map<Attribute> getAttributes() /*-{
+  public final native MapAttribute getAttributes() /*-{
     return this.getAttributes();
   }-*/;
 
@@ -119,7 +118,7 @@ public class SnippetsEntry extends com.google.gwt.gdata.client.Entry {
    * @param attributes Attributes, where each attribute is added using
    * setAttribute().
    */
-  public final native void setAttributes(Map<Attribute> attributes) /*-{
+  public final native void setAttributes(MapAttribute attributes) /*-{
     this.setAttributes(attributes);
   }-*/;
 
