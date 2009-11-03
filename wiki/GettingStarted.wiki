@@ -12,7 +12,7 @@ Next, edit the GWT module for your app (MyAppName.gwt.xml) and add the following
 }}}
 
 == Loading GData packages ==
-Before using GData, your GWT app should make sure that the necessary GData packages available. For example, to check that the GData Calendar package is loaded:
+Before using GData, your GWT app should make sure that the necessary GData packages are available. For example, to check that the GData Calendar package is loaded:
 {{{
 if (GData.isLoaded(GDataSystemPackage.CALENDAR)) {
    Window.alert("Package is loaded");
