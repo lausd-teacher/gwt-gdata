@@ -48,12 +48,12 @@ if (GData.isLoaded(GDataSystemPackage.CALENDAR)) {
 If you call loadGDataApi without supplying any packages, it will load the entire GData library.
 
 == AuthSub Authentication ==
-In order to make use of most of the GData services you'll need to authenticate using AuthSub.
+Most of the GData services require authentication. AuthSub allows users to login with their Google account and explicitely grant or deny access to the requesting app.
 
 AuthSub authentication, from the user's perspective, is a three step process:
   # Click to login, causing a redirect to the authorization page.
   # Click "Grant Access" to grant the client application the requested access.
-  # Arrive back at client application, now with an AuthSub token.
+  # Arrive back at the client application, now with an AuthSub token.
 
 From a developer standpoint the AuthSub process is encapsulated in a single call:
 {{{
