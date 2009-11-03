@@ -54,7 +54,7 @@ AuthSub authentication, from the user's perspective, is a three step process:
   # Click "Grant Access" to grant the client application the requested access.
   # Arrive back at client application, now with an AuthSub token.
 
-From a developer standpoint the above three steps are encapsulated in a single call:
+From a developer standpoint the AuthSub process is encapsulated in a single call:
 {{{
 String scope = "http://code.google.com/apis/calendar/";
 User.login(scope);
