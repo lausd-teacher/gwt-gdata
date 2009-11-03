@@ -50,9 +50,9 @@ If you call loadGDataApi without supplying any packages, it will load the entire
 In order to make use of most of the GData services you'll need to authenticate using AuthSub.
 
 AuthSub authentication, from the user's perspective, is a three step process:
-  #Click to login, causing a redirect to the authorization page.
-  #Click "Grant Access" to grant the client application the requested access.
-  #Arrive back at client application, now with an AuthSub token.
+  # Click to login, causing a redirect to the authorization page.
+  # Click "Grant Access" to grant the client application the requested access.
+  # Arrive back at client application, now with an AuthSub token.
 
 From a developer standpoint the above three steps are encapsulated in a single call:
 {{{
