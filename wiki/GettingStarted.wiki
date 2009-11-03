@@ -6,9 +6,10 @@ Download and extract the latest version of gwt-gdata.
 == Using gwt-gdata in your GWT app ==
 Using gwt-gdata in your GWT app is simple. Start by adding a reference to gwt-gdata.jar to the build path.
 
-Next, edit the GWT module for your app (<MyAppName>.gwt.xml) and add the following line:
-
+Next, edit the GWT module for your app (MyAppName.gwt.xml) and add the following line:
+{{{
 <inherits name='com.google.gwt.gdata.GData' />
+}}}
 
 == Loading GData packages ==
 Before using GData, your GWT app should make sure that the necessary GData packages available. For example, to check that the GData Calendar package is loaded:
