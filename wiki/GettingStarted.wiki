@@ -1,4 +1,5 @@
 #summary Describes the basic steps to get started with GWT and GData.
+#labels Featured
 
 == Before You Start ==
 Download and extract the latest version of gwt-gdata.
