@@ -5,7 +5,7 @@
 Download and extract the latest version of gwt-gdata.
 
 == Using gwt-gdata in your GWT app ==
-Using gwt-gdata in your GWT app is simple. Start by adding a reference to gwt-gdata.jar to the build path.
+Using gwt-gdata in your GWT app is simple. Start by adding a reference to gwt-gdata.jar to the app's build path.
 
 Next, edit the GWT module for your app (MyAppName.gwt.xml) and add the following line:
 {{{
