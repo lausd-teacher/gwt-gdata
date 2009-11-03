@@ -23,9 +23,7 @@ You can also check for multiple packages:
 
 {{{
 if (GData.isLoaded(GDataSystemPackage.CALENDAR, GDataSystemPackage.ANALYTICS)) {
-
    Window.alert("Packages are loaded");
-
 }
 }}}
 
@@ -34,17 +32,13 @@ If you call isLoaded without supplying a package to check for, it will only chec
 Use loadGDataApi() to load GData packages, for instance:
 {{{
 if (GData.isLoaded(GDataSystemPackage.CALENDAR)) {
-
    Window.alert("Package is loaded");
-
 } else {
-   GData.loadGDataApi(null,
+   GData.loadGDataApi("MyApiKey",
       new Runnable() {
-
         public void run() {
           Window.alert("Package has just loaded");
         }
-
       },
       GDataSystemPackage.CALENDAR);
 }
@@ -53,10 +47,12 @@ if (GData.isLoaded(GDataSystemPackage.CALENDAR)) {
 If you call loadGDataApi without supplying any packages, it will load the entire GData library.
 
 == AuthSub Authentication ==
-In order to make use of most of the GData services you'll need to authenticate using AuthSub. AuthSub authentication, from the user's perspective, is a three step process:
-1. Click to login, causing a redirect to the authorization page.
-2. Click "Grant Access" to grant the client application the requested access.
-3. Arrive back at client application, now with an AuthSub token.
+In order to make use of most of the GData services you'll need to authenticate using AuthSub.
+
+AuthSub authentication, from the user's perspective, is a three step process:
+  #Click to login, causing a redirect to the authorization page.
+  #Click "Grant Access" to grant the client application the requested access.
+  #Arrive back at client application, now with an AuthSub token.
 
 From a developer standpoint the above three steps are encapsulated in a single call:
 {{{
