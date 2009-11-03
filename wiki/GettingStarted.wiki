@@ -70,3 +70,25 @@ if (status == AuthSubStatus.LOGGED_IN) {
   Window.alert("You're logged out");
 }
 }}}
+
+== Requesting Feeds ==
+To query for a given feed start by instantiating the appropriate service:
+{{{
+String appName = "MyApplicationName";
+CalendarService service = CalendarService.newInstance(appName);
+}}}
+
+Where *appName* is a string value identifying your application - this can be any value.
+
+Finally, request the desired feed using the respective method. For example, to retrieve the user's calendars:
+{{{
+String calendarsFeedUri = "http://www.google.com/calendar/feeds/default/allcalendars/full";
+service.getAllCalendarsFeed(calendarsFeedUri, new CalendarFeedCallback() {
+  public void onFailure(CallErrorException caught) {
+    Window.alert("Oops, there was an unexpected error.");
+  }
+  public void onSuccess(CalendarFeed result) {
+    Window.alert("You have " + result.getEntries().length + " calendars.");
+  }
+});
+}}}
