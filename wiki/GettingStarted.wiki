@@ -23,7 +23,9 @@ You can also check for multiple packages:
 
 {{{
 if (GData.isLoaded(GDataSystemPackage.CALENDAR, GDataSystemPackage.ANALYTICS)) {
+
    Window.alert("Packages are loaded");
+
 }
 }}}
 
@@ -32,13 +34,19 @@ If you call isLoaded without supplying a package to check for, it will only chec
 Use loadGDataApi() to load GData packages, for instance:
 {{{
 if (GData.isLoaded(GDataSystemPackage.CALENDAR)) {
+
    Window.alert("Package is loaded");
+
 } else {
-   GData.loadGDataApi(null, new Runnable() {
+   GData.loadGDataApi(null,
+      new Runnable() {
+
         public void run() {
           Window.alert("Package has just loaded");
         }
-      }, GDataSystemPackage.CALENDAR);
+
+      },
+      GDataSystemPackage.CALENDAR);
 }
 }}}
 
