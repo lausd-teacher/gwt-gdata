@@ -73,6 +73,9 @@ public class CalendarEntryTest extends CalendarTest {
         HiddenProperty hidden = HiddenProperty.newInstance();
         obj.setHidden(hidden);
         assertSame("hidden", obj.getHidden(), hidden);
+        boolean incomplete = true;
+        obj.setIncomplete(incomplete);
+        assertEquals("incomplete", obj.getIncomplete(), incomplete);
         OverrideNameProperty overridename = OverrideNameProperty.newInstance();
         obj.setOverrideName(overridename);
         assertSame("overridename", obj.getOverrideName(), overridename);

@@ -68,6 +68,9 @@ public class CalendarEventQueryTest extends CalendarTest {
     executeGDataTest(new Runnable() {
       public void run() {
         CalendarEventQuery obj = CalendarEventQuery.newInstance("myValue");
+        boolean allowincomplete = true;
+        obj.setAllowIncomplete(allowincomplete);
+        assertSame("allowincomplete", obj.getAllowIncomplete(), allowincomplete);
         boolean futureevents = true;
         obj.setFutureEvents(futureevents);
         assertSame("futureevents", obj.getFutureEvents(), futureevents);

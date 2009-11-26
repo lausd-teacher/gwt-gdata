@@ -61,6 +61,10 @@ public class SidewikiEntryQueryTest extends SidewikiTest {
     executeGDataTest(new Runnable() {
       public void run() {
         SidewikiEntryQuery obj = SidewikiEntryQuery.newInstance("myValue");
+        boolean includelessuseful = true;
+        obj.setIncludeLessUseful(includelessuseful);
+        assertSame("includelessuseful", obj.getIncludeLessUseful(),
+            includelessuseful);
         DateTime updatedmin = DateTime.newInstance(new Date(), false);
         obj.setUpdatedMin(updatedmin);
         assertEquals("updatedmin", obj.getUpdatedMin().getDate(),

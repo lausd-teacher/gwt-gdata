@@ -56,6 +56,15 @@ public class SidewikiEntryQuery extends Query {
   protected SidewikiEntryQuery() { }
 
   /**
+   * Returns the flag indicating whether to show less useful entries.
+   * 
+   * @return Flag indicating whether to show less useful entries.
+   */
+  public final native boolean getIncludeLessUseful() /*-{
+    return this.getIncludeLessUseful();
+  }-*/;
+
+  /**
    * Returns the maximum number of results to be retrieved.
    * 
    * @return Maximum number of results to be retrieved.
@@ -98,6 +107,16 @@ public class SidewikiEntryQuery extends Query {
    */
   public final native DateTime getUpdatedMin() /*-{
     return this.getUpdatedMin();
+  }-*/;
+
+  /**
+   * Sets the flag indicating whether to show less useful entries.
+   * 
+   * @param includeLessUseful Flag indicating whether to show less
+   * useful entries.
+   */
+  public final native void setIncludeLessUseful(boolean includeLessUseful) /*-{
+    this.setIncludeLessUseful(includeLessUseful);
   }-*/;
 
   /**

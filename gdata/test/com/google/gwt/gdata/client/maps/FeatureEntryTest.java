@@ -21,6 +21,10 @@ import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.PostalAddress;
 import com.google.gwt.gdata.client.ResourceId;
 import com.google.gwt.gdata.client.StructuredPostalAddress;
+import com.google.gwt.gdata.client.batch.Id;
+import com.google.gwt.gdata.client.batch.Interrupted;
+import com.google.gwt.gdata.client.batch.Operation;
+import com.google.gwt.gdata.client.batch.Status;
 
 /**
  * Tests for the FeatureEntry class.
@@ -71,6 +75,18 @@ public class FeatureEntryTest extends MapsTest {
         Deleted deleted = Deleted.newInstance();
         obj.setDeleted(deleted);
         assertSame("deleted", obj.getDeleted(), deleted);
+        Id batchid = Id.newInstance();
+        obj.setBatchId(batchid);
+        assertSame("batchid", obj.getBatchId(), batchid);
+        Operation batchoperation = Operation.newInstance();
+        obj.setBatchOperation(batchoperation);
+        assertSame("batchoperation", obj.getBatchOperation(), batchoperation);
+        Status batchstatus = Status.newInstance();
+        obj.setBatchStatus(batchstatus);
+        assertSame("batchstatus", obj.getBatchStatus(), batchstatus);
+        Interrupted batchinterrupted = Interrupted.newInstance();
+        obj.setBatchInterrupted(batchinterrupted);
+        assertSame("batchinterrupted", obj.getBatchInterrupted(), batchinterrupted);
         finishGDataTest();
       }
     }, 10000);

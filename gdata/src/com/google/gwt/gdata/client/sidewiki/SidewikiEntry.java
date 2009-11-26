@@ -123,6 +123,15 @@ public class SidewikiEntry extends com.google.gwt.gdata.client.Entry {
   }
 
   /**
+   * Returns the usefulness of entry. This element is optional.
+   * 
+   * @return Usefulness of entry.
+   */
+  public final native Usefulness getUsefulness() /*-{
+    return this.getUsefulness();
+  }-*/;
+
+  /**
    * Sets the Sidewiki entry source. This element is optional.
    * 
    * @param entrySource Sidewiki entry source.
@@ -149,6 +158,15 @@ public class SidewikiEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setResourceId(ResourceId resourceId) /*-{
     this.setResourceId(resourceId);
+  }-*/;
+
+  /**
+   * Sets the usefulness of entry. This element is optional.
+   * 
+   * @param usefulness Usefulness of entry.
+   */
+  public final native void setUsefulness(Usefulness usefulness) /*-{
+    this.setUsefulness(usefulness);
   }-*/;
 
   /**

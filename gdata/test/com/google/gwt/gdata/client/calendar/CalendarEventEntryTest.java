@@ -16,6 +16,10 @@
 
 package com.google.gwt.gdata.client.calendar;
 
+import com.google.gwt.gdata.client.batch.Id;
+import com.google.gwt.gdata.client.batch.Interrupted;
+import com.google.gwt.gdata.client.batch.Operation;
+import com.google.gwt.gdata.client.batch.Status;
 import com.google.gwt.gdata.client.geo.GeoRssWhere;
 
 /**
@@ -94,6 +98,18 @@ public class CalendarEventEntryTest extends CalendarTest {
         PrivateCopyProperty privatecopy = PrivateCopyProperty.newInstance();
         obj.setPrivateCopy(privatecopy);
         assertSame("privatecopy", obj.getPrivateCopy(), privatecopy);
+        Id batchid = Id.newInstance();
+        obj.setBatchId(batchid);
+        assertSame("batchid", obj.getBatchId(), batchid);
+        Interrupted batchinterrupted = Interrupted.newInstance();
+        obj.setBatchInterrupted(batchinterrupted);
+        assertSame("batchinterrupted", obj.getBatchInterrupted(), batchinterrupted);
+        Operation batchoperation = Operation.newInstance();
+        obj.setBatchOperation(batchoperation);
+        assertSame("batchoperation", obj.getBatchOperation(), batchoperation);
+        Status batchstatus = Status.newInstance();
+        obj.setBatchStatus(batchstatus);
+        assertSame("batchstatus", obj.getBatchStatus(), batchstatus);
         finishGDataTest();
       }
     }, 10000);

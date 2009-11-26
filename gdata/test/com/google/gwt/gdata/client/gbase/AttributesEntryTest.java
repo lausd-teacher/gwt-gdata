@@ -16,6 +16,11 @@
 
 package com.google.gwt.gdata.client.gbase;
 
+import com.google.gwt.gdata.client.batch.Id;
+import com.google.gwt.gdata.client.batch.Interrupted;
+import com.google.gwt.gdata.client.batch.Operation;
+import com.google.gwt.gdata.client.batch.Status;
+
 /**
  * Tests for the AttributesEntry class.
  */
@@ -41,6 +46,18 @@ public class AttributesEntryTest extends GoogleBaseTest {
         GmAttribute attribute = GmAttribute.newInstance();
         obj.setAttribute(attribute);
         assertSame("attribute", obj.getAttribute(), attribute);
+        Status batchstatus = Status.newInstance();
+        obj.setBatchStatus(batchstatus);
+        assertSame("batchstatus", obj.getBatchStatus(), batchstatus);
+        Operation batchoperation = Operation.newInstance();
+        obj.setBatchOperation(batchoperation);
+        assertSame("batchoperation", obj.getBatchOperation(), batchoperation);
+        Id batchid = Id.newInstance();
+        obj.setBatchId(batchid);
+        assertSame("batchid", obj.getBatchId(), batchid);
+        Interrupted batchinterrupted = Interrupted.newInstance();
+        obj.setBatchInterrupted(batchinterrupted);
+        assertSame("batchinterrupted", obj.getBatchInterrupted(), batchinterrupted);
         finishGDataTest();
       }
     }, 10000);
