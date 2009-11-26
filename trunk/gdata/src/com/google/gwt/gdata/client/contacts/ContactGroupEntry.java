@@ -19,6 +19,9 @@ package com.google.gwt.gdata.client.contacts;
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.ExtendedProperty;
 import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.batch.Interrupted;
+import com.google.gwt.gdata.client.batch.Operation;
+import com.google.gwt.gdata.client.batch.Status;
 
 /**
  * Describes a contact group entry.
@@ -66,6 +69,42 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
       GDataRequestParameters parameters) {
     this.delete(callback, parameters);
   }
+
+  /**
+   * Returns the batch identifier. This element is optional.
+   * 
+   * @return Batch identifier.
+   */
+  public final native com.google.gwt.gdata.client.batch.Id getBatchId() /*-{
+    return this.getBatchId();
+  }-*/;
+
+  /**
+   * Returns the batch interruption information. This element is optional.
+   * 
+   * @return Batch interruption information.
+   */
+  public final native Interrupted getBatchInterrupted() /*-{
+    return this.getBatchInterrupted();
+  }-*/;
+
+  /**
+   * Returns the batch operation. This element is optional.
+   * 
+   * @return Batch operation.
+   */
+  public final native Operation getBatchOperation() /*-{
+    return this.getBatchOperation();
+  }-*/;
+
+  /**
+   * Returns the batch response status information. This element is optional.
+   * 
+   * @return Batch response status information.
+   */
+  public final native Status getBatchStatus() /*-{
+    return this.getBatchStatus();
+  }-*/;
 
   /**
    * Returns the marker for deleted entries. This element is optional.
@@ -116,6 +155,43 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native SystemGroup getSystemGroup() /*-{
     return this.getSystemGroup();
+  }-*/;
+  
+  /**
+   * Sets the batch identifier. This element is optional.
+   * 
+   * @param batchId Batch identifier.
+   */
+  public final native void setBatchId(
+      com.google.gwt.gdata.client.batch.Id batchId) /*-{
+    this.setBatchId(batchId);
+  }-*/;
+
+  /**
+   * Sets the batch interruption information. This element is optional.
+   * 
+   * @param batchInterrupted Batch interruption information.
+   */
+  public final native void setBatchInterrupted(Interrupted batchInterrupted) /*-{
+    this.setBatchInterrupted(batchInterrupted);
+  }-*/;
+
+  /**
+   * Sets the batch operation. This element is optional.
+   * 
+   * @param batchOperation Batch operation.
+   */
+  public final native void setBatchOperation(Operation batchOperation) /*-{
+    this.setBatchOperation(batchOperation);
+  }-*/;
+
+  /**
+   * Sets the batch response status information. This element is optional.
+   * 
+   * @param batchStatus Batch response status information.
+   */
+  public final native void setBatchStatus(Status batchStatus) /*-{
+    this.setBatchStatus(batchStatus);
   }-*/;
 
   /**

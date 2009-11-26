@@ -52,6 +52,9 @@ public class SidewikiEntryTest extends SidewikiTest {
     executeGDataTest(new Runnable() {
       public void run() {
         SidewikiEntry obj = SidewikiEntry.newInstance();
+        Usefulness usefulness = Usefulness.newInstance();
+        obj.setUsefulness(usefulness);
+        assertSame("usefulness", obj.getUsefulness(), usefulness);
         Rating rating = Rating.newInstance();
         obj.setRating(rating);
         assertSame("rating", obj.getRating(), rating);

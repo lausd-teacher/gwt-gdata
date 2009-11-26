@@ -124,6 +124,18 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
+   * Returns mode where the server returns incomplete entries
+   * (for which the full metadata could not be retrieved).
+   * This attribute is optional.
+   * 
+   * @return Mode where the server returns incomplete entries
+   * (for which the full metadata could not be retrieved).
+   */
+  public final native boolean getIncomplete() /*-{
+    return this.getIncomplete();
+  }-*/;
+
+  /**
    * Returns the calendar locations.
    * 
    * @return Calendar locations.
@@ -226,6 +238,18 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native void setHidden(HiddenProperty hidden) /*-{
     this.setHidden(hidden);
+  }-*/;
+
+  /**
+   * Sets mode where the server returns incomplete entries
+   * (for which the full metadata could not be retrieved).
+   * This attribute is optional.
+   * 
+   * @param incomplete Mode where the server returns incomplete entries
+   * (for which the full metadata could not be retrieved).
+   */
+  public final native void setIncomplete(boolean incomplete) /*-{
+    this.setIncomplete(incomplete);
   }-*/;
 
   /**

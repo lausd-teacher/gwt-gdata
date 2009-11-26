@@ -66,6 +66,17 @@ public class CalendarEventQuery extends Query {
   protected CalendarEventQuery() { }
 
   /**
+   * Returns the whether to return incomplete results instead of failing the
+   * operation when some of the data cannot be retrieved.
+   * 
+   * @return Whether to return incomplete results instead of failing the
+   * operation when some of the data cannot be retrieved.
+   */
+  public final native boolean getAllowIncomplete() /*-{
+    return this.getAllowIncomplete();
+  }-*/;
+
+  /**
    * Returns the author name or email address.
    * 
    * @return Author name or email address.
@@ -214,6 +225,17 @@ public class CalendarEventQuery extends Query {
    */
   public final native DateTime getUpdatedMin() /*-{
     return this.getUpdatedMin();
+  }-*/;
+  
+  /**
+   * Sets whether to return incomplete results instead of failing the operation
+   * when some of the data cannot be retrieved. The default value is false.
+   * 
+   * @param allowIncomplete Whether to return incomplete results instead of
+   * failing the operation when some of the data cannot be retrieved.
+   */
+  public final native void setAllowIncomplete(boolean allowIncomplete) /*-{
+    this.setAllowIncomplete(allowIncomplete);
   }-*/;
 
   /**

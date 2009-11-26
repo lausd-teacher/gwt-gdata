@@ -26,7 +26,7 @@ import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
  */
 public class GData {
   
-  static String targetGDataJsApiVersion = "2.0";
+  static String targetGDataJsApiVersion = "2.1";
 
   /**
    * Return the GData API Version currently loaded.

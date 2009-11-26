@@ -20,6 +20,10 @@ import com.google.gwt.gdata.client.CustomProperty;
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.FeedLink;
 import com.google.gwt.gdata.client.ResourceId;
+import com.google.gwt.gdata.client.batch.Id;
+import com.google.gwt.gdata.client.batch.Interrupted;
+import com.google.gwt.gdata.client.batch.Operation;
+import com.google.gwt.gdata.client.batch.Status;
 
 /**
  * Tests for the MapEntry class.
@@ -71,6 +75,18 @@ public class MapEntryTest extends MapsTest {
         assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length);
         obj.addCustomProperty(CustomProperty.newInstance());
         assertEquals("customproperties", obj.getCustomProperties().length, customproperties.length + 1);
+        Id batchid = Id.newInstance();
+        obj.setBatchId(batchid);
+        assertSame("batchid", obj.getBatchId(), batchid);
+        Operation batchoperation = Operation.newInstance();
+        obj.setBatchOperation(batchoperation);
+        assertSame("batchoperation", obj.getBatchOperation(), batchoperation);
+        Status batchstatus = Status.newInstance();
+        obj.setBatchStatus(batchstatus);
+        assertSame("batchstatus", obj.getBatchStatus(), batchstatus);
+        Interrupted batchinterrupted = Interrupted.newInstance();
+        obj.setBatchInterrupted(batchinterrupted);
+        assertSame("batchinterrupted", obj.getBatchInterrupted(), batchinterrupted);
         finishGDataTest();
       }
     }, 10000);
