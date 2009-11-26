@@ -79,7 +79,7 @@ public class AccountsAuthSubAuthenticationDemo extends GDataDemo {
      * For AuthSub any of the GData packages will do.
      * */
     if (!GData.isLoaded(HelloGData.defaultPackage)) {
-      GData.loadGDataApi(null, new Runnable() {
+      GData.loadGDataApi(GDATA_API_KEY, new Runnable() {
         public void run() {
           startDemo();
         }

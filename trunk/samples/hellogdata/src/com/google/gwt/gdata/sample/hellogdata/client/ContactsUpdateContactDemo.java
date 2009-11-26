@@ -85,7 +85,7 @@ public class ContactsUpdateContactDemo extends GDataDemo {
     initWidget(mainPanel);
     if (!GData.isLoaded(GDataSystemPackage.CONTACTS)) {
       showStatus("Loading the GData Contacts package...", false);
-      GData.loadGDataApi(null, new Runnable() {
+      GData.loadGDataApi(GDATA_API_KEY, new Runnable() {
         public void run() {
           startDemo();
         }

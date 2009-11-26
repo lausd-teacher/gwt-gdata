@@ -74,7 +74,7 @@ public class MapsRetrieveMapsDemo extends GDataDemo {
     initWidget(mainPanel);
     if (!GData.isLoaded(GDataSystemPackage.MAPS)) {
       showStatus("Loading the GData Maps package...", false);
-      GData.loadGDataApi(null, new Runnable() {
+      GData.loadGDataApi(GDATA_API_KEY, new Runnable() {
         public void run() {
           startDemo();
         }

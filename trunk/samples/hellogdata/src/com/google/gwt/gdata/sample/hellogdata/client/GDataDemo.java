@@ -22,6 +22,8 @@ import com.google.gwt.user.client.ui.Composite;
  */
 public abstract class GDataDemo extends Composite {
 
+  public final static String GDATA_API_KEY = "ABQIAAAAzoeFOtuTUN37p6oxfKqL9hSCOVA_ujwSKCzUYGl0XuDrgJTiPRQQryAU4Z-ajsptHxgLQf6OpIOx9g";
+  
   /**
    * This inner static class creates a factory method to return an instance of
    * GDataDemo.

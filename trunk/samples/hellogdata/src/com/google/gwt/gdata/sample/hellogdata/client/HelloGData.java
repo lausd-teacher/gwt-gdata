@@ -57,7 +57,7 @@ public class HelloGData implements EntryPoint {
    */
   public void onModuleLoad() {
     if (!GData.isLoaded(defaultPackage)) {
-      GData.loadGDataApi(null, new Runnable() {
+      GData.loadGDataApi(GDataDemo.GDATA_API_KEY, new Runnable() {
         public void run() {
           onGDataLoad();
         }

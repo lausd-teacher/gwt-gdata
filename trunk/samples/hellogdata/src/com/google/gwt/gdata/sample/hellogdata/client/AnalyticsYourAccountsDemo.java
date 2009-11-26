@@ -76,7 +76,7 @@ public class AnalyticsYourAccountsDemo extends GDataDemo {
     initWidget(mainPanel);
     if (!GData.isLoaded(GDataSystemPackage.ANALYTICS)) {
       showStatus("Loading the GData Analytics package...", false);
-      GData.loadGDataApi(null, new Runnable() {
+      GData.loadGDataApi(GDATA_API_KEY, new Runnable() {
         public void run() {
           startDemo();
         }
