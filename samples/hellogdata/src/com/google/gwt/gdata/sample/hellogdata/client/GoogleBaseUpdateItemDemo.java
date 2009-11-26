@@ -83,7 +83,7 @@ public class GoogleBaseUpdateItemDemo extends GDataDemo {
     initWidget(mainPanel);
     if (!GData.isLoaded(GDataSystemPackage.GBASE)) {
       showStatus("Loading the GData Google-Base package...", false);
-      GData.loadGDataApi(null, new Runnable() {
+      GData.loadGDataApi(GDATA_API_KEY, new Runnable() {
         public void run() {
           startDemo();
         }

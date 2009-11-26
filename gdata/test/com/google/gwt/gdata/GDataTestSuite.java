@@ -79,6 +79,10 @@ public class GDataTestSuite extends GWTTestSuite {
     suite.addTestSuite(com.google.gwt.gdata.client.atom.TextTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.atom.UpdatedTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.atom.UriTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.batch.IdTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.batch.InterruptedTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.batch.OperationTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.batch.StatusTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.blogger.BlogCommentFeedTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.blogger.BlogCommentQueryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.blogger.BlogEntryTest.class);
@@ -281,6 +285,7 @@ public class GDataTestSuite extends GWTTestSuite {
     suite.addTestSuite(com.google.gwt.gdata.client.sidewiki.SidewikiUserFeedTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.sidewiki.SidewikiUserQueryTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.sidewiki.SourceTest.class);
+    suite.addTestSuite(com.google.gwt.gdata.client.sidewiki.UsefulnessTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.threading.InReplyToTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.threading.ThreadingLinkTest.class);
     suite.addTestSuite(com.google.gwt.gdata.client.threading.TotalTest.class);

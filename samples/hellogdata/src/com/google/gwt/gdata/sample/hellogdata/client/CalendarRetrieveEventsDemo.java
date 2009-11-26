@@ -80,7 +80,7 @@ public class CalendarRetrieveEventsDemo extends GDataDemo {
     initWidget(mainPanel);
     if (!GData.isLoaded(GDataSystemPackage.CALENDAR)) {
       showStatus("Loading the GData Calendar package...", false);
-      GData.loadGDataApi(null, new Runnable() {
+      GData.loadGDataApi(GDATA_API_KEY, new Runnable() {
         public void run() {
           startDemo();
         }

@@ -151,7 +151,7 @@ public class GDataPackagesDemo extends GDataDemo {
         actionLink.setText("Load");
         actionLink.addClickHandler(new ClickHandler() {
           public void onClick(ClickEvent event) {
-            GData.loadGDataApi(null, new Runnable() {
+            GData.loadGDataApi(GDATA_API_KEY, new Runnable() {
               public void run() {
                 refreshDemo();
               }
