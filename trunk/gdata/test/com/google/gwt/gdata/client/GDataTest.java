@@ -18,12 +18,14 @@ package com.google.gwt.gdata.client;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
+import java.util.ArrayList;
+
 /**
  * Base class for GData test.
  */
 public class GDataTest extends GWTTestCase {
 
-  private boolean isAsync = false;
+  protected boolean isAsync = false;
   
   @Override
   public String getModuleName() {
@@ -40,9 +42,31 @@ public class GDataTest extends GWTTestCase {
     }
   }
   
+  protected void executeGDataTest(Runnable test, int delay,
+      GDataPackage... requiredPackages) {
+    if (!GData.isLoaded(requiredPackages)) {
+      isAsync = true;
+      ArrayList<GDataPackage> packages = new ArrayList<GDataPackage>();
+      for (GDataPackage pack : requiredPackages) {
+        if (!pack.getValue().equals(GDataAuxiliaryPackage.BATCH.getValue()) &&
+            !pack.getValue().equals(GDataAuxiliaryPackage.MEDIARSS.getValue()))
+        {
+          packages.add(pack);
+        }
+      }
+      packages.add(GDataAuxiliaryPackage.BATCH);
+      packages.add(GDataAuxiliaryPackage.MEDIARSS);
+      GData.loadGDataApi(null, test);
+      delayTestFinish(delay);
+    } else {
+      test.run();
+    }
+  }
+  
   protected void finishGDataTest() {
     if (isAsync) {
       finishTest();
+      isAsync = false;
     }
   }
   

@@ -16,36 +16,17 @@
 
 package com.google.gwt.gdata.client.maps;
 
-import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.client.GDataSystemPackage;
-import com.google.gwt.junit.client.GWTTestCase;
+import com.google.gwt.gdata.client.GDataTest;
 
 /**
  * Base class for Maps tests.
  */
-public class MapsTest extends GWTTestCase {
-
-  private boolean isAsync = false;
+public class MapsTest extends GDataTest {
   
   @Override
-  public String getModuleName() {
-    return "com.google.gwt.gdata.GDataTest";
-  }
-  
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataSystemPackage.MAPS)) {
-      isAsync = true;
-      GData.loadGDataApi(null, test, GDataSystemPackage.MAPS);
-      delayTestFinish(delay);
-    } else {
-      test.run();
-    }
-  }
-  
-  protected void finishGDataTest() {
-    if (isAsync) {
-      finishTest();
-    }
+    this.executeGDataTest(test, delay, GDataSystemPackage.MAPS);
   }
 
 }

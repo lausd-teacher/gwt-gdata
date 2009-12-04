@@ -16,36 +16,17 @@
 
 package com.google.gwt.gdata.client.opensearch;
 
-import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.client.GDataAuxiliaryPackage;
-import com.google.gwt.junit.client.GWTTestCase;
+import com.google.gwt.gdata.client.GDataTest;
 
 /**
  * Base class for OpenSearch test.
  */
-public class OpenSearchTest extends GWTTestCase {
-
-  private boolean isAsync = false;
+public class OpenSearchTest extends GDataTest {
   
   @Override
-  public String getModuleName() {
-    return "com.google.gwt.gdata.GDataTest";
-  }
-  
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataAuxiliaryPackage.OPENSEARCH)) {
-      isAsync = true;
-      GData.loadGDataApi(null, test, GDataAuxiliaryPackage.OPENSEARCH);
-      delayTestFinish(delay);
-    } else {
-      test.run();
-    }
-  }
-  
-  protected void finishGDataTest() {
-    if (isAsync) {
-      finishTest();
-    }
+    this.executeGDataTest(test, delay, GDataAuxiliaryPackage.OPENSEARCH);
   }
   
 }

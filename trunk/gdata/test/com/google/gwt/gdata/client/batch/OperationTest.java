@@ -16,32 +16,45 @@
 
 package com.google.gwt.gdata.client.batch;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Operation class.
  */
-public class OperationTest extends GWTTestCase {
+public class OperationTest extends BatchTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    assertNotNull("TYPE_DELETE", Operation.TYPE_DELETE);
-    assertNotNull("TYPE_INSERT", Operation.TYPE_INSERT);
-    assertNotNull("TYPE_QUERY", Operation.TYPE_QUERY);
-    assertNotNull("TYPE_UPDATE", Operation.TYPE_UPDATE);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("TYPE_DELETE", Operation.TYPE_DELETE);
+        assertNotNull("TYPE_INSERT", Operation.TYPE_INSERT);
+        assertNotNull("TYPE_QUERY", Operation.TYPE_QUERY);
+        assertNotNull("TYPE_UPDATE", Operation.TYPE_UPDATE);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Operation.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Operation.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Operation obj = Operation.newInstance();
-    String type = "myValue";
-    obj.setType(type);
-    assertEquals("type", obj.getType(), type);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Operation obj = Operation.newInstance();
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

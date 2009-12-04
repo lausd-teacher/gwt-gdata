@@ -16,34 +16,42 @@
 
 package com.google.gwt.gdata.client.batch;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Status class.
  */
-public class StatusTest extends GWTTestCase {
+public class StatusTest extends BatchTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Status.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Status.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Status obj = Status.newInstance();
-    String contenttype = "myValue";
-    obj.setContentType(contenttype);
-    assertEquals("contenttype", obj.getContentType(), contenttype);
-    double code = 600813;
-    obj.setCode(code);
-    assertEquals("code", obj.getCode(), code);
-    String content = "myValue";
-    obj.setContent(content);
-    assertEquals("content", obj.getContent(), content);
-    String reason = "myValue";
-    obj.setReason(reason);
-    assertEquals("reason", obj.getReason(), reason);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Status obj = Status.newInstance();
+        String contenttype = "myValue";
+        obj.setContentType(contenttype);
+        assertEquals("contenttype", obj.getContentType(), contenttype);
+        double code = 600813;
+        obj.setCode(code);
+        assertEquals("code", obj.getCode(), code);
+        String content = "myValue";
+        obj.setContent(content);
+        assertEquals("content", obj.getContent(), content);
+        String reason = "myValue";
+        obj.setReason(reason);
+        assertEquals("reason", obj.getReason(), reason);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -14,19 +14,19 @@
  * the License.
  */
 
-package com.google.gwt.gdata.client.sidewiki;
+package com.google.gwt.gdata.client.batch;
 
-import com.google.gwt.gdata.client.GDataSystemPackage;
+import com.google.gwt.gdata.client.GDataAuxiliaryPackage;
 import com.google.gwt.gdata.client.GDataTest;
 
 /**
- * Base class for Sidewiki tests.
+ * Base class for Batch test.
  */
-public class SidewikiTest extends GDataTest {
+public class BatchTest extends GDataTest {
   
   @Override
   protected void executeGDataTest(Runnable test, int delay) {
-    this.executeGDataTest(test, delay, GDataSystemPackage.SIDEWIKI);
+    this.executeGDataTest(test, delay, GDataAuxiliaryPackage.BATCH);
   }
-
+  
 }

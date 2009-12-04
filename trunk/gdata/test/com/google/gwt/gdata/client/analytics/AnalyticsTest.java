@@ -16,36 +16,17 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.client.GDataSystemPackage;
-import com.google.gwt.junit.client.GWTTestCase;
+import com.google.gwt.gdata.client.GDataTest;
 
 /**
  * Base class for Analytics test.
  */
-public class AnalyticsTest extends GWTTestCase {
-
-  private boolean isAsync = false;
+public class AnalyticsTest extends GDataTest {
   
   @Override
-  public String getModuleName() {
-    return "com.google.gwt.gdata.GDataTest";
-  }
-  
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataSystemPackage.ANALYTICS)) {
-      isAsync = true;
-      GData.loadGDataApi(null, test, GDataSystemPackage.ANALYTICS);
-      delayTestFinish(delay);
-    } else {
-      test.run();
-    }
-  }
-  
-  protected void finishGDataTest() {
-    if (isAsync) {
-      finishTest();
-    }
+    this.executeGDataTest(test, delay, GDataSystemPackage.ANALYTICS);
   }
   
 }

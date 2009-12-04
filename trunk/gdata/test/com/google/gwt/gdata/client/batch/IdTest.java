@@ -16,25 +16,33 @@
 
 package com.google.gwt.gdata.client.batch;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Id class.
  */
-public class IdTest extends GWTTestCase {
+public class IdTest extends BatchTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Id.newInstance());
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Id.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
-    Id obj = Id.newInstance();
-    String id = "myValue";
-    obj.setId(id);
-    assertEquals("id", obj.getId(), id);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Id obj = Id.newInstance();
+        String id = "myValue";
+        obj.setId(id);
+        assertEquals("id", obj.getId(), id);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

@@ -16,36 +16,17 @@
 
 package com.google.gwt.gdata.client.threading;
 
-import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.client.GDataAuxiliaryPackage;
-import com.google.gwt.junit.client.GWTTestCase;
+import com.google.gwt.gdata.client.GDataTest;
 
 /**
  * Base class for Threading test.
  */
-public class ThreadingTest extends GWTTestCase {
-
-  private boolean isAsync = false;
+public class ThreadingTest extends GDataTest {
   
   @Override
-  public String getModuleName() {
-    return "com.google.gwt.gdata.GDataTest";
-  }
-  
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataAuxiliaryPackage.THREADING)) {
-      isAsync = true;
-      GData.loadGDataApi(null, test, GDataAuxiliaryPackage.THREADING);
-      delayTestFinish(delay);
-    } else {
-      test.run();
-    }
-  }
-  
-  protected void finishGDataTest() {
-    if (isAsync) {
-      finishTest();
-    }
+    this.executeGDataTest(test, delay, GDataAuxiliaryPackage.THREADING);
   }
   
 }
