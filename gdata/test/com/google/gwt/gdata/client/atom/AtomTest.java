@@ -16,36 +16,17 @@
 
 package com.google.gwt.gdata.client.atom;
 
-import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.client.GDataAuxiliaryPackage;
-import com.google.gwt.junit.client.GWTTestCase;
+import com.google.gwt.gdata.client.GDataTest;
 
 /**
  * Base class for Atom test.
  */
-public class AtomTest extends GWTTestCase {
-
-  private boolean isAsync = false;
+public class AtomTest extends GDataTest {
   
   @Override
-  public String getModuleName() {
-    return "com.google.gwt.gdata.GDataTest";
-  }
-  
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataAuxiliaryPackage.ATOM)) {
-      isAsync = true;
-      GData.loadGDataApi(null, test, GDataAuxiliaryPackage.ATOM);
-      delayTestFinish(delay);
-    } else {
-      test.run();
-    }
-  }
-  
-  protected void finishGDataTest() {
-    if (isAsync) {
-      finishTest();
-    }
+    this.executeGDataTest(test, delay, GDataAuxiliaryPackage.ATOM);
   }
   
 }

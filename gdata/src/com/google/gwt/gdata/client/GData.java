@@ -111,7 +111,7 @@ public class GData {
         }
         
         private native void callGDataOnLoad() /*-{
-          if(typeof($wnd.google.gdata) !== 'undefined') $wnd.google.gdata.onLoad();
+          if(typeof($wnd.google.gdata) !== undefined) $wnd.google.gdata.onLoad();
         }-*/;
         
         private void runAll() {

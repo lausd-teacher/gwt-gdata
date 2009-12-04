@@ -24,6 +24,7 @@ public enum GDataAuxiliaryPackage implements GDataPackage {
   ACL("acl"),
   APP("app"),
   ATOM("atom"),
+  BATCH("batch"),
   GEO("geo"),
   MEDIARSS("mediarss"),
   OPENSEARCH("opensearch"),

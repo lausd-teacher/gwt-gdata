@@ -16,36 +16,17 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.client.GDataSystemPackage;
-import com.google.gwt.junit.client.GWTTestCase;
+import com.google.gwt.gdata.client.GDataTest;
 
 /**
  * Base class for Calendar tests.
  */
-public class CalendarTest extends GWTTestCase {
-
-  private boolean isAsync = false;
+public class CalendarTest extends GDataTest {
   
   @Override
-  public String getModuleName() {
-    return "com.google.gwt.gdata.GDataTest";
-  }
-  
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataSystemPackage.CALENDAR)) {
-      isAsync = true;
-      GData.loadGDataApi(null, test, GDataSystemPackage.CALENDAR);
-      delayTestFinish(delay);
-    } else {
-      test.run();
-    }
+    super.executeGDataTest(test, delay, GDataSystemPackage.CALENDAR);
   }
   
-  protected void finishGDataTest() {
-    if (isAsync) {
-      finishTest();
-    }
-  }
-
 }

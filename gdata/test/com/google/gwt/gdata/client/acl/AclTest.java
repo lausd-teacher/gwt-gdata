@@ -16,36 +16,17 @@
 
 package com.google.gwt.gdata.client.acl;
 
-import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.client.GDataAuxiliaryPackage;
-import com.google.gwt.junit.client.GWTTestCase;
+import com.google.gwt.gdata.client.GDataTest;
 
 /**
  * Base class for Acl test.
  */
-public class AclTest extends GWTTestCase {
-
-  private boolean isAsync = false;
+public class AclTest extends GDataTest {
   
   @Override
-  public String getModuleName() {
-    return "com.google.gwt.gdata.GDataTest";
-  }
-  
   protected void executeGDataTest(Runnable test, int delay) {
-    if (!GData.isLoaded(GDataAuxiliaryPackage.ACL)) {
-      isAsync = true;
-      GData.loadGDataApi(null, test, GDataAuxiliaryPackage.ACL);
-      delayTestFinish(delay);
-    } else {
-      test.run();
-    }
-  }
-  
-  protected void finishGDataTest() {
-    if (isAsync) {
-      finishTest();
-    }
+    this.executeGDataTest(test, delay, GDataAuxiliaryPackage.ACL);
   }
   
 }
