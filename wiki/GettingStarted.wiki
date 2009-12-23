@@ -57,7 +57,7 @@ AuthSub authentication, from the user's perspective, is a three step process:
 
 From a developer standpoint the AuthSub process is encapsulated in a single call:
 {{{
-String scope = "http://code.google.com/apis/calendar/";
+String scope = "http://www.google.com/calendar/feeds/";
 User.login(scope);
 }}}
 Where *scope* defines the system and level of access to be requested.
