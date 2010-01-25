@@ -7,7 +7,7 @@ h2 {
 }
 
 
-.gwt-Hyperlink * {
+.gwt-Anchor {
 	text-decoration: underline;
 	cursor: pointer;
 }
