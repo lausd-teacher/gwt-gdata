@@ -192,7 +192,7 @@ public class AnalyticsTopSearchesDemo extends GDataDemo {
           new Label(entry.getStringValueOf("ga:searchDestinationPage")));
       mainPanel.addCell(row);
       mainPanel.setWidget(row, 3,
-          new Label(entry.getStringValueOf("ga:searchRefinements")));
+          new Label(String.valueOf(entry.getNumericValueOf("ga:searchRefinements"))));
     }
   }
 
