@@ -20,5 +20,9 @@ package com.google.gwt.gdata.client;
  * Represents a client login account type.
  */
 public enum ClientLoginAccountType {
-  HOSTED, GOOGLE, HOSTED_OR_GOOGLE
+  HOSTED, GOOGLE, HOSTED_OR_GOOGLE;
+  
+  public static ClientLoginAccountType fromString(String s) {
+    return ClientLoginAccountType.valueOf(s);
+  }
 }

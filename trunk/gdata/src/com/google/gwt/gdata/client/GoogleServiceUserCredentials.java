@@ -30,7 +30,7 @@ public class GoogleServiceUserCredentials extends JavaScriptObject {
    * @return The account type.
    */
   public final native ClientLoginAccountType getAccountType() /*-{
-    return @com.google.gwt.gdata.client.ClientLoginAccountType::valueOf(Ljava/lang/String;)(this.accountType);
+    return @com.google.gwt.gdata.client.ClientLoginAccountType::fromString(Ljava/lang/String;)(this.accountType);
   }-*/;
   
   /**

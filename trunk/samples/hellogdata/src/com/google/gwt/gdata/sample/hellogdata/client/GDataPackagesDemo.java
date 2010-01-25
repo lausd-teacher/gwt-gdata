@@ -20,9 +20,9 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.client.GDataSystemPackage;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 
@@ -143,7 +143,7 @@ public class GDataPackagesDemo extends GDataDemo {
       Label name = new HTML("<a href=\"" + sys[3] + "\">" + sys[0] + "</a>");
       mainPanel.setWidget(i, 1, name);
       Label statusLabel = new Label();
-      Hyperlink actionLink = new Hyperlink();
+      Anchor actionLink = new Anchor();
       if (GData.isLoaded(GDataSystemPackage.valueOf(identifier))) {
         statusLabel.setText("Loaded");
       } else {

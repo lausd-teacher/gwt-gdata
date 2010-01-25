@@ -56,7 +56,7 @@ public class User {
    * @return The status of the AuthSubJS process.
    */
   public static final native AuthSubStatus getStatus(String scope) /*-{
-    return @com.google.gwt.accounts.client.AuthSubStatus::valueOf(I)($wnd.google.accounts.user.getStatus(scope));
+    return @com.google.gwt.accounts.client.AuthSubStatus::fromInt(I)($wnd.google.accounts.user.getStatus(scope));
   }-*/;
   
   /**
@@ -64,7 +64,7 @@ public class User {
    * @return The status of the AuthSubJS process.
    */
   public static final native AuthSubStatus getStatus() /*-{
-    return @com.google.gwt.accounts.client.AuthSubStatus::valueOf(I)($wnd.google.accounts.user.getStatus());
+    return @com.google.gwt.accounts.client.AuthSubStatus::fromInt(I)($wnd.google.accounts.user.getStatus());
   }-*/;
   
   /**

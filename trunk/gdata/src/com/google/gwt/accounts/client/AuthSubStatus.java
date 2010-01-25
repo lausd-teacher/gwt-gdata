@@ -20,8 +20,10 @@ package com.google.gwt.accounts.client;
  * Represents the AuthSub authentication status.
  */
 public enum AuthSubStatus {
+  
   LOGGED_OUT, LOGGING_IN, LOGGED_IN;
-  public static AuthSubStatus valueOf(int i) {
+  
+  public static AuthSubStatus fromInt(int i) {
     switch(i) {
       case 0:
         return LOGGED_OUT;
