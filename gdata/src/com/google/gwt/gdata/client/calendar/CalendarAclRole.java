@@ -44,6 +44,7 @@ public class CalendarAclRole extends AclRole {
   /**
    * The specified users have full owner access to the calendar.
    */
+  @SuppressWarnings("hiding")
   public static final String VALUE_OWNER = getConstant("VALUE_OWNER");
 
   /**
