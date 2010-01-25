@@ -1,0 +1,67 @@
+/*
+ * Copyright 2009 Google Inc.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+package com.google.gwt.gdata.client.analytics;
+
+/**
+ * Tests for the Engagement class.
+ */
+public class EngagementTest extends AnalyticsTest {
+  @Override
+  public String getModuleName() {
+    return "com.google.gwt.gdata.GDataTest";
+  }
+
+  public void testConstants() {
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("COMPARISON_EQ", Engagement.COMPARISON_EQ);
+        assertNotNull("COMPARISON_GT", Engagement.COMPARISON_GT);
+        assertNotNull("COMPARISON_LT", Engagement.COMPARISON_LT);
+        assertNotNull("TYPE_PAGES_VISITED", Engagement.TYPE_PAGES_VISITED);
+        assertNotNull("TYPE_TIME_ON_SITE", Engagement.TYPE_TIME_ON_SITE);
+        finishGDataTest();
+      }
+    }, 10000);
+  }
+
+  public void testConstructors() {
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Engagement.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
+  }
+
+  public void testProperties() {
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Engagement obj = Engagement.newInstance();
+        String type = "myValue";
+        obj.setType(type);
+        assertEquals("type", obj.getType(), type);
+        String comparison = "myValue";
+        obj.setComparison(comparison);
+        assertEquals("comparison", obj.getComparison(), comparison);
+        double thresholdvalue = 600813;
+        obj.setThresholdValue(thresholdvalue);
+        assertEquals("thresholdvalue", obj.getThresholdValue(), thresholdvalue);
+        finishGDataTest();
+      }
+    }, 10000);
+  }
+}
