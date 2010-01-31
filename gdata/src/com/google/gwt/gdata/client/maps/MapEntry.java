@@ -81,7 +81,7 @@ public class MapEntry extends com.google.gwt.gdata.client.Entry {
    * @return Link that provides the URI of an alternate format of the entry's
    * or feed's contents.
    */
-  public final native com.google.gwt.gdata.client.Link
+  public final native MapsLink
       getAtomAlternateLink() /*-{
     return this.getAtomAlternateLink();
   }-*/;
@@ -93,7 +93,7 @@ public class MapEntry extends com.google.gwt.gdata.client.Entry {
    * @return Link that provides the URI of the full feed
    * (without any query parameters).
    */
-  public final native com.google.gwt.gdata.client.Link getAtomFeedLink() /*-{
+  public final native MapsLink getAtomFeedLink() /*-{
     return this.getAtomFeedLink();
   }-*/;
 

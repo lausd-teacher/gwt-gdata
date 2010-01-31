@@ -50,6 +50,11 @@ public class Im extends JavaScriptObject {
   public static final String PROTOCOL_MSN = getConstant("PROTOCOL_MSN");
 
   /**
+   * NetMeeting.
+   */
+  public static final String PROTOCOL_NETMEETING = getConstant("PROTOCOL_NETMEETING");
+
+  /**
    * Tencent QQ.
    */
   public static final String PROTOCOL_QQ = getConstant("PROTOCOL_QQ");

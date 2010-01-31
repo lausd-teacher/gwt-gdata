@@ -41,8 +41,19 @@ public class MapFeed extends com.google.gwt.gdata.client.Feed<MapEntry> {
    * @return Link that provides the URI of the full feed
    * (without any query parameters).
    */
-  public final native com.google.gwt.gdata.client.Link getAtomFeedLink() /*-{
+  public final native MapsLink getAtomFeedLink() /*-{
     return this.getAtomFeedLink();
+  }-*/;
+
+  /**
+   * Returns the link that provides the URI that can be used to batch
+   * operations to query, insert, update and delete entries on this feed.
+   * 
+   * @return Link that provides the URI that can be used to batch operations
+   * to query, insert, update and delete entries on this feed.
+   */
+  public final native MapsLink getFeedBatchLink() /*-{
+    return this.getFeedBatchLink();
   }-*/;
 
   /**
@@ -50,7 +61,7 @@ public class MapFeed extends com.google.gwt.gdata.client.Feed<MapEntry> {
    * 
    * @return Link that provides the URI of next page in a paged feed.
    */
-  public final native com.google.gwt.gdata.client.Link getNextLink() /*-{
+  public final native MapsLink getNextLink() /*-{
     return this.getNextLink();
   }-*/;
 

@@ -24,11 +24,21 @@ import com.google.gwt.gdata.client.GDataRequestParameters;
 public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
 
   /**
+   * Analytics data feed.
+   */
+  public static final String KIND_ANALYTICS_DATA =
+    getConstant("KIND_ANALYTICS_DATA");
+
+  /**
    * Constructs a data feed.
    */
   @SuppressWarnings("unchecked")
   public static native DataFeed newInstance() /*-{
     return new $wnd.google.gdata.analytics.DataFeed();
+  }-*/;
+
+  private static native String getConstant(String name) /*-{
+    return $wnd.google.gdata.analytics.DataFeed[name];
   }-*/;
 
   protected DataFeed() { }
@@ -40,6 +50,15 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
    */
   public final native void addDataSource(DataSource dataSource) /*-{
     this.addDataSource(dataSource);
+  }-*/;
+
+  /**
+   * Adds a new segment.
+   * 
+   * @param segment Segment to add.
+   */
+  public final native void addSegment(Segment segment) /*-{
+    this.addSegment(segment);
   }-*/;
 
   /**
@@ -85,6 +104,15 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
    */
   public final native com.google.gwt.gdata.client.Link getPreviousLink() /*-{
     return this.getPreviousLink();
+  }-*/;
+
+  /**
+   * Returns the segments.
+   * 
+   * @return Segments.
+   */
+  public final native Segment[] getSegments() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getSegments());
   }-*/;
 
   /**
@@ -160,6 +188,17 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
    */
   public final native void setEndDate(EndDate endDate) /*-{
     this.setEndDate(endDate);
+  }-*/;
+
+  /**
+   * Sets the segments.
+   * 
+   * @param segments Segments, where each segment is added using addSegment().
+   */
+  public final native void setSegments(Segment[] segments) /*-{
+    this.setSegments(
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(segments)
+    );
   }-*/;
 
   /**

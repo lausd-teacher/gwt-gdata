@@ -24,11 +24,21 @@ import com.google.gwt.gdata.client.GDataRequestParameters;
 public class DataEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
+   * Analytics data entry.
+   */
+  public static final String KIND_ANALYTICS_DATAROW =
+    getConstant("KIND_ANALYTICS_DATAROW");
+
+  /**
    * Constructs a data entry.
    * @return A DataEntry object.
    */
   public static native DataEntry newInstance() /*-{
     return new $wnd.google.gdata.analytics.DataEntry();
+  }-*/;
+
+  private static native String getConstant(String name) /*-{
+    return $wnd.google.gdata.analytics.DataEntry[name];
   }-*/;
 
   protected DataEntry() { }

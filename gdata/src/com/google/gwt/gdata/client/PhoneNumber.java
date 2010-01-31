@@ -24,6 +24,26 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class PhoneNumber extends JavaScriptObject {
 
   /**
+   * Assistant's phone number.
+   */
+  public static final String REL_ASSISTANT = getConstant("REL_ASSISTANT");
+
+  /**
+   * Callback number.
+   */
+  public static final String REL_CALLBACK = getConstant("REL_CALLBACK");
+
+  /**
+   * Car phone number.
+   */
+  public static final String REL_CAR = getConstant("REL_CAR");
+
+  /**
+   * Company main number.
+   */
+  public static final String REL_COMPANY_MAIN = getConstant("REL_COMPANY_MAIN");
+
+  /**
    * Fax number.
    */
   public static final String REL_FAX = getConstant("REL_FAX");
@@ -39,6 +59,16 @@ public class PhoneNumber extends JavaScriptObject {
   public static final String REL_HOME_FAX = getConstant("REL_HOME_FAX");
 
   /**
+   * ISDN number.
+   */
+  public static final String REL_ISDN = getConstant("REL_ISDN");
+
+  /**
+   * Main number.
+   */
+  public static final String REL_MAIN = getConstant("REL_MAIN");
+
+  /**
    * Cell phone number.
    */
   public static final String REL_MOBILE = getConstant("REL_MOBILE");
@@ -49,9 +79,29 @@ public class PhoneNumber extends JavaScriptObject {
   public static final String REL_OTHER = getConstant("REL_OTHER");
 
   /**
+   * Other fax number.
+   */
+  public static final String REL_OTHER_FAX = getConstant("REL_OTHER_FAX");
+
+  /**
    * Pager number.
    */
   public static final String REL_PAGER = getConstant("REL_PAGER");
+
+  /**
+   * Radio phone number.
+   */
+  public static final String REL_RADIO = getConstant("REL_RADIO");
+
+  /**
+   * Telex number.
+   */
+  public static final String REL_TELEX = getConstant("REL_TELEX");
+
+  /**
+   * TTY/TDD number.
+   */
+  public static final String REL_TTY_TDD = getConstant("REL_TTY_TDD");
 
   /**
    * Work phone number.
@@ -62,6 +112,16 @@ public class PhoneNumber extends JavaScriptObject {
    * Work fax number.
    */
   public static final String REL_WORK_FAX = getConstant("REL_WORK_FAX");
+
+  /**
+   * Work cell phone number.
+   */
+  public static final String REL_WORK_MOBILE = getConstant("REL_WORK_MOBILE");
+
+  /**
+   * Work pager number.
+   */
+  public static final String REL_WORK_PAGER = getConstant("REL_WORK_PAGER");
 
   /**
    * Constructs a phone number.

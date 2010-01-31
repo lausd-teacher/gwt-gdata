@@ -20,9 +20,19 @@ package com.google.gwt.gdata.client.analytics;
  * Tests for the AccountFeed class.
  */
 public class AccountFeedTest extends AnalyticsTest {
+  
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
+  }
+
+  public void testConstants() {
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("KIND_ANALYTICS_ACCOUNTS", AccountFeed.KIND_ANALYTICS_ACCOUNTS);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
@@ -38,6 +48,7 @@ public class AccountFeedTest extends AnalyticsTest {
     executeGDataTest(new Runnable() {
       public void run() {
         AccountFeed obj = AccountFeed.newInstance();
+        // Unit Test for addSegment(Segment segment)
         // Unit Test for getNextLink()
         assertEquals("getNextLink", obj.getNextLink(), null);
         // Unit Test for getPreviousLink()
@@ -46,4 +57,12 @@ public class AccountFeedTest extends AnalyticsTest {
       }
     }, 10000);
   }
+
+  public void testProperties() {
+    AccountFeed obj = AccountFeed.newInstance();
+    Segment[] segments = new Segment[]{ Segment.newInstance() };
+    obj.setSegments(segments);
+    assertEquals("segments", obj.getSegments().length, segments.length);
+  }
+  
 }

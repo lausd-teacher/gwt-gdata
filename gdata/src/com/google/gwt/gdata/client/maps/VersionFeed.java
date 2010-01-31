@@ -42,7 +42,7 @@ public class VersionFeed
    * @return Link that provides the URI of the full feed
    * (without any query parameters).
    */
-  public final native com.google.gwt.gdata.client.Link getAtomFeedLink() /*-{
+  public final native MapsLink getAtomFeedLink() /*-{
     return this.getAtomFeedLink();
   }-*/;
 
@@ -51,7 +51,7 @@ public class VersionFeed
    * 
    * @return Link that provides the URI of next page in a paged feed.
    */
-  public final native com.google.gwt.gdata.client.Link getNextLink() /*-{
+  public final native MapsLink getNextLink() /*-{
     return this.getNextLink();
   }-*/;
 
