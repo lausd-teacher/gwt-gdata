@@ -53,6 +53,9 @@ public class DataQueryTest extends AnalyticsTest {
         String enddate = "myValue";
         obj.setEndDate(enddate);
         assertEquals("enddate", obj.getEndDate(), enddate);
+        String segment = "myValue";
+        obj.setSegment(segment);
+        assertEquals("segment", obj.getSegment(), segment);
         String metrics = "myValue";
         obj.setMetrics(metrics);
         assertEquals("metrics", obj.getMetrics(), metrics);

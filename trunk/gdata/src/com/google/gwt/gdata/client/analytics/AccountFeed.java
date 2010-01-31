@@ -25,6 +25,12 @@ public class AccountFeed
     extends com.google.gwt.gdata.client.Feed<AccountEntry> {
 
   /**
+   * Analytics account feed.
+   */
+  public static final String KIND_ANALYTICS_ACCOUNTS =
+    getConstant("KIND_ANALYTICS_ACCOUNTS");
+
+  /**
    * Constructs an account feed.
    * @return An AccountFeed object.
    */
@@ -33,7 +39,20 @@ public class AccountFeed
     return new $wnd.google.gdata.analytics.AccountFeed();
   }-*/;
 
+  private static native String getConstant(String name) /*-{
+    return $wnd.google.gdata.analytics.AccountFeed[name];
+  }-*/;
+
   protected AccountFeed() { }
+
+  /**
+   * Adds a new segment.
+   * 
+   * @param segment Segment to add.
+   */
+  public final native void addSegment(Segment segment) /*-{
+    this.addSegment(segment);
+  }-*/;
 
   /**
    * Returns the link that provides the URI of next page in a paged feed.
@@ -51,6 +70,15 @@ public class AccountFeed
    */
   public final native com.google.gwt.gdata.client.Link getPreviousLink() /*-{
     return this.getPreviousLink();
+  }-*/;
+
+  /**
+   * Returns the segments.
+   * 
+   * @return Segments.
+   */
+  public final native Segment[] getSegments() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getSegments());
   }-*/;
 
   /**
@@ -88,5 +116,16 @@ public class AccountFeed
       AccountEntryCallback callback) {
     this.insertEntry(entry, callback);
   }
+
+  /**
+   * Sets the segments.
+   * 
+   * @param segments Segments, where each segment is added using addSegment().
+   */
+  public final native void setSegments(Segment[] segments) /*-{
+    this.setSegments(
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(segments)
+    );
+  }-*/;
 
 }

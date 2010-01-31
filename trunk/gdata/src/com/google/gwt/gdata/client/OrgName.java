@@ -41,6 +41,15 @@ public class OrgName extends JavaScriptObject {
   public final native String getValue() /*-{
     return this.getValue();
   }-*/;
+
+  /**
+   * Returns the yomi name of organization. This attribute is optional.
+   * 
+   * @return Yomi name of organization.
+   */
+  public final native String getYomi() /*-{
+    return this.getYomi();
+  }-*/;
   
   /**
    * Sets the value. This attribute is optional.
@@ -49,6 +58,15 @@ public class OrgName extends JavaScriptObject {
    */
   public final native void setValue(String value) /*-{
     this.setValue(value);
+  }-*/;
+
+  /**
+   * Sets the yomi name of organization. This attribute is optional.
+   * 
+   * @param yomi Yomi name of organization.
+   */
+  public final native void setYomi(String yomi) /*-{
+    this.setYomi(yomi);
   }-*/;
 
 }

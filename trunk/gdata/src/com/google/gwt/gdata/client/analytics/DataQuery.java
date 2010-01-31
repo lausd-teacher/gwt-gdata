@@ -101,6 +101,15 @@ public class DataQuery extends Query {
   }-*/;
 
   /**
+   * Returns the segment to be applied.
+   * 
+   * @return Segment to be applied.
+   */
+  public final native String getSegment() /*-{
+    return this.getSegment();
+  }-*/;
+
+  /**
    * Returns the comma separated list of sort keys in order of importance.
    * 
    * @return Comma separated list of sort keys in order of importance.
@@ -190,6 +199,15 @@ public class DataQuery extends Query {
    */
   public final native void setPrettyprint(boolean prettyprint) /*-{
     this.setPrettyprint(prettyprint);
+  }-*/;
+
+  /**
+   * Sets the segment to be applied.
+   * 
+   * @param segment Segment to be applied.
+   */
+  public final native void setSegment(String segment) /*-{
+    this.setSegment(segment);
   }-*/;
 
   /**

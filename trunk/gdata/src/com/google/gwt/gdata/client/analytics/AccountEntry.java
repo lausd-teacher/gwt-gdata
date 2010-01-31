@@ -24,6 +24,12 @@ import com.google.gwt.gdata.client.GDataRequestParameters;
 public class AccountEntry extends com.google.gwt.gdata.client.Entry {
 
   /**
+   * Analytics account entry.
+   */
+  public static final String KIND_ANALYTICS_ACCOUNT = 
+    getConstant("KIND_ANALYTICS_ACCOUNT");
+
+  /**
    * Constructs an account entry.
    * @return An AccountEntry object.
    */
@@ -31,7 +37,29 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry {
     return new $wnd.google.gdata.analytics.AccountEntry();
   }-*/;
 
+  private static native String getConstant(String name) /*-{
+    return $wnd.google.gdata.analytics.AccountEntry[name];
+  }-*/;
+
   protected AccountEntry() { }
+
+  /**
+   * Adds a new custom variable.
+   * 
+   * @param customVariable Custom variable to add.
+   */
+  public final native void addCustomVariable(CustomVariable customVariable) /*-{
+    this.addCustomVariable(customVariable);
+  }-*/;
+
+  /**
+   * Adds a new goal.
+   * 
+   * @param goal Goal to add.
+   */
+  public final native void addGoal(Goal goal) /*-{
+    this.addGoal(goal);
+  }-*/;
 
   /**
    * Adds a new property.
@@ -63,6 +91,24 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry {
       GDataRequestParameters parameters) {
     this.delete(callback, parameters);
   }
+
+  /**
+   * Returns the custom variables.
+   * 
+   * @return Custom variables.
+   */
+  public final native CustomVariable[] getCustomVariables() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getCustomVariables());
+  }-*/;
+
+  /**
+   * Returns the goals.
+   * 
+   * @return Goals.
+   */
+  public final native Goal[] getGoals() /*-{
+    return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getGoals());
+  }-*/;
 
   /**
    * Returns the properties.
@@ -116,6 +162,29 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry {
    */
   public final native TableId getTableId() /*-{
     return this.getTableId();
+  }-*/;
+
+  /**
+   * Sets the custom variables.
+   * 
+   * @param customVariables Custom variables, where each custom variable is
+   * added using addCustomVariable().
+   */
+  public final native void setCustomVariables(CustomVariable[] customVariables) /*-{
+    this.setCustomVariables(
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(customVariables)
+    );
+  }-*/;
+
+  /**
+   * Sets the goals.
+   * 
+   * @param goals Goals, where each goal is added using addGoal().
+   */
+  public final native void setGoals(Goal[] goals) /*-{
+    this.setGoals(
+      @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(goals)
+    );
   }-*/;
 
   /**

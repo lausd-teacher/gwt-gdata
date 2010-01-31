@@ -33,6 +33,7 @@ public class ImTest extends GDataTest {
         assertNotNull("PROTOCOL_ICQ", Im.PROTOCOL_ICQ);
         assertNotNull("PROTOCOL_JABBER", Im.PROTOCOL_JABBER);
         assertNotNull("PROTOCOL_MSN", Im.PROTOCOL_MSN);
+        assertNotNull("PROTOCOL_NETMEETING", Im.PROTOCOL_NETMEETING);
         assertNotNull("PROTOCOL_QQ", Im.PROTOCOL_QQ);
         assertNotNull("PROTOCOL_SKYPE", Im.PROTOCOL_SKYPE);
         assertNotNull("PROTOCOL_YAHOO", Im.PROTOCOL_YAHOO);

@@ -80,7 +80,7 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
    * @return Link that provides the URI of the full feed
    * (without any query parameters).
    */
-  public final native com.google.gwt.gdata.client.Link getAtomFeedLink() /*-{
+  public final native MapsLink getAtomFeedLink() /*-{
     return this.getAtomFeedLink();
   }-*/;
 

@@ -20,25 +20,33 @@ package com.google.gwt.gdata.client;
  * Tests for the PhoneNumber class.
  */
 public class PhoneNumberTest extends GDataTest {
+  
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstants() {
-    executeGDataTest(new Runnable() {
-      public void run() {
-        assertNotNull("REL_FAX", PhoneNumber.REL_FAX);
-        assertNotNull("REL_HOME", PhoneNumber.REL_HOME);
-        assertNotNull("REL_HOME_FAX", PhoneNumber.REL_HOME_FAX);
-        assertNotNull("REL_MOBILE", PhoneNumber.REL_MOBILE);
-        assertNotNull("REL_OTHER", PhoneNumber.REL_OTHER);
-        assertNotNull("REL_PAGER", PhoneNumber.REL_PAGER);
-        assertNotNull("REL_WORK", PhoneNumber.REL_WORK);
-        assertNotNull("REL_WORK_FAX", PhoneNumber.REL_WORK_FAX);
-        finishGDataTest();
-      }
-    }, 10000);
+    assertNotNull("REL_ASSISTANT", PhoneNumber.REL_ASSISTANT);
+    assertNotNull("REL_CALLBACK", PhoneNumber.REL_CALLBACK);
+    assertNotNull("REL_CAR", PhoneNumber.REL_CAR);
+    assertNotNull("REL_COMPANY_MAIN", PhoneNumber.REL_COMPANY_MAIN);
+    assertNotNull("REL_FAX", PhoneNumber.REL_FAX);
+    assertNotNull("REL_HOME", PhoneNumber.REL_HOME);
+    assertNotNull("REL_HOME_FAX", PhoneNumber.REL_HOME_FAX);
+    assertNotNull("REL_ISDN", PhoneNumber.REL_ISDN);
+    assertNotNull("REL_MAIN", PhoneNumber.REL_MAIN);
+    assertNotNull("REL_MOBILE", PhoneNumber.REL_MOBILE);
+    assertNotNull("REL_OTHER", PhoneNumber.REL_OTHER);
+    assertNotNull("REL_OTHER_FAX", PhoneNumber.REL_OTHER_FAX);
+    assertNotNull("REL_PAGER", PhoneNumber.REL_PAGER);
+    assertNotNull("REL_RADIO", PhoneNumber.REL_RADIO);
+    assertNotNull("REL_TELEX", PhoneNumber.REL_TELEX);
+    assertNotNull("REL_TTY_TDD", PhoneNumber.REL_TTY_TDD);
+    assertNotNull("REL_WORK", PhoneNumber.REL_WORK);
+    assertNotNull("REL_WORK_FAX", PhoneNumber.REL_WORK_FAX);
+    assertNotNull("REL_WORK_MOBILE", PhoneNumber.REL_WORK_MOBILE);
+    assertNotNull("REL_WORK_PAGER", PhoneNumber.REL_WORK_PAGER);
   }
 
   public void testConstructors() {

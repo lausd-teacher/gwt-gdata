@@ -38,5 +38,6 @@ public class GoogleServiceTest extends GDataTest {
     // Unit Test for setGadgetsAuthentication(String authType, JavaScriptObject params)
     // Unit Test for setUserCredentials(String username, String password, ClientLoginAccountType accountType)
     // Unit Test for useOAuth(String serviceName, JavaScriptObject params)
+    // Unit Test for useXGDataAuthorization()
   }
 }

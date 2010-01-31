@@ -20,6 +20,7 @@ package com.google.gwt.gdata.client;
  * Tests for the OrgName class.
  */
 public class OrgNameTest extends GDataTest {
+  
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
@@ -41,6 +42,9 @@ public class OrgNameTest extends GDataTest {
         String value = "myValue";
         obj.setValue(value);
         assertEquals("value", obj.getValue(), value);
+        String yomi = "myValue";
+        obj.setYomi(yomi);
+        assertEquals("yomi", obj.getYomi(), yomi);
         finishGDataTest();
       }
     }, 10000);

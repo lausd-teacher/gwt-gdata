@@ -20,9 +20,20 @@ package com.google.gwt.gdata.client.analytics;
  * Tests for the DataEntry class.
  */
 public class DataEntryTest extends AnalyticsTest {
+  
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
+  }
+
+  public void testConstants() {
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("KIND_ANALYTICS_DATAROW",
+            DataEntry.KIND_ANALYTICS_DATAROW);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {

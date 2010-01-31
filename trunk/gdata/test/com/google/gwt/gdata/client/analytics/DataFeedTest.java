@@ -20,9 +20,19 @@ package com.google.gwt.gdata.client.analytics;
  * Tests for the DataFeed class.
  */
 public class DataFeedTest extends AnalyticsTest {
+  
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
+  }
+
+  public void testConstants() {
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("KIND_ANALYTICS_DATA", DataFeed.KIND_ANALYTICS_DATA);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testConstructors() {
@@ -38,6 +48,7 @@ public class DataFeedTest extends AnalyticsTest {
     executeGDataTest(new Runnable() {
       public void run() {
         DataFeed obj = DataFeed.newInstance();
+        // Unit Test for addSegment(Segment segment)
         // Unit Test for addDataSource(DataSource dataSource)
         // Unit Test for getNextLink()
         assertEquals("getNextLink", obj.getNextLink(), null);
@@ -55,6 +66,9 @@ public class DataFeedTest extends AnalyticsTest {
         DataSource[] datasources = new DataSource[]{ DataSource.newInstance() };
         obj.setDataSources(datasources);
         assertEquals("datasources", obj.getDataSources().length, datasources.length);
+        Segment[] segments = new Segment[]{ Segment.newInstance() };
+        obj.setSegments(segments);
+        assertEquals("segments", obj.getSegments().length, segments.length);
         EndDate enddate = EndDate.newInstance();
         obj.setEndDate(enddate);
         assertSame("enddate", obj.getEndDate(), enddate);

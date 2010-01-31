@@ -40,6 +40,8 @@ public class MapFeedTest extends MapsTest {
         MapFeed obj = MapFeed.newInstance();
         // Unit Test for getAtomFeedLink()
         assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
+        // Unit Test for getFeedBatchLink()
+        assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
         // Unit Test for getNextLink()
         assertEquals("getNextLink", obj.getNextLink(), null);
         finishGDataTest();

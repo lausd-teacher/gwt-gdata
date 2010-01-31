@@ -28,12 +28,12 @@ public class EmailTest extends GDataTest {
   public void testConstants() {
     executeGDataTest(new Runnable() {
       public void run() {
+        assertNotNull("REL_HOME", Email.REL_HOME);
+        assertNotNull("REL_OTHER", Email.REL_OTHER);
+        assertNotNull("REL_WORK", Email.REL_WORK);
         finishGDataTest();
       }
     }, 10000);
-    assertNotNull("REL_HOME", Email.REL_HOME);
-    assertNotNull("REL_OTHER", Email.REL_OTHER);
-    assertNotNull("REL_WORK", Email.REL_WORK);
   }
 
   public void testConstructors() {
@@ -52,6 +52,9 @@ public class EmailTest extends GDataTest {
         boolean primary = true;
         obj.setPrimary(primary);
         assertSame("primary", obj.getPrimary(), primary);
+        String displayname = "myValue";
+        obj.setDisplayName(displayname);
+        assertEquals("displayname", obj.getDisplayName(), displayname);
         String rel = "myValue";
         obj.setRel(rel);
         assertEquals("rel", obj.getRel(), rel);

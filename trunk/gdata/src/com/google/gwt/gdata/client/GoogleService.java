@@ -131,5 +131,13 @@ public class GoogleService extends Service {
   public final native void useOAuth() /*-{
     this.useOAuth();
   }-*/;
+  
+  /**
+   * Sets the header key used for Authorization to "X-GData-Authorization".
+   * This is for cases where the "Authorization" header cannot be set.
+   */
+  public final native void useXGDataAuthorization() /*-{
+    this.useXGDataAuthorization();
+  }-*/;
 
 }

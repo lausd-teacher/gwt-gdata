@@ -62,6 +62,15 @@ public class Email extends JavaScriptObject {
   }-*/;
 
   /**
+   * Returns the displayName. This attribute is optional.
+   * 
+   * @return DisplayName.
+   */
+  public final native String getDisplayName() /*-{
+    return this.getDisplayName();
+  }-*/;
+
+  /**
    * Returns the label. This attribute is optional.
    * 
    * @return The label.
@@ -96,6 +105,15 @@ public class Email extends JavaScriptObject {
    */
   public final native void setAddress(String address) /*-{
     this.setAddress(address);
+  }-*/;
+
+  /**
+   * Sets the displayName. This attribute is optional.
+   * 
+   * @param displayName DisplayName.
+   */
+  public final native void setDisplayName(String displayName) /*-{
+    this.setDisplayName(displayName);
   }-*/;
 
   /**
