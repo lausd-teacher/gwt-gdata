@@ -123,7 +123,7 @@ public class CalendarCreateCalendarDemo extends GDataDemo {
     entry.setColor(ColorProperty.newInstance());
     entry.getColor().setValue(ColorProperty.VALUE_RGB_2952A3);
     showStatus("Creating calendar...", false);
-    service.insertCalendarEntry(calendarsFeedUri, entry,
+    service.insertEntry(calendarsFeedUri, entry,
         new CalendarEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while retrieving the Calendar feed: " +

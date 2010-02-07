@@ -16,11 +16,13 @@
 
 package com.google.gwt.gdata.client.analytics;
 
+import com.google.gwt.gdata.client.Feed;
+
 /**
  * Feed element in VariationFeed.
  */
 public class VariationFeed
-    extends com.google.gwt.gdata.client.Feed<VariationEntry> {
+    extends Feed<VariationFeed, VariationEntry> {
 
   /**
    * Constructs a variation feed.

@@ -23,16 +23,19 @@ import com.google.gwt.gdata.client.opensearch.TotalResults;
 
 /**
  * Describes a feed for the Google Data API.
- * @param <E> The Entry type.
+ * 
+ * @param <F> Feed type associated with bound subtype.
+ * @param <E> Entry type associated with bound subtype.
  */
-public class Feed<E extends Entry>
+@SuppressWarnings("unchecked")
+public class Feed<F extends Feed, E extends Entry>
     extends com.google.gwt.gdata.client.atom.Feed<E> {
   
   /**
    * Constructs a feed.
    * @return A Feed object.
    */
-  public static native <E extends Entry> Feed<E> newInstance() /*-{
+  public static native <F extends Feed, E extends Entry> Feed<F, E> newInstance() /*-{
     return new $wnd.google.gdata.Feed();
   }-*/;
 
@@ -87,6 +90,15 @@ public class Feed<E extends Entry>
   public final native ItemsPerPage getItemsPerPage() /*-{
     return this.getItemsPerPage();
   }-*/;
+  
+  /**
+   * Returns the kind of the feed. This attribute is optional.
+   * 
+   * @return Kind of the feed.
+   */
+  public final native String getKind() /*-{
+    return this.getKind();
+  }-*/;
 
   /**
    * Returns the link of a relation and type.
@@ -108,6 +120,37 @@ public class Feed<E extends Entry>
    */
   public final native com.google.gwt.gdata.client.Link getLink(String rel) /*-{
     return this.getLink(rel);
+  }-*/;
+
+  /**
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final native void getSelf(Callback<F> callback) /*-{
+    this.getSelf(
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+    );
+  }-*/;
+
+  /**
+   * Returns the current representation of the feed by requesting it from the
+   * associated service using the feeds self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final native void getSelf(Callback<F> callback,
+      GDataRequestParameters parameters) /*-{
+    this.getSelf(
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
   }-*/;
 
   /**
@@ -138,6 +181,21 @@ public class Feed<E extends Entry>
   }-*/;
 
   /**
+   * Inserts a new entry into the feed.
+   * 
+   * @param entry Entry to insert.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final native void insertEntry(E entry, Callback<E> callback) /*-{
+    this.insertEntry(
+      entry,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+    );
+  }-*/;
+
+  /**
    * Sets the entity tag of the feed. This attribute is optional.
    * 
    * @param etag Entity tag of the feed. 
@@ -154,6 +212,15 @@ public class Feed<E extends Entry>
    */
   public final native void setItemsPerPage(ItemsPerPage itemsPerPage) /*-{
     this.setItemsPerPage(itemsPerPage);
+  }-*/;
+  
+  /**
+   * Sets the kind of the feed. This attribute is optional.
+   * 
+   * @param kind Kind of the feed.
+   */
+  public final native void setKind(String kind) /*-{
+    this.setKind(kind);
   }-*/;
 
   /**
@@ -172,37 +239,6 @@ public class Feed<E extends Entry>
    */
   public final native void setTotalResults(TotalResults totalResults) /*-{
     this.setTotalResults(totalResults);
-  }-*/;
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  protected final native <F extends Feed<E>> void get(
-      Callback<F> callback, GDataRequestParameters parameters) /*-{
-    this.getSelf(
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
-      parameters
-    );
-  }-*/;
-
-  /**
-   * Inserts a new entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  protected final native void insertEntry(E entry, Callback<E> callback) /*-{
-    this.insertEntry(
-      entry,
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
-    );
   }-*/;
 
 }

@@ -16,11 +16,13 @@
 
 package com.google.gwt.gdata.client.analytics;
 
+import com.google.gwt.gdata.client.Feed;
+
 /**
  * Feed element in SectionFeed.
  */
 public class SectionFeed
-    extends com.google.gwt.gdata.client.Feed<SectionEntry> {
+    extends Feed<SectionFeed, SectionEntry> {
 
   /**
    * Constructs a section feed.

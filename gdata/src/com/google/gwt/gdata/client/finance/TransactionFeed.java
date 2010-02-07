@@ -16,13 +16,13 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Describes a Finance transaction feed.
  */
 public class TransactionFeed
-    extends com.google.gwt.gdata.client.Feed<TransactionEntry> {
+    extends Feed<TransactionFeed, TransactionEntry> {
 
   /**
    * Constructs a Finance transaction feed.
@@ -34,41 +34,5 @@ public class TransactionFeed
   }-*/;
 
   protected TransactionFeed() { }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(TransactionFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(TransactionFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new transaction entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertTransactionEntry(TransactionEntry entry,
-      TransactionEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
 }

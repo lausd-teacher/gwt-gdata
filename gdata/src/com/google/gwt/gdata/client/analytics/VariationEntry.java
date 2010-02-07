@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.analytics;
 /**
  * Entry element for variation feed.
  */
-public class VariationEntry extends com.google.gwt.gdata.client.Entry {
+public class VariationEntry
+    extends com.google.gwt.gdata.client.Entry<VariationEntry> {
 
   /**
    * Constructs a variation entry.

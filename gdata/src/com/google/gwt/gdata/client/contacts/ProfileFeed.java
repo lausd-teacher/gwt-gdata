@@ -16,13 +16,13 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Describes a profile feed.
  */
 public class ProfileFeed
-    extends com.google.gwt.gdata.client.Feed<ProfileEntry> {
+    extends Feed<ProfileFeed, ProfileEntry> {
 
   /**
    * Constructs a profile feed.
@@ -63,41 +63,5 @@ public class ProfileFeed
   public final native ContactLink getPreviousLink() /*-{
     return this.getPreviousLink();
   }-*/;
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(ProfileFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(ProfileFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new profile entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertProfileEntry(ProfileEntry entry,
-      ProfileEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
 }

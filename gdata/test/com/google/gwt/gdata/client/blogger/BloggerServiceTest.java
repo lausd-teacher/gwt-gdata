@@ -70,7 +70,7 @@ public class BloggerServiceTest extends BloggerTest {
             cat.setScheme(GDataTestScripts.Blogger.testPost_Entry_CategoryScheme_Created);
             cat.setTerm(GDataTestScripts.Blogger.testPost_Entry_CategoryTerm_Created);
             post.setCategories(new Category[]{ cat });
-            result.insertPostEntry(post, new PostEntryCallback() {
+            result.insertEntry(post, new PostEntryCallback() {
               public void onFailure(CallErrorException caught) {
                 fail("Create Failed: " + caught.getMessage());
               }

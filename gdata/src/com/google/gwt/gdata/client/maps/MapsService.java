@@ -18,6 +18,8 @@ package com.google.gwt.gdata.client.maps;
 
 import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.GoogleService;
+import com.google.gwt.gdata.client.acl.AclEntryCallback;
+import com.google.gwt.gdata.client.acl.AclFeedCallback;
 
 /**
  * Maps service.
@@ -46,63 +48,14 @@ public class MapsService extends GoogleService {
   protected MapsService() { }
 
   /**
-   * Deletes a feature entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteFeatureEntry(String uri,
-      FeatureEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
-  }
-
-  /**
-   * Deletes a feature entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteFeatureEntry(String uri,
-      FeatureEntryCallback callback, GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
-  }
-
-  /**
-   * Deletes a map entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteMapEntry(String uri, MapEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
-  }
-
-  /**
-   * Deletes a map entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteMapEntry(String uri, MapEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
-  }
-
-  /**
    * Retrieves an ACL entry.
    * 
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this
    * command.
    */
-  public final void getAclEntry(String uri, MapsAclEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getAclEntry");
+  public final void getAclEntry(String uri, AclEntryCallback callback) {
+    this.getAclEntry(uri, callback, null);
   }
 
   /**
@@ -113,10 +66,15 @@ public class MapsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getAclEntry(String uri, MapsAclEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getAclEntry");
-  }
+  public final native void getAclEntry(String uri, AclEntryCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getAclEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves a feed of ACL entries.
@@ -125,8 +83,8 @@ public class MapsService extends GoogleService {
    * @param callback Callback defining success and failure handlers for this
    * command.
    */
-  public final void getAclFeed(String uri, MapsAclFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getAclFeed");
+  public final void getAclFeed(String uri, AclFeedCallback callback) {
+    this.getAclFeed(uri, callback, null);
   }
 
   /**
@@ -137,10 +95,15 @@ public class MapsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getAclFeed(String uri, MapsAclFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getAclFeed");
-  }
+  public final native void getAclFeed(String uri, AclFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getAclFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
   
   /**
    * Retrieves a feature entry.
@@ -151,7 +114,7 @@ public class MapsService extends GoogleService {
    */
   public final void getFeatureEntry(String uri,
       FeatureEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getFeatureEntry");
+    this.getFeatureEntry(uri, callback, null);
   }
   
   /**
@@ -162,11 +125,16 @@ public class MapsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getFeatureEntry(String uri,
-      FeatureEntryCallback callback, GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getFeatureEntry");
-  }
-
+  public final native void getFeatureEntry(String uri,
+      FeatureEntryCallback callback, GDataRequestParameters parameters) /*-{
+    this.getFeatureEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
+  
   /**
    * Retrieves the feed of map features.
    * 
@@ -176,7 +144,7 @@ public class MapsService extends GoogleService {
    */
   public final void getFeatureFeed(FeatureQuery query,
       FeatureFeedCallback callback) {
-    this.getFeed(query, callback, null, "getFeatureFeed");
+    this.getFeatureFeed(query, callback, null);
   }
 
   /**
@@ -187,10 +155,15 @@ public class MapsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getFeatureFeed(FeatureQuery query,
-      FeatureFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getFeatureFeed");
-  }
+  public final native void getFeatureFeed(FeatureQuery query,
+      FeatureFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getFeatureFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of map features.
@@ -201,7 +174,7 @@ public class MapsService extends GoogleService {
    */
   public final void getFeatureFeed(String uri,
       FeatureFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getFeatureFeed");
+    this.getFeatureFeed(uri, callback, null);
   }
 
   /**
@@ -212,10 +185,15 @@ public class MapsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getFeatureFeed(String uri,
-      FeatureFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getFeatureFeed");
-  }
+  public final native void getFeatureFeed(String uri,
+      FeatureFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getFeatureFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves a map entry.
@@ -225,7 +203,7 @@ public class MapsService extends GoogleService {
    * command.
    */
   public final void getMapEntry(String uri, MapEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getMapEntry");
+    this.getMapEntry(uri, callback, null);
   }
 
   /**
@@ -236,10 +214,15 @@ public class MapsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getMapEntry(String uri, MapEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getMapEntry");
-  }
+  public final native void getMapEntry(String uri, MapEntryCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getMapEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of user-created maps.
@@ -249,7 +232,7 @@ public class MapsService extends GoogleService {
    * command.
    */
   public final void getMapFeed(MapQuery query, MapFeedCallback callback) {
-    this.getFeed(query, callback, null, "getMapFeed");
+    this.getMapFeed(query, callback, null);
   }
 
   /**
@@ -260,10 +243,15 @@ public class MapsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getMapFeed(MapQuery query, MapFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getMapFeed");
-  }
+  public final native void getMapFeed(MapQuery query, MapFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getMapFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of user-created maps.
@@ -273,7 +261,7 @@ public class MapsService extends GoogleService {
    * command.
    */
   public final void getMapFeed(String uri, MapFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getMapFeed");
+    this.getMapFeed(uri, callback, null);
   }
 
   /**
@@ -284,89 +272,74 @@ public class MapsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getMapFeed(String uri, MapFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getMapFeed");
+  public final native void getMapFeed(String uri, MapFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getMapFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
+  
+  /**
+   * Retrieves a version entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getVersionEntry(String uri,
+      VersionEntryCallback callback) {
+    this.getVersionEntry(uri, callback, null);
   }
   
   /**
-   * Inserts a new feature entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertFeatureEntry(String uri, FeatureEntry entry,
-      FeatureEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-
-  /**
-   * Inserts a new map entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertMapEntry(String uri, MapEntry entry,
-      MapEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-
-  /**
-   * Updates a feature entry.
+   * Retrieves a version entry.
    * 
    * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateFeatureEntry(String uri, FeatureEntry entry,
-      FeatureEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
-  }
-
-  /**
-   * Updates a feature entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
    * @param callback Callback defining success and failure handlers for this
    * command.
    * @param parameters The request parameters.
    */
-  public final void updateFeatureEntry(String uri, FeatureEntry entry,
-      FeatureEntryCallback callback, GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
-  }
+  public final native void getVersionEntry(String uri,
+      VersionEntryCallback callback, GDataRequestParameters parameters) /*-{
+    this.getVersionEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
-   * Updates a map entry.
+   * Retrieves the feed of maps data api versions. 
    * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
+   * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this
    * command.
    */
-  public final void updateMapEntry(String uri, MapEntry entry,
-      MapEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
+  public final void getVersionFeed(String uri,
+      VersionFeedCallback callback) {
+    this.getVersionFeed(uri, callback, null);
   }
 
   /**
-   * Updates a map entry.
+   * Retrieves the feed of maps data api versions.
    * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
+   * @param uri URI of feed or query.
    * @param callback Callback defining success and failure handlers for this
    * command.
    * @param parameters The request parameters.
    */
-  public final void updateMapEntry(String uri, MapEntry entry,
-      MapEntryCallback callback, GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
-  }
+  public final native void getVersionFeed(String uri,
+      VersionFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getVersionFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
 }

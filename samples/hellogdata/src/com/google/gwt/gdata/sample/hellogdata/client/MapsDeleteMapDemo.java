@@ -99,7 +99,7 @@ public class MapsDeleteMapDemo extends GDataDemo {
    */
   private void deleteMap(String mapEntryUri) {
     showStatus("Deleting map...", false);
-    service.deleteMapEntry(mapEntryUri, new MapEntryCallback() {
+    service.deleteEntry(mapEntryUri, new MapEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while retrieving the maps feed: " +
             caught.getMessage(), true);

@@ -16,13 +16,13 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Describes a feed of public item types.
  */
 public class ItemTypesFeed
-    extends com.google.gwt.gdata.client.Feed<ItemTypesEntry> {
+    extends Feed<ItemTypesFeed, ItemTypesEntry> {
 
   /**
    * Constructs a Google Base item type feed.
@@ -45,41 +45,5 @@ public class ItemTypesFeed
   public final native com.google.gwt.gdata.client.Link getFeedBatchLink() /*-{
     return this.getFeedBatchLink();
   }-*/;
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(ItemTypesFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(ItemTypesFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new item types entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertItemTypesEntry(ItemTypesEntry entry,
-      ItemTypesEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
 }

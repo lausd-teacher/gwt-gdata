@@ -169,7 +169,7 @@ public class MapsCreateMapFeatureDemo extends GDataDemo {
     entry.setContent(kml);
     String featuresFeedUri = 
         mapId.replace("/feeds/maps/", "/feeds/features/") + "/full";
-    service.insertFeatureEntry(featuresFeedUri, entry,
+    service.insertEntry(featuresFeedUri, entry,
         new FeatureEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating a map feature: " +

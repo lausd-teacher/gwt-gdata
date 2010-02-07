@@ -18,7 +18,6 @@ package com.google.gwt.gdata.client.maps;
 
 import com.google.gwt.gdata.client.CustomProperty;
 import com.google.gwt.gdata.client.Deleted;
-import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.PostalAddress;
 import com.google.gwt.gdata.client.ResourceId;
 import com.google.gwt.gdata.client.StructuredPostalAddress;
@@ -29,7 +28,8 @@ import com.google.gwt.gdata.client.batch.Status;
 /**
  * Describes a feature entry.
  */
-public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
+public class FeatureEntry
+    extends com.google.gwt.gdata.client.Entry<FeatureEntry> {
 
   /**
    * Constructs a feature entry.
@@ -50,28 +50,6 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
       CustomProperty customProperty) /*-{
     this.addCustomProperty(customProperty);
   }-*/;
-  
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(FeatureEntryCallback callback) {
-    this.delete(callback, null);
-  }
-  
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(FeatureEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
 
   /**
    * Returns the link that provides the URI of the full feed
@@ -155,30 +133,6 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
   public final native ResourceId getResourceId() /*-{
     return this.getResourceId();
   }-*/;
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(FeatureEntryCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(FeatureEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
 
   /**
    * Returns the structured postal address. This element is optional.
@@ -275,27 +229,5 @@ public class FeatureEntry extends com.google.gwt.gdata.client.Entry {
       StructuredPostalAddress structuredPostalAddress) /*-{
     this.setStructuredPostalAddress(structuredPostalAddress);
   }-*/;
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(FeatureEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(FeatureEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
 
 }

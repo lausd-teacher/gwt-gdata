@@ -26,11 +26,12 @@ import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.PhoneNumber;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.contacts.ContactEntry;
-import com.google.gwt.gdata.client.contacts.ContactEntryCallback;
 import com.google.gwt.gdata.client.contacts.ContactFeed;
 import com.google.gwt.gdata.client.contacts.ContactFeedCallback;
 import com.google.gwt.gdata.client.contacts.ContactQuery;
 import com.google.gwt.gdata.client.contacts.ContactsService;
+import com.google.gwt.gdata.client.contacts.PersonEntry;
+import com.google.gwt.gdata.client.contacts.PersonEntryCallback;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -173,12 +174,12 @@ public class ContactsUpdateContactDemo extends GDataDemo {
     phoneNumber.setRel(PhoneNumber.REL_WORK);
     targetContact.setPhoneNumbers(new PhoneNumber[] { phoneNumber });
     showStatus("Updating a contact event...", false);
-    targetContact.updateEntry(new ContactEntryCallback() {
+    targetContact.updateEntry(new PersonEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while updating a contact: " +
             caught.getMessage(), true);
       }
-      public void onSuccess(ContactEntry result) {
+      public void onSuccess(PersonEntry result) {
         showStatus("Updated a contact.", false);
       }
     });

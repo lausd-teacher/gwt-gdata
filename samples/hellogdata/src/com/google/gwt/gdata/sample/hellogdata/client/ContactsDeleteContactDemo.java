@@ -106,7 +106,7 @@ public class ContactsDeleteContactDemo extends GDataDemo {
     showStatus("Deleting a contact...", false);
     GDataRequestParameters pars = GDataRequestParameters.newInstance();
     pars.setEtag(etag);
-    service.deleteContactEntry(contactEntryUri, new ContactEntryCallback() {
+    service.deleteEntry(contactEntryUri, new ContactEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while deleting a contact: " +
             caught.getMessage(), true);

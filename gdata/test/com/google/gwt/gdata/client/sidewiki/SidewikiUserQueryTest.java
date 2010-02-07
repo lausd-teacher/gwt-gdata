@@ -28,7 +28,8 @@ public class SidewikiUserQueryTest extends SidewikiTest {
   public void testConstructors() {
     executeGDataTest(new Runnable() {
       public void run() {
-        assertNotNull("newInstance()", SidewikiUserQuery.newInstance("myValue"));
+        assertNotNull("newInstance()",
+            SidewikiUserQuery.newInstance("myValue"));
         finishGDataTest();
       }
     }, 10000);
@@ -43,6 +44,9 @@ public class SidewikiUserQueryTest extends SidewikiTest {
     executeGDataTest(new Runnable() {
       public void run() {
         SidewikiUserQuery obj = SidewikiUserQuery.newInstance("myValue");
+        String fulltextquery = "myValue";
+        obj.setFullTextQuery(fulltextquery);
+        assertEquals("fulltextquery", obj.getFullTextQuery(), fulltextquery);
         double startindex = 600813;
         obj.setStartIndex(startindex);
         assertEquals("startindex", obj.getStartIndex(), startindex);

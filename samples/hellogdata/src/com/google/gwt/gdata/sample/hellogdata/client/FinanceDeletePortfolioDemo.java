@@ -99,7 +99,7 @@ public class FinanceDeletePortfolioDemo extends GDataDemo {
    */
   private void deletePortfolio(String portfolioEntryUri) {
     showStatus("Deleting portfolio...", false);
-    service.deletePortfolioEntry(portfolioEntryUri,
+    service.deleteEntry(portfolioEntryUri,
         new PortfolioEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while retrieving the portfolios feed: " +

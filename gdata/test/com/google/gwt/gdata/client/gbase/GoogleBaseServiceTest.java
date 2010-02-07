@@ -76,7 +76,7 @@ public class GoogleBaseServiceTest extends GoogleBaseTest {
         newEntry.setAttribute("item_language", Attribute.newInstance());
         newEntry.getAttributes().get("item_language")[0].setValue(GDataTestScripts.GoogleBase.testItem_Entry_ItemLanguage_Created);
         
-        svc.insertItemsEntry(GDataTestScripts.GoogleBase.testItems_Feed_Link, newEntry, new ItemsEntryCallback() {
+        svc.insertEntry(GDataTestScripts.GoogleBase.testItems_Feed_Link, newEntry, new ItemsEntryCallback() {
           public void onFailure(CallErrorException caught) {
             fail("Create Failed: " + caught.getMessage());
           }

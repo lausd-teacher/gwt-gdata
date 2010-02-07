@@ -36,6 +36,15 @@ public class SidewikiUserQuery extends Query {
   protected SidewikiUserQuery() { }
 
   /**
+   * Returns the full-text query string.
+   * 
+   * @return Full-text query string.
+   */
+  public final native String getFullTextQuery() /*-{
+    return this.getFullTextQuery();
+  }-*/;
+
+  /**
    * Returns the maximum number of results to be retrieved.
    * 
    * @return Maximum number of results to be retrieved.
@@ -51,6 +60,15 @@ public class SidewikiUserQuery extends Query {
    */
   public final native double getStartIndex() /*-{
     return this.getStartIndex();
+  }-*/;
+
+  /**
+   * Sets the full-text query string.
+   * 
+   * @param fullTextQuery Full-text query string.
+   */
+  public final native void setFullTextQuery(String fullTextQuery) /*-{
+    this.setFullTextQuery(fullTextQuery);
   }-*/;
 
   /**

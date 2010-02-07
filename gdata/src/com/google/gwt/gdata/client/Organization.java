@@ -57,12 +57,39 @@ public class Organization extends JavaScriptObject {
   }-*/;
 
   /**
+   * Returns the department name in organization. This element is optional.
+   * 
+   * @return Department name in organization.
+   */
+  public final native OrgDepartment getOrgDepartment() /*-{
+    return this.getOrgDepartment();
+  }-*/;
+
+  /**
+   * Returns the job description. This element is optional.
+   * 
+   * @return Job description.
+   */
+  public final native OrgJobDescription getOrgJobDescription() /*-{
+    return this.getOrgJobDescription();
+  }-*/;
+
+  /**
    * Returns the name of organization. This element is optional.
    * 
    * @return Name of organization.
    */
   public final native OrgName getOrgName() /*-{
     return this.getOrgName();
+  }-*/;
+
+  /**
+   * Returns the organization symbol/ticker. This element is optional.
+   * 
+   * @return Organization symbol/ticker.
+   */
+  public final native OrgSymbol getOrgSymbol() /*-{
+    return this.getOrgSymbol();
   }-*/;
 
   /**
@@ -94,6 +121,15 @@ public class Organization extends JavaScriptObject {
   }-*/;
 
   /**
+   * Returns the office location. This element is optional.
+   * 
+   * @return Office location.
+   */
+  public final native Where getWhere() /*-{
+    return this.getWhere();
+  }-*/;
+
+  /**
    * Sets the label. This attribute is optional.
    * 
    * @param label Label.
@@ -103,12 +139,39 @@ public class Organization extends JavaScriptObject {
   }-*/;
 
   /**
+   * Sets the department name in organization. This element is optional.
+   * 
+   * @param orgDepartment Department name in organization.
+   */
+  public final native void setOrgDepartment(OrgDepartment orgDepartment) /*-{
+    this.setOrgDepartment(orgDepartment);
+  }-*/;
+
+  /**
+   * Sets the job description. This element is optional.
+   * 
+   * @param orgJobDescription Job description.
+   */
+  public final native void setOrgJobDescription(OrgJobDescription orgJobDescription) /*-{
+    this.setOrgJobDescription(orgJobDescription);
+  }-*/;
+
+  /**
    * Sets the name of organization. This element is optional.
    * 
    * @param orgName Name of organization.
    */
   public final native void setOrgName(OrgName orgName) /*-{
     this.setOrgName(orgName);
+  }-*/;
+
+  /**
+   * Sets the organization symbol/ticker. This element is optional.
+   * 
+   * @param orgSymbol Organization symbol/ticker.
+   */
+  public final native void setOrgSymbol(OrgSymbol orgSymbol) /*-{
+    this.setOrgSymbol(orgSymbol);
   }-*/;
 
   /**
@@ -137,6 +200,15 @@ public class Organization extends JavaScriptObject {
    */
   public final native void setRel(String rel) /*-{
     this.setRel(rel);
+  }-*/;
+
+  /**
+   * Sets the office location. This element is optional.
+   * 
+   * @param where Office location.
+   */
+  public final native void setWhere(Where where) /*-{
+    this.setWhere(where);
   }-*/;
 
 }

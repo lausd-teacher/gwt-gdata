@@ -100,7 +100,7 @@ public class CalendarDeleteCalendarDemo extends GDataDemo {
    */
   private void deleteCalendar(String calendarEntryUri) {
     showStatus("Deleting calendar...", false);
-    service.deleteCalendarEntry(calendarEntryUri, new CalendarEntryCallback() {
+    service.deleteEntry(calendarEntryUri, new CalendarEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while deleting a calendar: " + 
             caught.getMessage(), true);

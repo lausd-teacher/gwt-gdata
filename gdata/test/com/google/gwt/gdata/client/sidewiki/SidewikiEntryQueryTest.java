@@ -65,10 +65,18 @@ public class SidewikiEntryQueryTest extends SidewikiTest {
         obj.setIncludeLessUseful(includelessuseful);
         assertSame("includelessuseful", obj.getIncludeLessUseful(),
             includelessuseful);
+        String languagerestrict = "myValue";
+        obj.setLanguageRestrict(languagerestrict);
+        assertEquals("languagerestrict", obj.getLanguageRestrict(),
+            languagerestrict);
         DateTime updatedmin = DateTime.newInstance(new Date(), false);
         obj.setUpdatedMin(updatedmin);
         assertEquals("updatedmin", obj.getUpdatedMin().getDate(),
             updatedmin.getDate());
+        String fulltextquery = "myValue";
+        obj.setFullTextQuery(fulltextquery);
+        assertEquals("fulltextquery", obj.getFullTextQuery(),
+            fulltextquery);
         double startindex = 600813;
         obj.setStartIndex(startindex);
         assertEquals("startindex", obj.getStartIndex(), startindex);

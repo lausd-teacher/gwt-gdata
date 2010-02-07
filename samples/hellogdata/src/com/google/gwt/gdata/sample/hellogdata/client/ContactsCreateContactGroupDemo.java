@@ -103,7 +103,7 @@ public class ContactsCreateContactGroupDemo extends GDataDemo {
     ContactGroupEntry entry = ContactGroupEntry.newInstance();
     entry.setTitle(Text.newInstance());
     entry.getTitle().setText("GWT-Contacts-Client - Create Group");
-    service.insertContactGroupEntry(contactGroupFeedUri, entry,
+    service.insertEntry(contactGroupFeedUri, entry,
         new ContactGroupEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating a contact group: " +

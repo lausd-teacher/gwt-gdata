@@ -16,13 +16,13 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Describes feed of a Calendar event's comments.
  */
 public class CalendarCommentFeed
-    extends com.google.gwt.gdata.client.Feed<CalendarCommentEntry> {
+    extends Feed<CalendarCommentFeed, CalendarCommentEntry> {
 
   /**
    * Constructs a Calendar event's comments feed.
@@ -34,40 +34,5 @@ public class CalendarCommentFeed
   }-*/;
 
   protected CalendarCommentFeed() { }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(CalendarCommentFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(CalendarCommentFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new calendar comment entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertCommentEntry(CalendarCommentEntry entry,
-      CalendarCommentEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
 }

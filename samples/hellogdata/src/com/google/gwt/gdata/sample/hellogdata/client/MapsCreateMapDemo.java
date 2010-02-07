@@ -105,7 +105,7 @@ public class MapsCreateMapDemo extends GDataDemo {
     MapEntry entry = MapEntry.newInstance();
     entry.setTitle(Text.newInstance());
     entry.getTitle().setText("GWT-Maps-Client - inserted map");
-    service.insertMapEntry(mapsFeedUri, entry, new MapEntryCallback() {
+    service.insertEntry(mapsFeedUri, entry, new MapEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating a map: " +
             caught.getMessage(), true);

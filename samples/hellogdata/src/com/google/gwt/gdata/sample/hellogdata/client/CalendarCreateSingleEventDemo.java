@@ -117,7 +117,7 @@ public class CalendarCreateSingleEventDemo extends GDataDemo {
     when.setStartTime(DateTime.newInstance(startDate));
     when.setEndTime(DateTime.newInstance(endDate));
     eventEntry.addTime(when);
-    service.insertCalendarEventEntry(eventsFeedUri, eventEntry,
+    service.insertEntry(eventsFeedUri, eventEntry,
         new CalendarEventEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating a Calendar event: " + 

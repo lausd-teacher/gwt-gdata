@@ -16,12 +16,11 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
-
 /**
  * Entry element for data feed.
  */
-public class DataEntry extends com.google.gwt.gdata.client.Entry {
+public class DataEntry
+    extends com.google.gwt.gdata.client.Entry<DataEntry> {
 
   /**
    * Analytics data entry.
@@ -60,28 +59,6 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry {
   public final native void addMetric(Metric metric) /*-{
     this.addMetric(metric);
   }-*/;
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(DataEntryCallback callback) {
-    this.delete(callback, null);
-  }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(DataEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
 
   /**
    * Returns the dimension with the given name in this entry.
@@ -133,30 +110,6 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(DataEntryCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(DataEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
    * Returns the value of the dimension or metric with the given name in this
    * entry.
    * 
@@ -189,27 +142,5 @@ public class DataEntry extends com.google.gwt.gdata.client.Entry {
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(metrics)
     );
   }-*/;
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(DataEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(DataEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
   
 }

@@ -16,13 +16,13 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.Where;
 
 /**
  * Describes a Calendar entry in the feed of a user's calendars.
  */
-public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
+public class CalendarEntry
+    extends com.google.gwt.gdata.client.Entry<CalendarEntry> {
 
   /**
    * Constructs a Calendar entry.
@@ -42,28 +42,6 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   public final native void addLocation(Where location) /*-{
     this.addLocation(location);
   }-*/;
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(CalendarEntryCallback callback) {
-    this.delete(callback, null);
-  }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(CalendarEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
 
   /**
    * Returns the link that provides the URI of the feed for the access control
@@ -172,30 +150,6 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(CalendarEntryCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(CalendarEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
    * Returns the times cleaned property. This element is optional.
    * 
    * @return Times cleaned property.
@@ -301,27 +255,5 @@ public class CalendarEntry extends com.google.gwt.gdata.client.Entry {
   public final native void setTimeZone(TimeZoneProperty timeZone) /*-{
     this.setTimeZone(timeZone);
   }-*/;
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(CalendarEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(CalendarEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
   
 }

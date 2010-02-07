@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.analytics;
 /**
  * Entry element for experiment feed.
  */
-public class ExperimentEntry extends com.google.gwt.gdata.client.Entry {
+public class ExperimentEntry
+    extends com.google.gwt.gdata.client.Entry<ExperimentEntry> {
 
   /**
    * Constructs an experiment entry.

@@ -16,12 +16,13 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Describes a feed of locales.
  */
-public class LocalesFeed extends com.google.gwt.gdata.client.Feed<LocalesEntry> {
+public class LocalesFeed
+    extends Feed<LocalesFeed, LocalesEntry> {
 
   /**
    * Constructs a Google Base locale feed.
@@ -62,41 +63,5 @@ public class LocalesFeed extends com.google.gwt.gdata.client.Feed<LocalesEntry> 
   public final native com.google.gwt.gdata.client.Link getPreviousLink() /*-{
     return this.getPreviousLink();
   }-*/;
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(LocalesFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(LocalesFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new locales entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertLocalesEntry(LocalesEntry entry,
-      LocalesEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
 }

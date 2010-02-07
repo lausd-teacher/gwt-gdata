@@ -123,7 +123,7 @@ public class FinanceCreateTransactionDemo extends GDataDemo {
     String ticker = "NASDAQ:GOOG";
     String transactionPostUri = portfolioEditUri + "/positions/" + 
         ticker + "/transactions";
-    service.insertTransactionEntry(transactionPostUri, entry,
+    service.insertEntry(transactionPostUri, entry,
         new TransactionEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating a transaction: " +

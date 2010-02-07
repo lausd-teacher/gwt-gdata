@@ -123,7 +123,7 @@ public class CalendarCreateEventReminderDemo extends GDataDemo {
     reminder.setMethod(Reminder.METHOD_ALERT);
     when.addReminder(reminder);
     entry.addTime(when);
-    service.insertCalendarEventEntry(eventsFeedUri, entry,
+    service.insertEntry(eventsFeedUri, entry,
         new CalendarEventEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating a Calendar event " +

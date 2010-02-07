@@ -105,7 +105,7 @@ public class CalendarDeleteEventDemo extends GDataDemo {
     showStatus("Deleting event...", false);
     GDataRequestParameters pars = GDataRequestParameters.newInstance();
     pars.setEtag(etag);
-    service.deleteCalendarEventEntry(eventEntryUri,
+    service.deleteEntry(eventEntryUri,
         new CalendarEventEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while deleting a Calendar event: " +
@@ -141,7 +141,7 @@ public class CalendarDeleteEventDemo extends GDataDemo {
             caught.getMessage(), true);
       }
       public void onSuccess(CalendarEventFeed result) {
-        CalendarEventEntry[] entries = result.getEntries();
+        CalendarEventEntry[] entries = (CalendarEventEntry[]) result.getEntries();
         if (entries.length == 0) {
           showStatus(
               "No events found containing the text 'GWT-Calendar-Client'.",

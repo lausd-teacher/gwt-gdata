@@ -118,7 +118,7 @@ public class CalendarCreateRecurringEventDemo extends GDataDemo {
         "RRULE:FREQ=WEEKLY;UNTIL=20090701T160000Z;";
     recurrence.setValue(recurrenceString);
     eventEntry.setRecurrence(recurrence);
-    service.insertCalendarEventEntry(eventsFeedUri, eventEntry,
+    service.insertEntry(eventsFeedUri, eventEntry,
         new CalendarEventEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating a Calendar event: " + 

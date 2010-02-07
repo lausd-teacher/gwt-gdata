@@ -100,7 +100,7 @@ public class BloggerDeleteBlogPostDemo extends GDataDemo {
    */
   private void deletePost(String postEntryUri) {
     showStatus("Deleting post entry...", false);
-    service.deletePostEntry(postEntryUri, new PostEntryCallback() {
+    service.deleteEntry(postEntryUri, new PostEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while deleting a blog post: " + 
             caught.getMessage(), true);

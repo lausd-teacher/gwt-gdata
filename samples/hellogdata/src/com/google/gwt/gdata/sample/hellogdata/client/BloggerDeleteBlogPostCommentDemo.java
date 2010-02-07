@@ -102,7 +102,7 @@ public class BloggerDeleteBlogPostCommentDemo extends GDataDemo {
    */
   private void deleteComment(String commentEntryUri) {
     showStatus("Deleting comment entry...", false);
-    service.deleteCommentEntry(commentEntryUri, new CommentEntryCallback() {
+    service.deleteEntry(commentEntryUri, new CommentEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while deleting a Blogger blog " +
             "comment: " + caught.getMessage(), true);

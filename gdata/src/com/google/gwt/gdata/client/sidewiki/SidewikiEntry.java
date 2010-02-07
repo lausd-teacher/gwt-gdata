@@ -16,14 +16,14 @@
 
 package com.google.gwt.gdata.client.sidewiki;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.Rating;
 import com.google.gwt.gdata.client.ResourceId;
 
 /**
  * Describes a Sidewiki entry in the feed of Sidewiki entries.
  */
-public class SidewikiEntry extends com.google.gwt.gdata.client.Entry {
+public class SidewikiEntry
+    extends com.google.gwt.gdata.client.Entry<SidewikiEntry> {
 
   /**
    * Constructs a sidewiki entry.
@@ -35,28 +35,6 @@ public class SidewikiEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   protected SidewikiEntry() { }
-  
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(SidewikiEntryCallback callback) {
-    this.delete(callback, null);
-  }
-  
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(SidewikiEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
 
   /**
    * Returns the Sidewiki entry source. This element is optional.
@@ -97,30 +75,6 @@ public class SidewikiEntry extends com.google.gwt.gdata.client.Entry {
   public final native ResourceId getResourceId() /*-{
     return this.getResourceId();
   }-*/;
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(SidewikiEntryCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(SidewikiEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
 
   /**
    * Returns the usefulness of entry. This element is optional.
@@ -168,27 +122,5 @@ public class SidewikiEntry extends com.google.gwt.gdata.client.Entry {
   public final native void setUsefulness(Usefulness usefulness) /*-{
     this.setUsefulness(usefulness);
   }-*/;
-
-  /**
-   * Updates the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(SidewikiEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updates the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(SidewikiEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
 
 }

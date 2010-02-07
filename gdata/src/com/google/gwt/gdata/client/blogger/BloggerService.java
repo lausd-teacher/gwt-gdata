@@ -46,79 +46,6 @@ public class BloggerService extends GoogleService {
   protected BloggerService() { }
 
   /**
-   * Deletes a blog entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteBlogEntry(String uri, BlogEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
-  }
-
-  /**
-   * Deletes a blog entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteBlogEntry(String uri, BlogEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
-  }
-
-  /**
-   * Deletes a comment entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteCommentEntry(String uri,
-      CommentEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
-  }
-
-  /**
-   * Deletes a comment entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteCommentEntry(String uri,
-      CommentEntryCallback callback, GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
-  }
-
-  /**
-   * Deletes a post entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deletePostEntry(String uri, PostEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
-  }
-
-  /**
-   * Deletes a post entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deletePostEntry(String uri, PostEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
-  }
-
-  /**
    * Retrieves the feed of a blog's comments.
    * 
    * @param query URI of feed or query.
@@ -127,7 +54,7 @@ public class BloggerService extends GoogleService {
    */
   public final void getBlogCommentFeed(BlogCommentQuery query,
       BlogCommentFeedCallback callback) {
-    this.getFeed(query, callback, null, "getBlogCommentFeed");
+    this.getBlogCommentFeed(query, callback, null);
   }
 
   /**
@@ -138,10 +65,15 @@ public class BloggerService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getBlogCommentFeed(BlogCommentQuery query,
-      BlogCommentFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getBlogCommentFeed");
-  }
+  public final native void getBlogCommentFeed(BlogCommentQuery query,
+      BlogCommentFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getBlogCommentFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of a blog's comments.
@@ -152,7 +84,7 @@ public class BloggerService extends GoogleService {
    */
   public final void getBlogCommentFeed(String uri,
       BlogCommentFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getBlogCommentFeed");
+    this.getBlogCommentFeed(uri, callback, null);
   }
 
   /**
@@ -163,10 +95,15 @@ public class BloggerService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getBlogCommentFeed(String uri,
-      BlogCommentFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getBlogCommentFeed");
-  }
+  public final native void getBlogCommentFeed(String uri,
+      BlogCommentFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getBlogCommentFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves a blog entry.
@@ -176,7 +113,7 @@ public class BloggerService extends GoogleService {
    * command.
    */
   public final void getBlogEntry(String uri, BlogEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getBlogEntry");
+    this.getBlogEntry(uri, callback, null);
   }
 
   /**
@@ -187,10 +124,15 @@ public class BloggerService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getBlogEntry(String uri, BlogEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getBlogEntry");
-  }
+  public final native void getBlogEntry(String uri, BlogEntryCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getBlogEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of a user's blogs.
@@ -200,7 +142,7 @@ public class BloggerService extends GoogleService {
    * command.
    */
   public final void getBlogFeed(BlogQuery query, BlogFeedCallback callback) {
-    this.getFeed(query, callback, null, "getBlogFeed");
+    this.getBlogFeed(query, callback, null);
   }
 
   /**
@@ -211,10 +153,15 @@ public class BloggerService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getBlogFeed(BlogQuery query, BlogFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getBlogFeed");
-  }
+  public final native void getBlogFeed(BlogQuery query, BlogFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getBlogFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of a user's blogs.
@@ -224,7 +171,7 @@ public class BloggerService extends GoogleService {
    * command.
    */
   public final void getBlogFeed(String uri, BlogFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getBlogFeed");
+    this.getBlogFeed(uri, callback, null);
   }
 
   /**
@@ -235,10 +182,15 @@ public class BloggerService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getBlogFeed(String uri, BlogFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getBlogFeed");
-  }
+  public final native void getBlogFeed(String uri, BlogFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getBlogFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of a blog's posts.
@@ -249,7 +201,7 @@ public class BloggerService extends GoogleService {
    */
   public final void getBlogPostFeed(BlogPostQuery query,
       BlogPostFeedCallback callback) {
-    this.getFeed(query, callback, null, "getBlogPostFeed");
+    this.getBlogPostFeed(query, callback, null);
   }
 
   /**
@@ -260,10 +212,15 @@ public class BloggerService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getBlogPostFeed(BlogPostQuery query,
-      BlogPostFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getBlogPostFeed");
-  }
+  public final native void getBlogPostFeed(BlogPostQuery query,
+      BlogPostFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getBlogPostFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of a blog's posts.
@@ -273,7 +230,7 @@ public class BloggerService extends GoogleService {
    * command.
    */
   public final void getBlogPostFeed(String uri, BlogPostFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getBlogPostFeed");
+    this.getBlogPostFeed(uri, callback, null);
   }
 
   /**
@@ -284,10 +241,15 @@ public class BloggerService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getBlogPostFeed(String uri, BlogPostFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getBlogPostFeed");
-  }
+  public final native void getBlogPostFeed(String uri, BlogPostFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getBlogPostFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
   
   /**
    * Retrieves a comment entry.
@@ -298,7 +260,7 @@ public class BloggerService extends GoogleService {
    */
   public final void getCommentEntry(String uri,
       CommentEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getCommentEntry");
+    this.getCommentEntry(uri, callback, null);
   }
   
   /**
@@ -309,10 +271,15 @@ public class BloggerService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getCommentEntry(String uri,
-      CommentEntryCallback callback, GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getCommentEntry");
-  }
+  public final native void getCommentEntry(String uri,
+      CommentEntryCallback callback, GDataRequestParameters parameters) /*-{
+    this.getCommentEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of a blog post's comments.
@@ -323,7 +290,7 @@ public class BloggerService extends GoogleService {
    */
   public final void getPostCommentFeed(PostCommentQuery query,
       PostCommentFeedCallback callback) {
-    this.getFeed(query, callback, null, "getPostCommentFeed");
+    this.getPostCommentFeed(query, callback, null);
   }
 
   /**
@@ -334,10 +301,15 @@ public class BloggerService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getPostCommentFeed(PostCommentQuery query,
-      PostCommentFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getPostCommentFeed");
-  }
+  public final native void getPostCommentFeed(PostCommentQuery query,
+      PostCommentFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getPostCommentFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of a blog post's comments.
@@ -348,7 +320,7 @@ public class BloggerService extends GoogleService {
    */
   public final void getPostCommentFeed(String uri,
       PostCommentFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getPostCommentFeed");
+    this.getPostCommentFeed(uri, callback, null);
   }
 
   /**
@@ -359,10 +331,15 @@ public class BloggerService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getPostCommentFeed(String uri,
-      PostCommentFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getPostCommentFeed");
-  }
+  public final native void getPostCommentFeed(String uri,
+      PostCommentFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getPostCommentFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves a post entry.
@@ -372,7 +349,7 @@ public class BloggerService extends GoogleService {
    * command.
    */
   public final void getPostEntry(String uri, PostEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getPostEntry");
+    this.getPostEntry(uri, callback, null);
   }
 
   /**
@@ -383,128 +360,14 @@ public class BloggerService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getPostEntry(String uri, PostEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getPostEntry");
-  }
-
-  /**
-   * Inserts a new blog entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertBlogEntry(String uri, BlogEntry entry,
-      BlogEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-
-  /**
-   * Inserts a new comment entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertCommentEntry(String uri, CommentEntry entry,
-      CommentEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-  /**
-   * Inserts a new post entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertPostEntry(String uri, PostEntry entry,
-      PostEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-  
-  /**
-   * Updates a blog entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateBlogEntry(String uri, BlogEntry entry,
-      BlogEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
-  }
-  
-  /**
-   * Updates a blog entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateBlogEntry(String uri, BlogEntry entry,
-      BlogEntryCallback callback, GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
-  }
-
-  /**
-   * Updates a comment entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateCommentEntry(String uri, CommentEntry entry,
-      CommentEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
-  }
-
-  /**
-   * Updates a comment entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateCommentEntry(String uri, CommentEntry entry,
-      CommentEntryCallback callback, GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
-  }
-  
-  /**
-   * Updates a post entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updatePostEntry(String uri, PostEntry entry,
-      PostEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
-  }
-  
-  /**
-   * Updates a post entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updatePostEntry(String uri, PostEntry entry,
-      PostEntryCallback callback, GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
-  }
+  public final native void getPostEntry(String uri, PostEntryCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getPostEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
 }

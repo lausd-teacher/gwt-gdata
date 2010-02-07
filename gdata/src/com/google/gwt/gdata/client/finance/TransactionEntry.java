@@ -16,12 +16,11 @@
 
 package com.google.gwt.gdata.client.finance;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
-
 /**
  * Describes an entry in a feed of Finance transactions.
  */
-public class TransactionEntry extends com.google.gwt.gdata.client.Entry {
+public class TransactionEntry
+    extends com.google.gwt.gdata.client.Entry<TransactionEntry> {
 
   /**
    * Constructs a Finance transaction entry.
@@ -32,52 +31,6 @@ public class TransactionEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   protected TransactionEntry() { }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(TransactionEntryCallback callback) {
-    this.delete(callback, null);
-  }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(TransactionEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(TransactionEntryCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(TransactionEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
 
   /**
    * Returns the data for the transaction. This element is required.
@@ -97,27 +50,5 @@ public class TransactionEntry extends com.google.gwt.gdata.client.Entry {
       TransactionData transactionData) /*-{
     this.setTransactionData(transactionData);
   }-*/;
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(TransactionEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(TransactionEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
   
 }

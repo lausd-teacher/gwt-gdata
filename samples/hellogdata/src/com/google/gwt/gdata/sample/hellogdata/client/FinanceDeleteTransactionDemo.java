@@ -102,7 +102,7 @@ public class FinanceDeleteTransactionDemo extends GDataDemo {
    */
   private void deleteTransaction(String transactionEntryUri) {
     showStatus("Deleting transaction...", false);
-    service.deleteTransactionEntry(transactionEntryUri,
+    service.deleteEntry(transactionEntryUri,
         new TransactionEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while deleting a transaction: " +

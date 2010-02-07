@@ -188,7 +188,7 @@ public class BloggerCreateBlogPostCommentDemo extends GDataDemo {
     comment.getContent().setText("GWT-Blogger-Client - Great post!");
     String commentsFeedUri = "http://www.blogger.com/feeds/" + blogId + "/" +
         postId + "/comments/default";
-    service.insertCommentEntry(commentsFeedUri, comment,
+    service.insertEntry(commentsFeedUri, comment,
         new CommentEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating the Blogger post " +

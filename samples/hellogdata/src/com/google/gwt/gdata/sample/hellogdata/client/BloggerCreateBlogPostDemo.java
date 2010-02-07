@@ -178,7 +178,7 @@ public class BloggerCreateBlogPostDemo extends GDataDemo {
     cat2.setLabel("http://www.blogger.com/atom/ns#");
     cat2.setTerm("Label2");
     newPost.setCategories(new Category[] { cat1, cat2 });
-    postFeed.insertPostEntry(newPost, new PostEntryCallback() {
+    postFeed.insertEntry(newPost, new PostEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating a blog post: " + 
             caught.getMessage(), true);

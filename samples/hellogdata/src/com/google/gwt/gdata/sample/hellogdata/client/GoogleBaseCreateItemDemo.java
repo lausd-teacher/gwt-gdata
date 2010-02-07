@@ -137,7 +137,7 @@ public class GoogleBaseCreateItemDemo extends GDataDemo {
     entry.setAttribute("item_type", itemType);
     entry.setAttribute("item_language", itemLanguage);
     
-    service.insertItemsEntry(itemsFeedUri, entry, new ItemsEntryCallback() {
+    service.insertEntry(itemsFeedUri, entry, new ItemsEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating an item: " +
             caught.getMessage(), true);

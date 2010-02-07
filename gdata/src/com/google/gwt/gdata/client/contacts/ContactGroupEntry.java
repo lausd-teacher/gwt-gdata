@@ -18,7 +18,6 @@ package com.google.gwt.gdata.client.contacts;
 
 import com.google.gwt.gdata.client.Deleted;
 import com.google.gwt.gdata.client.ExtendedProperty;
-import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.batch.Interrupted;
 import com.google.gwt.gdata.client.batch.Operation;
 import com.google.gwt.gdata.client.batch.Status;
@@ -26,7 +25,8 @@ import com.google.gwt.gdata.client.batch.Status;
 /**
  * Describes a contact group entry.
  */
-public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
+public class ContactGroupEntry
+    extends com.google.gwt.gdata.client.Entry<ContactGroupEntry> {
 
   /**
    * Constructs a contact group entry.
@@ -47,28 +47,6 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
       ExtendedProperty extendedProperty) /*-{
     this.addExtendedProperty(extendedProperty);
   }-*/;
-  
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(ContactGroupEntryCallback callback) {
-    this.delete(callback, null);
-  }
-  
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(ContactGroupEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
 
   /**
    * Returns the batch identifier. This element is optional.
@@ -123,30 +101,6 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
   public final native ExtendedProperty[] getExtendedProperties() /*-{
     return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getExtendedProperties());
   }-*/;
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(ContactGroupEntryCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(ContactGroupEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
 
   /**
    * Returns the system group. This element is optional.
@@ -224,27 +178,5 @@ public class ContactGroupEntry extends com.google.gwt.gdata.client.Entry {
   public final native void setSystemGroup(SystemGroup systemGroup) /*-{
     this.setSystemGroup(systemGroup);
   }-*/;
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(ContactGroupEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(ContactGroupEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
 
 }

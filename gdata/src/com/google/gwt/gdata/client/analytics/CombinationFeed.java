@@ -16,11 +16,13 @@
 
 package com.google.gwt.gdata.client.analytics;
 
+import com.google.gwt.gdata.client.Feed;
+
 /**
  * Feed element in CombinationFeed.
  */
 public class CombinationFeed
-    extends com.google.gwt.gdata.client.Feed<CombinationEntry> {
+    extends Feed<CombinationFeed, CombinationEntry> {
 
   /**
    * Constructs a combination feed.  

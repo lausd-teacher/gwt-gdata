@@ -99,7 +99,7 @@ public class GoogleBaseDeleteItemDemo extends GDataDemo {
    */
   private void deleteItem(String itemsEntryUri) {
     showStatus("Deleting item...", false);
-    service.deleteItemsEntry(itemsEntryUri, new ItemsEntryCallback() {
+    service.deleteEntry(itemsEntryUri, new ItemsEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while deleting an item: " +
             caught.getMessage(), true);

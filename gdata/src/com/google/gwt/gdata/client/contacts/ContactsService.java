@@ -46,81 +46,6 @@ public class ContactsService extends GoogleService {
   protected ContactsService() { }
 
   /**
-   * Deletes a contact entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteContactEntry(String uri,
-      ContactEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
-  }
-
-  /**
-   * Deletes a contact entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteContactEntry(String uri,
-      ContactEntryCallback callback, GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
-  }
-
-  /**
-   * Deletes a contact group entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteContactGroupEntry(String uri,
-      ContactGroupEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
-  }
-
-  /**
-   * Deletes a contact group entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteContactGroupEntry(String uri,
-      ContactGroupEntryCallback callback, GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
-  }
-
-  /**
-   * Deletes a profile entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteProfileEntry(String uri,
-      ProfileEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
-  }
-
-  /**
-   * Deletes a profile entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteProfileEntry(String uri,
-      ProfileEntryCallback callback, GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
-  }
-
-  /**
    * Retrieves a contact entry.
    * 
    * @param uri URI of entry.
@@ -129,7 +54,7 @@ public class ContactsService extends GoogleService {
    */
   public final void getContactEntry(String uri,
       ContactEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getContactEntry");
+    this.getContactEntry(uri, callback, null);
   }
 
   /**
@@ -140,10 +65,15 @@ public class ContactsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getContactEntry(String uri,
-      ContactEntryCallback callback, GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getContactEntry");
-  }
+  public final native void getContactEntry(String uri,
+      ContactEntryCallback callback, GDataRequestParameters parameters) /*-{
+    this.getContactEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of contacts.
@@ -154,7 +84,7 @@ public class ContactsService extends GoogleService {
    */
   public final void getContactFeed(ContactQuery query,
       ContactFeedCallback callback) {
-    this.getFeed(query, callback, null, "getContactFeed");
+    this.getContactFeed(query, callback, null);
   }
 
   /**
@@ -165,10 +95,15 @@ public class ContactsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getContactFeed(ContactQuery query,
-      ContactFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getContactFeed");
-  }
+  public final native void getContactFeed(ContactQuery query,
+      ContactFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getContactFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of contacts.
@@ -179,7 +114,7 @@ public class ContactsService extends GoogleService {
    */
   public final void getContactFeed(String uri,
       ContactFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getContactFeed");
+    this.getContactFeed(uri, callback, null);
   }
 
   /**
@@ -190,10 +125,15 @@ public class ContactsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getContactFeed(String uri,
-      ContactFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getContactFeed");
-  }
+  public final native void getContactFeed(String uri,
+      ContactFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getContactFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves a contact group entry.
@@ -204,7 +144,7 @@ public class ContactsService extends GoogleService {
    */
   public final void getContactGroupEntry(String uri,
       ContactGroupEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getContactGroupEntry");
+    this.getContactGroupEntry(uri, callback, null);
   }
 
   /**
@@ -215,10 +155,15 @@ public class ContactsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getContactGroupEntry(String uri,
-      ContactGroupEntryCallback callback, GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getContactGroupEntry");
-  }
+  public final native void getContactGroupEntry(String uri,
+      ContactGroupEntryCallback callback, GDataRequestParameters parameters) /*-{
+    this.getContactGroupEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of contact groups.
@@ -229,7 +174,7 @@ public class ContactsService extends GoogleService {
    */
   public final void getContactGroupFeed(ContactQuery query,
       ContactGroupFeedCallback callback) {
-    this.getFeed(query, callback, null, "getContactGroupFeed");
+    this.getContactGroupFeed(query, callback, null);
   }
 
   /**
@@ -240,10 +185,15 @@ public class ContactsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getContactGroupFeed(ContactQuery query,
-      ContactGroupFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getContactGroupFeed");
-  }
+  public final native void getContactGroupFeed(ContactQuery query,
+      ContactGroupFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getContactGroupFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of contact groups.
@@ -254,7 +204,7 @@ public class ContactsService extends GoogleService {
    */
   public final void getContactGroupFeed(String uri,
       ContactGroupFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getContactGroupFeed");
+    this.getContactGroupFeed(uri, callback, null);
   }
 
   /**
@@ -265,10 +215,15 @@ public class ContactsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getContactGroupFeed(String uri,
-      ContactGroupFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getContactGroupFeed");
-  }
+  public final native void getContactGroupFeed(String uri,
+      ContactGroupFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getContactGroupFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves a profile entry.
@@ -279,7 +234,7 @@ public class ContactsService extends GoogleService {
    */
   public final void getProfileEntry(String uri,
       ProfileEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getProfileEntry");
+    this.getProfileEntry(uri, callback, null);
   }
 
   /**
@@ -290,10 +245,15 @@ public class ContactsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getProfileEntry(String uri,
-      ProfileEntryCallback callback, GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getProfileEntry");
-  }
+  public final native void getProfileEntry(String uri,
+      ProfileEntryCallback callback, GDataRequestParameters parameters) /*-{
+    this.getProfileEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of profiles.
@@ -304,7 +264,7 @@ public class ContactsService extends GoogleService {
    */
   public final void getProfileFeed(ProfileQuery query,
       ProfileFeedCallback callback) {
-    this.getFeed(query, callback, null, "getProfileFeed");
+    this.getProfileFeed(query, callback, null);
   }
 
   /**
@@ -315,10 +275,15 @@ public class ContactsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getProfileFeed(ProfileQuery query,
-      ProfileFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getProfileFeed");
-  }
+  public final native void getProfileFeed(ProfileQuery query,
+      ProfileFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getProfileFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of profiles.
@@ -329,7 +294,7 @@ public class ContactsService extends GoogleService {
    */
   public final void getProfileFeed(String uri,
       ProfileFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getProfileFeed");
+    this.getProfileFeed(uri, callback, null);
   }
 
   /**
@@ -340,131 +305,14 @@ public class ContactsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getProfileFeed(String uri,
-      ProfileFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getProfileFeed");
-  }
-
-  /**
-   * Inserts a new contact entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertContactEntry(String uri, ContactEntry entry,
-      ContactEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-
-  /**
-   * Inserts a new contact group entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertContactGroupEntry(String uri,
-      ContactGroupEntry entry, ContactGroupEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-
-  /**
-   * Inserts a new profile entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertProfileEntry(String uri,
-      ProfileEntry entry, ProfileEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-  
-  /**
-   * Updates a contact entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateContactEntry(String uri, ContactEntry entry,
-      ContactEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
-  }
-  
-  /**
-   * Updates a contact entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateContactEntry(String uri, ContactEntry entry,
-      ContactEntryCallback callback, GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
-  }
-  
-  /**
-   * Updates a contact group entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateContactGroupEntry(String uri,
-      ContactGroupEntry entry, ContactGroupEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
-  }
-  
-  /**
-   * Updates a contact group entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateContactGroupEntry(String uri,
-      ContactGroupEntry entry, ContactGroupEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
-  }
-  
-  /**
-   * Updates a profile entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateProfileEntry(String uri,
-      ProfileEntry entry, ProfileEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
-  }
-  
-  /**
-   * Updates a profile entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateProfileEntry(String uri,
-      ProfileEntry entry, ProfileEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
-  }
+  public final native void getProfileFeed(String uri,
+      ProfileFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getProfileFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
 }

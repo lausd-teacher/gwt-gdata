@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.batch.Interrupted;
 import com.google.gwt.gdata.client.batch.Operation;
 import com.google.gwt.gdata.client.batch.Status;
@@ -24,7 +23,8 @@ import com.google.gwt.gdata.client.batch.Status;
 /**
  * Describes an entry in the feed of public item types.
  */
-public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
+public class ItemTypesEntry 
+    extends com.google.gwt.gdata.client.Entry<ItemTypesEntry> {
 
   /**
    * Constructs a Google Base item type entry.
@@ -35,28 +35,6 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   protected ItemTypesEntry() { }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(ItemTypesEntryCallback callback) {
-    this.delete(callback, null);
-  }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(ItemTypesEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
 
   /**
    * Returns the gm attributes. This element is optional.
@@ -124,30 +102,6 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(ItemTypesEntryCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(ItemTypesEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
    * Sets the gm attributes. This element is optional.
    * 
    * @param attributes Gm attributes.
@@ -201,27 +155,5 @@ public class ItemTypesEntry extends com.google.gwt.gdata.client.Entry {
   public final native void setItemType(GmItemType itemType) /*-{
     this.setItemType(itemType);
   }-*/;
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(ItemTypesEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(ItemTypesEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
   
 }

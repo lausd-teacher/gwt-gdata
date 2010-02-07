@@ -107,11 +107,12 @@ public class CalendarRetrieveEventsDemo extends GDataDemo {
             caught.getMessage(), true);
       }
       public void onSuccess(CalendarEventFeed result) {
-        CalendarEventEntry[] entries = result.getEntries();
+        CalendarEventEntry[] entries =
+          (CalendarEventEntry[]) result.getEntries();
         if (entries.length == 0) {
           showStatus("There are no Calendar events.", false);
         } else {
-          showData(result.getEntries());
+          showData(entries);
         }
       }
     });

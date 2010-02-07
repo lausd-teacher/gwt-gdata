@@ -16,13 +16,13 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Describes a feed of Calendars.
  */
 public class CalendarFeed
-    extends com.google.gwt.gdata.client.Feed<CalendarEntry> {
+    extends Feed<CalendarFeed, CalendarEntry> {
 
   /**
    * Constructs a Calendar feed using.
@@ -34,41 +34,5 @@ public class CalendarFeed
   }-*/;
 
   protected CalendarFeed() { }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(CalendarFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(CalendarFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new calendar entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertCalendarEntry(CalendarEntry entry,
-      CalendarEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
 }

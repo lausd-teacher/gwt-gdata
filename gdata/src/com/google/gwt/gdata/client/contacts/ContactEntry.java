@@ -17,7 +17,6 @@
 package com.google.gwt.gdata.client.contacts;
 
 import com.google.gwt.gdata.client.Deleted;
-import com.google.gwt.gdata.client.GDataRequestParameters;
 
 /**
  * Describes a contact entry.
@@ -45,28 +44,6 @@ public class ContactEntry extends PersonEntry {
   }-*/;
 
   /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(ContactEntryCallback callback) {
-    this.delete(callback, null);
-  }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(ContactEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
-
-  /**
    * Returns the marker for deleted entries. This element is optional.
    * 
    * @return Marker for deleted entries.
@@ -83,30 +60,6 @@ public class ContactEntry extends PersonEntry {
   public final native GroupMembershipInfo[] getGroupMembershipInfos() /*-{
     return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getGroupMembershipInfos());
   }-*/;
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(ContactEntryCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(ContactEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
 
   /**
    * Sets the marker for deleted entries. This element is optional.
@@ -129,27 +82,5 @@ public class ContactEntry extends PersonEntry {
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(groupMembershipInfos)
     );
   }-*/;
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(ContactEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(ContactEntryCallback callback, 
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
   
 }

@@ -103,7 +103,7 @@ public class ContactsDeleteContactGroupDemo extends GDataDemo {
     showStatus("Deleting a contact group...", false);
     GDataRequestParameters pars = GDataRequestParameters.newInstance();
     pars.setEtag(etag);
-    service.deleteContactGroupEntry(contactGroupEntryUri,
+    service.deleteEntry(contactGroupEntryUri,
         new ContactGroupEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while deleting a contact group: " +

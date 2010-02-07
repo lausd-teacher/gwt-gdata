@@ -17,12 +17,13 @@
 package com.google.gwt.gdata.client.gbase;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Describes a feed of a user's private items.
  */
-public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
+public class ItemsFeed
+    extends Feed<ItemsFeed, ItemsEntry> {
 
   /**
    * Constructs a Google Base item feed.
@@ -34,6 +35,16 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
   }-*/;
 
   protected ItemsFeed() { }
+  
+  /**
+   * Returns the attribute.
+   * 
+   * @param name Name of attribute.
+   * @return Attribute.
+   */
+  public final Attribute[] getAttribute(String name) {
+    return this.getAttributes().get(name);
+  }
 
   /**
    * Returns the attributes. The returned object is a map from attribute name
@@ -73,42 +84,6 @@ public class ItemsFeed extends com.google.gwt.gdata.client.Feed<ItemsEntry> {
   public final native com.google.gwt.gdata.client.Link getPreviousLink() /*-{
     return this.getPreviousLink();
   }-*/;
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(ItemsFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(ItemsFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new items entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertItemsEntry(ItemsEntry entry,
-      ItemsEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
   /**
    * Sets the attribute.
