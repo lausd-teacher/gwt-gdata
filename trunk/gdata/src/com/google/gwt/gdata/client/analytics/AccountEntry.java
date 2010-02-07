@@ -16,12 +16,11 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
-
 /**
  * Entry element for account feed.
  */
-public class AccountEntry extends com.google.gwt.gdata.client.Entry {
+public class AccountEntry
+    extends com.google.gwt.gdata.client.Entry<AccountEntry> {
 
   /**
    * Analytics account entry.
@@ -71,28 +70,6 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(AccountEntryCallback callback) {
-    this.delete(callback, null);
-  }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(AccountEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
-
-  /**
    * Returns the custom variables.
    * 
    * @return Custom variables.
@@ -130,30 +107,6 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry {
   public final native String getPropertyValue(String name) /*-{
     return this.getPropertyValue(name);
   }-*/;
-  
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(AccountEntryCallback callback) {
-    this.get(callback, null);
-  }
-  
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(AccountEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
 
   /**
    * Returns the data source ID. This element is required.
@@ -207,27 +160,5 @@ public class AccountEntry extends com.google.gwt.gdata.client.Entry {
   public final native void setTableId(TableId tableId) /*-{
     this.setTableId(tableId);
   }-*/;
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(AccountEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(AccountEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
   
 }

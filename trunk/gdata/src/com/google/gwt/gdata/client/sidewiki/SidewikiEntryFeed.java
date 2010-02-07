@@ -16,13 +16,13 @@
 
 package com.google.gwt.gdata.client.sidewiki;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Describes a feed of Sidewiki entries.
  */
 public class SidewikiEntryFeed
-    extends com.google.gwt.gdata.client.Feed<SidewikiEntry> {
+    extends Feed<SidewikiEntryFeed, SidewikiEntry> {
 
   /**
    * Constructs a sidewiki entry feed.
@@ -35,41 +35,5 @@ public class SidewikiEntryFeed
   }-*/;
 
   protected SidewikiEntryFeed() { }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(SidewikiEntryFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(SidewikiEntryFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertSidewikiEntry(SidewikiEntry entry,
-      SidewikiEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
 }

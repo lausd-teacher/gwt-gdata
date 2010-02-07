@@ -48,21 +48,33 @@ public class OrganizationTest extends GDataTest {
     executeGDataTest(new Runnable() {
       public void run() {
         Organization obj = Organization.newInstance();
-        boolean primary = true;
-        obj.setPrimary(primary);
-        assertSame("primary", obj.getPrimary(), primary);
+        Where where = Where.newInstance();
+        obj.setWhere(where);
+        assertSame("where", obj.getWhere(), where);
+        OrgDepartment orgdepartment = OrgDepartment.newInstance();
+        obj.setOrgDepartment(orgdepartment);
+        assertSame("orgdepartment", obj.getOrgDepartment(), orgdepartment);
         OrgName orgname = OrgName.newInstance();
         obj.setOrgName(orgname);
         assertSame("orgname", obj.getOrgName(), orgname);
-        String rel = "myValue";
-        obj.setRel(rel);
-        assertEquals("rel", obj.getRel(), rel);
-        OrgTitle orgtitle = OrgTitle.newInstance();
-        obj.setOrgTitle(orgtitle);
-        assertSame("orgtitle", obj.getOrgTitle(), orgtitle);
         String label = "myValue";
         obj.setLabel(label);
         assertEquals("label", obj.getLabel(), label);
+        OrgJobDescription orgjobdescription = OrgJobDescription.newInstance();
+        obj.setOrgJobDescription(orgjobdescription);
+        assertSame("orgjobdescription", obj.getOrgJobDescription(), orgjobdescription);
+        OrgTitle orgtitle = OrgTitle.newInstance();
+        obj.setOrgTitle(orgtitle);
+        assertSame("orgtitle", obj.getOrgTitle(), orgtitle);
+        boolean primary = true;
+        obj.setPrimary(primary);
+        assertSame("primary", obj.getPrimary(), primary);
+        String rel = "myValue";
+        obj.setRel(rel);
+        assertEquals("rel", obj.getRel(), rel);
+        OrgSymbol orgsymbol = OrgSymbol.newInstance();
+        obj.setOrgSymbol(orgsymbol);
+        assertSame("orgsymbol", obj.getOrgSymbol(), orgsymbol);
         finishGDataTest();
       }
     }, 10000);

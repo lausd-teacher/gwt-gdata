@@ -19,6 +19,7 @@ package com.google.gwt.gdata.client;
 /**
  * Describes an entry used by a recurrence exception entry link.
  */
+@SuppressWarnings("unchecked")
 public class RecurrenceExceptionEntry
     extends com.google.gwt.gdata.client.Entry {
 

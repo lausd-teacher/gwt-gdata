@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.analytics;
 /**
  * Entry element for section feed.
  */
-public class SectionEntry extends com.google.gwt.gdata.client.Entry {
+public class SectionEntry
+    extends com.google.gwt.gdata.client.Entry<SectionEntry> {
 
   /**
    * Constructs a section entry.

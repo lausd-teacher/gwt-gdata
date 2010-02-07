@@ -16,12 +16,13 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Feed element in data feed.
  */
-public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
+public class DataFeed
+    extends Feed<DataFeed, DataEntry> {
 
   /**
    * Analytics data feed.
@@ -116,30 +117,6 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(DataFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(DataFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
    * Returns the start date. This element is required.
    * 
    * @return Start date.
@@ -147,18 +124,6 @@ public class DataFeed extends com.google.gwt.gdata.client.Feed<DataEntry> {
   public final native StartDate getStartDate() /*-{
     return this.getStartDate();
   }-*/;
-
-  /**
-   * Inserts a new data entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertDataEntry(DataEntry entry,
-      DataEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
   /**
    * Sets the aggregates. This element is optional.

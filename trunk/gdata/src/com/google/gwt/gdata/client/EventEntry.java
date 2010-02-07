@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client;
 /**
  * Describes an event entry.
  */
-public class EventEntry extends com.google.gwt.gdata.client.Entry {
+public class EventEntry
+    extends com.google.gwt.gdata.client.Entry<EventEntry> {
   
   /**
    * Constructs an event.

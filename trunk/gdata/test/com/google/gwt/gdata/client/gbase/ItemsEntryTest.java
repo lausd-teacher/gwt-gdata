@@ -16,6 +16,7 @@
 
 package com.google.gwt.gdata.client.gbase;
 
+import com.google.gwt.gdata.client.FeedLink;
 import com.google.gwt.gdata.client.batch.Id;
 import com.google.gwt.gdata.client.batch.Interrupted;
 import com.google.gwt.gdata.client.batch.Operation;
@@ -58,9 +59,9 @@ public class ItemsEntryTest extends GoogleBaseTest {
     executeGDataTest(new Runnable() {
       public void run() {
         ItemsEntry obj = ItemsEntry.newInstance();
-        MediaFeedLink feedlink = MediaFeedLink.newInstance();
-        obj.setMediaFeedLink(feedlink);
-        assertSame("feedlink", obj.getMediaFeedLink(), feedlink);
+        FeedLink<MediaFeed> feedlink = FeedLink.newInstance();
+        obj.setFeedLink(feedlink);
+        assertSame("feedlink", obj.getFeedLink(), feedlink);
         Status batchstatus = Status.newInstance();
         obj.setBatchStatus(batchstatus);
         assertSame("batchstatus", obj.getBatchStatus(), batchstatus);

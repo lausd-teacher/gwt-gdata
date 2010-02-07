@@ -125,7 +125,7 @@ public class CalendarCreateEventWithExtendedPropertyDemo extends GDataDemo {
     extendedProp.setName("mydata");
     extendedProp.setValue("xyz");
     entry.addExtendedProperty(extendedProp);
-    service.insertCalendarEventEntry(eventsFeedUri, entry,
+    service.insertEntry(eventsFeedUri, entry,
         new CalendarEventEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating a Calendar event " +

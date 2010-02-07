@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.batch.Interrupted;
 import com.google.gwt.gdata.client.batch.Operation;
 import com.google.gwt.gdata.client.batch.Status;
@@ -24,7 +23,8 @@ import com.google.gwt.gdata.client.batch.Status;
 /**
  * Describes an entry in the feed of public attributes.
  */
-public class AttributesEntry extends com.google.gwt.gdata.client.Entry {
+public class AttributesEntry
+    extends com.google.gwt.gdata.client.Entry<AttributesEntry> {
 
   /**
    * Constructs a Google Base attribute entry.
@@ -35,28 +35,6 @@ public class AttributesEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   protected AttributesEntry() { }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(AttributesEntryCallback callback) {
-    this.delete(callback, null);
-  }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(AttributesEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
 
   /**
    * Returns the list of attribute for an item type. This element is required.
@@ -104,30 +82,6 @@ public class AttributesEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(AttributesEntryCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(AttributesEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
    * Sets the list of attribute for an item type. This element is required.
    * 
    * @param attribute List of attribute for an item type.
@@ -172,27 +126,5 @@ public class AttributesEntry extends com.google.gwt.gdata.client.Entry {
   public final native void setBatchStatus(Status batchStatus) /*-{
     this.setBatchStatus(batchStatus);
   }-*/;
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(AttributesEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(AttributesEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
 
 }

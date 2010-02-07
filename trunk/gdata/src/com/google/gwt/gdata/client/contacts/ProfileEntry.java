@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.Name;
 import com.google.gwt.gdata.client.StructuredPostalAddress;
 import com.google.gwt.gdata.client.Where;
@@ -126,28 +125,6 @@ public class ProfileEntry extends PersonEntry {
   public final native void addWebsite(Website website) /*-{
     this.addWebsite(website);
   }-*/;
-  
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(ProfileEntryCallback callback) {
-    this.delete(callback, null);
-  }
-  
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(ProfileEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
 
   /**
    * Returns the billing information. This element is optional.
@@ -310,30 +287,6 @@ public class ProfileEntry extends PersonEntry {
   public final native Relation[] getRelations() /*-{
     return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getRelations());
   }-*/;
-  
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(ProfileEntryCallback callback) {
-    this.get(callback, null);
-  }
-  
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(ProfileEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
 
   /**
    * Returns the sensitivity. This element is optional.
@@ -643,27 +596,5 @@ public class ProfileEntry extends PersonEntry {
   public final native void setWhere(Where where) /*-{
     this.setWhere(where);
   }-*/;
-  
-  /**
-   * Updates the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(ProfileEntryCallback callback) {
-    this.update(callback, null);
-  }
-  
-  /**
-   * Updates the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(ProfileEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
   
 }

@@ -16,13 +16,13 @@
 
 package com.google.gwt.gdata.client.maps;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Describes a feature feed.
  */
 public class FeatureFeed
-    extends com.google.gwt.gdata.client.Feed<FeatureEntry> {
+    extends Feed<FeatureFeed, FeatureEntry> {
 
   /**
    * Constructs a feature feed.
@@ -65,40 +65,5 @@ public class FeatureFeed
   public final native MapsLink getNextLink() /*-{
     return this.getNextLink();
   }-*/;
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(FeatureFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(FeatureFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new feature entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertFeatureEntry(FeatureEntry entry,
-      FeatureEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
 }

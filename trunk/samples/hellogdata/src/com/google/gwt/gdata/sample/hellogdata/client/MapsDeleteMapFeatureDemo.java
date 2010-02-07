@@ -102,7 +102,7 @@ public class MapsDeleteMapFeatureDemo extends GDataDemo {
    */
   private void deleteFeature(String featureEntryUri) {
     showStatus("Deleting map feature...", false);
-    service.deleteFeatureEntry(featureEntryUri, new FeatureEntryCallback() {
+    service.deleteEntry(featureEntryUri, new FeatureEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while deleting a map feature: " +
             caught.getMessage(), true);

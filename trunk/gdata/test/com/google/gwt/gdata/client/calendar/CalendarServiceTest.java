@@ -67,7 +67,7 @@ public class CalendarServiceTest extends CalendarTest {
         newEntry.getHidden().setValue(false);
         newEntry.setColor(ColorProperty.newInstance());
         newEntry.getColor().setValue(ColorProperty.VALUE_RGB_4E5D6C);
-        svc.insertCalendarEntry(GDataTestScripts.Calendar.testCalendars_Feed_InsertLink, newEntry, new CalendarEntryCallback() {
+        svc.insertEntry(GDataTestScripts.Calendar.testCalendars_Feed_InsertLink, newEntry, new CalendarEntryCallback() {
           public void onFailure(CallErrorException caught) {
             fail("Create Failed: " + caught.getMessage());
           }

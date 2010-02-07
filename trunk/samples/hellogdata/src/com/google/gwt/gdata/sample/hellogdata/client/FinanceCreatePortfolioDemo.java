@@ -111,7 +111,7 @@ public class FinanceCreatePortfolioDemo extends GDataDemo {
     PortfolioData data = PortfolioData.newInstance();
     data.setCurrencyCode("USD");
     entry.setPortfolioData(data);
-    service.insertPortfolioEntry(portfolioFeedUri, entry,
+    service.insertEntry(portfolioFeedUri, entry,
         new PortfolioEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating a portfolio: " +

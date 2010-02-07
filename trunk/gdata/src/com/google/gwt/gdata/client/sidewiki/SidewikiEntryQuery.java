@@ -56,12 +56,32 @@ public class SidewikiEntryQuery extends Query {
   protected SidewikiEntryQuery() { }
 
   /**
+   * Returns the full-text query string.
+   * 
+   * @return Full-text query string.
+   */
+  public final native String getFullTextQuery() /*-{
+    return this.getFullTextQuery();
+  }-*/;
+
+  /**
    * Returns the flag indicating whether to show less useful entries.
    * 
    * @return Flag indicating whether to show less useful entries.
    */
   public final native boolean getIncludeLessUseful() /*-{
     return this.getIncludeLessUseful();
+  }-*/;
+
+  /**
+   * Returns the list of languages that restricts entries appearing in query
+   * result to only written in languages from the list.
+   * 
+   * @return List of languages that restricts entries appearing in query
+   * result to only written in languages from the list.
+   */
+  public final native String getLanguageRestrict() /*-{
+    return this.getLanguageRestrict();
   }-*/;
 
   /**
@@ -110,6 +130,15 @@ public class SidewikiEntryQuery extends Query {
   }-*/;
 
   /**
+   * Sets the full-text query string.
+   * 
+   * @param fullTextQuery Full-text query string.
+   */
+  public final native void setFullTextQuery(String fullTextQuery) /*-{
+    this.setFullTextQuery(fullTextQuery);
+  }-*/;
+
+  /**
    * Sets the flag indicating whether to show less useful entries.
    * 
    * @param includeLessUseful Flag indicating whether to show less
@@ -117,6 +146,17 @@ public class SidewikiEntryQuery extends Query {
    */
   public final native void setIncludeLessUseful(boolean includeLessUseful) /*-{
     this.setIncludeLessUseful(includeLessUseful);
+  }-*/;
+
+  /**
+   * Sets the list of languages that restricts entries appearing in query
+   * result to only written in languages from the list.
+   * 
+   * @param languageRestrict List of languages that restricts entries
+   * appearing in query result to only written in languages from the list.
+   */
+  public final native void setLanguageRestrict(String languageRestrict) /*-{
+    this.setLanguageRestrict(languageRestrict);
   }-*/;
 
   /**

@@ -18,6 +18,7 @@ package com.google.gwt.gdata.sample.hellogdata.client;
 
 import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
+import com.google.gwt.gdata.client.FeedLink;
 import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.gbase.GoogleBaseService;
@@ -27,7 +28,6 @@ import com.google.gwt.gdata.client.gbase.ItemsFeedCallback;
 import com.google.gwt.gdata.client.gbase.MediaEntry;
 import com.google.gwt.gdata.client.gbase.MediaFeed;
 import com.google.gwt.gdata.client.gbase.MediaFeedCallback;
-import com.google.gwt.gdata.client.gbase.MediaFeedLink;
 import com.google.gwt.gdata.client.impl.CallErrorException;
 import com.google.gwt.gdata.client.mediarss.MediaContent;
 import com.google.gwt.gdata.client.mediarss.MediaThumbnail;
@@ -120,7 +120,7 @@ public class GoogleBaseRetrieveMediaDemo extends GDataDemo {
         ItemsEntry[] entries = result.getEntries();
         ItemsEntry targetItem = null;
         for (ItemsEntry entry : entries) {
-          MediaFeedLink link = entry.getMediaFeedLink();
+          FeedLink<MediaFeed> link = entry.getFeedLink().cast();
           if (link.getCountHint() > 0) {
             targetItem = entry;
             break;

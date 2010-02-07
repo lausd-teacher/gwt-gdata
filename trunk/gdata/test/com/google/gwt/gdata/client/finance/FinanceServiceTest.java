@@ -58,7 +58,7 @@ public class FinanceServiceTest extends FinanceTest {
         newEntry.getTitle().setText(GDataTestScripts.Finance.testPortfolio_Entry_Title_Created);
         newEntry.setPortfolioData(PortfolioData.newInstance());
         newEntry.getPortfolioData().setCurrencyCode(GDataTestScripts.Finance.testPortfolio_Entry_Currency_Created);
-        svc.insertPortfolioEntry(GDataTestScripts.Finance.testPortfolios_Feed_Link, newEntry, new PortfolioEntryCallback() {
+        svc.insertEntry(GDataTestScripts.Finance.testPortfolios_Feed_Link, newEntry, new PortfolioEntryCallback() {
           public void onFailure(CallErrorException caught) {
             fail("Create Failed: " + caught.getMessage());
           }

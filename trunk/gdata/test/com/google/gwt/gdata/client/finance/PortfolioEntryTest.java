@@ -38,9 +38,9 @@ public class PortfolioEntryTest extends FinanceTest {
     executeGDataTest(new Runnable() {
       public void run() {
         PortfolioEntry obj = PortfolioEntry.newInstance();
-        PositionFeedLink feedlink = PositionFeedLink.newInstance();
-        obj.setPositionFeedLink(feedlink);
-        assertSame("feedlink", obj.getPositionFeedLink(), feedlink);
+        PortfolioFeedLink feedlink = PortfolioFeedLink.newInstance();
+        obj.setFeedLink(feedlink);
+        assertSame("feedlink", obj.getFeedLink(), feedlink);
         PortfolioData portfoliodata = PortfolioData.newInstance();
         obj.setPortfolioData(portfoliodata);
         assertSame("portfoliodata", obj.getPortfolioData(), portfoliodata);

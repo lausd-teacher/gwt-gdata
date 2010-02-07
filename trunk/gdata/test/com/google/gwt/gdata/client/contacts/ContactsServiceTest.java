@@ -78,7 +78,7 @@ public class ContactsServiceTest extends ContactsTest {
         newEntry.getPostalAddresses()[0].setPrimary(true);
         newEntry.getPostalAddresses()[0].setRel(PostalAddress.REL_OTHER);
         newEntry.getPostalAddresses()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Address_Created);
-        svc.insertContactEntry(GDataTestScripts.Contacts.testContacts_Feed_Link, newEntry, new ContactEntryCallback() {
+        svc.insertEntry(GDataTestScripts.Contacts.testContacts_Feed_Link, newEntry, new ContactEntryCallback() {
           public void onFailure(CallErrorException caught) {
             fail("Create Failed: " + caught.getMessage());
           }
@@ -90,11 +90,11 @@ public class ContactsServiceTest extends ContactsTest {
                 !result.getPostalAddresses()[0].getValue().equals(GDataTestScripts.Contacts.testContact_Entry_Address_Created)) {
               fail("Create Failed");
             }
-            result.deleteEntry(new ContactEntryCallback() {
+            result.deleteEntry(new PersonEntryCallback() {
               public void onFailure(CallErrorException caught) {
                 fail("Delete Failed: " + caught.getMessage());
               }
-              public void onSuccess(ContactEntry result) {
+              public void onSuccess(PersonEntry result) {
                 finishGDataTest();
               }
             });
@@ -173,11 +173,11 @@ public class ContactsServiceTest extends ContactsTest {
             result.getOrganizations()[0].getOrgTitle().setValue(GDataTestScripts.Contacts.testContact_Entry_Company_Updated);
             result.getPhoneNumbers()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Phone_Updated);
             result.getPostalAddresses()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Address_Updated);
-            result.updateEntry(new ContactEntryCallback() {
+            result.updateEntry(new PersonEntryCallback() {
               public void onFailure(CallErrorException caught) {
                 fail("Update Failed: " + caught.getMessage());
               }
-              public void onSuccess(ContactEntry result) {
+              public void onSuccess(PersonEntry result) {
                 if (!result.getTitle().getText().equals(GDataTestScripts.Contacts.testContact_Entry_Title_Updated) ||
                     !result.getEmailAddresses()[0].getAddress().equals(GDataTestScripts.Contacts.testContact_Entry_Email_Updated) ||
                     !result.getOrganizations()[0].getOrgTitle().getValue().equals(GDataTestScripts.Contacts.testContact_Entry_Company_Updated) ||
@@ -190,11 +190,11 @@ public class ContactsServiceTest extends ContactsTest {
                 result.getOrganizations()[0].getOrgTitle().setValue(GDataTestScripts.Contacts.testContact_Entry_Company);
                 result.getPhoneNumbers()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Phone);
                 result.getPostalAddresses()[0].setValue(GDataTestScripts.Contacts.testContact_Entry_Address);
-                result.updateEntry(new ContactEntryCallback() {
+                result.updateEntry(new PersonEntryCallback() {
                   public void onFailure(CallErrorException caught) {
                     fail("Revert Failed: " + caught.getMessage());
                   }
-                  public void onSuccess(ContactEntry result) {
+                  public void onSuccess(PersonEntry result) {
                     if (!result.getTitle().getText().equals(GDataTestScripts.Contacts.testContact_Entry_Title) ||
                         !result.getEmailAddresses()[0].getAddress().equals(GDataTestScripts.Contacts.testContact_Entry_Email) ||
                         !result.getOrganizations()[0].getOrgTitle().getValue().equals(GDataTestScripts.Contacts.testContact_Entry_Company) ||

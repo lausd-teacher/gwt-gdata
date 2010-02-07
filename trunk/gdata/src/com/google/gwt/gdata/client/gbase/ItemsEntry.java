@@ -16,7 +16,7 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.FeedLink;
 import com.google.gwt.gdata.client.batch.Interrupted;
 import com.google.gwt.gdata.client.batch.Operation;
 import com.google.gwt.gdata.client.batch.Status;
@@ -24,7 +24,8 @@ import com.google.gwt.gdata.client.batch.Status;
 /**
  * Describes an entry in the feed of a user's private items.
  */
-public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
+public class ItemsEntry
+    extends com.google.gwt.gdata.client.Entry<ItemsEntry> {
 
   /**
    * Constructs a Google Base item entry.
@@ -35,27 +36,15 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   protected ItemsEntry() { }
-
+  
   /**
-   * Deletes the entry from the feed.
+   * Returns the attribute.
    * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
+   * @param name Name of attribute.
+   * @return Attribute.
    */
-  public final void deleteEntry(ItemsEntryCallback callback) {
-    this.delete(callback, null);
-  }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(ItemsEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
+  public final Attribute[] getAttribute(String name) {
+    return this.getAttributes().get(name);
   }
 
   /**
@@ -105,6 +94,16 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
+   * Returns the nested feed link. This element is optional.
+   * 
+   * @return Nested feed link.
+   */
+  @SuppressWarnings("unchecked")
+  public final native FeedLink getFeedLink() /*-{
+    return this.getFeedLink();
+  }-*/;
+
+  /**
    * Returns the link that provides the URI of an alternate format of the
    * entry's or feed's contents.
    * 
@@ -114,39 +113,6 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
   public final native com.google.gwt.gdata.client.atom.Link getHtmlLink() /*-{
     return this.getHtmlLink();
   }-*/;
-
-  /**
-   * Returns the nested feed link. This element is optional.
-   * 
-   * @return Nested feed link.
-   */
-  public final native MediaFeedLink getMediaFeedLink() /*-{
-    return this.getFeedLink();
-  }-*/;
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(ItemsEntryCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(ItemsEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
 
   /**
    * Sets the attribute.
@@ -205,36 +171,15 @@ public class ItemsEntry extends com.google.gwt.gdata.client.Entry {
   public final native void setBatchStatus(Status batchStatus) /*-{
     this.setBatchStatus(batchStatus);
   }-*/;
-
+  
   /**
    * Sets the nested feed link. This element is optional.
    * 
    * @param feedLink Nested feed link.
    */
-  public final native void setMediaFeedLink(MediaFeedLink feedLink) /*-{
+  @SuppressWarnings("unchecked")
+  public final native void setFeedLink(FeedLink feedLink) /*-{
     this.setFeedLink(feedLink);
   }-*/;
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(ItemsEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(ItemsEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
   
 }

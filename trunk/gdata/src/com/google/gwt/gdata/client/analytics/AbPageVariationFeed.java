@@ -16,11 +16,13 @@
 
 package com.google.gwt.gdata.client.analytics;
 
+import com.google.gwt.gdata.client.Feed;
+
 /**
  * Feed element in AbPageVariationFeed.
  */
 public class AbPageVariationFeed
-    extends com.google.gwt.gdata.client.Feed<AbPageVariationEntry> {
+    extends Feed<AbPageVariationFeed, AbPageVariationEntry> {
 
   /**
    * Constructs an ab page variation feed. 

@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.analytics;
 /**
  * Entry element for abpagevariation feed.
  */
-public class AbPageVariationEntry extends com.google.gwt.gdata.client.Entry {
+public class AbPageVariationEntry
+    extends com.google.gwt.gdata.client.Entry<AbPageVariationEntry> {
 
   /**
    * Constructs an ab page variation entry.

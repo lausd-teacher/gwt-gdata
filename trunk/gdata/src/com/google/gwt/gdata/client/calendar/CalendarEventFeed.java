@@ -17,18 +17,16 @@
 package com.google.gwt.gdata.client.calendar;
 
 import com.google.gwt.gdata.client.EventFeed;
-import com.google.gwt.gdata.client.GDataRequestParameters;
 
 /**
  * Describes a Calendar event feed.
  */
-public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
+public class CalendarEventFeed extends EventFeed {
 
   /**
    * Constructs a Calendar event feed.
    * @return A CalendarEventFeed object.
    */
-  @SuppressWarnings("unchecked")
   public static native CalendarEventFeed newInstance() /*-{
     return new $wnd.google.gdata.calendar.CalendarEventFeed();
   }-*/;
@@ -85,30 +83,6 @@ public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
   }-*/;
 
   /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(CalendarEventFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(CalendarEventFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
    * Returns the times cleaned property. This element is optional.
    * 
    * @return Times cleaned property.
@@ -125,18 +99,6 @@ public class CalendarEventFeed extends EventFeed<CalendarEventEntry> {
   public final native TimeZoneProperty getTimeZone() /*-{
     return this.getTimeZone();
   }-*/;
-
-  /**
-   * Inserts a new calendar event entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertCalendarEventEntry(CalendarEventEntry entry,
-      CalendarEventEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
   /**
    * Sets the whether the user is permitted to use Google Apps Sync. This

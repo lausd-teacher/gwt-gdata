@@ -16,13 +16,13 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Describes a feed of a blog post's comments.
  */
 public class PostCommentFeed
-    extends com.google.gwt.gdata.client.Feed<CommentEntry> {
+    extends Feed<PostCommentFeed, CommentEntry> {
 
   /**
    * Constructs a blog post comment feed.
@@ -52,41 +52,5 @@ public class PostCommentFeed
   public final native BloggerLink getPreviousLink() /*-{
     return this.getPreviousLink();
   }-*/;
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(PostCommentFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(PostCommentFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new comment entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertCommentEntry(CommentEntry entry,
-      CommentEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
 }

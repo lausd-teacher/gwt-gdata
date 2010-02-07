@@ -26,7 +26,8 @@ import com.google.gwt.gdata.client.PostalAddress;
 /**
  * Describes a person entry.
  */
-public class PersonEntry extends com.google.gwt.gdata.client.Entry {
+public class PersonEntry
+    extends com.google.gwt.gdata.client.Entry<PersonEntry> {
 
   /**
    * Constructs a person entry.

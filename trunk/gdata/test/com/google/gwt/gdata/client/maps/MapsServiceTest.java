@@ -56,7 +56,7 @@ public class MapsServiceTest extends MapsTest {
         MapEntry newEntry = MapEntry.newInstance();
         newEntry.setTitle(Text.newInstance());
         newEntry.getTitle().setText(GDataTestScripts.Maps.testMap_Entry_Title_Created);
-        svc.insertMapEntry(GDataTestScripts.Maps.testMaps_Feed_Link, newEntry, new MapEntryCallback() {
+        svc.insertEntry(GDataTestScripts.Maps.testMaps_Feed_Link, newEntry, new MapEntryCallback() {
           public void onFailure(CallErrorException caught) {
             fail("Create Failed: " + caught.getMessage());
           }

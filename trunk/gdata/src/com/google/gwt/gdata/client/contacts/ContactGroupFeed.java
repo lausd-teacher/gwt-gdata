@@ -16,13 +16,13 @@
 
 package com.google.gwt.gdata.client.contacts;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Describes a contact group feed.
  */
 public class ContactGroupFeed
-    extends com.google.gwt.gdata.client.Feed<ContactGroupEntry> {
+    extends Feed<ContactGroupFeed, ContactGroupEntry> {
 
   /**
    * Constructs a contact group feed.
@@ -64,41 +64,5 @@ public class ContactGroupFeed
       com.google.gwt.gdata.client.atom.Link getPreviousLink() /*-{
     return this.getPreviousLink();
   }-*/;
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(ContactGroupFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(ContactGroupFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new contact group entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertAccountEntry(ContactGroupEntry entry,
-      ContactGroupEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
 }

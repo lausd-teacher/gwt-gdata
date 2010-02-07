@@ -16,19 +16,17 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.acl.AclFeed;
 
 /**
  * Describes a Calendar access control list (ACL) feed.
  */
-public class CalendarAclFeed extends AclFeed<CalendarAclEntry> {
+public class CalendarAclFeed extends AclFeed {
 
   /**
    * Constructs a Calendar ACL feed.
    * @return A CalendarAclFeed object.
    */
-  @SuppressWarnings("unchecked")
   public static native CalendarAclFeed newInstance() /*-{
     return new $wnd.google.gdata.calendar.CalendarAclFeed();
   }-*/;
@@ -45,41 +43,5 @@ public class CalendarAclFeed extends AclFeed<CalendarAclEntry> {
   public final native CalendarLink getControlledObjectLink() /*-{
     return this.getControlledObjectLink();
   }-*/;
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(CalendarAclFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(CalendarAclFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new calendar acl entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertCalendarAclEntry(CalendarAclEntry entry,
-      CalendarAclEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
 }

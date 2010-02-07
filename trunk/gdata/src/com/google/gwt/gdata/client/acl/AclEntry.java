@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.acl;
 /**
  * Describes an entry in a feed of an access control list (ACL).
  */
-public class AclEntry extends com.google.gwt.gdata.client.Entry {
+public class AclEntry
+    extends com.google.gwt.gdata.client.Entry<AclEntry> {
 
   /**
    * Constructs an ACL entry.

@@ -16,13 +16,13 @@
 
 package com.google.gwt.gdata.client.analytics;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Feed element in account feed.
  */
 public class AccountFeed
-    extends com.google.gwt.gdata.client.Feed<AccountEntry> {
+    extends Feed<AccountFeed, AccountEntry> {
 
   /**
    * Analytics account feed.
@@ -80,42 +80,6 @@ public class AccountFeed
   public final native Segment[] getSegments() /*-{
     return @com.google.gwt.gdata.client.impl.ArrayHelper::toArray(Lcom/google/gwt/core/client/JsArray;)(this.getSegments());
   }-*/;
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(AccountFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(AccountFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new account entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertAccountEntry(AccountEntry entry,
-      AccountEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
   /**
    * Sets the segments.

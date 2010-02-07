@@ -20,11 +20,12 @@ import com.google.gwt.accounts.client.AuthSubStatus;
 import com.google.gwt.accounts.client.User;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.gdata.client.EventEntry;
+import com.google.gwt.gdata.client.EventEntryCallback;
 import com.google.gwt.gdata.client.GData;
 import com.google.gwt.gdata.client.GDataSystemPackage;
 import com.google.gwt.gdata.client.atom.Text;
 import com.google.gwt.gdata.client.calendar.CalendarEventEntry;
-import com.google.gwt.gdata.client.calendar.CalendarEventEntryCallback;
 import com.google.gwt.gdata.client.calendar.CalendarEventFeed;
 import com.google.gwt.gdata.client.calendar.CalendarEventFeedCallback;
 import com.google.gwt.gdata.client.calendar.CalendarEventQuery;
@@ -115,7 +116,8 @@ public class CalendarUpdateEventDemo extends GDataDemo {
             caught.getMessage(), true);
       }
       public void onSuccess(CalendarEventFeed result) {
-        CalendarEventEntry[] entries = result.getEntries();
+        CalendarEventEntry[] entries =
+          (CalendarEventEntry[]) result.getEntries();
         if (entries.length == 0) {
           showStatus(
               "No events found containing the text 'GWT-Calendar-Client'.",
@@ -191,12 +193,12 @@ public class CalendarUpdateEventDemo extends GDataDemo {
     targetEvent.setTitle(Text.newInstance());
     targetEvent.getTitle().setText("GWT-Calendar-Client - updated event");
     showStatus("Updating a Calendar event...", false);
-    targetEvent.updateEntry(new CalendarEventEntryCallback() {
+    targetEvent.updateEntry(new EventEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while updating a Calendar event: " +
             caught.getMessage(), true);
       }
-      public void onSuccess(CalendarEventEntry result) {
+      public void onSuccess(EventEntry result) {
         showStatus("Updated a Calendar event.", false);
       }
     });

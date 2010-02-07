@@ -22,8 +22,11 @@ import com.google.gwt.gdata.client.impl.Callback;
 
 /**
  * Describes a Google Data API Entry.
+ * 
+ * @param <E> The entry type associated with the bound subtype.
  */
-public class Entry extends com.google.gwt.gdata.client.atom.Entry {
+@SuppressWarnings("unchecked")
+public class Entry<E extends Entry> extends com.google.gwt.gdata.client.atom.Entry {
   
   /**
    * Constructs an entry.
@@ -34,6 +37,35 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
   }-*/;
 
   protected Entry() { }
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final native void deleteEntry(Callback<E> callback) /*-{
+    this.deleteEntry(
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+    );
+  }-*/;
+
+  /**
+   * Deletes the entry from the feed.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final native void deleteEntry(
+      Callback<E> callback, GDataRequestParameters parameters) /*-{
+    this.deleteEntry(
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
   
   /**
    * Returns the Atom publication control status. This element is optional.
@@ -70,6 +102,15 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
   public final native String getEtag() /*-{
     return this.getEtag();
   }-*/;
+  
+  /**
+   * Returns the kind of the entry. This attribute is optional.
+   * 
+   * @return Kind of the entry.
+   */
+  public final native String getKind() /*-{
+    return this.getKind();
+  }-*/;
 
   /**
    * Returns the link of a relation and type.
@@ -91,6 +132,37 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
   public final native com.google.gwt.gdata.client.Link getLink(String rel, 
       String type) /*-{
     return this.getLink(rel, type);
+  }-*/;
+
+  /**
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final native void getSelf(Callback<E> callback) /*-{
+    this.getSelf(
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
+    );
+  }-*/;
+
+  /**
+   * Returns the current representation of the entry by requesting it from the
+   * associated service using the entry's self link.
+   * 
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final native void getSelf(Callback<E> callback,
+      GDataRequestParameters parameters) /*-{
+    this.getSelf(
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
   }-*/;
 
   /**
@@ -128,48 +200,38 @@ public class Entry extends com.google.gwt.gdata.client.atom.Entry {
   public final native void setEtag(String etag) /*-{
     this.setEtag(etag);
   }-*/;
+  
+  /**
+   * Sets the kind of the entry. This attribute is optional.
+   * 
+   * @param kind Kind of the entry.
+   */
+  public final native void setKind(String kind) /*-{
+    this.setKind(kind);
+  }-*/;
 
   /**
-   * Deletes the entry from the feed.
+   * Updates the entry in the feed by sending the representation of this entry.
    * 
-   * @param callback Callback defining success and failure handlers for this
+   * @param callback Callback defining success and failure handlers for th
    * command.
-   * @param parameters The request parameters.
    */
-  protected final native <E extends Entry> void delete(
-      Callback<E> callback, GDataRequestParameters parameters) /*-{
-    this.deleteEntry(
+  public final native void updateEntry(
+      Callback<E> callback) /*-{
+    this.updateEntry(
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
-      parameters
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); }
     );
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  protected final native <E extends Entry> void get(Callback<E> callback,
-      GDataRequestParameters parameters) /*-{
-    this.getSelf(
-      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
-      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
-      parameters
-    );
-  }-*/;
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
+   * Updates the entry in the feed by sending the representation of this entry.
    * 
    * @param callback Callback defining success and failure handlers for this
    * @param parameters The request parameters.
    * command.
    */
-  protected final native<E extends Entry> void update(
+  public final native void updateEntry(
       Callback<E> callback, GDataRequestParameters parameters) /*-{
     this.updateEntry(
       function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },

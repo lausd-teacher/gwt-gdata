@@ -16,13 +16,13 @@
 
 package com.google.gwt.gdata.client.calendar;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
+import com.google.gwt.gdata.client.Feed;
 
 /**
  * Personal settings for Calendar application.
  */
 public class CalendarSettingsFeed
-    extends com.google.gwt.gdata.client.Feed<SettingsEntry> {
+    extends Feed<CalendarSettingsFeed, SettingsEntry> {
 
   /**
    * Constructs a calendar settings feed.
@@ -34,41 +34,5 @@ public class CalendarSettingsFeed
   }-*/;
 
   protected CalendarSettingsFeed() { }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(CalendarSettingsFeedCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the feed by requesting it from the
-   * associated service using the feeds self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(CalendarSettingsFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
-   * Inserts a new settings entry into the feed.
-   * 
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertSettingsEntry(SettingsEntry entry,
-      SettingsEntryCallback callback) {
-    this.insertEntry(entry, callback);
-  }
 
 }

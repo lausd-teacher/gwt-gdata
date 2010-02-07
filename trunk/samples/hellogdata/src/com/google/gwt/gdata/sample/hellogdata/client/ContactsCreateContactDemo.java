@@ -111,7 +111,7 @@ public class ContactsCreateContactDemo extends GDataDemo {
     email.setPrimary(true);
     email.setRel(Email.REL_HOME);
     entry.setEmailAddresses(new Email[] { email });
-    service.insertContactEntry(contactFeedUri, entry,
+    service.insertEntry(contactFeedUri, entry,
         new ContactEntryCallback() {
       public void onFailure(CallErrorException caught) {
         showStatus("An error occurred while creating a contact: " +

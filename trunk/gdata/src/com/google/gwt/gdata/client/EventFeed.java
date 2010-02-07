@@ -18,16 +18,16 @@ package com.google.gwt.gdata.client;
 
 /**
  * Describes an event feed.
- * @param <E> The Entry type.
  */
-public class EventFeed<E extends EventEntry>
-    extends com.google.gwt.gdata.client.Feed<E> {
+public class EventFeed
+    extends Feed<EventFeed, EventEntry> {
   
   /**
    * Constructs an event feed.
    * @return An EventFeed object.
    */
-  public static native <E extends EventEntry> EventFeed<E> newInstance() /*-{
+  @SuppressWarnings("unchecked")
+  public static native EventFeed newInstance() /*-{
     return new $wnd.google.gdata.EventFeed();
   }-*/;
   

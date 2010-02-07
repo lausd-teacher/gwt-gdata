@@ -16,14 +16,14 @@
 
 package com.google.gwt.gdata.client.blogger;
 
-import com.google.gwt.gdata.client.GDataRequestParameters;
 import com.google.gwt.gdata.client.mediarss.MediaThumbnail;
 import com.google.gwt.gdata.client.threading.Total;
 
 /**
  * Describes a blog post entry.
  */
-public class PostEntry extends com.google.gwt.gdata.client.Entry {
+public class PostEntry
+    extends com.google.gwt.gdata.client.Entry<PostEntry> {
 
   /**
    * Constructs a post entry.
@@ -34,28 +34,6 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   protected PostEntry() { }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(PostEntryCallback callback) {
-    this.delete(callback, null);
-  }
-
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(PostEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
 
   /**
    * Returns the link that identifies a resource related to the entry.
@@ -118,30 +96,6 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
   }-*/;
 
   /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(PostEntryCallback callback) {
-    this.get(callback, null);
-  }
-
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(PostEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
-
-  /**
    * Returns the media thumbnail. This element is optional.
    * 
    * @return Media thumbnail.
@@ -176,27 +130,5 @@ public class PostEntry extends com.google.gwt.gdata.client.Entry {
   public final native void setTotal(Total total) /*-{
     this.setTotal(total);
   }-*/;
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(PostEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updated the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(PostEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
   
 }

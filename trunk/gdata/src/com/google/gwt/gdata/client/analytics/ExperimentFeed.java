@@ -16,11 +16,13 @@
 
 package com.google.gwt.gdata.client.analytics;
 
+import com.google.gwt.gdata.client.Feed;
+
 /**
  * Feed element in ExperimentFeed.
  */
 public class ExperimentFeed
-    extends com.google.gwt.gdata.client.Feed<ExperimentEntry> {
+    extends Feed<ExperimentFeed, ExperimentEntry> {
 
   /**
    * Constructs an experiment feed.  

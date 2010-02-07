@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client.analytics;
 /**
  * Entry element for combination feed.
  */
-public class CombinationEntry extends com.google.gwt.gdata.client.Entry {
+public class CombinationEntry
+    extends com.google.gwt.gdata.client.Entry<CombinationEntry> {
 
   /**
    * Constructs a combination entry.

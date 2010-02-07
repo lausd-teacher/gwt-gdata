@@ -19,7 +19,8 @@ package com.google.gwt.gdata.client;
 /**
  * Extension class for manipulating entries of the Message kind.
  */
-public class MessageEntry extends com.google.gwt.gdata.client.Entry {
+public class MessageEntry
+    extends com.google.gwt.gdata.client.Entry<MessageEntry> {
 
   /**
    * Constructs a message entry.
@@ -40,28 +41,6 @@ public class MessageEntry extends com.google.gwt.gdata.client.Entry {
   public final native void addWhoList(Who whoList) /*-{
     this.addWhoList(whoList);
   }-*/;
-  
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteEntry(MessageEntryCallback callback) {
-    this.delete(callback, null);
-  }
-  
-  /**
-   * Deletes the entry from the feed.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteEntry(MessageEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.delete(callback, parameters);
-  }
 
   /**
    * Returns the geo pt. This element is optional.
@@ -80,30 +59,6 @@ public class MessageEntry extends com.google.gwt.gdata.client.Entry {
   public final native Rating getRating() /*-{
     return this.getRating();
   }-*/;
-  
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void getSelf(MessageEntryCallback callback) {
-    this.get(callback, null);
-  }
-  
-  /**
-   * Returns the current representation of the entry by requesting it from the
-   * associated service using the entry's self link.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void getSelf(MessageEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.get(callback, parameters);
-  }
 
   /**
    * Returns the time period description. This element is optional.
@@ -161,27 +116,5 @@ public class MessageEntry extends com.google.gwt.gdata.client.Entry {
       @com.google.gwt.gdata.client.impl.ArrayHelper::fromArray([Lcom/google/gwt/core/client/JavaScriptObject;)(whoList)
     );
   }-*/;
-
-  /**
-   * Updates the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateEntry(MessageEntryCallback callback) {
-    this.update(callback, null);
-  }
-
-  /**
-   * Updates the entry in the feed by sending the representation of this entry.
-   * 
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateEntry(MessageEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.update(callback, parameters);
-  }
 
 }

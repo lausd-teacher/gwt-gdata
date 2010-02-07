@@ -47,29 +47,68 @@ public class AnalyticsService extends GoogleService {
   protected AnalyticsService() { }
 
   /**
-   * Deletes an account entry.
+   * Retrieves an ab page variation entry.
    * 
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this
    * command.
    */
-  public final void deleteAccountEntry(String uri,
-      AccountEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
+  public final void getAbPageVariationEntry(String uri,
+      AbPageVariationEntryCallback callback) {
+    this.getAbPageVariationEntry(uri, callback, null);
   }
 
   /**
-   * Deletes an account entry.
+   * Retrieves an ab page variation entry.
    * 
    * @param uri URI of entry.
    * @param callback Callback defining success and failure handlers for this
    * command.
    * @param parameters The request parameters.
    */
-  public final void deleteAccountEntry(String uri,
-      AccountEntryCallback callback, GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
+  public final native void getAbPageVariationEntry(String uri,
+      AbPageVariationEntryCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getAbPageVariationEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
+
+  /**
+   * Retrieves the feed with information about page variations
+   * in an A/B experiment.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getAbPageVariationFeed(String uri,
+      AbPageVariationFeedCallback callback) {
+    this.getAbPageVariationFeed(uri, callback, null);
   }
+
+  /**
+   * Retrieves the feed with information about page variations
+   * in an A/B experiment.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final native void getAbPageVariationFeed(String uri,
+      AbPageVariationFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getAbPageVariationFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves an account entry.
@@ -80,7 +119,7 @@ public class AnalyticsService extends GoogleService {
    */
   public final void getAccountEntry(String uri,
       AccountEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getAccountEntry");
+    this.getAccountEntry(uri, callback, null);
   }
 
   /**
@@ -91,10 +130,15 @@ public class AnalyticsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getAccountEntry(String uri,
-      AccountEntryCallback callback, GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getAccountEntry");
-  }
+  public final native void getAccountEntry(String uri,
+      AccountEntryCallback callback, GDataRequestParameters parameters) /*-{
+    this.getAccountEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of accounts and profiles to which a given user has
@@ -106,7 +150,7 @@ public class AnalyticsService extends GoogleService {
    */
   public final void getAccountFeed(AccountQuery query,
       AccountFeedCallback callback) {
-    this.getFeed(query, callback, null, "getAccountFeed");
+    this.getAccountFeed(query, callback, null);
   }
 
   /**
@@ -118,10 +162,15 @@ public class AnalyticsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getAccountFeed(AccountQuery query,
-      AccountFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getAccountFeed");
-  }
+  public final native void getAccountFeed(AccountQuery query,
+      AccountFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getAccountFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of accounts and profiles to which a given user has
@@ -132,7 +181,7 @@ public class AnalyticsService extends GoogleService {
    * command.
    */
   public final void getAccountFeed(String uri, AccountFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getAccountFeed");
+    this.getAccountFeed(uri, callback, null);
   }
 
   /**
@@ -144,10 +193,79 @@ public class AnalyticsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getAccountFeed(String uri, AccountFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getAccountFeed");
+  public final native void getAccountFeed(String uri, AccountFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getAccountFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
+
+  /**
+   * Retrieves a combination entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getCombinationEntry(String uri,
+      CombinationEntryCallback callback) {
+    this.getCombinationEntry(uri, callback, null);
   }
+
+  /**
+   * Retrieves a combination entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final native void getCombinationEntry(String uri,
+      CombinationEntryCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getCombinationEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
+
+  /**
+   * Retrieves the feed with information about experiment combinations
+   * in an experiment.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getCombinationFeed(String uri,
+      CombinationFeedCallback callback) {
+    this.getCombinationFeed(uri, callback, null);
+  }
+
+  /**
+   * Retrieves the feed with information about experiment combinations
+   * in an experiment.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final native void getCombinationFeed(String uri,
+      CombinationFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getCombinationFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves a data entry.
@@ -157,7 +275,7 @@ public class AnalyticsService extends GoogleService {
    * command.
    */
   public final void getDataEntry(String uri, DataEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getDataEntry");
+    this.getDataEntry(uri, callback, null);
   }
 
   /**
@@ -168,10 +286,15 @@ public class AnalyticsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getDataEntry(String uri, DataEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getDataEntry");
-  }
+  public final native void getDataEntry(String uri, DataEntryCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getDataEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
   
   /**
    * Retrieves the arbitrary data from an Analytics profile.
@@ -181,7 +304,7 @@ public class AnalyticsService extends GoogleService {
    * command.
    */
   public final void getDataFeed(DataQuery query, DataFeedCallback callback) {
-    this.getFeed(query, callback, null, "getDataFeed");
+    this.getDataFeed(query, callback, null);
   }
   
   /**
@@ -192,10 +315,15 @@ public class AnalyticsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getDataFeed(DataQuery query, DataFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getDataFeed");
-  }
+  public final native void getDataFeed(DataQuery query, DataFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getDataFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the arbitrary data from an Analytics profile.
@@ -205,7 +333,7 @@ public class AnalyticsService extends GoogleService {
    * command.
    */
   public final void getDataFeed(String uri, DataFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getDataFeed");
+    this.getDataFeed(uri, callback, null);
   }
 
   /**
@@ -216,48 +344,204 @@ public class AnalyticsService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getDataFeed(String uri, DataFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getDataFeed");
+  public final native void getDataFeed(String uri, DataFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getDataFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
+
+  /**
+   * Retrieves an experiment entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getExperimentEntry(String uri,
+      ExperimentEntryCallback callback) {
+    this.getExperimentEntry(uri, callback, null);
   }
 
   /**
-   * Inserts a new account entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertAccountEntry(String uri, AccountEntry entry,
-      AccountEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-  
-  /**
-   * Updates an account entry.
+   * Retrieves an experiment entry.
    * 
    * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateAccountEntry(String uri, AccountEntry entry,
-      AccountEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
-  }
-  
-  /**
-   * Updates an account entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
    * @param callback Callback defining success and failure handlers for this
    * command.
    * @param parameters The request parameters.
    */
-  public final void updateAccountEntry(String uri, AccountEntry entry,
-      AccountEntryCallback callback, GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
+  public final native void getExperimentEntry(String uri,
+      ExperimentEntryCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getExperimentEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
+
+  /**
+   * Retrieves the feed with information about experiments.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getExperimentFeed(String uri,
+      ExperimentFeedCallback callback) {
+    this.getExperimentFeed(uri, callback, null);
   }
+
+  /**
+   * Retrieves the feed with information about experiments.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final native void getExperimentFeed(String uri,
+      ExperimentFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getExperimentFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
+
+  /**
+   * Retrieves a section entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getSectionEntry(String uri,
+      SectionEntryCallback callback) {
+    this.getSectionEntry(uri, callback, null);
+  }
+
+  /**
+   * Retrieves a section entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final native void getSectionEntry(String uri,
+      SectionEntryCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getSectionEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
+
+  /**
+   * Retrieves the feed with information about sections in a
+   * multivariate experiment.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getSectionFeed(String uri,
+      SectionFeedCallback callback) {
+    this.getSectionFeed(uri, callback, null);
+  }
+
+  /**
+   * Retrieves the feed with information about sections in a
+   * multivariate experiment.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final native void getSectionFeed(String uri,
+      SectionFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getSectionFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
+
+  /**
+   * Retrieves a variation entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getVariationEntry(String uri,
+      VariationEntryCallback callback) {
+    this.getVariationEntry(uri, callback, null);
+  }
+
+  /**
+   * Retrieves a variation entry.
+   * 
+   * @param uri URI of entry.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final native void getVariationEntry(String uri,
+      VariationEntryCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getVariationEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
+
+  /**
+   * Retrieves the feed with information about section variations in a
+   * multivariate experiment.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   */
+  public final void getVariationFeed(String uri,
+      VariationFeedCallback callback) {
+    this.getVariationFeed(uri, callback, null);
+  }
+
+  /**
+   * Retrieves the feed with information about section variations in a
+   * multivariate experiment.
+   * 
+   * @param uri URI of feed or query.
+   * @param callback Callback defining success and failure handlers for this
+   * command.
+   * @param parameters The request parameters.
+   */
+  public final native void getVariationFeed(String uri,
+      VariationFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getVariationFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
+  
 }

@@ -47,104 +47,6 @@ public class GoogleBaseService extends GoogleService {
   protected GoogleBaseService() { }
 
   /**
-   * Deletes an attributes entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteAttributesEntry(String uri,
-      AttributesEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
-  }
-
-  /**
-   * Deletes an attributes entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteAttributesEntry(String uri,
-      AttributesEntryCallback callback, GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
-  }
-
-  /**
-   * Deletes an items entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteItemsEntry(String uri, ItemsEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
-  }
-
-  /**
-   * Deletes an items entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteItemsEntry(String uri, ItemsEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
-  }
-
-  /**
-   * Deletes an item types entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteItemTypesEntry(String uri,
-      ItemTypesEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
-  }
-
-  /**
-   * Deletes an item types entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteItemTypesEntry(String uri,
-      ItemTypesEntryCallback callback, GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
-  }
-
-  /**
-   * Deletes a media entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void deleteMediaEntry(String uri, MediaEntryCallback callback) {
-    this.deleteEntry(uri, callback, null);
-  }
-
-  /**
-   * Deletes a media entry.
-   * 
-   * @param uri URI of entry.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void deleteMediaEntry(String uri, MediaEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.deleteEntry(uri, callback, parameters);
-  }
-
-  /**
    * Retrieves a Google Base attribute entry.
    * 
    * @param uri URI of entry.
@@ -153,7 +55,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getAttributesEntry(String uri,
       AttributesEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getAttributesEntry");
+    this.getAttributesEntry(uri, callback, null);
   }
 
   /**
@@ -164,10 +66,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getAttributesEntry(String uri,
-      AttributesEntryCallback callback, GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getAttributesEntry");
-  }
+  public final native void getAttributesEntry(String uri,
+      AttributesEntryCallback callback, GDataRequestParameters parameters) /*-{
+    this.getAttributesEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of public attributes.
@@ -178,7 +85,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getAttributesFeed(AttributesQuery query,
       AttributesFeedCallback callback) {
-    this.getFeed(query, callback, null, "getAttributesFeed");
+    this.getAttributesFeed(query, callback, null);
   }
 
   /**
@@ -189,10 +96,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getAttributesFeed(AttributesQuery query,
-      AttributesFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getAttributesFeed");
-  }
+  public final native void getAttributesFeed(AttributesQuery query,
+      AttributesFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getAttributesFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of public attributes.
@@ -203,7 +115,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getAttributesFeed(String uri,
       AttributesFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getAttributesFeed");
+    this.getAttributesFeed(uri, callback, null);
   }
 
   /**
@@ -214,10 +126,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getAttributesFeed(String uri,
-      AttributesFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getAttributesFeed");
-  }
+  public final native void getAttributesFeed(String uri,
+      AttributesFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getAttributesFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves a Google Base item entry.
@@ -227,7 +144,7 @@ public class GoogleBaseService extends GoogleService {
    * command.
    */
   public final void getItemsEntry(String uri, ItemsEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getItemsEntry");
+    this.getItemsEntry(uri, callback, null);
   }
 
   /**
@@ -238,10 +155,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getItemsEntry(String uri, ItemsEntryCallback callback,
-      GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getItemsEntry");
-  }
+  public final native void getItemsEntry(String uri, ItemsEntryCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getItemsEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of a user's private items.
@@ -252,7 +174,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getItemsFeed(ItemsQuery query,
       ItemsFeedCallback callback) {
-    this.getFeed(query, callback, null, "getItemsFeed");
+    this.getItemsFeed(query, callback, null);
   }
 
   /**
@@ -263,10 +185,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getItemsFeed(ItemsQuery query,
-      ItemsFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getItemsFeed");
-  }
+  public final native void getItemsFeed(ItemsQuery query,
+      ItemsFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getItemsFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of a user's private items.
@@ -277,7 +204,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getItemsFeed(String uri,
       ItemsFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getItemsFeed");
+    this.getItemsFeed(uri, callback, null);
   }
 
   /**
@@ -288,10 +215,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getItemsFeed(String uri,
-      ItemsFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getItemsFeed");
-  }
+  public final native void getItemsFeed(String uri,
+      ItemsFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getItemsFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves a Google Base item type entry.
@@ -302,7 +234,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getItemTypesEntry(String uri,
       ItemTypesEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getItemTypesEntry");
+    this.getItemTypesEntry(uri, callback, null);
   }
 
   /**
@@ -313,10 +245,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getItemTypesEntry(String uri,
-      ItemTypesEntryCallback callback, GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getItemTypesEntry");
-  }
+  public final native void getItemTypesEntry(String uri,
+      ItemTypesEntryCallback callback, GDataRequestParameters parameters) /*-{
+    this.getItemTypesEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of public item types.
@@ -327,7 +264,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getItemTypesFeed(ItemTypesQuery query,
       ItemTypesFeedCallback callback) {
-    this.getFeed(query, callback, null, "getItemTypesFeed");
+    this.getItemTypesFeed(query, callback, null);
   }
 
   /**
@@ -338,10 +275,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getItemTypesFeed(ItemTypesQuery query,
-      ItemTypesFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getItemTypesFeed");
-  }
+  public final native void getItemTypesFeed(ItemTypesQuery query,
+      ItemTypesFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getItemTypesFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of public item types.
@@ -352,7 +294,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getItemTypesFeed(String uri,
       ItemTypesFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getItemTypesFeed");
+    this.getItemTypesFeed(uri, callback, null);
   }
 
   /**
@@ -363,10 +305,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getItemTypesFeed(String uri,
-      ItemTypesFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getItemTypesFeed");
-  }
+  public final native void getItemTypesFeed(String uri,
+      ItemTypesFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getItemTypesFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves a Google Base locale entry.
@@ -377,7 +324,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getLocalesEntry(String uri,
       LocalesEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getLocalesEntry");
+    this.getLocalesEntry(uri, callback, null);
   }
 
   /**
@@ -388,10 +335,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getLocalesEntry(String uri,
-      LocalesEntryCallback callback, GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getLocalesEntry");
-  }
+  public final native void getLocalesEntry(String uri,
+      LocalesEntryCallback callback, GDataRequestParameters parameters) /*-{
+    this.getLocalesEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of locales.
@@ -402,7 +354,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getLocalesFeed(LocalesQuery query,
       LocalesFeedCallback callback) {
-    this.getFeed(query, callback, null, "getLocalesFeed");
+    this.getLocalesFeed(query, callback, null);
   }
 
   /**
@@ -413,10 +365,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getLocalesFeed(LocalesQuery query,
-      LocalesFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getLocalesFeed");
-  }
+  public final native void getLocalesFeed(LocalesQuery query,
+      LocalesFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getLocalesFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of locales.
@@ -427,7 +384,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getLocalesFeed(String uri,
       LocalesFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getLocalesFeed");
+    this.getLocalesFeed(uri, callback, null);
   }
 
   /**
@@ -438,10 +395,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getLocalesFeed(String uri,
-      LocalesFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getLocalesFeed");
-  }
+  public final native void getLocalesFeed(String uri,
+      LocalesFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getLocalesFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves a Google Base media entry.
@@ -452,7 +414,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getMediaEntry(String uri,
       MediaEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getMediaEntry");
+    this.getMediaEntry(uri, callback, null);
   }
 
   /**
@@ -463,10 +425,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getMediaEntry(String uri,
-      MediaEntryCallback callback, GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getMediaEntry");
-  }
+  public final native void getMediaEntry(String uri,
+      MediaEntryCallback callback, GDataRequestParameters parameters) /*-{
+    this.getMediaEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the media feed used for managing the media attachments for one
@@ -477,7 +444,7 @@ public class GoogleBaseService extends GoogleService {
    * command.
    */
   public final void getMediaFeed(String uri, MediaFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getMediaFeed");
+    this.getMediaFeed(uri, callback, null);
   }
 
   /**
@@ -489,10 +456,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getMediaFeed(String uri, MediaFeedCallback callback,
-      GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getMediaFeed");
-  }
+  public final native void getMediaFeed(String uri, MediaFeedCallback callback,
+      GDataRequestParameters parameters) /*-{
+    this.getMediaFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves a Google Base snippet entry.
@@ -503,7 +475,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getSnippetsEntry(String uri,
       SnippetsEntryCallback callback) {
-    this.getEntry(uri, callback, null, "getSnippetsEntry");
+    this.getSnippetsEntry(uri, callback, null);
   }
 
   /**
@@ -514,10 +486,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getSnippetsEntry(String uri,
-      SnippetsEntryCallback callback, GDataRequestParameters parameters) {
-    this.getEntry(uri, callback, parameters, "getSnippetsEntry");
-  }
+  public final native void getSnippetsEntry(String uri,
+      SnippetsEntryCallback callback, GDataRequestParameters parameters) /*-{
+    this.getSnippetsEntry(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.entry : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of snippets of public items.
@@ -528,7 +505,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getSnippetsFeed(SnippetsQuery query,
       SnippetsFeedCallback callback) {
-    this.getFeed(query, callback, null, "getSnippetsFeed");
+    this.getSnippetsFeed(query, callback, null);
   }
 
   /**
@@ -539,10 +516,15 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getSnippetsFeed(SnippetsQuery query,
-      SnippetsFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(query, callback, parameters, "getSnippetsFeed");
-  }
+  public final native void getSnippetsFeed(SnippetsQuery query,
+      SnippetsFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getSnippetsFeed(
+      query,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
   /**
    * Retrieves the feed of snippets of public items.
@@ -553,7 +535,7 @@ public class GoogleBaseService extends GoogleService {
    */
   public final void getSnippetsFeed(String uri,
       SnippetsFeedCallback callback) {
-    this.getFeed(uri, callback, null, "getSnippetsFeed");
+    this.getSnippetsFeed(uri, callback, null);
   }
 
   /**
@@ -564,169 +546,14 @@ public class GoogleBaseService extends GoogleService {
    * command.
    * @param parameters The request parameters.
    */
-  public final void getSnippetsFeed(String uri,
-      SnippetsFeedCallback callback, GDataRequestParameters parameters) {
-    this.getFeed(uri, callback, parameters, "getSnippetsFeed");
-  }
-
-  /**
-   * Inserts a new attributes entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertAttributesEntry(String uri,
-      AttributesEntry entry, AttributesEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-
-  /**
-   * Inserts a new items entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertItemsEntry(String uri, ItemsEntry entry,
-      ItemsEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-
-  /**
-   * Inserts a new item types entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertItemTypesEntry(String uri, ItemTypesEntry entry,
-      ItemTypesEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-
-  /**
-   * Inserts a new media entry.
-   * 
-   * @param uri URI of feed.
-   * @param entry Entry to insert.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void insertMediaEntry(String uri, MediaEntry entry,
-      MediaEntryCallback callback) {
-    this.insertEntry(uri, entry, callback);
-  }
-
-  /**
-   * Updates an attributes entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateAttributesEntry(String uri, AttributesEntry entry,
-      AttributesEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
-  }
-
-  /**
-   * Updates an attributes entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateAttributesEntry(String uri, AttributesEntry entry,
-      AttributesEntryCallback callback, GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
-  }
-
-  /**
-   * Updates a items entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateItemsEntry(String uri, ItemsEntry entry,
-      ItemsEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
-  }
-
-  /**
-   * Updates a items entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateItemsEntry(String uri, ItemsEntry entry,
-      ItemsEntryCallback callback, GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
-  }
-
-  /**
-   * Updates a item types entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateItemTypesEntry(String uri, ItemTypesEntry entry,
-      ItemTypesEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
-  }
-
-  /**
-   * Updates a item types entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateItemTypesEntry(String uri, ItemTypesEntry entry,
-      ItemTypesEntryCallback callback, GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
-  }
-
-  /**
-   * Updates a media entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   */
-  public final void updateMediaEntry(String uri, MediaEntry entry,
-      MediaEntryCallback callback) {
-    this.updateEntry(uri, entry, callback, null);
-  }
-
-  /**
-   * Updates a media entry.
-   * 
-   * @param uri URI of entry.
-   * @param entry Entry to update.
-   * @param callback Callback defining success and failure handlers for this
-   * command.
-   * @param parameters The request parameters.
-   */
-  public final void updateMediaEntry(String uri, MediaEntry entry,
-      MediaEntryCallback callback, GDataRequestParameters parameters) {
-    this.updateEntry(uri, entry, callback, parameters);
-  }
+  public final native void getSnippetsFeed(String uri,
+      SnippetsFeedCallback callback, GDataRequestParameters parameters) /*-{
+    this.getSnippetsFeed(
+      uri,
+      function(result) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleSuccessCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, result ? result.feed : result); },
+      function(error) { @com.google.gwt.gdata.client.impl.CallbackHelper::handleFailureCallback(Lcom/google/gwt/gdata/client/impl/Callback;Lcom/google/gwt/gdata/client/Error;)(callback, error); },
+      parameters
+    );
+  }-*/;
 
 }
