@@ -44,12 +44,12 @@ public class CalendarEventEntryTest extends CalendarTest {
     executeGDataTest(new Runnable() {
       public void run() {
         CalendarEventEntry obj = CalendarEventEntry.newInstance();
-        // Unit Test for addExtendedProperty(CalendarExtendedProperty extendedProperty)
-        // Unit Test for getHtmlLink()
-        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
-        // Unit Test for getWebContent()
-        assertEquals("getWebContent", obj.getWebContent(), null);
-        // Unit Test for removeWebContent()
+        obj.addExtendedProperty(CalendarExtendedProperty.newInstance());
+        assertEquals("addExtendedProperty", 1,
+            obj.getExtendedProperties().length);
+        assertNull("getHtmlLink", obj.getHtmlLink());
+        assertNull("getWebContent", obj.getWebContent());
+        obj.removeWebContent();
         finishGDataTest();
       }
     }, 10000);

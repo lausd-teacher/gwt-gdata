@@ -16,6 +16,8 @@
 
 package com.google.gwt.gdata.client.analytics;
 
+import com.google.gwt.gdata.client.QueryParameterDefinition;
+
 /**
  * Tests for the AccountQuery class.
  */
@@ -35,9 +37,15 @@ public class AccountQueryTest extends AnalyticsTest {
   }
 
   public void testOther() {
-    // Unit Test for setMaxResults(String maxResults)
-    // Unit Test for setPrettyprint(String prettyprint)
-    // Unit Test for setStartIndex(String startIndex)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AccountQuery obj = AccountQuery.newInstance("http://www.google.com/feeds/");
+        assertNotNull("getPath", obj.getPath());
+        assertNotNull("getUri", obj.getUri());
+        obj.setParamDef("par1", QueryParameterDefinition.newInstance());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
@@ -49,10 +57,18 @@ public class AccountQueryTest extends AnalyticsTest {
         assertEquals("startindex", obj.getStartIndex(), startindex);
         boolean prettyprint = true;
         obj.setPrettyprint(prettyprint);
-        assertSame("prettyprint", obj.getPrettyprint(), prettyprint);
+        assertEquals("prettyprint", obj.getPrettyprint(), prettyprint);
         double maxresults = 600813;
         obj.setMaxResults(maxresults);
         assertEquals("maxresults", obj.getMaxResults(), maxresults);
+        double val1 = 10;
+        obj.setNumericParam("par1", val1);
+        assertNotNull("numericParam", obj.getNumericParam("par1"));
+        assertEquals("numericParam", val1, obj.getNumericParam("par1"));
+        String val2 = "myValue";
+        obj.setStringParam("par2", val2);
+        assertNotNull("stringParam", obj.getStringParam("par2"));
+        assertEquals("stringParam", val2, obj.getStringParam("par2"));
         finishGDataTest();
       }
     }, 10000);

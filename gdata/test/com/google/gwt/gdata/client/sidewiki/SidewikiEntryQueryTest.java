@@ -51,10 +51,6 @@ public class SidewikiEntryQueryTest extends SidewikiTest {
   }
 
   public void testOther() {
-    // Unit Test for setMaxResults(String maxResults)
-    // Unit Test for setStartIndex(String startIndex)
-    // Unit Test for setUpdatedMax(String updatedMax)
-    // Unit Test for setUpdatedMin(String updatedMin)
   }
 
   public void testProperties() {

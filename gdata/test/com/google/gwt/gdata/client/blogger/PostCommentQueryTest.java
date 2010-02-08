@@ -39,12 +39,14 @@ public class PostCommentQueryTest extends BloggerTest {
   }
 
   public void testOther() {
-    // Unit Test for setMaxResults(String maxResults)
-    // Unit Test for setPublishedMax(String publishedMax)
-    // Unit Test for setPublishedMin(String publishedMin)
-    // Unit Test for setStartIndex(String startIndex)
-    // Unit Test for setUpdatedMax(String updatedMax)
-    // Unit Test for setUpdatedMin(String updatedMin)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        @SuppressWarnings("unused")
+        PostCommentQuery obj = PostCommentQuery.newInstance(
+            "http://www.google.com/feeds");
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

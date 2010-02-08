@@ -38,12 +38,9 @@ public class ContactFeedTest extends ContactsTest {
     executeGDataTest(new Runnable() {
       public void run() {
         ContactFeed obj = ContactFeed.newInstance();
-        // Unit Test for getFeedBatchLink()
-        assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
-        // Unit Test for getNextLink()
-        assertEquals("getNextLink", obj.getNextLink(), null);
-        // Unit Test for getPreviousLink()
-        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+        assertNull("getFeedBatchLink", obj.getFeedBatchLink());
+        assertNull("getNextLink", obj.getNextLink());
+        assertNull("getPreviousLink", obj.getPreviousLink());
         finishGDataTest();
       }
     }, 10000);

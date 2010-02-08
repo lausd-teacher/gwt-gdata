@@ -40,15 +40,12 @@ public class CalendarEntryTest extends CalendarTest {
     executeGDataTest(new Runnable() {
       public void run() {
         CalendarEntry obj = CalendarEntry.newInstance();
-        // Unit Test for addLocation(Where location)
-        // Unit Test for getAccessControlListLink()
-        assertEquals("getAccessControlListLink", obj.getAccessControlListLink(), null);
-        // Unit Test for getAtomAlternateLink()
-        assertEquals("getAtomAlternateLink", obj.getAtomAlternateLink(), null);
-        // Unit Test for getEventFeedLink()
-        assertEquals("getEventFeedLink", obj.getEventFeedLink(), null);
-        // Unit Test for getRelatedLink()
-        assertEquals("getRelatedLink", obj.getRelatedLink(), null);
+        obj.addLocation(Where.newInstance());
+        assertEquals("addLocation", 1, obj.getLocations().length);
+        assertNull("getAccessControlListLink", obj.getAccessControlListLink());
+        assertNull("getAtomAlternateLink", obj.getAtomAlternateLink());
+        assertNull("getEventFeedLink", obj.getEventFeedLink());
+        assertNull("getRelatedLink", obj.getRelatedLink());
         finishGDataTest();
       }
     }, 10000);

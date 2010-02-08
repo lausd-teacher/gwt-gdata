@@ -35,8 +35,14 @@ public class BlogQueryTest extends BloggerTest {
   }
 
   public void testOther() {
-    // Unit Test for setMaxResults(String maxResults)
-    // Unit Test for setStartIndex(String startIndex)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        @SuppressWarnings("unused")
+        BlogQuery obj = BlogQuery.newInstance(
+            "http://www.google.com/feeds");
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

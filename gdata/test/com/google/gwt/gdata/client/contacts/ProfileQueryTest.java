@@ -30,7 +30,14 @@ public class ProfileQueryTest extends ContactsTest {
   }
 
   public void testOther() {
-    // Unit Test for setMaxResults(String maxResults)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        @SuppressWarnings("unused")
+        ProfileQuery obj = ProfileQuery.newInstance(
+            "http://www.google.com/feeds");
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

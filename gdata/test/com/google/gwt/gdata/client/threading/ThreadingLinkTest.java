@@ -48,7 +48,13 @@ public class ThreadingLinkTest extends ThreadingTest {
   }
 
   public void testOther() {
-    // Unit Test for setUpdated(Date updated)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        @SuppressWarnings("unused")
+        ThreadingLink obj = ThreadingLink.newInstance();
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

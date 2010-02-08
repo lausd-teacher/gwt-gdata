@@ -48,11 +48,10 @@ public class AccountFeedTest extends AnalyticsTest {
     executeGDataTest(new Runnable() {
       public void run() {
         AccountFeed obj = AccountFeed.newInstance();
-        // Unit Test for addSegment(Segment segment)
-        // Unit Test for getNextLink()
-        assertEquals("getNextLink", obj.getNextLink(), null);
-        // Unit Test for getPreviousLink()
-        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+        obj.addSegment(Segment.newInstance());
+        assertEquals("addSegment", 1, obj.getSegments().length);
+        assertNull("getNextLink", obj.getNextLink());
+        assertNull("assertNull", obj.getPreviousLink());
         finishGDataTest();
       }
     }, 10000);

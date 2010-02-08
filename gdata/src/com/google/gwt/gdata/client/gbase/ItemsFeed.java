@@ -16,7 +16,6 @@
 
 package com.google.gwt.gdata.client.gbase;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.gdata.client.Feed;
 
 /**
@@ -102,7 +101,7 @@ public class ItemsFeed
    * @param attributes Attributes, where each attribute is added using
    * setAttribute().
    */
-  public final native void setAttributes(JavaScriptObject attributes) /*-{
+  public final native void setAttributes(MapAttribute attributes) /*-{
     this.setAttributes(attributes);
   }-*/;
 

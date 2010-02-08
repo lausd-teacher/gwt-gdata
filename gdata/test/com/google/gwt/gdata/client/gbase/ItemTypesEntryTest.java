@@ -43,8 +43,7 @@ public class ItemTypesEntryTest extends GoogleBaseTest {
     executeGDataTest(new Runnable() {
       public void run() {
         ItemTypesEntry obj = ItemTypesEntry.newInstance();
-        // Unit Test for getRelatedLink()
-        assertEquals("getRelatedLink", obj.getRelatedLink(), null);
+        assertNull("getRelatedLink", obj.getRelatedLink());
         finishGDataTest();
       }
     }, 10000);

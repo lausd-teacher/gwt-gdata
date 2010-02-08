@@ -48,12 +48,12 @@ public class DataFeedTest extends AnalyticsTest {
     executeGDataTest(new Runnable() {
       public void run() {
         DataFeed obj = DataFeed.newInstance();
-        // Unit Test for addSegment(Segment segment)
-        // Unit Test for addDataSource(DataSource dataSource)
-        // Unit Test for getNextLink()
-        assertEquals("getNextLink", obj.getNextLink(), null);
-        // Unit Test for getPreviousLink()
-        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+        obj.addSegment(Segment.newInstance());
+        assertEquals("addSegment", 1, obj.getSegments().length);
+        obj.addDataSource(DataSource.newInstance());
+        assertEquals("addDataSource", 1, obj.getDataSources().length);
+        assertNull("getNextLink", obj.getNextLink());
+        assertNull("getPreviousLink", obj.getPreviousLink());
         finishGDataTest();
       }
     }, 10000);

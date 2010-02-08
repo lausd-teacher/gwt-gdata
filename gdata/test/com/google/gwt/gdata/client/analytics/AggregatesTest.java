@@ -35,7 +35,14 @@ public class AggregatesTest extends AnalyticsTest {
   }
 
   public void testOther() {
-    // Unit Test for addMetric(Metric metric)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Aggregates obj = Aggregates.newInstance();
+        obj.addMetric(Metric.newInstance());
+        assertEquals("addMetric", 1, obj.getMetrics().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

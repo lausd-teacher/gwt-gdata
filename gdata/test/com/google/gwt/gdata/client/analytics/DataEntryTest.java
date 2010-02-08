@@ -46,11 +46,22 @@ public class DataEntryTest extends AnalyticsTest {
   }
 
   public void testOther() {
-    // Unit Test for addDimension(Dimension dimension)
-    // Unit Test for addMetric(Metric metric)
-    // Unit Test for getDimension(String name)
-    // Unit Test for getMetric(String name)
-    // Unit Test for getValueOf(String name)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        DataEntry obj = DataEntry.newInstance();
+        Dimension dim = Dimension.newInstance();
+        dim.setName("dim1");
+        dim.setValue("val1");
+        obj.addDimension(dim);
+        assertEquals("addDimension", 1, obj.getDimensions().length);
+        assertEquals("getDimension", dim.getValue(), obj.getDimension(dim.getName()).getValue());
+        Metric met = Metric.newInstance();
+        obj.addMetric(met);
+        assertEquals("addMetric", 1, obj.getMetrics().length);
+        assertNull("getMetric", obj.getMetric("metric"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

@@ -35,9 +35,13 @@ public class FeatureQueryTest extends MapsTest {
   }
 
   public void testOther() {
-    // Unit Test for setMaxResults(String maxResults)
-    // Unit Test for setShowDeleted(String showDeleted)
-    // Unit Test for setStartIndex(String startIndex)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        @SuppressWarnings("unused")
+        FeatureQuery obj = FeatureQuery.newInstance("http://www.google.com");
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

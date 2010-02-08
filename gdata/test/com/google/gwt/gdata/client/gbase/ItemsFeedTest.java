@@ -38,16 +38,13 @@ public class ItemsFeedTest extends GoogleBaseTest {
     executeGDataTest(new Runnable() {
       public void run() {
         ItemsFeed obj = ItemsFeed.newInstance();
-        // Unit Test for getAttributes()
         assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
-        // Unit Test for getFeedBatchLink()
-        assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
-        // Unit Test for getNextLink()
-        assertEquals("getNextLink", obj.getNextLink(), null);
-        // Unit Test for getPreviousLink()
-        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
-        // Unit Test for setAttribute(String name, Attribute attribute)
-        // Unit Test for setAttributes(JavaScriptObject attributes)
+        assertNull("getFeedBatchLink", obj.getFeedBatchLink());
+        assertNull("getNextLink", obj.getNextLink());
+        assertNull("getPreviousLink", obj.getPreviousLink());
+        obj.setAttribute("myAttribute", Attribute.newInstance());
+        obj.setAttributes(MapAttribute.newInstance());
+        assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
         finishGDataTest();
       }
     }, 10000);

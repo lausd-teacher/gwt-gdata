@@ -38,6 +38,7 @@ public class GDataTest extends GWTTestCase {
       GData.loadGDataApi(null, test);
       delayTestFinish(delay);
     } else {
+      delayTestFinish(delay);
       test.run();
     }
   }
@@ -59,6 +60,7 @@ public class GDataTest extends GWTTestCase {
       GData.loadGDataApi(null, test);
       delayTestFinish(delay);
     } else {
+      delayTestFinish(delay);
       test.run();
     }
   }
@@ -67,6 +69,8 @@ public class GDataTest extends GWTTestCase {
     if (isAsync) {
       finishTest();
       isAsync = false;
+    } else {
+      finishTest();
     }
   }
   

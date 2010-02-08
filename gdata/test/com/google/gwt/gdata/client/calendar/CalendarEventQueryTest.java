@@ -51,17 +51,14 @@ public class CalendarEventQueryTest extends CalendarTest {
   }
 
   public void testOther() {
-    // Unit Test for setFutureEvents(String futureEvents)
-    // Unit Test for setMaximumStartTime(String maximumStartTime)
-    // Unit Test for setMaxResults(String maxResults)
-    // Unit Test for setMinimumStartTime(String minimumStartTime)
-    // Unit Test for setRecurrenceExpansionEnd(String recurrenceExpansionEnd)
-    // Unit Test for setRecurrenceExpansionStart(String recurrenceExpansionStart)
-    // Unit Test for setShowAllowGSync(String showAllowGSync)
-    // Unit Test for setSingleEvents(String singleEvents)
-    // Unit Test for setStartIndex(String startIndex)
-    // Unit Test for setUpdatedMax(String updatedMax)
-    // Unit Test for setUpdatedMin(String updatedMin)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        @SuppressWarnings("unused")
+        CalendarEventQuery obj = CalendarEventQuery.newInstance(
+            "http://www.google.com/feeds");
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

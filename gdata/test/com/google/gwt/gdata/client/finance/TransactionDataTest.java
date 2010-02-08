@@ -39,7 +39,13 @@ public class TransactionDataTest extends FinanceTest {
   }
 
   public void testOther() {
-    // Unit Test for setDate(Date date)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        TransactionData obj = TransactionData.newInstance();
+        obj.setDate(DateTime.newInstance(new Date()));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

@@ -35,7 +35,14 @@ public class ServiceDocumentTest extends AppTest {
   }
 
   public void testOther() {
-    // Unit Test for addWorkspace(Workspace workspace)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ServiceDocument obj = ServiceDocument.newInstance();
+        obj.addWorkspace(Workspace.newInstance());
+        assertEquals("addWorkspace", 1, obj.getWorkspaces().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

@@ -43,7 +43,7 @@ public class Query extends JavaScriptObject {
    * default value.
    */
   public final native double getNumericParam(String name) /*-{
-    return this.getParam(name, value);
+    return this.getParam(name);
   }-*/;
   
   /**
@@ -63,7 +63,7 @@ public class Query extends JavaScriptObject {
    * default value.
    */
   public final native String getStringParam(String name) /*-{
-    return this.getParam(name, value);
+    return this.getParam(name);
   }-*/;
 
   /**

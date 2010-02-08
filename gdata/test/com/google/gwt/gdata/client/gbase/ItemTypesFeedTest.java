@@ -38,8 +38,7 @@ public class ItemTypesFeedTest extends GoogleBaseTest {
     executeGDataTest(new Runnable() {
       public void run() {
         ItemTypesFeed obj = ItemTypesFeed.newInstance();
-        // Unit Test for getFeedBatchLink()
-        assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+        assertNull("getFeedBatchLink", obj.getFeedBatchLink());
         finishGDataTest();
       }
     }, 10000);

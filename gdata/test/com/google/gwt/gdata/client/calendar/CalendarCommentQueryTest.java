@@ -39,10 +39,14 @@ public class CalendarCommentQueryTest extends CalendarTest {
   }
 
   public void testOther() {
-    // Unit Test for setMaxResults(String maxResults)
-    // Unit Test for setStartIndex(String startIndex)
-    // Unit Test for setUpdatedMax(String updatedMax)
-    // Unit Test for setUpdatedMin(String updatedMin)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        @SuppressWarnings("unused")
+        CalendarCommentQuery obj = CalendarCommentQuery.newInstance(
+            "http://www.google.com/feeds");
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

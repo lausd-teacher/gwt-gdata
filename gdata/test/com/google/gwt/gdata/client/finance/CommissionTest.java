@@ -37,7 +37,14 @@ public class CommissionTest extends FinanceTest {
   }
 
   public void testOther() {
-    // Unit Test for addMoney(Money money)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Commission obj = Commission.newInstance();
+        obj.addMoney(Money.newInstance());
+        assertEquals("addMoney", 1, obj.getMoney().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

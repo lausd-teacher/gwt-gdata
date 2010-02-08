@@ -25,7 +25,7 @@ public class GDataTestScripts {
    */
   public static class Analytics {
     public static final String testCookie_Name = "g314-scope-0";
-    public static final String testCookie_Value = "scope=https://www.google.com/analytics/feeds/&token=2/B_op_3NxwEJZN9AxIA-uHoPiAJ-trg6WyvhPNYlGy_A";
+    public static final String testCookie_Value = "scope=https://www.google.com/analytics/feeds/&token=2/ry3XfNn-RwhG4TLNHh6IzQ";
     public static String testAccounts_Feed_Link = "https://www.google.com/analytics/feeds/accounts/default?max-results=50";
     public static String testAccounts_Feed_Title = "Profile list for gwt.gdata@gmail.com";
   }
@@ -35,7 +35,7 @@ public class GDataTestScripts {
    */
   public static class GoogleBase {
     public static final String testCookie_Name = "g314-scope-1";
-    public static final String testCookie_Value = "scope=http://www.google.com/base/feeds/&token=2/XWghVkJr-Y5oOGA2jrEjsQ";
+    public static final String testCookie_Value = "scope=http://www.google.com/base/feeds/&token=2/qM-NLOyl_4b0PAHFRJFGLIPiAJ-trg6WyvhPNYlGy_A";
     public static String testItems_Feed_Link = "http://www.google.com/base/feeds/items";
     public static String testItems_Feed_Title = "Items matching query: [customer id(int):5752122]";
     public static String testItem_Entry_Link = "http://www.google.com/base/feeds/items/7112179810031829902";
@@ -72,7 +72,7 @@ public class GDataTestScripts {
    */
   public static class Blogger {
     public static final String testCookie_Name = "g314-scope-2";
-    public static final String testCookie_Value = "scope=http://www.blogger.com/feeds/&token=2/sJeuj7zf0afxn1w17m42XIPiAJ-trg6WyvhPNYlGy_A";
+    public static final String testCookie_Value = "scope=http://www.blogger.com/feeds/&token=2/OO78xD_-4Qc-7JcWWpXjzg";
     public static String testBlogs_Feed_Link = "http://www.blogger.com/feeds/default/blogs";
     public static String testBlogs_Feed_Title = "GWT GData's Blogs";
     public static String testBlog_Entry_Link = "http://www.blogger.com/feeds/11123467028509174303/blogs/5689061262293823704";
@@ -97,7 +97,7 @@ public class GDataTestScripts {
    */
   public static class Calendar {
     public static final String testCookie_Name = "g314-scope-3";
-    public static final String testCookie_Value = "scope=http://www.google.com/calendar/feeds/&token=2/XKg6l__fFtHZkoHxg816g4PiAJ-trg6WyvhPNYlGy_A";
+    public static final String testCookie_Value = "scope=http://www.google.com/calendar/feeds/&token=2/lEtrzYwSNcP2-9icYQ_WXg";
     public static String testCalendars_Feed_Link = "http://www.google.com/calendar/feeds/default/owncalendars/full";
     public static String testCalendars_Feed_Title = "gwt.gdata@gmail.com's Calendar List";
     public static String testCalendars_Feed_InsertLink = "http://www.google.com/calendar/feeds/default/owncalendars/full";
@@ -125,7 +125,7 @@ public class GDataTestScripts {
    */
   public static class Contacts {
     public static final String testCookie_Name = "g314-scope-4";
-    public static final String testCookie_Value = "scope=http://www.google.com/m8/feeds/&token=2/pmxHO6siS_UhUui-4nkuhA";
+    public static final String testCookie_Value = "scope=http://www.google.com/m8/feeds/&token=2/YO0DTAhg5XDPf7z3PJ1tgQ";
     public static String testContacts_Feed_Link = "http://www.google.com/m8/feeds/contacts/default/full";
     public static String testContacts_Feed_Title = "GWT's Contacts";
     public static String testContact_Entry_Link = "http://www.google.com/m8/feeds/contacts/gwt.gdata%40gmail.com/full/3552c9c10a0e7385";
@@ -151,7 +151,7 @@ public class GDataTestScripts {
    */
   public static class Finance {
     public static final String testCookie_Name = "g314-scope-5";
-    public static final String testCookie_Value = "scope=http://finance.google.com/finance/feeds/&token=2/TsWf4t-kz-n89dAG_xtM5Q";
+    public static final String testCookie_Value = "scope=http://finance.google.com/finance/feeds/&token=2/uNa0wMTZHNQtiPv2QYvR-A";
     public static String testPortfolios_Feed_Link = "http://finance.google.com/finance/feeds/default/portfolios";
     public static String testPortfolios_Feed_Title = "Portfolio Feed";
     public static String testPortfolio_Entry_Link = "http://finance.google.com/finance/feeds/default/portfolios/1";
@@ -171,7 +171,7 @@ public class GDataTestScripts {
    */
   public static class Maps {
     public static final String testCookie_Name = "g314-scope-6";
-    public static final String testCookie_Value = "scope=http://maps.google.com/maps/feeds/&token=2/DoHDpenyO3J6P8rrvQBxLg";
+    public static final String testCookie_Value = "scope=http://maps.google.com/maps/feeds/&token=2/Hejh2I9vmMN_q64gcZmSM4PiAJ-trg6WyvhPNYlGy_A";
     public static String testMaps_Feed_Link = "http://maps.google.com/maps/feeds/maps/default/full";
     public static String testMaps_Feed_Title = "My maps";
     public static String testMap_Entry_Link = "http://maps.google.com/maps/feeds/maps/215436100924106759545/full/00046ddb0ea00aec32bb3?alt=json";
@@ -193,7 +193,7 @@ public class GDataTestScripts {
    */
   public static class Sidewiki {
     public static final String testCookie_Name = "g314-scope-7";
-    public static final String testCookie_Value = "scope=http://www.google.com/sidewiki/feeds/&token=2/tA8uBfPmrjP5sxNZCXdFPIPiAJ-trg6WyvhPNYlGy_A";
+    public static final String testCookie_Value = "scope=http://www.google.com/sidewiki/feeds/&token=2/qk6mknPFxGKtT57rCj5Yvg";
     public static String testEntries_Feed_Link = "http://www.google.com/sidewiki/feeds/entries/webpage/http%3A%2F%2Fwww.google.com%2F/full";
     public static String testEntries_Feed_Title = "\"Google\" - recent Sidewiki entries";
   }

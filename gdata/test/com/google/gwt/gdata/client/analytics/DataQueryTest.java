@@ -35,9 +35,14 @@ public class DataQueryTest extends AnalyticsTest {
   }
 
   public void testOther() {
-    // Unit Test for setMaxResults(String maxResults)
-    // Unit Test for setPrettyprint(String prettyprint)
-    // Unit Test for setStartIndex(String startIndex)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        DataQuery obj = DataQuery.newInstance("http://www.google.com/feeds");
+        assertNotNull("getPath", obj.getPath());
+        assertNotNull("getUri", obj.getUri());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

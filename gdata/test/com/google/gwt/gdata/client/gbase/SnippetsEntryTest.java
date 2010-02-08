@@ -43,12 +43,11 @@ public class SnippetsEntryTest extends GoogleBaseTest {
     executeGDataTest(new Runnable() {
       public void run() {
         SnippetsEntry obj = SnippetsEntry.newInstance();
-        // Unit Test for getAttributes()
         assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
-        // Unit Test for getHtmlLink()
-        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
-        // Unit Test for setAttribute(String name, Attribute attribute)
-        // Unit Test for setAttributes(JavaScriptObject attributes)
+        assertNull("getHtmlLink", obj.getHtmlLink());
+        obj.setAttribute("myAttribute", Attribute.newInstance());
+        obj.setAttributes(MapAttribute.newInstance());
+        assertEquals("getAttributes", obj.getAttributes().keys().length, 0);
         Status batchstatus = Status.newInstance();
         obj.setBatchStatus(batchstatus);
         assertSame("batchstatus", obj.getBatchStatus(), batchstatus);

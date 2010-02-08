@@ -53,7 +53,6 @@ public class ReminderTest extends GDataTest {
     executeGDataTest(new Runnable() {
       public void run() {
         Reminder obj = Reminder.newInstance();
-        // Unit Test for setAbsoluteTime(Date absoluteTime)
         Date value = new Date();
         obj.setAbsoluteTime(value);
         assertEquals("value", obj.getAbsoluteTime().getDate(), value);

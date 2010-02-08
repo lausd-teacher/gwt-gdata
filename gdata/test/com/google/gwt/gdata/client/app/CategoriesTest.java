@@ -47,7 +47,14 @@ public class CategoriesTest extends AppTest {
   }
 
   public void testOther() {
-    // Unit Test for addCategory(Category category)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Categories obj = Categories.newInstance();
+        obj.addCategory(Category.newInstance());
+        assertEquals("addCategory", 1, obj.getCategories().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

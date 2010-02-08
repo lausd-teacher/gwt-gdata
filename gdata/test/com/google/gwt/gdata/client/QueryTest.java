@@ -16,28 +16,32 @@
 
 package com.google.gwt.gdata.client;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 /**
  * Tests for the Query class.
  */
-public class QueryTest extends GWTTestCase {
+public class QueryTest extends GDataTest {
   @Override
   public String getModuleName() {
     return "com.google.gwt.gdata.GDataTest";
   }
 
   public void testConstructors() {
-    assertNotNull("newInstance()", Query.newInstance("myValue"));
+    executeGDataTest(new Runnable() {
+      public void run() {
+        assertNotNull("newInstance()", Query.newInstance("myValue"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testOther() {
-    Query obj = Query.newInstance("myValue");
-    // Unit Test for getPath()
-    assertEquals("getPath", obj.getPath(), "");
-    // Unit Test for getUri()
-    assertEquals("getUri", obj.getUri(), "myValue");
-    // Unit Test for setParam(String name, JavaScriptObject value)
-    // Unit Test for setParamDef(String name, JavaScriptObject paramDef)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Query obj = Query.newInstance("http://www.google.com/feeds");
+        assertEquals("getPath", "", obj.getPath());
+        assertEquals("getUri", "http://www.google.com/feeds", obj.getUri());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

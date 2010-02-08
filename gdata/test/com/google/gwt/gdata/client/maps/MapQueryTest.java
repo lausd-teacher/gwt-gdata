@@ -35,9 +35,13 @@ public class MapQueryTest extends MapsTest {
   }
 
   public void testOther() {
-    // Unit Test for setMaxResults(String maxResults)
-    // Unit Test for setShowDeleted(String showDeleted)
-    // Unit Test for setStartIndex(String startIndex)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        @SuppressWarnings("unused")
+        MapQuery obj = MapQuery.newInstance("myValue");
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

@@ -35,13 +35,26 @@ public class MediaGroupTest extends MediaRssTest {
   }
 
   public void testOther() {
-    // Unit Test for addCategory(MediaCategory category)
-    // Unit Test for addContent(MediaContent content)
-    // Unit Test for addCredit(MediaCredit credit)
-    // Unit Test for addRating(MediaRating rating)
-    // Unit Test for addRestriction(MediaRestriction restriction)
-    // Unit Test for addText(MediaText text)
-    // Unit Test for addThumbnail(MediaThumbnail thumbnail)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MediaGroup obj = MediaGroup.newInstance();
+        obj.addCategory(MediaCategory.newInstance());
+        assertEquals("addCategory", 1, obj.getCategories().length);
+        obj.addContent(MediaContent.newInstance());
+        assertEquals("addContent", 1, obj.getContents().length);
+        obj.addCredit(MediaCredit.newInstance());
+        assertEquals("addCredit", 1, obj.getCredits().length);
+        obj.addRating(MediaRating.newInstance());
+        assertEquals("addRating", 1, obj.getRatings().length);
+        obj.addRestriction(MediaRestriction.newInstance());
+        assertEquals("addRestriction", 1, obj.getRestrictions().length);
+        obj.addText(MediaText.newInstance());
+        assertEquals("addText", 1, obj.getTexts().length);
+        obj.addThumbnail(MediaThumbnail.newInstance());
+        assertEquals("addThumbnail", 1, obj.getThumbnails().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

@@ -35,7 +35,14 @@ public class MessageEntryTest extends GDataTest {
   }
 
   public void testOther() {
-    // Unit Test for addWhoList(Who whoList)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        MessageEntry obj = MessageEntry.newInstance();
+        obj.addWhoList(Who.newInstance());
+        assertEquals("addWhoList", 1, obj.getWhoList().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

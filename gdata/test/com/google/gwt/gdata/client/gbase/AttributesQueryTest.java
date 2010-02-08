@@ -39,13 +39,13 @@ public class AttributesQueryTest extends GoogleBaseTest {
   }
 
   public void testOther() {
-    // Unit Test for setMaxResults(String maxResults)
-    // Unit Test for setMaxValues(String maxValues)
-    // Unit Test for setPublishedMax(String publishedMax)
-    // Unit Test for setPublishedMin(String publishedMin)
-    // Unit Test for setStartIndex(String startIndex)
-    // Unit Test for setUpdatedMax(String updatedMax)
-    // Unit Test for setUpdatedMin(String updatedMin)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        @SuppressWarnings("unused")
+        AttributesQuery obj = AttributesQuery.newInstance("myValue");
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

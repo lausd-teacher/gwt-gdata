@@ -37,7 +37,14 @@ public class ContactEntryTest extends ContactsTest {
   }
 
   public void testOther() {
-    // Unit Test for addGroupMembershipInfo(GroupMembershipInfo groupMembershipInfo)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ContactEntry obj = ContactEntry.newInstance();
+        obj.addGroupMembershipInfo(GroupMembershipInfo.newInstance());
+        assertEquals("addGroupMembershipInfo", 1, obj.getGroupMembershipInfos().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

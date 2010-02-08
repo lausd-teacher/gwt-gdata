@@ -41,8 +41,7 @@ public class SidewikiEntryTest extends SidewikiTest {
     executeGDataTest(new Runnable() {
       public void run() {
         SidewikiEntry obj = SidewikiEntry.newInstance();
-        // Unit Test for getHtmlLink()
-        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
+        assertNull("getHtmlLink", obj.getHtmlLink());
         finishGDataTest();
       }
     }, 10000);

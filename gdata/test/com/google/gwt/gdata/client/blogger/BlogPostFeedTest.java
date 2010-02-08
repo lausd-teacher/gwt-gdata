@@ -38,10 +38,8 @@ public class BlogPostFeedTest extends BloggerTest {
     executeGDataTest(new Runnable() {
       public void run() {
         BlogPostFeed obj = BlogPostFeed.newInstance();
-        // Unit Test for getNextLink()
-        assertEquals("getNextLink", obj.getNextLink(), null);
-        // Unit Test for getPreviousLink()
-        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+        assertNull("getNextLink", obj.getNextLink());
+        assertNull("getPreviousLink", obj.getPreviousLink());
         finishGDataTest();
       }
     }, 10000);

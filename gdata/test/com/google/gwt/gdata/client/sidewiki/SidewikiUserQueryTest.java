@@ -36,8 +36,6 @@ public class SidewikiUserQueryTest extends SidewikiTest {
   }
 
   public void testOther() {
-    // Unit Test for setMaxResults(String maxResults)
-    // Unit Test for setStartIndex(String startIndex)
   }
 
   public void testProperties() {

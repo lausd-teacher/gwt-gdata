@@ -35,8 +35,14 @@ public class TransportResponseTest extends GDataTest {
   }
 
   public void testOther() {
-    // Unit Test for addHeader(String headerKey, String headerValue)
-    // Unit Test for getResponseHeader(String headerKey)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        TransportResponse obj = TransportResponse.newInstance();
+        obj.addHeader("myHeader", "myValue");
+        assertEquals("getResponseHeader", "myValue", obj.getResponseHeader("myHeader"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
