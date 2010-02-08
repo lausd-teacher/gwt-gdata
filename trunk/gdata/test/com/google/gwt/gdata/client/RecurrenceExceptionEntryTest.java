@@ -35,9 +35,18 @@ public class RecurrenceExceptionEntryTest extends GDataTest {
   }
 
   public void testOther() {
-    // Unit Test for addWhen(When when)
-    // Unit Test for addWhere(Where where)
-    // Unit Test for addWho(Who who)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        RecurrenceExceptionEntry obj = RecurrenceExceptionEntry.newInstance();
+        obj.addWhen(When.newInstance());
+        assertEquals("addWhen", 1, obj.getWhen().length);
+        obj.addWhere(Where.newInstance());
+        assertEquals("addWhere", 1, obj.getWhere().length);
+        obj.addWho(Who.newInstance());
+        assertEquals("addWho", 1, obj.getWho().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

@@ -38,18 +38,12 @@ public class BlogEntryTest extends BloggerTest {
     executeGDataTest(new Runnable() {
       public void run() {
         BlogEntry obj = BlogEntry.newInstance();
-        // Unit Test for getEntryPostLink()
-        assertEquals("getEntryPostLink", obj.getEntryPostLink(), null);
-        // Unit Test for getFeedLink()
-        assertEquals("getFeedLink", obj.getFeedLink(), null);
-        // Unit Test for getHtmlLink()
-        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
-        // Unit Test for getRepliesLink()
-        assertEquals("getRepliesLink", obj.getRepliesLink(), null);
-        // Unit Test for getSettingsLink()
-        assertEquals("getSettingsLink", obj.getSettingsLink(), null);
-        // Unit Test for getTemplateLink()
-        assertEquals("getTemplateLink", obj.getTemplateLink(), null);
+        assertNull("getEntryPostLink", obj.getEntryPostLink());
+        assertNull("getFeedLink", obj.getFeedLink());
+        assertNull("getHtmlLink", obj.getHtmlLink());
+        assertNull("getRepliesLink", obj.getRepliesLink());
+        assertNull("getSettingsLink", obj.getSettingsLink());
+        assertNull("getTemplateLink", obj.getTemplateLink());
         finishGDataTest();
       }
     }, 10000);

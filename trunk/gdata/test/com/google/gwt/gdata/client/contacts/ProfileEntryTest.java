@@ -34,30 +34,49 @@ public class ProfileEntryTest extends ContactsTest {
   }
 
   public void testOther() {
-    // Unit Test for addGroupMembershipInfo(GroupMembershipInfo groupMembershipInfo)
-    // Unit Test for addCalendarLink(CalendarLink calendarLink);
-    // Unit Test for addEvent(Event event);
-    // Unit Test for addExternalId(ExternalId externalId);
-    // Unit Test for addHobby(Hobby hobby);
-    // Unit Test for addJot(Jot jot);
-    // Unit Test for addLanguage(Language language);
-    // Unit Test for addRelation(Relation relation);
-    // Unit Test for addStructuredPostalAddress(Address address);
-    // Unit Test for addUserDefinedField(UserDefinedField userDefinedField);
-    // Unit Test for addWebsite(Website website);
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ProfileEntry obj = ProfileEntry.newInstance();
+        obj.addCalendarLink(CalendarLink.newInstance());
+        assertEquals("addCalendarLink", 1, obj.getCalendarLinks());
+        obj.addEvent(Event.newInstance());
+        assertEquals("addEvent", 1, obj.getEvents());
+        obj.addExternalId(ExternalId.newInstance());
+        assertEquals("addExternalId", 1, obj.getExternalIds());
+        obj.addHobby(Hobby.newInstance());
+        assertEquals("addHobby", 1, obj.getHobbies());
+        obj.addJot(Jot.newInstance());
+        assertEquals("", 1, obj.getCalendarLinks());
+        obj.addLanguage(Language.newInstance());
+        assertEquals("addLanguage", 1, obj.getLanguages());
+        obj.addRelation(Relation.newInstance());
+        assertEquals("addRelation", 1, obj.getRelations());
+        obj.addStructuredPostalAddress(StructuredPostalAddress.newInstance());
+        assertEquals("addStructuredPostalAddress", 1,
+            obj.getStructuredPostalAddresses());
+        obj.addUserDefinedField(UserDefinedField.newInstance());
+        assertEquals("addUserDefinedField", 1, obj.getUserDefinedFields());
+        obj.addWebsite(Website.newInstance());
+        assertEquals("addWebsite", 1, obj.getWebsites());
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
     ProfileEntry obj = ProfileEntry.newInstance();
     BillingInformation billinginformation = BillingInformation.newInstance();
     obj.setBillingInformation(billinginformation);
-    assertSame("billinginformation", obj.getBillingInformation(), billinginformation);
+    assertSame("billinginformation", obj.getBillingInformation(),
+        billinginformation);
     Birthday birthday = Birthday.newInstance();
     obj.setBirthday(birthday);
     assertSame("birthday", obj.getBirthday(), birthday);
-    CalendarLink[] calendarlinks = new CalendarLink[] { CalendarLink.newInstance() };
+    CalendarLink[] calendarlinks = new CalendarLink[] {
+        CalendarLink.newInstance() };
     obj.setCalendarLinks(calendarlinks);
-    assertSame("calendarlinks", obj.getCalendarLinks().length, calendarlinks.length);
+    assertSame("calendarlinks", obj.getCalendarLinks().length,
+        calendarlinks.length);
     DirectoryServer directoryserver = DirectoryServer.newInstance();
     obj.setDirectoryServer(directoryserver);
     assertSame("directoryserver", obj.getDirectoryServer(), directoryserver);
@@ -106,15 +125,20 @@ public class ProfileEntryTest extends ContactsTest {
     ShortName shortname = ShortName.newInstance();
     obj.setShortName(shortname);
     assertSame("shortname", obj.getShortName(), shortname);
-    StructuredPostalAddress[] structuredpostaladdresses = new StructuredPostalAddress[] { StructuredPostalAddress.newInstance() };
+    StructuredPostalAddress[] structuredpostaladdresses =
+      new StructuredPostalAddress[] { StructuredPostalAddress.newInstance() };
     obj.setStructuredPostalAddresses(structuredpostaladdresses);
-    assertSame("structuredpostaladdresses", obj.getStructuredPostalAddresses().length, structuredpostaladdresses.length);
+    assertSame("structuredpostaladdresses",
+        obj.getStructuredPostalAddresses().length,
+        structuredpostaladdresses.length);
     Subject subject = Subject.newInstance();
     obj.setSubject(subject);
     assertSame("subject", obj.getSubject(), subject);
-    UserDefinedField[] userdefinedfields = new UserDefinedField[] { UserDefinedField.newInstance() };
+    UserDefinedField[] userdefinedfields = new UserDefinedField[] {
+        UserDefinedField.newInstance() };
     obj.setUserDefinedFields(userdefinedfields);
-    assertSame("userdefinedfields", obj.getUserDefinedFields().length, userdefinedfields.length);
+    assertSame("userdefinedfields", obj.getUserDefinedFields().length,
+        userdefinedfields.length);
     Website[] website = new Website[] { Website.newInstance() };
     obj.setWebsites(website);
     assertSame("website", obj.getWebsites().length, website.length);

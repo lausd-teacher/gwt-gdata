@@ -67,7 +67,6 @@ public class AnalyticsServiceTest extends AnalyticsTest {
                 finishGDataTest();
               }
         });
-        finishGDataTest();
       }
     }, 14000);
   }

@@ -38,10 +38,8 @@ public class AttributesFeedTest extends GoogleBaseTest {
     executeGDataTest(new Runnable() {
       public void run() {
         AttributesFeed obj = AttributesFeed.newInstance();
-        // Unit Test for getFeedAtomLink()
-        assertEquals("getFeedAtomLink", obj.getFeedAtomLink(), null);
-        // Unit Test for getFeedBatchLink()
-        assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
+        assertNull("getFeedAtomLink", obj.getFeedAtomLink());
+        assertNull("getFeedBatchLink", obj.getFeedBatchLink());
         finishGDataTest();
       }
     }, 10000);

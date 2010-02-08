@@ -45,10 +45,29 @@ public class AccountEntryTest extends AnalyticsTest {
   }
 
   public void testOther() {
-    // Unit Test for addCustomVariable(CustomVariable customVariable)
-    // Unit Test for addGoal(Goal goal)
-    // Unit Test for addProperty(Property property)
-    // Unit Test for getPropertyValue(String name)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        AccountEntry obj = AccountEntry.newInstance();
+        CustomVariable var = CustomVariable.newInstance();
+        var.setIndex(0);
+        var.setName("myVar");
+        var.setScope(".");
+        obj.addCustomVariable(var);
+        assertEquals("addCustomVariable", 1, obj.getCustomVariables().length);
+        Goal goal = Goal.newInstance();
+        goal.setName("myGoal");
+        goal.setValue(10);
+        obj.addGoal(goal);
+        assertEquals("addGoal", 1, obj.getGoals().length);
+        Property prop = Property.newInstance();
+        prop.setName("myProp");
+        prop.setValue("myValue");
+        obj.addProperty(prop);
+        assertEquals("addProperty", 1, obj.getProperties().length);
+        assertNull("getPropertyValue", obj.getPropertyValue("myProperty"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {
@@ -67,6 +86,7 @@ public class AccountEntryTest extends AnalyticsTest {
         CustomVariable[] customvariables = new CustomVariable[]{ CustomVariable.newInstance() };
         obj.setCustomVariables(customvariables);
         assertEquals("customvariables", obj.getCustomVariables().length, customvariables.length);
+        finishGDataTest();
       }
     }, 10000);
   }

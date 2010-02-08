@@ -43,8 +43,7 @@ public class LocalesEntryTest extends GoogleBaseTest {
     executeGDataTest(new Runnable() {
       public void run() {
         LocalesEntry obj = LocalesEntry.newInstance();
-        // Unit Test for getRelatedLink()
-        assertEquals("getRelatedLink", obj.getRelatedLink(), null);
+        assertNull("getRelatedLink", obj.getRelatedLink());
         Status batchstatus = Status.newInstance();
         obj.setBatchStatus(batchstatus);
         assertSame("batchstatus", obj.getBatchStatus(), batchstatus);

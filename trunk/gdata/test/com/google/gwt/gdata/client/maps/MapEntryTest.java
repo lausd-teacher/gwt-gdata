@@ -47,10 +47,8 @@ public class MapEntryTest extends MapsTest {
     executeGDataTest(new Runnable() {
       public void run() {
         MapEntry obj = MapEntry.newInstance();
-        // Unit Test for getAtomAlternateLink()
-        assertEquals("getAtomAlternateLink", obj.getAtomAlternateLink(), null);
-        // Unit Test for getAtomFeedLink()
-        assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
+        assertNull("getAtomAlternateLink", obj.getAtomAlternateLink());
+        assertNull("getAtomFeedLink", obj.getAtomFeedLink());
         finishGDataTest();
       }
     }, 10000);

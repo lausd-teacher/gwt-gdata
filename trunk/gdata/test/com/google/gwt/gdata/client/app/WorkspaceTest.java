@@ -37,7 +37,14 @@ public class WorkspaceTest extends AppTest {
   }
 
   public void testOther() {
-    // Unit Test for addCollection(Collection collection)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Workspace obj = Workspace.newInstance();
+        obj.addCollection(Collection.newInstance());
+        assertEquals("addCollection", 1, obj.getCollections().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

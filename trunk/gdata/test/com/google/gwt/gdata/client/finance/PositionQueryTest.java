@@ -35,8 +35,14 @@ public class PositionQueryTest extends FinanceTest {
   }
 
   public void testOther() {
-    // Unit Test for setIncludeReturns(String includeReturns)
-    // Unit Test for setInlineTransactions(String inlineTransactions)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        @SuppressWarnings("unused")
+        PositionQuery obj = PositionQuery.newInstance(
+            "http://www.google.com/feeds");
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

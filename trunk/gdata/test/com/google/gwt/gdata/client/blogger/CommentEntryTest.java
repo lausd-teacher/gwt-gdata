@@ -40,10 +40,8 @@ public class CommentEntryTest extends BloggerTest {
     executeGDataTest(new Runnable() {
       public void run() {
         CommentEntry obj = CommentEntry.newInstance();
-        // Unit Test for getHtmlLink()
-        assertEquals("getHtmlLink", obj.getHtmlLink(), null);
-        // Unit Test for getRepliesLink()
-        assertEquals("getRepliesLink", obj.getRepliesLink(), null);
+        assertNull("getHtmlLink", obj.getHtmlLink());
+        assertNull("getRepliesLink", obj.getRepliesLink());
         finishGDataTest();
       }
     }, 10000);

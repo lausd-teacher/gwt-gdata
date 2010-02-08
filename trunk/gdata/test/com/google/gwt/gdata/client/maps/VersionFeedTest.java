@@ -38,10 +38,8 @@ public class VersionFeedTest extends MapsTest {
     executeGDataTest(new Runnable() {
       public void run() {
         VersionFeed obj = VersionFeed.newInstance();
-        // Unit Test for getAtomFeedLink()
-        assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
-        // Unit Test for getNextLink()
-        assertEquals("getNextLink", obj.getNextLink(), null);
+        assertNull("getAtomFeedLink", obj.getAtomFeedLink());
+        assertNull("getNextLink", obj.getNextLink());
         finishGDataTest();
       }
     }, 10000);

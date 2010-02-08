@@ -37,9 +37,16 @@ public class WhenTest extends GDataTest {
   }
 
   public void testOther() {
-    // Unit Test for addReminder(Reminder reminder)
-    // Unit Test for setEndTime(Date endTime)
-    // Unit Test for setStartTime(Date startTime)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        When obj = When.newInstance();
+        obj.addReminder(Reminder.newInstance());
+        assertEquals("addReminder", 1, obj.getReminder().length);
+        obj.setEndTime(DateTime.newInstance(new Date()));
+        obj.setStartTime(DateTime.newInstance(new Date()));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

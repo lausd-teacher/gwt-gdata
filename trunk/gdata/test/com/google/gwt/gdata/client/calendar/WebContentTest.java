@@ -35,8 +35,15 @@ public class WebContentTest extends CalendarTest {
   }
 
   public void testOther() {
-    // Unit Test for addGadgetPref(WebContentGadgetPref gadgetPref)
-    // Unit Test for getGadgetPref(String name)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        WebContent obj = WebContent.newInstance();
+        obj.addGadgetPref(WebContentGadgetPref.newInstance());
+        assertEquals("addGadgetPref", 1, obj.getGadgetPrefs().length);
+        assertNull(obj.getGadgetPref("myPref"));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

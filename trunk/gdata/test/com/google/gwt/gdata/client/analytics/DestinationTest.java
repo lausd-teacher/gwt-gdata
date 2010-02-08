@@ -46,7 +46,14 @@ public class DestinationTest extends AnalyticsTest {
   }
 
   public void testOther() {
-    // Unit Test for addStep(Step step)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Destination obj = Destination.newInstance();
+        obj.addStep(Step.newInstance());
+        assertEquals("addStep", 1, obj.getSteps().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

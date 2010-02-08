@@ -46,7 +46,14 @@ public class GmAttributeTest extends GoogleBaseTest {
   }
 
   public void testOther() {
-    // Unit Test for addValue(GmValue value)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GmAttribute obj = GmAttribute.newInstance();
+        obj.addValue(GmValue.newInstance());
+        assertEquals("addValue", 1, obj.getValues().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

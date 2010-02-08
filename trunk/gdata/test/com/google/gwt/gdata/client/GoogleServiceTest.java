@@ -16,6 +16,8 @@
 
 package com.google.gwt.gdata.client;
 
+import com.google.gwt.core.client.JavaScriptObject;
+
 /**
  * Tests for the GoogleService class.
  */
@@ -28,16 +30,30 @@ public class GoogleServiceTest extends GDataTest {
   public void testConstructors() {
     executeGDataTest(new Runnable() {
       public void run() {
-        assertNotNull("newInstance()", GoogleService.newInstance("myValue", "myValue"));
+        assertNotNull("newInstance()",
+            GoogleService.newInstance("myValue", "myValue"));
         finishGDataTest();
       }
     }, 10000);
   }
 
   public void testOther() {
-    // Unit Test for setGadgetsAuthentication(String authType, JavaScriptObject params)
-    // Unit Test for setUserCredentials(String username, String password, ClientLoginAccountType accountType)
-    // Unit Test for useOAuth(String serviceName, JavaScriptObject params)
-    // Unit Test for useXGDataAuthorization()
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GoogleService obj = GoogleService.newInstance(
+            "myService", "myApplication");
+        obj.setGadgetsAuthentication("OAUTH");
+        obj.setGadgetsAuthentication(
+            ShindigAuthenticationType.SIGNED, JavaScriptObject.createObject());
+        obj.setUserCredentials("me", "mypass");
+        obj.setUserCredentials("me", "mypass", ClientLoginAccountType.GOOGLE);
+        obj.useOAuth();
+        obj.useOAuth(JavaScriptObject.createObject());
+        obj.useOAuth("myService");
+        obj.useOAuth("myService", JavaScriptObject.createObject());
+        obj.useXGDataAuthorization();
+        finishGDataTest();
+      }
+    }, 10000);
   }
 }

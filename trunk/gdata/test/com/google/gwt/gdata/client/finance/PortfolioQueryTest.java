@@ -35,8 +35,14 @@ public class PortfolioQueryTest extends FinanceTest {
   }
 
   public void testOther() {
-    // Unit Test for setIncludeReturns(String includeReturns)
-    // Unit Test for setInlinePositions(String inlinePositions)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        @SuppressWarnings("unused")
+        PortfolioQuery obj = PortfolioQuery.newInstance(
+            "http://www.google.com/feeds");
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

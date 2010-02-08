@@ -58,14 +58,14 @@ public class SnippetsQueryTest extends GoogleBaseTest {
   }
 
   public void testOther() {
-    // Unit Test for setAdjust(String adjust)
-    // Unit Test for setMaxResults(String maxResults)
-    // Unit Test for setPublishedMax(String publishedMax)
-    // Unit Test for setPublishedMin(String publishedMin)
-    // Unit Test for setRefine(String refine)
-    // Unit Test for setStartIndex(String startIndex)
-    // Unit Test for setUpdatedMax(String updatedMax)
-    // Unit Test for setUpdatedMin(String updatedMin)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        @SuppressWarnings("unused")
+        SnippetsQuery obj = SnippetsQuery.newInstance(
+            "http://www.google.com/feeds");
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

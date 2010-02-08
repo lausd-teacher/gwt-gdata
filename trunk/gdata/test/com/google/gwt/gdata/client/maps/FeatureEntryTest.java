@@ -48,9 +48,9 @@ public class FeatureEntryTest extends MapsTest {
     executeGDataTest(new Runnable() {
       public void run() {
         FeatureEntry obj = FeatureEntry.newInstance();
-        // Unit Test for addCustomProperty(CustomProperty customProperty)
-        // Unit Test for getAtomFeedLink()
-        assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
+        obj.addCustomProperty(CustomProperty.newInstance());
+        assertEquals("addCustomProperty", 1, obj.getCustomProperties().length);
+        assertNull("getAtomFeedLink", obj.getAtomFeedLink());
         finishGDataTest();
       }
     }, 10000);

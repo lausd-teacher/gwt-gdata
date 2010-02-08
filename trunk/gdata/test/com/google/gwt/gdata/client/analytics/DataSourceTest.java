@@ -35,8 +35,18 @@ public class DataSourceTest extends AnalyticsTest {
   }
 
   public void testOther() {
-    // Unit Test for addProperty(Property property)
-    // Unit Test for getPropertyValue(String name)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        DataSource obj = DataSource.newInstance();
+        Property prop = Property.newInstance();
+        prop.setName("prop1");
+        prop.setValue("val1");
+        obj.addProperty(prop);
+        assertEquals("addProperty", 1, obj.getProperties().length);
+        assertEquals("getPropertyValue", prop.getValue(), obj.getPropertyValue(prop.getName()));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

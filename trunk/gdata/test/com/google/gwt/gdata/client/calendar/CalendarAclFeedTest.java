@@ -38,8 +38,7 @@ public class CalendarAclFeedTest extends CalendarTest {
     executeGDataTest(new Runnable() {
       public void run() {
         CalendarAclFeed obj = CalendarAclFeed.newInstance();
-        // Unit Test for getControlledObjectLink()
-        assertEquals("getControlledObjectLink", obj.getControlledObjectLink(), null);
+        assertNull("getControlledObjectLink", obj.getControlledObjectLink());
         finishGDataTest();
       }
     }, 10000);

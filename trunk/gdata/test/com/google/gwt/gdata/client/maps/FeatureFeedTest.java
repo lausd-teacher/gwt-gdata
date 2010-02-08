@@ -38,12 +38,9 @@ public class FeatureFeedTest extends MapsTest {
     executeGDataTest(new Runnable() {
       public void run() {
         FeatureFeed obj = FeatureFeed.newInstance();
-        // Unit Test for getAtomFeedLink()
-        assertEquals("getAtomFeedLink", obj.getAtomFeedLink(), null);
-        // Unit Test for getFeedBatchLink()
-        assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
-        // Unit Test for getNextLink()
-        assertEquals("getNextLink", obj.getNextLink(), null);
+        assertNull("getAtomFeedLink", obj.getAtomFeedLink());
+        assertNull("getFeedBatchLink", obj.getFeedBatchLink());
+        assertNull("getNextLink", obj.getNextLink());
         finishGDataTest();
       }
     }, 10000);

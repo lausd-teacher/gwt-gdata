@@ -42,7 +42,14 @@ public class ContactGroupEntryTest extends ContactsTest {
   }
 
   public void testOther() {
-    // Unit Test for addExtendedProperty(ExtendedProperty extendedProperty)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        ContactGroupEntry obj = ContactGroupEntry.newInstance();
+        obj.addExtendedProperty(ExtendedProperty.newInstance());
+        assertEquals("addExtendedProperty", 1, obj.getExtendedProperties().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

@@ -37,8 +37,16 @@ public class CollectionTest extends AppTest {
   }
 
   public void testOther() {
-    // Unit Test for addAccept(Accept accept)
-    // Unit Test for addCategories(Categories categories)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        Collection obj = Collection.newInstance();
+        obj.addAccept(Accept.newInstance());
+        assertEquals("addAccept", 1, obj.getAccepts().length);
+        obj.addCategories(Categories.newInstance());
+        assertEquals("addCategories", 1, obj.getCategorieses().length);
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

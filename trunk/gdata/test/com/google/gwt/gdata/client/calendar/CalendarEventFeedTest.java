@@ -38,12 +38,9 @@ public class CalendarEventFeedTest extends CalendarTest {
     executeGDataTest(new Runnable() {
       public void run() {
         CalendarEventFeed obj = CalendarEventFeed.newInstance();
-        // Unit Test for getFeedBatchLink()
-        assertEquals("getFeedBatchLink", obj.getFeedBatchLink(), null);
-        // Unit Test for getNextLink()
-        assertEquals("getNextLink", obj.getNextLink(), null);
-        // Unit Test for getPreviousLink()
-        assertEquals("getPreviousLink", obj.getPreviousLink(), null);
+        assertNull("getFeedBatchLink", obj.getFeedBatchLink());
+        assertNull("getNextLink", obj.getNextLink());
+        assertNull("getPreviousLink", obj.getPreviousLink());
         finishGDataTest();
       }
     }, 10000);

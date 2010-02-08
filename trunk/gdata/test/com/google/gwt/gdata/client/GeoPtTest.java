@@ -37,7 +37,13 @@ public class GeoPtTest extends GDataTest {
   }
 
   public void testOther() {
-    // Unit Test for setTime(Date time)
+    executeGDataTest(new Runnable() {
+      public void run() {
+        GeoPt obj = GeoPt.newInstance();
+        obj.setTime(DateTime.newInstance(new Date()));
+        finishGDataTest();
+      }
+    }, 10000);
   }
 
   public void testProperties() {

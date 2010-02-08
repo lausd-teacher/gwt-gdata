@@ -42,7 +42,6 @@ public class EditedTest extends AppTest {
     executeGDataTest(new Runnable() {
       public void run() {
         Edited obj = Edited.newInstance();
-        // Unit Test for setValue(Date value)
         Date value = new Date();
         obj.setValue(value);
         assertEquals("value", obj.getValue().getDate(), value);

@@ -45,16 +45,20 @@ public class PersonEntryTest extends ContactsTest {
     executeGDataTest(new Runnable() {
       public void run() {
         PersonEntry obj = PersonEntry.newInstance();
-        // Unit Test for addEmailAddress(Email emailAddress)
-        // Unit Test for addExtendedProperty(ExtendedProperty extendedProperty)
-        // Unit Test for addImAddress(Im imAddress)
-        // Unit Test for addOrganization(Organization organization)
-        // Unit Test for addPhoneNumber(PhoneNumber phoneNumber)
-        // Unit Test for addPostalAddress(PostalAddress postalAddress)
-        // Unit Test for getContactEditPhotoLink()
-        assertEquals("getContactEditPhotoLink", obj.getContactEditPhotoLink(), null);
-        // Unit Test for getContactPhotoLink()
-        assertEquals("getContactPhotoLink", obj.getContactPhotoLink(), null);
+        obj.addEmailAddress(Email.newInstance());
+        assertEquals("addEmailAddress", 1, obj.getEmailAddresses().length);
+        obj.addExtendedProperty(ExtendedProperty.newInstance());
+        assertEquals("addExtendedProperty", 1, obj.getExtendedProperties().length);
+        obj.addImAddress(Im.newInstance());
+        assertEquals("addImAddress", 1, obj.getImAddresses().length);
+        obj.addOrganization(Organization.newInstance());
+        assertEquals("addOrganization", 1, obj.getOrganizations().length);
+        obj.addPhoneNumber(PhoneNumber.newInstance());
+        assertEquals("addPhoneNumber", 1, obj.getPhoneNumbers().length);
+        obj.addPostalAddress(PostalAddress.newInstance());
+        assertEquals("addPostalAddress", 1, obj.getPostalAddresses().length);
+        assertNull("getContactEditPhotoLink", obj.getContactEditPhotoLink());
+        assertNull("getContactPhotoLink", obj.getContactPhotoLink());
         finishGDataTest();
       }
     }, 10000);
