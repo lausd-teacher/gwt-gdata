@@ -1,5 +1,4 @@
 #summary Describes how to use gwt-gdata to query Google Docs.
-#labels Featured
 
 == Introduction ==
 
