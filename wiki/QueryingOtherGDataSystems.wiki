@@ -1,5 +1,7 @@
 #summary Describes how to use gwt-gdata to query Google Docs.
 
+This page is still being assembled.
+
 == Introduction ==
 
 While there isn't explicit support in GData JS API for all of the GData systems, these can still be queried since the GData protocol has built-in json-in-script support.
