@@ -74,10 +74,6 @@ Create the Documents service class, extending GoogleService.
  * Google Documents service.
  */
 public class DocumentsService extends GoogleService {
-
-  private static final DocumentsServiceProxyAsync serviceProxy =
-    GWT.create(DocumentsServiceProxy.class);
-  private static final String DOCS_SCOPE = "https://docs.google.com/feeds/";
   
   /**
    * Constructs a DocumentsService object.
