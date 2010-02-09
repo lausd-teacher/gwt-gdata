@@ -1,11 +1,37 @@
 #summary Describes how to use gwt-gdata to query Google Docs.
 #labels Featured
 
-= Introduction =
+== Introduction ==
 
 While there isn't explicit support in GData JS API for all of the GData systems, these can still be queried since the GData protocol has built-in json-in-script support.
 
-The following describes how to use gwt-gdata to query for documents.
+This page describes how to use gwt-gdata to query Google Docs.
 
 
-= Details =
+== Create Service Class ==
+Start by defining a class for DocumentEntry which extends the Entry class common to all Entries.
+{{{
+public class DocumentEntry extends com.google.gwt.gdata.client.Entry<DocumentEntry> {
+
+  /**
+   * Constructs a document entry.
+   * @return A DocumentEntry object.
+   */
+  public static native DocumentEntry newInstance() /*-{
+    return new $wnd.google.gdata.Entry();
+  }-*/;
+
+  protected DocumentEntry() { }
+
+  /**
+   * Returns the JavaScript constructor for this class.
+   * @return The JavaScript constructor.
+   */
+  public static final native JavaScriptObject getConstructor() /*-{
+    return $wnd.google.gdata.Entry;
+  }-*/;
+  
+}
+}}}
+
+The native method getConstructor returns the JS type that corresponds to the DocumentEntry, which in this case is the google.gdata.Entry class of the underlying JS API.
