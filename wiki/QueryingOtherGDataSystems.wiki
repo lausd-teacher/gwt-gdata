@@ -8,7 +8,7 @@ While there isn't explicit support in GData JS API for all of the GData systems,
 This page describes how to use gwt-gdata to query Google Docs.
 
 
-== Create Service Class ==
+== Create Entry Class ==
 Start by defining a class for DocumentEntry which extends the Entry class common to all Entries.
 {{{
 public class DocumentEntry extends com.google.gwt.gdata.client.Entry<DocumentEntry> {
@@ -35,3 +35,33 @@ public class DocumentEntry extends com.google.gwt.gdata.client.Entry<DocumentEnt
 }}}
 
 The native method getConstructor returns the JS type that corresponds to the DocumentEntry, which in this case is the google.gdata.Entry class of the underlying JS API.
+
+== Create Feed Class ==
+As with the DocumentEntry class, create a DocumentFeed class extending Feed.
+{{{
+/**
+ * Describes a feed of a user's documents.
+ */
+public class DocumentFeed extends com.google.gwt.gdata.client.Feed<DocumentFeed, DocumentEntry> {
+
+  /**
+   * Constructs a document feed.
+   * @return A DocumentFeed object.
+   */
+  @SuppressWarnings("unchecked")
+  public static native DocumentFeed newInstance() /*-{
+    return new $wnd.google.gdata.Feed();
+  }-*/;
+
+  protected DocumentFeed() { }
+
+  /**
+   * Returns the JavaScript constructor for this class.
+   * @return The JavaScript constructor.
+   */
+  public static final native JavaScriptObject getConstructor() /*-{
+    return $wnd.google.gdata.Feed;
+  }-*/;
+
+}
+}}}
