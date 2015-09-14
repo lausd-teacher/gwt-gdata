@@ -1,0 +1,1 @@
+The JavaDocs for the latest version of the gwt-gdata library is available <a href='http://gwt-gdata.appspot.com/javadocs/v2.2.1/index.html'>here</a>.
